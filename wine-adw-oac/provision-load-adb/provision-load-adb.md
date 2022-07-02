@@ -35,7 +35,7 @@ In this lab, you will:
 
     **Note:** You can also directly access your Autonomous Data Warehouse service in the **Quick Actions** section of the dashboard.
 
-	![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
+	![](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
 4. From the compartment drop-down menu select the **Compartment** where you want to create your ADB instance. This console shows that no databases yet exist. If there were a long list of databases, you could filter the list by the **State** of the databases (Available, Stopped, Terminated, and so on). You can also sort by **Workload Type**. Here, the **Data Warehouse** workload type is selected.
 
@@ -82,7 +82,7 @@ In this lab, you will:
 
 1.  From the hamburger menu, select **Autonomous Data Warehouse** and navigate to your ADB instance.
 
-	![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
+	![](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
     ![](./images/choose-adb-adw.png " ")
 
@@ -114,7 +114,7 @@ In this lab, you will:
 
 1.  From the hamburger menu, select **Autonomous Data Warehouse** and navigate to your ADB instance.
 
-	![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
+	![](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
     ![](./images/choose-adb-adw.png " ")
 

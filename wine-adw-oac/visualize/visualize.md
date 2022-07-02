@@ -36,7 +36,7 @@ In this lab, you will:
 
 2. Click the **Navigation Menu** in the upper left, navigate to **Analytics**, and select **Analytics Cloud**.
 
-	![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/analytics-oac.png " ")
+	![](https://oracle-livelabs.github.io/common/images/console/analytics-oac.png " ")
 
 3. Under **Compartment**, make sure you select the compartment **OACWINE** is located in. Then in the OACWINE instance row, click the **Three Dots** to expand out the menu and select **Analytics Home Page**. Feel free to bookmark this page to navigate back to it easier.
 

@@ -69,7 +69,7 @@ In this lab, you will:
 
 5. Click on the menu icon and then select Autonomous Data Warehouse from the menu.
 
-	![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
+	![](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
 6. Select the compartment assigned to you from the **List Scope menu** and then click the ADW instance.
 

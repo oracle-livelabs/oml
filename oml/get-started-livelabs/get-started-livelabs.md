@@ -30,7 +30,7 @@ To provision an Oracle Autonomous Database:
 
 	 Alternatively, you may click the left navigation pane on the upper left corner, and click **Autonomous Data Warehouse**.
 
-	![Autonomous Data Warehouse option under Oracle Database](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png "Autonomous Data Warehouse option under Oracle Database")
+	![Autonomous Data Warehouse option under Oracle Database](https://oracle-livelabs.github.io/common/images/console/database-adw.png "Autonomous Data Warehouse option under Oracle Database")
 
 2. From the Oracle Cloud Infrastructure Console, on the Oracle Autonomous Database page choose your region and select a compartment. Click **Create Autonomous Database**. This opens the Create Autonomous Database page.
 
