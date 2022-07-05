@@ -23,24 +23,24 @@ In this lab, you will learn how to:
 
 You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
 
-1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Autonomous Data Warehouse**.
+1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right pane under Autonomous Database, click **Autonomous Data Warehouse**.
 
     ![Autonomous Data Warehouse](images/adw.png " ")
 
-2. Click on the Oracle Autonomous Database instance.
+2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Click the Oracle Autonomous Database that you have provisioned.
 
     ![ Oracle Autonomous Database instance](images/provisioned-adb.png " ")
 3. On the Autonomous Database details page, click **Database Actions**. The Oracle Database Actions Launchpad page opens in a separate tab.
     ![ Database Actions](images/database_actions.png " ")
 
-4. On the Database Actions page, scroll down to the **Development** section and click **Oracle Machine Learning**. This opens the Oracle Machine Learning sign in page.
+4. On the Database Actions page, go to the **Development** section and click **Oracle Machine Learning**. This opens the Oracle Machine Learning Sign In page.
     ![ Oracle Machine Learning](images/adb-dev-oml.png " ")
 
 5. <if type="livelabs">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="freetier">Enter the **`OMLUSER`** credentials using the password **`AAbbcc123456`** that was used when creating it with the SQL code.  If you changed the password in the SQL code, use that one here instead. Then click the blue **Sign in** button.</if>
 
     ![Oracle Machine Learning Notebooks Sign-in page](images/signin-to-oml.png " ")
 
-6. On the Oracle Machine Learning home page, click **Notebooks** under the Quick Actions menu.
+6. On the Oracle Machine Learning home page, click **Notebooks** in the Quick Actions menu.
 
     ![Oracle Machine Learning home page](images/oml-notebooks-homepage.png " ")
 
