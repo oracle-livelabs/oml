@@ -36,11 +36,11 @@ You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle
 4. On the Database Actions page, scroll down to the **Development** section and click **Oracle Machine Learning**. This opens the Oracle Machine Learning sign in page.
     ![ Oracle Machine Learning](images/adb-dev-oml.png " ")
 
-5. <if type="livelabs">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="freetier">Enter the **`OMLUSER`** credentials using the password **`AAbbcc123456`** that was used when creating it with the SQL code.  If you changed the password in the SQL code, use that one here instead. Then click the blue **Sign in** button</if>
+5. <if type="livelabs">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="freetier">Enter the **`OMLUSER`** credentials using the password **`AAbbcc123456`** that was used when creating it with the SQL code.  If you changed the password in the SQL code, use that one here instead. Then click the blue **Sign in** button.</if>
 
     ![Oracle Machine Learning Notebooks Sign-in page](images/signin-to-oml.png " ")
 
-6. Click **Notebooks** on the Quick Actions menu.
+6. On the Oracle Machine Learning home page, click **Notebooks** under the Quick Actions menu.
 
     ![Oracle Machine Learning home page](images/oml-notebooks-homepage.png " ")
 
@@ -179,4 +179,4 @@ You can now *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning; Jie Liu, Data Scientist
-* **Last Updated By/Date** - Marcos Arancibia and Jie Liu, October 2021
+* **Last Updated By/Date** - Moitreyee Hazarika, July 2022
