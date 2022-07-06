@@ -155,24 +155,25 @@ This lab assumes you have:
 
 1. View the content of OML Services REST APIs. You can return the API content in a readable format by using the Linux utility jq.  
 
-  > **Note:** If you are using OCI Cloud Shell, you don't need to install the jq utility as OCI Cloud Shell comes with jq pre-installed. If you are using your own tenancy or a trial account and if you are not using OCI Cloud Shell, you can check if jq is installed by running the command rpm -qa jq. If this command returns an empty value, jq is not installed. In that case, install the jq utility by running the following command.
+    > **Note:** If you are using OCI Cloud Shell, you don't need to install the jq utility as OCI Cloud Shell comes with jq pre-installed. If you are using your own tenancy or a trial account and if you are not using OCI Cloud Shell, you can check if jq is installed by running the command rpm -qa jq. If this command returns an empty value, jq is not installed. In that case, install the jq utility by running the following command.
 
-  ```
 
-  <copy>sudo yum install jq</copy>
+    ```
 
-  ```
+    <copy>sudo yum install jq</copy>
+
+    ```
 
    Run the curl command to view the APIs.
 
-   ```
-   <copy>curl -i -X GET --header "Authorization: Bearer ${token}" "${omlserver}/omlmod/v1/api" | head -n 50</copy>
+    ```
+    <copy>curl -i -X GET --header "Authorization: Bearer ${token}" "${omlserver}/omlmod/v1/api" | head -n 50</copy>
 
-   ```
+    ```
 
    Here's the result, in a truncated form, of running the command above:
 
-   ```
+    ```
        "lifecycle": {
                    "type": "string",
                    "enum": [
@@ -201,7 +202,7 @@ This lab assumes you have:
                }
        ...
 
-   ```
+    ```
 2.  Get a list of saved models. For this step to return results, you need to have models deployed in your OML user account. If you have completed Lab 4, your account should include deployed models. Refer back to Lab 4 Using OML AutoML UI  to know how to quickly create and save a  model.
 
     ```
@@ -282,7 +283,8 @@ This lab assumes you have:
 
 4.  Next, get a list of models filtered by version=1.0 and namespace=`DEMO`.
 
-   > **Note**: The namespace parameter is case-sensitive.
+    > **Note**: The namespace parameter is case-sensitive.
+
 
     ```
     <copy>curl -X GET --header "Authorization: Bearer $token" "${omlserver}/omlmod/v1/models?version=1.0&namespace=DEMO" | jq</copy>
