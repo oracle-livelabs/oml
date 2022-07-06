@@ -23,23 +23,24 @@ In this lab, you will learn how to:
 
 You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
 
-1. From the tab on your browser with your ADW instance, click **Service Console**.
+1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right pane under Autonomous Database, click **Autonomous Data Warehouse**.
 
-    ![Service Console](images/service-console.png " ")
+    ![Autonomous Data Warehouse](images/adw.png " ")
 
-  Select **Development** from the menu on the left.    
+2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Click the Oracle Autonomous Database that you have provisioned.
 
-    ![Development tab in Service Console](images/service-console-development.png " ")
+    ![ Oracle Autonomous Database instance](images/provisioned-adb.png " ")
+3. On the Autonomous Database details page, click **Database Actions**. The Oracle Database Actions Launchpad page opens in a separate tab.
+    ![ Database Actions](images/database_actions.png " ")
 
-2. Click **Oracle Machine Learning User Interface**.
+4. On the Database Actions page, go to the **Development** section and click **Oracle Machine Learning**. This opens the Oracle Machine Learning Sign In page.
+    ![ Oracle Machine Learning](images/adb-dev-oml.png " ")
 
-    ![Oracle Machine Learning User interface option in Development tab in Oracle ADW](images/open-oml-notebooks.png " ")
-
-3. <if type="livelabs">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="freetier">Enter the **`OMLUSER`** credentials using the password **`AAbbcc123456`** that was used when creating it with the SQL code.  If you changed the password in the SQL code, use that one here instead.  Then click the blue **Sign in** button</if>
+5. <if type="livelabs">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="freetier">Enter the **`OMLUSER`** credentials using the password **`AAbbcc123456`** that was used when creating it with the SQL code.  If you changed the password in the SQL code, use that one here instead. Then click the blue **Sign in** button.</if>
 
     ![Oracle Machine Learning Notebooks Sign-in page](images/signin-to-oml.png " ")
 
-4. Click **Notebooks** on the Quick Actions menu.
+6. On the Oracle Machine Learning home page, click **Notebooks** in the Quick Actions menu.
 
     ![Oracle Machine Learning home page](images/oml-notebooks-homepage.png " ")
 
@@ -71,7 +72,7 @@ You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle
 
 ### About Oracle Machine Learning Notebooks
 
-A notebook is a web-based interface for data analysis, data discovery, data visualization and collaboration. 
+A notebook is a web-based interface for data analysis, data discovery, data visualization and collaboration.
 
 The Oracle Machine Learning Notebooks toolbar contains buttons to run code in paragraphs, for configuration settings, and display options.
 
@@ -109,7 +110,7 @@ Another option is to just scroll down and read the pre-recorded results containe
 
  ![Click run all Lab1](images/click-run-all-lab1.png " ")
 
-Scroll down on the "Lab 1" Notebook to follow along the steps below. 
+Scroll down on the "Lab 1" Notebook to follow along the steps below.
 
   ![Scroll down notebooks](images/scroll-down-notebook.png " ")
 
@@ -128,22 +129,22 @@ In an Oracle Machine Learning notebook, you can add multiple paragraphs, and eac
 
 2. Using the default interpreter bindings, OML Notebooks automatically establishes a database connection for the notebook.  
   To verify the Python interpreter has established a database connection through the `oml` module, run the command:
-   
+
   ![Database Connection Verification](images/oml_connected.png " ")
 
   Once your notebook is connected, the command returns `True`.         
 
-3. The Python `help` function 
+3. The Python `help` function
 
-   The Python `help` function is used to display the documentation of packages, modules, functions, classes, and keywords. 
+   The Python `help` function is used to display the documentation of packages, modules, functions, classes, and keywords.
 
    Scroll down in the notebook to see examples of the use of the `help` function.
- 
+
 <if type="livelabs">
 You can now *proceed to the next lab*.</if>
 
 <if type="freetier">
-## Task 5: Load sample data into tables and views, and grant access to all users 
+## Task 5: Load sample data into tables and views, and grant access to all users
 
 Labs 2 to 6 of this workshop use tables and views that need to be created upfront.  To create these tables and views, we will open the Notebook "Lab 1a: Run Me First - OML4Py table creation and grants".
 
@@ -178,4 +179,4 @@ You can now *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning; Jie Liu, Data Scientist
-* **Last Updated By/Date** - Marcos Arancibia and Jie Liu, October 2021
+* **Last Updated By/Date** - Moitreyee Hazarika, July 2022
