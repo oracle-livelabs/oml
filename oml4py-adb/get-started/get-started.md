@@ -27,7 +27,7 @@ You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle
 
     ![Autonomous Data Warehouse](images/adw.png " ")
 
-2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Click the Oracle Autonomous Database that you have provisioned.
+2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Select the compartment corresponding to the provisioned Live Labs instance, and click the Oracle Autonomous Database name.
 
     ![ Oracle Autonomous Database instance](images/provisioned-adb.png " ")
 3. On the Autonomous Database details page, click **Database Actions**. The Oracle Database Actions Launchpad page opens in a separate tab.
