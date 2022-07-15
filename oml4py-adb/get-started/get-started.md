@@ -23,7 +23,7 @@ In this lab, you will learn how to:
 
 You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
 
-1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right pane under Autonomous Database, click **Autonomous Database**.
+1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right pane, click **Autonomous Database**.
 
     ![Autonomous Data Warehouse](images/database-adw.png " ")
 
