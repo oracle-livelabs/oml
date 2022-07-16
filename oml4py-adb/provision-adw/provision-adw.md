@@ -44,11 +44,11 @@ A compartment is a collection of cloud assets, like compute instances, load bala
 
   Now, the compartment is created.  In the next task, you will create an Autonomous Database instance.
 
-## Task 2: Choose Autonomous Data Warehouse from the Services Menu
+## Task 2: Choose Autonomous Database from the Services Menu
 
 1. From the three-line menu, which is on the top left of the OCI console, click the navigation menu in the upper left to show top level navigation choices.
    
-  Click **Autonomous Database**.
+  Select **Oracle Database** and click **Autonomous Database**.
 
   ![Click Autonomous Database.](./images/database-adw.png " ")
 
@@ -80,7 +80,7 @@ A compartment is a collection of cloud assets, like compute instances, load bala
 3. Give basic information for the autonomous database:
 
     - __Choose a compartment__ - Select the compartment you just created.
-    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __OML LABS__.
+    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __OML_LABS__.
     - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters (no underscores). For this lab, use __OMLLABS__.
 
   ![Enter the required details.](./images/create-adb-screen-freetier.png " ")
@@ -224,4 +224,4 @@ See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-wa
 
 - **Author** - Marcos Arancibia, Senior Principal Product Manager, Machine Learning; Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Marcos Arancibia, October 2021
+- **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, July 2022
