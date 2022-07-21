@@ -98,4 +98,4 @@ After you reach the end of Lab 5, you can *proceed to the next lab*.
 ## Acknowledgements
 * **Author** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia and Jie Liu, October 2021
+* **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, July 2022

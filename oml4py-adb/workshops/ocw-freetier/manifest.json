@@ -18,7 +18,7 @@
             "type": "freetier"
         },
         {
-            "title": "Lab 1: Get Started with OML4Py",
+            "title": "Lab 1b: Get Started with OML4Py",
             "filename": "../../get-started/get-started.md",
             "type": "freetier"
         },
@@ -46,6 +46,11 @@
             "title": "Lab 6: Use AutoML",
             "filename": "../../automl/automl.md",
             "type": "freetier"
+        },
+        {
+            "title": "Workshop Cleanup",
+            "description": "Workshop cleanup",
+            "filename":"https://github.com/oracle-livelabs/common/blob/main/labs/terminate-adb/terminate-adb.md"
         },
         {
             "title": "Appendix: OML user administration",

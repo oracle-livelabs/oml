@@ -1,6 +1,6 @@
 # Use AutoML
 
-## Introduction
+### Introduction
 
 This lab walks you through the steps to use the AutoML functionality.
 
@@ -41,8 +41,9 @@ In this lab, you will learn how to:
   ![Lab 6 main screen](images/lab6-main.png " ")
 
 > **NOTE:** If you had problems downloading and extracting the ZIP file for the labs, please [**CLICK HERE** to download the lab6\_automl.json notebook file](./../notebooks/lab6_automl.json?download=1). Download the notebook file for this lab to your local machine and then import it like illustrated in **Lab 1, Task 2**.
+___
 
-> **Note:** Due to the nature of Automated Machine Learning, it is expected that some of the paragraphs will take several minutes to complete.
+> **NOTE:** Due to the nature of Automated Machine Learning, it is expected that some of the paragraphs will take several minutes to complete.
 
 ## Task 1: Import libraries supporting OML4Py and AutoML
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
@@ -97,4 +98,4 @@ You can explore other Live Labs that make use of the Oracle Machine Learning com
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia and Jie Liu, October 2021
+* **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, July 2022

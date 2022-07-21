@@ -179,4 +179,4 @@ You can now *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning; Jie Liu, Data Scientist
-* **Last Updated By/Date** - Moitreyee Hazarika, July 2022
+* **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, July 2022
