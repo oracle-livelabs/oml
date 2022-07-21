@@ -1,6 +1,6 @@
 # Store and manage Python objects and user-defined functions
 
-## Introduction
+### Introduction
 
 This lab walks you through the steps to use and work with OML4Py datastores and the script repository.
 

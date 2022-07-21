@@ -1,6 +1,6 @@
 # Get started with OML4Py on Oracle Autonomous Database
 
-## Introduction
+### Introduction
 This lab walks you through the steps of accessing Oracle Machine Learning Notebooks, loading notebooks and running OML4Py scripts.
 
 Estimated Time: 15 minutes
@@ -47,10 +47,10 @@ You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle
 ## Task 2: Get familiar with OML Notebooks
 
 <if type="freetier">
-1. [**CLICK HERE** to download a ZIP file with all the notebooks we will use for these Labs (in JSON format)](./../notebooks/oml4py_labs_freetier.zip?download=1) which contain the notebooks for the Labs.  Save it to your local machine and __extract them__ to a memorable place.
+1. [**CLICK HERE** to download a ZIP file with all the notebooks we will use for these Labs (in JSON format)](https://objectstorage.us-ashburn-1.oraclecloud.com/p/ObYrokq6yrucExLyb3ZPwhJ59Xv-Gyjwp8t8LlotAdnwSqxs9qQpd3gYScMtDYRB/n/adwc4pm/b/OML_Data/o/oml4py_labs_freetier.zip?download=1) which contain the notebooks for the Labs.  Save it to your local machine and __extract them__ to a memorable place.
   </if>
 <if type="livelabs">
-1. [**CLICK HERE** to download a ZIP file with all the notebooks we will use for these Labs (in JSON format)](./../notebooks/oml4py_labs_livelabs.zip?download=1) which contain the notebooks for the Labs.  Save it to your local machine and __extract them__ to a memorable place.
+1. [**CLICK HERE** to download a ZIP file with all the notebooks we will use for these Labs (in JSON format)](https://objectstorage.us-ashburn-1.oraclecloud.com/p/Lcj3ZhWo5n0vCRZ-XU-2SneV7yipVsGzjm3QX2_TWp9IRxdSsH6htceUJRZmOI31/n/adwc4pm/b/OML_Data/o/oml4py_labs_livelabs.zip?download=1) which contain the notebooks for the Labs.  Save it to your local machine and __extract them__ to a memorable place.
   </if>
 
 > **NOTE:** If you have problems with downloading and extracting the ZIP file, please [**CLICK HERE** to download the "Lab 1: Get Started with OML4Py on Autonomous Database" notebook in JSON format](./../notebooks/lab1_get_started.json?download=1) which contains the notebook version of Lab1, save it to your local machine and import it as illustrated below.

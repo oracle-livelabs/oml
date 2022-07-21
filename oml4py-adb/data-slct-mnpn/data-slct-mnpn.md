@@ -1,6 +1,6 @@
 # Select and manipulate data using the transparency layer
 
-## Introduction
+### Introduction
 
 This lab shows how to use the transparency layer classes to work with data and to perform exploratory analysis of the data.
 

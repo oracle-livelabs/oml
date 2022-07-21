@@ -1,6 +1,6 @@
 # Run user-defined functions using Embedded Python Execution
 
-## Introduction
+### Introduction
 
 This lab walks you through the steps to use OML4Py Embedded Python Execution functions to run custom Python code.
 

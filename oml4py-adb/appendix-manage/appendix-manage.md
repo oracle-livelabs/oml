@@ -1,6 +1,6 @@
 # Appendix: OML user administration
 
-## Introduction
+### Introduction
 This lab walks you through the steps to create and manage an Oracle Machine Learning user.
 
 Estimated Time: 5 minutes
