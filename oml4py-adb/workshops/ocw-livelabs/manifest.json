@@ -43,6 +43,11 @@
             "type": "livelabs"
         },
         {
+            "title": "Lab 7: Cleanup",
+            "description": "Workshop cleanup",
+            "filename":"https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
+        },
+        {
         "title": "Appendix: OML user administration",
         "filename": "../../appendix-manage/appendix-manage.md",
         "type": "freetier"
