@@ -1,6 +1,6 @@
 # Run user-defined functions using Embedded Python Execution
 
-### Introduction
+## Introduction
 
 This lab walks you through the steps to use OML4Py Embedded Python Execution functions to run custom Python code.
 
@@ -31,7 +31,9 @@ In this lab, you will:
 * Build one model per group using the `group_apply` function
 * Return multiple images as a result from Embedded Python Execution
 
-## Access the notebook for this Lab
+### Prerequisites
+
+We need to access and run the OML notebook for this lab.
 
 1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 

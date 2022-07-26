@@ -1,6 +1,6 @@
 # Use AutoML
 
-### Introduction
+## Introduction
 
 This lab walks you through the steps to use the AutoML functionality.
 
@@ -22,7 +22,9 @@ In this lab, you will learn how to:
 * Use `automl.ModelTuning` to tune selected algorithm hyperparameters
 * Use `automl.ModelSelection` to select the top in-database algorithm and return the tuned model in a single function
 
-## Access the notebook for this Lab
+### Prerequisites
+
+We need to access and run the OML notebook for this lab.
 
 1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 
@@ -82,18 +84,17 @@ Scroll down to the beginning of Task 5.
 
   ![Lab 6 Task 5 screen](images/lab6-task5.png " ")
   
-
-## End of the labs  
-
 ### Congratulations !!!
-You reached the end of the lab "Python Users: Build intelligent applications faster with Oracle Machine Learning".
 
-You can explore other Live Labs that make use of the Oracle Machine Learning components [by clicking here](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/livelabs-workshop-cards?c=y&p100_product=70).
+You reached the end of the lab.  
+
+You can explore additional workshops related to Oracle Machine Learning from the link in the **Learn More** section.  
 
 ## Learn more
 
 * [Automated Machine Learning](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/automatic-machine-learning.html#GUID-4B240E7A-1A8B-43B6-99A5-7FF86330805A)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
+* [Additional Workshops for Oracle Machine Learning](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/livelabs-workshop-cards?c=y&p100_product=70)
 
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer

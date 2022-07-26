@@ -1,6 +1,6 @@
 # Select and manipulate data using the transparency layer
 
-### Introduction
+## Introduction
 
 This lab shows how to use the transparency layer classes to work with data and to perform exploratory analysis of the data.
 
@@ -33,7 +33,9 @@ In this lab, you will learn how to:
   * Manage and explore data using OML4Py Transparency Layer functions
   * Use `cx_Oracle` functions to submit SQL queries from Python
 
-## Access the notebook for this Lab
+### Prerequisites
+
+We need to access and run the OML notebook for this lab.
 
 1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 

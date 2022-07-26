@@ -1,6 +1,6 @@
 # Store and manage Python objects and user-defined functions
 
-### Introduction
+## Introduction
 
 This lab walks you through the steps to use and work with OML4Py datastores and the script repository.
 
@@ -52,7 +52,9 @@ In this lab, you will learn how to:
   * Store a function as a global function
   * Drop scripts from the Script Repository
 
-## Access the notebook for this Lab
+### Prerequisites
+
+We need to access and run the OML notebook for this lab.
 
 1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 

@@ -1,6 +1,6 @@
 # Get started with OML4Py on Oracle Autonomous Database
 
-### Introduction
+## Introduction
 This lab walks you through the steps of accessing Oracle Machine Learning Notebooks, loading notebooks and running OML4Py scripts.
 
 Estimated Time: 15 minutes

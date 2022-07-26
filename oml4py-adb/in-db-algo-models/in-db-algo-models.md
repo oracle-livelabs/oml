@@ -1,6 +1,6 @@
 # Use in-database algorithms and models
 
-### Introduction
+## Introduction
 This lab highlights a few of the machine learning algorithms and features available in OML4Py: Generalized Linear Models (GLM), K-Means Clustering, partitioned models, and model explainability.
 
 Estimated Time: 25 minutes
@@ -24,7 +24,9 @@ In this lab, you will learn how to:
 * Work with partitioned models
 * Use the Model Explainability feature to rank attributes
 
-## Access the notebook for this Lab
+### Prerequisites
+
+We need to access and run the OML notebook for this lab.
 
 1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 

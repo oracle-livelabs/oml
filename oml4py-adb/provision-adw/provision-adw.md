@@ -1,6 +1,6 @@
 # Provision an Autonomous Data Warehouse with OML users
 
-### Introduction
+## Introduction
 
 In just a few minutes, Autonomous Database lets you deploy a complete data warehousing platform that can scale to your requirements. You can also use its Database Actions interfaces to easily populate that warehouse from the data lake.
 
