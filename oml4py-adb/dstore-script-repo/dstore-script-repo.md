@@ -70,102 +70,102 @@ We need to access and run the OML notebook for this lab.
 
   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
    
-  ![Lab 4 main screen](images/lab4-main.png " ")
+  ![Lab 4 Introduction notebook screen capture](images/lab4-main.png " ")
 
 > **NOTE:** If you had problems downloading and extracting the ZIP file for the labs, please [**CLICK HERE** to download the lab4\_datastores.json notebook file](./../notebooks/lab4_datastores.json?download=1). Download the notebook file for this lab to your local machine and then import it like illustrated in **Lab 1, Task 2**.
 
 ## Task 1: Import libraries supporting OML4Py and create data table
 
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 1.
 
-  ![Lab 4 Task 1 screen](images/lab4-task1.png " ")  
+  ![Lab 4 Task 1 Import libraries supporting OML4Py and create data table notebook screen capture](images/lab4-task1.png " ")  
 
 ## Task 2: Create pandas dataFrames and load them into Oracle Autonomous Database
 
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
-  ![Lab 4 Task 2 screen](images/lab4-task2.png " ")  
+  ![Lab 4 Task 2 Create pandas dataFrames and load them into Oracle Autonomous Database notebook screen capture](images/lab4-task2.png " ")  
   
 ## Task 3: Save Python objects to a datastore instance
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
 
-  ![Lab 4 Task 3 screen](images/lab4-task3.png " ")  
+  ![Lab 4 Task 3 Save Python objects to a datastore instance notebook screen capture](images/lab4-task3.png " ")  
 
 ## Task 4: Save model objects in a datastore instance
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
 
-  ![Lab 4 Task 4 screen](images/lab4-task4.png " ")  
+  ![Lab 4 Task 4 Save model objects in a datastore instance notebook screen capture](images/lab4-task4.png " ")  
 
 ## Task 5:  Load datastore objects into memory
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
 
-  ![Lab 4 Task 5 screen](images/lab4-task5.png " ")  
+  ![Lab 4 Task 5 Load datastore objects into memory notebook screen capture](images/lab4-task5.png " ")  
 
 ## Task 6: View datastores and other details
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 6.
 
-  ![Lab 4 Task 6 screen](images/lab4-task6.png " ")  
+  ![Lab 4 Task 6 View datastores and other details notebook screen capture](images/lab4-task6.png " ")  
 
 ## Task 7: View contents of a datastore
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 7.
 
-  ![Lab 4 Task 7 screen](images/lab4-task7.png " ")     
+  ![Lab 4 Task 7 View contents of a datastore notebook screen capture](images/lab4-task7.png " ")     
 
 ## Task 8: Manage datastore privileges
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 8.
 
-  ![Lab 4 Task 8 screen](images/lab4-task8.png " ")  
+  ![Lab 4 Task 8 Manage datastore privileges notebook screen capture](images/lab4-task8.png " ")  
 
 ## Task 9: Delete datastore content
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 9.
 
-  ![Lab 4 Task 9 screen](images/lab4-task9.png " ")
+  ![Lab 4 Task 9 Delete datastore content notebook screen capture](images/lab4-task9.png " ")
 
 ## Task 10: Use the Python Script Repository
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 10.
 
-  ![Lab 4 Task 10 screen](images/lab4-task10.png " ")  
+  ![Lab 4 Task 10 Use the Python Script Repository notebook screen capture](images/lab4-task10.png " ")  
 
 ## Task 11: Create scripts in repository
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 11.
 
-  ![Lab 4 Task 11 screen](images/lab4-task11.png " ")  
+  ![Lab 4 Task 11 Create scripts in repository notebook screen capture](images/lab4-task11.png " ")  
 
 ## Task 12: Store a function as a global function
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 12.
 
-  ![Lab 4 Task 12 screen](images/lab4-task12.png " ")  
+  ![Lab 4 Task 12 Store a function as a global function notebook screen capture](images/lab4-task12.png " ")  
 
 ## Task 13: Drop scripts from the script repository
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 13.
 
-  ![Lab 4 Task 13 screen](images/lab4-task13.png " ")  
+  ![Lab 4 Task 13 Drop scripts from the script repository notebook screen capture](images/lab4-task13.png " ")  
 
 After you reach the end of Lab 4, you can *proceed to the next lab*.
 
@@ -177,4 +177,4 @@ After you reach the end of Lab 4, you can *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, July 2022
+* **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, August 2022

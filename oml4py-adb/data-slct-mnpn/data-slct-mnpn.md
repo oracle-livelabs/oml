@@ -56,67 +56,67 @@ We need to access and run the OML notebook for this lab.
 > **NOTE:** If you had problems downloading and extracting the ZIP file for the labs, please [**CLICK HERE** to download the lab2\_select\_manipulate\_data.json notebook file](./../notebooks/lab2_select_manipulate_data.json?download=1). Download the notebook file for this lab to your local machine and then import it like illustrated in **Lab 1, Task 2**.
 
 ## Task 1: Import libraries and create Oracle Machine Learning DataFrame proxy object
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 1.
 
-  ![Lab 2 Task 1 screen](images/lab2-task1.png " ")
+  ![Lab 2 Task 1 Import libraries and create Oracle Machine Learning DataFrame proxy object notebook screen capture](images/lab2-task1.png " ")
 
 ## Task 2: Select table columns using proxy object CUST_DF
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
-  ![Lab 2 Task 2 screen](images/lab2-task2.png " ")
+  ![Lab 2 Task 2 Select table columns using proxy object CUST_DF notebook screen capture](images/lab2-task2.png " ")
 
 ## Task 3: Select table rows using proxy object CUST_DF
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
 
-  ![Lab 2 Task 3 screen](images/lab2-task3.png " ")
+  ![Lab 2 Task 3 Select table rows using proxy object CUST_DF notebook screen capture](images/lab2-task3.png " ")
 
 ## Task 4: Use OML DataFrame proxy objects
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
 
-  ![Lab 2 Task 4 screen](images/lab2-task4.png " ")
+  ![Lab 2 Task 4 Use OML DataFrame proxy objects notebook screen capture](images/lab2-task4.png " ")
 
 ## Task 5: Use the split and kfold functions
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
 
-  ![Lab 2 Task 5 screen](images/lab2-task5.png " ")
+  ![Lab 2 Task 5 Use the split and kfold functions notebook screen capture](images/lab2-task5.png " ")
 
 ## Task 6: Use the crosstab and pivot_table functions on a DataFrame proxy object
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 6.
 
-  ![Lab 2 Task 6 screen](images/lab2-task6.png " ")
+  ![Lab 2 Task 6 Use the crosstab and pivot_table functions on a DataFrame proxy object notebook screen capture](images/lab2-task6.png " ")
 
 ## Task 7: Use the oml.boxplot and oml.hist functions
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 7.
 
-  ![Lab 2 Task 7 screen](images/lab2-task7.png " ")
+  ![Lab 2 Task 7 Use the oml.boxplot and oml.hist functions notebook screen capture](images/lab2-task7.png " ")
 
 ## Task 8: Manage and explore data using transparency layer functions
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 8.
 
-  ![Lab 2 Task 8 screen](images/lab2-task8.png " ")
+  ![Lab 2 Task 8 Manage and explore data using transparency layer functions notebook screen capture](images/lab2-task8.png " ")
 
 ## Task 9: Use cx_Oracle functions
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 9.
 
-  ![Lab 2 Task 9 screen](images/lab2-task9.png " ")  
+  ![Lab 2 Task 9 Use cx_Oracle functions notebook screen capture](images/lab2-task9.png " ")  
 
 You can now *proceed to the next lab*.
 
@@ -129,4 +129,4 @@ You can now *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, July 2022
+* **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, August 2022

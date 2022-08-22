@@ -48,8 +48,8 @@
             "type": "freetier"
         },
         {
-            "title": "Lab 7: Cleanup",
-            "description": "Workshop cleanup",
+            "title": "Lab 7: Clean Up",
+            "description": "Workshop clean up",
             "filename":"https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
         },
         {

@@ -30,7 +30,7 @@ We need to access and run the OML notebook for this lab.
 
 1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 
- ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png " ")
+ ![Oracle Machine Learning Notebooks main menu by clicking on the three-lines menu and then selecting Notebooks](images/go-back-to-notebooks.png " ")
 
 2. Click the **Lab 3 notebook name** to view it.
    <if type="freetier">
@@ -42,44 +42,44 @@ We need to access and run the OML notebook for this lab.
 
   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
    
-  ![Lab 3 main screen](images/lab3-main.png " ")
+  ![Lab 3 Introduction notebook screen capture](images/lab3-main.png " ")
 
 > **NOTE:** If you had problems downloading and extracting the ZIP file for the labs, please [**CLICK HERE** to download the lab3\_in-db\_algo.json notebook file](./../notebooks/lab3_in-db_algo.json?download=1). Download the notebook file for this lab to your local machine and then import it like illustrated in **Lab 1, Task 2**.
 
 ## Task 1: Import libraries
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 1.
 
-  ![Lab 3 Task 1 screen](images/lab3-task1.png " ")  
+  ![Lab 3 Task 1 Import libraries notebook screen capture](images/lab3-task1.png " ")  
 
 ## Task 2: Work with regression using generalized liner model (GLM)
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
-  ![Lab 3 Task 2 screen](images/lab3-task2.png " ") 
+  ![Lab 3 Task 2 Work with regression using generalized liner model (GLM) notebook screen capture](images/lab3-task2.png " ") 
 
 ## Task 3: Work with clustering using k-Means
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
 
-  ![Lab 3 Task 3 screen](images/lab3-task3.png " ") 
+  ![Lab 3 Task 3 Work with clustering using k-Means notebook screen capture](images/lab3-task3.png " ") 
 
 ## Task 4: Work with Partitioned Models
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
 
-  ![Lab 3 Task 4 screen](images/lab3-task4.png " ") 
+  ![Lab 3 Task 4 Work with Partitioned Models notebook screen capture](images/lab3-task4.png " ") 
 
 ## Task 5: Rank attribute importance using model explainability
-Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
 
-  ![Lab 3 Task 5 screen](images/lab3-task5.png " ") 
+  ![Lab 3 Task 5 Rank attribute importance using model explainability notebook screen capture](images/lab3-task5.png " ") 
 
 After you reach the end of Lab 3, you can *proceed to the next lab*.
 
@@ -92,4 +92,4 @@ After you reach the end of Lab 3, you can *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** -  Marcos Arancibia and Sherry LaMonica, July 2022
+* **Last Updated By/Date** -  Marcos Arancibia and Sherry LaMonica, August 2022

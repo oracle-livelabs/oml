@@ -40,7 +40,7 @@ A compartment is a collection of cloud assets, like compute instances, load bala
 
 2. Give the compartment a name and description. Be sure your root compartment appears as the parent compartment. Press the blue **Create Compartment** button.
 
-  ![Click the Create Compartment button.](images/click-create-compartment-button.png " ")
+  ![Fill in the data required like name and description of your new compartment and Click the Create Compartment button.](images/click-create-compartment-button.png " ")
 
   Now, the compartment is created.  In the next task, you will create an Autonomous Database instance.
 
@@ -50,32 +50,32 @@ A compartment is a collection of cloud assets, like compute instances, load bala
    
   Select **Oracle Database** and click **Autonomous Database**.
 
-  ![Click Autonomous Database.](./images/database-adw.png " ")
+  ![From the main OCI menu, click the three-lines menu then select Oracle Database and finally Autonomous Database](./images/database-adw.png " ")
 
 2. Make sure your workload type is __Data Warehouse__ or __All__ to see your Autonomous Data Warehouse instances. Use the __List Scope__ drop-down menu to select the compartment you just created.
 
-  ![Check the workload type on the left.](images/list-scope-freetier.png " ")
+  ![Check the workload type on the left and select the newly created compartment](images/list-scope-freetier.png " ")
 
   > **Note:** Avoid the use of the `ManagedCompartmentforPaaS` compartment as this is an Oracle default used for Oracle Platform Services.
 
 
 3. This console shows that no databases yet exist. If there were a long list of databases, you could filter the list by the **State** of the databases (Available, Stopped, Terminated, for example). You can also sort by __Workload Type__. The different options are shown below.
 
-  ![Autonomous Databases console.](./images/no-adb-freetier.png " ")
+  ![Autonomous Databases console shows no databases exist yet in that compartment](./images/no-adb-freetier.png " ")
 
 4. If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in a region where Always Free Resources are available. You can see your current **region** in the top, right hand corner of the page.  If you are on Free Tier you can only deploy services in your **Home Region**.
 
-  ![Select region on the far upper-right corner of the page.](./images/Region.png " ")
+  ![Select region on the far upper-right corner of the page to be the Home Region](./images/Region.png " ")
 
 ## Task 3: Create the Autonomous Database instance
 
 1. Click **Create Autonomous Database** to start the instance creation process.
 
-  ![Click Create Autonomous Database.](./images/create-adb.png " ")
+  ![Click Create Autonomous Database](./images/create-adb.png " ")
 
 2.  This brings up the __Create Autonomous Database__ screen where you will configure the instance.
 
-  ![Create Autonomous Database default screen.](./images/create-adb-screen-freetier-default.png " ")
+  ![Create Autonomous Database default screen capture shows no data yet](./images/create-adb-screen-freetier-default.png " ")
 
 3. Give basic information for the autonomous database:
 
@@ -83,20 +83,20 @@ A compartment is a collection of cloud assets, like compute instances, load bala
     - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __OML_LABS__.
     - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters (no underscores). For this lab, use __OMLLABS__.
 
-  ![Enter the required details.](./images/create-adb-screen-freetier.png " ")
+  ![Enter the required details like the compartment to use and Display Name and Database Name](./images/create-adb-screen-freetier.png " ")
 
 4. Choose a workload type. Select the workload type for your database from the choices:
 
     - __Data Warehouse__ - For this lab, choose __Data Warehouse__ as the workload type.  This workload is built for decision support and data warehouse workloads. Fast queries over large volumnes of data.
     - __Transaction Processing__ - Or, you could also choose __Transaction Processing__ as the workload type.  This workload is built for transactional workloads. High concurrency for short-running queries and transactions.
 
-  ![Choose a workload type.](./images/create-adb-workload-type.png " ")
+  ![Choose the workload type Data Warehouse](./images/create-adb-workload-type.png " ")
 
 5. Choose a deployment type. Select the deployment type for your database from the choices:
 
     - __Shared Infrastructure__ - For this lab, choose __Shared Infrastructure__ as the deployment type.
  
-  ![Choose a deployment type.](./images/create-adb-deployment-type.png " ")
+  ![Choose a deployment type Shared Infrastructure](./images/create-adb-deployment-type.png " ")
 
 6. Configure the database:
 
@@ -108,7 +108,7 @@ A compartment is a collection of cloud assets, like compute instances, load bala
   
     > **Note:** You cannot scale up/down an Always Free autonomous database, nor change its storage size.
 
-    ![Choose the remaining parameters.](./images/create-adb-instance-config.png " ")
+    ![Choose the remaining parameters ideally Always Free toggle ON and 19c for the Database release](./images/create-adb-instance-config.png " ")
 
 7. Create administrator credentials:
 
@@ -120,26 +120,26 @@ A compartment is a collection of cloud assets, like compute instances, load bala
     - The password must not be the same password that you set less than 24 hours ago.
     - Re-enter the password to confirm it. Make a note of this password.
 
-    ![Enter password and confirm password.](./images/create-adb-admin-credentials.png " ")
+    ![Enter password and confirm password screen capture](./images/create-adb-admin-credentials.png " ")
 
 8. Choose network access:
     - For this lab, accept the default, "Allow secure access from everywhere."
     - If you wanted to use a private endpoint, it would allow traffic only from the VCN you specify, where access to the database from all public IPs or VCNs is blocked. You would then have to select "Virtual cloud network" in the __Choose network access__ area.
     - You can control and restrict access to your Autonomous Database by setting network access control lists (ACLs). You can select from 4 IP notation types: IP Address, CIDR Block, Virtual Cloud Network, Virtual Cloud Network OCID.
 
-    ![Choose the network access.](./images/create-adb-network-access.png " ")
+    ![Choose the network access option for Secure access from everywhere](./images/create-adb-network-access.png " ")
 
 9. Choose a license type. <if type="freetier">For this workshop, we can choose the same default for Always Free, which is __License Included__.</if><if type="livelabs">For this workshop, choose __Bring Your Own License (BYOL)__.</if> The two license types are:
     - __Bring Your Own License (BYOL)__ - Select this type when your organization has existing database licenses.
     - __License Included__ - Select this type when you want to subscribe to new database software licenses and the database cloud service.
 
-    ![](./images/license.png " ")
+    ![Select the option for License included](./images/license.png " ")
 
 10. Click __Create Autonomous Database__.
 
 11.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Data Warehouse database is ready to use! Have a look at your instance's details here including its name, database version, OCPU count, and storage size.
 
-    ![Database instance homepage.](./images/create-adb-provisioning.png " ")
+    ![Database instance homepage in provisioning mode](./images/create-adb-provisioning.png " ")
 
 ## Task 4: Access the Database Actions interface 
 
@@ -157,11 +157,11 @@ The SQL scripts will drop and recreate the `OMLUSER` and `OMLUSER2` user schemas
 
 1. To access the Autonomous Database Actions as the ADMIN user, in your Autonomous Database details page, click the **Database Actions** button.
 
-    ![Click on Tools, then Database Actions](images/launchdbactions.png " ")
+    ![In the Autonomous detail page click on Database Actions](images/launchdbactions.png " ")
 
-2. Open the SQL Worksheet from the Launchpad:
+2. Open the SQL Worksheet in the Development section of the Database Actions Launchpad:
 
-    ![Click on SQL from the Launchpad](images/launchpad.png " ")
+    ![Click on SQL in the Development section of the Database Actions Launchpad](images/launchpad.png " ")
 
     You are now ready to enter the SQL code. Proceed to the next task.
 
@@ -210,7 +210,7 @@ Now that you're in the SQL worksheet, you will run the code that will initialize
 
 2. The result of running the SQL steps is displayed in the bottom section of the screen (the Script Output), as shown below.
 
- ![Running the script](images/run-script.png " ")
+ ![Results of the SQL code run shown in the SQL Worksheet screen capture](images/run-script.png " ")
 
  The code is expected to run in a few seconds, depending on your tenancy. Once completed, users OMLUSER and OMLUSER2 are initialized, and you can continue to the next lab.    
 
@@ -224,4 +224,4 @@ See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-wa
 
 - **Author** - Marcos Arancibia, Senior Principal Product Manager, Machine Learning; Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, July 2022
+- **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, August 2022
