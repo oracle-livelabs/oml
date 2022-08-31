@@ -50,7 +50,7 @@ This lab assumes you have:
 
   ![Image alt text](images/oci-cloud-shell-2-new.png)
 
-2. To access Oracle Machine Learning Services using the REST API, you must acquire an access token. To authenticate and obtain an access token, use cURL with the -d option to pass the user name and password for your Oracle Machine Learning Services account against the Oracle Machine Learning User Management Cloud Service token service. Use the following details to get an authentication token.
+2. To access Oracle Machine Learning Services using the REST API, you must acquire an access token. To authenticate and obtain an access token, use cURL with the ``-d`` option to pass the user name and password for your Oracle Machine Learning Services account against the Oracle Machine Learning User Management Cloud Service token service. Use the following details to get an authentication token.
     * Your OML user name
     * Your OML password
     * OML server URL
@@ -63,17 +63,17 @@ This lab assumes you have:
      "<OML server URL>/omlusers/api/oauth2/v1/token"
      ```
 
-   In the syntax above, OML server URL is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from the Development tab on the Autonomous Database service console. From your ADB instance details page, click open the service console.
+   In the syntax above, OML server URL is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from **Oracle Machine Learning RESTful Services** on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
 
-  ![Image alt text](images/adb-instance.png)
+  ![Database Actions](images/database_actions.png)
 
-   On the service console, click the Development link on the left panel.
+   Scroll down the Database Actions page, and click **Oracle Machine Learning RESTful Services** under the Related Services section. The Oracle Machine Learning RESTful Services dialog opens.  
 
-  ![Image alt text](images/adb-console.png)
+  ![Image alt text](images/omls-related-services.png)
 
-   Scroll down the Development page to view the Oracle Machine Learning RESTful Services tile, and copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
+   On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the ``/omlusers/`` segment.
 
-  ![Image alt text](images/development-tab.png)
+  ![Image alt text](images/omls-url.png)
 
    Now, go back to the Cloud Shell interface and run a command to obtain a token. First set variables for the parameters for ease of use in subsequent requests.
 
@@ -155,9 +155,11 @@ This lab assumes you have:
 
 1. View the content of OML Services REST APIs. You can return the API content in a readable format by using the Linux utility jq.  
 
-  > **Note:** If you are using OCI Cloud Shell, you don't need to install the jq utility as OCI Cloud Shell comes with jq pre-installed. If you are using your own tenancy or a trial account and if you are not using OCI Cloud Shell, you can check if jq is installed by running the command rpm -qa jq. If this command returns an empty value, jq is not installed. In that case, install the jq utility by running the following command.
+    > **Note:** If you are using OCI Cloud Shell, you don't need to install the jq utility as OCI Cloud Shell comes with jq pre-installed. If you are using your own tenancy or a trial account and if you are not using OCI Cloud Shell, you can check if jq is installed by running the command rpm -qa jq. If this command returns an empty value, jq is not installed. In that case, install the jq utility by running the following command.
+
 
     ```
+
     <copy>sudo yum install jq</copy>
 
     ```
@@ -172,36 +174,35 @@ This lab assumes you have:
    Here's the result, in a truncated form, of running the command above:
 
     ```
-    "lifecycle": {
-                "type": "string",
-                "enum": [
-                  "active",
-                  "deprecated"
-                ]
-              },
-                "links": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OMLResourceLink"
-              }
-            }
-          }
-        },
-        "ApiVersionCollection": {
-          "required": [
-           "items",
-           "links"
-         ],
-         "properties": {
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ApiVersion"
-            }
-    ...
+       "lifecycle": {
+                   "type": "string",
+                   "enum": [
+                     "active",
+                     "deprecated"
+                   ]
+                 },
+                   "links": {
+                     "type": "array",
+                     "items": {
+                       "$ref": "#/components/schemas/OMLResourceLink"
+                 }
+               }
+             }
+           },
+           "ApiVersionCollection": {
+             "required": [
+              "items",
+              "links"
+            ],
+            "properties": {
+             "items": {
+               "type": "array",
+               "items": {
+                 "$ref": "#/components/schemas/ApiVersion"
+               }
+       ...
 
     ```
-
 2.  Get a list of saved models. For this step to return results, you need to have models deployed in your OML user account. If you have completed Lab 4, your account should include deployed models. Refer back to Lab 4 Using OML AutoML UI  to know how to quickly create and save a  model.
 
     ```
@@ -282,7 +283,8 @@ This lab assumes you have:
 
 4.  Next, get a list of models filtered by version=1.0 and namespace=`DEMO`.
 
-   > **Note**: The namespace parameter is case-sensitive.
+    > **Note**: The namespace parameter is case-sensitive.
+
 
     ```
     <copy>curl -X GET --header "Authorization: Bearer $token" "${omlserver}/omlmod/v1/models?version=1.0&namespace=DEMO" | jq</copy>
@@ -624,4 +626,4 @@ To learn more about how OML Services support ONNX format models, see resources l
 
 * **Author** - Suresh Rajan, Senior Manager, Oracle Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Suresh Rajan, February 2022
+* **Last Updated By/Date** - Suresh Rajan, July 2022

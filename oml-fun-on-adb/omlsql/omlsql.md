@@ -29,23 +29,24 @@ This lab assumes you have:
 
 2. The Notebooks page opens with all the notebooks listed in it. Click the **OML4SQL Time Series ESM (1)** notebook to open it.
 
-![Notebooks listed](images/notebooklist.png)
+    ![Notebooks listed](images/notebooklist.png)
 
 3. The _OML4SQL Time Series ESM (1)_ notebook opens in the notebook editor. Click the gear icon to view and set the interpreter binding order.
 
-5. Click the play icon next to the **OML4SQL Time Series ESM (1)** title to run all paragraphs of the notebook.
+4. Click the play icon next to the **OML4SQL Time Series ESM (1)** title to run all paragraphs of the notebook.
 
   ![Run all paragraphs](images/timeseries-run-all-paragraphs.png)
 
-6.Click **OK** in the confirmation window to run all paragraphs.
 
-![Run all paragraphs confirmation](images/timeseries-run-all-confirmation.png)
+5. Click **OK** in the confirmation window to run all paragraphs.
 
-7. The paragraphs start running one by one and display the status next to the paragraph titles. When the paragraph is running, the status displays **PENDING** and when it finishes, it displays **FINISHED**.
+    ![Run all paragraphs confirmation](images/timeseries-run-all-confirmation.png)
 
-![Paragraph running](images/timeseries-para-pending.png)
+6. The paragraphs start running one by one and display the status next to the paragraph titles. When the paragraph is running, the status displays **PENDING** and when it finishes, it displays **FINISHED**.
 
- ![Paragraph finished](images/timeseries-para-finished.png)
+    ![Paragraph running](images/timeseries-para-pending.png)
+
+    ![Paragraph finished](images/timeseries-para-finished.png)
 
 In this notebook you are using the `SALES` table from the `SH` schema. You can access the table by running the `SELECT` statements in OML Notebooks.
 
@@ -95,14 +96,13 @@ The following steps help you to create a view and view the data:
     </copy>
     ```
 
-The output is follows:
+    The output is follows:
 
     ```
     COUNT(*)  
     918843
 
     ---------------------------
-
     ```
 
 3. View the `ESM_SH_DATA`.
@@ -297,4 +297,4 @@ This completes the prediction step. The model has successfully forecast sales fo
 
 * **Author** - Sarika Surampudi, Principal User Assistance Developer, Oracle Database User Assistance Development
 * **Contributors** -  Mark Hornick, Sr. Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Machine Learning;  Marcos Arancibia, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Sarika Surampudi, February 2022
+* **Last Updated By/Date** - Sarika Surampudi, July 2022
