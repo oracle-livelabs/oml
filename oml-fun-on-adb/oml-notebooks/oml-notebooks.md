@@ -8,7 +8,7 @@ Estimated Time: 15 minutes
 
 ### About Oracle Machine Learning Notebooks
 
-Oracle Machine Learning Notebooks is a collaborative user interface supporting data scientists, analysts, developers, and DBAs. You can work with SQL, PL/SQL, and Python in the same notebook—using the most appropriate language for the problem at hand. You can also view notebook changes by team members in real time, interactively. Data science team members can explicitly share notebooks and version notebooks as well as schedule notebooks to run at a set time or a repeating schedule. By virtue of being included in Oracle Autonomous Database, machine learning functionality is automatically provisioned and managed. Through Oracle Machine Learning Notebooks, you have access to the in-database algorithms and analytics functions to explore and prepare data, build and evaluate models, score data, and deploy solutions.
+Oracle Machine Learning Notebooks is a collaborative user interface supporting data scientists, analysts, developers, and DBAs. You can work with SQL, PL/SQL, Python, and R in the same notebook—using the most appropriate language for the problem at hand. You can also view notebook changes by team members in real time, interactively. Data science team members can explicitly share notebooks and version notebooks as well as schedule notebooks to run at a set time or a repeating schedule. By virtue of being included in Oracle Autonomous Database, machine learning functionality is automatically provisioned and managed. Through Oracle Machine Learning Notebooks, you have access to the in-database algorithms and analytics functions to explore and prepare data, build and evaluate models, score data, and deploy solutions.
 
 ### Objectives
 
@@ -76,7 +76,7 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 </if>
 This completes the task of accessing Oracle Machine Learning user interface.
 
-## Task 2: Create a Notebook and define paragraphs using the md, SQL, PL/SQL, and Python interpreters
+## Task 2: Create a Notebook and define paragraphs using the md, SQL, PL/SQL, Python, and R interpreters
 
 To create a notebook:
 
@@ -242,6 +242,12 @@ Let’s create another paragraph to call the Python interpreter and run Python s
 	The ``z.show`` command displays the SUPPLEMENTARY_DEMOGRAPHICS table present in the SH schema, as shown in the screenshot here. Use the ``z.show`` command to display Python objects, proxy object content, and to display the desired data in the notebook. You will learn more about ``z.show`` in the lab on Oracle Machine Learning for Python.
 
 	![Python script](images/python-commands.png)
+
+### Call the R Interpreter and run R Statements
+
+Let’s create another paragraph to call the R interpreter and run R statements:
+
+21. 
 
 ## Task 3: Create a Notebook using a Template Example
 
