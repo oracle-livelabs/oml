@@ -248,45 +248,44 @@ Let’s create another paragraph to call the Python interpreter and run Python s
 Let’s create another paragraph to call the R interpreter and run R statements:
 21. To connect to the R interpreter, type the following directive at the beginning of the notebook paragraph, and press Enter:
 
-		```
-		<copy>
-		%r
-		</copy>
-		```
-
+	```
+	<copy>
+	%r
+	</copy>
+	```
 22. To verify the database connection, type the following command and press Enter:
 
-		```
-		<copy>
-		ore.is.connected()
-		</copy>
-		```
+	```
+	<copy>
+	ore.is.connected()
+	</copy>
+	```
 
 23. To import R Libraries, run the following command:
 
-		```
-		<copy>
-		library(ORE)
-		</copy>
-		```
+	```
+	<copy>
+	library(ORE)
+	</copy>
+	```
 
 24. To create a database table from a `data.frame` and get proxy object, run the following command:
 
-		```
-		<copy>
-		ore.create(iris, table = "IRIS")
-		cat("Class: ", class(IRIS))
-		cat("\nShape: ", dim(IRIS))
-		</copy>
-		```
+	```
+	<copy>
+	ore.create(iris, table = "IRIS")
+	cat("Class: ", class(IRIS))
+	cat("\nShape: ", dim(IRIS))
+	</copy>
+	```
 
 25. To list the available `data.frame` proxy objects, run the following command:
 
-		```
-		<copy>
-		ore.ls()
-		</copy>
-		```
+	```
+	<copy>
+	ore.ls()
+	</copy>
+	```
 
 ## Task 3: Create a Notebook using a Template Example
 
