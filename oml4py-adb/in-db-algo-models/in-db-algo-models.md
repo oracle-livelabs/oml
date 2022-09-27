@@ -5,9 +5,9 @@ This lab highlights a few of the machine learning algorithms and features availa
 
 Estimated Time: 25 minutes
 
-Watch the video below for a quick walk through of the lab.
+Watch the video below for a quick-walk through of the lab.
 
-[](youtube:8ojk9Cdk-7s)
+[Use in-database algorithms and models](videohub:1_vj2ijmcd)
 
 ### About in-database algorithms and models
 The in-database parallelized machine learning algorithms are exposed through a natural Python interface. A range of machine learning techniques are supported, including classification, regression, clustering, attribute importance, anomaly detection, association rules, and feature extraction. With OML4Py, users can build more models on more data, and score large volume data – faster – taking advantage of Autonomous Database optimizations – including auto-scale. Data Scientists benefit from automatic data preparation, partitioned model ensembles, and integrated text mining. This can result in increased productivity for data scientists, while at the same time, the powerful in-database algorithms are made more accessible to non-expert users.
