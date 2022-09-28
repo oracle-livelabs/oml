@@ -28,55 +28,52 @@ An administrator creates a new user account and user credentials for Oracle Mach
 
 To create a user account:
 
-1. Sign in to your OCI account, click the hamgurger on the left to open the left navigation pane, and click **Autonomous Data Warehouse**.
+1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right pane under Autonomous Database, click **Autonomous Data Warehouse**.
 
 	![Oracle Autonomous Data Warehouse](images/adw.png)
 
 
-2. Click on an Autonomous Database instance.   
+2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Click the Oracle Autonomous Database that you have provisioned.
 
-	![Oracle Autonomous Data Warehouse](images/adb_instance.png)
-
-
-3. On the Autonomous Database Details page, click **Service Console**.
-
-	![Oracle Autonomous Data Warehouse](images/service-console.png)
+	![Oracle Autonomous Data Warehouse](images/provisioned-adb.png)
 
 
-4. On the Service Console click **Administration**.
+3. On the Autonomous Database details page, click **Database Actions**.
 
-	![Oracle Autonomous Data Warehouse](images/administration.png)
+	![Oracle Autonomous Data Warehouse](images/database-actions.png)
 
 
-5. Click **Manage Oracle ML Users** to open the Oracle Machine Learning User Administration page.
+4. The Oracle Database Actions Launchpad page opens in a separate tab. Scroll down to the Administration section and click **DATABASE USERS**.
 
-	![Oracle Autonomous Data Warehouse](images/manage_oml_users.png)
+	![Oracle Autonomous Data Warehouse](images/admin-db-users.png)
 
-6. On the Oracle Machine Learning User Administration Sign in page, enter the username and password to sign in.
 
-	>**Note:** The username is ADMIN. The password is what is you have defined while provisioning the Autonomous Database instance.   
+5. Click **Create User**. The Create User dialog opens.
 
-	![Oracle Machine Learning User Administration Sign in page](images/database_admin_signin.png)
+	![Oracle Autonomous Data Warehouse](images/create-users-db.png)
 
-7. Click **Create** on the Oracle Machine Learning User Administration page.
+6. On the Create User dialog, enter the following details and click **Create User**:
 
-	![Oracle Autonomous Data Warehouse](images/oml_um_page.png)
+	![Oracle Machine Learning User Administration Sign in page](images/create-user-dialog.png)
 
-7. On the Create User page, enter the following details to create the user:
+	* **User Name:** Enter the user name OMLUSER.
+	* **Password:** Enter a password for this user.
+	* **Confirm Password:** Re-enter the password that you entered in the Password field.
+	* **Graph:** Select this option to enable graph for this user.
+	* **Web Access:** Select this option to allow web access to this user.
+	* **OML:** Select this option to allow this user to access Oracle Machine Learning.
+	* **Quota of tablespace data:** Click on the drop-down list and select an option. For this lab, 1G is selected.
+	* **Password Expired:** Select this option if you want the user to reset the password.
+	* **Account is locked:** Select this option to lock the account.
 
-	![Oracle Autonomous Data Warehouse](images/create_user.png)
 
-	* **Username:** Enter a username for the account. Using the username, the user will log in to an Oracle Machine Learning instance.
-	* **First Name:** Enter the first name of the user.
-	* **Last Name:**  Enter the first name of the user.
-	* **Email Address:** Enter the email ID of the user.
-	* Select the option **Generate password and email account details to user. User will be required to reset the password on first sign in** to auto generate a temporary password and send an email with the account credentials to the user. If you select this option, you need not enter values in the Password and Confirm Password fields; the fields are grayed out.
-	* **Password:** Enter a password for the user, if you choose to create a password for the user.
-	>**Note:** This option is disabled if you select the **Generate password...** option to auto generate a temporary password for the user.
+7. After the user is created successfully, the message _User OMLUSER created successfully_ is displayed.
 
-	* **Confirm Password:** Enter a password to confirm the value that you entered in the Password field. By doing so, you create the password for the user. The user can change the password when first logging in.
+	![Oracle Autonomous Data Warehouse](images/user-creation-msg.png)
 
-8. Click **Create**.
+	Scroll down the page to view the user. The OMLUSER is listed along with all details. Click ![ellipse icon](images/ellipse.png) to edit, delete, or disable any of the privileges granted to the user.
+	![Oracle Autonomous Data Warehouse](images/view-user.png)
+
 
 This completes the task of creating an Oracle Machine Learning user.
 
@@ -86,22 +83,22 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 1. From the tab on your browser with your ADW instance, click **Service Console**, then select **Development** on the left.
 
-	![Development option in ADW Service Console](images/adw_development.png)
+	![Development option in ADW Service Console](images/adw-development.png)
 
 
 2. Click **Oracle Machine Learning Notebooks.**
 
-	 ![Oracle Machine Learning Notebooks in ADW](images/oml_notebooks_dev.png)
+	 ![Oracle Machine Learning Notebooks in ADW](images/oml-notebooks-dev.png)
 
 3. Enter your user credentials and click **Sign in**.
 
 	>**Note:** The credential is what you have defined while creating the Oracle Machine Learning user.
 
-	![Oracle Machine Learning Notebooks Sign in page](images/omluser_signin.png)
+	![Oracle Machine Learning Notebooks Sign in page](images/omluser-signin.png)
 
 4. Click **Notebooks** in the Quick Actions section.
 
-	![Notebooks option in OML homepage](images/homepage_notebooks.png)
+	![Notebooks option in OML homepage](images/homepage-notebooks.png)
 
 This completes the task of signing into Oracle Machine Learning user interface.
 
@@ -112,11 +109,11 @@ This completes the task of signing into Oracle Machine Learning user interface.
 To create a project:
 1. On the top right corner of the Oracle Machine Learning Notebooks home page, click the project workspace drop-down list. The project name and the workspace, in which the project resides, are displayed here. In this screenshot, the project name is `USER1 Project`, and the workspace name is `USER1 Workspace`. If a default project exists, then the name of the default project is displayed here. To choose a different project, click **Select Project**.
 
-  ![new_project.png](images/new_project.png "new_project.png")
+  ![new_project.png](images/new-project.png "new-project.png")
 
 2. To create a new project, click **New Project**. The Create Project dialog box opens.
 
-  ![create_workspace.png](images/create_workspace.png "create_workspace.png")
+  ![create_workspace.png](images/create-workspace.png "create-workspace.png")
 
 
 3. In the **Name** field, provide a name for your project.
@@ -138,20 +135,20 @@ To create a workspace:
 
 1. On the top right corner of the Oracle Machine Learning Notebooks home page, click the project workspace drop-down list and click **Select Project**. The Select Project dialog box opens.
 
-  ![select_project.png](images/select_project.png "select_project.png")
+  ![select_project.png](images/select-project.png "select-project.png")
 
 
 2. In the Select Project dialog box, click **USER1 Workspace** and then click **Create**. The Create Project dialog box opens.
 
-  ![select_project_create.png](images/select_project_create.png "select_project_create.png")
+  ![select_project_create.png](images/select_project_create.png "select-project-create.png")
 
 3. In the Create Project dialog box, enter `Project B` in the **Name** field, and click the plus icon next to the **Workspace** field. The Create Workspace dialog box opens.
 
-  ![create_workspace_ab.png](images/create_workspace_ab.png "create_workspace_ab.png")
+  ![create_workspace_ab.png](images/create-workspace-ab.png "create-workspace-ab.png")
 
 4. In the Create Workspace dialog box, enter Workspace A in the **Name** field.
 
-  ![workspace_ab.png](images/workspace_ab.png "workspace_ab.png")
+  ![workspace_ab.png](images/workspace-ab.png "workspace-ab.png")
 
 5. In the **Comments** field, enter comments, if any.
 
@@ -162,7 +159,7 @@ To create a workspace:
 7. In the Create Project dialog box, click **OK**. This brings you back to the Select Project dialog box. Here, you
    can view all the workspace and the projects in it. The project and workspace that you created in step 3 through 6 is listed in the Select Workspace dialog box, as shown in the screenshot here.
 
-   ![select_project_workspace.png](images/select_project_workspace.png "select_project_workspace.png")
+   ![select_project_workspace.png](images/select-project-workspace.png "select-project-workspace.png")
 
 8. Click **OK.** This completes the task of creating a project and a workspace, and assigning the project to the workspace.
 
@@ -172,7 +169,7 @@ To create a workspace:
 10. In the Manage Workspace dialog box, select the workspace you want to delete and click **Delete**.
   This deletes the selected workspace along with all the projects in it.
 
-  ![manage_workspace_delete.png](images/manage_workspace_delete.png "manage_workspace_delete.png")
+  ![manage_workspace_delete.png](images/manage-workspace-delete.png "manage-workspace-delete.png")
 
 
 
@@ -181,6 +178,6 @@ To create a workspace:
 
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, October 2021
+* **Last Updated By/Date**: Moitreyee Hazarika, September 2022
 
 See an issue?  Please open up a request [here](https://github.com/oracle/learning-library/issues).   Please include the workshop name and lab in your request.

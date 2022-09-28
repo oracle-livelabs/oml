@@ -26,7 +26,7 @@ To provision an Oracle Autonomous Database:
 
 1. Sign into your OCI account, and under the Launch Resources section, click **Create an ADW database**.
 
-	![Create ADW Database](images/adw_database.png)
+	![Create ADW Database](images/adw-database.png)
 
 	 Alternatively, you may click the left navigation pane on the upper left corner, and click **Autonomous Data Warehouse**.
 
@@ -38,27 +38,27 @@ To provision an Oracle Autonomous Database:
 
 4. On the Create Autonomous Database page, provide the basic information about the database. By default, a database name and a display name for the database are provided. You can modify these names to enter a user-friendly display name for the ADB instance to easily identify the resource. The display name does not have to be unique.    
 
-   ![Autonomous Database information](images/adb_basic_info.png)
+   ![Autonomous Database information](images/adb-basic-info.png)
 
 5. For Workload Type, click **Data Warehouse**.
 
-	 ![Autonomous Database Workload type](images/workload_type.png)
+	 ![Autonomous Database Workload type](images/workload-type.png)
 
 6. For Deployment, select **Shared Infrastructure**.
 
-	 ![Autonomous Database deployment type](images/deployment_type.png)
+	 ![Autonomous Database deployment type](images/deployment-type.png)
 
 7. For Database Configuration, select Always Free. For the Always Free option, the database configuration options - OCPU count, Storage, and Auto scaling are not available. You must upgrade to a paid account to avail of it.
 
 	 >**Note:** You can create Always Free resources both in Free Tier and Paid accounts
 
-  ![Configure Database](images/db_configuration.png)
+  ![Configure Database](images/db-configuration.png)
 
 8. Create your Autonomous Database administrator credentials by providing a password. You will need these credentials to sign in to this Autonomous Database instance.   
 
 	>Note: The default administrator username is ADMIN.
 
-	![Database Administrator credentials](images/db_admin_credentials.png)
+	![Database Administrator credentials](images/db-admin-credentials.png)
 
 9. For network access, select **Allow secure access from everywhere.**
 
@@ -70,7 +70,7 @@ To provision an Oracle Autonomous Database:
 
 11. Click **Create Autonomous Database**. The Oracle Autonomous Data Warehouse instance starts provisioning. Once your Autonomous Database is created, the database details are listed with the status Available.
 
-	  ![ADB details](images/adw_details.png)
+	  ![ADB details](images/adw-details.png)
 
 This completes the task of provisioning an Oracle Autonomous Database.
 
@@ -83,4 +83,4 @@ This completes the task of provisioning an Oracle Autonomous Database.
 ## Acknowledgements
 * **Author** - Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, October 2021
+* **Last Updated By/Date** - Moitreyee Hazarika, September 2022
