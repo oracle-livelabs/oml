@@ -106,14 +106,18 @@ This completes the task of signing into Oracle Machine Learning user interface.
 
 ## Create Project in Oracle Machine Learning Notebooks
 
-To create a project:
-1. On the top right corner of the Oracle Machine Learning Notebooks home page, click the project workspace drop-down list. The project name and the workspace, in which the project resides, are displayed here. In this screenshot, the project name is `USER1 Project`, and the workspace name is `USER1 Workspace`. If a default project exists, then the name of the default project is displayed here. To choose a different project, click **Select Project**.
+A project is a container for your notebooks, and a workspace is a container for your projects. While you may own many projects, other workspaces and projects may be shared with you.
+The initial workspace and the default project is created by the Oracle Machine Learning service automatically when you log in to Oracle Machine Learning for the first time. To create a new project:
 
-  ![new_project.png](images/new-project.png "new-project.png")
+1. On the top right corner of Oracle Machine Learning home page, click the project drop-down list. The project name and the workspace, in which the project resides, are displayed here. In this screenshot, the project name is `USER1 Project`, and the workspace name is `USER1 Workspace`. If a default project exists, then the name of the default project is displayed here. To choose a different project, click **Select Project**.
+
+	>**Note:** The last project that you have worked on is stored in the browser cache and is the default project. If you clear the cache, then no default exists and you must select a project.
+
+  ![new-project.png](images/new-project.png "new-project.png")
 
 2. To create a new project, click **New Project**. The Create Project dialog box opens.
 
-  ![create_workspace.png](images/create-workspace.png "create-workspace.png")
+  ![create-workspace.png](images/create-workspace.png "create-workspace.png")
 
 
 3. In the **Name** field, provide a name for your project.
