@@ -5,9 +5,9 @@ This lab walks you through the steps of accessing Oracle Machine Learning Notebo
 
 Estimated Time: 15 minutes
 
-Watch the video below for a quick walk through of the lab.
+Watch the video below for a quick walk-through of the lab.
 
-[](youtube:J0GlX2uBLrQ)
+[Get started with OML4Py on Oracle Autonomous Database](videohub:1_sqmz85fz)
 
 ### Objectives
 
