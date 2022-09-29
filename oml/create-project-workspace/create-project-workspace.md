@@ -43,8 +43,11 @@ To create a user account:
 	![Oracle Autonomous Data Warehouse](images/database-actions.png)
 
 
-4. The Oracle Database Actions Launchpad page opens in a separate tab. Scroll down to the Administration section and click **DATABASE USERS**.
+4. The Oracle Database Actions Launchpad page opens in a separate tab.
 
+	>**Note:** The credential to sign into Database Actions, is the Administration username and password for the Autonomous Database instance.
+
+	Scroll down to the Administration section and click **DATABASE USERS**.
 	![Oracle Autonomous Data Warehouse](images/admin-db-users.png)
 
 
@@ -81,7 +84,7 @@ This completes the task of creating an Oracle Machine Learning user.
 
 A notebook is a web-based interface for data analysis, data discovery, data visualization, and collaboration. You create and run notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
 
-1. From the tab on your browser with your ADW instance, click **Service Console**, then select **Development** on the left.
+1. From the tab on your browser with your ADW instance, click **Database Actions**, then select **Development** on the left.
 
 	![Development option in ADW Service Console](images/adw-development.png)
 
@@ -113,67 +116,82 @@ The initial workspace and the default project is created by the Oracle Machine L
 
 	>**Note:** The last project that you have worked on is stored in the browser cache and is the default project. If you clear the cache, then no default exists and you must select a project.
 
-  ![new-project.png](images/new-project.png "new-project.png")
+  You can create projects in two ways:
+	* Use the **New Project** option: Click the down arrow next to the **Project** field and then click **New Project**. The Create Project
+	![new-project.png](images/new-project.png "new-project.png")
 
-2. To create a new project, click **New Project**. The Create Project dialog box opens.
+	* Use the **Create** option on the Workspaces page: Click the down arrow next to the Project field and click **Manage Workspace.**
 
-  ![create-workspace.png](images/create-workspace.png "create-workspace.png")
+		![manage-workspaces.png](images/manage-workspaces.png "manage-workspaces.png")
+
+		On the Manage Workspace page, under the **Projects in <user> Workspace** section, click **Create.** The Create Project dialog opens.
+		![new-project2.png](images/new-project2.png "new-project2.png")
+
+2. In the Create Project dialog, enter the following:
+
+	* **Name:** Enter a name for your project
+	* **Comments:** Enter comments, if any.
+	* **Workspace:** The default workspace is selected. This is a non-editable field. To select a different workspace or to create a new workspace, go to Manage Workspace.
+
+	![create-project2.png](images/create-project.png "create-project.png")
 
 
-3. In the **Name** field, provide a name for your project.
-
-
-4. In the **Comments** field, enter comments, if any.
-
-
-5. To choose a different workspace, click the down arrow next to the **Workspace** field and select a workspace from the
-  drop-down list. Your project `Project A` is assigned to the selected workspace. In this example, the `USER1 Workspace` is selected.
-
-6. Click **OK**. This completes the task of creating a project and assigning it to a workspace. In this example, the assigned workspace is `USER1 Workspace`.
-
-
+3. Click **OK**. This completes the task of creating a project and assigning it to a workspace. In this example, the assigned workspace is `USER1 Workspace`.
 
 
 ## Create Workspace in Oracle Machine Learning Notebooks
+
+You can create and manage new projects and workspaces, provide access to your workspace, manage permissions for users, and edit and delete workspace.
+The Workspaces page comprises two sections, one for workspaces and the other for projects.
+
+In this lab, you will create:
+* A workspace by the name _Workspace A_
+* A project by the name _Project B_ in _Workspace A_
+* A project by the name _Project A_ in _USER1_ Workspace
+
 To create a workspace:
 
-1. On the top right corner of the Oracle Machine Learning Notebooks home page, click the project workspace drop-down list and click **Select Project**. The Select Project dialog box opens.
+1. On the top right corner of your home page, click the down arrow next to the Project field, and click **Manage Workspaces.** The Workspaces page opens. On the Workspaces page, you can create and manage workspaces and projects.
 
-  ![select_project.png](images/select-project.png "select-project.png")
-
-
-2. In the Select Project dialog box, click **USER1 Workspace** and then click **Create**. The Create Project dialog box opens.
-
-  ![select_project_create.png](images/select_project_create.png "select-project-create.png")
-
-3. In the Create Project dialog box, enter `Project B` in the **Name** field, and click the plus icon next to the **Workspace** field. The Create Workspace dialog box opens.
-
-  ![create_workspace_ab.png](images/create-workspace-ab.png "create-workspace-ab.png")
-
-4. In the Create Workspace dialog box, enter Workspace A in the **Name** field.
-
-  ![workspace_ab.png](images/workspace-ab.png "workspace-ab.png")
-
-5. In the **Comments** field, enter comments, if any.
+  ![manage-workspaces.png](images/manage-workspaces.png "manage-workspaces.png")
 
 
-6. Click **OK.** This completes the task of creating your workspace, and brings you back to the Create Project dialog box.
+2. On the upper section for workspace, click **Create.** The Create Workspace dialog opens.
+
+  ![workspace-a.png](images/workspaces-create.png "workspaces-create.png")
+
+3. In the Create Workspace dialog box, enter `Workspace A` in the **Name** field and click **OK.**
+
+  ![workspace-a.png](images/workspace-a.png "workspace-a.png")
+
+	>**Note:** In the Default project details, the project _USER1 Project_ is present. This is the project that is created by default for USER1 workspace. Note that you are signed in as USER1.  
+
+4. Now, let's create a project in Workspace A. On the Workspace page, click **Workspace A** and then in the lower pane for projects, click **Create.** This will create the project in Workspace A. The Create Project dialog opens.
+
+  ![create-project-b.png](images/create-project-b.png "create-project-b.png")
+
+5. In the Create Project dialog, enter `Project B` in the **Name** field, and click **OK.**
+
+	>**Note:** In the Workspace field, Workspace A is selected.
+
+	![project-b-create.png](images/project-b-create.png "project-b-create.png")
+
+6. This completes the task of creating Project B in Workspace A, and brings you back to the Manage Workspaces page.
 
 
-7. In the Create Project dialog box, click **OK**. This brings you back to the Select Project dialog box. Here, you
-   can view all the workspace and the projects in it. The project and workspace that you created in step 3 through 6 is listed in the Select Workspace dialog box, as shown in the screenshot here.
+7. On the Manage Workspaces page, you can now view the projects that are created for the two workspaces - USER1 Workspace and Workspace A, as shown in the screenshot here:
 
-   ![select_project_workspace.png](images/select-project-workspace.png "select-project-workspace.png")
+	* In the Workspaces section, click USER1 Workspace. In the lower pane _Projects in USER1 Workspace_, you can view Project A and the default USER1 Project.
+	* In the Workspaces section, click Workspace A. In the lower pane _Projects in Workspace A_, you can see that Project B and the default USER1 Project are listed.
 
-8. Click **OK.** This completes the task of creating a project and a workspace, and assigning the project to the workspace.
+	>**Note:** USER1 Project is the default project that is created as part of USER1 workspace creation. Because you are signed in as USER1, the default workspace is USER1 Workspace and the default project  USER1 Project is listed.  
+
+   ![workspaces-and-projects.png](images/workspaces-and-projects.png "workspaces-and-projects.png")
+
+9. To delete a workspace, select the workspace you want to delete on the Manage Workspace page and click **Delete.** This deletes the selected workspace along with all the projects in it.
 
 
-9. To delete a workspace, click **Manage Workspace** in the Project Workspace drop-down list.
 
-10. In the Manage Workspace dialog box, select the workspace you want to delete and click **Delete**.
-  This deletes the selected workspace along with all the projects in it.
-
-  ![manage_workspace_delete.png](images/manage-workspace-delete.png "manage-workspace-delete.png")
 
 
 

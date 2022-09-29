@@ -8,7 +8,7 @@ This lab takes approximately 10 minutes to complete.
 ### Background
 Oracle Machine Learning Notebooks is a web-based interface for data analysis, data discovery, and data visualization. Whenever a notebook is created, it must be defined with a specific interpreter binding specifications. The notebook contains an internal list of bindings that determines the order of the interpreter bindings.
 
-A notebook comprises paragraphs which is a notebook component where you can write and run SQL statements, PL/SQL scripts, and run Python commands. A paragraph has an input section and an output section. In the input section, specify the interpreter to run along with the text. This information is sent to the interpreter to be run. In the output section, the results of the interpreter are provided.
+A notebook comprises paragraphs which is a notebook component where you can write and run SQL statements, PL/SQL scripts, run R and Python commands. A paragraph has an input section and an output section. In the input section, specify the interpreter to run along with the text. This information is sent to the interpreter to be run. In the output section, the results of the interpreter are provided.
 
 ### What Do You Need?
 
@@ -22,11 +22,11 @@ To create a notebook:
 
 1. Sign in to your Oracle Machine Learning Notebooks account and click **Notebooks** on the home page.
 
-   ![oml_homepage.png](images/oml_homepage.png "oml_homepage.png")
+   ![oml-homepage.png](images/oml-homepage.png "oml-homepage.png")
 
 2. In the Notebooks page, click **Create**. The Create Notebook dialog box opens.
 
-   ![create_notebook.png](images/create_notebook.png "create_notebook.png")
+   ![create-notebook.png](images/create-notebook.png "create-notebook.png")
 
 3. In the **Name** field, provide a name for the notebook.
 
@@ -38,6 +38,7 @@ To create a notebook:
 
     * `%sql` - To call the SQL interpreter and run SQL statements
     * `%script` - To call the PL/SQL interpreter and run PL/SQL scripts
+    * `%r` - To call the R interpreter and run R commands
     * `%python` - To call the Python interpreter and run python statements
     * `%md` - To call the Markdown interpreter and generate static html from Markdown plain text
 
@@ -50,11 +51,11 @@ To create a notebook based on a template:
 
 1. Sign in to your Oracle Machine Learning Notebooks account and click **Examples** on the home page.
 
-    ![oml_homepage_examples.png](images/oml_homepage_examples.png "oml_homepage_examples.png")
+    ![oml-homepage-examples.png](images/oml-homepage-examples.png "oml-homepage-examples.png")
 
 2. On the Examples Template page, click the example template based on which you want to create your notebook and then click **Create Notebook**.  Note that clicking the notebook name opens a read-only notebook so that you can see the contents. Clicking anywhere else on the template box selects the template and then **Create Notebook** is enabled. In this example, you click **Anomaly Detection** example template. The Create Notebook dialog box opens.
 
-    ![create_example_notebook.png](images/example_templates.png "example_templates.png")
+    ![create-example-notebook.png](images/example-templates.png "example-templates.png")
 
 3. In the Create Notebook dialog, enter the following details:
      * **Name**: Enter a name for the notebook. In this example, the user Test Anomaly Detection
@@ -62,7 +63,7 @@ To create a notebook based on a template:
      * **Project**: Click the pencil icon to navigate and select the project in which you want to save the notebook. In this example, the notebook is saved in the default USER1 Project inside USER1 Workspace.
      * **Connection**: By default, the connection is set to Global.
 
-     ![create_example_notebook.png](images/create_example_notebook.png "create_example_notebook.png")
+     ![create-example-notebook.png](images/create-example-notebook.png "create-example-notebook.png")
 
 4. Click **OK**. Once the notebook is created successfully, a message appears stating that the notebook is created in the project. The newly created notebook is listed in the Notebooks page.
 
@@ -70,11 +71,51 @@ To create a notebook based on a template:
 
 5. To open the notebook, click **Notebooks** in the left navigation menu.
 
-     ![navigation_menu.png](images/navigation_menu.png " navigation_menu.png")
+     ![navigation-menu.png](images/navigation-menu.png " navigation-menu.png")
 
 6. In the Notebooks page, click **Test Anomaly Detection**. The notebook opens in the notebook editor. You are now ready to edit and run the notebook. This completes the task of creating a notebook based on an Example Template.
 
-     ![test_anomaly_detection.png](images/test_anomaly_detection.png "test_anomaly_detection.png")
+     ![test-anomaly-detection.png](images/test-anomaly-detection.png "test-anomaly-detection.png")
+
+## Run Your Notebook with R Interpreter
+
+To run R functions in an Oracle Machine Learning notebook, you must first connect to the R interpreter.
+An Oracle Machine Learning notebook supports multiple languages. For this, you must create a notebook with some paragraphs to run SQL queries, and other paragraphs to run R and Python scripts. To run a notebook in different scripting languages, you must first connect the notebook paragraphs with the respective interpreters such as R, Python, or SQL. This example shows how to:
+  * Connect to the R interpreter to run R commands in a notebook.
+  * Verify the connection to Oracle Autonomous Database, and
+  * Load the ORE libraries
+
+1. To connect to the R interpreter, type the following directive at the beginning of the notebook paragraph, and press Enter:
+
+    ```
+    <copy>
+    %r
+    </copy>
+    ```
+
+2. To verify the database connection, type the following command and press Enter:
+
+    ```
+    <copy>
+    ore.is.connected()
+    </copy>
+    ```
+  ![ore-connected.png](images/ore-connected.png "ore-connected.png")  
+
+  Once your notebook is connected, the command returns TRUE, as shown in the screenshot here. The notebook is now connected to the R interpreter, and you are ready to run R commands in your notebook.
+
+3. To import R Libraries, run the following commands:
+
+    ```
+    <copy>
+    library(ORE)
+    library(OREdplyr)
+    </copy>
+    ```
+
+  ![load-r-packages.png.png](images/load-r-packages.png "load-r-packages.png")
+
+  Once the packages are loaded successfully, the list of ORE packages are displayed as shown in the screenshot here. Scroll down to view the entire list.
 
 
 ## Run Your Notebook with Python Interpreter
@@ -99,7 +140,7 @@ This example assumes that you have a notebook called Py Note notebook created. T
     ```
 
 
-   ![connect_py.png](images/connect_py.png "connect_py.png")
+   ![connect-py.png](images/connect-py.png "connect-py.png")
 
    In this example, the commands:
 
@@ -111,7 +152,7 @@ This example assumes that you have a notebook called Py Note notebook created. T
 
 4. Once the `oml` module is connected to the Oracle Database, the command returns `TRUE`. On Oracle Autonomous Database, if the interpreter bindings are properly specified, this should always return `TRUE` as the database connection is established by the OML Notebook environment automatically. You are now ready to run python commands in your notebook.
 
-   ![connect_py_true.png](images/connect_py_true.png "connect_py_true.png")
+   ![connect-py-true.png](images/connect-py-true.png "connect-py-true.png")
 
    Click <img src="./images/run.png" alt="run icon">. Alternatively, you can press **Shift+Enter** keys to run the notebook.
 
@@ -139,11 +180,11 @@ This example assumes that you have a notebook called Py Note notebook created. T
     * `Matplotlib` - Python package to render graphs.
     * `Numpy` - Python package for computations.
 
-     ![py_commands.png](images/py_commands.png "py_commands.png")
+     ![py-commands.png](images/py-commands.png "py-commands.png")
 
 6. The graphs for list1 and list 2 are generated by the python engine.     
 
-     ![py_commands_histogram.png](images/py_commands_histogram.png "py_commands_histogram.png")  
+     ![py-commands-histogram.png](images/py-commands-histogram.png "py-commands-histogram.png")  
 
 7. Click **Back** to return to the Notebooks page.
 
@@ -159,17 +200,17 @@ To run a notebook:
 
 2. Type the SQL statement to fetch data from an Oracle Database. For example, type `SELECT * from SH.SALES;` where `SH` is the schema name and `SALES` is the table name as shown in the screenshot.
 
-   ![sh_sales.png](images/sh_sales.png "sh_sales.png")
+   ![sh-sales.png](images/sh-sales.png "sh-sales.png")
 
    Click <img src="./images/run.png" alt="run icon">. Alternatively, you can press **Shift+Enter** keys to run the notebook.
 
 3. After you run the notebook, it fetches the data in the notebook in the next paragraph, as shown in the screenshot.
 
-   ![sh_sales_data.png](images/sh_sales_data.png "sh_sales_data.png")    
+   ![sh-sales-data.png](images/sh-sales-data.png "sh-sales-data.png")    
 
    The output section of the paragraph has a charting component that displays the results in graphical output. The chart interface allows you to interact with the output in the notebook paragraph. You have the option to run and edit single a paragraph or all paragraphs in a notebook. In this screenshot, you can see the data from the `SALES` table in a scatter plot.
 
-   ![sh_sales_scatterplot.png](images/sh_sales_scatterplot.png "sh_sales_scatterplot.png")    
+   ![sh-sales-scatterplot.png](images/sh-sales-scatterplot.png "sh-sales-scatterplot.png")    
 
    You can visualize the data by clicking the respective icons for each graphical representation, as shown here:
 
@@ -190,23 +231,23 @@ To call the Markdown interpreter and generate static html from Markdown plain te
 
 2. Type ``"Hello World!"`` and click **Run**. The static html text is generated, as seen in the screenshot below.
 
-	![Markdown tags for plain text](images/md_text.png "md_text.png")
+	![Markdown tags for plain text](images/md-text.png "md-text.png")
 
 3. You can format the text in bold and italics. To display the text in bold, write the same text inside the tag **Hello World** and click Run.
 
-	![Markdown tags for bold](images/md_bold.png "md_bold.png")
+	![Markdown tags for bold](images/md-bold.png "md-bold.png")
 
 4. To display the text in italics, write the same text inside an asterisk pair or underscore pair as shown in the screenshot, and click Run.
 
-	![Markdown tags for italics](images/md_italics.png "md_italics.png")
+	![Markdown tags for italics](images/md-italics.png "md-italics.png")
 
 5. To display the text in a bulleted list, prefix * (asterisk) to the text, as shown in the screenshot below:
 
-	![Markdown tags for bulleted points](images/md_bullets.png "md_bullets.png")
+	![Markdown tags for bulleted points](images/md-bullets.png "md-bullets.png")
 
 6. To display the text in heading1, heading 2 and heading 2, prefix # (hash) to the text and click Run. For H1, H2, and H3, you must prefix 1, 2, and 3 hashes respectively.
 
-	![Markdown tags for headings](images/md_heading_tags.png "md_heading_tags.png")
+	![Markdown tags for headings](images/md-heading-tags.png "md-heading-tags.png")
 
 
 
@@ -217,6 +258,6 @@ To call the Markdown interpreter and generate static html from Markdown plain te
 
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, October 2021
+* **Last Updated By/Date**: Moitreyee Hazarika, September 2022
 
 See an issue?  Please open up a request [here](https://github.com/oracle/learning-library/issues).   Please include the workshop name and lab in your request.
