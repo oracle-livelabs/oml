@@ -40,20 +40,24 @@ This use case demonstrates how:
 
 ### USER1 Grants DEVELOPER Permission to USER2
 
-1. Sign in to Oracle Machine Learning instance with USER1 credentials.
+1. Sign into Oracle Machine Learning instance with USER1 credentials.
 2. Go to the Notebooks page of USER1 and view the list of notebooks that are available in USER1 Project under USER1 Workspace.
 
-    ![user1_notebooks.png](images/user1_notebooks.png "user1_notebooks.png")
+    ![user1-notebooks.png](images/user1-notebooks.png "user1-notebooks.png")
 
-3. On the top right corner of the Oracle Machine Learning home page, click **USER1 Project** [USER1 Workspace... drop-down list, and select Manage Workspaces.  
+3. On the top right corner of the Oracle Machine Learning home page, click **USER1 Project** [USER1 Workspace... drop-down list, and select Manage Workspaces. The Workspaces page opens.  
 
-    ![user1_manage_workspace.png](images/user1_manage_workspace.png "user1_manage_workspace.png")
+    ![user1-manage-workspace.png](images/user1-manage-workspace.png "user1-manage-workspace.png")
 
-4. In the Manage Workspaces dialog, select **USER1 Workspace** and then click **Permissions**.  
+4. Now, you will provide permission to USER2 to the USER1 Workspace. On the Workspaces page, select **USER1 Workspace** and then click **Permissions**. The Workspace Permissions dialog opens.  
 
-    ![manage_workspace.png](images/manage_workspace.png "manage_workspace.png")
+    ![permissions.png](images/permissions.png "permissions.png")
 
-5.  In the Workspace Permissions dialog box, select **USER2** from the Username drop-down list, and select **Developer** from the Permission Type field to grant DEVELOPER permission to USER2.
+5.  In the Workspace Permissions dialog, select **USER2** from the Username drop-down list, and select **Developer** from the Permission Type field to grant DEVELOPER permission to USER2. Then click **+** to add permission to this user.
+    ![add-permissions.png](images/add-permissions.png "add-permissions.png")
+
+6. Once you have added the permission, the user along with the permission type is listed on the dialog. Click **OK.**
+The message _Permissions have been updated successfully_ is displayed.
 
     ![permission_user2.png](images/permission_user2.png "permission_user2.png")
 
@@ -69,27 +73,33 @@ This use case demonstrates how:
     * Notebooks: Create, update, run, and delete jobs to run your notebooks
   * Viewer: A user with the permission type Viewer can only view your workspace, projects, and notebooks.
 
-6. Click **Add**. Once the user is granted the selected permission type, the username is listed along with the permission type in the Workspace Permissions dialog.
-   In this screenshot, you can see USER2 listed along with the DEVELOPER permission type.
+   >**Note:** To change the permissions of an existing user, simply re-add the same user with the new permissions.
 
-   Note: To change the permissions of an existing user, simply re-add the same user with the new permissions.
+ 7. This completes the task of granting the DEVELOPER permission to USER2. To delete a user along with the associated permission, select the workspace and click Permissions. In the Workspace Permissions dialog that opens, select the user and then click **Delete.** Then click **OK.**
 
-7. Click **OK**. This completes the task of granting permission to USER2. To delete a user along with the associated permission, select the user and click Delete.
+    ![delete-permissions.png](images/delete-permissions.png "delete-permissions.png")
 
 ### USER2 Accesses Project Shared by USER1
 
 1. Sign in to the Oracle Machine Learning instance as USER2.
-2. On the top right corner, click **USER2** Project [USER2 Workspace... drop-down list. USER2 Project is the default project under USER2 Workspace. Click **Select Project**.
+2. On the top right corner, click **USER2 Project** [USER2 Project... drop-down list. USER2 Project is the default project under USER2 Workspace. Click **Select Project**.
 
-    ![user2_project_workspace.png](images/user2_project_workspace.png "user2_project_workspace.png")
+    ![user2-select-project.png](images/user2-select-project.png "user2-select-project.png")
 
-3. In the Select Projects dialog, you can see two workspaces - **USER1 Workspace** and **USER2 Workspace** (default workspace for User2). The **USER1 Workspace** along with **USER1 Project** that is owned by USER1, is now accessible to USER2. To access the notebooks under USER1 Project, select **USER1 Project** , and click **OK**. Observe the project and workspace name in the drop-down list at the background. It displays the default project and workspace for USER2, that is, USER2 Project [USER2 Workspace...
+3. In the Select Projects dialog, click the Workspace drop-down. Here, you can see two workspaces - **USER1 Workspace** and **USER2 Workspace** (default workspace for User2). Select **USER1 Workspace**. The projects under USER1 Workspace are listed. To access the notebooks under USER1 Workspace, select **USER1 Project** , and click **OK**.
 
-    ![user1_project_accessed.png](images/user1_project_accessed.png "user1_project_accessed.png")
+    ![user1-accessed-user2-project.png](images/user1-accessed-user2-project.png "user1-accessed-user2-project.png")
 
 4. After clicking OK, note the change in the name of the project-workspace drop-down list at the top. The project-workspace drop-down list name changes to **USER1 Project [USER1 Workspace...** , while you are logged in as USER2. This indicates that USER2 is currently accessing the **USER1 Project** under **USER1 Workspace** while signed in as USER2.
 
     ![oml_top_menu.png](images/oml_top_menu.png "oml_top_menu.png")
+Now, in the Workspaces page, click USER1 Workspace in the upper pane. The lower pane lists the projects that are accessible to USER2 in the USER1 Workspace.
+
+    ![user2-ws1-view.png](images/user2-ws1-view.png "user2-ws1-view.png")
+
+    Again, in the Workspaces page, click USER2 Workspace in the upper pane. The lower pane lists the projects that are accessible to USER2 in the USER2 Workspace.
+
+    ![user2-ws2-view.png](images/user2-ws2-view.png "user2-ws2-view.png")
 
 5. Click **Notebooks** in the Oracle Machine Learning home page. Alternatively, you can go to the navigation menu on the left and click **Notebooks**.
 
@@ -184,6 +194,6 @@ of the notebook. Select **Shared** if you want to save and share this notebook. 
 ## Acknowledgements
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, October 2021
+* **Last Updated By/Date**: Moitreyee Hazarika, September 2022
 
 See an issue?  Please open up a request [here](https://github.com/oracle/learning-library/issues).   Please include the workshop name and lab in your request.
