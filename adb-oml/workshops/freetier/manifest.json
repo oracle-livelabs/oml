@@ -23,7 +23,7 @@
       },
       {
         "title": "Lab 3: Migrate ML Model to ATP",
-        "description": "Export the ML model from ADW and import into ATP",
+        "description": "Export the machine learning model from ADW and import into ATP",
         "type": "freetier",
         "filename": "../../move-model-to-db/move-model-to-db2.md"
       },

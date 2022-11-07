@@ -12,13 +12,13 @@
         "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
       },
       {
-        "title": "Lab 1: Build Machine Learning Model",
-        "description": "Explore Zeppelin notebooks and create a ML model on customer credit data set.",
+        "title": "Lab 1: Create a Machine Learning Model",
+        "description": "Explore OML Notebooks and create a machine learning model on customer credit data set.",
         "filename":  "../../create-ml-model/create-ml-model-ll2.md"
       },
       {
-        "title": "Lab 2: Migrate ML Model to ATP",
-        "description": "Export the ML model from ADW and import into ATP",
+        "title": "Lab 2: Migrate Machine Learning Model to ATP",
+        "description": "Export the machine learning model from ADW and import into ATP",
         "type": "livelabs",
         "filename": "../../move-model-to-db/move-model-to-db-ll2.md"
       },
