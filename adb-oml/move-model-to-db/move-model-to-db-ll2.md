@@ -6,7 +6,7 @@ In the previous lab, you created a machine learning model that can predict custo
 
 The first step is to move the model from where it was developed into a production transaction processing database where the Client Service application can access it. This lab will walk you through the steps.
 
-Estimated lab time: 20 - 30 minutes
+Estimated time: 20 - 30 minutes
 
 Watch this short video to preview how to deploy the machine learning model into ATP.
 

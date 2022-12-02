@@ -4,7 +4,7 @@
 
 This lab is all about getting your environment set up correctly. Here we will show you how to provision two different autonomous database instances, create a user, enable the schema for the user and load data into a table.
 
-Estimated lab time: 20 - 30 minutes
+Estimated time: 20 - 30 minutes
 
 Watch this short video to preview how to provision and setup your environment.
 

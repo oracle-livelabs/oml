@@ -4,7 +4,7 @@
 
 In Lab 2, you created a model, which you then imported into a new database to represent a production system in Lab 3. Now we just need to integrate that model with existing applications and processes. It’s worth repeating that this is a critical step. Machine learning models won't be useful to the business until they are actively used in existing applications and processes.
 
-Estimated lab time: 20 - 30 minutes
+Estimated time: 20 - 30 minutes
 
 Watch this short video to preview how to use prediction in an application.
 

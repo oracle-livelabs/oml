@@ -4,7 +4,7 @@
 
 In this lab, you will build a machine learning model that will help Alpha Office.
 
-Estimated lab time: 20 - 30 minutes
+Estimated time: 20 - 30 minutes
 
 Watch this short video to preview how to build a machine learning model.
 

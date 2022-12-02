@@ -27,7 +27,7 @@
         "filename":  "../../create-ml-model/create-ml-model2.md"
       },
       {
-        "title": "Lab A3: Migrate ML Model to ATP",
+        "title": "Lab A3: Migrate Machine Learning Model to ATP",
         "description": "Export the ML model from ADW and import into ATP",
         "type": "freetier",
         "filename": "../../move-model-to-db/move-model-to-db2.md"
