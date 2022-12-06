@@ -15,8 +15,8 @@ You can also create user-defined R functions and manage them in the database, an
 
 In this lab, you will learn how to:
 
-* Create a temporary table using the ore.push function
-* Create a persistent table using the ore.create function
+* Create a temporary table using the `ore.push` function
+* Create a persistent table using the `ore.create` function
 * Create a proxy object from a table
 * Explore the data
 * Prepare the data
@@ -34,10 +34,10 @@ This lab assumes you have:
 
 ## Task 1: Create a Database Table
 
-With OML4R, you use proxy objects to access and manipulate data that resides in the database, e.g., a R data.frame proxy object (ore.frame) maps to a database table or view.  OML4R uses these proxy objects and transparently translates many standard R functions into SQL.
+With OML4R, you use proxy objects to access and manipulate data that resides in the database, e.g., an R data.frame proxy object (`ore.frame`) maps to a database table or view.  OML4R uses these proxy objects and transparently translates many standard R functions into SQL.
 In this step, the iris data set is used for illustrative purposes to create a temporary database table. Such temporary tables are automatically deleted when the database connection to the database ends unless you have saved its proxy object to a datastore, which we'll discuss in step 10, before disconnecting.
 
-1. To use OML4R, you must first import the ORE package for Oracle R Enterprise and to use the overloaded implement  dplyr functions OREdplyr must be explicitly imported loaded to use. Run the following scripts to import the ORE, OREdplyr packages, and set the display options:
+1. To use OML4R, you must first import the ORE package for Oracle R Enterprise and to use the overloaded implement  `dplyr` functions `OREdplyr` must be explicitly imported loaded to use. Run the following scripts to import the `ORE`, `OREdplyr` packages, and set the display options:
 
   ```r
   <copy>
@@ -51,9 +51,7 @@ In this step, the iris data set is used for illustrative purposes to create a te
   </copy>
   ```
 
- ![Image alt text](images/sample1.png)
-
-2. Use the ore.push function to load an R DataFrame object to the database, which creates a temporary table  and returns a proxy object, assigned to the variable IRIS_TMP.
+2. Use the `ore.push` function to load an R DataFrame object to the database, which creates a temporary table  and returns a proxy object, assigned to the variable IRIS_TMP.
 
   ```r
   <copy>
@@ -64,25 +62,12 @@ In this step, the iris data set is used for illustrative purposes to create a te
   </copy>
   ```
 
-  ![Image alt text](images/sample1.png)
-
   You use the zeppelin-context z.show method to display R objects and proxy object content. By using z.show, users can also work with the native Zeppelin visualization options. Here, you display the first few rows of IRIS_TMP using z.show.
-
-  ![Image alt text](images/sample1.png)
-
-4. Example with bold **text**.
-
-  ```r
-  <copy>
-
-  </copy>
-  ```
-
-   If you add another paragraph, add 3 spaces before the line.
+  ![First few rows of IRIS_TMP are displayed.](images/rows-iris-temp.png)
 
 ## Task 2: Create a Persistent Database Table
 
-You can also create a persistent table using the ore.create function and specify a table name, IRIS. The ore.create function creates a table in the database schema and returns an invisible 'NULL' value. This table is now accessible both within OML4R and directly from SQL. Use the z.show function to display the desired data in the notebook. To create the persistent table IRIS, run the following script.
+You can also create a persistent table using the `ore.create` function and specify a table name, IRIS. The ore.create function creates a table in the database schema and returns an invisible 'NULL' value. This table is now accessible both within OML4R and directly from SQL. Use the z.show function to display the desired data in the notebook. To create the persistent table IRIS, run the following script.
 
 ```r
 <copy>
@@ -98,11 +83,11 @@ z.show(IRIS)
 
 The output is similar to the following:
 
-![Image alt text](images/sample1.png)
+![The figure shows the shape, columns, and few rows of table IRIS.](images/shape-iris.png)
 
 ## Task 3: Create a Proxy Object For a Database Object
 
-Use the ore.sync function to create an ore.frame object named DEMO as a proxy for a database table or view. The argument query uses an optional named character vector specifying queries to use for ore.frame object creation.
+Use the `ore.sync` function to create an `ore.frame` object named `DEMO` as a proxy for a database table or view. The argument query uses an optional named character vector specifying queries to use for `ore.frame` object creation.
 
 ```r
 <copy>
@@ -115,23 +100,15 @@ z.show(head(DEMO))
 </copy>
 ```
 
-In this step, you are viewing a few rows from the SUPPLEMENTARY_DEMOGRAPHICS table using the overloaded head function.
+In this step, you are viewing a few rows from the `SUPPLEMENTARY_DEMOGRAPHICS` table using the overloaded head function.
 
-![Image alt text](images/sample1.png)
+![The figure shows few rows of DEMO.](images/head-demo.png)
 
 ## Task 4: Explore the Data
 
-In this example, use dim,summary and crosstab functions to explore and view the data.
+In this example, use `dim`,`summary` and `crosstab` functions to explore and view the data.
 
-1. Use the dim function to view the rows and columns of an ore.frame.
-
-  ```r
-  <copy>
-  %r
-
-  cat("\nShape: ", dim(DEMO))
-  </copy>
-  ```
+1. Use the `dim` function to view the rows and columns of an `ore.frame`.
 
   ```r
   <copy>
@@ -141,7 +118,13 @@ In this example, use dim,summary and crosstab functions to explore and view the 
   </copy>
   ```
 
-2. Use the summary() function to calculate descriptive statistics that summarize the central tendency, and dispersion of the DEMO table in each numeric column and the length, class, and mode for the character column.
+  ```r
+  %r
+
+  Shape:  4500 14
+  ```
+
+2. Use the `summary()` function to calculate descriptive statistics that summarize the central tendency, and dispersion of the DEMO table in each numeric column and the length, class, and mode for the character column.
 
   ```r
   <copy>
@@ -186,7 +169,7 @@ In this example, use dim,summary and crosstab functions to explore and view the 
 
   ```
 
-3. Use the crosstab function to perform a cross-column analysis of an ore.frame object in the database. The crosstab method computes a cross-tabulation of two or more columns. By default, it computes a frequency table for the columns unless a column and an aggregation function have been passed to it.  In this example, the crosstab function displays the distribution of AFFINITY_CARD responders.
+3. Use the `crosstab` function to perform a cross-column analysis of an `ore.frame` object in the database. The crosstab function computes a cross-tabulation of two or more columns. By default, it computes a frequency table for the columns unless a column and an aggregation function have been passed to it.  In this example, the crosstab function displays the distribution of `AFFINITY_CARD` responders.
 
 ```r
 <copy>
@@ -195,9 +178,10 @@ In this example, use dim,summary and crosstab functions to explore and view the 
 z.show(ore.crosstab(~AFFINITY_CARD,DEMO))
 </copy>
 ```
+
 The output is similar to the following:
 
-![Image alt text](images/sample1.png)
+![The figure shows the crosstab function displays the distribution of AFFINITY_CARD responders.](images/crosstab-affinity-card.png)
 
 4. Run the following script to view the distribution of HOUSEHOLD_SIZE according to AFFINITY_CARD responders. Click on the Bar chart, then click on settings. Drag the fields to titles as HOUSEHOLD_SIZE to keys, AFFINITY_CARDS  to groups, and ORE.FREQ to values. The fields will automatically change to ORE.FREQ SUM. Click on Stacked to get the required view.
 
@@ -211,18 +195,18 @@ z.show(ore.crosstab(AFFINITY_CARD~HOUSEHOLD_SIZE,DEMO))
 
 The output is similar to the following:
 
-![Image alt text](images/sample1.png)
+![The figure shows the distribution of HOUSEHOLD_SIZE according to AFFINITY_CARD responders.](images/distribution-household-affinity.png)
 
 ## Task 5: Prepare the Data
 
-In this step, you will create a proxy object DEMO2 by selecting columns from the DEMO proxy object.  After selecting columns of interest, display a few rows of the DEMO2 ore.frame and split your data into TRAIN and TEST sets.
+In this step, you will create a proxy object DEMO2 by selecting columns from the DEMO proxy object.  After selecting columns of interest, display a few rows of the DEMO2 `ore.frame` and split your data into TRAIN and TEST sets.
 
 1. Use the DEMO proxy object to create a new proxy object DEMO2 by selecting the necessary columns. Run the following script:
 
   ```r
   <copy>
   %r
- 
+
   DEMO2 <- DEMO[,c("CUST_ID", 'AFFINITY_CARD', "BOOKKEEPING_APPLICATION", "BULK_PACK_DISKETTES", "EDUCATION",
                         "FLAT_PANEL_MONITOR", "HOME_THEATER_PACKAGE", "HOUSEHOLD_SIZE", "OCCUPATION", "OS_DOC_SET_KANJI",
                         "PRINTER_SUPPLIES", "YRS_RESIDENCE", "Y_BOX_GAMES")]
@@ -240,7 +224,7 @@ In this step, you will create a proxy object DEMO2 by selecting columns from the
   ```
 
   The output is similar to the following:
-  ![Image alt text](images/sample1.png)
+  ![First few rows of DEMO2 are displayed.](images/head-demo2.png)
 
 3. In this example, you are splitting the DEMO2 data with 60 percent of the records for the TRAIN data set and 40 percent for the TEST data set. The sample() method gives a simple random sample of elements. Here, the sample() method produces the sampled set of indices to identify the records for the training data set within the variable index.  Use the setdiff() method to create the test data set as the complement of the training data set.
 
@@ -304,19 +288,20 @@ Use the ore.odmDT function to build a Decision Tree model. You can build a model
   </copy>
   ```
 
-  The ore.odmDT function uses the in-database Decision Tree algorithm for classification and the model proxy object dt_mod is created. The first parameter of the ore.odmDT function is an object of class formula with a symbolic description of the model to be fitted. The tilde operator (~) is used to specify the relationship between dependent variables present on the left side of the operator and independent variables present on the right side of the operator.
+  The `ore.odmDT` function uses the in-database Decision Tree algorithm for classification and the model proxy object dt_mod is created. The first parameter of the `ore.odmDT` function is an object of class formula with a symbolic description of the model to be fitted. The tilde operator (~) is used to specify the relationship between dependent variables present on the left side of the operator and independent variables present on the right side of the operator.
 
 2. Run the following script for model details available through the decision tree model object, like the number of nodes, row count, split, settings, etc.
 
   ```r
   <copy>
   %r
+
   dt_mod
   </copy>
   ```
 
   The output is similar to the following:
-  ![Image alt text](images/sample1.png)
+  ![The figure shows the model details of dt_mod proxy object.](images/model-details.png)
 
 3. Run the following script to specify model settings and build a Decision Tree model:
 
@@ -367,11 +352,12 @@ mod.svm2   <- ore.odmSVM(AFFINITY_CARD~.,TRAIN,
                          odm.settings=settings)
 </copy>
 ```
+
 ## Task 8: Evaluate Your Model
 
 Evaluate the in-database model proxy object using different methods. Make predictions on the test case using the model and then evaluate the model by using methods like Confusion Matrix, Lift Chart, Gains Chart, and ROC curve chart.
 
-1. Run the following script to make predictions on the test data set using the dt_mod  model. If the parameter type is "class", the result includes the most likely target class and its probability. If the parameter type is "raw", the result includes one column for each target class and the column values reflect the probability for that class. Both can be specified together.
+1. Run the following script to make predictions on the test data set using the dt_mod model. If the parameter type is "class", the result includes the most likely target class and its probability. If the parameter type is "raw", the result includes one column for each target class and the column values reflect the probability for that class. Both can be specified together.
 
 ```r
 <copy>
@@ -388,7 +374,7 @@ z.show(RES_DF)
 ```
 
 The output is similar to the following:
-![Image alt text](images/sample1.png)
+![First few rows of RES_DF are displayed.](images/rows-raw-resdf.png)
 
 The column "X.0." and "X.1." represent the probability of the case lying in the respective classes of AFFINITY_CARD. Run the following script to change the column name of "X.0" to Prob_0 and "X.1" to Prob_1.
 
@@ -404,7 +390,7 @@ z.show(head(RES_DF))
 ```
 
 The output is similar to the following:
-![Image alt text](images/sample1.png)
+![First few rows of RES_DF are displayed with X.0 as PROB_0 and X.1 as PROB_1.](images/rows_resdf.png)
 
 2. The Confusion Matrix displays the number and type of correct and incorrect predictions made with respect to the actual classification in the test data. It is an n-by-n matrix where n is the number of classes. Run the following below script to compute the confusion matrix in the database:
 
@@ -418,7 +404,7 @@ C_MATRIX
 ```
 
 The output is similar to the following:
-![Image alt text](images/sample1.png)
+![The figure shows the confustion matrix between Affinity Card and Prediction column.](images/confusion-matrix.png)
 
 3. Evaluate your model using the ROC curve chart, Lift chart, and Distribution chart. The ROC curve also applies to binary classification and requires the designation of the positive class. These are metrics for comparing predicted and actual target values in a classification model. A lift chart also applies to binary classifications requiring the designation of the positive class. It measures the degree to which the predictions of a classification model are better than randomly generated predictions. The distribution chart here is a density plot of two variables. A density plot is a distribution of a numeric variable and gives an idea of the shape, number of peaks, skewness, etc. Here is a custom script to generate the metrics and charts as described above. Run the script below:
 
@@ -459,8 +445,7 @@ rug(jitter(res$"PROB_1"),col='darkred')
 ```
 
 The output is similar to the following:
-![Image alt text](images/sample1.png)
-
+![The figure shows the model evaluation using ROC curve chart, Lift chart, and Distribution chart.](images/roc-lift-distribution-chart.png)
 
 ## Task 9: Score Data for Deployment Using Your Model
 
@@ -477,7 +462,7 @@ z.show(RES_DF[RES_DF$PROB_1 > 0.5, ])
 ```
 
 The output is similar to the following:
-![Image alt text](images/sample1.png)
+![The figure displays few rows of customers responding to the affinity card campaign with a probability greater than 0.5.](images/rows-responders.png)
 
 2. Use the confusion matrix to get the model accuracy computed on the TEST data provided.
 
@@ -517,7 +502,7 @@ ore.create(DEMO2, table ="DT_TEST_TABLE")
 ```sql
 <copy>
 %sql
-  
+
 SELECT CUST_ID,
     round(PREDICTION_AFFINITY_CARD,3) PRED_AFFINITY_CARD,
     RTRIM(TRIM(SUBSTR(OUTPRED."Attribute1",17,100)),'rank="1"/>') FIRST_ATTRIBUTE,
@@ -538,10 +523,9 @@ FROM (SELECT CUST_ID,
 ```
 
 The output is similar to the following:
-![Image alt text](images/sample1.png)
+![The figure displays the score and display of the prediction details](images/sql-prediction-details.png)
 
-
-## Task 11: Saving and Loading R Objects in a Datastore Instance 
+## Task 11: Saving and Loading R Objects in a Datastore Instance
 
 You can save the R objects you create in one R session and load them in another session using the OML4R datastore. R objects and OML4R proxy objects exist only during the current R session unless they are saved to a datastore. OML4R creates the datastore in the current user’s database schema. Until you delete the datastore or the individual objects in a datastore, they remain in the database. OML4R provides functions for managing the objects in the datastore, such as ore.save, ore.load, ore.datastore, and so on.
 
@@ -579,10 +563,10 @@ You can save the R objects you create in one R session and load them in another 
   ```
 
   The output is similar to the following:
-  ![Image alt text](images/sample1.png)
+  ![The figure shows the existing datastores.](images/existing-datastore.png)
   The output also includes the size in bytes consumed, the date, and the descriptive text provided by the user when loading the R objects into the datastore.
 
-  d. The ore.datastoreSummary function returns information about the R objects saved within a datastore in the user schema in the connected database. The function returns a data.frame with columns that correspond to object name, object class, object size, and either the length of the object, if it is a vector, or the number of rows and columns, if it is a data.frame object. It takes one required argument, the name of a datastore, and has an optional argument, the owner of the datastore.
+  d. The `ore.datastoreSummary` function returns information about the R objects saved within a datastore in the user schema in the connected database. The function returns a data.frame with columns that correspond to object name, object class, object size, and either the length of the object, if it is a vector, or the number of rows and columns, if it is a data.frame object. It takes one required argument, the name of a datastore, and has an optional argument, the owner of the datastore.
 
   ```r
   <copy>
@@ -593,7 +577,7 @@ You can save the R objects you create in one R session and load them in another 
   ```
 
   The output is similar to the following:
-  ![Image alt text](images/sample1.png)
+  ![The figure shows the summary of R objects saved within a datastore.](images/datastore-summary.png)
 
   e. In this step, you will create a user-defined function (UDF) buildLM.1 using the IRIS dataset that builds and returns a model regr using the linear regression function lm(). Save the model regr to the datastore named dsname. The UDF buildLM.1 is stored using the ore.tableApply function.  For more information on managing scripts see [manage script](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/use-oracle-r-enterprise-embedded-r-execution.html#GUID-168AECD0-B961-4913-AEC6-2BEC28039334), on SQL API for ERE see [SQL API for Embedded R Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/use-oracle-r-enterprise-embedded-r-execution.html#GUID-E4A808B3-7844-4B6E-BBC0-FBFD170831EF) with Autonomous Database, and on REST API see [REST API for Embedded R Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/mlere/index.html).
 
@@ -636,7 +620,7 @@ You can save the R objects you create in one R session and load them in another 
   ```
 
   The output is similar to the following:
-  ![Image alt text](images/sample1.png)
+  ![The figure shows the datastore and its summary.](images/iris-datastore.png)
 
 2. In this step, you will use the ore.load function for loading one or more R objects from the datastore to the current workspace.
 
@@ -651,7 +635,7 @@ You can save the R objects you create in one R session and load them in another 
   ```
 
   The output is similar to the following:
-  ![Image alt text](images/sample1.png)
+  ![The figure shows all the R objects of the datastore.](images/load-datastore.png)
 
  b. Run the following script to load a specific named R object, IRIS_TMP from the datastore to the current workspace. Also, confirm if the R object IRIS_TMP is loaded or not in the current workspace.
 
@@ -665,7 +649,7 @@ You can save the R objects you create in one R session and load them in another 
   ```
 
   The output is similar to the following:
-  ![Image alt text](images/sample1.png)
+  ![The figure loads a specific R object IRIS_TMP.](images/load-specific-datastore.png)
 
 c. Run the following script to load the named R object from the datastore to the current workspace.
 
@@ -678,7 +662,7 @@ c. Run the following script to load the named R object from the datastore to the
   ```
 
   The output is similar to the following:
-  ![Image alt text](images/sample1.png)
+  ![The figure loads the ds_rmodel from the datastore.](images/load-datamodel.png)
 
 To learn more about how to use datastores to store R objects click this [link](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/get-started-oracle-machine-learning-r1.html#GUID-A3773AC1-2C23-445C-91C1-6FBC745CCE94).
 
@@ -687,12 +671,12 @@ To learn more about how to use datastores to store R objects click this [link](h
 OML4R also enables data scientists to hand off their user-defined R functions to application developers for calling from REST or SQL interfaces, where the database environment spawns and controls the R engines, loads the user-defined function, and if required, loads the specified data. This facilitates making native R machine learning models and predictions readily available for enterprise solutions as well, with the option to leverage data parallelism for greater performance and scalability. Given below are some of the functionalities that OML4R offers:
 
 1. [Embedded R Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/use-oracle-r-enterprise-embedded-r-execution.html#GUID-A5771EE5-AAC0-4D59-89C8-D0AE04DC0140)
-	OML4R Embedded R Execution provides users the ability to call user-defined R functions in one or more R engines spawned and managed by the Oracle database environment. Store and manage user-defined R functions for use in embedded execution in the R script repository in the database. These functions can then be invoked from SQL or REST APIs. For more information on SQL API for ERE see [SQL API for Embedded R Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/use-oracle-r-enterprise-embedded-r-execution.html#GUID-E4A808B3-7844-4B6E-BBC0-FBFD170831EF) with Autonomous Database and for REST APIs see [REST API for Embedded R Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/mlere/index.html).
+OML4R Embedded R Execution provides users the ability to call user-defined R functions in one or more R engines spawned and managed by the Oracle database environment. Store and manage user-defined R functions for use in embedded execution in the R script repository in the database. These functions can then be invoked from SQL or REST APIs. For more information on SQL API for ERE see [SQL API for Embedded R Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/use-oracle-r-enterprise-embedded-r-execution.html#GUID-E4A808B3-7844-4B6E-BBC0-FBFD170831EF) with Autonomous Database and for REST APIs see [REST API for Embedded R Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/mlere/index.html).
 
 2. [Data Manipulation Using OREdplyr](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/prepare-and-explore-data-database.html#GUID-3072812B-B1D2-4EEE-98FB-5F139D1B046D)
 OREdplyr package functions transparently implement dplyr functions for use with ore.frame and ore.numeric objects.
 
 ## Acknowledgements
 * **Author** - Dhanish Kumar, Member of Technical Staff, User Assistance Developer.
-* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning.
-* **Last Updated By/Date** - Dhanish Kumar, November 2022
+* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Suresh Rajan, Senior Manager, Oracle Database User Assistance Development; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning;
+* **Last Updated By/Date** - Dhanish Kumar, December 2022
