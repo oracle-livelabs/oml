@@ -25,7 +25,7 @@ In this lab, you will learn how to:
 * Score data for deployment
 * Save and load R objects in a datastore instance
 
-### Prerequisites (Optional)
+### Prerequisites
 
 This lab assumes you have:
 
@@ -35,7 +35,7 @@ This lab assumes you have:
 ## Task 1: Create a Database Table
 
 With OML4R, you use proxy objects to access and manipulate data that resides in the database, e.g., an R data.frame proxy object (`ore.frame`) maps to a database table or view.  OML4R uses these proxy objects and transparently translates many standard R functions into SQL.
-In this step, the iris data set is used for illustrative purposes to create a temporary database table. Such temporary tables are automatically deleted when the database connection to the database ends unless you have saved its proxy object to a datastore, which we'll discuss in step 10, before disconnecting.
+In this step, the iris data set is used for illustrative purposes to create a temporary database table. Such temporary tables are automatically deleted when the connection to a database ends, unless you have saved its proxy object to a datastore, which we'll discuss in step 10, before disconnecting.
 
 1. To use OML4R, you must first import the ORE package for Oracle R Enterprise and to use the overloaded implement  `dplyr` functions `OREdplyr` must be explicitly imported loaded to use. Run the following scripts to import the `ORE`, `OREdplyr` packages, and set the display options:
 
@@ -338,11 +338,11 @@ Use the ore.odmDT function to build a Decision Tree model. You can build a model
 	* `min.rec.split`: Specifies the criteria for splits: minimum number of records in a parent node expressed as a value. No split is attempted if the number of records is below this value. The default value is 20.
 	* `odm.settings` : See step 7 where it has been discussed in detail.
 
-To get a complete list of information on the settings available in the Decision Tree module run the below script.
+To get a complete list of information on the settings available in the Decision Tree module run the script below.
 
 ## Task 7: Explanation of argument ore.setting
 
-The argument odm.settings specifies a list for the parameter setting in an algorithmic. Each list element's name and value refer to the parameters setting name and value, respectively. The setting value must be numeric or string. The name of the created algorithm model `ore.odmSVM` is system-determined by default, and the parameter MODEL\_NAME can be specified to explicitly name the model. The parameter ODMS\_PARTITION\_COLUMNS specifies the names of the partition columns, then a partition model with a sub-model in each partition is created from the input data. The ore.odmSVM function uses the in-database Support Vector Machine (SVM) algorithm for illustrative purposes. Refer to [Specify Model Settings](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/oml4r-classes-that-provide-access-database-ml-algorithm1.html) in the OML4R User's Guide for detail.
+The argument odm.settings specifies a list for the parameter setting in an algorithm. Each list element's name and value refer to the parameters setting name and value, respectively. The setting value must be numeric or string. The name of the created algorithm model `ore.odmSVM` is system-determined by default, and the parameter MODEL\_NAME can be specified to explicitly name the model. The parameter ODMS\_PARTITION\_COLUMNS specifies the names of the partition columns, then a partition model with a sub-model in each partition is created from the input data. The ore.odmSVM function uses the in-database Support Vector Machine (SVM) algorithm for illustrative purposes. Refer to [Specify Model Settings](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/oml4r-classes-that-provide-access-database-ml-algorithm1.html) in the OML4R User's Guide for detail.
 
 ```r
 <copy>
