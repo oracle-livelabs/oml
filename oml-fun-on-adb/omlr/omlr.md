@@ -662,6 +662,7 @@ c. Run the following script to load the named R object from the datastore to the
 		```
 
 		The output is similar to the following:
+
 		![The figure loads the ds_rmodel from the datastore.](images/load-datamodel.png)
 
 To learn more about how to use datastores to store R objects click this [link](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/get-started-oracle-machine-learning-r1.html#GUID-A3773AC1-2C23-445C-91C1-6FBC745CCE94).

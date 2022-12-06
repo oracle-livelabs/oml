@@ -29,12 +29,17 @@
             "filename": "../../omlpy/omlpy.md"
         },
         {
-            "title": "Lab 4: Introduction to Oracle Machine Learning AutoML UI",
+            "title": "Lab 4: Introduction to Oracle Machine Learning for R",
+            "type": "livelabs",
+            "filename": "../../omlr/omlr.md"
+        },
+        {
+            "title": "Lab 5: Introduction to Oracle Machine Learning AutoML UI",
             "type": "livelabs",
             "filename": "../../automl/automl.md"
         },
         {
-            "title": "Lab 5: Introduction to Oracle Machine Learning Services",
+            "title": "Lab 6: Introduction to Oracle Machine Learning Services",
             "type": "livelabs",
             "filename": "../../omlserv/omlserv.md"
         },
