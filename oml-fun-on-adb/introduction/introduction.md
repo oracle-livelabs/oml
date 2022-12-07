@@ -9,6 +9,7 @@ Estimated Workshop Time: 02 hours 30 minutes
 ### Objectives
 
 In this workshop, you will learn how to:
+
 * Use OML Notebooks:
     * Create a notebook based on an example template
     * Check and update the interpreter binding settings for a notebook
@@ -24,10 +25,10 @@ In this workshop, you will learn how to:
     * Build and evaluate a Decision Tree classifier
     * Score with the classifier
 * Develop and score with a Decision Tree model using OML4R:
-        * Create a table and proxy to the table
-        * Explore and prepare data
-        * Build and evaluate a Decision Tree classifier
-        * Score with the classifier
+    * Create a table and proxy to the table
+    * Explore and prepare data
+    * Build and evaluate a Decision Tree classifier
+    * Score with the classifier
 * Use OML AutoML UI:
     * Create an experiment, adjust experiment settings and run the experiment
     * Deploy models to OML Services
