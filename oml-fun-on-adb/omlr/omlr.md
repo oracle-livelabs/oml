@@ -62,7 +62,7 @@ In this step, the iris data set is used for illustrative purposes to create a te
 	</copy>
 	```
 
-	You use the zeppelin-context `z.show` method to display R objects and proxy object content. By using `z.show`, users can also work with the native Zeppelin visualization options. Here, you display the first few rows of IRIS\_TMP using `z.show`.
+	You use the zeppelin-context `z.show` function to display R objects and proxy object content. By using `z.show`, users can also work with the native Zeppelin visualization options. Here, you display the first few rows of IRIS\_TMP using `z.show`.
 
 	![First few rows of IRIS_TMP are displayed.](images/rows-iris-temp.png)
 
@@ -230,7 +230,7 @@ In this step, you will create a proxy object DEMO2 by selecting columns from the
 	The output is similar to the following:
 	![First few rows of DEMO2 are displayed.](images/rows-demo2.png)
 
-3. In this example, you are splitting the DEMO2 data with 60 percent of the records for the TRAIN data set and 40 percent for the TEST data set. The `sample` method gives a simple random sample of elements. Here, the `sample` method produces the sampled set of indices to identify the records for the training data set within the variable index.  Use the `setdiff` method to create the test data set as the complement of the training data set.
+3. In this example, you are splitting the DEMO2 data with 60 percent of the records for the TRAIN data set and 40 percent for the TEST data set. The `sample` function gives a simple random sample of elements. Here, the `sample` function produces the sampled set of indices to identify the records for the training data set within the variable index.  Use the `setdiff` function to create the test data set as the complement of the training data set.
 
 	> **_NOTE:_**  In OML4R, instead of pulling the data from the database and then sampling, you can sample directly in the database and then pull only those records that are part of the sample. By sampling in the database, you minimize data `movement` and you can work with larger data sets. Note that the ordering framework integer row indexing in the transparency layer that enables this capability.
 
@@ -405,7 +405,7 @@ Evaluate the in-database model proxy object using various approaches. Make predi
 	The output is similar to the following:
 	![First few rows of RES\_DF are displayed with X.0 as PROB\_0 and X.1 as PROB\_1.](images/rows-resdf.png)
 
-2. The Confusion Matrix displays the number and type of correct and incorrect predictions made with respect to the actual classification in the test data. It is an n-by-n matrix where n is the number of classes. Run the following script to compute the confusion matrix in the database:
+2. The Confusion Matrix displays the number and type of correct and incorrect predictions made with respect to the actual classification in the test data. It is an n-by-n matrix where n is the number of classes. Run the following script to compute the confusion matrix in the database using the proxy object:
 
 	```r
 	<copy>
@@ -462,7 +462,7 @@ Evaluate the in-database model proxy object using various approaches. Make predi
 
 ## Task 9: Score Data for Deployment Using Your Model
 
-Having built and evaluated the model, you will now filter the ore.frame using R syntax. Such results can be computed in batch and materialized as a table for static lookup by applications and dashboards or results can be computed dynamically using in-database models using OML4R functions or SQL queries.
+Having built and evaluated the model, you will now filter the `ore.frame` using R syntax. Such results can be computed in batch and materialized as a table for static lookup by applications and dashboards or results can be computed dynamically using in-database models using OML4R functions or SQL queries.
 
 1. Run the following script to display the results of customers responding to the affinity card campaign with a probability greater than 0.5.
 
