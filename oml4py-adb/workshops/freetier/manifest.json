@@ -43,22 +43,7 @@
             "type": "freetier"
         },
         {
-            "title": "Lab 6: Run user-defined functions using SQL API",
-            "filename": "../../sql-api/sql-api.md",
-            "type": "freetier"
-        },
-        {
-            "title": "Lab 7: Run user-defined functions using REST API",
-            "filename": "../../rest-api/rest-api.md",
-            "type": "freetier"
-        },
-        {
-            "title": "Lab 8: Work in Conda Environment",
-            "filename": "../../conda/conda.md",
-            "type": "freetier"
-        },
-        {
-            "title": "Lab 9: Use AutoML",
+            "title": "Lab 6: Use AutoML",
             "filename": "../../automl/automl.md",
             "type": "freetier"
         },
