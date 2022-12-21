@@ -144,7 +144,7 @@ To call the Markdown interpreter and generate static html from Markdown plain te
 
 	![Add Paragraph](images/add-paragraph.png)
 
-11. In this paragraph that you just created, the markdown tag `%md` is already present. Here, you will use Markdown tags to display the text in heading 1 (H1), heading 2 (H2) and heading 23 (H3). For H1, H2, and H3, add one, two, and three hashes before the text `Hello World` respectively. Or, you may copy the code below and paste it just below the tag `%md`.
+11. In this paragraph that you just created, the markdown tag ``%md`` is already present. Here, you will use Markdown tags to display the text in heading 1 (H1), heading 2 (H2) and heading 23 (H3). For H1, H2, and H3, add one, two, and three hashes before the text `Hello World` respectively. Or, you may copy the code below and paste it just below the tag ``%md``.
 
 		<copy>
 		# Hello World
@@ -371,9 +371,10 @@ This completes the task of creating the Time Series notebook from the OML4SQL Ti
 
 An interpreter allows using a specific data processing language at the backend to process commands entered in a notebook paragraph. For the notebooks in Oracle Machine Learning, you use the following interpreters:
 
-* SQL interpreter for SQL Statements
+* SQL interpreter for SQL statements
 * PL/SQL  interpreter for PL/SQL scripts/statements
 * Python interpreter to process Python scripts
+* R interpreter to run R commands and scripts
 * md (MarkDown) interpreter for plain text formatting syntax so that it can be converted to HTML.
 
 This is the initial binding order of the interpreters. You can change the order of the interpreter bindings by clicking and dragging an entry above or below others (turns from white to blue). You can also deselect a binding to disable it (turns from blue to white). This does not require dragging the enabled interpreters above the disabled ones.
@@ -477,4 +478,4 @@ This completes the task of creating a job.
 
 * **Author** -  Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -   Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, July 2022
+* **Last Updated By/Date** - Moitreyee Hazarika, November 2022

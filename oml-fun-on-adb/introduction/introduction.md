@@ -2,13 +2,14 @@
 
 ## About this Workshop
 
-In this workshop, you will test drive Oracle Machine Learning on Oracle Autonomous Database. You will explore OML Notebooks by creating notebooks, setting interpreter bindings, and scheduling a notebook job. In the Introduction to OML4SQL lab, you will use the SQL API via notebooks to implement a short data science project that forecasts product sales using a time series model. In the Introduction to OML4Py lab, you will use the Python API to develop and evaluate a Decision Tree-based classifier and score data using it. In the Introduction to OML AutoML UI lab, you will use the no-code user interface OML AutoML UI to run an experiment, which builds and ranks models, and deploy a Naive-Bayes classifier. You will also explore a notebook generated from a model produced by the experiment. Finally, in the Introduction to Oracle Machine Learning Services lab, you will score singleton and mini-batch records with a Naive-Bayes classifier and use the Cognitive Text feature to analyze a text string.
+In this workshop, you will test drive Oracle Machine Learning on Oracle Autonomous Database. You will explore OML Notebooks by creating notebooks, setting interpreter bindings, and scheduling a notebook job. In the Introduction to OML4SQL lab, you will use the SQL API via notebooks to implement a short data science project that forecasts product sales using a time series model. In the Introduction to OML4Py lab, you will use the Python API to develop and evaluate a Decision Tree-based classifier and score data using it. In the next lab, Introduction to OML4R, you will use OML4R to create a proxy object, explore and prepare data, build and evaluate models, and use those models to score data.  In the Introduction to OML AutoML UI lab, you will use the no-code user interface OML AutoML UI to run an experiment, which builds and ranks models, and deploy a Naive-Bayes classifier. You will also explore a notebook generated from a model produced by the experiment. Finally, in the Introduction to Oracle Machine Learning Services lab, you will score singleton and mini-batch records with a Naive-Bayes classifier and use the Cognitive Text feature to analyze a text string.
 
 Estimated Workshop Time: 02 hours 30 minutes
 
 ### Objectives
 
 In this workshop, you will learn how to:
+
 * Use OML Notebooks:
     * Create a notebook based on an example template
     * Check and update the interpreter binding settings for a notebook
@@ -20,7 +21,12 @@ In this workshop, you will learn how to:
     * Access the forecasts from the DM$VP model view
 * Develop and score with a Decision Tree model using OML4Py:
     * Create a table and proxy to the table
-    * Explore and prepare data using
+    * Explore and prepare data
+    * Build and evaluate a Decision Tree classifier
+    * Score with the classifier
+* Develop and score with a Decision Tree model using OML4R:
+    * Create a table and proxy to the table
+    * Explore and prepare data
     * Build and evaluate a Decision Tree classifier
     * Score with the classifier
 * Use OML AutoML UI:
@@ -46,4 +52,4 @@ This workshop assumes you have:
 
 * **Authors** - Moitreyee Hazarika, Principal User Assistance Developer; Sarika Surampudi, Principal User Assistance Developer; Dhanish Kumar, Member Technical Staff; Suresh Rajan, Senior Manager, Oracle Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Suresh Rajan, July 2022
+* **Last Updated By/Date** - Dhanish Kumar, December 2022

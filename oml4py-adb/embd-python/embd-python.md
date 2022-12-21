@@ -30,6 +30,7 @@ In this lab, you will:
 * Prepare the same script for use with Embedded Python Execution
 * Build one model per group using the `group_apply` function
 * Return multiple images as a result from Embedded Python Execution
+* Create and run SQL and REST user defined functions 
 
 ### Prerequisites
 
