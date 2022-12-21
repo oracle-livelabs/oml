@@ -20,17 +20,17 @@
     {
     "title": "Lab 3: Load and Prepare Data",
     "description": "Load and Prepare Data",
-    "filename": "./../../preparation-v2/preparation.md"
+    "filename": "./../../preparation/preparation.md"
     },
     {
       "title": "Lab 4: Create models using OML Notebook and AutoML UI",
       "description": "Create models using OML Notebook and AutoML UI",
-      "filename": "./../../oml-notebook-and-automl-ui-v2/oml-notebook-and-automl-ui.md"
+      "filename": "./../../oml-notebook-and-automl-ui/oml-notebook-and-automl-ui.md"
     },
     {
       "title": "Lab 5: Score Data using OML Services",
       "description": "Score Data using OML Services",
-      "filename": "./../../scoring-oml-using-rest-services-v2/scoring-oml-using-rest-services.md"
+      "filename": "./../../scoring-oml-using-rest-services/scoring-oml-using-rest-services.md"
     },
     {
       "title": "Lab 6: Store an OML model and score it using OML Services",

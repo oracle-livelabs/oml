@@ -50,7 +50,7 @@ Estimated Time: 15 minutes
   Use the following URL structure to access the REST endpoints:
 
   ````
-  https://**<oml-cloud-service-location-url>**.oraclecloudapps.com
+  https://<oml-cloud-service-location-url>.oraclecloudapps.com
   ````
 
   Where:
@@ -61,8 +61,11 @@ Estimated Time: 15 minutes
   * In the Autonomous Database instance details page. Click on the Service Console button.
   ![ADB-instance-home](images/prerequisites-screenshot-22.jpg)
 
-  * The service console is opened. Go to the Development section in the left side.
-  ![ADB-service-console](images/prerequisites-screenshot-23.jpg)
+  * The service console is opened.
+  ![ADB-DB-Actions](images/prerequisites-screenshot-23.jpg)
+
+  * Click on the menu on the top left side on the page and scroll to the right to the **Related Services** section. Click on the **Oracle Machine Learning RESTful services**.
+  ![ADB-DB-Actions](images/prerequisites-screenshot-231.jpg)
 
   * In the Development section, notice the **Oracle Machine Learning RESTful services** section.
   ![ADB-service-console](images/prerequisites-screenshot-X23.jpg)

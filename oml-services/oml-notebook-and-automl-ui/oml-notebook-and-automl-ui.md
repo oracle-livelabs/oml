@@ -19,15 +19,19 @@ Estimated Time: 15 minutes
 
 ## Task 1: Connect to OML Notebooks and display Insurance Customer Data
 
-* In the Autonomous Database instance details page. Click on the Service Console button.
+* In the Autonomous Database instance details page. Click on the Database Actions button.
   ![ADB-instance-home](images/prerequisites-screenshot-22.jpg)
 
-* A new page with the service console is opened. In the Overview section, we see the details of this specific instance. We can go to the Development section on the left side.
-  ![ADB-service-console](images/prerequisites-screenshot-23.jpg)
+* The Database Actions launchpad page is now open and connected by default with the ADMIN user.
+  ![ADB-DB-Actions](images/prerequisites-screenshot-23.jpg)
 
 
-* Click on **Oracle Machine Learning User Interface**.
+* Click on **Oracle Machine Learning**.
   ![ADB-service-console](images/prerequisites-screenshot-24.jpg)
+
+  Alternatively you can click on the menu on the top left side on the page and click on the **Oracle Machine Learning** menu.
+  ![ADB-DB-Actions](images/prerequisites-screenshot-241.jpg)
+
 
 * Login to OML Machine Learning User Interface in Autonomous Database
 
@@ -93,7 +97,8 @@ Estimated Time: 15 minutes
 ![AutoML-menu](images/automl-screenshot-X06.jpg)
 
 
-* Choose AutoML.
+
+* Click **AutoML Experiments**.
 ![AutoML-menu](images/automl-screenshot-6.jpg)
 
 
@@ -110,7 +115,7 @@ Estimated Time: 15 minutes
 
     ![AutoML-create-experiment](images/automl-screenshot-8.jpg)
 
-* To make some customizations you can expand the Additional Settings menu
+* To make customizations you can expand the Additional Settings menu
 
     ![AutoML-additional-settings](images/automl-screenshot-9.jpg)
 
@@ -138,10 +143,10 @@ Estimated Time: 15 minutes
 
   The AutoML Classification will run for several minutes showing which top 5 algorithms have a Better Accuracy. The running process takes around 20 minutes.
 
-* And the result of the experiment
+* When completed, we have the result of the experiment
   ![Classification Experiment Result](images/automl-screenshot-11.jpg)
 
-  Each model described here is based on one of the automatically selected algorithms. Select the **Support Vector Machine (Gaussian)** algorithm and click on the model name which starts with **SVMG_**.
+  Each model described here is based on one of the selected algorithms. Select the **Support Vector Machine (Gaussian)** algorithm and click on the model name which starts with **SVMG_**.
 
   ![Chose a model](images/automl-screenshot-12.jpg)
 
@@ -160,7 +165,7 @@ Estimated Time: 15 minutes
 
   ![Model Rename ](images/automl-screenshot-X14.jpg)
 
-* Enter a new Model Name and click OK. In our case, we are going to use **SVMG**.
+* Enter a new Model Name and click OK. In our case, we are going to use **SVMG** and click OK
 
   ![Model Rename ](images/automl-screenshot-X114.jpg)
 
