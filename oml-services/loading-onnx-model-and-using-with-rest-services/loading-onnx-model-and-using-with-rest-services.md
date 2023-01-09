@@ -84,10 +84,10 @@ We are going to run the next steps:
 * Replace **`<oml-cloud-service-location-url>`** with your URL saved in the chapter "Scoring OML model using OML Services" Task 1.2: Authorize OML Services User
 
     In the Authorization tab, pick **Bearer Token** and paste the token copied from *Scoring OML using OML Services Task 1*.
-    ![Model Import](images/model-import-06.jpg)
+    ![Model Import](images/postman-models-list.jpg)
 
     In the response, we see both the Decision Tree Model **DTModel** and the Support Vector Machine model **SVMG**. These are the models we created and scored in our previous tasks.
-    ![Model Import](images/model-import-07.jpg)
+    ![Model Import](images/postman-models-list-response.jpg)
 
     If you get the Expired Token Error, rerun the generate Token command explained in **Scoring OML using Rest Services: Task 1**.
 
@@ -107,7 +107,7 @@ We are going to run the next steps:
 
     In the Authorization tab pick **Bearer Token** and the token is pre-filled.
 
-    ![Model Import](images/model-import-08.jpg)
+    ![Model Import](images/postman-store-onnx-auth.jpg)
 
     In the Headers tab enter the following:
 
@@ -116,16 +116,16 @@ We are going to run the next steps:
     boundary: Boundary
     ````
 
-    ![Model Import](images/model-import-09.jpg)
+    ![Model Import](images/postman-store-onnx-headers.jpg)
 
 
     In the Body tab, pick form-data and enter **`modelData`** in the Key area, hover over the right side of the field, and click File in the dropdown.
 
-      ![Model Import](images/model-import-10.jpg)
+    ![Model Import](images/postman-store-onnx-body-modeldata.jpg)
 
     Click Select File; go to `/home/oracle/OML-Services/` folder and select the **`onnx_class_NN.model.zip`** file created earlier.
 
-      ![Model Import](images/model-import-11.jpg)
+    ![Model Import](images/postman-store-onnx-body-modeldata-file.jpg)
 
     Add the following keys in the Body tab and click Send.
 
@@ -135,11 +135,11 @@ We are going to run the next steps:
      version=1.0
      namespace=ONNX_MODELS
     ````
-    ![Model Import](images/model-import-12.jpg)
+    ![Model Import](images/postman-store-onnx-body.jpg)
 
     The response status is '201 Created'. We succeeded in saving the model in the repository.
 
-    ![Model Import](images/model-import-13.jpg)
+    ![Model Import](images/postman-store-onnx-response.jpg)
 
     Copy the **`modelId`** displayed in the JSON response.
 
@@ -160,7 +160,7 @@ We are going to run the next steps:
 
     In the Authorization tab, pick **Bearer Token**, and the token is pre-filled.
 
-    ![Model Deploy](images/model-import-14.jpg)  
+    ![Model Deploy](images/postman-deploy-onnx-auth.jpg)  
 
     In the Headers tab, enter the following:
 
@@ -168,7 +168,7 @@ We are going to run the next steps:
     Content-Type: application/json
     ````
 
-    ![Model Deploy](images/model-import-15.jpg)
+    ![Model Deploy](images/postman-deploy-onnx-headers.jpg)
 
     In the Body tab, enter the following JSON:
 
@@ -183,11 +183,11 @@ We are going to run the next steps:
 
     We will use the URI **` ONNXCLASSNN`** for scoring the data against our model.
 
-    ![Model Deploy](images/model-import-16.jpg)
+    ![Model Deploy](images/postman-deploy-onnx-body.jpg)
 
-    And the result is:
+    And the response is:
 
-    ![Model Deploy](images/model-import-17.jpg)
+    ![Model Deploy](images/postman-deploy-onnx-response.jpg)
 
     The next step is to score a customer.
 
@@ -209,7 +209,7 @@ Now, we will score Fran Hobbs against our Neural Network imported model.
 
   In the Authorization tab, pick **Bearer Token** in the dropdown list, and the token is pre-filled.
 
-   ![Model Score](images/model-import-18.jpg)  
+   ![Model Score](images/postman-score-onnx-auth.jpg)  
 
 
   In the Header tab, enter the details:
@@ -219,7 +219,7 @@ Now, we will score Fran Hobbs against our Neural Network imported model.
 
     ````
 
-    ![Model Score](images/model-import-19.jpg)  
+  ![Model Score](images/postman-score-onnx-headers.jpg)  
 
 
   In the Body tab, enter the Fran Hobs data in RAW format. We provide the data in the structure that this ONNX model expects:  the character columns ``categorical_data`` first, and the numeric columns ``numeric_data`` after. In this case, we may skip the column names also. So the record for FRAN HOBBS is transformed from:
@@ -312,11 +312,11 @@ Now, we will score Fran Hobbs against our Neural Network imported model.
 
     Click Send
 
-      ![Model Score](images/model-import-20.jpg)  
+    ![Model Score](images/postman-score-onnx-body.jpg)  
 
     Notice the response for this scoring.
 
-      ![Model Score](images/model-import-21.jpg)  
+    ![Model Score](images/postman-score-onnx-response.jpg)  
 
     In this case, the percentages are different from the other model scoring, but the prediction is the same. It still has the highest probability for the **LOW** category.
 
@@ -339,7 +339,7 @@ In this step, we are going to score all three customers against our Neural Netwo
 
   In the Authorization tab pick **Bearer Token** and the token is pre-filled.
 
-   ![Model Score](images/model-import-18.jpg)  
+   ![Model Score](images/postman-score-onnx-auth.jpg)  
 
 
   In the header Tab enter the details:
@@ -349,7 +349,7 @@ In this step, we are going to score all three customers against our Neural Netwo
 
     ````
 
-    ![Model Score](images/model-import-19.jpg)  
+    ![Model Score](images/postman-score-onnx-headers.jpg)  
 
 
   In the Body tab we are providing the data in the format with ``categorical_data`` and ``numeric_data`` for all 3 customers.
@@ -373,11 +373,11 @@ In this step, we are going to score all three customers against our Neural Netwo
 
   Click Send
 
-    ![Model Score](images/model-import-22.jpg)  
+    ![Model Score](images/postman-score-onnx-body-multiple.jpg)  
 
   Notice the response for this scoring.
 
-    ![Model Score](images/model-import-23.jpg)  
+    ![Model Score](images/postman-score-onnx-body-multiple-response.jpg)  
 
   The percentages may be different, but the groups to which the customers are assigned are the same as the SVMG and Decision Tree models.
 
