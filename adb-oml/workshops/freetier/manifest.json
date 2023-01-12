@@ -13,24 +13,41 @@
         "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
       },
       {
-      "title": "Lab 1: Provision and Setup",
-      "filename": "../../connect-provision-adb/connect-provision-adb2.md"
-      },
-      {
-        "title": "Lab 2: Create Machine Learning Model",
-        "description": "Explore Zeppelin notebooks and create a ML model on customer credit data set.",
-        "filename":  "../../create-ml-model/create-ml-model2.md"
-      },
-      {
-        "title": "Lab 3: Migrate Machine Learning Model to ATP",
-        "description": "Export the machine learning model from ADW and import into ATP",
+        "title": "Get started with Oracle Cloud Free Tier Setup",
         "type": "freetier",
-        "filename": "../../move-model-to-db/move-model-to-db2.md"
+        "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+        "filename": "../../../oml-fun-on-adb/get-started-livelabs/get-started-livelabs.md"
       },
       {
-        "title": "Lab 4: Using Prediction in an Application",
-        "description": "Set up the ATP environment, import and APEX application and explore how ADB can be embedded into applications.",
-        "filename": "../../integrate-with-app/integrate-with-app2.md"
+        "title": "Lab 1: Introduction to Oracle Machine Learning Notebooks",
+        "type": "freetier",
+        "description": "Labs that follow the introduction are numbered, starting with Lab 1",
+        "filename": "../../../oml-fun-on-adb/oml-notebooks/oml-notebooks.md"
+      },
+      {
+        "title": "Lab 2: Introduction to Oracle Machine Learning for SQL",
+        "type": "freetier",
+        "filename": "../../../oml-fun-on-adb/omlsql/omlsql.md"
+      },
+      {
+        "title": "Lab 3: Introduction to Oracle Machine Learning for Python",
+        "type": "freetier",
+        "filename": "../../../oml-fun-on-adb/omlpy/omlpy.md"
+      },
+      {
+        "title": "Lab 4: Introduction to Oracle Machine Learning for R",
+        "type": "freetier",
+        "filename": "../../../oml-fun-on-adb/omlr/omlr.md"
+      },
+      {
+        "title": "Lab 5: Introduction to Oracle Machine Learning AutoML UI",
+        "type": "freetier",
+        "filename": "../../../oml-fun-on-adb/automl/automl.md"
+      },
+      {
+        "title": "Lab 6: Introduction to Oracle Machine Learning Services",
+        "type": "freetier",
+        "filename": "../../../oml-fun-on-adb/omlserv/omlserv.md"
       },
       {
         "title": "Need Help?",
