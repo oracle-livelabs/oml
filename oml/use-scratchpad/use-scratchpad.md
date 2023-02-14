@@ -28,6 +28,7 @@ To open and use the scratchpad, click <b>Scratchpad</b> on the Oracle Machine Le
   * `%sql`- Allows you to run SQL statements.
   * `%script` - Allows you to run PL/SQL scripts.
   * `%python` - Allows you to run Python scripts.
+  * `%r` - Allows you to run R scripts.
 
 To run python script:
 
@@ -78,6 +79,41 @@ To run python script:
       * Numpy - Python package for computations.
 
 5. After you have created and run your scripts in the Scratchpad, the Scratchpad is automatically saved as a notebook by the name default name `Scratchpad` in the Notebooks page. You can edit the name and save it with a new name by selecting the notebook and clicking **Edit**.
+
+## Use the Scratchpad to Run R Scripts
+To run R functions in an Oracle Machine Learning notebook, you must first connect to the R interpreter. This example shows how to:
+
+* Connect to the R interpreter to run R commands in a notebook.
+* Verify the connection to Oracle Autonomous Database, and
+* Load the ORE libraries
+
+1. To connect to the R interpreter, type the following directive at the beginning of the notebook paragraph, and press Enter:
+
+  ```
+  %r
+
+  ```
+
+2. To verify the database connection, type the following command and press Enter:
+
+  ```
+  ore.isconnected()
+
+  ```
+
+  ![scratchpad_r.png](images/ore_connected.png "scratchpad_r_connected.png")
+
+  Once your notebook is connected, the command returns TRUE, as shown in the screenshot here. The notebook is now connected to the R interpreter, and you are ready to run R commands in your notebook.
+3. To import R Libraries, run the following commands:
+
+  ```
+  library(ORE)
+  library(OREdplyr)
+  ```
+
+  ![load_r_packages.png](images/load_r_packages.png "load_r_packages.png")
+
+  Once the packages are loaded successfully, the list of ORE packages are displayed as shown in the screenshot here. Scroll down to view the entire list.
 
 ## Use the Scratchpad to Run SQL Statements
 
@@ -138,6 +174,6 @@ To run PL/SQL scripts:
 ## Acknowledgements
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, October 2021
+* **Last Updated By/Date**: Moitreyee Hazarika, January 2023
 
 See an issue?  Please open up a request [here](https://github.com/oracle/learning-library/issues).   Please include the workshop name and lab in your request.

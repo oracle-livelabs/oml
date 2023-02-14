@@ -34,7 +34,7 @@ To provision an Oracle Autonomous Database:
 
 	 Alternatively, you may click the left navigation pane on the upper left corner, and click **Autonomous Data Warehouse** under **Oracle Database**.
 
-	![Autonomous Data Warehouse option under Oracle Database](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-adw.png "Autonomous Data Warehouse option under Oracle Database")
+	![Autonomous Data Warehouse option under Oracle Database](images/database-adw.png)
 
 2. From the Oracle Cloud Infrastructure console, on the Oracle Autonomous Database page choose your region and select a compartment. Click **Create Autonomous Database**. This opens the Create Autonomous Database page.
 
@@ -72,7 +72,11 @@ To provision an Oracle Autonomous Database:
 
     ![License settings](images/create-adw-license.png)
 
-10. Click **Create Autonomous Database**. The Oracle Autonomous Data Warehouse instance starts provisioning. Once your Autonomous Database is created, the database details are listed with the status Available.
+10. Provide your email ID for any notifications and announcements, and click **Add Contact**. Then click **Create Autonomous Database**.
+
+	 ![Contact details](images/contact-details.png)
+
+	 The Oracle Autonomous Data Warehouse instance starts provisioning. Once your Autonomous Database is created, the database details are listed with the status Available.
 
 	  ![ADB details](images/adw-details.png)
 
@@ -86,9 +90,9 @@ An administrator creates a new user account and user credentials for Oracle Mach
 
 To create a user account:
 
-1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right pane under Autonomous Database, click **Autonomous Data Warehouse**.
+1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right, click **Autonomous Data Warehouse**.
 
-	![Oracle Autonomous Data Warehouse](images/adw.png)
+	![Autonomous Data Warehouse option under Oracle Database](images/database-adw.png)
 
 2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Click the Oracle Autonomous Database that you have provisioned.  
 
@@ -96,7 +100,7 @@ To create a user account:
 
 3. On the Autonomous Database details page, click **Database Actions**.
 
-	![Oracle Autonomous Data Warehouse](images/database_actions.png)
+	![Oracle Autonomous Data Warehouse](images/database-actions.png)
 
 4. The Oracle Database Actions Launchpad page opens in a separate tab. Scroll down to the Administration section and click **DATABASE USERS**.
 
@@ -216,4 +220,4 @@ This completes the task of creating the CUSTOMERS360 table.
 
 * **Author** - Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, July 2022
+* **Last Updated By/Date** - Moitreyee Hazarika, February 2023

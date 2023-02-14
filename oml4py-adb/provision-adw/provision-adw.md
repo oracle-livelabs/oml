@@ -4,7 +4,7 @@
 
 In just a few minutes, Autonomous Database lets you deploy a complete data warehousing platform that can scale to your requirements. You can also use its Database Actions interfaces to easily populate that warehouse from the data lake.
 
-This lab walks you through the steps to get started using the Oracle Autonomous Database on Oracle Cloud Interface (OCI). 
+This lab walks you through the steps to get started using the Oracle Autonomous Database on Oracle Cloud Interface (OCI).
 
 In this lab, you will provision a new Autonomous Data Warehouse (ADW) instance and prepare a new set of users that have the correct roles for using the Oracle Machine Learning components.
 
@@ -30,25 +30,23 @@ In this lab, you will:
 
 A compartment is a collection of cloud assets, like compute instances, load balancers, databases, and so on. By default, a root compartment was created for you when you created your tenancy (that is, when you registered for the trial account). It is possible to create everything in the root compartment, but Oracle recommends that you create sub-compartments to help manage your resources more efficiently.
 
-1. Click the three-line menu, which is on the top left of the OCI console. Scroll down till the bottom of the menu, click **Identity & Security -> Compartments**. 
+1. Click the Cloud menu (the three-lines) on the top left of the OCI console. Scroll down till the bottom of the menu and click **Identity & Security** on the left pane. Then click **Compartments** on the right pane.
 
   ![Click Identity & Security then Compartments.](images/click-identity-and-security-then-compartments.png " ")
- 
- Click the blue **Create Compartment** button to create a sub-compartment.
+
+2. Click **Create Compartment** to create a sub-compartment.
 
   ![Click the Create Compartment button.](images/click-create-compartment.png " ")
 
-2. Give the compartment a name and description. Be sure your root compartment appears as the parent compartment. Press the blue **Create Compartment** button.
+2. Provide a name and description for the compartment. Ensure that your root compartment appears as the parent compartment. Click **Create Compartment**.
 
   ![Fill in the data required like name and description of your new compartment and Click the Create Compartment button.](images/click-create-compartment-button.png " ")
 
-  Now, the compartment is created.  In the next task, you will create an Autonomous Database instance.
+  Now, the compartment is created and is listed on the page. In the next task, you will create an Autonomous Database instance.
 
 ## Task 2: Choose Autonomous Database from the Services Menu
 
-1. From the three-line menu, which is on the top left of the OCI console, click the navigation menu in the upper left to show top level navigation choices.
-   
-  Select **Oracle Database** and click **Autonomous Database**.
+1. Click the Cloud menu (the three lines) on the top left corner of the OCI console. Scroll down and click **Oracle Database** on the left pane. Then click **Autonomous Database** on the right pane.   
 
   ![From the main OCI menu, click the three-lines menu then select Oracle Database and finally Autonomous Database](./images/database-adw.png " ")
 
@@ -95,7 +93,7 @@ A compartment is a collection of cloud assets, like compute instances, load bala
 5. Choose a deployment type. Select the deployment type for your database from the choices:
 
     - __Shared Infrastructure__ - For this lab, choose __Shared Infrastructure__ as the deployment type.
- 
+
   ![Choose a deployment type Shared Infrastructure](./images/create-adb-deployment-type.png " ")
 
 6. Configure the database:
@@ -103,9 +101,9 @@ A compartment is a collection of cloud assets, like compute instances, load bala
     - __Always Free__ - Oracle Cloud Infrastructure's Always Free Autonomous Database is part of Oracle Cloud Infrastructure's Free Tier of services. You can provision up to two Always Free Autonomous Databases (with 1 OCPU and 20 GB of storage) in the home region of your tenancy.  For this Workshop, select **Always Free**.
     - __Choose database version__ - Select 19c as the database version.
     - __OCPU count__ - Number of CPUs for your service. If you have not selected an Always Free configuration (which comes with 1 OCPU), specify __1 CPU__.
-    - __Storage (TB)__ - Storage in terabytes. If you have not selected an Always Free configuration (which comes with 20 GB of free storage), select your storage capacity in terabytes. For this workshop, the default of __1 TB__ of storage is enough. 
+    - __Storage (TB)__ - Storage in terabytes. If you have not selected an Always Free configuration (which comes with 20 GB of free storage), select your storage capacity in terabytes. For this workshop, the default of __1 TB__ of storage is enough.
     - __Auto Scaling__ - Enables the system to automatically use up to three times more CPU and IO resources to meet workload demand. If you have not selected an Always Free configuration (which automatically disables this option), then enable it.
-  
+
     > **Note:** You cannot scale up/down an Always Free autonomous database, nor change its storage size.
 
     ![Choose the remaining parameters ideally Always Free toggle ON and 19c for the Database release](./images/create-adb-instance-config.png " ")
@@ -141,9 +139,9 @@ A compartment is a collection of cloud assets, like compute instances, load bala
 
     ![Database instance homepage in provisioning mode](./images/create-adb-provisioning.png " ")
 
-## Task 4: Access the Database Actions interface 
+## Task 4: Access the Database Actions interface
 
-The labs in this workshop assume that Oracle Machine Learning users named **`OMLUSER`** and **`OMLUSER2`** have been created and configured for signing into OML Notebooks, so we need to create them. 
+The labs in this workshop assume that Oracle Machine Learning users named **`OMLUSER`** and **`OMLUSER2`** have been created and configured for signing into OML Notebooks, so we need to create them.
 
 The user named **`OMLUSER2`** is needed for the appropriate demonstration of the permission grants to OML4Py Datastore and Script Repository from one user to another.
 
@@ -173,9 +171,9 @@ Now that you're in the SQL worksheet, you will run the code that will initialize
 
     ```
     <copy>
-    -- The following commands should be run before running the labs, 
-    -- since it creates the OML users required to 
-    -- sign-in to OML Notebooks 
+    -- The following commands should be run before running the labs,
+    -- since it creates the OML users required to
+    -- sign-in to OML Notebooks
 
     -- Click F5 to run all the scripts at once
 
@@ -224,4 +222,4 @@ See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-wa
 
 - **Author** - Marcos Arancibia, Senior Principal Product Manager, Machine Learning; Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, August 2022
+- **Last Updated By/Date** - Moitreyee Hazarika, February 2023

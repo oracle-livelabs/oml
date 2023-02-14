@@ -65,7 +65,7 @@ This lab assumes you have:
 
    In the syntax above, OML server URL is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from **Oracle Machine Learning RESTful Services** on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
 
-  ![Database Actions](images/database_actions.png)
+  ![Database Actions](images/database-actions.png)
 
    Scroll down the Database Actions page, and click **Oracle Machine Learning RESTful Services** under the Related Services section. The Oracle Machine Learning RESTful Services dialog opens.  
 
@@ -626,4 +626,4 @@ To learn more about how OML Services support ONNX format models, see resources l
 
 * **Author** - Suresh Rajan, Senior Manager, Oracle Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Suresh Rajan, July 2022
+* **Last Updated By/Date** - Moitreyee Hazarika, February 2023

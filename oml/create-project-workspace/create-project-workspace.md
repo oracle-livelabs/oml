@@ -24,38 +24,31 @@ Access to your Oracle Machine Learning Notebooks account
 
 An administrator creates a new user account and user credentials for Oracle Machine Learning in the User Management interface.
 
->**Note:** You must have the administrator role to access the Oracle Machine Learning User Management interface.
+> **Note:** You must have the administrator role to access the Oracle Machine Learning User Management interface.
 
 To create a user account:
 
-1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right pane under Autonomous Database, click **Autonomous Data Warehouse**.
+1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right, click **Autonomous Data Warehouse**.
 
-	![Oracle Autonomous Data Warehouse](images/adw.png)
+	![Autonomous Data Warehouse option under Oracle Database](images/database-adw.png)
 
-
-2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Click the Oracle Autonomous Database that you have provisioned.
+2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Click the Oracle Autonomous Database that you have provisioned.  
 
 	![Oracle Autonomous Data Warehouse](images/provisioned-adb.png)
-
 
 3. On the Autonomous Database details page, click **Database Actions**.
 
 	![Oracle Autonomous Data Warehouse](images/database-actions.png)
 
+4. The Oracle Database Actions Launchpad page opens in a separate tab. Scroll down to the Administration section and click **DATABASE USERS**.
 
-4. The Oracle Database Actions Launchpad page opens in a separate tab.
-
-	>**Note:** The credential to sign into Database Actions, is the Administration username and password for the Autonomous Database instance.
-
-	Scroll down to the Administration section and click **DATABASE USERS**.
 	![Oracle Autonomous Data Warehouse](images/admin-db-users.png)
-
 
 5. Click **Create User**. The Create User dialog opens.
 
 	![Oracle Autonomous Data Warehouse](images/create-users-db.png)
 
-6. On the Create User dialog, enter the following details and click **Create User**:
+6. On the Create User dialog, enter the following details and click **Create User**:	  
 
 	![Oracle Machine Learning User Administration Sign in page](images/create-user-dialog.png)
 
@@ -77,19 +70,18 @@ To create a user account:
 	Scroll down the page to view the user. The OMLUSER is listed along with all details. Click ![ellipse icon](images/ellipse.png) to edit, delete, or disable any of the privileges granted to the user.
 	![Oracle Autonomous Data Warehouse](images/view-user.png)
 
-
-This completes the task of creating an Oracle Machine Learning user.
+	This completes the task of creating a user.
 
 ## Sign into Oracle Machine Learning Notebooks
 
 A notebook is a web-based interface for data analysis, data discovery, data visualization, and collaboration. You create and run notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
 
-1. From the tab on your browser with your ADW instance, click **Database Actions**, then select **Development** on the left.
+1. On the Autonomous Database Details page of your ADW instance, click **Database Actions**.
 
-	![Development option in ADW Service Console](images/adw-development.png)
+	![Development option in ADW Service Console](images/database_actions.png)
 
 
-2. Click **Oracle Machine Learning Notebooks.**
+2. On the Database Actions page, under **Development** click **Oracle Machine Learning Notebooks.**
 
 	 ![Oracle Machine Learning Notebooks in ADW](images/oml-notebooks-dev.png)
 
@@ -193,13 +185,10 @@ To create a workspace:
 
 
 
-
-
-
 ## Acknowledgements
 
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, September 2022
+* **Last Updated By/Date**: Moitreyee Hazarika, February 2023
 
 See an issue?  Please open up a request [here](https://github.com/oracle/learning-library/issues).   Please include the workshop name and lab in your request.
