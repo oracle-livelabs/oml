@@ -77,6 +77,77 @@ To create a notebook based on a template:
 
      ![test-anomaly-detection.png](images/test-anomaly-detection.png "test-anomaly-detection.png")
 
+## Run your Notebook with Conda Interpreter
+
+Conda is an open-source package and environment management system that allows the use of environments containing third-party Python and R libraries. Oracle Machine Learning Notebooks provide the conda interpreter to install third-party Python and R libraries inside a notebook session.
+Third-party libraries installed in Oracle Machine Learning Notebooks can be used in:
+
+* Standard Python
+* Standard R
+* Oracle Machine Learning for Python embedded Python execution from the Python, SQL and REST APIs
+* Oracle Machine Learning for R embedded R execution from the R, SQL, and REST APIs
+
+This topic shows how to start working in the Conda environment:
+
+* Connect to the Conda interpreter
+* Download and activate the Conda environment
+* View the list of packages in the Conda environment
+* Run a Python function to import the Iris dataset, and use the seaborn package for visualization
+
+1. Type %conda at the beginning of the paragraph to connect to the Conda interpreter, and press Enter.
+
+    ```
+    %conda
+    ```
+
+2. Next, download and activate the Conda environment. Type:
+
+    ```
+    download sbenv
+    activate sbenv
+    ```
+    In this example, the Conda environment is downloaded and activated. The name of the Conda environment in this example is `sbenv`.
+    ![Download and Activate Conda environment.png](images/download-activate-conda.png "download-activate-conda.png")
+
+3. You can view all the packages that are present in the Conda environment. To view the list of packages, type `list`.
+
+    ![List Packages.png](images/list-packages.png "list-packages.png")
+
+
+4. Here's an example that demonstrates how to use the seaborn library package for visualization. Seaborn is a Python visualization library based on matplotlib. It provides a high-level interface for drawing attractive statistical graphics. This example
+
+* Imports Pandas and seaborn
+* Loads the Iris dataset
+* Plots the datapoints, that is, the three different species of the Iris flower - Setosa, Virginica, and Versicolor based on its dimensions. It creates a scatter plot
+
+Type:
+
+  ```
+    %python
+
+    def sb_plot():
+        import pandas as pd
+        import seaborn as sb
+        from matplotlib import pyplot as plt
+        df = sb.load_dataset('iris')
+        sb.set_style("ticks")
+        sb.pairplot(df,hue = 'species',diag_kind = "kde",kind = "scatter",palette = "husl")
+        plt.show()
+  ```
+  ![Seaborn commands.png](images/seaborn-commands.png "seaborn-commands.png")
+
+5. To run the function in a Python paragraph, type:
+
+    ```
+    %python
+    sb_plot()
+
+    ```
+
+    ![Scatter plot.png](images/seaborn-visualization.png "seaborn-visualization.png")
+
+
+
 ## Run Your Notebook with R Interpreter
 
 To run R functions in an Oracle Machine Learning notebook, you must first connect to the R interpreter.
@@ -258,6 +329,6 @@ To call the Markdown interpreter and generate static html from Markdown plain te
 
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, September 2022
+* **Last Updated By/Date**: Moitreyee Hazarika, January 2023
 
 See an issue?  Please open up a request [here](https://github.com/oracle/learning-library/issues).   Please include the workshop name and lab in your request.

@@ -48,6 +48,6 @@ Use these links to get more information about Oracle Machine Learning and Oracle
 
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM, Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, October 2021
+* **Last Updated By/Date**: Moitreyee Hazarika, February 2023
 
 See an issue?  Please open up a request [here](https://github.com/oracle/learning-library/issues). Please include the workshop name and lab in your request.
