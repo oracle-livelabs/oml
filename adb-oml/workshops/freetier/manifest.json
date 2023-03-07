@@ -5,7 +5,7 @@
       {
         "title": "Introduction",
         "description": "Introduction",
-        "filename": "../../intro/intro.md"
+        "filename": "../../../oml-fun-on-adb/introduction/introduction.md"
       },
       {
         "title": "Get Started",
@@ -13,7 +13,7 @@
         "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
       },
       {
-        "title": "Get started with Oracle Cloud Free Tier Setup",
+        "title": "Setup",
         "type": "freetier",
         "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
         "filename": "../../../oml-fun-on-adb/get-started-livelabs/get-started-livelabs.md"
