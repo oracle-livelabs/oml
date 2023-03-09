@@ -1,4 +1,4 @@
-# Detect anomalies with OML4SQL using one-class support vector machine (SVM)
+# Detect anomalies with OML4SQL with one-class support vector machine (SVM)
 
 ## Introduction
 
@@ -59,7 +59,7 @@ In this lab, you will:
 ## Task 3: Data Preparation
 
 1. It is recommended to have SQL Developer installed on your host machine so that you can interact with the data in a more friendly way. You need access to remote desktop with novnc link that you copied from of Resource Manager/Stacks/Stack Details/Application Information/Remote Desktop/copy, once you enter in the VM remote, you need open a Linux terminal and execute the command  ". setEnv" and wait for that start database service, If it asks you to replace the scripts in the terminal type A for all questions.
-To see the service name, open other Linux Terminal and execute lsnrctl status command.    
+To see the service name, open other Linux Terminal and execute lsnrctl status command.
 
    You can download here [SQL Developer Download](https://www.oracle.com/tools/downloads/sqldev-downloads.html).
 
