@@ -357,4 +357,3 @@ With this practice, we can conclude that the SVM algorithm is very useful to sol
 ## Acknowledgements
 * **Authors** - Adrian Castillo Mendoza, Milton Wan, Valentin Leonard Tabacaru, Rajeev Rumale.
 * **Last Updated By/Date** -  Adrian Castillo Mendoza, March 2023.
-
