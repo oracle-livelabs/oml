@@ -82,7 +82,7 @@ Notice how the small padlock closes in both options, which represents that you a
 
 6. Once the database connection is open and SQL Developer Worksheet is ready, execute this script to create the user oml4sqluser and grant privileges to work with OML4SQL API, and generate a copy of table CUST\_INSUR\_LTV.
 
-    ````
+    ```
     <copy>
     DROP USER oml4sqluser;
 
@@ -103,7 +103,7 @@ Notice how the small padlock closes in both options, which represents that you a
 	SELECT *
 	FROM OML_USER.CUST_INSUR_LTV;
     </copy>
-    ````
+    ```
 
 7. Create SQL Developer new database connection with oml4sqluser user to your Oracle 21c Pluggable Database, and test connectivity with password: oml4sqluser.
 
@@ -111,7 +111,7 @@ Notice how the small padlock closes in both options, which represents that you a
 
 8. Copy and execute this script with oml4sqluser:
 
-    ````
+    ```
     <copy>
 	BEGIN DBMS_DATA_MINING.DROP_MODEL('SVMO_CUST_Class_sample');
 	EXCEPTION WHEN OTHERS THEN NULL; END;
@@ -130,9 +130,9 @@ Notice how the small padlock closes in both options, which represents that you a
 	  setting_value VARCHAR2(4000));
 	set echo on
 
-	BEGIN        
+	BEGIN
 	  INSERT INTO svmo_cust_sample_settings (setting_name, setting_value) VALUES
-	  (dbms_data_mining.algo_name, dbms_data_mining.algo_support_vector_machines);  
+	  (dbms_data_mining.algo_name, dbms_data_mining.algo_support_vector_machines);
 	  INSERT INTO svmo_cust_sample_settings (setting_name, setting_value) VALUES
 	  (dbms_data_mining.prep_auto, dbms_data_mining.prep_auto_on);
 	END;
@@ -145,7 +145,7 @@ Notice how the small padlock closes in both options, which represents that you a
 
 	CREATE or REPLACE VIEW cust_data_one_class_pv AS SELECT /*+ parallel (4)*/ * FROM cust_data_one_class_v;
     </copy>
-    ````
+    ```
 
 9. Check that there are no errors in the output of the script.
 
@@ -165,7 +165,7 @@ Notice how the small padlock closes in both options, which represents that you a
 
   For more information about SVM in Oracle, check this link: [Support Vector Machine](https://docs.oracle.com/en/database/oracle/machine-learning/oml4sql/21/dmcon/support-vector-machine.html#GUID-FD5DF1FB-AAAA-4D4E-84A2-8F645F87C344).
 
-    ````
+    ```
     <copy>
 	BEGIN
 	  DBMS_DATA_MINING.CREATE_MODEL(
@@ -178,37 +178,37 @@ Notice how the small padlock closes in both options, which represents that you a
 	END;
 	/
     </copy>
-    ````
+    ```
 
 2. DISPLAY MODEL SETTINGS
 
-    ````
+    ```
     <copy>
 	SELECT setting_name, setting_value
 	  FROM user_mining_model_settings
 	 WHERE model_name = 'SVMO_CUST_CLASS_SAMPLE'
 	ORDER BY setting_name;
     </copy>
-    ````
+    ```
 
     ![settings-model](../oml4sql-anomaly-detection/images/settings-model.png)
 
 3. Review your model attributes. DISPLAY MODEL SIGNATURE
 
-    ````
+    ```
     <copy>
 	SELECT attribute_name, attribute_type
 	  FROM user_mining_model_attributes
 	 WHERE model_name = 'SVMO_CUST_CLASS_SAMPLE'
 	ORDER BY attribute_name;
     </copy>
-    ````
+    ```
 
     ![model-attributesl](../oml4sql-anomaly-detection/images/model-attributes.png)
 
 4. Review your model details. Model details are available only for SVM models with linear kernel.
 
-    ````
+    ```
     <copy>
 	WITH
 	mod_dtls AS (
@@ -225,19 +225,19 @@ Notice how the small padlock closes in both options, which represents that you a
 	  FROM model_details
 	 WHERE ROWNUM < 50;
     </copy>
-    ````
+    ```
 
     ![model-details](../oml4sql-anomaly-detection/images/model-details.png)
 
 5. Review your model views that are generated.
 
-    ````
+    ```
     <copy>
 	 SELECT view_name, view_type FROM user_mining_model_views
 	WHERE model_name='SVMO_CUST_CLASS_SAMPLE'
 	ORDER BY view_name;
     </copy>
-    ````
+    ```
 
     ![model-views](../oml4sql-anomaly-detection/images/model-views.png)
 
@@ -252,7 +252,7 @@ BUSINESS CASE 1
 
 * Find the top 5 outliers - customers that differ the most from  the rest of the population. Depending on the application, such  atypical customers can be removed from the data (data cleansing). Explain which attributes cause them to appear different.
 
-    ````
+    ```
     <copy>
 	set long 20000
 	col pd format a90
@@ -265,7 +265,7 @@ BUSINESS CASE 1
 	WHERE rnk <= 5
 	order by rnk;
     </copy>
-    ````
+    ```
 
 
     ![case-1](../oml4sql-anomaly-detection/images/case-1.png)
@@ -275,7 +275,7 @@ BUSINESS CASE 2
 * Find demographic characteristics of the **typical** BUY_INSURANCE=Yes members.
 These statistics will not be influenced by outliers and are likely to provide a more truthful picture of the population of interest than statistics computed on the entire group of insurance members. Statistics are computed on the original (non-transformed) data.
 
-    ````
+    ```
     <copy>
 	column SEX format a12
 	SELECT SEX, round(avg(age)) age,
@@ -286,7 +286,7 @@ These statistics will not be influenced by outliers and are likely to provide a 
 	GROUP BY SEX
 	ORDER BY SEX;
     </copy>
-    ````
+    ```
 
     ![case-2](../oml4sql-anomaly-detection/images/case-2.png)
 
@@ -297,7 +297,7 @@ BUSINESS CASE 3
 * Compute probability of a new/hypothetical customer being a typical BUY_INSURANCE=Yes.
 Necessary data preparation on the input attributes is performed automatically during model scoring since the model was build with auto data prep.
 
-    ````
+    ```
     <copy>
 	select ROUND(prob_typical,5)*100||'%' Probability_BUY
 	from
@@ -315,7 +315,7 @@ Necessary data preparation on the input attributes is performed automatically du
 								 ) prob_typical
 	from dual);
     </copy>
-    ````
+    ```
 
     ![case-3](../oml4sql-anomaly-detection/images/case-3.png)
 
@@ -327,7 +327,7 @@ Consider each type of marital status to be separate, so the most anomalous rows 
 Provide the top three attributes leading to the reason for the record being an anomaly.
 The partition by clause used in the analytic version of the prediction_probability function will lead to separate models being built and scored for each marital status.
 
-    ````
+    ```
     <copy>
     col MARITAL_STATUS format a30
     select cust_id, MARITAL_STATUS, rank_anom, anom_det FROM
@@ -343,7 +343,7 @@ The partition by clause used in the analytic version of the prediction_probabili
     ))
     where rank_anom < 3 order by 2, 3;
     </copy>
-    ````
+    ```
 
     ![case-4](../oml4sql-anomaly-detection/images/case-4.png)
 
@@ -356,4 +356,4 @@ With this practice, we can conclude that the SVM algorithm is very useful to sol
 
 ## Acknowledgements
 * **Authors** - Adrian Castillo Mendoza, Milton Wan, Valentin Leonard Tabacaru, Rajeev Rumale.
-* **Last Updated By/Date** -  Kamryn Vinson, April 2022.
+* **Last Updated By/Date** -  Adrian Castillo Mendoza, March 2023.
