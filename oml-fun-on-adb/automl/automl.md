@@ -34,7 +34,7 @@ This lab assumes you have:
 
 To access AutoML UI, you must sign into the Oracle Machine Learning User Interface, which also includes Oracle Machine Learning notebooks, on Autonomous Database:
 
-1. Sign into Oracle Machine Learning user interface.
+1. Sign into Oracle Machine Learning user interface (following Lab1, Task 1 instructions).
 
 2. On your Oracle Machine Learning home page, click **AutoML** in the Quick Actions section.
 
@@ -183,27 +183,27 @@ To deploy a model:
 
 	![Experiments page](images/open-customers-360.png)
 
-2. Scroll down to the Leader Board of the experiment, click on the **NB_CUSTOMER360** model row. Clicking on a model row enables all the Leader Board options - Deploy, Rename, Create Notebooks, and Metrics. Click **Deploy**. The Deploy Model dialog opens.
+3. Scroll down to the Leader Board of the experiment, click on the **NB_CUSTOMER360** model row. Clicking on a model row enables all the Leader Board options - Deploy, Rename, Create Notebooks, and Metrics. Click **Deploy**. The Deploy Model dialog opens.
 
 	![Deploy Model option in Leader Board](images/deploy-model-nb.png)
 
 	> **Note:** You can also deploy a model from the Models page. You can access the Models page from the home page and the left navigation menu.  
 
-3. In the Deploy Models dialog, enter the following details:
-4. In the **Name** field, the model name is displayed here by default. In this example, the name `NB_CUSTOMER360` is displayed. This is the name that you renamed in the previous step.
+4. In the Deploy Models dialog, enter the following details:
+-  In the **Name** field, the model name is displayed here by default. In this example, the name `NB_CUSTOMER360` is displayed. This is the name that you renamed in the previous step.
 	![Deploy Model dialog](images/deploy-model.png)
 
-5. In the **URI** field, enter **nb_cust360**. The URI must be alphanumeric, and the length must be max 200 characters.
+-  In the **URI** field, enter **nb_cust360**. The URI must be alphanumeric, and the length must be max 200 characters.
 
-6. In the **Version** field, enter **1.0**. The version must be in the format ``xx.xx`` where x is a number.
+-  In the **Version** field, enter **1.0**. The version must be in the format ``xx.xx`` where x is a number.
 
-7. In the **Namespace** field, enter **DEMO**. This is the name for the model namespace. You can specify any name here to create different namespaces.
+-  In the **Namespace** field, enter **DEMO**. This is the name for the model namespace. You can specify any name here to create different namespaces.
 
 	> **Note:** Namespace is case sensitive.
 
-8. Click **Shared** to allow users with access to the database schema to view and deploy the model.
+-  Click **Shared** to allow users with access to the database schema to view and deploy the model.
 
-9. Click **OK**. After a model is successfully deployed, a confirmation message is displayed stating that _The selected model has been deployed successfully_, as shown in the screenshot below. The deployed model is listed under Deployments.
+-  Click **OK**. After a model is successfully deployed, a confirmation message is displayed stating that _The selected model has been deployed successfully_, as shown in the screenshot below. The deployed model is listed under Deployments.
 
 	![Deploy Model option in Leader Board](images/model-deployed-message.png)
 
@@ -293,11 +293,11 @@ To view the generated notebook Customer 360:
 
 	![Run all](images/run-all.png)
 
-5. In the Run All confirmation dialog, click **OK**.  
+6. In the Run All confirmation dialog, click **OK**.  
 
 	![Run all](images/run-all-confirm.png)
 
-6. Scroll down to view all the paragraphs in the notebook:
+7. Scroll down to view all the paragraphs in the notebook:
 
 * The paragraph titled _Oracle Machine Learning AutoML UI - Experiment - Generated Notebook_ contains the experiment metadata.
 
@@ -326,4 +326,4 @@ This completes the task of creating a notebook based on a model and viewing the 
 
 * **Author** - Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, July 2022
+* **Last Updated By/Date** - Marcos Arancibia, March 2023

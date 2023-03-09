@@ -84,9 +84,9 @@ This completes the task of provisioning an Oracle Autonomous Database.
 
 ## Task 2: Create an Oracle Machine Learning user
 
-An administrator creates a new user account and user credentials for Oracle Machine Learning in the User Management interface.
+An administrator creates a new user account and user credentials for Oracle Machine Learning in the Database Users user management interface.
 
-> **Note:** You must have the administrator role to access the Oracle Machine Learning User Management interface.
+> **Note:** You must have the administrator role to access the Database Actions Database Users interface.
 
 To create a user account:
 
@@ -103,6 +103,8 @@ To create a user account:
 	![Oracle Autonomous Data Warehouse](images/database-actions.png)
 
 4. The Oracle Database Actions Launchpad page opens in a separate tab. Scroll down to the Administration section and click **DATABASE USERS**.
+   
+	> **Note:** You might be asked for a user and password at this point, depending on your browser. If asked, make sure to enter **ADMIN** and the password you gave the administrator user in Task 1, Step 7.
 
 	![Oracle Autonomous Data Warehouse](images/admin-db-users.png)
 
@@ -118,7 +120,7 @@ To create a user account:
 	* **Password:** Enter a password for this user.
 	* **Confirm Password:** Re-enter the password that you entered in the Password field.
 	* **Graph:** Select this option to enable graph for this user.
-	* **Web Access:** Select this option to allow web access to this user.
+	* **Web Access:** Select this option to allow Web and DB Actions access to this user.
 	* **OML:** Select this option to allow this user to access Oracle Machine Learning.
 	* **Quota of tablespace data:** Click on the drop-down list and select an option. For this lab, 1G is selected.
 	* **Password Expired:** Select this option if you want the user to reset the password.
@@ -140,9 +142,9 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 1. On your Oracle ADW instance, click **Database Actions**.
 
-	![Database Actions in ADW](images/database_actions.png)
+	![Database Actions in ADW](images/database-actions.png)
 
-	 To go to Database Actions page from the Database Users page, click **Database Actions** on the top left corner of the page, as shown in the screenshot below.
+	 If you had it already open in the Database Users section, you can go to Database Actions home page clicking in the **Database Actions** on the top left corner of the page, as shown in the screenshot below.
 
 	![Database Actions](images/db-users-db-actions.png)
 
@@ -220,4 +222,4 @@ This completes the task of creating the CUSTOMERS360 table.
 
 * **Author** - Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, February 2023
+* **Last Updated By/Date** - Marcos Arancibia, March 2023

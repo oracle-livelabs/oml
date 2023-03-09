@@ -41,7 +41,7 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 3. On your Oracle Autonomous Database instance page, click **Database Actions**. The Launch DB Actions dialog opens. Wait till the Database Actions opens.
 
-	![ADW Service Console](images/database_actions.png)
+	![ADW Service Console](images/database-actions.png)
 
 4. On the Database Actions page, go to the Development section and click **Oracle Machine Learning**. This opens the Oracle Machine Learning sign in page.
 
@@ -51,8 +51,7 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 	> **Note:** The credential is what you have defined while creating the Oracle Machine Learning user.
 
-
-	![Oracle Machine Learning UI Sign in page](images/oml-signin-page.png)
+	![Oracle Machine Learning UI Sign in page](images/omluser-signin.png)
 
 	This opens the Oracle Machine Learning home page.
 	![Notebooks option in OML homepage](images/homepage.png)
@@ -61,13 +60,17 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 <if type="livelabs">
 1. On your workshop page, click **Launch Workshop** under **My Reservations**.
 
-	![Launch Workshop](images/launch-workshop.png)
+   ![Launch Workshop](images/launch-workshop.png)
 
-2. On the Launch Oracle Machine Learning Fundamentals on Autonomous Database page, click  **OML Notebooks**.  This opens the Oracle Machine Learning sign in page.
+2. On the **Get Started - LiveLabs login** page, click **View Login Info** at the top left. 
 
-	![ADB in OCI](images/workshop-login.png)
+	![ADB in OCI](images/get-started-page-livelabs.png)
 
-3. Enter your user credentials and click **Sign in**. This opens the Oracle Machine Learning home page.
+3. In the panel that opens with the **Reservation Information**, click at the bottom of the panel on the **OML Notebooks** link. 
+
+	![ADB in OCI](images/livelabs-reservation-info.png)
+
+4. In the page that opens up, enter your user credentials and click **Sign in**. This opens the Oracle Machine Learning home page.
 
 	> **Note:** The username is `OMLUSER`, and password is `AAbbcc123456`.
 
@@ -98,13 +101,9 @@ To create a notebook:
 
 6. Click **OK**. Your notebook is created and it opens in the notebook editor.
 
-You can now use it to create a Markdown paragraph, SQL paragraph, and Python paragraph and do the following:
+	You can now use it to create a Markdown paragraph, SQL paragraph, and Python paragraph
 
-### Call the Markdown interpreter and generate static html from Markdown plain text
-
-To call the Markdown interpreter and generate static html from Markdown plain text:
-
-7. In the Test Notebook, type ``%md`` and press Enter.
+7. To call the Markdown interpreter and generate static html from Markdown plain text, in the Test Notebook, type ``%md`` and press Enter.
 
 	![Markdown tag](images/tag-markdown.png)
 
@@ -478,4 +477,4 @@ This completes the task of creating a job.
 
 * **Author** -  Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -   Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, February 2023
+* **Last Updated By/Date** - Marcos Arancibia, March 2023
