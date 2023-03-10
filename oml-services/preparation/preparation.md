@@ -32,7 +32,6 @@ Estimated Lab Time: 15 minutes
 
 * The Database Actions launchpad page is now open and connected by default with the ADMIN user. Here we have multiple tools available to easily manage and use the database, develop new applications or REST modules, or manage data inside the database.
 In the Database Actions launchpad scroll to the Administration section and click **DATABASE USERS**.
-
 ![ADB db users](images/dbactions-database-users.jpg)
 
 * In the User Management page, we see ADMIN as the current user and other predefined users.
@@ -41,14 +40,13 @@ Click on the **+ Create User** button on the right side to create another user.
 
 * The Create User page appears, please enter the following:
 
-  - Username: **OMLUSER**;
-  - Password: Chose a password. Throughout the workshop we are using **Welcome12345** as a password for OMLUSER;
-  - Confirm Password: **Retype the password**;
-  - Quota on tablespace DATA: **UNLIMITED**
-  - Check: **OML**
+    - Username: **OMLUSER**;
+    - Password: Chose a password. Throughout the workshop we are using **Welcome12345** as a password for OMLUSER;
+    - Confirm Password: **Retype the password**;
+    - Quota on tablespace DATA: **UNLIMITED**
+    - Check: **OML**
 
-
-Click Create User.
+* Click Create User.
 ![ADB db users create](images/database-users-create.jpg)
 
 
