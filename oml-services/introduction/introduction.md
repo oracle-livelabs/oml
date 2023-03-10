@@ -30,7 +30,7 @@ Estimated Time: 1 hour
 
 You may now [proceed to the next lab](#next).
 
-### Acknowledgements
+## Acknowledgements
 * **Authors** -  Andrei Manoliu, Milton Wan
 * **Contributors** - Rajeev Rumale, Mark Hornick, Sherry LaMonica
 * **Last Updated By/Date** -  Andrei Manoliu, December 2021
