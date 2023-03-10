@@ -50,7 +50,7 @@ Estimated Time: 15 minutes
   Use the following URL structure to access the REST endpoints:
 
   ````
-  https://<oml-cloud-service-location-url>.oraclecloudapps.com
+  https://\<oml-cloud-service-location-url\>.oraclecloudapps.com
   ````
 
   Where:

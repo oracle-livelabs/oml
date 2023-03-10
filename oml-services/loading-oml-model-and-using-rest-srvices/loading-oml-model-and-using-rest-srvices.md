@@ -17,7 +17,7 @@ We are going to run the next steps:
 * OML user created in Autonomous database
 * ``DTModel.mod`` on the VM
 
-##  
+##   
 
 ## Task 1: Store the model in the OML Services repository
 
