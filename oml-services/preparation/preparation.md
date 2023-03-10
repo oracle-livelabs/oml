@@ -27,31 +27,35 @@ Estimated Lab Time: 15 minutes
 * Click on the target Autonomous Database instance
 ![ADB-instance](images/adb-listing.jpg)
 
-* In the Autonomous Database instance, click on the **Tools** tab and click on the **Open Oracle ML User Administration**
-![ADB-instance-home](images/adb-homepage-tools.jpg)
+* In the Autonomous Database instance detail page, click on the **Database Actions** button.
+![ADB-instance-tools](images/adb-homepage-dbactions.jpg)
 
-* In the Oracle Machine Learning Database Administrator credentials page, enter the username: **ADMIN** and password.
-![ADB-oml-admin](images/ml-admin-login.jpg)
+* The Database Actions launchpad page is now open and connected by default with the ADMIN user. Here we have multiple tools available to easily manage and use the database, develop new applications or REST modules, or manage data inside the database.
+In the Database Actions launchpad scroll to the Administration section and click **DATABASE USERS**.
+.
+![ADB-db-users](images/dbactions-database-users.jpg)
 
-* In the Machine Learning User Administration, we see only the ADMIN user with the System Administrator role. Click on the **Create** button to create another user.
-![ADB-oml-admin](images/ml-list-users.jpg)
+* In the User Management page, we see ADMIN as the current user and other predefined users.
+Click on the **+ Create User** button on the right side to create another user.
+![ADB-db-users-list](images/database-users-list.jpg)
 
-* In the Create User page, please enter the following:
+* The Create User page appears, please enter the following:
 
-- Username: **OMLUSER**;
-- Email Address: **An email address**;
-- **Un-check**: Generate password and email the account details to user;
-- Password: Chose a password. Throughout the workshop we are using **Welcome12345** as a password for OMLUSER;
-- Confirm Password: **Retype the password**;
+  - Username: **OMLUSER**;
+  - Password: Chose a password. Throughout the workshop we are using **Welcome12345** as a password for OMLUSER;
+  - Confirm Password: **Retype the password**;
+  - Quota on tablespace DATA: **UNLIMITED**
+  - Check: **OML**
 
 
-Click Create.
-![ADB-oml-user](images/ml-create-user.jpg)
+Click Create User.
+![ADB-db-users-create](images/database-users-create.jpg)
 
-* Now, we have a new user named OMLUSER available.
-![ADB-oml-user](images/ml-list-users-after.jpg)
 
-  OMLUSER is also a database user, and for the moment, he doesn't have access to our data. The next step is to load our data in the OMLUSER schema.
+* We now have a new user named OMLUSER available.
+![ADB-db-users-list](images/database-users-list-after.jpg)
+
+ The next step is to load our data in the OMLUSER schema.
 
 
 
@@ -60,8 +64,7 @@ Click Create.
 * In the Autonomous Database instance detail page, click on the **Database Actions** button.
 ![ADB-instance-tools](images/adb-homepage-dbactions.jpg)
 
-* The Database Actions launchpad page is now open and connected by default with the ADMIN user. Here we have multiple tools available to easily manage and use the database, develop new applications or REST modules, or manage data inside the database.
-We will choose **SQL** option in the Development category.
+* We will choose **SQL** option in the Development category.
 ![ADB-data-load](images/dbactions-homepage-sql.jpg)
 
 
