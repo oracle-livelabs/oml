@@ -1,15 +1,14 @@
 # Oracle® Cloud Collaborate in Oracle Machine Learning Notebooks
-## Before You Begin
+## Introduction
 
 This lab shows you how to two or more users can collaborate and share SQL notebooks with other Oracle Machine Learning Notebooks users.
 
-This lab takes approximately 15 minutes to complete.
-
-### Background
 A notebook is a web-based interface for data visualization, machine learning, and collaboration.
 
+### Estimated Time
+This lab takes approximately 15 minutes to complete.
 
-### What Do You Need?
+### Prerequisites
 
 * Access to your account in Oracle Autonomous Database
 * Provide workspace permission to users with whom you want to collaborate
@@ -17,7 +16,8 @@ A notebook is a web-based interface for data visualization, machine learning, an
 * A notebook created in your OML account
 
 
-## Collaborate by Granting Access to Projects of Another User
+
+## Task 1: Collaborate by Granting Access to Projects of Another User
 
 You can collaborate with other users in Oracle Machine Learning Notebooks by granting permissions to access your workspace. Your workspace contains your projects, and the projects contain notebooks. Oracle Machine Learning Notebooks allows three types of permissions. By granting different types of permissions such as Manager, Developer, and Viewer, you can allow other user to view your workspace and perform different tasks in your projects and notebooks such as edit, create, update, delete, run, view notebooks and so on.
 
@@ -157,7 +157,7 @@ Note the date and time .
 
     ![user1_views_sales.png](images/user1_views_sales.png "user1_views_sales.png")
 
-## Collaborate by Using the Export Option
+## Task 2: Collaborate by Using the Export Option
 
 You can export a notebook as a `.json` (JavaScript Object Notation) file, and later import it in to the same or a different environment.
 
@@ -170,7 +170,7 @@ You can export a notebook as a `.json` (JavaScript Object Notation) file, and la
 
 3. The Save as Dialog box opens. Navigate to the location in your system where you want to save the notebook. The notebook is saved in your local folder as a `.json` file.
 
-## Collaborate by Using Oracle Machine Learning Templates
+## Task 3: Collaborate by Using Oracle Machine Learning Templates
 
 You can share a notebook by saving an existing notebook as a template in My Library or in Shared location in Oracle Machine Learning Notebook. To save a notebook as a template:
 
@@ -190,10 +190,9 @@ of the notebook. Select **Shared** if you want to save and share this notebook. 
 
      ![templates.png](images/templates.png "templates.png")
 
+You may now **proceed to the next lab.**
 
 ## Acknowledgements
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, September 2022
-
-See an issue?  Please open up a request [here](https://github.com/oracle/learning-library/issues).   Please include the workshop name and lab in your request.
+* **Last Updated By/Date**: Moitreyee Hazarika, March 2023

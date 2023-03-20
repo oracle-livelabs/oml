@@ -1,9 +1,11 @@
 # Oracle® Cloud Create Projects and Workspaces in Oracle Machine Learning Notebooks
-## Before You Begin
+## Introduction
 
 This lab walks you through the steps to create a project and a workspace in Oracle Machine Learning Notebooks.
 
 >**Note:** The initial workspaces and the default project are created by the Oracle Machine Learning service automatically when you log in to Oracle Machine Learning Notebooks for the first time. The term default applies to the last project that you work on, and it is stored in the browser cache. If you clear the cache, then there would be no default project selected. Then you must select a project to work with notebooks.
+
+A project is a container for storing your notebooks and other objects such as dashboards and so on. A workspace is a virtual space where your projects reside, and multiple users with the appropriate permission type can work on different projects. While you may own many projects, other workspaces and projects may be shared with you.
 
 This lab explains the steps to
 
@@ -11,16 +13,15 @@ This lab explains the steps to
 * Sign into Oracle Machine Learning user interface
 * Create your own project, and optionally your workspace.
 
+### Estimated Time:
 This lab takes approximately 10 minutes to complete.
 
-### Background
-A project is a container for storing your notebooks and other objects such as dashboards and so on. A workspace is a virtual space where your projects reside, and multiple users with the appropriate permission type can work on different projects. While you may own many projects, other workspaces and projects may be shared with you.
-
-### What Do You Need?
+### Prerequisites
 
 Access to your Oracle Machine Learning Notebooks account
 
-## Create an Oracle Machine Learning user
+
+## Task 1: Create an Oracle Machine Learning user
 
 An administrator creates a new user account and user credentials for Oracle Machine Learning in the User Management interface.
 
@@ -72,7 +73,7 @@ To create a user account:
 
 	This completes the task of creating a user.
 
-## Sign into Oracle Machine Learning Notebooks
+## Task 2: Sign into Oracle Machine Learning Notebooks
 
 A notebook is a web-based interface for data analysis, data discovery, data visualization, and collaboration. You create and run notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
 
@@ -99,7 +100,7 @@ This completes the task of signing into Oracle Machine Learning user interface.
 
 
 
-## Create Project in Oracle Machine Learning Notebooks
+## Task 3: Create Project in Oracle Machine Learning Notebooks
 
 A project is a container for your notebooks, and a workspace is a container for your projects. While you may own many projects, other workspaces and projects may be shared with you.
 The initial workspace and the default project is created by the Oracle Machine Learning service automatically when you log in to Oracle Machine Learning for the first time. To create a new project:
@@ -131,7 +132,7 @@ The initial workspace and the default project is created by the Oracle Machine L
 3. Click **OK**. This completes the task of creating a project and assigning it to a workspace. In this example, the assigned workspace is `USER1 Workspace`.
 
 
-## Create Workspace in Oracle Machine Learning Notebooks
+## Task 4: Create Workspace in Oracle Machine Learning Notebooks
 
 You can create and manage new projects and workspaces, provide access to your workspace, manage permissions for users, and edit and delete workspace.
 The Workspaces page comprises two sections, one for workspaces and the other for projects.
@@ -182,13 +183,11 @@ To create a workspace:
 
 9. To delete a workspace, select the workspace you want to delete on the Manage Workspace page and click **Delete.** This deletes the selected workspace along with all the projects in it.
 
-
+You may now **proceed to the next lab.**
 
 
 ## Acknowledgements
 
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, February 2023
-
-See an issue?  Please open up a request [here](https://github.com/oracle/learning-library/issues).   Please include the workshop name and lab in your request.
+* **Last Updated By/Date**: Moitreyee Hazarika, March 2023

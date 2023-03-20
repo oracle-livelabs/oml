@@ -1,22 +1,23 @@
 # Oracle® Cloud Create and Run Notebooks in Oracle Machine Learning
-## Before You Begin
+## Introduction
 
 This lab shows you how to create a notebook and run it in Oracle Machine Learning Notebooks.
 
-This lab takes approximately 10 minutes to complete.
-
-### Background
 Oracle Machine Learning Notebooks is a web-based interface for data analysis, data discovery, and data visualization. Whenever a notebook is created, it must be defined with a specific interpreter binding specifications. The notebook contains an internal list of bindings that determines the order of the interpreter bindings.
 
 A notebook comprises paragraphs which is a notebook component where you can write and run SQL statements, PL/SQL scripts, run R and Python commands. A paragraph has an input section and an output section. In the input section, specify the interpreter to run along with the text. This information is sent to the interpreter to be run. In the output section, the results of the interpreter are provided.
 
-### What Do You Need?
+### Estimated Time
+This lab takes approximately 10 minutes to complete.
+
+### Prerequisites
 
 * Access to your Oracle Machine Learning Notebooks account
 * A project created in your Oracle Machine Learning Notebooks account, where the notebook will reside
 
 
-## Create Your Notebook
+
+## Task 1: Create Your Notebook
 
 To create a notebook:
 
@@ -45,7 +46,7 @@ To create a notebook:
 
 7. Click **Back** to return to the Notebooks page, and to save the changes in the notebook.
 
-## Create Your Notebook From Examples Templates
+## Task 2: Create Your Notebook From Examples Templates
 
 To create a notebook based on a template:
 
@@ -77,7 +78,7 @@ To create a notebook based on a template:
 
      ![test-anomaly-detection.png](images/test-anomaly-detection.png "test-anomaly-detection.png")
 
-## Run your Notebook with Conda Interpreter
+## Task 3: Run your Notebook with Conda Interpreter
 
 Conda is an open-source package and environment management system that allows the use of environments containing third-party Python and R libraries. Oracle Machine Learning Notebooks provide the conda interpreter to install third-party Python and R libraries inside a notebook session.
 Third-party libraries installed in Oracle Machine Learning Notebooks can be used in:
@@ -97,14 +98,18 @@ This topic shows how to start working in the Conda environment:
 1. Type %conda at the beginning of the paragraph to connect to the Conda interpreter, and press Enter.
 
     ```
+    <copy>
     %conda
+    </copy>
     ```
 
 2. Next, download and activate the Conda environment. Type:
 
     ```
+    <copy>
     download sbenv
     activate sbenv
+    </copy>
     ```
     In this example, the Conda environment is downloaded and activated. The name of the Conda environment in this example is `sbenv`.
     ![Download and Activate Conda environment.png](images/download-activate-conda.png "download-activate-conda.png")
@@ -123,6 +128,7 @@ This topic shows how to start working in the Conda environment:
 Type:
 
   ```
+  <copy>
     %python
 
     def sb_plot():
@@ -133,22 +139,24 @@ Type:
         sb.set_style("ticks")
         sb.pairplot(df,hue = 'species',diag_kind = "kde",kind = "scatter",palette = "husl")
         plt.show()
+  </copy>      
   ```
   ![Seaborn commands.png](images/seaborn-commands.png "seaborn-commands.png")
 
 5. To run the function in a Python paragraph, type:
 
     ```
+    <copy>
     %python
     sb_plot()
-
+    </copy>
     ```
 
     ![Scatter plot.png](images/seaborn-visualization.png "seaborn-visualization.png")
 
 
 
-## Run Your Notebook with R Interpreter
+## Task 4: Run Your Notebook with R Interpreter
 
 To run R functions in an Oracle Machine Learning notebook, you must first connect to the R interpreter.
 An Oracle Machine Learning notebook supports multiple languages. For this, you must create a notebook with some paragraphs to run SQL queries, and other paragraphs to run R and Python scripts. To run a notebook in different scripting languages, you must first connect the notebook paragraphs with the respective interpreters such as R, Python, or SQL. This example shows how to:
@@ -189,7 +197,7 @@ An Oracle Machine Learning notebook supports multiple languages. For this, you m
   Once the packages are loaded successfully, the list of ORE packages are displayed as shown in the screenshot here. Scroll down to view the entire list.
 
 
-## Run Your Notebook with Python Interpreter
+## Task 5: Run Your Notebook with Python Interpreter
 
 Oracle Machine Learning for Python (OML4Py) enables you to run Python commands and scripts for data transformations and for statistical, machine learning, and graphical analysis on data accessible as tables and views.  
 
@@ -259,7 +267,7 @@ This example assumes that you have a notebook called Py Note notebook created. T
 
 7. Click **Back** to return to the Notebooks page.
 
-## Run Your Notebook with SQL and PL/SQL Interpreter
+## Task 6: Run Your Notebook with SQL and PL/SQL Interpreter
 
 To display and visualize data using SQL in a notebook paragraph, that data must be fetched from the database.
 
@@ -286,14 +294,14 @@ To run a notebook:
    You can visualize the data by clicking the respective icons for each graphical representation, as shown here:
 
       * Click the histogram icon <img src="./img/histogram.png" alt="histogram icon"> to visualize your data in a histogram.
-      * Click the pie chart icon <img src="./img/pie_chart.png" alt="pie chart icon"> to visualize your data in a pie chart.
-      * Click the cumulative gain chart icon <img src="./img/cumulative_gain_chart.png" alt="cumulative_gain_chart icon"> to visualize your data in a cumulative gain chart.
+      * Click the pie chart icon <img src="./img/pie-chart.png" alt="pie chart icon"> to visualize your data in a pie chart.
+      * Click the cumulative gain chart icon <img src="./img/cumulative-gain-chart.png" alt="cumulative_gain_chart icon"> to visualize your data in a cumulative gain chart.
       * Click the line diagram icon <img src="./img/line_diagram.png" alt="line_diagram icon"> to visualize your data in a line diagram.
       * Click the scatter plot icon <img src="./img/scatter_plot_icon.png" alt="scatter_plot icon"> to visualize your data in a scatter plot.
 
 4. Click **Back** to return to the Notebooks page.
 
-## Run your Notebook to generate static html from Markdown plain text
+## Task 7: Run your Notebook to generate static html from Markdown plain text
 
 To call the Markdown interpreter and generate static html from Markdown plain text:
 
@@ -321,7 +329,7 @@ To call the Markdown interpreter and generate static html from Markdown plain te
 	![Markdown tags for headings](images/md-heading-tags.png "md-heading-tags.png")
 
 
-
+You may now **proceed to the next lab.**
 
 
 
@@ -329,6 +337,4 @@ To call the Markdown interpreter and generate static html from Markdown plain te
 
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, January 2023
-
-See an issue?  Please open up a request [here](https://github.com/oracle/learning-library/issues).   Please include the workshop name and lab in your request.
+* **Last Updated By/Date**: Moitreyee Hazarika, March 2023
