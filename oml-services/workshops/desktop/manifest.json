@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "Oracle Machine Learning REST Services Workshop",
+  "workshoptitle": "Start your ML project with OML Services",
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
     {
@@ -8,14 +8,14 @@
       "filename": "./../../introduction/introduction.md"
     },
     {
-    "title": "Lab 1: Understand Use Case",
-    "description": "Understand the Customer Insurance dataset used in the lab excercises.",
-    "filename": "./../../../use-case/use-case.md"
-    },
-    {
     "title": "Lab 2: Get Started with noVNC Remote Desktop",
     "description": "Using noVNC Remote Desktop",
     "filename": "https://oracle-livelabs.github.io/common/labs/remote-desktop/using-novnc-remote-desktop.md"
+    },
+    {
+    "title": "Lab 1: Understand Use Case",
+    "description": "Understand the Customer Insurance dataset used in the lab excercises.",
+    "filename": "./../../../use-case/use-case.md"
     },
     {
     "title": "Lab 3: Load and Prepare Data",

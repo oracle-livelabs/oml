@@ -2,40 +2,38 @@
 
 ## About this Workshop
 
-In this workshop, you will explore how to pick a good wine for under $30 using Oracle Autonomous Database, Oracle Machine Learning and the Oracle Analytics Cloud with a simple use case.
+In this workshop, you will explore how to pick a good wine for under $30 using Oracle Autonomous Database, Oracle Machine Learning, and Oracle Analytics Cloud with a simple use case.
 
 Estimated Lab Time: 90 minutes
 
 ### About Product/Technology
 
-**Oracle Machine Learning** extends Oracle Database and enables users to build “AI” applications and analytical dashboards. OML delivers powerful in-database machine learning algorithms, automated ML functionality via SQL APIs and integration with open source Python and R.
+Oracle Machine Learning (OML) extends Oracle Database and Autonomous Database and enables users to build machine learning-enhanced applications and dashboards. OML delivers powerful in-database machine learning algorithms via SQL, Python, and R APIs, and broader integration with open-source Python and R. In this workshop, you will build and apply an in-database ML model inside your Oracle Autonomous Database instance and visualize the data using Oracle Analytics Cloud.
 
-![](./images/OML.png)
+![](./images/oml-circle.png =50%x*)
 
-To select a good inexpensive wine, you will:
-- Use the Oracle Machine Learning Notebook to:
-    - Understand the Business Problem
-    - Explore Data
-    - Identify Key Attributes
-    - Build and Test Predictive Machine Learning Models
-    - Apply Machine Learning Models for Predictions
-- Further investigate insights and predictions using Oracle Analytics Cloud, Interactive analytics, charts and more.
+Use Oracle Machine Learning Notebooks to:
+- Apply Machine Learning models for predictions
+- Understand the business problem
+- Explore data
+- Identify key attributes
+- Build and test predictive machine learning models
+- Apply machine learning models to make predictions
+Further investigate insights and predictions using Oracle Analytics Cloud, Interactive analytics, charts, and more.
 
-![](./images/OML-problem.png)
+![](./images/crisp-dm-process-diagram-dark.png)
 
 ### Workshop Scenario
 
-Let's take a scenario where we are invited to a party and want to bring something to contribute. A bottle of wine is always a good option. But which one? There are so many! And we don't want to break the bank for our party gift. Let's try to use the Autonomous Database, Oracle Machine Learning and Oracle Analytics Cloud to find a likely tasty and likely to be rated greater than 90 Points (GT\_90\_Points) adult beverage that is also affordable (Under $30).
+Let's take a scenario where we are invited to a party and want to bring something to contribute. A bottle of wine is always a good option. But which one? There are so many! And we don't want to break the bank for our party gift. Let's try to use the Autonomous Database, Oracle Machine Learning, and Oracle Analytics Cloud to find a likely tasty and likely to be rated greater than 90 Points (GT\_90\_Points) adult beverage that is also affordable (Under $30).
 
-Note:  Data comes from Kaggle WineReviews130K data = 130k wine reviews with variety, location, winery, price, etc. Points was binned to GT\_90\_Points and LT\_90\_Points  [https://www.kaggle.com/zynicide/wine-reviews](https://www.kaggle.com/zynicide/wine-reviews)
-
-Using Wine Reviews data from Kaggle, we build, evaluate and apply Oracle Machine Learning models using random forests and support vector machine classification techniques that identify likely good (GT\_90\_Points) bottles of wine. This demo highlights OML's text mining capabilities and its tight integration with Oracle Analytics Cloud for interactively explore OML's insights and predictions.
+We build, evaluate and apply Oracle Machine Learning models using random forests and support vector machine classification techniques that identify likely good (GT\_90\_Points) bottles of wine. This demo highlights OML's text mining capabilities and its tight integration with Oracle Analytics Cloud for interactively exploring insights and predictions.
 
 ### Objectives
 
 In this lab, you will:
 * Provision an Oracle Autonomous Database Instance
-* Run a Machine Learning Notebook
+* Run a notebook in OML Notebooks
 * Provision an Oracle Analytics Cloud Instance
 * Visualize the Data
 

@@ -22,7 +22,7 @@ Estimated Time: 1 hour
 * Oracle Cloud Infrastructure (OCI) account
 * Autonomous Database provisioned in Oracle Cloud
 
-## Learn More
+### Learn More
 
 * [REST API for Oracle Machine Learning Services](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/index.html)
 * [Oracle Machine Learning for Python](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/index.html)

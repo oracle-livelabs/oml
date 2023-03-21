@@ -35,10 +35,10 @@ In this lab, you will:
 
 This lab assumes you have:
 * OCI Cloud Shell, which has cURL installed by default. If you are using the Workshops tenancy, you get OCI Cloud Shell as part of the reservation. However, if you are in your own OCI tenancy or using a free trial account, ensure you have OCI Cloud Shell or install cURL for your operating system to run the OML Services commands.
-* an Autonomous Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
+* An Autonomous Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
     * Your OML user name and password
     * OML server URL
-* completed all previous labs successfully.
+* Completed all previous labs successfully.
 
 ## Task 1: Authenticate Your User Account with Your Autonomous Database Instance to Use OML Services
 
@@ -88,9 +88,14 @@ This lab assumes you have:
 
      * OMLUSER is your OML user name.
      * AAbbcc123456 is your OML password.
-     * omlserver url is the URL that you copied from the ADB console, without the /omlusers/ segment in it. An example of omlserver URL is https://aabbcc123456xyz-db2.adb.us-ashburn-1.oraclecloudapps.com. In this URL ``aabbcc123456xyz`` is the tenancy ID, ``db2`` is the database name and ``adb.us-ashburn-1.oraclecloudapps.com`` is the region name.
+     * omlserver url is the URL that you copied from the ADB console, without the /omlusers/ segment in it. 
+     
+   An example of omlserver URL is https://aabbcc123456xyz-omllabs.adb.us-ashburn-1.oraclecloudapps.com. In this URL:
+     * `aabbcc123456xyz` is the tenancy ID (not to be confused with the very long tenancy OCID)
+     * `omllabs` is the database name, and
+     * `adb.us-ashburn-1.oraclecloudapps.com` is the region name.
 
-   Run the following command to obtain an authentication token using the variables set above and save the token string to the variable ``token``.
+   Run the following command to obtain an authentication token using the variables set above and save the token string to the variable `token`.
 
     ```
     <copy>export token=$(curl -X POST -H 'Content-Type: application/json'  -d '{"grant_type":"password", "username":"'${oml_username}'",  "password":"'${oml_password}'"}' "${omlserver}/omlusers/api/oauth2/v1/token" | grep -o -P '(?<="accessToken":").*(?=","expiresIn)' )
@@ -155,7 +160,7 @@ This lab assumes you have:
 
 1. View the content of OML Services REST APIs. You can return the API content in a readable format by using the Linux utility jq.  
 
-    > **Note:** If you are using OCI Cloud Shell, you don't need to install the jq utility as OCI Cloud Shell comes with jq pre-installed. If you are using your own tenancy or a trial account and if you are not using OCI Cloud Shell, you can check if jq is installed by running the command rpm -qa jq. If this command returns an empty value, jq is not installed. In that case, install the jq utility by running the following command.
+    > **Note:** If you are using OCI Cloud Shell, you don't need to install the jq utility as OCI Cloud Shell comes with jq pre-installed. If you are using your own tenancy or a trial account and if you are not using OCI Cloud Shell, you can check if jq is installed on Linux by running the command rpm -qa jq. If this command returns an empty value, jq is not installed. In that case, install the jq utility by running the following command.
 
 
     ```
@@ -203,7 +208,7 @@ This lab assumes you have:
        ...
 
     ```
-2.  Get a list of saved models. For this step to return results, you need to have models deployed in your OML user account. If you have completed Lab 4, your account should include deployed models. Refer back to Lab 4 Using OML AutoML UI  to know how to quickly create and save a  model.
+2.  Get a list of saved models. For this step to return results, you need to have models deployed in your OML user account. If you have completed Lab 5, your account should include deployed models. Refer back to Lab 5 Using OML AutoML UI  to know how to quickly create and save a model.
 
     ```
     <copy>curl -X GET --header "Authorization: Bearer ${token}" "${omlserver}/omlmod/v1/models" | jq</copy>
@@ -224,18 +229,18 @@ This lab assumes you have:
           "links": [
             {
               "rel": "self",
-              "href": "https://aabbcc123456xyz-db2.adb.us-ashburn-1.oraclecloudapps.com/omlmod/v1/models/25e9bd6a-a8be-48af-8657-ee66c9201157"
+              "href": "https://aabbcc123456xyz-omllabs.adb.us-ashburn-1.oraclecloudapps.com/omlmod/v1/models/25e9bd6a-a8be-48af-8657-ee66c9201157"
             }
           ],
           "namespace": "DEMO",
           "shared": true,
-          "storedOn": "2022-02-07T11:17:00.871Z"
+          "storedOn": "XXXX-XX-XXT11:17:00.871Z"
         }
       ],
       "links": [
         {
           "rel": "self",
-          "href": "https://aabbcc123456xyz-db2.adb.us-ashburn-1.oraclecloudapps.com/omlmod/v1/models"
+          "href": "https://aabbcc123456xyz-omllabs.adb.us-ashburn-1.oraclecloudapps.com/omlmod/v1/models"
         }
       ]
     }
@@ -263,18 +268,18 @@ This lab assumes you have:
           "links": [
             {
               "rel": "self",
-              "href": "https://aabbcc123456xyz-db2.adb.us-ashburn-1.oraclecloudapps.com/omlmod/v1/models/25e9bd6a-a8be-48af-8657-ee66c9201157"
+              "href": "https://aabbcc123456xyz-omllabs.adb.us-ashburn-1.oraclecloudapps.com/omlmod/v1/models/25e9bd6a-a8be-48af-8657-ee66c9201157"
             }
           ],
           "namespace": "DEMO",
           "shared": true,
-          "storedOn": "2022-02-07T11:17:00.871Z"
+          "storedOn": "XXXX-XX-XXT11:17:00.871Z"
         }
       ],
       "links": [
         {
           "rel": "self",
-          "href": "https://aabbcc123456xyz-db2.adb.us-ashburn-1.oraclecloudapps.com/omlmod/v1/models"
+          "href": "https://aabbcc123456xyz-omllabs.adb.us-ashburn-1.oraclecloudapps.com/omlmod/v1/models"
         }
       ]
     }
@@ -305,18 +310,18 @@ This lab assumes you have:
           "links": [
             {
               "rel": "self",
-              "href": "https://aabbcc123456xyz-db2.adb.us-ashburn-1.oraclecloudapps.com/omlmod/v1/models/25e9bd6a-a8be-48af-8657-ee66c9201157"
+              "href": "https://aabbcc123456xyz-omllabs.adb.us-ashburn-1.oraclecloudapps.com/omlmod/v1/models/25e9bd6a-a8be-48af-8657-ee66c9201157"
             }
           ],
           "namespace": "DEMO",
           "shared": true,
-          "storedOn": "2022-02-07T11:17:00.871Z"
+          "storedOn": "XXXX-XX-XXT11:17:00.871Z"
         }
       ],
       "links": [
         {
           "rel": "self",
-          "href": "https://aabbcc123456xyz-db2.adb.us-ashburn-1.oraclecloudapps.com/omlmod/v1/models"
+          "href": "https://aabbcc123456xyz-omllabs.adb.us-ashburn-1.oraclecloudapps.com/omlmod/v1/models"
         }
       ]
     }
@@ -396,13 +401,13 @@ This lab assumes you have:
       "links": [
         {
           "rel": "self",
-          "href": "https://aabbcc123456xyz-db2.adb.us-ashburn-1.oraclecloudapps.com/omlmod/v1/deployment/nb_cust360"
+          "href": "https://aabbcc123456xyz-omllabs.adb.us-ashburn-1.oraclecloudapps.com/omlmod/v1/deployment/nb_cust360"
         }
       ],
       "namespace": "DEMO",
       "shared": true,
       "uri": "nb_cust360",
-      "deployedOn": "2022-02-07T11:17:01.119Z"
+      "deployedOn": "XXXX-XX-XXT11:17:01.119Z"
     }
 
 
@@ -626,4 +631,4 @@ To learn more about how OML Services support ONNX format models, see resources l
 
 * **Author** - Suresh Rajan, Senior Manager, Oracle Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, February 2023
+* **Last Updated By/Date** - Marcos Arancibia, March 2023

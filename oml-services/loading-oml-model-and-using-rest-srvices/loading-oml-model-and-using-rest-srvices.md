@@ -17,7 +17,7 @@ We are going to run the next steps:
 * OML user created in Autonomous database
 * ``DTModel.mod`` on the VM
 
-##  
+##   
 
 ## Task 1: Store the model in the OML Services repository
 
@@ -34,11 +34,11 @@ We are going to run the next steps:
 
     In the Authorization tab, pick **Bearer Token** and paste the token copied from *Scoring OML using OML Services Task 1*.
 
-    ![Model Import](images/postman-get-list-models.jpg)
+    ![Model list call](images/postman-get-list-models.jpg)
 
     The response is just the **SVMG** model we used in our previous tasks.
 
-    ![Model Import](images/postman-get-list-models-result.jpg)
+    ![Model list response](images/postman-get-list-models-result.jpg)
 
     If you get the Expired Token Error, rerun the generate Token command explained in **Scoring OML using Rest Services: Task 1**.
 
@@ -55,7 +55,7 @@ We are going to run the next steps:
 
    In the Authorization tab, pick **Bearer Token**, and the token is pre-filled.
 
-   ![Model Import](images/postman-store-model-auth.jpg)
+   ![Model Import authentication](images/postman-store-model-auth.jpg)
 
     In the Headers tab, enter the following:
 
@@ -64,16 +64,16 @@ We are going to run the next steps:
     boundary: Boundary
     ````
 
-    ![Model Import](images/postman-store-model-header.jpg)
+    ![Model Import headers](images/postman-store-model-header.jpg)
 
 
     In the Body tab, pick form-data and enter **`modelData`** in the Key area, hover over the right side of the field, and select File in the dropdown.
 
-    ![Model Import](images/postman-store-model-body-modeldata.jpg)
+    ![Model Import modeldata](images/postman-store-model-body-modeldata.jpg)
 
     Click Select File; go to `/home/oracle/OML-Services/` folder and select the **`DTModel.mod`** file created earlier.
 
-    ![Model Import](images/postman-store-model-file.jpg)
+    ![Model Import select file](images/postman-store-model-file.jpg)
 
     Add the below keys in the Body tab and click Send.
 
@@ -82,11 +82,11 @@ We are going to run the next steps:
      modelType=OML
      version=1.0
     ````
-    ![Model Import](images/postman-store-model-body.jpg)
+    ![Model Import body and call](images/postman-store-model-body.jpg)
 
     The response status is '201 Created'. We succeeded in saving the model in the repository.
 
-    ![Model Import](images/postman-store-model-response.jpg)
+    ![Model Import response](images/postman-store-model-response.jpg)
 
     Copy the **`modelId`** displayed in the JSON response.
 
@@ -106,7 +106,7 @@ We are going to run the next steps:
 
     In the Authorization tab pick **Bearer Token** and the token is pre-filled.
 
-    ![Model Deploy](images/postman-deploy-model-auth.jpg)  
+    ![Model Deploy authentication](images/postman-deploy-model-auth.jpg)  
 
     In the Headers tab enter the following:
 
@@ -114,7 +114,7 @@ We are going to run the next steps:
     Content-Type: application/json
     ````
 
-    ![Model Deploy](images/postman-deploy-model-headers.jpg)
+    ![Model Deploy headers](images/postman-deploy-model-headers.jpg)
 
     In the Body tab enter the following JSON:
 
@@ -129,11 +129,11 @@ We are going to run the next steps:
 
     The URI **`dtmodel`** we are going to use in Task 6.4 when scoring the data against our model.
 
-    ![Model Deploy](images/postman-deploy-model-body.jpg)
+    ![Model Deploy body and call](images/postman-deploy-model-body.jpg)
 
     And the result is:
 
-     ![Model Deploy](images/postman-deploy-model-response.jpg)
+     ![Model Deploy response](images/postman-deploy-model-response.jpg)
 
     The next step is to score a customer.
 
@@ -157,7 +157,7 @@ In this step, we are going to score Fran Hobbs against our Decision Tree importe
 
     In the Authorization tab pick **Bearer Token** and the token is pre-filled.
 
-     ![Model Score](images/postman-score-dtmodel-auth.jpg)  
+     ![Model Score authentication](images/postman-score-dtmodel-auth.jpg)  
 
 
     In the header Tab enter the details:
@@ -167,7 +167,7 @@ In this step, we are going to score Fran Hobbs against our Decision Tree importe
 
       ````
 
-      ![Model Score](images/postman-score-dtmodel-headers.jpg)  
+      ![Model Score headers](images/postman-score-dtmodel-headers.jpg)  
 
 
     In the Body tab, please enter the Fran Hobs data in RAW format. Notice that we are not providing any of the ``LTV`` or ``LTV_BIN`` data, but provide fully the other important data
@@ -214,11 +214,11 @@ In this step, we are going to score Fran Hobbs against our Decision Tree importe
 
     Click **Send**
 
-    ![Model Score](images/postman-score-dtmodel-body-fh.jpg)  
+    ![Model Score body Fran HOBBS and call](images/postman-score-dtmodel-body-fh.jpg)  
 
     Notice the response for this scoring.
 
-    ![Model Score](images/postman-score-dtmodel-body-fh-response.jpg)  
+    ![Model Score response](images/postman-score-dtmodel-body-fh-response.jpg)  
 
     In this case, the percentages are different but it still has the highest probability to be in the **LOW** category as it was in our Support Vector Machine Gaussian model.
 

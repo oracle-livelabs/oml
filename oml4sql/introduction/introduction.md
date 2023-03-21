@@ -1,4 +1,4 @@
-# Detect anomalies with OML4SQL using one-class support vector machine (SVM)
+# Detect anomalies with OML4SQL with one-class support vector machine (SVM)
 
 ## About this Workshop
 
@@ -36,7 +36,7 @@ In this lab, you will learn the lifecycle of machine learning:
 
 >**Note:** If you have a Free Trial account, when your Free Trial expires your account will be converted to an **Always Free** account. You will not be able to conduct Free Tier workshops unless the Always Free environment is available. **[Click here for the Free Tier FAQ page.](https://www.oracle.com/cloud/free/faq.html)**
 
-## About Oracle Machine Learning for SQL (OML4SQL)
+## Task 1: About Oracle Machine Learning for SQL (OML4SQL)
 
 OML4SQL provides a powerful, state-of-the-art machine learning capability within Oracle Database. You can use OML4SQL to build and deploy predictive and descriptive machine learning applications, to add intelligent capabilities to existing applications, and to generate predictive queries for data exploration.
 
@@ -63,4 +63,4 @@ You may now **proceed to the next lab**
 
 ## Acknowledgements
 * **Authors** - Adrian Castillo Mendoza, Milton Wan, Valentin Leonard Tabacaru, Rajeev Rumale.
-* **Last Updated By/Date** -  Adrian Castillo Mendoza, March 2022.
+* **Last Updated By/Date** -  Adrian Castillo Mendoza, March 2023.
