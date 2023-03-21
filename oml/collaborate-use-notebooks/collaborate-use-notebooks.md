@@ -1,4 +1,4 @@
-# Oracle® Cloud Collaborate in Oracle Machine Learning Notebooks
+# Collaborate in Oracle Machine Learning Notebooks
 ## Introduction
 
 This lab shows you how to two or more users can collaborate and share SQL notebooks with other Oracle Machine Learning Notebooks users.
@@ -59,7 +59,7 @@ This use case demonstrates how:
 6. Once you have added the permission, the user along with the permission type is listed on the dialog. Click **OK.**
 The message _Permissions have been updated successfully_ is displayed.
 
-    ![permission_user2.png](images/permission_user2.png "permission_user2.png")
+    ![permission-user2.png](images/permission-user2.png "permission-user2.png")
 
   The available permission types are:
 
@@ -92,7 +92,7 @@ The message _Permissions have been updated successfully_ is displayed.
 
 4. After clicking OK, note the change in the name of the project-workspace drop-down list at the top. The project-workspace drop-down list name changes to **USER1 Project [USER1 Workspace...** , while you are logged in as USER2. This indicates that USER2 is currently accessing the **USER1 Project** under **USER1 Workspace** while signed in as USER2.
 
-    ![oml_top_menu.png](images/oml_top_menu.png "oml_top_menu.png")
+    ![oml-top-menu.png](images/oml-top-menu.png "oml-top-menu.png")
 Now, in the Workspaces page, click USER1 Workspace in the upper pane. The lower pane lists the projects that are accessible to USER2 in the USER1 Workspace.
 
     ![user2-ws1-view.png](images/user2-ws1-view.png "user2-ws1-view.png")
@@ -103,26 +103,26 @@ Now, in the Workspaces page, click USER1 Workspace in the upper pane. The lower 
 
 5. Click **Notebooks** in the Oracle Machine Learning home page. Alternatively, you can go to the navigation menu on the left and click **Notebooks**.
 
-    ![notebooks_user2.png](images/notebooks_user2.png "notebooks_user2.png")
+    ![notebooks-user2.png](images/notebooks-user2.png "notebooks-user2.png")
 
 6. In the USER2 Notebooks page, you can now see all the notebooks that are owned by USER1 in the USER1 Project, which in USER1 Workspace. This is the same list of notebooks that is available in the **USER1 Project** that you noted in section 1 step 2 of this tutorial. Since USER2 has been granted the DEVELOPER permission, as USER2 you can click any of these notebooks to open, edit, and run the notebooks. As USER2, you can also create a new notebook in USER1 Project.
 
-    ![user1_notes_for_user2.png](images/user1_notes_for_user2.png "user1_notes_for_user2.png")
+    ![user1-notes-for-user2.png](images/user1-notes-for-user2.png "user1-notes-for-user2.png")
 
 ### USER2 Edits Notebook Shared by User1
 
 1. While signed in as USER2, click the **Sales Note** notebook to open it. Observe that the notebook is blank and is connected to the SQL interpreter.
 
-     ![sales_note_connected.png](images/sales_note_connected.png "sales_note_connected.png")
+     ![sales-note-connected.png](images/sales-note-connected.png "sales-note-connected.png")
 
 2. Type the SQL statement to fetch data from an Oracle Database. For example, type
   `SELECT * from SH.SALES;` where `SH` is the schema name and `SALES` is the table name, as shown in the screenshot:
 
-     ![sales_note_run.png](images/sales_note_run.png "sales_note_run.png")
+     ![sales-note-run.png](images/sales-note-run.png "sales-note-run.png")
 
 4. Run the paragraph to render the data in a table.
 
-     ![sales_note_rendered.png](images/sales_note_rendered.png "sales_note_rendered.png")
+     ![sales-note-rendered.png](images/sales-note-rendered.png "sales-note-rendered.png")
 
 5. Sign out of the Oracle Machine Learning instance.
 
@@ -135,27 +135,27 @@ reflected in the notebook in real-time. To try this example on the same client m
 
 1. Sign in to the Oracle Machine Learning instance as USER1 in Mozilla Firefox browser. Click <b>Notebooks</b> in the home page to view the list of notebooks. Observe that the entry for <b>Updated By</b> column for **Sales Note** notebook shows USER2.
 
-     ![user1_views_notebooks.png](images/user1_views_notebooks.png "user1_views_notebooks.png")
+     ![user1-views-notebooks.png](images/user1-views-notebooks.png "user1-views-notebooks.png")
 
 2. Click **Sales Note** to open and view the notebooks. The changes that are made by USER2 are visible to USER1 when you open the same notebook in USER1 Project under USER1 Workspace.
 
-    ![user1_views_user2_edits.png](images/user1_views_user2_edits.png "user1_views_user2_edits.png")
+    ![user1-views-user2-edits.png](images/user1-views-user2-edits.png "user1-views-user2-edits.png")
 
 3. While signed in as USER1, edit the **Sales Note** by adding `ORDER BY CUST_ID` as shown in the screenshot and click **Run.**
 Note the change in display of the data, and also the date and time of edit made by USER1.
 
-    ![sales_note_user1_edit.png](images/sales_note_user1_edit.png "sales_note_user1_edit.png")
+    ![sales-note-user1-edit.png](images/sales-note-user1-edit.png "sales-note-user1-edit.png")
 
 4. Now, sign in as USER2 in another browser. In this example, it is Google Chrome. As USER2, you can see the edits made by USER1. While signed in as USER2, edit the SQL code to add `where
 AMOUNT_SOLD &lt;= 50.68` and click **Run**. The **Sales Note** notebook now displays refined data accordingly.
 Note the date and time .
 
-    ![sales_note_edit_user2.png](images/sales_note_edit_user2.png "sales_note_edit_user2.png")
+    ![sales-note-edit-user2.png](images/sales-note-edit-user2.png "sales-note-edit-user2.png")
 
 5. Now, go to Firebox browser and view the **Sales Note** notebook as USER1. The change made by USER2 is dynamically reflected in Firefox where you are accessing the notebook as USER1, as shown in the screenshot. This is how two or more users can collaborate in real-time on the same notebook.
  Note that you are signed in as USER1 in Firefox and as USER2 in Chrome.
 
-    ![user1_views_sales.png](images/user1_views_sales.png "user1_views_sales.png")
+    ![user1-views-sales.png](images/user1-views-sales.png "user1-views-sales.png")
 
 ## Task 2: Collaborate by Using the Export Option
 
@@ -166,7 +166,7 @@ You can export a notebook as a `.json` (JavaScript Object Notation) file, and la
 
 2. In the top panel of the notebook editor, click the export icon.
 
-    ![export_notebook_option.png](images/export_notebook_option.png "export_notebook_option.png")
+    ![export-notebook-option.png](images/export-notebook-option.png "export-notebook-option.png")
 
 3. The Save as Dialog box opens. Navigate to the location in your system where you want to save the notebook. The notebook is saved in your local folder as a `.json` file.
 
@@ -176,7 +176,7 @@ You can share a notebook by saving an existing notebook as a template in My Libr
 
 1. In the Notebooks page, select the notebook that you want to save as template and click **Save as Template**. The Save as Template dialog box opens.
 
-    ![saveas_template.png](images/saveas_template.png "saveas_template.png")
+    ![saveas-template.png](images/saveas-template.png "saveas-template.png")
 
 2. In the **Name** field, enter a name for the notebook template.
 

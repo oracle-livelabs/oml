@@ -1,4 +1,4 @@
-# Oracle® Cloud Create and Run Notebooks in Oracle Machine Learning
+# Create and Run Notebooks in Oracle Machine Learning
 ## Introduction
 
 This lab shows you how to create a notebook and run it in Oracle Machine Learning Notebooks.
@@ -207,7 +207,7 @@ This example assumes that you have a notebook called Py Note notebook created. T
 
 2. You must specify the Python interpreter to execute Python scripts in notebooks. Type %python and press enter. This specification, indicates that the paragraph should be executed by the Python interpreter.
 
-   ![py_connect_interpreter.png](images/py_connect_interpreter.png "py_connect_interpreter.png")
+   ![py-connect-interpreter.png](images/py-connect-interpreter.png "py-connect-interpreter.png")
 
 3. To use OML4Py, you must first import the `oml` module. `oml` is the OML4Py module that allows you to manipulate Oracle Database objects such as tables and views, invoke user-defined Python functions using embedded execution, and use the database machine learning algorithms. Type the following commands and click the **Run** icon. Alternatively, you can press **Shift+Enter** keys to run the paragraph.   
 
@@ -233,7 +233,7 @@ This example assumes that you have a notebook called Py Note notebook created. T
 
    ![connect-py-true.png](images/connect-py-true.png "connect-py-true.png")
 
-   Click <img src="./images/run.png" alt="run icon">. Alternatively, you can press **Shift+Enter** keys to run the notebook.
+   Click the run icon. Alternatively, you can press **Shift+Enter** keys to run the notebook.
 
 5. Type the following Python code and click the run icon.   
 
@@ -281,7 +281,7 @@ To run a notebook:
 
    ![sh-sales.png](images/sh-sales.png "sh-sales.png")
 
-   Click <img src="./images/run.png" alt="run icon">. Alternatively, you can press **Shift+Enter** keys to run the notebook.
+   Click the run icon. Alternatively, you can press **Shift+Enter** keys to run the notebook.
 
 3. After you run the notebook, it fetches the data in the notebook in the next paragraph, as shown in the screenshot.
 
@@ -293,11 +293,11 @@ To run a notebook:
 
    You can visualize the data by clicking the respective icons for each graphical representation, as shown here:
 
-      * Click the histogram icon <img src="./img/histogram.png" alt="histogram icon"> to visualize your data in a histogram.
-      * Click the pie chart icon <img src="./img/pie-chart.png" alt="pie chart icon"> to visualize your data in a pie chart.
-      * Click the cumulative gain chart icon <img src="./img/cumulative-gain-chart.png" alt="cumulative_gain_chart icon"> to visualize your data in a cumulative gain chart.
-      * Click the line diagram icon <img src="./img/line_diagram.png" alt="line_diagram icon"> to visualize your data in a line diagram.
-      * Click the scatter plot icon <img src="./img/scatter_plot_icon.png" alt="scatter_plot icon"> to visualize your data in a scatter plot.
+      * ![histogram.png](images/histogram.png "histogram.png") Click the histogram icon to visualize your data in a histogram.
+      * ![pie chart.png](images/pie-chart.png "pie-chart.png") Click the pie chart icon to visualize your data in a pie chart.
+      * ![cumulative-gain-chart.png](images/cumulative-gain-chart.png "cumulative-gain-chart.png") Click the cumulative gain chart icon to visualize your data in a cumulative gain chart.
+      * ![line-diagram.png](images/line-diagram.png "line-diagram.png") Click the line diagram icon to visualize your data in a line diagram.
+      * ![scatter-plot-icon.png](images/scatter-plot-icon.png "scatter-plot-icon.png") Click the scatter plot icon to visualize your data in a scatter plot.
 
 4. Click **Back** to return to the Notebooks page.
 

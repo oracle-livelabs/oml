@@ -1,4 +1,4 @@
-# Oracle® Cloud Create Projects and Workspaces in Oracle Machine Learning Notebooks
+# Create Projects and Workspaces in Oracle Machine Learning Notebooks
 ## Introduction
 
 This lab walks you through the steps to create a project and a workspace in Oracle Machine Learning Notebooks.

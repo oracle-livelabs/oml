@@ -1,4 +1,4 @@
-# Oracle® Cloud Use the Scratchpad In Oracle Machine Learning Notebooks
+# Use the Scratchpad In Oracle Machine Learning Notebooks
 ## Introduction
 
 This lab shows you how to use the Scratchpad in Oracle Machine Learning Notebooks.
@@ -23,7 +23,7 @@ This lab takes approximately 10 minutes to complete.
 
 To open and use the scratchpad, click <b>Scratchpad</b> on the Oracle Machine Learning Notebooks home page under Quick Actions.
 
-  ![developer_homepage.png](images/developer_homepage.png "developer_homepage.png ")
+  ![developer-homepage.png](images/developer-homepage.png "developer-homepage.png ")
 
   The Scratchpad opens. The Scratchpad has three paragraphs each with the following directives:
 
@@ -36,7 +36,7 @@ To run python script:
 
 1. Go to the paragraph with the <code>%python</code> directive.
 
-   ![scratchpad_py.png](images/scratchpad_py.png "scratchpad_py.png")
+   ![scratchpad-py.png](images/scratchpad-py.png "scratchpad-py.png")
 
 2. To use OML4Py, you must first import the `oml` module.
    `oml` is the OML4Py module that allows you to manipulate Oracle Database objects such as tables and views, call user-defined Python functions using embedded execution, and use the database machine learning algorithms. To import the `oml` module, type the following command and click the Run icon. Alternatively, you can press **Shift+Enter** keys to run the paragraph.
@@ -76,7 +76,7 @@ To run python script:
     </copy>
     ```
 
-    ![scratchpad_python.png](images/scratchpad_python.png "scratchpad_python.png")
+    ![scratchpad-python.png](images/scratchpad-python.png "scratchpad-python.png")
 
     In this example, the commands import two python packages to compute and render the data in two histograms for `list1` and `list2`. The Python packages are:
 
@@ -108,7 +108,7 @@ To run R functions in an Oracle Machine Learning notebook, you must first connec
   </copy>
   ```
 
-  ![scratchpad_r.png](images/ore_connected.png "scratchpad_r_connected.png")
+  ![ore-connected.png](images/ore-connected.png "ore-connected.png")
 
   Once your notebook is connected, the command returns TRUE, as shown in the screenshot here. The notebook is now connected to the R interpreter, and you are ready to run R commands in your notebook.
 3. To import R Libraries, run the following commands:
@@ -120,7 +120,7 @@ To run R functions in an Oracle Machine Learning notebook, you must first connec
   </copy>
   ```
 
-  ![load_r_packages.png](images/load_r_packages.png "load_r_packages.png")
+  ![load-r-packages.png](images/load-r-packages.png "load-r-packages.png")
 
   Once the packages are loaded successfully, the list of ORE packages are displayed as shown in the screenshot here. Scroll down to view the entire list.
 
@@ -130,7 +130,7 @@ To run SQL statements:
 
 1. Go to the paragraph with the `%sql` directive.
 
-   ![scratchpad_sql.png](images/scratchpad_sql.png "scratchpad_sql.png")
+   ![scratchpad-sql.png](images/scratchpad-sql.png "scratchpad-sql.png")
 
 2. Type the following command and click the Run icon. Alternatively, you can pres **Shift+Enter** keys to run the paragraph.
 
@@ -140,7 +140,7 @@ To run SQL statements:
     SELECT * FROM SH.SALES;
     </copy>
     ```
-       ![sql_statement.png](images/sql_statement.png "sql_statement.png")
+       ![sql-statement.png](images/sql-statement.png "sql-statement.png")
 
     In this example, the SQL statement fetches all of the data about product sales from the table SALES. Here, `SH` is the schema name, and `SALES` is the table name. Oracle Machine Learning fetches the relevant data from the database and displays it in a tabular format.
 
@@ -150,7 +150,7 @@ To run PL/SQL scripts:
 
 1. Go to the paragraph with the `%script` directive.
 
-   ![scratchpad_script.png](images/scratchpad_script.png "scratchpad_script.png")
+   ![scratchpad-script.png](images/scratchpad-script.png "scratchpad-script.png")
 
 2. Enter the following PL/SQL script and click the **Run** icon. Alternatively, you can press **Shift+Enter** keys to run the paragraph.
 
@@ -180,7 +180,7 @@ To run PL/SQL scripts:
     * The second part of the script begins with the keyword `BEGIN`. It inserts 100 rows in to the table small_table.
 
 
-         ![plsql_procedure.png](images/plsql_procedure.png "plsql_procedure.png")
+         ![plsql-procedure.png](images/plsql-procedure.png "plsql-procedure.png")
 
 ## Acknowledgements
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
