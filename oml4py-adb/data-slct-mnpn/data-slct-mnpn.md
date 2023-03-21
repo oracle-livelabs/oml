@@ -29,7 +29,7 @@ In this lab, you will learn how to:
   * Use the `append`, `concat` and `merge` functions to manipulate data
   * Use the `split` and `KFold` functions to partition the data
   * Use the `crosstab` and `pivot_table` functions on an OML DataFrame proxy
-  * Use the `oml.boxplot` and `oml.hist` functions to create plots 
+  * Use the `oml.boxplot` and `oml.hist` functions to create plots
   * Manage and explore data using OML4Py Transparency Layer functions
   * Use `cx_Oracle` functions to submit SQL queries from Python
 
@@ -50,7 +50,7 @@ We need to access and run the OML notebook for this lab.
   OML Notebooks will create a session and make the notebook available for editing.
 
   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
-   
+
   ![Lab 2 main screen](images/lab2-main.png " ")
 
 > **NOTE:** If you had problems downloading and extracting the ZIP file for the labs, please [**CLICK HERE** to download the lab2\_select\_manipulate\_data.json notebook file](./../notebooks/lab2_select_manipulate_data.json?download=1). Download the notebook file for this lab to your local machine and then import it like illustrated in **Lab 1, Task 2**.
@@ -60,63 +60,63 @@ We need to access and run the OML notebook for this lab.
 
 Scroll down to the beginning of Task 1.
 
-  ![Lab 2 Task 1 Import libraries and create Oracle Machine Learning DataFrame proxy object notebook screen capture](images/lab2-task1.png " ")
+  ![Lab 2 Task 1 Import libraries and create Oracle Machine Learning DataFrame proxy object notebook screen capture](images/lab2-task1.png "Import libraries and create Oracle Machine Learning DataFrame proxy object notebook")
 
 ## Task 2: Select table columns using proxy object CUST_DF
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
-  ![Lab 2 Task 2 Select table columns using proxy object CUST_DF notebook screen capture](images/lab2-task2.png " ")
+  ![Lab 2 Task 2 Select table columns using proxy object CUST_DF notebook screen capture](images/lab2-task2.png "Select table columns using proxy object CUST_DF notebook ")
 
 ## Task 3: Select table rows using proxy object CUST_DF
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
 
-  ![Lab 2 Task 3 Select table rows using proxy object CUST_DF notebook screen capture](images/lab2-task3.png " ")
+  ![Lab 2 Task 3 Select table rows using proxy object CUST_DF notebook screen capture](images/lab2-task3.png "Select table rows using proxy object CUST_DF notebook")
 
 ## Task 4: Use OML DataFrame proxy objects
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
 
-  ![Lab 2 Task 4 Use OML DataFrame proxy objects notebook screen capture](images/lab2-task4.png " ")
+  ![Lab 2 Task 4 Use OML DataFrame proxy objects notebook screen capture](images/lab2-task4.png "Use OML DataFrame proxy objects notebook")
 
 ## Task 5: Use the split and kfold functions
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
 
-  ![Lab 2 Task 5 Use the split and kfold functions notebook screen capture](images/lab2-task5.png " ")
+  ![Lab 2 Task 5 Use the split and kfold functions notebook screen capture](images/lab2-task5.png "Use the split and kfold functions notebook")
 
 ## Task 6: Use the crosstab and pivot_table functions on a DataFrame proxy object
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 6.
 
-  ![Lab 2 Task 6 Use the crosstab and pivot_table functions on a DataFrame proxy object notebook screen capture](images/lab2-task6.png " ")
+  ![Lab 2 Task 6 Use the crosstab and pivot_table functions on a DataFrame proxy object notebook screen capture](images/lab2-task6.png "Use the crosstab and pivot_table functions on a DataFrame proxy object")
 
 ## Task 7: Use the oml.boxplot and oml.hist functions
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 7.
 
-  ![Lab 2 Task 7 Use the oml.boxplot and oml.hist functions notebook screen capture](images/lab2-task7.png " ")
+  ![Lab 2 Task 7 Use the oml.boxplot and oml.hist functions notebook screen capture](images/lab2-task7.png "Use the oml.boxplot and oml.hist functions in notebook")
 
 ## Task 8: Manage and explore data using transparency layer functions
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 8.
 
-  ![Lab 2 Task 8 Manage and explore data using transparency layer functions notebook screen capture](images/lab2-task8.png " ")
+  ![Lab 2 Task 8 Manage and explore data using transparency layer functions notebook screen capture](images/lab2-task8.png "Manage and explore data using transparency layer functions")
 
 ## Task 9: Use cx_Oracle functions
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 9.
 
-  ![Lab 2 Task 9 Use cx_Oracle functions notebook screen capture](images/lab2-task9.png " ")  
+  ![Lab 2 Task 9 Use cx_Oracle functions notebook screen capture](images/lab2-task9.png "Use the cx_Oracle functions in notebook")  
 
 You can now *proceed to the next lab*.
 

@@ -20,15 +20,15 @@ In this lab, you will learn how to create an Oracle Machine Learning user using 
 
   To access the Autonomous Database Actions as the ADMIN user, in your Autonomous Database details page, click the Database Actions button.
 
-  ![Click on Database Actions](images/launchdbactions.png " ")
+  ![Click on Database Actions](images/launchdbactions.png "Click on Database Actions")
 
  2. To access the Database Users option in Database Actions, scroll down to the **Administration** section and click the Database Users tile.
 
-  ![In the administration section, click on Database Users](images/dbactions-database-users.png " ")
+  ![In the administration section, click on Database Users](images/dbactions-database-users.png "In the administration section, click on Database Users")
 
  3. You should see the list of all current users registered with this Autonomous Database instance.  Click on the **Create User** button to begin the creation of a new user.
 
-  ![In the Database Users page, click the Create User button](images/database-users-current-users.png " ")
+  ![In the Database Users page, click the Create User button](images/database-users-current-users.png "In the Database Users page, click the Create User button")
 
  4. In the **Create User** menu, enter the following information:
   - **Username:** Enter `omluser` for username. Using this username, the user will log in to an Oracle Machine Learning instance.
@@ -40,11 +40,11 @@ In this lab, you will learn how to create an Oracle Machine Learning user using 
   -  Make sure to check the **OML** toggle to ON.
   Click on **Create User**.
 
-    ![In the Create Users page, enter username and password, adjust quota to unlimited and toggle OML to ON, and click create user](images/database-users-create-user.png " ")
+    ![In the Create Users page, enter username and password, adjust quota to unlimited and toggle OML to ON, and click create user](images/database-users-create-user.png "In the Create Users page, enter username and password, adjust quota to unlimited and toggle OML to ON, and click create user")
 
   `5.` You can repeat `step 4` when you need to create additional users.  For example, if you create an additional user named `omluser2`, you will see the result below if you filter the list of users by `omluser`.
 
-    ![List of users available that start with omluser](images/dbactions-database-list-omluser.png " ")
+    ![List of users available that start with omluser](images/dbactions-database-list-omluser.png "List of users available that start with omluser")
 
 
 

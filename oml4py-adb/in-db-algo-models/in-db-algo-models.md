@@ -30,19 +30,19 @@ We need to access and run the OML notebook for this lab.
 
 1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 
- ![Oracle Machine Learning Notebooks main menu by clicking on the three-lines menu and then selecting Notebooks](images/go-back-to-notebooks.png " ")
+ ![Oracle Machine Learning Notebooks main menu by clicking on the three-lines menu and then selecting Notebooks](images/go-back-to-notebooks.png "Oracle Machine Learning Notebooks main menu by clicking on the three-lines menu and then selecting Notebooks")
 
 2. Click the **Lab 3 notebook name** to view it.
    <if type="freetier">
-   ![Open Lab 3 notebook ft](images/click-on-lab3-ft.png " ") </if>
+   ![Open Lab 3 notebook ft](images/click-on-lab3-ft.png "Lab 3 notebook") </if>
    <if type="livelabs">
-   ![Open Lab 3 notebook ll](images/click-on-lab3-ll.png " ") </if>
+   ![Open Lab 3 notebook ll](images/click-on-lab3-ll.png "Lab 3 notebook") </if>
 
   OML Notebooks will create a session and make the notebook available for editing.
 
   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
-   
-  ![Lab 3 Introduction notebook screen capture](images/lab3-main.png " ")
+
+  ![Lab 3 Introduction notebook screen capture](images/lab3-main.png "Introduction notebook")
 
 > **NOTE:** If you had problems downloading and extracting the ZIP file for the labs, please [**CLICK HERE** to download the lab3\_in-db\_algo.json notebook file](./../notebooks/lab3_in-db_algo.json?download=1). Download the notebook file for this lab to your local machine and then import it like illustrated in **Lab 1, Task 2**.
 
@@ -51,35 +51,35 @@ We need to access and run the OML notebook for this lab.
 
 Scroll down to the beginning of Task 1.
 
-  ![Lab 3 Task 1 Import libraries notebook screen capture](images/lab3-task1.png " ")  
+  ![Lab 3 Task 1 Import libraries notebook screen capture](images/lab3-task1.png "Import libraries")  
 
 ## Task 2: Work with regression using generalized liner model (GLM)
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
-  ![Lab 3 Task 2 Work with regression using generalized liner model (GLM) notebook screen capture](images/lab3-task2.png " ") 
+  ![Lab 3 Task 2 Work with regression using generalized liner model (GLM) notebook screen capture](images/lab3-task2.png "Work with regression using generalized liner model (GLM)")
 
 ## Task 3: Work with clustering using k-Means
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
 
-  ![Lab 3 Task 3 Work with clustering using k-Means notebook screen capture](images/lab3-task3.png " ") 
+  ![Lab 3 Task 3 Work with clustering using k-Means notebook screen capture](images/lab3-task3.png "Work with clustering using k-Means")
 
 ## Task 4: Work with Partitioned Models
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
 
-  ![Lab 3 Task 4 Work with Partitioned Models notebook screen capture](images/lab3-task4.png " ") 
+  ![Lab 3 Task 4 Work with Partitioned Models notebook screen capture](images/lab3-task4.png "Work with Partitioned Models")
 
 ## Task 5: Rank attribute importance using model explainability
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
 
-  ![Lab 3 Task 5 Rank attribute importance using model explainability notebook screen capture](images/lab3-task5.png " ") 
+  ![Lab 3 Task 5 Rank attribute importance using model explainability notebook screen capture](images/lab3-task5.png "Rank attribute importance using model explainability") 
 
 After you reach the end of Lab 3, you can *proceed to the next lab*.
 
