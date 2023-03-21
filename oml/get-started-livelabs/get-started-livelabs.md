@@ -73,7 +73,7 @@ To provision an Oracle Autonomous Database:
 	 ![Contact details](images/contact-details.png "Contact details")
 
 	 The Oracle Autonomous Data Warehouse instance starts provisioning. Once your Autonomous Database is created, the database details are listed with the status Available.
-
+	 ![ADB provisioning](images/create-adb-provisioning.png "ADB Provisioning")
 
 This completes the task of provisioning an Oracle Autonomous Database.
 

@@ -39,7 +39,7 @@ To create a user account:
 
 3. On the Autonomous Database details page, click **Database Actions**.
 
-	![Database Actions](images/database-actions.png "Database Actions")
+	![Database Actions](images/launchdbactions.png "Database Actions")
 
 4. The Oracle Database Actions Launchpad page opens in a separate tab. Scroll down to the Administration section and click **DATABASE USERS**.
 
@@ -79,7 +79,7 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 1. On the Autonomous Database Details page of your ADW instance, click **Database Actions**.
 
-	![Development option in ADW Service Console](images/database_actions.png "Database Actions")
+	![Development option in ADW Service Console](images/launchdbactions.png "Database Actions")
 
 
 2. On the Database Actions page, under **Development** click **Oracle Machine Learning Notebooks.**
