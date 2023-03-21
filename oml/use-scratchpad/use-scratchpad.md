@@ -23,7 +23,7 @@ This lab takes approximately 10 minutes to complete.
 
 To open and use the scratchpad, click <b>Scratchpad</b> on the Oracle Machine Learning Notebooks home page under Quick Actions.
 
-  ![developer-homepage.png](images/developer-homepage.png "developer-homepage.png ")
+  ![Developer Homepage](images/developer-homepage.png "Developer Homepage")
 
   The Scratchpad opens. The Scratchpad has three paragraphs each with the following directives:
 
@@ -36,7 +36,7 @@ To run python script:
 
 1. Go to the paragraph with the <code>%python</code> directive.
 
-   ![scratchpad-py.png](images/scratchpad-py.png "scratchpad-py.png")
+   ![scratchpad with py directive](images/scratchpad-py.png "Scratchpad with py directive")
 
 2. To use OML4Py, you must first import the `oml` module.
    `oml` is the OML4Py module that allows you to manipulate Oracle Database objects such as tables and views, call user-defined Python functions using embedded execution, and use the database machine learning algorithms. To import the `oml` module, type the following command and click the Run icon. Alternatively, you can press **Shift+Enter** keys to run the paragraph.
@@ -76,7 +76,7 @@ To run python script:
     </copy>
     ```
 
-    ![scratchpad-python.png](images/scratchpad-python.png "scratchpad-python.png")
+    ![Scratchpad with python script](images/scratchpad-python.png "Python script in scratchpad")
 
     In this example, the commands import two python packages to compute and render the data in two histograms for `list1` and `list2`. The Python packages are:
 
@@ -108,7 +108,7 @@ To run R functions in an Oracle Machine Learning notebook, you must first connec
   </copy>
   ```
 
-  ![ore-connected.png](images/ore-connected.png "ore-connected.png")
+  ![ore.isconnected command](images/ore-connected.png "ore.isconnected command")
 
   Once your notebook is connected, the command returns TRUE, as shown in the screenshot here. The notebook is now connected to the R interpreter, and you are ready to run R commands in your notebook.
 3. To import R Libraries, run the following commands:
@@ -120,7 +120,7 @@ To run R functions in an Oracle Machine Learning notebook, you must first connec
   </copy>
   ```
 
-  ![load-r-packages.png](images/load-r-packages.png "load-r-packages.png")
+  ![Command to load r packages](images/load-r-packages.png "Command to load r packages")
 
   Once the packages are loaded successfully, the list of ORE packages are displayed as shown in the screenshot here. Scroll down to view the entire list.
 
@@ -130,7 +130,7 @@ To run SQL statements:
 
 1. Go to the paragraph with the `%sql` directive.
 
-   ![scratchpad-sql.png](images/scratchpad-sql.png "scratchpad-sql.png")
+   ![SQL directive in Scratchpad](images/scratchpad-sql.png "SQL directive in Scratchpad")
 
 2. Type the following command and click the Run icon. Alternatively, you can pres **Shift+Enter** keys to run the paragraph.
 
@@ -140,7 +140,7 @@ To run SQL statements:
     SELECT * FROM SH.SALES;
     </copy>
     ```
-       ![sql-statement.png](images/sql-statement.png "sql-statement.png")
+       ![SQL statement in scratchpad](images/sql-statement.png "SQL statement in scratchpad")
 
     In this example, the SQL statement fetches all of the data about product sales from the table SALES. Here, `SH` is the schema name, and `SALES` is the table name. Oracle Machine Learning fetches the relevant data from the database and displays it in a tabular format.
 
@@ -150,7 +150,7 @@ To run PL/SQL scripts:
 
 1. Go to the paragraph with the `%script` directive.
 
-   ![scratchpad-script.png](images/scratchpad-script.png "scratchpad-script.png")
+   ![PL/SQL script in Scratchpad](images/scratchpad-script.png "PL/SQL script in Scratchpad")
 
 2. Enter the following PL/SQL script and click the **Run** icon. Alternatively, you can press **Shift+Enter** keys to run the paragraph.
 
@@ -180,7 +180,7 @@ To run PL/SQL scripts:
     * The second part of the script begins with the keyword `BEGIN`. It inserts 100 rows in to the table small_table.
 
 
-         ![plsql-procedure.png](images/plsql-procedure.png "plsql-procedure.png")
+         ![PL/SQL Procedure](images/plsql-procedure.png "PL/SQL Procedure")
 
 ## Acknowledgements
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
