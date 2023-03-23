@@ -28,19 +28,19 @@ We need to access and run the OML notebook for this lab.
 
 1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 
- ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png " ")
+ ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png "Oracle Machine Learning Notebooks menu")
 
 2. Click the **Lab 6 notebook name** to view it.
    <if type="freetier">
-   ![Open Lab 6 notebook ft](images/click-on-lab6-ft.png " ") </if>
+   ![Open Lab 6 notebook ft](images/click-on-lab6-ft.png "Lab 6 notebook") </if>
    <if type="livelabs">
-   ![Open Lab 6 notebook ll](images/click-on-lab6-ll.png " ") </if>
+   ![Open Lab 6 notebook ll](images/click-on-lab6-ll.png "Lab 6 notebook") </if>
 
   OML Notebooks will create a session and make the notebook available for editing.
 
   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
-   
-  ![Lab 6 Introduction notebook screen capture](images/lab6-main.png " ")
+
+  ![Lab 6 Introduction notebook screen capture](images/lab6-main.png "Introduction notebook")
 
 > **NOTE:** If you had problems downloading and extracting the ZIP file for the labs, please [**CLICK HERE** to download the lab6\_automl.json notebook file](./../notebooks/lab6_automl.json?download=1). Download the notebook file for this lab to your local machine and then import it like illustrated in **Lab 1, Task 2**.
 ___
@@ -53,38 +53,38 @@ ___
 
 Scroll down to the beginning of Task 1.
 
-  ![Lab 6 Task 1 Import libraries supporting OML4Py and AutoML notebook screen capture](images/lab6-task1.png " ") 
+  ![Lab 6 Task 1 Import libraries supporting OML4Py and AutoML notebook screen capture](images/lab6-task1.png "Import libraries supporting OML4Py and AutoML notebook")
 
 ## Task 2: Automated algorithm selection
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
-  ![Lab 6 Task 2 Automated algorithm selection notebook screen capture](images/lab6-task2.png " ")
+  ![Lab 6 Task 2 Automated algorithm selection notebook screen capture](images/lab6-task2.png "Automated algorithm selection")
 
 ## Task 3: Automated feature selection
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
 
-  ![Lab 6 Task 3 Automated feature selection notebook screen capture](images/lab6-task3.png " ")
-  
+  ![Lab 6 Task 3 Automated feature selection notebook screen capture](images/lab6-task3.png "Automated feature selection")
+
 
 ## Task 4: Automated model tuning
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
 
-  ![Lab 6 Task 4 Automated model tuning notebook screen capture](images/lab6-task4.png " ")
-  
+  ![Lab 6 Task 4 Automated model tuning notebook screen capture](images/lab6-task4.png "Automated model tuning")
+
 
 ## Task 5: Automated model selection
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
 
-  ![Lab 6 Task 5 Automated model selection notebook screen capture](images/lab6-task5.png " ")
-  
+  ![Lab 6 Task 5 Automated model selection notebook screen capture](images/lab6-task5.png "Automated model selection")
+
 ### Congratulations !!!
 
 You reached the end of the lab.  

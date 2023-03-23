@@ -50,7 +50,7 @@ Estimated Time: 15 minutes
   Use the following URL structure to access the REST endpoints:
 
   ````
-  https://<oml-cloud-service-location-url>.oraclecloudapps.com
+  https://\<oml-cloud-service-location-url\>.oraclecloudapps.com
   ````
 
   Where:
@@ -59,16 +59,16 @@ Estimated Time: 15 minutes
 #### Obtain the `oml-cloud-service-location-url` URL
 
   * In the Autonomous Database instance details page. Click on the Service Console button.
-  ![ADB-instance-home](images/adb-homepage-dbactions.jpg)
+  ![ADB instance home](images/adb-homepage-dbactions.jpg)
 
   * The service console is opened.
-  ![ADB-DB-Actions](images/dbactions-homepage.jpg)
+  ![ADB DB Actions](images/dbactions-homepage.jpg)
 
   * Click on the menu on the top left side on the page and scroll to the right to the **Related Services** section. Click on the **Oracle Machine Learning RESTful services**.
-  ![ADB-DB-Actions](images/dbactions-menu-oml-restful.jpg)
+  ![ADB DB Actions](images/dbactions-menu-oml-restful.jpg)
 
   * In the Development section, notice the **Oracle Machine Learning RESTful services** section.
-  ![ADB-service-console](images/oml-restful-urls.jpg)
+  ![ADB service console](images/oml-restful-urls.jpg)
 
     The 2 important URLs from this section:
       + The URL to obtain a REST authentication token for OML-provided REST APIs:
@@ -541,6 +541,8 @@ To access OML Services using the REST API, you must provide an access token. To 
 
 
 > Notice the predictions made using the CURL calls are the same as using POSTMAN or using SQL in the OML Notebooks.
+
+You may now [proceed to the next lab](#next).
 
 ## Acknowledgements
 * **Authors** -  Andrei Manoliu, Milton Wan

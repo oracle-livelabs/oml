@@ -20,17 +20,17 @@ Estimated Time: 15 minutes
 ## Task 1: Connect to OML Notebooks and display Insurance Customer Data
 
 * In the Autonomous Database instance details page. Click on the Database Actions button.
-  ![ADB-instance-home](images/adb-homepage-dbactions.jpg)
+  ![ADB instance home](images/adb-homepage-dbactions.jpg)
 
 * The Database Actions launchpad page is now open and connected by default with the ADMIN user.
-  ![ADB-DB-Actions](images/dbactions-homepage.jpg)
+  ![ADB DB Actions](images/dbactions-homepage.jpg)
 
 
 * Click on **Oracle Machine Learning**.
-  ![ADB-service-console](images/dbactions-homepage-oml.jpg)
+  ![ADB service console](images/dbactions-homepage-oml.jpg)
 
   Alternatively you can click on the menu on the top left side on the page and click on the **Oracle Machine Learning** menu.
-  ![ADB-DB-Actions](images/dbactions-menu-oml.jpg)
+  ![ADB DB Actions](images/dbactions-menu-oml.jpg)
 
 
 * Login to OML Machine Learning User Interface in Autonomous Database
@@ -39,11 +39,11 @@ Estimated Time: 15 minutes
     - Username: **OMLUSER**
     - Password: **Welcome12345**
 
-   ![ADB-OML-connect](images/oml-login-user.jpg)
+   ![ADB OML connect](images/oml-login-user.jpg)
 
 * Open a Scratchpad
 
-  ![Open-Scratchpad](images/oml-homepage.jpg)
+  ![Open Scratchpad](images/oml-homepage.jpg)
 
 
 * The notebook server is starting. Once opened, we can run a select on the ``CUSTOMER_INSURANCE`` table
@@ -51,7 +51,7 @@ Estimated Time: 15 minutes
     <copy> select * from customer_insurance;  </copy>
     ````
 
-    ![customer-insurance](images/scratchpad-select-cust-insurance.jpg)
+    ![customer insurance](images/scratchpad-select-cust-insurance.jpg)
 
  Notice the columns ``LTV`` and ``LTV_BIN`` when you scroll to the right. These are our targets for the machine learning process.
 
@@ -68,7 +68,7 @@ Estimated Time: 15 minutes
      where cust_id not in ('CU12350','CU12331', 'CU12286')
      </copy>
      ````
-     ![create-training-table](images/scratchpad-create-train-table.jpg)
+     ![create training table](images/scratchpad-create-train-table.jpg)
 
      Notice that we keep the ``LTV_BIN`` column. It will be the target for our supervised learning classification model.
       In this workshop, we exclude three specific customers, and we will score three different models using their data.
@@ -86,7 +86,7 @@ Estimated Time: 15 minutes
       from Customer_insurance_train_classification
      </copy>
      ````
-     ![create-test-table](images/scratchpad-create-test-table.jpg)
+     ![create test table](images/scratchpad-create-test-table.jpg)
 
      Notice that in the testing table, we will not use any of the leading ``LTV`` or ``LTV_BIN`` columns. These columns might be misleading in the process. We will still use them in our verification process.
 
@@ -94,16 +94,16 @@ Estimated Time: 15 minutes
 
 
 * Go to the Main menu on the top left side near the Oracle Machine Learning icon.
-![AutoML-menu](images/oml-menu.jpg)
+![AutoML menu](images/oml-menu.jpg)
 
 
 
 * Click **AutoML Experiments**.
-![AutoML-menu](images/oml-menu-automl.jpg)
+![AutoML menu](images/oml-menu-automl.jpg)
 
 
 * Click Create in the AutoML Experiments page
-![AutoML-create-experiment](images/automl-homepage-create.jpg)
+![AutoML create experiment](images/automl-homepage-create.jpg)
 
 * In the Create Experiment page choose the following details:
 
@@ -113,11 +113,11 @@ Estimated Time: 15 minutes
     - Prediction Type: **CLASSIFICATION**
     - Case ID: **CUST_ID**
 
-    ![AutoML-create-experiment](images/automl-create-definitions.jpg)
+    ![AutoML create experiment](images/automl-create-definitions.jpg)
 
 * To make customizations you can expand the Additional Settings menu
 
-    ![AutoML-additional-settings](images/automl-create-settings.jpg)
+    ![AutoML additional settings](images/automl-create-settings.jpg)
 
     Notice that we can set the Database Service Level to High and select which metric we should compare the models and which predefined algorithms to include or exclude from this experiment.
 
@@ -127,7 +127,7 @@ Estimated Time: 15 minutes
         - Model Metric: **BALANCED ACCURACY**
 
 
-    ![AutoML-additional-settings](images/automl-create-settings-after.jpg)
+    ![AutoML additional settings](images/automl-create-settings-after.jpg)
 
 
 * In the **Features** section, we can deselect the following columns:
@@ -136,10 +136,10 @@ Estimated Time: 15 minutes
     - LTV
 
   In most cases, the name of the candidate should not be a deciding factor so we will remove them from the model features. Also, the LTV column which is a computational numeric column that drives the LTV_BIN column might be misdirecting the model and this column is removed also.
-  ![AutoML-additional-settings](images/automl-create-features.jpg)
+  ![AutoML additional settings](images/automl-create-features.jpg)
 
 * Run OML Auto ML experiment by clicking **```Start```** and **```Better Accuracy```**.
-  ![Run-AutoML](images/automl-start.jpg)
+  ![Run AutoML](images/automl-start.jpg)
 
   The AutoML Classification will run for several minutes showing which top 5 algorithms have a Better Accuracy. The running process takes around 20 minutes.
 

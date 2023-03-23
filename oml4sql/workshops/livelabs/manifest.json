@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "Detect anomalies with OML4SQL using one-class support vector machine (SVM)",
+  "workshoptitle": "Detect anomalies with OML4SQL with one-class support vector machine (SVM)",
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
     {
@@ -35,7 +35,7 @@
       "filename": "./../../oml4sql-use-case/oml4sql-use-case.md"
     },
     {
-      "title": "Lab 5: Detect anomalies with OML4SQL using one-class support vector machine (SVM)",
+      "title": "Lab 5: Detect anomalies with OML4SQL with one-class support vector machine (SVM)",
       "description": "Handson lab for using OML4SQL.",
       "filename": "./../../oml4sql-anomaly-detection/oml4sql-anomaly-detection.md"
     },
