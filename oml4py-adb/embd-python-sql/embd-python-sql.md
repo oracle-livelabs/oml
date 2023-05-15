@@ -57,13 +57,15 @@ We need to access and run the OML notebook for this lab.
 ## Task 1: Add the OML user to the cloud host ACL
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+
   Scroll down to Task 1.
+    >> Note: You must be an ADMIN user tp perform this task.
 
-  >> Note: The user must be an ADMIN user
+  ![Lab 6 Task 1 Add the OML user to the cloud host ACL](images/1-appendhost.png " ")    
 
-  ![Lab 6 Task 1 Add the OML user to the cloud host ACL](images/1-appendhost.png " ")
 
-2. Scroll down to end of Task 1.1. In this example, the hostname `OMLUSER` is returned if the host ACL entry exists for the specified user. If not, an exception is raised.
+2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+  Scroll down to end of Task 1.1.
 
   ![Lab 6 Task 1.1 Confirm the host ACL contains an entry for the OML user](images/1-1-add-omluser-acl-list.png " ")
 
@@ -75,11 +77,17 @@ We need to access and run the OML notebook for this lab.
 
   ![Lab 6 Task 2 Obtain an authorization token](images/2-obtain-auth-token.png " ")
 
+2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+
   Scroll down to Task 2.1.
   ![Lab 6 Task 2.1 Define get_token2 function that obtains access token](images/2-1-define-function-to-obtain-accesstoken.png " ")
 
+3. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+
   Scroll down to Task 2.2.
   ![Lab 6 Task 2.2 Script to create ACCESS_DETAILS table](images/2-2-create-access-details.png " ")
+
+4. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to task 2.3
   ![Lab 6 Task 2.3 Obtain and set the authorization token](images/2-3-obtain-set-auth-token.png " ")
