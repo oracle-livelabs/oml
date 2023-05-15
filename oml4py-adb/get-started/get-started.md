@@ -91,7 +91,7 @@ The default service is low. Click to bind or unbind an interpreter. Drag-and-dro
 
 As shown in the example, we dragged the **medium** interpreter up so it is the first in the list, and thus becomes the default.
 
-An interpreter is a plug-in that allows you to use a specific data processing language in your Oracle Machine Learning notebook. You can add multiple paragraphs, and each paragraph can be connected to different interpreters such as SQL, PL/SQL, Python, R and Conda.
+An interpreter is a plug-in that allows you to use a specific data processing language in your Oracle Machine Learning notebook. You can add multiple paragraphs, and each paragraph can be connected to different interpreters such as SQL, PL/SQL or Python.
 
 You create paragraphs with different interpreters based on the code you want to run, and the interpreter is set at the top of each paragraph.
 The available interpreters are:
@@ -100,8 +100,6 @@ The available interpreters are:
   - `%sql`&mdash;To call the SQL interpreter and run SQL statements
   - `%script`&mdash;To call and run PL/SQL scripts
   - `%python`&mdash;To call the Python interpreter and run Python scripts
-  - `%r`&mdash;To call the R interpreter and run R scripts.
-  - `%conda`&mdash;To connect to the Conda interpreter and install third-party Python and R libraries inside a notebook session.
 
 ## Task 4: Use the Python interpreter
 
@@ -182,4 +180,4 @@ You can now *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning; Jie Liu, Data Scientist
-* **Last Updated By/Date** - Moitreyee Hazarika, February 2023
+* **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, August 2022
