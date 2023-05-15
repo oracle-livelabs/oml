@@ -128,6 +128,14 @@ Here, you run the following script to obtain a proxy object for the IRIS table.
 
   The returned value is a DataFrame containing the coefficients of the predictors.
 
+  a) To run curl commands, click the Developer Tools icon on your OCI console and then click Cloud Shell. 
+
+    ![Lab 6 Task 5 cloud shell icon under Developer tools](images/devtools-cloud-shell.png " ")
+
+  b) The Oracle Cloud Shell interface opens at the bottom of your OCI console page. Here, you can run your curl commands.
+
+  ![Lab 6 Task 5 Cloud shell pane](images/cloud-shell-pane.png " ")
+
 ## Task 6: View Datastore content using Python and SQL
 The model `regr` is now stored in datastore `ds1`. You can view the datastore content, either from Python or SQL. First, display  Then, display the same information by querying the USER_PYQ_DATASTORES view.
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.

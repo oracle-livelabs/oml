@@ -96,9 +96,9 @@ We need to access and run the OML notebook for this lab.
 ## Task 4: Use the table-apply function to invoke the script from the Python API for embedded Python execution
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
- Scroll down to the beginning of Task 4.
+  Scroll down to the beginning of Task 4.
 
-  ![Lab 7 Task 4 Use the table-apply function to invoke the script from the Python API for embedded Python execution ](images/lab6-task44-tablyapply-call-udf.png " ")
+  ![Lab 7 Task 4 Use the table-apply function to invoke the script from the Python API for embedded Python execution ](images/4-tablyapply-call-udf.png " ")
 
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
@@ -125,6 +125,14 @@ We need to access and run the OML notebook for this lab.
 
   ![Lab 7 Task 5 Run the same function `build_lm` using the REST API table function table-apply](images/5-run-restapi-function.png " ")
 
+  a) To run curl commands, click the Developer Tools icon on your OCI console and then click Cloud Shell.  
+
+  ![Lab 7 Task 5 cloud shell icon under Developer tools](images/devtools-cloud-shell.png " ")
+
+  b) The Oracle Cloud Shell interface opens at the bottom of your OCI console page. Here, you can run your curl commands.
+
+  ![Lab 7 Task 5 Cloud shell pane](images/cloud-shell-pane.png " ")
+
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
    Scroll down to the beginning of Task 5.1.
@@ -149,6 +157,13 @@ We need to access and run the OML notebook for this lab.
    Scroll down to the beginning of Task 6.2.
    ![Lab 7 Task 6.2 Use row-apply to run the UDF from REST API using data parallelism](images/6-2-run-udf-from-restapi.png " ")
 
+   a) To run curl commands, click the Developer Tools icon on your OCI console and then click Cloud Shell.  
+
+   ![Lab 7 Task 6 cloud shell icon under Developer tools](images/devtools-cloud-shell.png " ")
+
+   b) The Oracle Cloud Shell interface opens at the bottom of your OCI console page. Here, you can run your curl commands.
+
+   ![Lab 7 Task 6 Cloud shell pane](images/cloud-shell-pane.png " ")
 
 ## Task 7: Work with Asynchronous Jobs
 
@@ -161,6 +176,14 @@ We need to access and run the OML notebook for this lab.
 
    Scroll down to the beginning of Task 7.1.
    ![Lab 7 Task 7.1  Perform an asynchronous REST call with a timeout of 300 seconds, or 5 minutes](images/7-1-run-rest-call-timeout.png " ")
+
+   a) To run curl commands, click the Developer Tools icon on your OCI console and then click Cloud Shell.  
+
+   ![Lab 7 Task 7 cloud shell icon under Developer tools](images/devtools-cloud-shell.png " ")
+
+   b) The Oracle Cloud Shell interface opens at the bottom of your OCI console page. Here, you can run your curl commands.
+
+   ![Lab 7 Task 7 Cloud shell pane](images/cloud-shell-pane.png " ")
 
 3. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
