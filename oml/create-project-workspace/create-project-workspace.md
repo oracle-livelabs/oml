@@ -111,14 +111,14 @@ The initial workspace and the default project is created by the Oracle Machine L
 
   You can create projects in two ways:
 	* Use the **New Project** option: Click the down arrow next to the **Project** field and then click **New Project**. The Create Project
-	![new-project.png](images/new-project.png "new-project.png" "New project")
+		![Notebooks option in OML homepage](images/new-project.png "[New Project option]")
 
 	* Use the **Create** option on the Workspaces page: Click the down arrow next to the Project field and click **Manage Workspace.**
 
-		![manage-workspaces.png](images/manage-workspaces.png "manage-workspaces.png" "Manage Workspace")
+		![manage-workspaces.png](images/manage-workspaces.png "[Manage Workspace]")
 
 		On the Manage Workspace page, under the **Projects in <user> Workspace** section, click **Create.** The Create Project dialog opens.
-		![new-project2.png](images/new-project2.png "new-project2.png" "Create Project dialog")
+		![new-project2.png](images/new-project2.png "[Create Project dialog]")
 
 2. In the Create Project dialog, enter the following:
 

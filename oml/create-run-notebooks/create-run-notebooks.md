@@ -5,6 +5,17 @@ This lab shows you how to create a notebook and run it in Oracle Machine Learnin
 
 Oracle Machine Learning Notebooks is a web-based interface for data analysis, data discovery, and data visualization. Whenever a notebook is created, it must be defined with a specific interpreter binding specifications. The notebook contains an internal list of bindings that determines the order of the interpreter bindings.
 
+An Oracle Machine Learning notebook supports multiple languages interpreters. Each paragraph is associated with a specific interpreter. For example, to run SQL statements use the SQL interpreter. To run PL/SQL statements, use the "script" interpreter.
+
+You identify which interpreter to use by specifying ``%`` followed by the interpreter to use. For example:
+
+  * ``%sql`` — To call the SQL interpreter and run SQL statements
+  * ``%script`` — To call PL/SQL interpreter and run PL/SQL scripts
+  * ``%md`` — To call the Markdown interpreter and generate static html from Markdown plain text
+  * ``%python`` — To call the Python interpreter and run Python scripts
+  * ``%r`` — To call the R interpreter and run R scripts.
+  * ``%conda`` — To connect to the Conda interpreter, and install third-party Python and R libraries inside a notebook session.
+
 A notebook comprises paragraphs which is a notebook component where you can write and run SQL statements, PL/SQL scripts, run R and Python commands. A paragraph has an input section and an output section. In the input section, specify the interpreter to run along with the text. This information is sent to the interpreter to be run. In the output section, the results of the interpreter are provided.
 
 ### Estimated Time
@@ -78,7 +89,7 @@ To create a notebook based on a template:
 
      ![Test Anomaly Detection](images/test-anomaly-detection.png "Test Anomaly Detection notebook")
 
-## Task 3: Run your Notebook with Conda Interpreter
+## Task 3: Run your Notebook using the Conda Interpreter
 
 Conda is an open-source package and environment management system that allows the use of environments containing third-party Python and R libraries. Oracle Machine Learning Notebooks provide the conda interpreter to install third-party Python and R libraries inside a notebook session.
 Third-party libraries installed in Oracle Machine Learning Notebooks can be used in:
@@ -156,7 +167,7 @@ Type:
 
 
 
-## Task 4: Run Your Notebook with R Interpreter
+## Task 4: Run Your Notebook using the R Interpreter
 
 To run R functions in an Oracle Machine Learning notebook, you must first connect to the R interpreter.
 An Oracle Machine Learning notebook supports multiple languages. For this, you must create a notebook with some paragraphs to run SQL queries, and other paragraphs to run R and Python scripts. To run a notebook in different scripting languages, you must first connect the notebook paragraphs with the respective interpreters such as R, Python, or SQL. This example shows how to:
@@ -197,7 +208,7 @@ An Oracle Machine Learning notebook supports multiple languages. For this, you m
   Once the packages are loaded successfully, the list of ORE packages are displayed as shown in the screenshot here. Scroll down to view the entire list.
 
 
-## Task 5: Run Your Notebook with Python Interpreter
+## Task 5: Run Your Notebook using the Python Interpreter
 
 Oracle Machine Learning for Python (OML4Py) enables you to run Python commands and scripts for data transformations and for statistical, machine learning, and graphical analysis on data accessible as tables and views.  
 
@@ -267,7 +278,7 @@ This example assumes that you have a notebook called Py Note notebook created. T
 
 7. Click **Back** to return to the Notebooks page.
 
-## Task 6: Run Your Notebook with SQL and PL/SQL Interpreter
+## Task 6: Run Your Notebook using the SQL and PL/SQL Interpreter
 
 To display and visualize data using SQL in a notebook paragraph, that data must be fetched from the database.
 
