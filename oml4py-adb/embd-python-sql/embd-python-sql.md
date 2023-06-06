@@ -13,28 +13,31 @@ Watch the video below for a quick walk-through of the lab.
 ### About Embedded Python Execution
 Embedded Python Execution enables you to run user-defined Python functions in Python engines spawned in the Oracle Autonomous Database environment. These engines run alongside an OML Notebooks Python interpreter session.
 
-The OML4Py Embedded Python Execution functions are:
+The OML4Py Embedded Python execution SQL API functions are:
 
-* `oml.do_eval`&mdash;Calls a Python function in Python engines spawned by the Oracle Autonomous Database environment.
-* `oml.group_apply`&mdash;Partitions a database table by the values in one or more columns and runs the provided user-defined Python function on each partition.
-* `oml.index_apply`&mdash;Calls a Python function multiple times, passing in a unique index of the invocation to the user-defined function.
-* `oml.row_apply`&mdash;Partitions a database table into sets of rows and runs the provided user-defined Python function on the data in each set.
-* `oml.table_apply`&mdash;Calls a Python function on data in the database as a single pandas.DataFrame in a single Python engine.
+* `pyqEval`&mdash;Runs the provided user-defined Python function in a Python engine spawned by the Autonomous Database environment.
+* `pyqTablEval`&mdash;Runs the provided user-defined Python function data referenced by an OML DataFrame proxy object in a single Python engine.
+* `pyqGroupEval`&mdash;Partitions a database table by the values in one or more columns and runs the provided user-defined Python function on each partition, optionally in parallel using multiple Python engines.
+* `pyqRowEval`&mdash;Partitions a database table into sets of rows and runs the provided user-defined Python function on the data in each set, optionally in parallel using multiple Python engines.
+* `pyqIndexEval`&mdash;Runs a Python function multiple times, passing in a unique index of the invocation to the user-defined function, optionally in parallel using multiple Python engines.
 
 > **Note:** Embedded Python Execution functions are also available through the [Oracle Machine Learning for Python REST API for Embedded Python Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlepe/rest-endpoints.html).
 
 ### Objectives
+In this lab, we provide a workflow for using the OML4Py SQL API for embedded Python execution with Oracle Autonomous Database:
 
-In this lab, you will:
-* Build an open source scikit-learn linear model and scoring script
-* Prepare the same script for use with Embedded Python Execution
-* Build one model per group using the `group_apply` function
-* Return multiple images as a result from Embedded Python Execution
-* Create and run SQL and REST user defined functions
+As the ADMIN user:
+* Add the OML user to cloud host Access Control List (ACL)
+
+As the OML user:
+* Obtain an authorization token to access the SQL API for embedded Python execution
+* Create a UDF and store it in the OML4Py script repository
+* Run the UDF using embedded Python execution from the OML4Py Python and SQL APIs
 
 ### Prerequisites
 
-We need to access and run the OML notebook for this lab.
+* Add the user to the host ACL
+* Access and run the OML notebook for this lab.
 
 1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 
@@ -59,10 +62,12 @@ We need to access and run the OML notebook for this lab.
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to Task 1.
-    >> Note: You must be an ADMIN user tp perform this task.
+    >> Note: You must be an ADMIN user to perform this task.
 
   ![Lab 6 Task 1 Add the OML user to the cloud host ACL](images/1-appendhost.png " ")    
 
+
+  >> Note: In this example, `Ashburn` is the region. Your region will be different from Ashburn. Hence, you must replace Ashburn with your region.
 
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to end of Task 1.1.
@@ -121,6 +126,8 @@ Here, you run the following script to obtain a proxy object for the IRIS table.
 
 ## Task 5: Use the table-apply function to call the script from the Python API for embedded Python execution
 
+>> Note: Here, we are only running the function in the Python API for embedded Python execution as a test step before running it from the SQL API for embedded Python execution.
+
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to Task 5.
@@ -128,16 +135,8 @@ Here, you run the following script to obtain a proxy object for the IRIS table.
 
   The returned value is a DataFrame containing the coefficients of the predictors.
 
-  a) To run curl commands, click the Developer Tools icon on your OCI console and then click Cloud Shell. 
-
-    ![Lab 6 Task 5 cloud shell icon under Developer tools](images/devtools-cloud-shell.png " ")
-
-  b) The Oracle Cloud Shell interface opens at the bottom of your OCI console page. Here, you can run your curl commands.
-
-  ![Lab 6 Task 5 Cloud shell pane](images/cloud-shell-pane.png " ")
-
 ## Task 6: View Datastore content using Python and SQL
-The model `regr` is now stored in datastore `ds1`. You can view the datastore content, either from Python or SQL. First, display  Then, display the same information by querying the USER_PYQ_DATASTORES view.
+The model `regr` is now stored in datastore `ds1`. You can view the datastore content, either from Python or SQL. First, display  Then, display the same information by querying the `USER_PYQ_DATASTORES` view.
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to Task 6.
@@ -251,7 +250,7 @@ You can explore additional workshops related to Oracle Machine Learning from the
 
 ## Learn more
 
-* [Automated Machine Learning](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/automatic-machine-learning.html#GUID-4B240E7A-1A8B-43B6-99A5-7FF86330805A)
+* [Automated Machine Learning](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/automated-machine-learning1.html#GUID-4B240E7A-1A8B-43B6-99A5-7FF86330805A)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
 * [Additional Workshops for Oracle Machine Learning](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/livelabs-workshop-cards?c=y&p100_product=70)
 
