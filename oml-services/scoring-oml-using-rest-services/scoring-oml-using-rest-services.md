@@ -1,4 +1,4 @@
-# Score Data using OML Services
+# Score Data with OML Services
 
 In this lab we will learn about accessing our deployed machine learning model using the OML Services REST API.  We will use Postman and cURL to invoke the REST API, the required software is pre-installed on the virtual machine assigned.
 
@@ -23,9 +23,9 @@ Estimated Time: 15 minutes
 
 
 * Open a terminal and launch the Postman Application by running
-    ````
+    ```
     <copy>./OML-Services/Postman/Postman</copy>
-    ````
+    ```
 
     ![Launch Postman](images/launch-postman.jpg)
 
@@ -49,9 +49,9 @@ Estimated Time: 15 minutes
 
   Use the following URL structure to access the REST endpoints:
 
-  ````
+  ```
   https://\<oml-cloud-service-location-url\>.oraclecloudapps.com
-  ````
+  ```
 
   Where:
      - `<oml-cloud-service-location-url>`: is a variable containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID, region and database name.
@@ -81,29 +81,29 @@ Estimated Time: 15 minutes
 
   To generate the access token we will need the following details:
 
-  ````
+  ```
   Operation: POST
 
   URI endpoint:
   <copy>https://<oml-cloud-service-location-url>.oraclecloudapps.com/omlusers/api/oauth2/v1/token</copy>
 
-  ````
+  ```
 
   > Replace **`<oml-cloud-service-location-url>`** with your URL.
 
 
   In the header Tab enter the details:
 
-  ````
+  ```
   --header 'Content-Type: application/json'
   --header 'Accept: application/json'
-  ````
+  ```
 
   ![Postman token headers](images/postman-token-headers.jpg)
 
   In the Body tab, pick RAW format and enter the following:
 
-  ````
+  ```
   <copy>
   {
      "grant_type":"password",
@@ -111,7 +111,7 @@ Estimated Time: 15 minutes
      "password":"Welcome12345"
   }
   </copy>
-  ````
+  ```
   ![Postman token body](images/postman-token-body.jpg)
 
   Click **Send**
@@ -141,13 +141,13 @@ Estimated Time: 15 minutes
 
   Enter the following details:
 
-    ````
+    ```
     Operation: POST
 
     URI endpoint:
     <copy>https://<oml-cloud-service-location-url>.oraclecloudapps.com/omlmod/v1/deployment/<model_URI>/score</copy>
 
-    ````
+    ```
 
    - Replace **`<oml-cloud-service-location-url>`** with your URL.
    - Replace **`<model_URI>`** with the model URI that we defined in Task 3: **``classsvmg``**
@@ -156,10 +156,10 @@ Estimated Time: 15 minutes
 
   In the header Tab enter the details:
 
-    ````
+    ```
     --header 'Content-Type: application/json'
 
-    ````
+    ```
 
   ![Postman Model Score Header](images/postman-model-score-header.jpg)
 
@@ -169,7 +169,7 @@ Estimated Time: 15 minutes
 
   In the Body tab enter the Fran Hobs data in RAW format.
 
-    ````
+    ```
     <copy>
     {
        "inputRecords":[
@@ -207,7 +207,7 @@ Estimated Time: 15 minutes
        ]
     }
     </copy>
-    ````
+    ```
 
   ![Postman Model Score Fran Hobs](images/postman-model-score-body.jpg)
 
@@ -224,7 +224,7 @@ Estimated Time: 15 minutes
 
   We can test now our second candidate:  AL FRANK. Copy the following Json data in the Body tab and click **Send**.
 
-      ````
+      ```
       <copy>
       {
          "inputRecords":[
@@ -262,7 +262,7 @@ Estimated Time: 15 minutes
          ]
       }
       </copy>
-      ````
+      ```
 
   ![Postman Model Score Al Frank Result](images/postman-model-score-results-af.jpg)
 
@@ -276,7 +276,7 @@ Estimated Time: 15 minutes
 
   We can test now our third candidate: ELLIOT PADGETT. Copy the following Json data in the Body tab and click **Send**.
 
-    ````
+    ```
     <copy>
     {
        "inputRecords":[
@@ -314,7 +314,7 @@ Estimated Time: 15 minutes
        ]
     }
     </copy>
-    ````
+    ```
 
   ![Postman Model Score ELLIOT PADGETT Result](images/postman-model-score-results-ep.jpg)
 
@@ -335,13 +335,13 @@ To access OML Services using the REST API, you must provide an access token. To 
 
 * In the VM open a terminal and export the environment
 
-    ````
+    ```
     <copy>
     export omlserver=https://<oml-cloud-service-location-url>.oraclecloudapps.com
     export username=OMLUSER
     export password=Welcome12345
     </copy>
-    ````
+    ```
 
   - Replace **`<oml-cloud-service-location-url>`** with your URL.
 
@@ -349,24 +349,24 @@ To access OML Services using the REST API, you must provide an access token. To 
 
 * Run this statement to get the token to be used later  (replace what is needed)
 
-    ````
+    ```
     $<copy>curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"grant_type":"password", "username":"'${username}'", "password":"'${password}'"}' "${omlserver}/omlusers/api/oauth2/v1/token"</copy>
 
     {"accessToken":"eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJPTUxVU0VSIiwidGVuYW50X25hbWUiOiJPQ0lEMS5URU5BTkNZLk9DMS4uQUFBQUFBQUFGSjM3TVlUWDIyT1FVT1JDWk5MRlVINzdDRDQ1SU5UN1RUN0ZPMjdUVUVKU0ZRQllCWlJRIiwiZGF0YWJhc2VfbmFtZSI6IkFUUDA0Iiwicm9sZXMiOiJbe1wicm9sZVwiOlwiT01MX0RFVkVMT1BFUlwiLFwiY29tbW9uXCI6ZmFsc2V9XSIsImlzcyI6IkIxOTBDQUJBMEY3ODYxQUFFMDUzNkYxODAwMEE1M0JDIiwiZXhwIjoxNjI2NzkwNTMyLCJpYXQiOjE2MjY3ODY5MzJ9.V61pqfjXRWe4v-nqaxSPGvdCLWDvrUszLOCc_GWdKNJWXaNAsxR_b_BgwbrSBY2rJJJ0XchlDP9khFX1vhBVgHxUJfHGW9sdYPyu5KgGozRENldjte57E2XeupUqNkQot7APTu0mmpMufF_HOSW__I65TpXxPrB9Rv3EHkT9gaOhFQTj_xByAXTqZI7inSxxa5p6AOszoEuylF7wikO1WAT_GcJaCmUqLevsoc8QNNQFCUo3g_918wgiJWYqtf5qw6ZuxNi6HOjUCR8Pi722PP6H7Q1E5WwIIl9qSnMPQTeYcMO34wD58MngkJ9N0D51BK5QS6K0Da4QLPrLmDFACQ!NL/okRBiTH9JfS2eeuG+mRlNUOwD4Qxq6/VGDYIBuQrYN4E+8en/OmEjKEdduFcJZe+747aXXrVfA61zJ38AjIvWOCdS7WnoJ156Ohx541/a28+vpBbwXhkCxogyDXphpqE63oKP75hCKgKPDZWWhPKhJaWeMcFy2xpRq1bt0Vz4zthhv7XHANx2TZDs1oj684PiPSAXX1seJSy4TFgyV9OrOgCThkZe5rPs7LIlR46bKCuYb4mXs47i8crqu71Jv2bit7dgtMetrwlgVywz9PZSl3WPrHEzxeqH9iF82DEIa6tlH/EUy0B9OC6Fc5LB4WeeQfUwiumoXMr0iEdACA==","expiresIn":3600,"tokenType":"Bearer"}
-    ````
+    ```
     Copy the token starting from ``:"``  up until ``==``. In the above example the token is:
     `` eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJPTUxVU0VSIiwidGVuYW50X25hbWUiOiJPQ0lEMS5URU5BTkNZLk9DMS4uQUFBQUFBQUFGSjM3TVlUWDIyT1FVT1JDWk5MRlVINzdDRDQ1SU5UN1RUN0ZPMjdUVUVKU0ZRQllCWlJRIiwiZGF0YWJhc2VfbmFtZSI6IkFUUDA0Iiwicm9sZXMiOiJbe1wicm9sZVwiOlwiT01MX0RFVkVMT1BFUlwiLFwiY29tbW9uXCI6ZmFsc2V9XSIsImlzcyI6IkIxOTBDQUJBMEY3ODYxQUFFMDUzNkYxODAwMEE1M0JDIiwiZXhwIjoxNjI2NzkwNTMyLCJpYXQiOjE2MjY3ODY5MzJ9.V61pqfjXRWe4v-nqaxSPGvdCLWDvrUszLOCc_GWdKNJWXaNAsxR_b_BgwbrSBY2rJJJ0XchlDP9khFX1vhBVgHxUJfHGW9sdYPyu5KgGozRENldjte57E2XeupUqNkQot7APTu0mmpMufF_HOSW__I65TpXxPrB9Rv3EHkT9gaOhFQTj_xByAXTqZI7inSxxa5p6AOszoEuylF7wikO1WAT_GcJaCmUqLevsoc8QNNQFCUo3g_918wgiJWYqtf5qw6ZuxNi6HOjUCR8Pi722PP6H7Q1E5WwIIl9qSnMPQTeYcMO34wD58MngkJ9N0D51BK5QS6K0Da4QLPrLmDFACQ!NL/okRBiTH9JfS2eeuG+mRlNUOwD4Qxq6/VGDYIBuQrYN4E+8en/OmEjKEdduFcJZe+747aXXrVfA61zJ38AjIvWOCdS7WnoJ156Ohx541/a28+vpBbwXhkCxogyDXphpqE63oKP75hCKgKPDZWWhPKhJaWeMcFy2xpRq1bt0Vz4zthhv7XHANx2TZDs1oj684PiPSAXX1seJSy4TFgyV9OrOgCThkZe5rPs7LIlR46bKCuYb4mXs47i8crqu71Jv2bit7dgtMetrwlgVywz9PZSl3WPrHEzxeqH9iF82DEIa6tlH/EUy0B9OC6Fc5LB4WeeQfUwiumoXMr0iEdACA==``
 
     Don't forget to add a single quote at the beginning and at the end.
 
-    ````
+    ```
     $<copy> export token='eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJPTUxVU0VSIiwidGVuYW50X25hbWUiOiJPQ0lEMS5URU5BTkNZLk9DMS4uQUFBQUFBQUFGSjM3TVlUWDIyT1FVT1JDWk5MRlVINzdDRDQ1SU5UN1RUN0ZPMjdUVUVKU0ZRQllCWlJRIiwiZGF0YWJhc2VfbmFtZSI6IkFUUDA0Iiwicm9sZXMiOiJbe1wicm9sZVwiOlwiT01MX0RFVkVMT1BFUlwiLFwiY29tbW9uXCI6ZmFsc2V9XSIsImlzcyI6IkIxOTBDQUJBMEY3ODYxQUFFMDUzNkYxODAwMEE1M0JDIiwiZXhwIjoxNjI2NzkwNTMyLCJpYXQiOjE2MjY3ODY5MzJ9.V61pqfjXRWe4v-nqaxSPGvdCLWDvrUszLOCc_GWdKNJWXaNAsxR_b_BgwbrSBY2rJJJ0XchlDP9khFX1vhBVgHxUJfHGW9sdYPyu5KgGozRENldjte57E2XeupUqNkQot7APTu0mmpMufF_HOSW__I65TpXxPrB9Rv3EHkT9gaOhFQTj_xByAXTqZI7inSxxa5p6AOszoEuylF7wikO1WAT_GcJaCmUqLevsoc8QNNQFCUo3g_918wgiJWYqtf5qw6ZuxNi6HOjUCR8Pi722PP6H7Q1E5WwIIl9qSnMPQTeYcMO34wD58MngkJ9N0D51BK5QS6K0Da4QLPrLmDFACQ!NL/okRBiTH9JfS2eeuG+mRlNUOwD4Qxq6/VGDYIBuQrYN4E+8en/OmEjKEdduFcJZe+747aXXrVfA61zJ38AjIvWOCdS7WnoJ156Ohx541/a28+vpBbwXhkCxogyDXphpqE63oKP75hCKgKPDZWWhPKhJaWeMcFy2xpRq1bt0Vz4zthhv7XHANx2TZDs1oj684PiPSAXX1seJSy4TFgyV9OrOgCThkZe5rPs7LIlR46bKCuYb4mXs47i8crqu71Jv2bit7dgtMetrwlgVywz9PZSl3WPrHEzxeqH9iF82DEIa6tlH/EUy0B9OC6Fc5LB4WeeQfUwiumoXMr0iEdACA=='</copy>
-    ````
+    ```
 ### Task 2.2: Use REST calls to predict customer classification
 
 * We will check the predicted classification for 3 distinct customers
 
-    ````
+    ```
     <copy>curl -X POST "${omlserver}/omlmod/v1/deployment/classsvmg/score" \
     --header "Authorization: Bearer ${token}" \
     --header 'Content-Type: application/json' \
@@ -406,7 +406,7 @@ To access OML Services using the REST API, you must provide an access token. To 
      ]
     }'
     </copy>
-    ````
+    ```
 
   The results for the customer with ``CUST_ID = CU12350`` , ``LAST = FRAN``, ``FIRST = HOBBS`` are similar to:
     ```
@@ -421,7 +421,7 @@ To access OML Services using the REST API, you must provide an access token. To 
 
    Now we will score all 3 customers in the same command:
 
-    ````
+    ```
     <copy>
     curl -X POST "${omlserver}/omlmod/v1/deployment/classsvmg/score" \
     --header "Authorization: Bearer ${token}" \
@@ -525,7 +525,7 @@ To access OML Services using the REST API, you must provide an access token. To 
      "topN":1
     }'
     </copy>
-    ````
+    ```
     Here, topN filters the classification result showing the N highest probabilities, in our case only the highest probability.
     The results should be similar to:
 
