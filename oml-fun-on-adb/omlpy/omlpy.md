@@ -273,101 +273,101 @@ Use the `oml.dt` class to build a Decision Tree model. You can build a model wit
 
 	The `oml.dt` class uses the Decision Tree algorithm for classification and a model object `dt_mod` is created with the default parameter settings.  The **fit** function builds the Decision Tree model according to the training data and parameter settings.
 
-	```
 
-	Model Name: DT_CLAS_MODEL
+	
 
-	Model Owner: OMLUSER
-
-	Algorithm Name: Decision Tree
-
-	Mining Function: CLASSIFICATION
-
-	Target: AFFINITY_CARD
-
-	Settings:
-	                    setting name            setting value
-	0                      ALGO_NAME       ALGO_DECISION_TREE
-	1              CLAS_MAX_SUP_BINS                       32
-	2          CLAS_WEIGHTS_BALANCED                      OFF
-	3                   ODMS_DETAILS              ODMS_ENABLE
-	4   ODMS_MISSING_VALUE_TREATMENT  ODMS_MISSING_VALUE_AUTO
-	5                  ODMS_SAMPLING    ODMS_SAMPLING_DISABLE
-	6                      PREP_AUTO                       ON
-	7           TREE_IMPURITY_METRIC       TREE_IMPURITY_GINI
-	8            TREE_TERM_MAX_DEPTH                        7
-	9          TREE_TERM_MINPCT_NODE                      .05
-	10        TREE_TERM_MINPCT_SPLIT                       .1
-	11         TREE_TERM_MINREC_NODE                       10
-	12        TREE_TERM_MINREC_SPLIT                       20
-
-	Global Statistics:
-	  attribute name  attribute value
-	0       NUM_ROWS             2725
-
-	Attributes:
-	EDUCATION
-	HOME_THEATER_PACKAGE
-	HOUSEHOLD_SIZE
-	OCCUPATION
-	YRS_RESIDENCE
-	Y_BOX_GAMES
-
-	Partition: NO
-
-	Distributions:
-
-	    NODE_ID  TARGET_VALUE  TARGET_COUNT
-	0         0             0          2088
-	1         0             1           637
-	2         1             0           676
-	3         1             1           549
-	4         2             0           108
-	5         2             1           252
-	6         3             0           568
-	7         3             1           297
-	8         4             0          1412
-	9         4             1            88
-	10        5             0            50
-	11        5             1            23
-	12        6             0          1362
-	13        6             1            65
-	14        7             0            89
-	15        7             1           244
-	16        8             0            19
-	17        8             1             8
-	18        9             0           188
-	19        9             1            38
-	20       10             0           380
-	21       10             1           259
-	22       11             0            20
-	23       12             0            30
-	24       12             1            23
-	25       13             0           826
-	26       13             1             6
-	27       14             0           536
-	28       14             1            59
-
-	Nodes:
-
-	    parent  node.id  row.count  prediction                                              split                                          surrogate                                        full.splits
-	0      0.0        1       1225           0                   (HOUSEHOLD_SIZE IN ("3" "4-5"))                          YRS_RESIDENCE >(3.5E+000))                    (HOUSEHOLD_SIZE IN ("3" "4-5"))
-	1      0.0        4       1500           0          (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+"))                         YRS_RESIDENCE <=(3.5E+000))           (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+"))
-	2      1.0        2        360           1       (OCCUPATION IN ("Armed-F" "Exec." "Prof."))   (EDUCATION IN( ("Bach." "Masters" "PhD" "Profs...  (HOUSEHOLD_SIZE IN ("3" "4-5")) AND (OCCUPATIO...
-	3      1.0        3        865           0  (OCCUPATION IN ("?" "Cleric." "Crafts" "Farmin...  (EDUCATION IN( ("10th" "11th" "12th" "1st-4th"...  (HOUSEHOLD_SIZE IN ("3" "4-5")) AND (OCCUPATIO...
-	4      2.0        7        333           1                         (Y_BOX_GAMES <=(5.0E-001))                         YRS_RESIDENCE >(2.5E+000))  (HOUSEHOLD_SIZE IN ("3" "4-5")) AND (OCCUPATIO...
-	5      2.0        8         27           0                          (Y_BOX_GAMES >(5.0E-001))                        YRS_RESIDENCE <=(2.5E+000))  (HOUSEHOLD_SIZE IN ("3" "4-5")) AND (OCCUPATIO...
-	6      3.0        9        226           0                       (YRS_RESIDENCE <=(3.5E+000))                 HOME_THEATER_PACKAGE <=(5.0E-001))  (HOUSEHOLD_SIZE IN ("3" "4-5")) AND (OCCUPATIO...
-	7      3.0       10        639           0                        (YRS_RESIDENCE >(3.5E+000))                  HOME_THEATER_PACKAGE >(5.0E-001))  (HOUSEHOLD_SIZE IN ("3" "4-5")) AND (OCCUPATIO...
-	8      4.0        5         73           0         (EDUCATION IN ("Masters" "PhD" "Profsc"))                                                None  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
-	9      4.0        6       1427           0  (EDUCATION IN ("10th" "11th" "12th" "1st-4th" ...                                               None  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
-	10     5.0       11         20           0                (HOME_THEATER_PACKAGE <=(5.0E-001))                           Y_BOX_GAMES >(5.0E-001))  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
-	11     5.0       12         53           0                 (HOME_THEATER_PACKAGE >(5.0E-001))                          Y_BOX_GAMES <=(5.0E-001))  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
-	12     6.0       13        832           0                       (YRS_RESIDENCE <=(3.5E+000))                 HOME_THEATER_PACKAGE <=(5.0E-001))  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
-	13     6.0       14        595           0                        (YRS_RESIDENCE >(3.5E+000))                  HOME_THEATER_PACKAGE >(5.0E-001))  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
-	14     NaN        0       2725           0                                               None                                               None    
-	                                              (
-		```
+		Model Name: DT_CLAS_MODEL
+ 
+		Model Owner: OMLUSER
+ 
+		Algorithm Name: Decision Tree
+ 
+		Mining Function: CLASSIFICATION
+ 
+		Target: AFFINITY_CARD
+ 
+		Settings:
+    	                setting name            setting value
+		0                      ALGO_NAME       ALGO_DECISION_TREE
+		1              CLAS_MAX_SUP_BINS                       32
+		2          CLAS_WEIGHTS_BALANCED                      OFF
+		3                   ODMS_DETAILS              ODMS_ENABLE
+		4   ODMS_MISSING_VALUE_TREATMENT  ODMS_MISSING_VALUE_AUTO
+		5                  ODMS_SAMPLING    ODMS_SAMPLING_DISABLE
+		6                      PREP_AUTO                       ON
+		7           TREE_IMPURITY_METRIC       TREE_IMPURITY_GINI
+		8            TREE_TERM_MAX_DEPTH                        7
+		9          TREE_TERM_MINPCT_NODE                      .05
+		10        TREE_TERM_MINPCT_SPLIT                       .1
+		11         TREE_TERM_MINREC_NODE                       10
+		12        TREE_TERM_MINREC_SPLIT                       20
+ 
+		Global Statistics:
+  		attribute name  attribute value
+		0       NUM_ROWS             2725
+ 
+		Attributes:
+		EDUCATION
+		HOME_THEATER_PACKAGE
+		HOUSEHOLD_SIZE	
+		OCCUPATION
+		YRS_RESIDENCE
+		Y_BOX_GAMES
+ 
+		Partition: NO
+ 
+		Distributions:
+ 
+    	NODE_ID  TARGET_VALUE  TARGET_COUNT
+		0         0             0          2088
+		1         0             1           637
+		2         1             0           676
+		3         1             1           549
+		4         2             0           108
+		5         2             1           252
+		6         3             0           568
+		7         3             1           297
+		8         4             0          1412
+		9         4             1            88
+		10        5             0            50
+		11        5             1            23
+		12        6             0          1362
+		13        6             1            65
+		14        7             0            89
+		15        7             1           244
+		16        8             0            19
+		17        8             1             8
+		18        9             0           188
+		19        9             1            38
+		20       10             0           380
+		21       10             1           259
+		22       11             0            20
+		23       12             0            30
+		24       12             1            23
+		25       13             0           826
+		26       13             1             6
+		27       14             0           536
+		28       14             1            59
+ 
+		Nodes:
+ 
+    	parent  node.id  row.count  prediction                                              split                                          surrogate                                        full.splits
+		0      0.0        1       1225           0                   (HOUSEHOLD_SIZE IN ("3" "4-5"))                          YRS_RESIDENCE >(3.5E+000))                    (HOUSEHOLD_SIZE IN ("3" "4-5"))
+		1      0.0        4       1500           0          (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+"))                         YRS_RESIDENCE <=(3.5E+000))           (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+"))
+		2      1.0        2        360           1       (OCCUPATION IN ("Armed-F" "Exec." "Prof."))   (EDUCATION IN( ("Bach." "Masters" "PhD" "Profs...  (HOUSEHOLD_SIZE IN ("3" "4-5")) AND (OCCUPATIO...
+		3      1.0        3        865           0  (OCCUPATION IN ("?" "Cleric." "Crafts" "Farmin...  (EDUCATION IN( ("10th" "11th" "12th" "1st-4th"...  (HOUSEHOLD_SIZE IN ("3" "4-5")) AND (OCCUPATIO...
+		4      2.0        7        333           1                         (Y_BOX_GAMES <=(5.0E-001))                         YRS_RESIDENCE >(2.5E+000))  (HOUSEHOLD_SIZE IN ("3" "4-5")) AND (OCCUPATIO...
+		5      2.0        8         27           0                          (Y_BOX_GAMES >(5.0E-001))                        YRS_RESIDENCE <=(2.5E+000))  (HOUSEHOLD_SIZE IN ("3" "4-5")) AND (OCCUPATIO...
+		6      3.0        9        226           0                       (YRS_RESIDENCE <=(3.5E+000))                 HOME_THEATER_PACKAGE <=(5.0E-001))  (HOUSEHOLD_SIZE IN ("3" "4-5")) AND (OCCUPATIO...
+		7      3.0       10        639           0                        (YRS_RESIDENCE >(3.5E+000))                  HOME_THEATER_PACKAGE >(5.0E-001))  (HOUSEHOLD_SIZE IN ("3" "4-5")) AND (OCCUPATIO...
+		8      4.0        5         73           0         (EDUCATION IN ("Masters" "PhD" "Profsc"))                                                None  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
+		9      4.0        6       1427           0  (EDUCATION IN ("10th" "11th" "12th" "1st-4th" ...                                               None  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
+		10     5.0       11         20           0                (HOME_THEATER_PACKAGE <=(5.0E-001))                           Y_BOX_GAMES >(5.0E-001))  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
+		11     5.0       12         53           0                 (HOME_THEATER_PACKAGE >(5.0E-001))                          Y_BOX_GAMES <=(5.0E-001))  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
+		12     6.0       13        832           0                       (YRS_RESIDENCE <=(3.5E+000))                 HOME_THEATER_PACKAGE <=(5.0E-001))  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
+		13     6.0       14        595           0                        (YRS_RESIDENCE >(3.5E+000))                  HOME_THEATER_PACKAGE >(5.0E-001))  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
+		14     NaN        0       2725           0                                               None                                               None                                                  (
+	
 
 2. To specify model settings and build a Decision Tree model, run the following script :
 
@@ -815,7 +815,8 @@ You can save the python objects you create in one python session and load them i
 
 In this example, you classified customers who are most likely to be positive responders to an Affinity Card loyal program. You built and applied a classification decision tree model using the Sales history (SH) schema data. 
 
-You were also able to successfully evaluate the quality of the model using various metrics, and identify the top attributes that explains each customer prediction.  You also learned how to store and retrieve Python objects from the OML Python Data Store.
+You were also able to successfully evaluate the quality of the model using various metrics, and identify the top attributes that explains each customer prediction.  You also learned how to store and retrieve Python objects from the OML Python Data Store. 
+You may now **proceed to the next lab**.
 
 ## Learn More
 

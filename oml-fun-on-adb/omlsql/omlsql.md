@@ -284,7 +284,7 @@ Click **settings** and drag `DATE_ID` to **keys** and `FORECASTED_SOLD`, `ACTUAL
 
   ![A visual representation of the forecast](images/timeseries-forecast-graph.png)
 
-This completes the prediction step. The model has successfully forecast sales for the next four quarters.
+This completes the prediction step. The model has successfully forecast sales for the next four quarters. You may now **proceed to the next lab**.
 
 ## Learn More
 

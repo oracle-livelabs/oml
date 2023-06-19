@@ -38,13 +38,28 @@
             "type": "freetier"
         },
         {
-            "title": "Lab 5: Run user-defined functions using Embedded Python Execution",
+            "title": "Lab 5: Run user-defined functions with Python API for Embedded Python Execution",
             "filename": "../../embd-python/embd-python.md",
             "type": "freetier"
         },
         {
-            "title": "Lab 6: Use AutoML",
+            "title": "Lab 6: Run user-defined functions with SQL API for Embedded Python Execution",
+            "filename": "../../embd-python-sql/embd-python-sql.md",
+            "type": "freetier"
+        },
+        {
+            "title": "Lab 7: Run user-defined functions with REST API for Embedded Python Execution",
+            "filename": "../../embd-python-rest/embd-python-rest.md",
+            "type": "freetier"
+        },
+        {
+            "title": "Lab 8: Use AutoML",
             "filename": "../../automl/automl.md",
+            "type": "freetier"
+        },
+        {
+            "title": "Lab 9: Use AutoML UI",
+            "filename": "../../automl/automl-ui.md",
             "type": "freetier"
         },
         {

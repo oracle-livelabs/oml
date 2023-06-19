@@ -1,15 +1,14 @@
-# Oracle® Cloud Collaborate in Oracle Machine Learning Notebooks
-## Before You Begin
+# Collaborate in Oracle Machine Learning Notebooks
+## Introduction
 
 This lab shows you how to two or more users can collaborate and share SQL notebooks with other Oracle Machine Learning Notebooks users.
 
-This lab takes approximately 15 minutes to complete.
-
-### Background
 A notebook is a web-based interface for data visualization, machine learning, and collaboration.
 
+### Estimated Time
+This lab takes approximately 15 minutes to complete.
 
-### What Do You Need?
+### Prerequisites
 
 * Access to your account in Oracle Autonomous Database
 * Provide workspace permission to users with whom you want to collaborate
@@ -17,7 +16,8 @@ A notebook is a web-based interface for data visualization, machine learning, an
 * A notebook created in your OML account
 
 
-## Collaborate by Granting Access to Projects of Another User
+
+## Task 1: Collaborate by Granting Access to Projects of Another User
 
 You can collaborate with other users in Oracle Machine Learning Notebooks by granting permissions to access your workspace. Your workspace contains your projects, and the projects contain notebooks. Oracle Machine Learning Notebooks allows three types of permissions. By granting different types of permissions such as Manager, Developer, and Viewer, you can allow other user to view your workspace and perform different tasks in your projects and notebooks such as edit, create, update, delete, run, view notebooks and so on.
 
@@ -43,23 +43,23 @@ This use case demonstrates how:
 1. Sign into Oracle Machine Learning instance with USER1 credentials.
 2. Go to the Notebooks page of USER1 and view the list of notebooks that are available in USER1 Project under USER1 Workspace.
 
-    ![user1-notebooks.png](images/user1-notebooks.png "user1-notebooks.png")
+    ![user1-notebooks.png](images/user1-notebooks.png "user1 notebooks")
 
 3. On the top right corner of the Oracle Machine Learning home page, click **USER1 Project** [USER1 Workspace... drop-down list, and select Manage Workspaces. The Workspaces page opens.  
 
-    ![user1-manage-workspace.png](images/user1-manage-workspace.png "user1-manage-workspace.png")
+    ![user1-manage-workspace.png](images/user1-manage-workspace.png "user1 manage workspace")
 
 4. Now, you will provide permission to USER2 to the USER1 Workspace. On the Workspaces page, select **USER1 Workspace** and then click **Permissions**. The Workspace Permissions dialog opens.  
 
-    ![permissions.png](images/permissions.png "permissions.png")
+    ![permissions.png](images/permissions.png "permissions")
 
 5.  In the Workspace Permissions dialog, select **USER2** from the Username drop-down list, and select **Developer** from the Permission Type field to grant DEVELOPER permission to USER2. Then click **+** to add permission to this user.
-    ![add-permissions.png](images/add-permissions.png "add-permissions.png")
+    ![add-permissions.png](images/add-permissions.png "add permissions")
 
 6. Once you have added the permission, the user along with the permission type is listed on the dialog. Click **OK.**
 The message _Permissions have been updated successfully_ is displayed.
 
-    ![permission_user2.png](images/permission_user2.png "permission_user2.png")
+    ![permission-user2.png](images/permission-user2.png "permission for user2")
 
   The available permission types are:
 
@@ -77,52 +77,52 @@ The message _Permissions have been updated successfully_ is displayed.
 
  7. This completes the task of granting the DEVELOPER permission to USER2. To delete a user along with the associated permission, select the workspace and click Permissions. In the Workspace Permissions dialog that opens, select the user and then click **Delete.** Then click **OK.**
 
-    ![delete-permissions.png](images/delete-permissions.png "delete-permissions.png")
+    ![delete-permissions.png](images/delete-permissions.png "delete permissions")
 
 ### USER2 Accesses Project Shared by USER1
 
 1. Sign in to the Oracle Machine Learning instance as USER2.
 2. On the top right corner, click **USER2 Project** [USER2 Project... drop-down list. USER2 Project is the default project under USER2 Workspace. Click **Select Project**.
 
-    ![user2-select-project.png](images/user2-select-project.png "user2-select-project.png")
+    ![user2-select-project.png](images/user2-select-project.png "user2 select project")
 
 3. In the Select Projects dialog, click the Workspace drop-down. Here, you can see two workspaces - **USER1 Workspace** and **USER2 Workspace** (default workspace for User2). Select **USER1 Workspace**. The projects under USER1 Workspace are listed. To access the notebooks under USER1 Workspace, select **USER1 Project** , and click **OK**.
 
-    ![user1-accessed-user2-project.png](images/user1-accessed-user2-project.png "user1-accessed-user2-project.png")
+    ![user1-accessed-user2-project.png](images/user1-accessed-user2-project.png "user1 accesses user2 project")
 
 4. After clicking OK, note the change in the name of the project-workspace drop-down list at the top. The project-workspace drop-down list name changes to **USER1 Project [USER1 Workspace...** , while you are logged in as USER2. This indicates that USER2 is currently accessing the **USER1 Project** under **USER1 Workspace** while signed in as USER2.
 
-    ![oml_top_menu.png](images/oml_top_menu.png "oml_top_menu.png")
+    ![oml-top-menu.png](images/oml-top-menu.png "oml top menu")
 Now, in the Workspaces page, click USER1 Workspace in the upper pane. The lower pane lists the projects that are accessible to USER2 in the USER1 Workspace.
 
-    ![user2-ws1-view.png](images/user2-ws1-view.png "user2-ws1-view.png")
+    ![user2-ws1-view.png](images/user2-ws1-view.png "user2 workspace1 view")
 
     Again, in the Workspaces page, click USER2 Workspace in the upper pane. The lower pane lists the projects that are accessible to USER2 in the USER2 Workspace.
 
-    ![user2-ws2-view.png](images/user2-ws2-view.png "user2-ws2-view.png")
+    ![user2-ws2-view.png](images/user2-ws2-view.png "user2 workspace2 view")
 
 5. Click **Notebooks** in the Oracle Machine Learning home page. Alternatively, you can go to the navigation menu on the left and click **Notebooks**.
 
-    ![notebooks_user2.png](images/notebooks_user2.png "notebooks_user2.png")
+    ![notebooks-user2.png](images/notebooks-user2.png "notebooks user2")
 
 6. In the USER2 Notebooks page, you can now see all the notebooks that are owned by USER1 in the USER1 Project, which in USER1 Workspace. This is the same list of notebooks that is available in the **USER1 Project** that you noted in section 1 step 2 of this tutorial. Since USER2 has been granted the DEVELOPER permission, as USER2 you can click any of these notebooks to open, edit, and run the notebooks. As USER2, you can also create a new notebook in USER1 Project.
 
-    ![user1_notes_for_user2.png](images/user1_notes_for_user2.png "user1_notes_for_user2.png")
+    ![user1-notes-for-user2.png](images/user1-notes-for-user2.png "user1 notes for user2")
 
 ### USER2 Edits Notebook Shared by User1
 
 1. While signed in as USER2, click the **Sales Note** notebook to open it. Observe that the notebook is blank and is connected to the SQL interpreter.
 
-     ![sales_note_connected.png](images/sales_note_connected.png "sales_note_connected.png")
+     ![sales-note-connected.png](images/sales-note-connected.png "sales note connected")
 
 2. Type the SQL statement to fetch data from an Oracle Database. For example, type
   `SELECT * from SH.SALES;` where `SH` is the schema name and `SALES` is the table name, as shown in the screenshot:
 
-     ![sales_note_run.png](images/sales_note_run.png "sales_note_run.png")
+     ![sales-note-run.png](images/sales-note-run.png "sales note run")
 
 4. Run the paragraph to render the data in a table.
 
-     ![sales_note_rendered.png](images/sales_note_rendered.png "sales_note_rendered.png")
+     ![sales-note-rendered.png](images/sales-note-rendered.png "sales note rendered")
 
 5. Sign out of the Oracle Machine Learning instance.
 
@@ -135,29 +135,29 @@ reflected in the notebook in real-time. To try this example on the same client m
 
 1. Sign in to the Oracle Machine Learning instance as USER1 in Mozilla Firefox browser. Click <b>Notebooks</b> in the home page to view the list of notebooks. Observe that the entry for <b>Updated By</b> column for **Sales Note** notebook shows USER2.
 
-     ![user1_views_notebooks.png](images/user1_views_notebooks.png "user1_views_notebooks.png")
+     ![user1-views-notebooks.png](images/user1-views-notebooks.png "user1 views notebooks")
 
 2. Click **Sales Note** to open and view the notebooks. The changes that are made by USER2 are visible to USER1 when you open the same notebook in USER1 Project under USER1 Workspace.
 
-    ![user1_views_user2_edits.png](images/user1_views_user2_edits.png "user1_views_user2_edits.png")
+    ![user1-views-user2-edits.png](images/user1-views-user2-edits.png "user1 views user2 edits")
 
 3. While signed in as USER1, edit the **Sales Note** by adding `ORDER BY CUST_ID` as shown in the screenshot and click **Run.**
 Note the change in display of the data, and also the date and time of edit made by USER1.
 
-    ![sales_note_user1_edit.png](images/sales_note_user1_edit.png "sales_note_user1_edit.png")
+    ![sales-note-user1-edit.png](images/sales-note-user1-edit.png "sales note user1 edit")
 
 4. Now, sign in as USER2 in another browser. In this example, it is Google Chrome. As USER2, you can see the edits made by USER1. While signed in as USER2, edit the SQL code to add `where
 AMOUNT_SOLD &lt;= 50.68` and click **Run**. The **Sales Note** notebook now displays refined data accordingly.
 Note the date and time .
 
-    ![sales_note_edit_user2.png](images/sales_note_edit_user2.png "sales_note_edit_user2.png")
+    ![sales-note-edit-user2.png](images/sales-note-edit-user2.png "sales note edit user2")
 
 5. Now, go to Firebox browser and view the **Sales Note** notebook as USER1. The change made by USER2 is dynamically reflected in Firefox where you are accessing the notebook as USER1, as shown in the screenshot. This is how two or more users can collaborate in real-time on the same notebook.
  Note that you are signed in as USER1 in Firefox and as USER2 in Chrome.
 
-    ![user1_views_sales.png](images/user1_views_sales.png "user1_views_sales.png")
+    ![user1-views-sales.png](images/user1-views-sales.png "user1 views sales")
 
-## Collaborate by Using the Export Option
+## Task 2: Collaborate by Using the Export Option
 
 You can export a notebook as a `.json` (JavaScript Object Notation) file, and later import it in to the same or a different environment.
 
@@ -166,17 +166,17 @@ You can export a notebook as a `.json` (JavaScript Object Notation) file, and la
 
 2. In the top panel of the notebook editor, click the export icon.
 
-    ![export_notebook_option.png](images/export_notebook_option.png "export_notebook_option.png")
+    ![export-notebook-option.png](images/export-notebook-option.png "export notebook option")
 
 3. The Save as Dialog box opens. Navigate to the location in your system where you want to save the notebook. The notebook is saved in your local folder as a `.json` file.
 
-## Collaborate by Using Oracle Machine Learning Templates
+## Task 3: Collaborate by Using Oracle Machine Learning Templates
 
 You can share a notebook by saving an existing notebook as a template in My Library or in Shared location in Oracle Machine Learning Notebook. To save a notebook as a template:
 
 1. In the Notebooks page, select the notebook that you want to save as template and click **Save as Template**. The Save as Template dialog box opens.
 
-    ![saveas_template.png](images/saveas_template.png "saveas_template.png")
+    ![saveas-template.png](images/saveas-template.png "save as template")
 
 2. In the **Name** field, enter a name for the notebook template.
 
@@ -188,12 +188,11 @@ You can share a notebook by saving an existing notebook as a template in My Libr
 of the notebook. Select **Shared** if you want to save and share this notebook. The **Shared** template is visible to all users of the system within the scope of the tenant.
 **Note:** Notebook templates under <b>Examples</b> are provided by Oracle and are visible to all tenants. Users cannot add notebooks to the Examples template.
 
-     ![templates.png](images/templates.png "templates.png")
+     ![templates.png](images/templates.png "templates")
 
+You may now **proceed to the next lab.**
 
 ## Acknowledgements
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, September 2022
-
-See an issue?  Please open up a request [here](https://github.com/oracle/learning-library/issues).   Please include the workshop name and lab in your request.
+* **Last Updated By/Date**: Moitreyee Hazarika, March 2023

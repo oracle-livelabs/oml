@@ -1,4 +1,4 @@
-# Detect anomalies with OML4SQL using one-class support vector machine (SVM)
+# Detect anomalies with OML4SQL with one-class support vector machine (SVM)
 
 ## About this Workshop
 
@@ -63,4 +63,4 @@ You may now **proceed to the next lab**
 
 ## Acknowledgements
 * **Authors** - Adrian Castillo Mendoza, Milton Wan, Valentin Leonard Tabacaru, Rajeev Rumale.
-* **Last Updated By/Date** -  Adrian Castillo Mendoza, March 2022.
+* **Last Updated By/Date** -  Adrian Castillo Mendoza, March 2023.

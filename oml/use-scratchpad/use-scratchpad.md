@@ -1,27 +1,29 @@
-# Oracle® Cloud Use the Scratchpad In Oracle Machine Learning Notebooks
-## Before You Begin
+# Use the Scratchpad In Oracle Machine Learning Notebooks
+## Introduction
 
 This lab shows you how to use the Scratchpad in Oracle Machine Learning Notebooks.
 
-This lab takes approximately 10 minutes to complete.
-
-### Background
-The Scratchpad provides you convenient one-click access to a notebook for running SQL statements, PL/SQL scripts, and Python scripts that can be renamed. The Scratchpad is available on the Oracle Machine Learning Notebooks Home Page. The Scratchpad is a regular notebook that is prepopulated with three paragraphs - `%sql`, `%script`, and `%python`.
+The Scratchpad provides you convenient one-click access to a notebook for running SQL statements, PL/SQL scripts, Python and r scripts that can be renamed. The Scratchpad is available on the Oracle Machine Learning Notebooks Home Page. The Scratchpad is a regular notebook that is prepopulated with four paragraphs - `%sql`, `%script`, `%python` and `r`.
 
 After you run your scripts, the Scratchpad is automatically saved as a notebook by the default name Scratchpad in the Notebooks page. You can access it later in the Notebooks page.
 You can run all the paragraphs together or one paragraph at a time.
 
-### What Do You Need?
+### Estimated Time
+This lab takes approximately 10 minutes to complete.
+
+
+
+### Prerequisites
 
 * Access to your Oracle Machine Learning Notebooks account
 * A project created in your Oracle Machine Learning Notebooks account, where the notebook will reside
 
 
-## Use the Scratchpad to Run Python Scripts
+## Task 1: Use the Scratchpad to Run Python Scripts
 
 To open and use the scratchpad, click <b>Scratchpad</b> on the Oracle Machine Learning Notebooks home page under Quick Actions.
 
-  ![developer_homepage.png](images/developer_homepage.png "developer_homepage.png ")
+  ![Developer Homepage](images/developer-homepage.png "Developer Homepage")
 
   The Scratchpad opens. The Scratchpad has three paragraphs each with the following directives:
 
@@ -34,29 +36,32 @@ To run python script:
 
 1. Go to the paragraph with the <code>%python</code> directive.
 
-   ![scratchpad_py.png](images/scratchpad_py.png "scratchpad_py.png")
+   ![scratchpad with py directive](images/scratchpad-py.png "Scratchpad with py directive")
 
 2. To use OML4Py, you must first import the `oml` module.
    `oml` is the OML4Py module that allows you to manipulate Oracle Database objects such as tables and views, call user-defined Python functions using embedded execution, and use the database machine learning algorithms. To import the `oml` module, type the following command and click the Run icon. Alternatively, you can press **Shift+Enter** keys to run the paragraph.
 
 
     ```
+    <copy>
     import oml
-
+    </copy>
     ```
 
 3. To check if the <code>oml</code> module is connected to Oracle Database,
    type the following command and click the <b>Run</b>icon. Alternatively, you can press **Shift+Enter** keys to run the paragraph.
 
     ```
+    <copy>
     oml.isconnected()
-
+    </copy>
     ```
 
 4. You are now ready to run your Python script. Type the following Python code and click the run
    icon. Alternatively, you can press **Shift+Enter** keys to run the paragraph.
 
     ```
+    <copy>
     import matplotlib.pyplot as plt
     import numpy as np
 
@@ -68,10 +73,10 @@ To run python script:
     plt.subplot(1, 2, 2) # 1 line, 2 rows, index nr 2 (second position in subplot)
     plt.hist(list2)
     plt.show()
-
+    </copy>
     ```
 
-    ![scratchpad_python.png](images/scratchpad_python.png "scratchpad_python.png")
+    ![Scratchpad with python script](images/scratchpad-python.png "Python script in scratchpad")
 
     In this example, the commands import two python packages to compute and render the data in two histograms for `list1` and `list2`. The Python packages are:
 
@@ -80,7 +85,7 @@ To run python script:
 
 5. After you have created and run your scripts in the Scratchpad, the Scratchpad is automatically saved as a notebook by the name default name `Scratchpad` in the Notebooks page. You can edit the name and save it with a new name by selecting the notebook and clicking **Edit**.
 
-## Use the Scratchpad to Run R Scripts
+## Task 2: Use the Scratchpad to Run R Scripts
 To run R functions in an Oracle Machine Learning notebook, you must first connect to the R interpreter. This example shows how to:
 
 * Connect to the R interpreter to run R commands in a notebook.
@@ -90,61 +95,67 @@ To run R functions in an Oracle Machine Learning notebook, you must first connec
 1. To connect to the R interpreter, type the following directive at the beginning of the notebook paragraph, and press Enter:
 
   ```
+  <copy>
   %r
-
+  </copy>
   ```
 
 2. To verify the database connection, type the following command and press Enter:
 
   ```
+  <copy>
   ore.isconnected()
-
+  </copy>
   ```
 
-  ![scratchpad_r.png](images/ore_connected.png "scratchpad_r_connected.png")
+  ![ore.isconnected command](images/ore-connected.png "ore.isconnected command")
 
   Once your notebook is connected, the command returns TRUE, as shown in the screenshot here. The notebook is now connected to the R interpreter, and you are ready to run R commands in your notebook.
 3. To import R Libraries, run the following commands:
 
   ```
+  <copy>
   library(ORE)
   library(OREdplyr)
+  </copy>
   ```
 
-  ![load_r_packages.png](images/load_r_packages.png "load_r_packages.png")
+  ![Command to load r packages](images/load-r-packages.png "Command to load r packages")
 
   Once the packages are loaded successfully, the list of ORE packages are displayed as shown in the screenshot here. Scroll down to view the entire list.
 
-## Use the Scratchpad to Run SQL Statements
+## Task 3: Use the Scratchpad to Run SQL Statements
 
 To run SQL statements:
 
 1. Go to the paragraph with the `%sql` directive.
 
-   ![scratchpad_sql.png](images/scratchpad_sql.png "scratchpad_sql.png")
+   ![SQL directive in Scratchpad](images/scratchpad-sql.png "SQL directive in Scratchpad")
 
 2. Type the following command and click the Run icon. Alternatively, you can pres **Shift+Enter** keys to run the paragraph.
 
 
     ```
+    <copy>
     SELECT * FROM SH.SALES;
-
+    </copy>
     ```
-       ![sql_statement.png](images/sql_statement.png "sql_statement.png")
+       ![SQL statement in scratchpad](images/sql-statement.png "SQL statement in scratchpad")
 
     In this example, the SQL statement fetches all of the data about product sales from the table SALES. Here, `SH` is the schema name, and `SALES` is the table name. Oracle Machine Learning fetches the relevant data from the database and displays it in a tabular format.
 
-## Use the Scratchpad to Run PL/SQL Scripts  
+## Task 4: Use the Scratchpad to Run PL/SQL Scripts  
 
 To run PL/SQL scripts:
 
 1. Go to the paragraph with the `%script` directive.
 
-   ![scratchpad_script.png](images/scratchpad_script.png "scratchpad_script.png")
+   ![PL/SQL script in Scratchpad](images/scratchpad-script.png "PL/SQL script in Scratchpad")
 
 2. Enter the following PL/SQL script and click the **Run** icon. Alternatively, you can press **Shift+Enter** keys to run the paragraph.
 
     ```
+    <copy>
     CREATE TABLE small_table
     (
     NAME VARCHAR(200),
@@ -161,7 +172,7 @@ To run PL/SQL scripts:
     END LOOP;
     COMMIT;
     END;
-
+    </copy>
     ```
     The PL/SQL script successfully creates the table SMALL_TABLE. The PL/SQL script in this example contains two parts:
 
@@ -169,11 +180,9 @@ To run PL/SQL scripts:
     * The second part of the script begins with the keyword `BEGIN`. It inserts 100 rows in to the table small_table.
 
 
-         ![plsql_procedure.png](images/plsql_procedure.png "plsql_procedure.png")
+         ![PL/SQL Procedure](images/plsql-procedure.png "PL/SQL Procedure")
 
 ## Acknowledgements
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, January 2023
-
-See an issue?  Please open up a request [here](https://github.com/oracle/learning-library/issues).   Please include the workshop name and lab in your request.
+* **Last Updated By/Date**: Moitreyee Hazarika, March 2023

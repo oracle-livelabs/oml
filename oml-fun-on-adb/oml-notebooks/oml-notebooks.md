@@ -466,7 +466,7 @@ To create a job:
 
 	![Job created](images/job-created.png)
 
-This completes the task of creating a job.
+This completes the task of creating a job. You may now **proceed to the next lab**.
 
 ## Learn More
 
