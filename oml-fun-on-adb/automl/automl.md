@@ -40,7 +40,7 @@ To access AutoML UI, you must sign into the Oracle Machine Learning User Interfa
 
 	![home page](images/homepage-automl.png)
 
-	Alternatively, you can click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the home page to open the left navigation menu. Click **AutoML**. This opens the AutoML Experiments page.
+	Alternatively, you can click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the home page to open the left navigation menu. Click **AutoML Experiments**. This opens the AutoML Experiments page.
 
 	![home page](images/hamburger-automl-homepage.png)
 
@@ -49,11 +49,11 @@ To access AutoML UI, you must sign into the Oracle Machine Learning User Interfa
 An Experiment is as a work unit that contains the definition of data source, prediction target, and prediction type along with optional settings. After an Experiment runs successfully, it presents you a list of machine learning models in the leader board. You can select any model for deployment, or use it to create a notebook based on the selected model.
 When creating an Experiment, you must define the data source and the target of the experiment.
 
-When creating an experiment, you must specify the data source and the target of the experiment. An AutoML experiment can process columns with data type ``VARCHAR2`` greater than 4K , ``CHAR``, ``CLOB``, ``BLOB``, and ``BFILE`` as text. Note that columns with data type ``VARCHAR2`` less than 4K are considered as categorical. 
+When creating an experiment, you must specify the data source and the target of the experiment. An AutoML experiment can process columns with data type ``VARCHAR2`` greater than 4K , ``CHAR``, ``CLOB``, ``BLOB``, and ``BFILE`` as text. Note that columns with data type ``VARCHAR2`` less than 4K are considered as categorical.
 
 To create an Experiment:
 
-1. Click **AutoML** on your Oracle Machine Learning home page. Alternatively, you can go to the left navigation menu at the upper left corner of the page and click AutoML. The AutoML Experiments page opens.
+1. Click **AutoML** on your Oracle Machine Learning home page. Alternatively, you can go to the left navigation menu at the upper left corner of the page and click **AutoML Experiments**. The AutoML Experiments page opens.
 
 	![home page](images/homepage-automl.png)
 
@@ -113,7 +113,7 @@ When an experiment starts running, the status is displayed in a progress bar. Wh
 
 The Leader Board displays the top performing models relative to the model metric selected along with the algorithm and accuracy. Here,  you will view the additional metrics Precision, Recall, ROC AUC for the models:
 
-14. Scroll down the Customer 360 experiments page to view the Leader Board section. The top three algorithms for this experiment are Naive Bayes, Random Forest and Support Vector Machine (Linear).
+14. Scroll down the Customer 360 experiments page to view the Leader Board section. The top three algorithms for this experiment are Naïve Bayes, Random Forest and Support Vector Machine (Linear).
 
 	>**Note:** Only when the experiment is completed, can you perform any of these actions listed here, including metrics 	selection.
 
@@ -135,7 +135,7 @@ The Leader Board displays the top performing models relative to the model metric
 
 17. Click on any row in the Leader Board to enable the options - **Deploy, Rename**, and **Create Notebook**. Note that these options are greyed out if you do not click on the rows.
 
-18. Click on the Naive Bayes model row (and not on the model), and then click **Rename**. In the Rename Model dialog, enter `NB_Customer360` to rename the auto generated model name for Naive Bayes. Click **OK**.  	
+18. Click on the Naïve Bayes model row (and not on the model), and then click **Rename**. In the Rename Model dialog, enter `NB_Customer360` to rename the auto generated model name for Naive Bayes. Click **OK**.  	
 
 	![Rename model](images/rename-model.png)
 
@@ -163,7 +163,7 @@ The Leader Board displays the top performing models relative to the model metric
 
 	![Go to Experiments page](images/goto_exp.png)
 
-	Alternatively, you can click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the experiment page and click **AutoML** on the left navigation menu.
+	Alternatively, you can click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the experiment page and click **AutoML Experiments** on the left navigation menu.
 
 ## Task 3: Deploy Top Model to Oracle Machine Learning Services
 
@@ -173,7 +173,7 @@ When you deploy a model using the Oracle Machine Learning AutoML UI, you create 
 
 To deploy a model:  
 
-1. Go to the AutoML Experiments page by clicking the hamburger icon on the top left corner of the page. Click **AutoML** on the left navigation menu.  
+1. Go to the AutoML Experiments page by clicking the hamburger icon on the top left corner of the page. Click **AutoML Experiments** on the left navigation menu.  
 
 	![home page](images/hamburger-gen.png)
 
@@ -207,7 +207,7 @@ To deploy a model:
 
 	![Deploy Model option in Leader Board](images/model-deployed-message.png)
 
-This completes the task of deploying the top model Naive Bayes to Oracle Machine Learning Services.
+This completes the task of deploying the top model Naïve Bayes to Oracle Machine Learning Services.
 
 ## Task 4: View Oracle Machine Learning Models with Deployed Metadata and REST Endpoint
 
@@ -239,7 +239,7 @@ This completes the task of viewing the metadata of the deployed model, and its e
 
 You can create notebooks based on the top models produced in the experiment. This provides the code to build a model with the same settings for the selected model. This option is helpful if you want to use the code to re-create a similar machine learning model. To create a notebook:
 
-1. Click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of your page to open the left navigation menu, and click **AutoML**.
+1. Click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of your page to open the left navigation menu, and click **AutoML Experiments**.
 
 	![Experiments page](images/model-to-exp.png)
 
@@ -247,7 +247,7 @@ You can create notebooks based on the top models produced in the experiment. Thi
 
 	![Experiments page](images/open-customers-360.png)
 
-2. Scroll down to the Leader Board, click on the Naive Bayes model row. Clicking on a model row enables all the Leader Board options - Deploy, Rename, Create Notebooks, and Metrics. Click **Create Notebook**. The Create Notebook dialog opens.
+2. Scroll down to the Leader Board, click on the Naïve Bayes model row. Clicking on a model row enables all the Leader Board options - Deploy, Rename, Create Notebooks, and Metrics. Click **Create Notebook**. The Create Notebook dialog opens.
 
  	![Create Notebook option in Leader Board](images/create-notebook-lb.png)
 
@@ -273,9 +273,9 @@ To view the generated notebook Customer 360:
 
 2. The Notebooks page opens with all the notebooks listed in it. Click the **Customer 360 NB (1)** notebook to open it.
 
- 	<if type="livelabs"> ![Generated Notebook](images/notebooks-listed-final.png) </if>
+ 	<if type="livelabs"> ![Generated Notebook](images/notebooks-list-livelabs.png) </if>
 
-	<if type="freetier"> ![Generated Notebook](images/notebooks-5.png) </if>
+	<if type="freetier"> ![Generated Notebook](images/notebooks-list-freetier.png) </if>
 
 3. The generated notebook _Customer 360 NB (1)_  opens in the notebook editor. Click the gear icon on the upper right corner of the notebook to view and set the interpreter binding order.
 
@@ -327,4 +327,4 @@ You may now **proceed to the next lab**.
 
 * **Author** - Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, March 2023
+* **Last Updated By/Date** - Moitreyee Hazarika, June 2023

@@ -62,11 +62,11 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
    ![Launch Workshop](images/launch-workshop.png)
 
-2. On the **Get Started - LiveLabs login** page, click **View Login Info** at the top left. 
+2. On the **Get Started - LiveLabs login** page, click **View Login Info** at the top left.
 
 	![ADB in OCI](images/get-started-page-livelabs.png)
 
-3. In the panel that opens with the **Reservation Information**, click at the bottom of the panel on the **OML Notebooks** link. 
+3. In the panel that opens with the **Reservation Information**, click at the bottom of the panel on the **OML Notebooks** link.
 
 	![ADB in OCI](images/livelabs-reservation-info.png)
 
@@ -86,6 +86,7 @@ To create a notebook:
 1. On the Oracle Machine Learning home page, click **Notebooks**. The Notebooks page opens. Alternatively, you can click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the home page to open the left navigation menu. Click **Notebooks**.
 
 	![Notebooks option in hamburger](images/hamburger-notebooks.png)
+>> Note: Observe the new entry ** Notebooks EA** on the left navigation menu. To learn how to use Oracle Machine Learning Notebooks Early Adopter - an enhanced web-based notebook platform, refer to [Get Started with Notebooks Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B).
 
 2. On the Notebooks page, click **Create**. The Create Notebook dialog opens.
 
@@ -315,7 +316,7 @@ This step demonstrates how to create the OML4Py Classification notebook based on
 
 	![Create Classification DT notebook from example template](images/create-notebook-classification.png)
 
-4. Once the notebook is created, the message _Notebook "OML4PY Classification DT (1)" created in project "OMLUSER Project"_ is displayed, as shown in the screenshot. The notebook is now available in the Notebooks page.
+4. Once the notebook is created, the message _Notebook "OML4PY Classification DT (1)" created in project "OMLUSER Project"_ is displayed, as shown in the screenshot. The notebook is now available on the Notebooks page. You may also click **Open Notebook** in the message dialog to open the notebook directly from here.
 
 	![Create notebook message](images/notebook-created-message.png)
 
@@ -349,7 +350,7 @@ These steps demonstrate how to create the Time Series notebook based on the Exam
 
 	![Create Time Series notebook from example template](images/create-notebook-time-series.png)
 
-10. Once the notebook is created, the message _Notebook "OML4SQL Time Series ESM (1)" created in project "OMLUSER Project"_ is displayed. The notebook is now available in the Notebooks page.
+10. Once the notebook is created, the message _Notebook "OML4SQL Time Series ESM (1)" created in project "OMLUSER Project"_ is displayed. The notebook is now available on the Notebooks page. You may also click **Open Notebook** in the message dialog to open the notebook directly from here.
 
 	![Time Series notebook message](images/esm-notebook-message.png)
 
@@ -477,4 +478,4 @@ This completes the task of creating a job. You may now **proceed to the next lab
 
 * **Author** -  Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -   Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, March 2023
+* **Last Updated By/Date** - Moitreyee Hazarika, June 2023

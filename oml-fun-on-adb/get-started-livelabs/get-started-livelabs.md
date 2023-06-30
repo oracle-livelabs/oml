@@ -48,7 +48,7 @@ To provision an Oracle Autonomous Database:
 
 	 ![Autonomous Database Workload type](images/workload-type.png)
 
-5. For Deployment, select **Shared Infrastructure**.
+5. For Deployment, select **Serverless**.
 
 	 ![Autonomous Database deployment type](images/deployment-type.png)
 
@@ -103,7 +103,7 @@ To create a user account:
 	![Oracle Autonomous Data Warehouse](images/database-actions.png)
 
 4. The Oracle Database Actions Launchpad page opens in a separate tab. Scroll down to the Administration section and click **DATABASE USERS**.
-   
+
 	> **Note:** You might be asked for a user and password at this point, depending on your browser. If asked, make sure to enter **ADMIN** and the password you gave the administrator user in Task 1, Step 7.
 
 	![Oracle Autonomous Data Warehouse](images/admin-db-users.png)
@@ -211,7 +211,7 @@ To create the table:
 
 	![Script to view Customers360 table](images/script-view-customers360.png)
 
-This completes the task of creating the CUSTOMERS360 table.
+This completes the task of creating the CUSTOMERS360 table. You may now **proceed to the next lab.**
 
 ## Learn More
 
@@ -222,4 +222,4 @@ This completes the task of creating the CUSTOMERS360 table.
 
 * **Author** - Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, March 2023
+* **Last Updated By/Date** - Moitreyee Hazarika, June 2023
