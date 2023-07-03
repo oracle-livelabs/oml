@@ -19,8 +19,8 @@ In this lab, you will learn how to:
 * Create an experiment
 * Edit and adjust experiment settings
 * View the leaderboard and other settings
-* Deploy models to Oracle Machine Learning Services
-* View Oracle Machine Learning Models menu with deployed metadata and endpoint JSON
+* Deploy a model to Oracle Machine Learning Services
+* View Oracle Machine Learning Models menu with deployed metadata and REST endpoint
 * Create a notebook for the top model
 * View generated notebook and individual paragraphs
 
@@ -165,7 +165,7 @@ The Leader Board displays the top performing models relative to the model metric
 
 	Alternatively, you can click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the experiment page and click **AutoML Experiments** on the left navigation menu.
 
-## Task 3: Deploy Top Model to Oracle Machine Learning Services
+## Task 3: Deploy a Top Model to Oracle Machine Learning Services
 
 When you deploy a model using the Oracle Machine Learning AutoML UI, you create an Oracle Machine Learning Services endpoint for scoring. Oracle Machine Learning Services extends Oracle Machine Learning functionality to support model deployment and model lifecycle management for in-database OML models through REST APIs.
 
