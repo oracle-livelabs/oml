@@ -43,17 +43,7 @@
             "type": "freetier"
         },
         {
-            "title": "Lab 6: Run UDFs with SQL API for EPE",
-            "filename": "../../embd-python-sql/embd-python-sql.md",
-            "type": "freetier"
-        },
-        {
-            "title": "Lab 7: Run UDFs with REST API for EPE",
-            "filename": "../../embd-python-rest/embd-python-rest.md",
-            "type": "freetier"
-        },
-        {
-            "title": "Lab 8: Use AutoML",
+            "title": "Lab 6: Use AutoML",
             "filename": "../../automl/automl.md",
             "type": "freetier"
         },
