@@ -6,10 +6,6 @@ This lab walks you through the steps to use the SQL API to call OML4Py Embedded 
 
 Estimated Time: 20 minutes
 
-Watch the video below for a quick walk-through of the lab.
-
-[Run user-defined functions using Embedded Python Execution](videohub:1_2skqmxjt)
-
 ### About Embedded Python Execution
 Embedded Python execution enables you to run user-defined Python functions in Python engines spawned by the Autonomous Database environment. The SQL API for embedded Python execution with Autonomous Database provides SQL interfaces for setting authorization tokens, managing access control list (ACL) privileges, executing Python scripts, and synchronously and asynchronously running jobs.
 
@@ -35,44 +31,91 @@ As the OML user:
 * Run the UDF using embedded Python execution from the OML4Py Python and SQL APIs
 
 ### Prerequisites
-
 * Add the user to the host ACL
 * Access and run the OML notebook for this lab.
 
-1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
+1. We need to access and run the OML notebook for this lab.
 
- ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png "Oracle Machine Learning Notebooks menu ")
+ > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please 
+ <if type="freetier">[**CLICK HERE** to download the "Lab 6 - Run UDFs with SQL API for EPE" notebook DSNB file](<./../notebooks/Lab 6 - Run UDFs with SQL API for EPE.dsnb?download=1>)</if><if type="livelabs">[**CLICK HERE** to download the "Lab 6 - Run UDFs with SQL API for EPE" notebook DSNB file](<./../notebooks/Lab 6 - Run UDFs with SQL API for EPE.dsnb?download=1>)</if><if type="freetier-ocw23">[**CLICK HERE** to download the "Lab Bonus 2 - Run UDFs with SQL API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 2 - Run UDFs with SQL API for EPE.dsnb?download=1>)</if><if type="livelabs-ocw23">[**CLICK HERE** to download the "Lab Bonus 2 - Run UDFs with SQL API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 2 - Run UDFs with SQL API for EPE.dsnb?download=1>)</if>. This notebook contains the scripts for this Lab. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
 
-2. Click the **Lab 6 notebook name** to view it.
+   Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks EA**. 
+   
+   ![Go to main Notebooks EA](images/go-back-to-notebooks.png " ")
+   
    <if type="freetier">
-   ![Open Lab 6 notebook ft](images/click-on-lab5-ft.png "Lab 6 notebook") </if>
+   Click the **Lab 5** notebook to view it.
+
+   ![Open Lab 5 notebook ft](images/click-on-la6-ft.png " ") </if>
+   
    <if type="livelabs">
-   ![Open Lab 6 notebook ll](images/click-on-lab5-ll.png "Lab 6 notebook") </if>
+   Click the **Lab 5** notebook to view it.
 
-  OML Notebooks will create a session and make the notebook available for editing.
+   ![Open Lab 5 notebook ll](images/click-on-lab6-ll.png " ") </if>
+   
+   <if type="freetier-ocw23">
+   Click the **Lab Bonus 2** notebook to view it.
 
-  You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+   ![Open Lab Bonus 2 notebook ft](images/click-on-labbo2-ft-ocw23.png " ") </if>
+   
+   <if type="livelabs-ocw23">
+   Click the **Lab Bonus 2** notebook to view it.
+   
+   ![Open Lab Bonus 2 notebook ll](images/click-on-labbo2-ll-ocw23.png " ") </if>
 
-  ![Lab 6 Introduction notebook screen capture](images/lab5-main.png " Introduction notebook")
+   OML Notebooks will create a session and make the notebook available for editing.
 
-> **NOTE:** If you had problems downloading and extracting the ZIP file for the labs, please [**CLICK HERE** to download the lab6\_embed\_python\_sql.json notebook file](./../notebooks/lab6_embed_python_sql.json?download=1). Download the notebook file for this lab to your local machine and then import it like illustrated in **Lab 1, Task 2**.
+   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+
+   <if type="freetier">
+   ![Lab 6 main screen](images/lab6-main.png " ")
+   </if>
+   <if type="livelabs">
+   ![Lab 6 main screen](images/lab6-main.png " ")
+   </if>
+   <if type="freetier-ocw23">
+   ![Lab Bonus 2 main screen](images/labbo2-main.png " ")
+   </if>
+   <if type="livelabs-ocw23">
+   ![Lab Bonus 2 main screen](images/labbo2-main.png " ")
+   </if>
+
 
 ## Task 1: Add the OML user to the cloud host ACL
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to Task 1.
-    >> Note: You must be an ADMIN user to perform this task.
+  > Note: You must be an ADMIN user to perform this task.
 
-  ![Lab 6 Task 1 Add the OML user to the cloud host ACL](images/1-appendhost.png " ")    
+  ![Add the OML user to the cloud host ACL](images/1-appendhost.png " ")  
 
-
-  >> Note: In this example, `Ashburn` is the region. Your region will be different from Ashburn. Hence, you must replace Ashburn with your region.
+    ```
+    <copy>
+    exec pyqAppendHostAce('OMLUSER','adb.us-ashburn-1.oraclecloudapps.com');
+    </copy>
+    ```
+  
+  > Note: In this example, `us-ashburn-1` is the region. Make sure to replace it with the region where your Autonomous Database is located.
 
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to end of Task 1.1.
 
-  ![Lab 6 Task 1.1 Confirm the host ACL contains an entry for the OML user](images/1-1-add-omluser-acl-list.png " ")
+  ![Confirm the host ACL contains an entry](images/1-1-add-omluser-acl-list.png " ")
+
+    ```
+    <copy>
+    set serveroutput on
+  
+    DECLARE 
+      hostname VARCHAR2(4000);
+    BEGIN
+      hostname := pyqGetHostACE('OMLUSER'); 
+      DBMS_OUTPUT.put_line ('hostname: ' || hostname);
+    END;
+    /
+    <copy>
+    ```
 
 ## Task 2: Obtain an authorization token to access the SQL API for embedded Python execution
 
@@ -80,166 +123,169 @@ As the OML user:
 
   Scroll down to Task 2.
 
-  ![Lab 6 Task 2 Obtain an authorization token](images/2-obtain-auth-token.png " ")
+  ![Obtain an authorization token](images/2-obtain-auth-token.png " ")
 
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to Task 2.1.
-  ![Lab 6 Task 2.1 Define get_token2 function that obtains access token](images/2-1-define-function-to-obtain-accesstoken.png " ")
+  ![Define get_token2 function](images/2-1-define-function-to-obtain-accesstoken.png " ")
 
 3. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to Task 2.2.
-  ![Lab 6 Task 2.2 Script to create ACCESS_DETAILS table](images/2-2-create-access-details.png " ")
 
-4. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+  > IMPORTANT: Replace the Password and the URL with your own, otherwise the rest of the Lab will not run successfully.
 
-  Scroll down to task 2.3
-  ![Lab 6 Task 2.3 Obtain and set the authorization token](images/2-3-obtain-set-auth-token.png " ")
+  ![Script to create ACCESS_DETAILS](images/2-2-create-access-details.png " ")
 
-## Task 3: Obtain a proxy object to the IRIS table
+## Task 3 Set the token in the Token Store and check its status
+
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+
+  Scroll down to see the code
+  ![Obtain and set the auth token](images/2-3-obtain-set-auth-token.png " ")
+
+## Task 4: Obtain a proxy object to the IRIS table
 
 Here, you run the following script to obtain a proxy object for the IRIS table.
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 3.
 
-  ![Lab 6 Task 3 Obtain a proxy object to the IRIS table](images/3-proxy-object-iris.png " ")
+  ![Obtain a proxy object to the IRIS table](images/3-proxy-object-iris.png " ")
 
-  This is the output.
-  ![Lab 6 Task 2.3 Output Obtain proxy object for IRIS table](images/iris-table.png " ")
-
-## Task 4: Build a Scikit-Learn Python model using embedded Python execution
+## Task 5: Build a Scikit-Learn Python model using embedded Python execution
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
     Scroll down to Task 4.
 
-  ![Lab 6 Task 4 Build a Scikit-Learn Python model using embedded Python execution](images/4-define-function.png " ")
+  ![Build a Scikit-Learn Python model using EPE](images/4-define-function.png " ")
 
 
-2.  Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1.  Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
     Scroll down to Task 4.1. The function confirms the existence of the function build_lm in the script repository.
 
-    ![Lab 6 Task 4.1 View the UDF build_lm in the Python script repository](images/4-1-check-udf.png " ")
+    ![View the UDF build_lm in the Python script repository](images/4-1-check-udf.png " ")
 
 
-## Task 5: Use the table-apply function to call the script from the Python API for embedded Python execution
+## Task 6: Use the table-apply function to call the script from the Python API for embedded Python execution
 
 >> Note: Here, we are only running the function in the Python API for embedded Python execution as a test step before running it from the SQL API for embedded Python execution.
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to Task 5.
-  ![Lab 6 Task 5 Use the table-apply function to invoke the script from the Python API for embedded Python execution](images/5-call-udf-specify-ds.png " ")
+  ![Use the table-apply function from the Python API for EPE](images/5-call-udf-specify-ds.png " ")
 
   The returned value is a DataFrame containing the coefficients of the predictors.
 
-## Task 6: View Datastore content using Python and SQL
+## Task 7: View Datastore content using Python and SQL
 The model `regr` is now stored in datastore `ds1`. You can view the datastore content, either from Python or SQL. First, display  Then, display the same information by querying the `USER_PYQ_DATASTORES` view.
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to Task 6.
-  ![Lab 6 Task 6 View datastore contents from Python and SQL](images/6-view-ds-content.png " ")
+  ![View datastore contents from Python and SQL](images/6-view-ds-content.png " ")
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 6.1.
 
- ![Lab 6 Task 6.1 Python Script to view datastore content](images/6-1-view-dscontent-python.png " ")
+ ![Python Script to view datastore content](images/6-1-view-dscontent-python.png " ")
 
-3. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 6.2.
 
- ![Lab 6 Task 6.2 SQL Script to view datastore content](images/6-2-view-dscontent-sql.png " ")
+ ![SQL Script to view datastore content](images/6-2-view-dscontent-sql.png " ")
 
-## Task 7: Run the same function `build_lm` using the SQL API table function pyqTableEval
+## Task 8: Run the same function `build_lm` using the SQL API table function pyqTableEval
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to Task 7.
-  ![Lab 6 Task 7 Run the same function using the SQL API table function pyqTableEval](images/7-run-sqlapi-func.png " ")
+  ![Run the same function using the SQL API function pyqTableEval](images/7-run-sqlapi-func.png " ")
 
-2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 7.1.   
- ![Lab 6 Task 7.1 Return output as a structured table](images/7-1-output-struc-table.png " ")
+ ![Return output as a structured table](images/7-1-output-struc-table.png " ")
 
-3. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 7.2.
 
-  ![Lab 6 Task 7.2 Display model object name and class in datastore](images/7-2-display-modelobject-class-ds.png " ")
-4. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+  ![Display model object name and class in datastore](images/7-2-display-modelobject-class-ds.png " ")
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 7.3.
-  ![Lab 6 Task 7.3 Return output as a JSON string](images/7-3-output-json-string.png " ")
-5. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+  ![Return output as a JSON string](images/7-3-output-json-string.png " ")
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
     Scroll down to Task 7.4.
-  ![Lab 6 Task 7.4 Return output as a XML string](images/7-4-output-xml-string.png " ")
+  ![Return output as a XML string](images/7-4-output-xml-string.png " ")
 
-## Task 8: Create a UDF to score using system-supported data-parallelism
+## Task 9: Create a UDF to score using system-supported data-parallelism
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 8.
 
-  ![Lab 6 Task 8 Create a UDF to score using system-supported data-parallelism](images/8-udf-scoring.png " ")
+  ![Create UDF to score using system-supported data-parallelism](images/8-udf-scoring.png " ")
 
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 8.1.
 
-  ![Lab 6 Task 8.1 Use row_apply to test the UDF score_mod from Python using data parallelism](images/8-1-test-udf.png " ")
+  ![Use row_apply for UDF score_mod from Python with data parallelism](images/8-1-test-udf.png " ")
 
   Test the UDF working with embedded Python execution, use the `oml.row_apply` function to score the IRIS data using the model in the datastore.
 
-  ![Lab 6 Task 8.1 Output](images/8-1-udf-output.png " ")  
+  ![Output](images/8-1-udf-output.png " ")  
 
 3. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 8.2.
 
-  ![Lab 6 Task 8 Run the same function score_mod using the SQL API table function pyqRowEval with structured table output](images/8-2-run-function-pyqroweval.png " ")
+  ![Run function score_mod using the SQL API table function pyqRowEval](images/8-2-run-function-pyqroweval.png " ")
 
-## Task 9: Return PNG Output
+## Task 10: Return PNG Output
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 9.
 
- ![Lab 6 Task 9 Return PNG output](images/9-return-png-output.png " ")
+  ![Return PNG output](images/9-return-png-output.png " ")
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 9.1.
-  ![Lab 6 Task 9.1 Create the density plot UDF in the script repository](images/9-1-script-density-plot.png " ")
+  ![Create the density plot UDF in the script repository](images/9-1-script-density-plot.png " ")
 3. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 9.2.
 
-  ![Lab 6 Task 9.2 Call the UDF from Python and return PNG image](images/9-2-invoke-udf-densityplot.png " ")
+  ![Call the UDF from Python and return PNG image](images/9-2-invoke-udf-densityplot.png " ")
 
-4. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 9.3.
-  ![Lab 6 Task 9.3 Corresponding SQL call to return PNG images](images/9-3-invoke-densityplot-sql.png " ")
+  ![Corresponding SQL call to return PNG images](images/9-3-invoke-densityplot-sql.png " ")
 
-## Task 10: Work with Asynchronous SQL API jobs
+## Task 11: Work with Asynchronous SQL API jobs
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
    Scroll down to Task 10.
 
-   ![Lab 6 Task 10 Work with Asynchronous SQL API jobs](images/10-async-sqlapi-jobs.png " ")
+   ![Work with Asynchronous SQL API jobs](images/10-async-sqlapi-jobs.png " ")
 
 
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to Task 10.1.
-  ![Lab 6 Task 10.1 Call pyqRowEval asynchronously and store the JOB_ID in a table for future result retrieval](images/10-1-create-job-table.png " ")
+  ![Call pyqRowEval asynchronously and store the JOB_ID](images/10-1-create-job-table.png " ")
 
 3. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 10.2.
-  ![Lab 6 Task 10.2 View the JOB_ID](images/10-2-view-jobid.png " ")
+  ![View the JOB_ID](images/10-2-view-jobid.png " ")
 
 4. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 10.3.
-  ![Lab 6 Task 10.3 Script to allow the asynchronous job to complete before viewing result](images/10-3-jobcomplete-view.png " ")
+  ![Script to allow the asynchronous job to complete](images/10-3-jobcomplete-view.png " ")
 5. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to Task 10.4.
-  ![Lab 6 Task 10.4 Check job status](images/10-4-view-job-status.png " ")
+  ![Check job status](images/10-4-view-job-status.png " ")
+
 6. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.   
    Scroll down to Task 10.5.
-  ![Lab 6 Task 10.5 Script to retrieve results from completed jobs](images/10-5-retrieve-results.png " ")
+  ![Script to retrieve results from completed jobs](images/10-5-retrieve-results.png " ")
 
 
 ### Congratulations !!!
@@ -250,11 +296,11 @@ You can explore additional workshops related to Oracle Machine Learning from the
 
 ## Learn more
 
-* [Automated Machine Learning](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/automated-machine-learning1.html#GUID-4B240E7A-1A8B-43B6-99A5-7FF86330805A)
+* [Embedded Python Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
-* [Additional Workshops for Oracle Machine Learning](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/livelabs-workshop-cards?c=y&p100_product=70)
+* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)
 
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, Sherry LaMonica, Moitreyee Hazarika, May 2023
+* **Last Updated By/Date** - Marcos Arancibia, Sherry LaMonica, Moitreyee Hazarika, August 2023

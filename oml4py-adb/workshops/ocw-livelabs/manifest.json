@@ -50,10 +50,10 @@
         {
         "title": "Appendix: OML user administration",
         "filename": "../../appendix-manage/appendix-manage.md",
-        "type": "freetier"
+        "type": "livelabs"
         },
         {
-            "title": "Oracle CloudWorld 2022 - Get Help",
+            "title": "Oracle CloudWorld 2023 - Get Help",
             "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
         }
     ]

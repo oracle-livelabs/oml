@@ -1,0 +1,1421 @@
+[
+  {
+    "name" : "Lab 7 - Run UDFs with REST API for EPE",
+    "description" : null,
+    "tags" : null,
+    "version" : "6",
+    "layout" : "jupyter",
+    "type" : "low",
+    "readOnly" : false,
+    "snapshot" : false,
+    "template" : null,
+    "templateConfig" : null,
+    "paragraphs" : [
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "# Run user-defined functions using Embedded Python Execution",
+          "",
+          "## Introduction",
+          "",
+          "This lab walks you through the steps to use the **OML4Py REST API** embedded Python execution functions. You will also learn about the script repository.",
+          "",
+          "Estimated Lab Time: 20 minutes",
+          "",
+          "### About Embedded Python Execution",
+          "Embedded Python execution enables you to run user-defined Python functions in Python engines spawned by the Autonomous Database environment.  On Oracle Autonomous Database, OML4Py contains a REST API to run user-defined Python functions saved in the script repository. ",
+          "",
+          "To run a script from the REST API, it must reside in the Python script repository. An Oracle Machine Learning username and password must be provided for authentication.",
+          "",
+          "The OML4Py Embedded Python execution REST API endpoints for running scripts are:",
+          "",
+          "* `do-eval`- Runs the provided user-defined Python function in a Python engine spawned by the Autonomous Database environment.",
+          "* `table-apply`- Runs the provided user-defined Python function data referenced by an OML DataFrame proxy object in a single Python engine.",
+          "* `group-apply` - Partitions a database table by the values in one or more columns and runs the provided user-defined Python function on each partition, optionally in parallel using multiple Python engines.",
+          "* `row-apply` - Partitions a database table into sets of rows and runs the provided user-defined Python function on the data in each set, optionally in parallel using multiple Python engines.",
+          "* `index-apply` - Runs a Python function multiple times, passing in a unique index of the invocation to the user-defined function, optionally in parallel using multiple Python engines.",
+          "",
+          "To view the full list of endpoints available, refer to the <a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlepe/rest-endpoints.html\" onclick=\"return ! window.open('https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlepe/rest-endpoints.html');\">Oracle Machine Learning for Python REST API for Embedded Python Execution</a>",
+          "",
+          "### **Objectives**",
+          "",
+          "In this lab, we provide a workflow for using the OML4Py REST API for embedded Python execution with Oracle Autonomous Database:",
+          "",
+          "- Obtain an authorization token to access the REST API for embedded Python execution",
+          "- Create a UDF and store it in the OML4Py script repository",
+          "- Run the UDF using embedded Python execution from the OML4Py Python and REST APIs",
+          "",
+          "Note, the `cURL` commands provided in this notebook are for illustrative purposes only. To run REST calls, use a Linux or Mac terminal, the OCI Cloud Shell, or another REST client such as Postman.",
+          "",
+          "",
+          "**Copyright (c) 2023 Oracle Corporation**",
+          "<a href=\"https://oss.oracle.com/licenses/upl/\" onclick=\"return ! window.open('https://oss.oracle.com/licenses/upl/');\">The Universal Permissive License (UPL), Version 1.0</a>",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h1>Run user-defined functions using Embedded Python Execution</h1>\n<h2>Introduction</h2>\n<p>This lab walks you through the steps to use the <strong>OML4Py REST API</strong> embedded Python execution functions. You will also learn about the script repository.</p>\n<p>Estimated Lab Time: 20 minutes</p>\n<h3>About Embedded Python Execution</h3>\n<p>Embedded Python execution enables you to run user-defined Python functions in Python engines spawned by the Autonomous Database environment.  On Oracle Autonomous Database, OML4Py contains a REST API to run user-defined Python functions saved in the script repository.</p>\n<p>To run a script from the REST API, it must reside in the Python script repository. An Oracle Machine Learning username and password must be provided for authentication.</p>\n<p>The OML4Py Embedded Python execution REST API endpoints for running scripts are:</p>\n<ul>\n<li><code>do-eval</code>- Runs the provided user-defined Python function in a Python engine spawned by the Autonomous Database environment.</li>\n<li><code>table-apply</code>- Runs the provided user-defined Python function data referenced by an OML DataFrame proxy object in a single Python engine.</li>\n<li><code>group-apply</code> - Partitions a database table by the values in one or more columns and runs the provided user-defined Python function on each partition, optionally in parallel using multiple Python engines.</li>\n<li><code>row-apply</code> - Partitions a database table into sets of rows and runs the provided user-defined Python function on the data in each set, optionally in parallel using multiple Python engines.</li>\n<li><code>index-apply</code> - Runs a Python function multiple times, passing in a unique index of the invocation to the user-defined function, optionally in parallel using multiple Python engines.</li>\n</ul>\n<p>To view the full list of endpoints available, refer to the <a href=\"https: //docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlepe/rest-endpoints.html\" onclick=\"return ! window.open('https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlepe/rest-endpoints.html');\">Oracle Machine Learning for Python REST API for Embedded Python Execution</a></p>\n<h3><strong>Objectives</strong></h3>\n<p>In this lab, we provide a workflow for using the OML4Py REST API for embedded Python execution with Oracle Autonomous Database:</p>\n<ul>\n<li>Obtain an authorization token to access the REST API for embedded Python execution</li>\n<li>Create a UDF and store it in the OML4Py script repository</li>\n<li>Run the UDF using embedded Python execution from the OML4Py Python and REST APIs</li>\n</ul>\n<p>Note, the <code>cURL</code> commands provided in this notebook are for illustrative purposes only. To run REST calls, use a Linux or Mac terminal, the OCI Cloud Shell, or another REST client such as Postman.</p>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https: //oss.oracle.com/licenses/upl/\" onclick=\"return ! window.open('https://oss.oracle.com/licenses/upl/');\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Get an access token",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 1: Request a Token by authenticating against the Autonomous Database",
+          "",
+          "To send requests to OML Services, you must obtain an authentication token by using your Oracle Machine Learning account credentials. ",
+          "",
+          "To authenticate and obtain an access token, use `cURL` or another REST client, such as Postman, to exchange the OML user credentials for an authorization token. Send a POST request to the token URL endpoint **/oauth2/v1/token** with your OML username and password. ",
+          "The **OML Servive URL** can be obtained in Autonomous Database:",
+          "",
+          "- Sign into your Oracle Cloud Infrastructure account. You will need your OCI user name and password.",
+          "- Click the three-line menu at the top left, and select **Oracle Database** -> **Autonomous Database**.",
+          "- In the list of Autonomous Database instances, click the name of the one you are working on now to open the console.",
+          "- Open Database Actions by clicking on the button in the Autonomous Database console.  Depending on your browser, you might be prompted to login with the ADMIN user.",
+          "- Inside the Database Actions, scroll down to the section  **Related Services**.",
+          "- Click on the tile named **ORACLE MACHINE LEARNING RESTFUL SERVICES** to be able to obtain the URL required.",
+          "",
+          "  Copy the URL (by clicking the button) under the following label:",
+          "  `\"Use this URL to obtain a REST authentication token for OML-provided REST APIs:\"`",
+          "",
+          "  It will show your OML Cloud Service location that we need, plus a folder `omlusers`",
+          "  **`<oml-cloud-service-location-url>`**/omlusers/",
+          "",
+          "The URL *oml-cloud-service-location-url* includes the tenancy ID, location, and database name. ",
+          "",
+          "For example, a URL like **https:///ijxtlx3j6x9uawu-omllabs.adb.us-sanjose-1.oraclecloudapps.com**",
+          "has the following components:",
+          "- **ijxtlx3j6x9uawu** as the tenancy ID",
+          "- **omllabs** as the database name",
+          "- **us-sanjose-1** as the datacenter region",
+          "- **oraclecloudapps.com** as the root domain",
+          "",
+          "To authenticate and obtain a token, use `cURL` with the ``-d` option to pass the credentials for your Oracle Machine Learning account against the Oracle Machine Learning user management cloud service REST endpoint */oauth2/v1/token*. ",
+          "",
+          "    $ curl -X POST --header 'Content-Type: application/json' \\",
+          "           --header 'Accept: application/json' \\",
+          "           -d '{\"grant_type\":\"password\", \"username\":\"'<yourusername>'\",\"password\":\"'<yourpassword>'\"}' ",
+          "            \"<OML service URL>/omlusers/api/oauth2/v1/token\"",
+          "    ",
+          "where   ",
+          "",
+          "* _-X POST_ specifies to use a POST request when communicating with the HTTP server",
+          "* _--header_ defines the headers required for the request (application/json)",
+          "* _-d <data>_ sends the username and password authentication credentials as data in a POST request to the HTTP server",
+          "* _Content-Type_ and _Accept_ define the response format (JSON)",
+          "* _yourusername_ is the user name of a Oracle Machine Learning user with the default OML_DEVELOPER role",
+          "* _yourpassword_ is the password for the user name",
+          "* _OML service URL_ is the REST server portion of the Oracle Machine Learning user management cloud service instance"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 1: Request a Token by authenticating against the Autonomous Database</h5>\n<p>To send requests to OML Services, you must obtain an authentication token by using your Oracle Machine Learning account credentials.</p>\n<p>To authenticate and obtain an access token, use <code>cURL</code> or another REST client, such as Postman, to exchange the OML user credentials for an authorization token.\n<br  />Send a POST request to the token URL endpoint <em>/oauth2/v1/token</em> with your OML username and password.\n<br  />The <strong>OML Servive URL</strong> can be obtained in Autonomous Database:</p>\n<ul>\n<li><p>Sign into your Oracle Cloud Infrastructure account. You will need your OCI user name and password.</p>\n</li>\n<li><p>Click the three-line menu at the top left, and select <strong>Oracle Database</strong> -> <strong>Autonomous Database</strong>.</p>\n</li>\n<li><p>In the list of Autonomous Database instances, click the name of the one you are working on now to open the console.</p>\n</li>\n<li><p>Open Database Actions by clicking on the button in the Autonomous Database console.  Depending on your browser, you might be prompted to login with the ADMIN user.</p>\n</li>\n<li><p>Inside the Database Actions, scroll down to the section  <strong>Related Services</strong>.</p>\n</li>\n<li><p>Click on the tile named <strong>ORACLE MACHINE LEARNING RESTFUL SERVICES</strong> to be able to obtain the URL required.</p>\n<p>Copy the URL (by clicking the button) under the following label:\n<br  /><code>\"Use this URL to obtain a REST authentication token for OML-provided REST APIs:\"</code></p>\n<p>It will show your OML Cloud Service location that we need, plus a folder <code>omlusers</code>\n<br  /><strong><code>&lt;oml-cloud-service-location-url&gt;</code></strong>/omlusers/</p>\n</li>\n</ul>\n<p>The URL <em>oml-cloud-service-location-url</em> includes the tenancy ID, location, and database name.</p>\n<p>For example, a URL like <strong>https:///ijxtlx3j6x9uawu-omllabs.adb.us-sanjose-1.oraclecloudapps.com</strong>\n<br  />has the following components:</p>\n<ul>\n<li><strong>ijxtlx3j6x9uawu</strong> as the tenancy ID</li>\n<li><strong>omllabs</strong> as the database name</li>\n<li><strong>us-sanjose-1</strong> as the datacenter region</li>\n<li><strong>oraclecloudapps.com</strong> as the root domain</li>\n</ul>\n<p>To authenticate and obtain a token, use <code>cURL</code> with the `<code>-d</code> option to pass the credentials for your Oracle Machine Learning account against the Oracle Machine Learning user management cloud service REST endpoint <em>/oauth2/v1/token</em>.</p>\n<pre><code>$ curl -X POST --header 'Content-Type: application/json' \\\n       --header 'Accept: application/json' \\\n       -d '{\"grant_type\":\"password\", \"username\":\"'&lt;yourusername&gt;'\",\"password\":\"'&lt;yourpassword&gt;'\"}' \n        \"&lt;OML service URL&gt;/omlusers/api/oauth2/v1/token\"\n</code></pre>\n<p>where</p>\n<ul>\n<li><em>-X POST</em> specifies to use a POST request when communicating with the HTTP server</li>\n<li><em>&ndash;header</em> defines the headers required for the request (application/json)</li>\n<li><em>-d <data></em> sends the username and password authentication credentials as data in a POST request to the HTTP server</li>\n<li><em>Content-Type</em> and <em>Accept</em> define the response format (JSON)</li>\n<li><em>yourusername</em> is the user name of a Oracle Machine Learning user with the default OML_DEVELOPER role</li>\n<li><em>yourpassword</em> is the password for the user name</li>\n<li><em>OML service URL</em> is the REST server portion of the Oracle Machine Learning user management cloud service instance</li>\n</ul>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 1.1: Run cURL to obtain a token by using the omlservice, username and password",
+          "First export the OML cloud service URL to the environment variable `omlservice`, the OML username to environment variable `username`, and the password to environment variable `password`.",
+          "",
+          "Then exchange the OML user credentials for an access token using a `cURL` command like the one below."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 1.1: Run cURL to obtain a token by using the omlservice, username and password</h5>\n<p>First export the OML cloud service URL to the environment variable <code>omlservice</code>, the OML username to environment variable <code>username</code>, and the password to environment variable <code>password</code>.</p>\n<p>Then exchange the OML user credentials for an access token using a <code>cURL</code> command like the one below.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "",
+          "$ export omlservice=https://ijxtlx3j6x9uawu-omllabs.adb.us-sanjose-1.oraclecloudapps.com",
+          "$ export username=OMLUSER",
+          "$ export password=OMLUSER_PASSWORD_HERE",
+          "",
+          "$ curl -i -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{\"grant_type\":\"password\", \"username\":\"'${username}'\", \"password\":\"'${password}'\"}' \"${omlservice}/omlusers/api/oauth2/v1/token\"",
+          "",
+          "  HTTP/1.1 200 OK",
+          "  Date: Wed, 09 Mar 2022 21:59:16 GMT",
+          "  Content-Type: application/json",
+          "  Content-Length: 1027",
+          "  Connection: keep-alive",
+          "  Cache-Control: no-cache, no-store, private",
+          "  X-Frame-Options: SAMEORIGIN",
+          "  X-XSS-Protection: 1;mode=block",
+          "  Strict-Transport-Security: max-age=31536000; includeSubDomains",
+          "  X-Content-Type-Options: nosniff",
+          "",
+          "  {\"accessToken\":\"eyJhbGciOiJ...\",\"expiresIn\":3600,\"tokenType\":\"Bearer\"}"
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 1.2: Copy the token to a new variable in order to easily reuse it in future calls",
+          "Copy the `accessToken` field from the response and assign it to variable token, surrounded by single quotes. You're now ready to access the OML4Py REST endpoints. ",
+          "",
+          "A token has a lifecycle of 3600 seconds, or 1 hour, and it can be refreshed for up to 8 hour. "
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 1.2: Copy the token to a new variable in order to easily reuse it in future calls</h5>\n<p>Copy the <code>accessToken</code> field from the response and assign it to variable token, surrounded by single quotes. You're now ready to access the OML4Py REST endpoints.</p>\n<p>A token has a lifecycle of 3600 seconds, or 1 hour, and it can be refreshed for up to 8 hour.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "",
+          "$ export token='eyJhbGciOiJ...'"
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Obtain a proxy object to the IRIS table",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "#### Task 2: Create and register a UDF",
+          "We will create and register a UDF using Python to later use it via REST APIs",
+          "",
+          "##### Task 2.1: Create a proxy object to the input table to our UDF",
+          "Run the following script to create a proxy object to the IRIS table."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Task 2: Create and register a UDF</h4>\n<p>We will create and register a UDF using Python to later use it via REST APIs</p>\n<h5>Task 2.1: Create a proxy object to the input table to our UDF</h5>\n<p>Run the following script to create a proxy object to the IRIS table.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "IRIS table data",
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "import oml",
+          "",
+          "from sklearn import datasets",
+          "from sklearn import linear_model",
+          "import pandas as pd",
+          "",
+          "iris = datasets.load_iris()",
+          "x = pd.DataFrame(iris.data, columns = ['SEPAL_LENGTH','SEPAL_WIDTH','PETAL_LENGTH','PETAL_WIDTH'])",
+          "y = pd.DataFrame(list(map(lambda x: {0: 'setosa', 1: 'versicolor',2:'virginica'}[x], iris.target)), columns = ['SPECIES'])",
+          "",
+          "try:",
+          "  oml.drop(table='IRIS')",
+          "except:",
+          "  pass",
+          "",
+          "IRIS = oml.create(pd.concat([x, y], axis=1), table = 'IRIS')",
+          "iris_df = pd.concat([x, y], axis=1)",
+          "",
+          "z.show(IRIS)"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "SEPAL_LENGTH\tSEPAL_WIDTH\tPETAL_LENGTH\tPETAL_WIDTH\tSPECIES\n4.6\t3.6\t1.0\t0.2\tsetosa\n5.1\t2.5\t3.0\t1.1\tversicolor\n6.0\t2.2\t4.0\t1.0\tversicolor\n5.8\t2.6\t4.0\t1.2\tversicolor\n5.5\t2.3\t4.0\t1.3\tversicolor\n5.5\t2.5\t4.0\t1.3\tversicolor\n6.1\t2.8\t4.0\t1.3\tversicolor\n5.7\t2.5\t5.0\t2.0\tvirginica\n6.0\t2.2\t5.0\t1.5\tvirginica\n6.3\t2.5\t5.0\t1.9\tvirginica\n6.7\t3.0\t5.0\t1.7\tversicolor\n7.2\t3.2\t6.0\t1.8\tvirginica\n6.3\t3.3\t6.0\t2.5\tvirginica\n4.3\t3.0\t1.1\t0.1\tsetosa\n5.8\t4.0\t1.2\t0.2\tsetosa\n5.0\t3.2\t1.2\t0.2\tsetosa\n4.4\t3.0\t1.3\t0.2\tsetosa\n4.4\t3.2\t1.3\t0.2\tsetosa\n4.7\t3.2\t1.3\t0.2\tsetosa\n5.5\t3.5\t1.3\t0.2\tsetosa\n4.5\t2.3\t1.3\t0.3\tsetosa\n5.0\t3.5\t1.3\t0.3\tsetosa\n5.4\t3.9\t1.3\t0.4\tsetosa\n4.8\t3.0\t1.4\t0.1\tsetosa\n4.9\t3.6\t1.4\t0.1\tsetosa\n4.9\t3.0\t1.4\t0.2\tsetosa\n4.4\t2.9\t1.4\t0.2\tsetosa\n4.6\t3.2\t1.4\t0.2\tsetosa\n5.0\t3.3\t1.4\t0.2\tsetosa\n5.2\t3.4\t1.4\t0.2\tsetosa\n5.1\t3.5\t1.4\t0.2\tsetosa\n5.0\t3.6\t1.4\t0.2\tsetosa\n5.5\t4.2\t1.4\t0.2\tsetosa\n4.8\t3.0\t1.4\t0.3\tsetosa\n4.6\t3.4\t1.4\t0.3\tsetosa\n5.1\t3.5\t1.4\t0.3\tsetosa\n4.9\t3.1\t1.5\t0.1\tsetosa\n5.2\t4.1\t1.5\t0.1\tsetosa\n4.6\t3.1\t1.5\t0.2\tsetosa\n4.9\t3.1\t1.5\t0.2\tsetosa\n5.0\t3.4\t1.5\t0.2\tsetosa\n5.1\t3.4\t1.5\t0.2\tsetosa\n5.2\t3.5\t1.5\t0.2\tsetosa\n5.3\t3.7\t1.5\t0.2\tsetosa\n5.4\t3.7\t1.5\t0.2\tsetosa\n5.1\t3.8\t1.5\t0.3\tsetosa\n5.4\t3.4\t1.5\t0.4\tsetosa\n5.1\t3.7\t1.5\t0.4\tsetosa\n5.7\t4.4\t1.5\t0.4\tsetosa\n5.0\t3.0\t1.6\t0.2\tsetosa\n4.8\t3.1\t1.6\t0.2\tsetosa\n4.7\t3.2\t1.6\t0.2\tsetosa\n4.8\t3.4\t1.6\t0.2\tsetosa\n5.1\t3.8\t1.6\t0.2\tsetosa\n5.0\t3.4\t1.6\t0.4\tsetosa\n5.0\t3.5\t1.6\t0.6\tsetosa\n5.4\t3.4\t1.7\t0.2\tsetosa\n5.7\t3.8\t1.7\t0.3\tsetosa\n5.4\t3.9\t1.7\t0.4\tsetosa\n5.1\t3.3\t1.7\t0.5\tsetosa\n4.8\t3.4\t1.9\t0.2\tsetosa\n5.1\t3.8\t1.9\t0.4\tsetosa\n5.0\t2.3\t3.3\t1.0\tversicolor\n4.9\t2.4\t3.3\t1.0\tversicolor\n5.0\t2.0\t3.5\t1.0\tversicolor\n5.7\t2.6\t3.5\t1.0\tversicolor\n5.6\t2.9\t3.6\t1.3\tversicolor\n5.5\t2.4\t3.7\t1.0\tversicolor\n5.5\t2.4\t3.8\t1.1\tversicolor\n5.6\t2.5\t3.9\t1.1\tversicolor\n5.8\t2.7\t3.9\t1.2\tversicolor\n5.2\t2.7\t3.9\t1.4\tversicolor\n5.8\t2.7\t4.1\t1.0\tversicolor\n5.6\t3.0\t4.1\t1.3\tversicolor\n5.7\t2.8\t4.1\t1.3\tversicolor\n5.7\t3.0\t4.2\t1.2\tversicolor\n5.6\t2.7\t4.2\t1.3\tversicolor\n5.7\t2.9\t4.2\t1.3\tversicolor\n5.9\t3.0\t4.2\t1.5\tversicolor\n6.2\t2.9\t4.3\t1.3\tversicolor\n6.4\t2.9\t4.3\t1.3\tversicolor\n5.5\t2.6\t4.4\t1.2\tversicolor\n6.3\t2.3\t4.4\t1.3\tversicolor\n6.6\t3.0\t4.4\t1.4\tversicolor\n6.7\t3.1\t4.4\t1.4\tversicolor\n4.9\t2.5\t4.5\t1.7\tvirginica\n5.7\t2.8\t4.5\t1.3\tversicolor\n5.4\t3.0\t4.5\t1.5\tversicolor\n5.6\t3.0\t4.5\t1.5\tversicolor\n6.2\t2.2\t4.5\t1.5\tversicolor\n6.0\t2.9\t4.5\t1.5\tversicolor\n6.4\t3.2\t4.5\t1.5\tversicolor\n6.0\t3.4\t4.5\t1.6\tversicolor\n6.6\t2.9\t4.6\t1.3\tversicolor\n6.1\t3.0\t4.6\t1.4\tversicolor\n6.5\t2.8\t4.6\t1.5\tversicolor\n6.1\t2.8\t4.7\t1.2\tversicolor\n6.1\t2.9\t4.7\t1.4\tversicolor\n7.0\t3.2\t4.7\t1.4\tversicolor\n6.7\t3.1\t4.7\t1.5\tversicolor\n6.3\t3.3\t4.7\t1.6\tversicolor\n6.0\t3.0\t4.8\t1.8\tvirginica\n6.2\t2.8\t4.8\t1.8\tvirginica\n6.8\t2.8\t4.8\t1.4\tversicolor\n5.9\t3.2\t4.8\t1.8\tversicolor\n5.6\t2.8\t4.9\t2.0\tvirginica\n6.1\t3.0\t4.9\t1.8\tvirginica\n6.3\t2.7\t4.9\t1.8\tvirginica\n6.3\t2.5\t4.9\t1.5\tversicolor\n6.9\t3.1\t4.9\t1.5\tversicolor\n6.5\t3.2\t5.1\t2.0\tvirginica\n6.3\t2.8\t5.1\t1.5\tvirginica\n5.9\t3.0\t5.1\t1.8\tvirginica\n5.8\t2.7\t5.1\t1.9\tvirginica\n5.8\t2.7\t5.1\t1.9\tvirginica\n6.9\t3.1\t5.1\t2.3\tvirginica\n5.8\t2.8\t5.1\t2.4\tvirginica\n6.0\t2.7\t5.1\t1.6\tversicolor\n6.5\t3.0\t5.2\t2.0\tvirginica\n6.7\t3.0\t5.2\t2.3\tvirginica\n6.4\t2.7\t5.3\t1.9\tvirginica\n6.4\t3.2\t5.3\t2.3\tvirginica\n6.9\t3.1\t5.4\t2.1\tvirginica\n6.2\t3.4\t5.4\t2.3\tvirginica\n6.5\t3.0\t5.5\t1.8\tvirginica\n6.4\t3.1\t5.5\t1.8\tvirginica\n6.8\t3.0\t5.5\t2.1\tvirginica\n6.1\t2.6\t5.6\t1.4\tvirginica\n6.3\t2.9\t5.6\t1.8\tvirginica\n6.4\t2.8\t5.6\t2.1\tvirginica\n6.4\t2.8\t5.6\t2.2\tvirginica\n6.7\t3.1\t5.6\t2.4\tvirginica\n6.3\t3.4\t5.6\t2.4\tvirginica\n6.7\t3.3\t5.7\t2.1\tvirginica\n6.9\t3.2\t5.7\t2.3\tvirginica\n6.7\t3.3\t5.7\t2.5\tvirginica\n7.2\t3.0\t5.8\t1.6\tvirginica\n6.7\t2.5\t5.8\t1.8\tvirginica\n6.5\t3.0\t5.8\t2.2\tvirginica\n7.1\t3.0\t5.9\t2.1\tvirginica\n6.8\t3.2\t5.9\t2.3\tvirginica\n7.4\t2.8\t6.1\t1.9\tvirginica\n7.7\t3.0\t6.1\t2.3\tvirginica\n7.2\t3.6\t6.1\t2.5\tvirginica\n7.3\t2.9\t6.3\t1.8\tvirginica\n7.9\t3.8\t6.4\t2.0\tvirginica\n7.6\t3.0\t6.6\t2.1\tvirginica\n7.7\t2.8\t6.7\t2.0\tvirginica\n7.7\t3.8\t6.7\t2.2\tvirginica\n7.7\t2.6\t6.9\t2.3\tvirginica\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Build a Scikit-Learn Python model using embedded Python execution",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 2.2: Create a UDF that build an ml model and store it in the script repository",
+          "Let's create a UDF that builds a linear model using `Scikit-Learn` and runs it from the Python and REST APIs. ",
+          "First, we'll define our function, `build_lm`, and store it in the script repository. ",
+          "",
+          "This UDF builds a model and stores it in the datastore, and returns the predictor coefficients in a DataFrame. "
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 2.2: Create a UDF that build an ml model and store it in the script repository</h5>\n<p>Let's create a UDF that builds a linear model using <code>Scikit-Learn</code> and runs it from the Python and REST APIs.\n<br  />First, we'll define our function, <code>build_lm</code>, and store it in the script repository.</p>\n<p>This UDF builds a model and stores it in the datastore, and returns the predictor coefficients in a DataFrame.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "import oml",
+          "",
+          "build_lm = \"\"\"def build_lm(dat, dsname):",
+          "            from sklearn import linear_model",
+          "            import oml",
+          "            regr = linear_model.LinearRegression()",
+          "            import pandas as pd",
+          "            X = dat[[\"SEPAL_WIDTH\", \"PETAL_LENGTH\", \"PETAL_WIDTH\"]]",
+          "            y = dat[[\"SEPAL_LENGTH\"]]",
+          "            res = regr.fit(X, y)",
+          "            res_coef = res.coef_",
+          "            res.df = pd.DataFrame(res_coef, columns = ['Coef_SEPAL_WIDTH','Coef_PETAL_LENGTH','Coef_PETAL_WIDTH'])",
+          "            oml.ds.save(objs={'regr':regr}, name=dsname, overwrite=True)",
+          "            return res.df\"\"\"",
+          "            ",
+          "oml.script.create(\"build_lm\", func=build_lm, overwrite=True) "
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "View the UDF in the Python script repository",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 2.3: Verify that the function is available in the script repository",
+          "Check for the existence of the *build_lm* script in the script repository. Run the OML4Py function `oml.script.dir` and pass the script name to the `name` parameter."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 2.3: Verify that the function is available in the script repository</h5>\n<p>Check for the existence of the <em>build_lm</em> script in the script repository. Run the OML4Py function <code>oml.script.dir</code> and pass the script name to the <code>name</code> parameter.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "oml.script.dir(name = \"build_lm\")"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "       name  ...                date\n0  build_lm  ... 2023-08-13 19:02:09\n\n[1 rows x 4 columns]\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Use the table-apply function to invoke the script from the Python API for embedded Python execution ",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 2.4: Invoke the UDF from the script repository using the Python API",
+          "Invoke the `build_lm` function in the script repository on the IRIS data from the Python API for embedded Python execution using `oml.table_apply`, and specify the datastore name `ds1`. ",
+          "",
+          "The returned value is a DataFrame containing the coefficients of the predictors."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 2.4: Invoke the UDF from the script repository using the Python API</h5>\n<p>Invoke the <code>build_lm</code> function in the script repository on the IRIS data from the Python API for embedded Python execution using <code>oml.table_apply</code>, and specify the datastore name <code>ds1</code>.</p>\n<p>The returned value is a DataFrame containing the coefficients of the predictors.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "oml.table_apply(data   = IRIS, ",
+          "                func   = \"build_lm\", ",
+          "                dsname = \"ds1\")",
+          "                "
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "   Coef_SEPAL_WIDTH  Coef_PETAL_LENGTH  Coef_PETAL_WIDTH\n0          0.650837           0.709132         -0.556483\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "View datastore contents from Python and SQL",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 2.5: Verify the contents of the datastore from Python and from SQL",
+          "Model `regr` is now stored in datastore `ds1`. ",
+          "We can view datastore contents either from Python or SQL. ",
+          "First, display the model object name and class by passing the datastore name to the `oml.ds.describe` command. ",
+          "Then, display the same information by querying the `USER_PYQ_DATASTORES` view."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 2.5: Verify the contents of the datastore from Python and from SQL</h5>\n<p>Model <code>regr</code> is now stored in datastore <code>ds1</code>.\n<br  />We can view datastore contents either from Python or SQL.\n<br  />First, display the model object name and class by passing the datastore name to the <code>oml.ds.describe</code> command.\n<br  />Then, display the same information by querying the <code>USER_PYQ_DATASTORES</code> view.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 6,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "oml.ds.describe(name=\"ds1\")[['object_name', 'class']]"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "  object_name             class\n0        regr  LinearRegression\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 6,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "",
+          "",
+          "select OBJNAME, CLASS from ALL_PYQ_DATASTORE_CONTENTS where DSNAME = 'ds1';"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "OBJNAME\tCLASS\nregr\tLinearRegression\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Run the same function using the REST API table function table-apply",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "#### Task 3: Invoke the UDF function and check the object in the datastore",
+          "",
+          "##### Task 3.1: Invoke the UDF function using EPE via REST API in a `cURL` command",
+          "Invoke the `build_lm` function in the script repository on the IRIS data from the REST API for embedded Python execution using `table-apply`. ",
+          "For this invocation, we persist the model to a new datastore, `ds2`. ",
+          "The returned value is a JSON object containing the coefficients of the predictors."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Task 3: Invoke the UDF function and check the object in the datastore</h4>\n<h5>Task 3.1: Invoke the UDF function using EPE via REST API in a <code>cURL</code> command</h5>\n<p>Invoke the <code>build_lm</code> function in the script repository on the IRIS data from the REST API for embedded Python execution using <code>table-apply</code>.\n<br  />For this invocation, we persist the model to a new datastore, <code>ds2</code>.\n<br  />The returned value is a JSON object containing the coefficients of the predictors.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "\r",
+          "\r",
+          "\r",
+          "$ curl -i -X POST --header \"Authorization: Bearer ${token}\" --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{\"input\":\"select * from IRIS\", \"parameters\":\"{\\\"oml_input_type\\\":\\\"pandas.DataFrame\\\", \\\"dsname\\\":\\\"ds2\\\"}\"}' \"${omlservice}/oml/api/py-scripts/v1/table-apply/build_lm\"\r",
+          "\r",
+          " returns:\r",
+          " \r",
+          "\r",
+          "{\"result\":[{\"Coef_PETAL_LENGTH\":0.7091319591,\"Coef_PETAL_WIDTH\":-0.5564826602,\"Coef_SEPAL_WIDTH\":0.6508371593}]}\r"
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 3.2: Check that the model object exists in the new datastore",
+          " Display the `regr` model object name and class residing in datastore `ds2`."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 3.2: Check that the model object exists in the new datastore</h5>\n<p>Display the <code>regr</code> model object name and class residing in datastore <code>ds2</code>.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "",
+          "select OBJNAME, CLASS from ALL_PYQ_DATASTORE_CONTENTS where DSNAME = 'ds2';"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "OBJNAME\tCLASS\nregr\tLinearRegression\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create a UDF to score using system-supported data-parallelism",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "#### Task 4: Create and test a new UDF for scoring the model",
+          "",
+          "##### Task 4.1: Define and register a UDF to score data using the existing model",
+          "Define a UDF to score data using our third-party model created above. ",
+          "We name this UDF `score_mod` and save it to the script repository. ",
+          "The `score_mod` function loads the datastore containing the model and scores the daa using that model."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Task 4: Create and test a new UDF for scoring the model</h4>\n<h5>Task 4.1: Define and register a UDF to score data using the existing model</h5>\n<p>Define a UDF to score data using our third-party model created above.\n<br  />We name this UDF <code>score_mod</code> and save it to the script repository.\n<br  />The <code>score_mod</code> function loads the datastore containing the model and scores the daa using that model.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "score_mod = \"\"\"def score_mod(dat, dsname):",
+          "            import oml",
+          "            import pandas as pd",
+          "            import matplotlib.pyplot as plt",
+          "            obj_dict = oml.ds.load(name=dsname, to_globals=False)  ",
+          "            regr = obj_dict[\"regr\"]                                      ",
+          "            pred = regr.predict(dat[['SEPAL_WIDTH','PETAL_LENGTH','PETAL_WIDTH']])   ",
+          "            return pd.concat([dat[['SPECIES', 'SEPAL_LENGTH']], pd.DataFrame(pred, columns=['Pred_SEPAL_LENGTH'])], axis=1)\"\"\" ",
+          "",
+          "oml.script.create(\"score_mod\", func=score_mod, overwrite=True) "
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Use row_apply to test the UDF from Python using data parallelism",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 4.2: Test the UDF using the Python API for EPE",
+          "To test our UDF working with embedded Python execution, we use `oml.row_apply` to score the IRIS data using the model in the datastore, then invoke the REST API equivalent, `row-apply`.",
+          "",
+          "We run the script `score_mod` from the REST API synchronously, which is the default. ",
+          "",
+          "From the REST API, you can specify the Autonomous Database service level to use with the optional service argument. ",
+          "The service names are *LOW*, *MEDIUM*, and *HIGH*. The service names provide different levels of performance and concurrency for an Autonomous Database. ",
+          "The default is *LOW*, and in this case, we use *MEDIUM*.",
+          "",
+          "Scoring occurs in parallel with 50 rows processed per UDF invocation across the multiple engines. ",
+          "This example results in three function invocations that are run in parallel.",
+          "",
+          "In this example, we are loading the model stored in datastore `ds1`."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 4.2: Test the UDF using the Python API for EPE</h5>\n<p>To test our UDF working with embedded Python execution, we use <code>oml.row_apply</code> to score the IRIS data using the model in the datastore, then invoke the REST API equivalent, <code>row-apply</code>.</p>\n<p>We run the script <code>score_mod</code> from the REST API synchronously, which is the default.</p>\n<p>From the REST API, you can specify the Autonomous Database service level to use with the optional service argument.\n<br  />The service names are <em>LOW</em>, <em>MEDIUM</em>, and <em>HIGH</em>. The service names provide different levels of performance and concurrency for an Autonomous Database.\n<br  />The default is <em>LOW</em>, and in this case, we use <em>MEDIUM</em>.</p>\n<p>Scoring occurs in parallel with 50 rows processed per UDF invocation across the multiple engines.\n<br  />This example results in three function invocations that are run in parallel.</p>\n<p>In this example, we are loading the model stored in datastore <code>ds1</code>.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "res = oml.row_apply(data     = IRIS, ",
+          "                    func     = score_mod, ",
+          "                    dsname   = \"ds1\", ",
+          "                    rows     = 50, ",
+          "                    parallel = True) ",
+          "",
+          "z.show(res)"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "SPECIES\tSEPAL_LENGTH\tPred_SEPAL_LENGTH\nsetosa\t4.6\t4.796846693548454\nversicolor\t5.1\t4.9983553424270495\nversicolor\t6.0\t5.567884419786516\nversicolor\t5.8\t5.716922751478398\nversicolor\t5.5\t5.46602333766773\nversicolor\t5.5\t5.596190769530374\nversicolor\t6.1\t5.79144191732434\nvirginica\t5.7\t5.915784866550187\nvirginica\t6.0\t5.998775048839733\nvirginica\t6.3\t5.971433132566889\nversicolor\t6.7\t6.408148244256902\nvirginica\t7.2\t7.191799369239573\nvirginica\t6.3\t6.867345223053978\nsetosa\t4.3\t4.532905859890898\nsetosa\t5.8\t5.1990079491010865\nsetosa\t5.0\t4.678338221650511\nsetosa\t4.4\t4.6190839857015416\nsetosa\t4.4\t4.749251417564185\nsetosa\t4.7\t4.749251417564185\nsetosa\t5.5\t4.94450256535815\nsetosa\t4.5\t4.107849708165586\nsetosa\t5.0\t4.888854299341448\nsetosa\t5.4\t5.093540897050033\nsetosa\t4.8\t4.745645447631916\nsetosa\t4.9\t5.136147743219848\nsetosa\t4.9\t4.6899971816152135\nsetosa\t4.4\t4.624913465683893\nsetosa\t4.6\t4.820164613477857\nsetosa\t5.0\t4.88524832940918\nsetosa\t5.2\t4.950332045340501\nsetosa\t5.1\t5.015415761271823\nsetosa\t5.0\t5.080499477203145\nsetosa\t5.5\t5.471001772791077\nsetosa\t4.8\t4.634348915598512\nsetosa\t4.6\t4.894683779323799\nsetosa\t5.1\t4.95976749525512\nsetosa\t4.9\t4.881642359476911\nsetosa\t5.2\t5.5324795187901294\nsetosa\t4.6\t4.825994093460208\nsetosa\t4.9\t4.825994093460208\nsetosa\t5.0\t5.021245241254174\nsetosa\t5.1\t5.021245241254174\nsetosa\t5.2\t5.086328957185495\nsetosa\t5.3\t5.216496389048141\nsetosa\t5.4\t5.216496389048141\nsetosa\t5.1\t5.225931838962758\nsetosa\t5.4\t4.909948709220769\nsetosa\t5.1\t5.105199857014735\nsetosa\t5.7\t5.560785868533988\nsetosa\t5.0\t4.83182357344256\nsetosa\t4.8\t4.896907289373882\nsetosa\t4.7\t4.961991005305204\nsetosa\t4.8\t5.092158437167847\nsetosa\t5.1\t5.352493300893134\nsetosa\t5.0\t4.980861905134443\nsetosa\t5.0\t4.934649089032359\nsetosa\t5.4\t5.16307163308152\nsetosa\t5.7\t5.367758230790105\nsetosa\t5.4\t5.377193680704725\nsetosa\t5.1\t4.9310431191000905\nsetosa\t4.8\t5.304898024908866\nsetosa\t5.1\t5.453936356600748\nversicolor\t5.0\t5.136575764322127\nversicolor\t4.9\t5.201659480253449\nversicolor\t5.0\t5.083151008355507\nversicolor\t5.7\t5.473653303943439\nversicolor\t5.6\t5.572872849600969\nversicolor\t5.5\t5.485312263908141\nversicolor\t5.5\t5.5005771938051105\nversicolor\t5.6\t5.636574105650106\nversicolor\t5.8\t5.711093271496047\nversicolor\t5.2\t5.599796739462643\nversicolor\t5.8\t5.964216195356798\nversicolor\t5.6\t5.992522545100656\nversicolor\t5.7\t5.862355113238013\nversicolor\t5.7\t6.119084007031032\nversicolor\t5.6\t5.868184593220365\nversicolor\t5.7\t5.998352025083008\nversicolor\t5.9\t5.952139208980925\nversicolor\t6.2\t6.06926522099668\nversicolor\t6.4\t6.06926522099668\nversicolor\t5.5\t6.00057553513309\nversicolor\t6.3\t5.7496761213224215\nversicolor\t6.6\t6.149613866824973\nversicolor\t6.7\t6.214697582756295\nvirginica\t4.9\t5.72816368503193\nversicolor\t5.7\t6.146007896892704\nversicolor\t5.4\t6.164878796721943\nversicolor\t5.6\t6.164878796721943\nversicolor\t6.2\t5.644209069271368\nversicolor\t6.0\t6.099795080790622\nversicolor\t6.4\t6.295046228584587\nversicolor\t6.0\t6.369565394430528\nversicolor\t6.6\t6.282004808737699\nversicolor\t6.1\t6.291440258652319\nversicolor\t6.5\t6.105624560772972\nversicolor\t6.1\t6.343482554736752\nversicolor\t6.1\t6.29726973863467\nversicolor\t7.0\t6.492520886428636\nversicolor\t6.7\t6.371788904480611\nversicolor\t6.3\t6.446308070326552\nvirginica\t6.0\t6.210673586412855\nvirginica\t6.2\t6.0805061545502115\nversicolor\t6.8\t6.303099218617021\nversicolor\t5.9\t6.340841018275499\nvirginica\t5.6\t6.040122818430479\nvirginica\t6.1\t6.281586782326529\nvirginica\t6.3\t6.0863356345325625\nversicolor\t6.3\t6.123113000720026\nversicolor\t6.9\t6.5136152963079565\nvirginica\t6.5\t6.442284073983112\nvirginica\t6.3\t6.460190540341336\nvirginica\t5.9\t6.423413174153873\nvirginica\t5.8\t6.172513760343206\nvirginica\t5.8\t6.172513760343206\nvirginica\t6.9\t6.210255560001683\nvirginica\t5.8\t5.9593561461910145\nversicolor\t6.0\t6.3394585583933125\nvirginica\t6.5\t6.383029838034141\nvirginica\t6.7\t6.216085039984034\nvirginica\t6.4\t6.314340152170551\nvirginica\t6.4\t6.417165667760352\nvirginica\t6.9\t6.534291679776107\nvirginica\t6.2\t6.618246295536668\nvirginica\t6.5\t6.707065957808566\nvirginica\t6.4\t6.772149673739887\nvirginica\t6.8\t6.540121159758458\nvirginica\t6.1\t6.74023735406376\nvirginica\t6.3\t6.712895437790915\nvirginica\t6.4\t6.4808669238094865\nvirginica\t6.4\t6.425218657792784\nvirginica\t6.7\t6.509173273553346\nvirginica\t6.3\t6.70442442134731\nvirginica\t6.7\t6.877198699379769\nvirginica\t6.9\t6.700818451415043\nvirginica\t6.7\t6.65460563531296\nvirginica\t7.2\t7.031102077582989\nvirginica\t6.7\t6.5943869658929755\nvirginica\t6.5\t6.697212481482774\nvirginica\t7.1\t6.8237739434131495\nvirginica\t6.8\t6.842644843242389\nvirginica\t7.4\t6.946729435411257\nvirginica\t7.7\t6.854303803207091\nvirginica\t7.2\t7.133509566761616\nvirginica\t7.3\t7.209287809186626\nvirginica\t7.9\t7.754657916448791\nvirginica\t7.6\t7.320166314808859\nvirginica\t7.7\t7.316560344876591\nvirginica\t7.7\t7.856100972156405\nvirginica\t7.7\t7.161274506791187\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "",
+          "",
+          "",
+          "$ curl -i -X POST --header \"Authorization: Bearer ${token}\" --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{\"input\":\"select * from IRIS\", \"parameters\":\"{\\\"oml_input_type\\\":\\\"pandas.DataFrame\\\", \\\"dsname\\\":\\\"ds1\\\"}\", \"rows\":50, \"parallelFlag\":true, \"service\":\"MEDIUM\"}' \"${omlservice}/oml/api/py-scripts/v1/row-apply/score_mod\"",
+          "",
+          " returns:",
+          " ",
+          "{\"result\":[{\"Pred_SEPAL_LENGTH\":4.7968466935,\"SEPAL_LENGTH\":4.6,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.9983553424,\"SEPAL_LENGTH\":5.1,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.5678844198,\"SEPAL_LENGTH\":6,\"SPECIES\":\"versicolor\"},..."
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Asynchronous REST API jobs",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "#### Task 5: Using asynchronous calls with the REST APIs for EPE",
+          "",
+          "Asynchronous calls do not wait for the result to return from the server. ",
+          "If the Python script is performing long running computations, results will not be immediate and the user may want to use asynchronous calls to continue development on the client.",
+          "",
+          "The asynchronous call's returned results are included in the response header. Display the response header by passing the `-i` flag to the `cURL` command. ",
+          "Asynchronous calls have a default timeout of 1800 seconds, or 30 minutes, and can be extended up to 12 hours. ",
+          "Set the `asyncFlag` to `true` to run asynchronous calls from the REST API."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Task 5: Using asynchronous calls with the REST APIs for EPE</h4>\n<p>Asynchronous calls do not wait for the result to return from the server.\n<br  />If the Python script is performing long running computations, results will not be immediate and the user may want to use asynchronous calls to continue development on the client.</p>\n<p>The asynchronous call's returned results are included in the response header. Display the response header by passing the <code>-i</code> flag to the <code>cURL</code> command.\n<br  />Asynchronous calls have a default timeout of 1800 seconds, or 30 minutes, and can be extended up to 12 hours.\n<br  />Set the <code>asyncFlag</code> to <code>true</code> to run asynchronous calls from the REST API.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Perform an asynchronous REST call with a timeout of 300 seconds, or 5 minutes",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 5.1 Run an asynchronous REST call using cURL ",
+          "Below is the equivalent asynchronous REST call with a timeout of 300 seconds, or 5 minutes. The output includes the HTTP 201 status code indicating the job was created, and a job id location that can be polled for status and results.",
+          "",
+          "The `timeout` flag is used to change the default timeout setting."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 5.1 Run an asynchronous REST call using cURL</h5>\n<p>Below is the equivalent asynchronous REST call with a timeout of 300 seconds, or 5 minutes. The output includes the HTTP 201 status code indicating the job was created, and a job id location that can be polled for status and results.</p>\n<p>The <code>timeout</code> flag is used to change the default timeout setting.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "",
+          "",
+          "",
+          "",
+          "$ curl -i -X POST --header \"Authorization: Bearer ${token}\" --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{\"input\":\"select * from IRIS\", \"parameters\":\"{\\\"oml_input_type\\\":\\\"pandas.DataFrame\\\", \\\"dsname\\\":\\\"ds1\\\"}\", \"rows\":50, \"parallelFlag\":true, \"service\":\"MEDIUM\", \"asyncFlag\":true, \"timeout\":300}' \"${omlservice}/oml/api/py-scripts/v1/row-apply/score_mod\"",
+          "",
+          "",
+          "HTTP/1.1 302 Found",
+          "Date: Tue, 25 Apr 2023 23:55:57 GMT",
+          "Content-Length: 0",
+          "Connection: keep-alive",
+          "Cache-Control: no-cache, no-store, must-revalidate",
+          "Pragma: no-cache",
+          "X-Frame-Options: SAMEORIGIN",
+          "X-XSS-Protection: 1;mode=block",
+          "Strict-Transport-Security: max-age=31536000; includeSubDomains",
+          "X-Content-Type-Options: nosniff",
+          "Content-Security-Policy: frame-ancestors 'none'",
+          "Content-Location: <OML Service URL>/oml/api/py-scripts/v1/jobs/<job id location>"
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Poll the job status",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 5.2 Check the job status by passing the Job ID",
+          "To poll the job status, pass the job ID location to the jobs endpoint using the GET method. ",
+          "The HTTP response status 302 indicates the running job is found and includes a job id location for future results."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 5.2 Check the job status by passing the Job ID</h5>\n<p>To poll the job status, pass the job ID location to the jobs endpoint using the GET method.\n<br  />The HTTP response status 302 indicates the running job is found and includes a job id location for future results.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "",
+          "$ curl -i -X GET --header \"Authorization: Bearer ${token}\" --header 'Accept: application/json' ${omlservice}/oml/api/py-scripts/v1/jobs/<job id location>",
+          "",
+          "HTTP/1.1 302 Found",
+          "Date: Tue, 25 Apr 2023 23:55:57 GMT",
+          "Content-Length: 0",
+          "Connection: keep-alive",
+          "Cache-Control: no-cache, no-store, must-revalidate",
+          "Pragma: no-cache",
+          "X-Frame-Options: SAMEORIGIN",
+          "X-XSS-Protection: 1;mode=block",
+          "Strict-Transport-Security: max-age=31536000; includeSubDomains",
+          "X-Content-Type-Options: nosniff",
+          "Content-Security-Policy: frame-ancestors 'none'",
+          "Content-Location: <OML Service URL>/oml/api/py-scripts/v1/jobs/<job id location>result"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : null,
+          "status" : null,
+          "results" : null,
+          "forms" : null
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 5.3 View the results of the Job by checking the \"/result\" endpoint",
+          "To poll the job status, pass the job ID location to the jobs endpoint using the GET method. ",
+          "The HTTP response status 302 indicates the running job is found and includes a job id location for future results."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 5.3 View the results of the Job by checking the &ldquo;/result&rdquo; endpoint</h5>\n<p>To poll the job status, pass the job ID location to the jobs endpoint using the GET method.\n<br  />The HTTP response status 302 indicates the running job is found and includes a job id location for future results.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Retrieve result from completed job",
+        "hasTitle" : false,
+        "message" : [
+          "",
+          "$ curl -i -X GET --header \"Authorization: Bearer ${token}\" --header 'Accept: application/json' ${omlservice}/oml/api/py-scripts/v1/jobs/<job id location>/result",
+          "",
+          " returns:",
+          " ",
+          " ",
+          "{\"result\":[{\"Pred_SEPAL_LENGTH\":4.7968466935,\"SEPAL_LENGTH\":4.6,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.9983553424,\"SEPAL_LENGTH\":5.1,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.5678844198,\"SEPAL_LENGTH\":6,\"SPECIES\":\"versicolor\"}..."
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "## Learn More",
+          "",
+          "* <a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728\" onclick=\"return ! window.open('https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728');\">OML4Py Embedded Python Execution</a>",
+          "* <a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/omlss/index.html\" onclick=\"return ! window.open('https://docs.oracle.com/en/database/oracle/machine-learning/omlss/index.html');\">Get started with Oracle Machine Learning Services</a>",
+          "* <a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/\" onclick=\"return ! window.open('https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/');\">Oracle Machine Learning Notebooks</a>",
+          "* <a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B\" onclick=\"return ! window.open('https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B');\">Oracle Machine Learning Notebooks - Early Adopter</a>",
+          " ",
+          "**Last Updated Date** - August 2023",
+          " ",
+          "**Copyright (c) 2023 Oracle Corporation**",
+          "<a href=\"https://oss.oracle.com/licenses/upl/\" onclick=\"return ! window.open('https://oss.oracle.com/licenses/upl/');\">The Universal Permissive License (UPL), Version 1.0</a>",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h2>Learn More</h2>\n<ul>\n<li><a href=\"https: //docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728\" >OML4Py Embedded Python Execution</a></li>\n<li><a href=\"https: //docs.oracle.com/en/database/oracle/machine-learning/omlss/index.html\" >Get started with Oracle Machine Learning Services</a></li>\n<li><a href=\"https: //docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/\" >Oracle Machine Learning Notebooks</a></li>\n<li><a href=\"https: //docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B\" >Oracle Machine Learning Notebooks - Early Adopter</a></li>\n</ul>\n<p><strong>Last Updated Date</strong> - August 2023</p>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https: //oss.oracle.com/licenses/upl/\" >The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      }
+    ]
+  }
+]
