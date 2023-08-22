@@ -6,10 +6,6 @@ This lab walks you through the steps to use the REST API to call OML4Py Embedded
 
 Estimated Time: 20 minutes
 
-Watch the video below for a quick walk-through of the lab.
-
-[Run user-defined functions using Embedded Python Execution](videohub:1_2skqmxjt)
-
 ### About Embedded Python Execution
 Embedded Python execution enables you to run user-defined Python functions in Python engines spawned by the Autonomous Database environment. The REST API for embedded Python execution with Autonomous Database provides REST endpoints for setting authorization tokens, executing Python scripts, and synchronously and asynchronously running jobs.
 
@@ -38,37 +34,64 @@ In this lab, we provide a workflow for using the OML4Py REST API for embedded Py
 
 We need to view the markdown in the OML notebook for this lab, and access the OCI Cloud Shell to run the associated cURL commands.
 
-**Access the Lab Notebooks**
+**Access and run the OML notebook for this lab.**
 
-1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
+ > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please 
+ <if type="freetier">[**CLICK HERE** to download the "Lab 7 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab 7 - Run UDFs with REST API for EPE.dsnb?download=1>)</if><if type="livelabs">[**CLICK HERE** to download the "Lab 7 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab 7 - Run UDFs with REST API for EPE.dsnb?download=1>)</if><if type="freetier-ocw23">[**CLICK HERE** to download the "Lab Bonus 3 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 3 - Run UDFs with REST API for EPE.dsnb?download=1>)</if><if type="livelabs-ocw23">[**CLICK HERE** to download the "Lab Bonus 3 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 3 - Run UDFs with REST API for EPE.dsnb?download=1>)</if>. This notebook contains the scripts for this Lab. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
 
- ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png "Oracle Machine Learning Notebooks menu ")
-
-2. Click the **Lab 7 notebook name** to view it.
+   Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks EA**. 
+   
+   ![Go to main Notebooks EA](images/go-back-to-notebooks.png " ")
+   
    <if type="freetier">
-   ![Open Lab 7 notebook ft](images/click-on-lab5-ft.png "Lab 6 notebook") </if>
+   Click the **Lab 7** notebook to view it.
+
+   ![Open Lab 7 notebook ft](images/click-on-la7-ft.png " ") </if>
+   
    <if type="livelabs">
-   ![Open Lab 7 notebook ll](images/click-on-lab5-ll.png "Lab 6 notebook") </if>
+   Click the **Lab 7** notebook to view it.
 
-  OML Notebooks will create a session and make the notebook available for editing.
+   ![Open Lab 7 notebook ll](images/click-on-lab7-ll.png " ") </if>
+   
+   <if type="freetier-ocw23">
+   Click the **Lab Bonus 3** notebook to view it.
 
-  You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+   ![Open Lab Bonus 3 notebook ft](images/click-on-labbo3-ft-ocw23.png " ") </if>
+   
+   <if type="livelabs-ocw23">
+   Click the **Lab Bonus 3** notebook to view it.
+   
+   ![Open Lab Bonus 3 notebook ll](images/click-on-labbo3-ll-ocw23.png " ") </if>
 
-  ![Lab 7 Introduction notebook screen capture](images/lab5-main.png " Introduction notebook")
+   OML Notebooks will create a session and make the notebook available for editing.
 
-> **NOTE:** If you had problems downloading and extracting the ZIP file for the labs, please [**CLICK HERE** to download the lab7\_embed\_python\_rest.json notebook file](./../notebooks/lab7_embed_python_rest.json?download=1). Download the notebook file for this lab to your local machine and then import it like illustrated in **Lab 1, Task 2**.
+   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
 
-**Access the OCI Cloud Shell to run cURL commands:**
+   <if type="freetier">
+   ![Lab 7 main screen](images/lab7-main.png " ")
+   </if>
+   <if type="livelabs">
+   ![Lab 7 main screen](images/lab7-main.png " ")
+   </if>
+   <if type="freetier-ocw23">
+   ![Lab Bonus 3 main screen](images/labbo3-main.png " ")
+   </if>
+   <if type="livelabs-ocw23">
+   ![Lab Bonus 3 main screen](images/labbo3-main.png " ")
+   </if>
+
+
+**Access the OCI Cloud Shell to run cURL commands**
 
 To access the OCI Cloud Shell to run the associated cURL commands:
 
-1. To run cURL commands, click the Developer Tools icon on your OCI console and then click Cloud Shell.  
+1. Click the Developer Tools icon on your OCI console and then click Cloud Shell.  
 
-  ![Lab 7 Task 5 cloud shell icon under Developer tools](images/devtools-cloud-shell.png " ")
+  ![Cloud shell icon under Developer tools](images/devtools-cloud-shell.png " ")
 
-2. The Oracle Cloud Shell interface opens at the bottom of your OCI console page. Here, you can run your cURL commands.
+2. The Oracle Cloud Shell interface opens at the bottom of your OCI console page. Here, you can run your cURL commands.  At the right in the green bar that opens up you also have options to maximize, minimize or close the Cloud Shell window.
 
-  ![Lab 7 Task 5 Cloud shell pane](images/cloud-shell-pane.png " ")
+  ![Cloud shell pane](images/cloud-shell-pane.png " ")
 
 ## Task 1: Obtain an Access Token
 
@@ -76,69 +99,82 @@ To access the OCI Cloud Shell to run the associated cURL commands:
 
   Scroll down to the beginning of Task 1.
 
-  ![Lab 7 Task 1 Obtain the access token](images/1-obtain-access-token.png " ")
+  ![Obtain the access token](images/1-obtain-access-token.png " ")
 
-2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+  ![Obtain the access token 2](images/1-obtain-access-token-2.png " ")
+
+  You will use the following code in OCI Cloud Shell, replacing `yourusername`, `yourpassword` and `OML Service URL` with the ones for your service.
+
+  ``` 
+  <copy>
+
+    curl -X POST --header 'Content-Type:application/json' \
+    --header 'Accept:application/json' \
+    -d '{"grant_type":"password", "username":"'yourusername'","password":"'yourpassword'"}' 
+    "OML service URL/omlusers/api/oauth2/v1/token"
+  ```
+
+1. First, let's export the appropriate environmental variables.  Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to the beginning of Task 1.1.
-  ![Lab 7 Task 1.1 Export OML Cloud Service URL to environment variable](images/1-1-export-oml-url-env-variable.png " ")
+  ![Export OML Cloud Service URL](images/1-1-export-oml-url-env-variable.png " ")
 
 3. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to the beginning of Task 1.2.
-  ![Lab 7 Task 1.2 Assign access token to variable token](images/1-2-assign-accesstoken-variable.png " ")
+  ![Assign access token to variable token](images/1-2-assign-accesstoken-variable.png " ")
 
 ## Task 2:  Obtain a proxy object to the IRIS table
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to the beginning of Task 2.
 
-  ![Lab 7 Task 2 Obtain a proxy object to the IRIS table](images/2-obtain-proxy-object.png " ")
+  ![Obtain a proxy object to IRIS table](images/2-obtain-proxy-object.png " ")
 
 ## Task 3: Build a Scikit-Learn Python model using embedded Python execution
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to the beginning of Task 3.
 
-  ![Lab 7 Task 3 Build a Scikit-Learn Python model using embedded Python execution](images/3-create-udf-modelbuild.png " ")
+  ![Build a Scikit-Learn Python model with EPE](images/3-create-udf-modelbuild.png " ")
 
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to the beginning of Task 3.1.
 
-  ![Lab 7 Task 3.1 View the UDF in the Python script repository](images/3-1-view-udf-inrepo.png " ")
+  ![View the UDF in the Python script repository](images/3-1-view-udf-inrepo.png " ")
 
-## Task 4: Use the table-apply function to invoke the script from the Python API for embedded Python execution
+## Task 4: Use the table-apply function to invoke the script from the Python API for EPE
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to the beginning of Task 4.
 
-  ![Lab 7 Task 4 Use the table-apply function to invoke the script from the Python API for embedded Python execution ](images/4-tablyapply-call-udf.png " ")
+  ![Use the table-apply function](images/4-tablyapply-call-udf.png " ")
 
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
  Scroll down to the beginning of Task 4.1.
 
-  ![Lab 7 Task 4.1 View datastore contents from Python and SQL](images/4-1-view-datastore-content.png " ")
+  ![View datastore contents from Python and SQL](images/4-1-view-datastore-content.png " ")
 
 3. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
  Scroll down to the beginning of Task 4.2
 
-  ![Lab 7 Task 4.2 Python script to view datastore content](images/4-2-python-script-view-dscontent.png " ")
+  ![Python script to view datastore content](images/4-2-python-script-view-dscontent.png " ")
 
 4. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
  Scroll down to the beginning of Task 4.3.
 
-  ![Lab 7 Task 4.3 SQL Script to view datastore content](images/4-3-sql-script-view-dscontent.png " ")
+  ![SQL Script to view datastore content](images/4-3-sql-script-view-dscontent.png " ")
 
 ## Task 5: Run the same function using the REST API table function table-apply
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
    Scroll down to the beginning of Task 5.
 
-  ![Lab 7 Task 5 Run the same function `build_lm` using the REST API table function table-apply](images/5-run-restapi-function.png " ")
+  ![Run the function using the REST API](images/5-run-restapi-function.png " ")
 
   >> Note: To run cURL commands, see **Access the OCI Cloud Shell to run cURL commands** in the **Prerequisites** section.
 
@@ -146,25 +182,25 @@ To access the OCI Cloud Shell to run the associated cURL commands:
 
    Scroll down to the beginning of Task 5.1.
 
-  ![Lab 7 Task 5.1 Display object name and class residing in datastore](images/5-1-display-objectname-class.png " ")
+  ![Display object name and class in datastore](images/5-1-display-objectname-class.png " ")
 
 ## Task 6: Create a UDF to score using system-supported data-parallelism
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
    Scroll down to the beginning of Task 6.
-   ![Lab 7 Task 6 Create a UDF to score using system-supported data-parallelism](images/6-create-udf-score.png " ")
+   ![Create a UDF to score with data-parallelism](images/6-create-udf-score.png " ")
 
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
    Scroll down to the beginning of Task 6.1.
-   ![Lab 7 Task 6.1 Use row_apply to test the UDF from Python using data parallelism](images/6-1-test-udf.png " ")
+   ![Use row_apply to test the UDF](images/6-1-test-udf.png " ")
 
 
 3. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
    Scroll down to the beginning of Task 6.2.
-   ![Lab 7 Task 6.2 Use row-apply to run the UDF from REST API using data parallelism](images/6-2-run-udf-from-restapi.png " ")
+   ![Lab 7 Task 6.2 Use row-apply](images/6-2-run-udf-from-restapi.png " ")
 
    >> Note: To run cURL commands, see **Access the OCI Cloud Shell to run cURL commands** in the **Prerequisites** section.
 
@@ -173,38 +209,38 @@ To access the OCI Cloud Shell to run the associated cURL commands:
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
    Scroll down to the beginning of Task 7.
-   ![Lab 7 Task 7 Asynchronous REST API jobs](images/7-async-restapi-jobs.png " ")
+   ![Asynchronous REST API jobs](images/7-async-restapi-jobs.png " ")
 
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
    Scroll down to the beginning of Task 7.1.
-   ![Lab 7 Task 7.1  Perform an asynchronous REST call with a timeout of 300 seconds, or 5 minutes](images/7-1-run-rest-call-timeout.png " ")
+   ![Perform an asynchronous REST](images/7-1-run-rest-call-timeout.png " ")
 
   >> Note: To run cURL commands, see **Access the OCI Cloud Shell to run cURL commands** in the Prerequisites section.
 
 3. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
    Scroll down to the beginning of Task 7.2.
-   ![Lab 7 Task 7.2 Poll the job status](images/7-2-poll-jobstatus.png " ")
+   ![Poll the job status](images/7-2-poll-jobstatus.png " ")
 
 4. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
    Scroll down to the beginning of Task 7.3.
-   ![Lab 7 Task 7.3 Retrieve result from completed job](images/7-3-retrieve-job-results.png " ")
+   ![Retrieve result from completed job](images/7-3-retrieve-job-results.png " ")
 
 ### Congratulations !!!
 
-You reached the end of the lab.  
+You reached the end of the this lab.  
 
 You can explore additional workshops related to Oracle Machine Learning from the link in the **Learn More** section.  
 
 ## Learn more
 
-* [Automated Machine Learning](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/automatic-machine-learning.html#GUID-4B240E7A-1A8B-43B6-99A5-7FF86330805A)
+* [Embedded Python Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
-* [Additional Workshops for Oracle Machine Learning](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/livelabs-workshop-cards?c=y&p100_product=70)
-
+* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)
+  
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, Sherry LaMonica, Moitreyee Hazarika May 2023
+* **Last Updated By/Date** - Marcos Arancibia, Sherry LaMonica, Moitreyee Hazarika, August 2023

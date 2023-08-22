@@ -6,10 +6,6 @@ This lab walks you through the steps to use and work with OML4Py datastores and 
 
 Estimated Time: 20 minutes
 
-Watch the video below for a quick walk-through of the lab.
-
-[Store and manage Python objects and user-defined functions](videohub:1_ajr69sox)
-
 ### About datastores
 Datastores exist in the user’s Oracle database schema. A datastore, and the objects it contains, persist in the database until explicitly deleted. By using a datastore, you can store Python objects in a named datastore entry. This named datastore can then be used in subsequent Python sessions, and even be made available to other users or programs by granting/revoking read permissions.
 
@@ -18,7 +14,7 @@ By using a datastore, you can:
 * Save OML4Py and other Python objects for use across Python sessions.
 * Grant or revoke read privilege access to a datastore or its objects to one or more users. You can restore the saved objects in another Python session.
 * Easily pass multiple and non-scalar arguments to Python functions for use in embedded Python execution from Python, REST, and SQL  API.
-      >**Note:** SQL and REST APIs support passing scalar values, such as datastore name or numeric values, only.
+  >**Note:** SQL and REST APIs support passing scalar values, such as datastore name or numeric values, only.
 
 * List available datastores and explore datastore contents.
 
@@ -54,127 +50,134 @@ In this lab, you will learn how to:
 
 ### Prerequisites
 
-We need to access and run the OML notebook for this lab.
+1. We need to access and run the OML notebook for this lab.
 
-1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
+ > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please [**CLICK HERE** to download the "Lab 4 - Store and manage Python objects and UDFs" notebook DSNB file](<./../notebooks/Lab 4 - Store and manage Python objects and UDFs.dsnb?download=1>). This notebook contains the scripts for **Lab 4**. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
 
- ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png " ")
-
-2. Click the **Lab 4 notebook name** to view it.
+   Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks EA**. 
+   
+   ![Go to main Notebooks EA](images/go-back-to-notebooks.png " ")
+   
+   Click the **Lab 4** notebook to view it.
+   
    <if type="freetier">
    ![Open Lab 4 notebook ft](images/click-on-lab4-ft.png " ") </if>
    <if type="livelabs">
    ![Open Lab 4 notebook ll](images/click-on-lab4-ll.png " ") </if>
+   <if type="freetier-ocw23">
+   ![Open Lab 4 notebook ft](images/click-on-lab4-ft-ocw23.png " ") </if>
+   <if type="livelabs-ocw23">
+   ![Open Lab 4 notebook ll](images/click-on-lab4-ll-ocw23.png " ") </if>
 
-  OML Notebooks will create a session and make the notebook available for editing.
+   OML Notebooks will create a session and make the notebook available for editing.
 
-  You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
-   
-  ![Lab 4 Introduction notebook screen capture](images/lab4-main.png " ")
+   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
 
-> **NOTE:** If you had problems downloading and extracting the ZIP file for the labs, please [**CLICK HERE** to download the lab4\_datastores.json notebook file](./../notebooks/lab4_datastores.json?download=1). Download the notebook file for this lab to your local machine and then import it like illustrated in **Lab 1, Task 2**.
+   ![Lab 4 main screen](images/lab4-main.png " ")
 
 ## Task 1: Import libraries supporting OML4Py and create data table
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 1.
+  Scroll down to the beginning of Task 1.
 
-  ![Lab 4 Task 1 Import libraries supporting OML4Py and create data table notebook screen capture](images/lab4-task1.png " ")  
+  ![Import libraries supporting OML4Py](images/lab4-task1.png " ")  
 
 ## Task 2: Create pandas dataFrames and load them into Oracle Autonomous Database
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 2.
+  Scroll down to the beginning of Task 2.
 
-  ![Lab 4 Task 2 Create pandas dataFrames and load them into Oracle Autonomous Database notebook screen capture](images/lab4-task2.png " ")  
-  
+  ![Create pandas dataFrames and load them](images/lab4-task2.png " ")  
+
 ## Task 3: Save Python objects to a datastore instance
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 3.
+  Scroll down to the beginning of Task 3.
 
-  ![Lab 4 Task 3 Save Python objects to a datastore instance notebook screen capture](images/lab4-task3.png " ")  
+  ![Save Python objects to a datastore](images/lab4-task3.png " ")  
 
 ## Task 4: Save model objects in a datastore instance
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 4.
+  Scroll down to the beginning of Task 4.
 
-  ![Lab 4 Task 4 Save model objects in a datastore instance notebook screen capture](images/lab4-task4.png " ")  
+  ![Save model objects in a datastore](images/lab4-task4.png " ")  
 
 ## Task 5:  Load datastore objects into memory
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 5.
+  Scroll down to the beginning of Task 5.
 
-  ![Lab 4 Task 5 Load datastore objects into memory notebook screen capture](images/lab4-task5.png " ")  
+  ![Load datastore objects into memory](images/lab4-task5.png " ")  
 
 ## Task 6: View datastores and other details
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 6.
+  Scroll down to the beginning of Task 6.
 
-  ![Lab 4 Task 6 View datastores and other details notebook screen capture](images/lab4-task6.png " ")  
+  ![View datastores and other details](images/lab4-task6.png " ")  
 
 ## Task 7: View contents of a datastore
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 7.
+  Scroll down to the beginning of Task 7.
 
-  ![Lab 4 Task 7 View contents of a datastore notebook screen capture](images/lab4-task7.png " ")     
+  ![View contents of a datastore](images/lab4-task7.png " ")     
 
 ## Task 8: Manage datastore privileges
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 8.
+  Scroll down to the beginning of Task 8.
 
-  ![Lab 4 Task 8 Manage datastore privileges notebook screen capture](images/lab4-task8.png " ")  
+  ![Manage datastore privileges](images/lab4-task8.png " ")  
 
 ## Task 9: Delete datastore content
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 9.
+  Scroll down to the beginning of Task 9.
 
-  ![Lab 4 Task 9 Delete datastore content notebook screen capture](images/lab4-task9.png " ")
+  ![Delete datastore content](images/lab4-task9.png " ")
 
 ## Task 10: Use the Python Script Repository
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 10.
+  Scroll down to the beginning of Task 10.
 
-  ![Lab 4 Task 10 Use the Python Script Repository notebook screen capture](images/lab4-task10.png " ")  
+  ![Use the Python Script Repository](images/lab4-task10.png " ")  
 
 ## Task 11: Create scripts in repository
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 11.
+  Scroll down to the beginning of Task 11.
 
-  ![Lab 4 Task 11 Create scripts in repository notebook screen capture](images/lab4-task11.png " ")  
+  ![Create scripts in repository](images/lab4-task11.png " ")  
 
 ## Task 12: Store a function as a global function
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 12.
+  Scroll down to the beginning of Task 12.
 
-  ![Lab 4 Task 12 Store a function as a global function notebook screen capture](images/lab4-task12.png " ")  
+  ![Store a function as a global function](images/lab4-task12.png " ")  
 
 ## Task 13: Drop scripts from the script repository
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 13.
+  Scroll down to the beginning of Task 13.
 
-  ![Lab 4 Task 13 Drop scripts from the script repository notebook screen capture](images/lab4-task13.png " ")  
+  ![Drop scripts from the script repository](images/lab4-task13.png " ")  
 
 After you reach the end of Lab 4, you can *proceed to the next lab*.
 
 ## Learn More
 
-* [About OML4Py Datastores](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/about-oml4py-datastores.html#GUID-9FFB5C75-F8DB-4947-844D-4771475A2B39)
+* [Get started with OML4Py Datastores](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/get-started-oracle-machine-learning-python1.html#GUID-C02396D1-2B30-47A0-AE27-37B123E15710)
+* [Get started with OML4Py Script Repository](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/save-and-manage-functions-for-embedded-python-execution.html#GUID-74671038-15FE-44BB-A657-C89C16C1EF43)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
+* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)
 
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia and Sherry LaMonica, August 2022
+* **Last Updated By/Date** - Marcos Arancibia, August 2023
