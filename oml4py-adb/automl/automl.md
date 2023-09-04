@@ -37,7 +37,7 @@ In this lab, you will learn how to:
    <if type="livelabs">
    Click the **Lab 5** notebook to view it.
 
-   ![Open Lab 8 notebook ll](images/click-on-lab8-ll.png " ") </if>
+   ![Open Lab 8 notebook ll](images/click-on-lab8-ft.png " ") </if>
    
    <if type="freetier-ocw23">
    Click the **Lab Bonus 4** notebook to view it.
@@ -47,7 +47,7 @@ In this lab, you will learn how to:
    <if type="livelabs-ocw23">
    Click the **Lab Bonus 4** notebook to view it.
    
-   ![Open Lab Bonus 4 notebook ll](images/click-on-labbo4-ll-ocw23.png " ") </if>
+   ![Open Lab Bonus 4 notebook ll](images/click-on-labbo4-ft-ocw23.png " ") </if>
 
    OML Notebooks will create a session and make the notebook available for editing.
 

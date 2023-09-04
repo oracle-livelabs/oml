@@ -30,7 +30,7 @@
           "**Note:** The code in the paragraphs are not runnable from this notebook. Refer to the lab notebooks for the location where the each exercise will be invoked.",
           "",
           "**Copyright (c) 2023 Oracle Corporation**",
-          "<a href=\"https://oss.oracle.com/licenses/upl/\" onclick=\"return ! window.open('https://oss.oracle.com/licenses/upl/');\">The Universal Permissive License (UPL), Version 1.0</a>",
+          "[The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)",
           "",
           "---"
         ],
@@ -49,7 +49,7 @@
           "status" : "SUCCESS",
           "results" : [
             {
-              "message" : "<h1>&ldquo;Try it yourself&rdquo; companion section for Introduction to OML4Py</h1>\n<p><strong><em>Oracle Machine Learning for Python</em></strong> (OML4Py) makes the open source Python scripting language and environment ready for the enterprise and big data. Designed for problems involving both large and small data volumes, OML4Py integrates Python with Oracle Autonomous Database, allowing users to run Python commands and scripts for statistical, machine learning, and visualization analyses on database tables and views using Python syntax. Many familiar Python functions are overloaded that translate Python behavior into SQL for running in-database, as well as new automatic machine learning capabilities.</p>\n<p>This sets of examples contains the answers for the <strong>Try it yourself</strong> exercises in the OML4Py Labs.</p>\n<p><strong>Note:</strong> The code in the paragraphs are not runnable from this notebook. Refer to the lab notebooks for the location where the each exercise will be invoked.</p>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https: //oss.oracle.com/licenses/upl/\" onclick=\"return ! window.open('https://oss.oracle.com/licenses/upl/');\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
+              "message" : "<h1>&ldquo;Try it yourself&rdquo; companion section for Introduction to OML4Py</h1>\n<p><strong><em>Oracle Machine Learning for Python</em></strong> (OML4Py) makes the open source Python scripting language and environment ready for the enterprise and big data. Designed for problems involving both large and small data volumes, OML4Py integrates Python with Oracle Autonomous Database, allowing users to run Python commands and scripts for statistical, machine learning, and visualization analyses on database tables and views using Python syntax. Many familiar Python functions are overloaded that translate Python behavior into SQL for running in-database, as well as new automatic machine learning capabilities.</p>\n<p>This sets of examples contains the answers for the <strong>Try it yourself</strong> exercises in the OML4Py Labs.</p>\n<p><strong>Note:</strong> The code in the paragraphs are not runnable from this notebook. Refer to the lab notebooks for the location where the each exercise will be invoked.</p>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https://oss.oracle.com/licenses/upl/\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
               "type" : "HTML"
             }
           ],

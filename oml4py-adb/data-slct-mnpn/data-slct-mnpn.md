@@ -44,11 +44,11 @@ In this lab, you will learn how to:
    <if type="freetier">
    ![Open Lab 2 notebook ft](images/click-on-lab2-ft.png " ") </if>
    <if type="livelabs">
-   ![Open Lab 2 notebook ll](images/click-on-lab2-ll.png " ") </if>
+   ![Open Lab 2 notebook ll](images/click-on-lab2-ft.png " ") </if>
    <if type="freetier-ocw23">
    ![Open Lab 2 notebook ft](images/click-on-lab2-ft-ocw23.png " ") </if>
    <if type="livelabs-ocw23">
-   ![Open Lab 2 notebook ll](images/click-on-lab2-ll-ocw23.png " ") </if>
+   ![Open Lab 2 notebook ll](images/click-on-lab2-ft-ocw23.png " ") </if>
 
    OML Notebooks will create a session and make the notebook available for editing.
 

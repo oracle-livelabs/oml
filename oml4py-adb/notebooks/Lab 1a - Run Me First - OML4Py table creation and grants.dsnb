@@ -4,11 +4,11 @@
     "description" : null,
     "tags" : null,
     "version" : "6",
-    "layout" : "zeppelin",
+    "layout" : "jupyter",
     "type" : "low",
     "readOnly" : false,
     "snapshot" : false,
-    "template" : "No Template",
+    "template" : null,
     "templateConfig" : null,
     "paragraphs" : [
       {
@@ -27,7 +27,7 @@
           "- The following commands should be run before running the Labs, since it creates some tables and grants access to any users of the PDB. ",
           "",
           "**Copyright (c) 2023 Oracle Corporation**",
-          "<a href=\"https://oss.oracle.com/licenses/upl/\" onclick=\"return ! window.open('https://oss.oracle.com/licenses/upl/');\">The Universal Permissive License (UPL), Version 1.0</a>",
+          "[The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)",
           "",
           "---"
         ],
@@ -46,7 +46,7 @@
           "status" : "SUCCESS",
           "results" : [
             {
-              "message" : "<h1>Run Me First - Oracle Machine Learning for Python (OML4Py)</h1>\n<p><strong><em>Oracle Machine Learning for Python</em></strong> (OML4Py) makes the open source Python scripting language and environment ready for the enterprise and big data. Designed for problems involving both large and small data volumes, OML4Py integrates Python with Oracle Autonomous Database, allowing users to run Python commands and scripts for statistical, machine learning, and visualization analyses on database tables and views using Python syntax. Many familiar Python functions are overloaded that translate Python behavior into SQL for running in-database, as well as new automatic machine learning capabilities.</p>\n<ul>\n<li>The following commands should be run before running the Labs, since it creates some tables and grants access to any users of the PDB.</li>\n</ul>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https: //oss.oracle.com/licenses/upl/\" >The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
+              "message" : "<h1>Run Me First - Oracle Machine Learning for Python (OML4Py)</h1>\n<p><strong><em>Oracle Machine Learning for Python</em></strong> (OML4Py) makes the open source Python scripting language and environment ready for the enterprise and big data. Designed for problems involving both large and small data volumes, OML4Py integrates Python with Oracle Autonomous Database, allowing users to run Python commands and scripts for statistical, machine learning, and visualization analyses on database tables and views using Python syntax. Many familiar Python functions are overloaded that translate Python behavior into SQL for running in-database, as well as new automatic machine learning capabilities.</p>\n<ul>\n<li>The following commands should be run before running the Labs, since it creates some tables and grants access to any users of the PDB.</li>\n</ul>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https://oss.oracle.com/licenses/upl/\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
               "type" : "HTML"
             }
           ],
@@ -1001,15 +1001,14 @@
           "%md",
           "## Learn More",
           "",
+          "* [Loading Data into Autonomous Database Serverless using DBMS_CLOUD Subprograms](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html?target=_blank)",
+          "* [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)",
+          "* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)",
           "",
-          "* <a href=\"https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html\" onclick=\"return ! window.open('https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html');\">Loading Data into Autonomous Database Serverless using DBMS_CLOUD Subprograms</a>",
-          "* <a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/\" onclick=\"return ! window.open('https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/');\">Oracle Machine Learning Notebooks</a>",
-          "* <a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B\" onclick=\"return ! window.open('https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B');\">Oracle Machine Learning Notebooks - Early Adopter</a>",
-          " ",
           "**Last Updated Date** - August 2023",
           " ",
           "**Copyright (c) 2023 Oracle Corporation**",
-          "<a href=\"https://oss.oracle.com/licenses/upl/\" onclick=\"return ! window.open('https://oss.oracle.com/licenses/upl/');\">The Universal Permissive License (UPL), Version 1.0</a>",
+          "[The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)",
           "",
           "---"
         ],
@@ -1028,7 +1027,7 @@
           "status" : "SUCCESS",
           "results" : [
             {
-              "message" : "<h2>Learn More</h2>\n<ul>\n<li><a href=\"https: //docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html\" >Loading Data into Autonomous Database Serverless using DBMS_CLOUD Subprograms</a></li>\n<li><a href=\"https: //docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/\" >Oracle Machine Learning Notebooks</a></li>\n<li><a href=\"https: //docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B\" >Oracle Machine Learning Notebooks - Early Adopter</a></li>\n</ul>\n<p><strong>Last Updated Date</strong> - August 2023</p>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https: //oss.oracle.com/licenses/upl/\" >The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
+              "message" : "<h2>Learn More</h2>\n<ul>\n<li><a href=\"https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html?target=_blank\">Loading Data into Autonomous Database Serverless using DBMS_CLOUD Subprograms</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/\">Oracle Machine Learning Notebooks</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B\">Oracle Machine Learning Notebooks - Early Adopter</a></li>\n</ul>\n<p><strong>Last Updated Date</strong> - August 2023</p>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https://oss.oracle.com/licenses/upl/\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
               "type" : "HTML"
             }
           ],

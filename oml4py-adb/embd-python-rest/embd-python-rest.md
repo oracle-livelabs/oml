@@ -51,7 +51,7 @@ We need to view the markdown in the OML notebook for this lab, and access the OC
    <if type="livelabs">
    Click the **Lab 7** notebook to view it.
 
-   ![Open Lab 7 notebook ll](images/click-on-lab7-ll.png " ") </if>
+   ![Open Lab 7 notebook ll](images/click-on-lab7-ft.png " ") </if>
    
    <if type="freetier-ocw23">
    Click the **Lab Bonus 3** notebook to view it.
@@ -61,7 +61,7 @@ We need to view the markdown in the OML notebook for this lab, and access the OC
    <if type="livelabs-ocw23">
    Click the **Lab Bonus 3** notebook to view it.
    
-   ![Open Lab Bonus 3 notebook ll](images/click-on-labbo3-ll-ocw23.png " ") </if>
+   ![Open Lab Bonus 3 notebook ll](images/click-on-labbo3-ft-ocw23.png " ") </if>
 
    OML Notebooks will create a session and make the notebook available for editing.
 
@@ -107,14 +107,13 @@ To access the OCI Cloud Shell to run the associated cURL commands:
 
   ``` 
   <copy>
-
     curl -X POST --header 'Content-Type:application/json' \
     --header 'Accept:application/json' \
     -d '{"grant_type":"password", "username":"'yourusername'","password":"'yourpassword'"}' 
     "OML service URL/omlusers/api/oauth2/v1/token"
   ```
 
-1. First, let's export the appropriate environmental variables.  Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. First, let's export the appropriate environmental variables.  Follow the flow of the notebook by scrolling to view the code, and copy and run each paragraph of the lab as appropriate in the OCI Cloud Shell, replacing the required information with yours.
 
   Scroll down to the beginning of Task 1.1.
   ![Export OML Cloud Service URL](images/1-1-export-oml-url-env-variable.png " ")

@@ -12,8 +12,7 @@ In this lab, you will learn how to:
 * Get familiar with the Oracle Machine Learning Notebooks toolbar
 * Get familiar with the Oracle Machine Learning Notebooks interpreters
 * Verify the connection to the Oracle Autonomous Database
-<if type="freetier">* Load the datasets necessary to run the workshop</if>
-<if type="freetier-ocw23">* Load the datasets necessary to run the workshop</if>
+* Load the datasets necessary to run the workshop
 
 * View help files
 
@@ -21,21 +20,77 @@ In this lab, you will learn how to:
 
 You create notebooks in Oracle Machine Learning UI. You can access Oracle Machine Learning UI from Autonomous Database.
 
+<if type="livelabs">
+1. Go to the site [**My Reservations**](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/my-reservations) and make sure you can see that your reservation is ready.  When it is, it will show you a button called **`Launch Workshop`**.  Click on it.
+    ![Live Labs My Reservations](images/ll-launch-workshop.png " ")
+
+2. In the window with instructions that opens, click on the **View Login Info** at the **top left** of the page, and then click on the **Launch OCI** button.  Make sure to click on the **Copy Password** button since you will need it to login.
+    ![Live Labs Launch OCI](images/ll-view-login-info.png " ")
+
+3. Login into OCI with the user provided (it should be filled automatically) and the password you copied.  
+    ![Live Labs Login into OCI](images/ll-login-oci.png " ")
+
+    > **Note:** The first time you login to OCI, you will be asked to reset your password.
+
+4. When you are in OCI, click the left navigation pane on the upper left corner, and click **Autonomous Data Warehouse** under **Oracle Database**.  
+    ![Autonomous Database under Oracle Database](images/database-adw.png " ")
+
+</if>
+
+<if type="livelabs-ocw23">
+1. Go to the site [**My Reservations**](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/my-reservations) and make sure you can see that your reservation is ready.  When it is, it will show you a button called **`Launch Workshop`**.  Click on it.
+    ![Live Labs My Reservations](images/ll-launch-workshop.png " ")
+
+2. In the window with instructions that opens, click on the **View Login Info** at the **top left** of the page, and then click on the **Launch OCI** button.  Make sure to click on the **Copy Password** button since you will need it to login.
+    ![Live Labs Launch OCI](images/ll-view-login-info.png " ")
+
+3. Login into OCI with the user provided (it should be filled automatically) and the password you copied.  
+    ![Live Labs Login into OCI](images/ll-login-oci.png " ")
+
+    > **Note:** The first time you login to OCI, you will be asked to reset your password.
+
+4. When you are in OCI, click the left navigation pane on the upper left corner, and click **Autonomous Data Warehouse** under **Oracle Database**.  
+    ![Autonomous Database under Oracle Database](images/database-adw.png " ")
+
+</if>
+
+<if type="freetier">
+
 1. Sign into your OCI account, click the left navigation pane on the upper left corner, and click **Autonomous Data Warehouse** under **Oracle Database**.  
 
      > **Note:** It is possible to select a different type of Autonomous Database if you previously provisioned a different one and have created OML Users for it, since OML is available in AJD and ATP as well.
 
     ![Autonomous Database under Oracle Database](images/database-adw.png " ")
 
-2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Select the compartment corresponding to the <if type="livelabs">provisioned Live Labs instance (per instructions on the Lab **Get Started with Live Labs**, Task 1, Step 3)</if><if type="livelabs-ocw23">provisioned Live Labs instance (per instructions on the Lab **Get Started with Live Labs**, Task 1, Step 3)</if><if type="freetier">previously provisioned instance</if><if type="freetier-ocw23">previously provisioned instance</if>, and click the Oracle Autonomous Database name (in the example below, **OML_LABS**).
+</if>
 
-    ![Oracle Autonomous Database instances](images/provisioned-adb.png " ")
+
+<if type="freetier-ocw23">
+
+1. Sign into your OCI account, click the left navigation pane on the upper left corner, and click **Autonomous Data Warehouse** under **Oracle Database**.  
+
+     > **Note:** It is possible to select a different type of Autonomous Database if you previously provisioned a different one and have created OML Users for it, since OML is available in AJD and ATP as well.
+
+    ![Autonomous Database under Oracle Database](images/database-adw.png " ")
+
+</if>
+
+2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Select the compartment corresponding to the <if type="livelabs">provisioned **Live Labs** instance (the Compartment name is shown in the Login info for your reservation, as shown in Task 2).  Click on the Autonomous Database with your unique **Display Name ADWXXXXX** shown in Task 2</if><if type="livelabs-ocw23">provisioned **Live Labs** instance (the Compartment name is shown in the Login info for your reservation, as shown in Task 2).  Click on the Autonomous Database with your unique **Display Name ADWXXXXX** shown in Task 2</if><if type="freetier">previously provisioned instance, and click the Oracle Autonomous Database name (in the example below, **OML_LABS**)</if><if type="freetier-ocw23">previously provisioned instance, and click the Oracle Autonomous Database name (in the example below, **OML_LABS**)</if>.
+
+<if type="freetier">
+     ![Oracle Autonomous Database instances](images/provisioned-adb.png " ")</if>
+<if type="freetier-ocw23">
+     ![Oracle Autonomous Database instances](images/provisioned-adb.png " ")</if>
+<if type="livelabs">
+     ![Oracle Autonomous Database instances](images/ll-adb-listing.png " ")</if>
+<if type="livelabs-ocw23">
+     ![Oracle Autonomous Database instances](images/ll-adb-listing.png " ")</if>
 
 3. On the Autonomous Database details page, click **Database Actions** and then select **View all Database Actions**.
 
 	  ![Database Actions button in ADB Console](images/view-all-database-actions.png " ")
 
-     Before you get to the Oracle Database Actions Launchpad page, you might be asked to login, depending on the browser you are using.  If this is the case make sure to enter **ADMIN** and the proper password.
+     Before you get to the Oracle Database Actions Launchpad page, you might be asked to login, depending on the browser you are using.  If this is the case make sure to enter **ADMIN** for the user, and the <if type="freetier">password you have given the ADMIN user</if><if type="freetier-ocw23">password you have given the ADMIN user</if><if type="livelabs">password shown in the **View Login Info** in Task 1, Step 2 (you can click on the **Copy Password** button)</if><if type="livelabs-ocw23">password shown in the **View Login Info** in Task 1, Step 2 (you can click on the **Copy Password** button)</if>.
    
     ![ADB login into Database Actions](images/login-to-actions.png " ")
 
@@ -50,7 +105,7 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 
 	 ![OML option in ADB Console tool](images/oml-ui-tool-adb-console.png " ")
 
-	  > **Note:** If you are are using a **Paid Account** and depoyed a **Paid Autonomous Database** you would also see an additional column that show any customizations made to the compute power available specifically to OML jobs, along with the  `Max idle time` defined to release those resources.
+	  > **Note:** If you are are using a **Paid Account** and deployed a **Paid Autonomous Database** you would also see an additional column that show any customizations made to the compute power available specifically to OML jobs, along with the  `Max idle time` defined to release those resources.
 	   ![OML option in ADB Console tool Paid Account](images/oml-ui-tool-adb-console-paid.png " ")
 
 5. You should be in the Sign In page for OML. <if type="livelabs">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="livelabs-ocw23">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="freetier">Enter the **`OMLUSER`** credentials using the password that you used earlier when creating the users. Then click the blue **Sign in** button.</if><if type="freetier-ocw23">Enter the **`OMLUSER`** credentials using the password that you used earlier when creating the users. Then click the blue **Sign in** button.</if>
@@ -61,6 +116,16 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 
     ![Oracle Machine Learning home page](images/oml-notebooks-ea-homepage.png " ")
 
+<if type="livelabs">
+    > **Note:** There is another option to get straight into OML UI from the Live Labs reservation.  When you click on **View Login Info**, you can click on the **OML Notebooks** button to go to the OML UI.
+    ![Oracle Machine Learning UI from Live Labs](images/ll-oml-ui-link.png " ")
+
+</if>
+<if type="livelabs-ocw23">
+    > **Note:** There is another option to get straight into OML UI from the Live Labs reservation.  When you click on **View Login Info**, you can click on the **OML Notebooks** button to go to the OML UI.
+    ![Oracle Machine Learning UI from Live Labs](images/ll-oml-ui-link.png " ")
+
+</if>
 ## Task 2: Get familiar with OML Notebooks
 
 <if type="freetier">
@@ -84,17 +149,20 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
   ![OML Notebooks import](images/click-on-import-notebook.png " ")
 
  - Select all the extracted notebooks at once from your local folder and click on **Open**.
- <if type="freetier">   ![Select the 10 JSON files on your machine and click Open](images/open-lab-files-ft.png " ")</if>
- <if type="freetier-ocw23">  ![Select the 10 JSON files on your machine and click Open](images/open-lab-files-ft-ocw23.png " ")</if>
-
- <if type="livelabs">   ![Select the 9 JSON files on your machine and click Open](images/open-lab-files-ll.png " ") </if>
-<if type="livelabs-ocw23">   ![Select the 9 JSON files on your machine and click Open](images/open-lab-files-ll-ocw23.png " ") </if>
+ <if type="freetier">Select the 10 JSON files on your machine and click Open.
+      ![Select the 10 JSON files on your machine and click Open](images/open-lab-files-ft.png " ")</if>
+ <if type="freetier-ocw23">Select the 10 JSON files on your machine and click Open.
+      ![Select the 10 JSON files on your machine and click Open](images/open-lab-files-ft-ocw23.png " ")</if>
+ <if type="livelabs">Select the 10 JSON files on your machine and click Open
+      ![Select the 10 JSON files on your machine and click Open](images/open-lab-files-ft.png " ") </if>
+<if type="livelabs-ocw23">Select the 10 JSON files on your machine and click Open.
+      ![Select the 10 JSON files on your machine and click Open](images/open-lab-files-ft-ocw23.png " ") </if>
 
  - After the notebooks are successfully imported, click the Lab 1 notebook to view it.
  <if type="freetier">   ![In the Notebooks listing open Lab 1 notebook ft](images/click-on-lab1-ft.png " ") </if>
  <if type="freetier-ocw23">   ![In the Notebooks listing open Lab 1 notebook ft](images/click-on-lab1-ft-ocw23.png " ") </if>
- <if type="livelabs">   ![In the Notebooks listing open Lab 1 notebook ll](images/click-on-lab1-ll.png " ") </if>
- <if type="livelabs-ocw23">   ![In the Notebooks listing open Lab 1 notebook ll](images/click-on-lab1-ll-ocw23.png " ") </if>
+ <if type="livelabs">   ![In the Notebooks listing open Lab 1 notebook ll](images/click-on-lab1-ft.png " ") </if>
+ <if type="livelabs-ocw23">   ![In the Notebooks listing open Lab 1 notebook ll](images/click-on-lab1-ft-ocw23.png " ") </if>
 
  OML will start a session and make the notebook available for visualization and editing.
 
@@ -107,7 +175,6 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
     For example, it displays the type of Database connection group that the notebook is currently ready to use (low/medium/high), and also the current style of notebook layout (Jupyter vs Zeppelin). It also contains menu items to show or hide the paragraph code, result, titles and settings. Additional settings are shown in the illustration below.
 
     ![Explanation of the Notebook toolbar](images/notebook_toolbar.png " ")
-
 
 ## Task 3: Getting started with OML Notebooks and interpreter types
 
@@ -174,49 +241,26 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 
    Scroll down in the notebook to see examples of the use of the `help` function.
 
-<if type="livelabs">
-You can now *proceed to the next lab*.</if>
-<if type="livelabs-ocw23">
-You can now *proceed to the next lab*.</if>
-
-<if type="freetier">
 ## Task 5: Load sample data into tables and views, and grant access to all users
 
-1. Labs 2 and above of this workshop use tables and views that need to be created upfront.  To create these tables and views, we will open the Notebook "Lab 1a - Run Me First - OML4Py table creation and grants".
+1. All labs starting from number 2 and above of this workshop use tables and views that need to be created upfront.  To create these tables and views, we will open the Notebook "Lab 1a - Run Me First - OML4Py table creation and grants".
 
 > **NOTE:** If you have problems with downloading and extracting the ZIP file, please [**CLICK HERE** to download the "Lab 1a - Run Me First - OML4Py table creation and grants" notebook DSNB file](<./../notebooks/Lab 1a - Run Me First - OML4Py table creation and grants.dsnb?download=1>). This notebook contains the scripts for creating tables and views, and granting the required access. Save it to your local machine and import it like illustrated in **Task 2, Step 1**.
 
 2. Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks EA**. Click the **Lab 1a** notebook to view it.
-
+<if type="freetier"> 
  ![Main Menu clicking Lab 1A](images/click-on-lab1a-ft.png " ")
-
- OML Notebooks will load a session and make the notebook available for editing.
-
-3. Click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to run the notebook.
-  ![Run the Lab 1a](images/click-run-all.png " ")
-
-   Scroll down, and wait until all the paragraphs have finished running.  You should see a message at the bottom of the last paragraph that contains SQL code (the `%script` one) that reads `"PL/SQL procedure successfully completed"`.
-
-   And at the bottom right, you will see the time it took to run and how long ago it was done.  In the example below it mentions `243ms @ a few seconds ago`, indicating the recent run.
-
-  ![The last paragraph](images/last-paragraph.png " ")
-
-The prerequisite scripts have run successfully.
-
-You can now *proceed to the next lab*.
-</if>
-
-<if type="freetier-ocw23">
-## Task 5: Load sample data into tables and views, and grant access to all users
-
-1. Labs 2 and above of this workshop use tables and views that need to be created upfront.  To create these tables and views, we will open the Notebook "Lab 1a - Run Me First - OML4Py table creation and grants".
-
-> **NOTE:** If you have problems with downloading and extracting the ZIP file, please [**CLICK HERE** to download the "Lab 1a - Run Me First - OML4Py table creation and grants" notebook DSNB file](<./../notebooks/Lab 1a - Run Me First - OML4Py table creation and grants.dsnb?download=1>). This notebook contains the scripts for creating tables and views, and granting the required access. Save it to your local machine and import it like illustrated in **Task 2, Step 1**.
-
-2. Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks EA**. Click the **Lab 1a** notebook to view it.
-
+ </if>
+ <if type="livelabs"> 
+ ![Main Menu clicking Lab 1A](images/click-on-lab1a-ft.png " ")
+ </if>
+ <if type="freetier-ocw23"> 
  ![Main Menu clicking Lab 1A](images/click-on-lab1a-ft-ocw23.png " ")
- 
+ </if>
+ <if type="livelabs-ocw23"> 
+ ![Main Menu clicking Lab 1A](images/click-on-lab1a-ft-ocw23.png " ")
+ </if>
+
  OML Notebooks will load a session and make the notebook available for editing.
 
 3. Click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to run the notebook.
@@ -231,7 +275,6 @@ You can now *proceed to the next lab*.
 The prerequisite scripts have run successfully.
 
 You can now *proceed to the next lab*.
-</if>
 
 ## Learn more
 
