@@ -146,7 +146,7 @@ To use OML4Py, you must first import the `oml` module and the Pandas library. Us
 	</copy>
 	```
 	In this step, you are viewing a few rows from the SUPPLEMENTARY_DEMOGRAPHICS table using the overloaded `head()` function.
-	
+
 	![Top rows of DEMO.](images/rows-demo.png)
 
 ## Task 4: Explore the Data
@@ -232,7 +232,7 @@ In this step, you will create a `DEMO_DF` which is a new `oml.DataFrame` based o
 	![Top rows of DEMO_DF.](images/rows-demo-df.png)
 
 3. In this example, you are randomly splitting the `DEMO_DF` data with 60 percent of the records for the TRAIN data set and 40 percent for the TEST data set. The split method splits the data referenced by the `oml.DataFrame` proxy object `DEMO_DF` into two new `oml.DataFrame` proxy objects, TRAIN, and TEST.  
-   
+
    Furthermore the machine learning algorithms require the separation of the target column `Y` from the input columns `X`.  In this case the column `AFFINITY_CARD`, which indicates whether a person has accepted the offer (=1) or not (=0) in past marketing campaigns, is what we are trying to predict with the model for future campaigns, and it is used to further split the data.
 
 	```
@@ -274,18 +274,18 @@ Use the `oml.dt` class to build a Decision Tree model. You can build a model wit
 	The `oml.dt` class uses the Decision Tree algorithm for classification and a model object `dt_mod` is created with the default parameter settings.  The **fit** function builds the Decision Tree model according to the training data and parameter settings.
 
 
-	
+
 
 		Model Name: DT_CLAS_MODEL
- 
+
 		Model Owner: OMLUSER
- 
+
 		Algorithm Name: Decision Tree
- 
+
 		Mining Function: CLASSIFICATION
- 
+
 		Target: AFFINITY_CARD
- 
+
 		Settings:
     	                setting name            setting value
 		0                      ALGO_NAME       ALGO_DECISION_TREE
@@ -301,23 +301,23 @@ Use the `oml.dt` class to build a Decision Tree model. You can build a model wit
 		10        TREE_TERM_MINPCT_SPLIT                       .1
 		11         TREE_TERM_MINREC_NODE                       10
 		12        TREE_TERM_MINREC_SPLIT                       20
- 
+
 		Global Statistics:
   		attribute name  attribute value
 		0       NUM_ROWS             2725
- 
+
 		Attributes:
 		EDUCATION
 		HOME_THEATER_PACKAGE
-		HOUSEHOLD_SIZE	
+		HOUSEHOLD_SIZE
 		OCCUPATION
 		YRS_RESIDENCE
 		Y_BOX_GAMES
- 
+
 		Partition: NO
- 
+
 		Distributions:
- 
+
     	NODE_ID  TARGET_VALUE  TARGET_COUNT
 		0         0             0          2088
 		1         0             1           637
@@ -348,9 +348,9 @@ Use the `oml.dt` class to build a Decision Tree model. You can build a model wit
 		26       13             1             6
 		27       14             0           536
 		28       14             1            59
- 
+
 		Nodes:
- 
+
     	parent  node.id  row.count  prediction                                              split                                          surrogate                                        full.splits
 		0      0.0        1       1225           0                   (HOUSEHOLD_SIZE IN ("3" "4-5"))                          YRS_RESIDENCE >(3.5E+000))                    (HOUSEHOLD_SIZE IN ("3" "4-5"))
 		1      0.0        4       1500           0          (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+"))                         YRS_RESIDENCE <=(3.5E+000))           (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+"))
@@ -367,7 +367,7 @@ Use the `oml.dt` class to build a Decision Tree model. You can build a model wit
 		12     6.0       13        832           0                       (YRS_RESIDENCE <=(3.5E+000))                 HOME_THEATER_PACKAGE <=(5.0E-001))  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
 		13     6.0       14        595           0                        (YRS_RESIDENCE >(3.5E+000))                  HOME_THEATER_PACKAGE >(5.0E-001))  (HOUSEHOLD_SIZE IN ("1" "2" "6-8" "9+")) AND (...
 		14     NaN        0       2725           0                                               None                                               None                                                  (
-	
+
 
 2. To specify model settings and build a Decision Tree model, run the following script :
 
@@ -424,11 +424,11 @@ To evaluate your model you need to score the test data using the model and then 
 	```
 
 2. To evaluate the model, we will pass a proxy `oml.Dataframe` containing predictions and the target columns to a new user-defined function named `evaluate_model` described below, that will produce typical model quality metrics.  
-   
-   For our classification example, you can evaluate your model using Confusion Matrix, Lift Chart, Gains Chart, and ROC curve chart. The Confusion Matrix displays the number of correct and incorrect predictions made with respect to the actual classification in the test data.  It is an **n**-by-**n** matrix where **n** is the number of classes. 
-   
-   A lift chart applies only to binary classifications requiring the designation of the positive class, and it measures the degree to which the predictions of a classification model are better than randomly generated predictions. 
-   
+
+   For our classification example, you can evaluate your model using Confusion Matrix, Lift Chart, Gains Chart, and ROC curve chart. The Confusion Matrix displays the number of correct and incorrect predictions made with respect to the actual classification in the test data.  It is an **n**-by-**n** matrix where **n** is the number of classes.
+
+   A lift chart applies only to binary classifications requiring the designation of the positive class, and it measures the degree to which the predictions of a classification model are better than randomly generated predictions.
+
    The ROC curve also applies to binary classification and requires the designation of the positive class. These are metrics for comparing predicted and actual target values in a classification model, and the area under this curve is another very standard measure of model quality known as AUC (Area Under the Curve).
 
 	Here is a custom script to generate the metrics and charts as described above. Run the below script:
@@ -804,18 +804,18 @@ You can save the python objects you create in one python session and load them i
 	```
 
 	The output is similar to the following:
-	
+
 	![Illustration of a dictionary object containing the models name and value.](images/loaded-dictionaryobject-datastore.png)
-	
-	Also, the boolean input **to\_globals** is set to True by default. 
-	
+
+	Also, the boolean input **to\_globals** is set to True by default.
+
 	If **to\_globals=True** then the `oml.ds.load` loads the python object to the global workspace. If **to\_globals=False**, then the `oml.ds.load()` function returns a dictionary object containing the object's name and value.
-	
+
 	To learn more about how to use datastores to store python objects click this [link](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/save-python-objects-in-database.html#GUID-C02396D1-2B30-47A0-AE27-37B123E15710).
 
-In this example, you classified customers who are most likely to be positive responders to an Affinity Card loyal program. You built and applied a classification decision tree model using the Sales history (SH) schema data. 
+In this example, you classified customers who are most likely to be positive responders to an Affinity Card loyal program. You built and applied a classification decision tree model using the Sales history (SH) schema data.
 
-You were also able to successfully evaluate the quality of the model using various metrics, and identify the top attributes that explains each customer prediction.  You also learned how to store and retrieve Python objects from the OML Python Data Store. 
+You were also able to successfully evaluate the quality of the model using various metrics, and identify the top attributes that explains each customer prediction.  You also learned how to store and retrieve Python objects from the OML Python Data Store.
 You may now **proceed to the next lab**.
 
 ## Learn More
@@ -831,7 +831,7 @@ OML4Py enables data scientists to hand-off their user-defined Python functions t
 	1. Prepare the Demo data and then rank the classification algorithms from the set of algorithms supported by AutoML using automatic algorithm selection.
 	![The images shows how to prepare the demo data and rank the classification with the help of AutoML.](images/automl-algorithm-selections.png)
 	2. Identify the most relevant feature subset using automatic feature selection.
-	![It shows how AutoMl can be used for selection of relevant features.](images/automl-subset-feature-selection.png)
+	![It shows how AutoML can be used for selection of relevant features.](images/automl-subset-feature-selection.png)
 	3. Finally tune the hyperparameters for the selected classification algorithm and features using automatic model tuning.
 	![The image shows how to fine tune hyperparameters with help of AutoML](images/automl-hyperparameter-tuning.png)
 
@@ -841,4 +841,4 @@ OML4Py enables data scientists to hand-off their user-defined Python functions t
 
 * **Authors** - Sarika Surampudi, Senior User Assistance Developer, Oracle Database User Assistance Development; Dhanish Kumar, Member of Technical Staff, User Assistance Developer.
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning.
-* **Last Updated By/Date** - Marcos Arancibia, March 2023
+* **Last Updated By/Date** - Moitreyee Hazarika, June 2023

@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "Start your ML project with OML Services",
+  "workshoptitle": "Use Postman to work with OML Services in OCI",
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
     {
@@ -35,23 +35,23 @@
     "filename": "./../../preparation/preparation.md"
     },
     {
-      "title": "Lab 6: Create models using OML Notebooks and OML AutoML UI",
-      "description": "Creating models using OML Notebook and AutoML UI",
+      "title": "Lab 6: Create models with OML Notebooks and OML AutoML UI",
+      "description": "Creating models with OML Notebook and AutoML UI",
       "filename": "./../../oml-notebook-and-automl-ui/oml-notebook-and-automl-ui.md"
     },
     {
-      "title": "Lab 7: Score Data using OML Services",
-      "description": "Score Data using OML Services REST API",
+      "title": "Lab 7: Score Data with OML Services",
+      "description": "Score Data with OML Services REST API",
       "filename": "./../../scoring-oml-using-rest-services/scoring-oml-using-rest-services.md"
     },
     {
-      "title": "Lab 8: Store an OML model and score it using OML Services",
-      "description": "Store an OML model and score it using OML Services REST API",
+      "title": "Lab 8: Store an OML model and score it with OML Services",
+      "description": "Store an OML model and score it with OML Services REST API",
       "filename": "./../../loading-oml-model-and-using-rest-srvices/loading-oml-model-and-using-rest-srvices.md"
     },
     {
-      "title": "Lab 9: Store an ONNX model and score it using OML Services",
-      "description": "Store an ONNX model and score it using OML Services REST API",
+      "title": "Lab 9: Store an ONNX model and score it with OML Services",
+      "description": "Store an ONNX model and score it with OML Services REST API",
       "filename": "./../../loading-onnx-model-and-using-with-rest-services/loading-onnx-model-and-using-with-rest-services.md"
     },
     {

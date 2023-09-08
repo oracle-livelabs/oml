@@ -18,7 +18,7 @@
             "filename": "../../get-started/get-started.md"
         },
         {
-            "title": "Lab 2: Select and manipulate data using the Transparency Layer",
+            "title": "Lab 2: Select and manipulate data with Transparency Layer",
             "filename": "../../data-slct-mnpn/data-slct-mnpn.md",
             "type": "livelabs"
         },
@@ -27,25 +27,35 @@
             "filename": "../../in-db-algo-models/in-db-algo-models.md",
             "type": "livelabs"
         },
-		    {
-            "title": "Lab 4: Store and manage Python objects and user-defined functions",
+        {
+            "title": "Lab 4: Store and manage Python objects and UDFs",
             "filename": "../../dstore-script-repo/dstore-script-repo.md",
             "type": "livelabs"
         },
         {
-            "title": "Lab 5: Run user-defined functions using Embedded Python Execution",
+            "title": "Lab 5: UDFs with Python API for EPE",
             "filename": "../../embd-python/embd-python.md",
             "type": "livelabs"
         },
         {
-            "title": "Lab 6: Use AutoML",
-            "filename": "../../automl/automl.md",
+            "title": "Lab 6: UDFs with the SQL API for EPE",
+            "filename": "../../embd-python-sql/embd-python-sql.md",
             "type": "livelabs"
         },
         {
-        "title": "Appendix: OML user administration",
-        "filename": "../../appendix-manage/appendix-manage.md",
-        "type": "freetier"
+            "title": "Lab 7: UDFs with the REST API for EPE",
+            "filename": "../../embd-python-rest/embd-python-rest.md",
+            "type": "livelabs"
+        },
+        {
+            "title": "Lab 8: Use AutoML via Python API",
+            "filename": "../../automl/automl.md",
+            "type": "livelabs"
+        }, 
+        {
+            "title": "Lab 9: Use AutoML UI",
+            "filename": "../../automl-ui/automl-ui.md",
+            "type": "livelabs"
         },
         {
             "title": "Need Help?",

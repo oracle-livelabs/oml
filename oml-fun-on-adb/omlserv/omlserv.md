@@ -58,9 +58,11 @@ This lab assumes you have:
    Here is the syntax:
 
      ```
+     <copy>
      curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json'\
      -d '{"grant_type":"password", "username":"'${oml_username}'", "password":"'${oml_password}'"}'\
      "<OML server URL>/omlusers/api/oauth2/v1/token"
+     </copy>
      ```
 
    In the syntax above, OML server URL is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from **Oracle Machine Learning RESTful Services** on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
@@ -88,8 +90,8 @@ This lab assumes you have:
 
      * OMLUSER is your OML user name.
      * AAbbcc123456 is your OML password.
-     * omlserver url is the URL that you copied from the ADB console, without the /omlusers/ segment in it. 
-     
+     * omlserver url is the URL that you copied from the ADB console, without the /omlusers/ segment in it.
+
    An example of omlserver URL is https://aabbcc123456xyz-omllabs.adb.us-ashburn-1.oraclecloudapps.com. In this URL:
      * `aabbcc123456xyz` is the tenancy ID (not to be confused with the very long tenancy OCID)
      * `omllabs` is the database name, and
@@ -425,11 +427,12 @@ This lab assumes you have:
    Here's the syntax:
 
     ```
+    <copy>
     curl -X POST "${omlserver}/omlmod/v1/deployment/${model_URI}/score" \
     --header "Authorization: Bearer ${token}" \
     --header 'Content-Type: application/json' \
     -d '{"topNdetails":n,"inputRecords":[{"XXX":value,"YYY":value}]}'| jq
-
+    </copy>
     ```
 
   In the syntax above, the parameter `topNdetails` is optional. It fetches the top n prediction details for the record you are scoring. Prediction details refer to the attributes or features that impact a prediction. In the following example,  you specify the model URI `nb_cust360` and a valid token generated in Task 1. The model was built using the Supplementary Demographics data set. To score with a single record, for XXX use `YRS_RESIDENCE` with the value of 10 and for YYY  use `Y_BOX_GAMES` with a value of 0. You want to predict the probability that the person associated with this record will purchase the affinity card.
@@ -536,6 +539,7 @@ This lab assumes you have:
 3. In this task, use Oracle's proprietary Cognitive Text functionality. This functionality provides endpoints to score a string of text to obtain information such as most relevant keywords, topics, text summary, sentiment, similarity to another text string and text features. The supported languages for Cognitive Text include English (America), Spanish, French and Italian. In this step, pass a text string to obtain keywords and its summary using the relevant end points. Here's the syntax for using the keywords endpoint:
 
     ```
+    <copy>
     curl -X POST "${omlserver}/omlmod/v1/cognitive-text/keywords" \
     --header 'Content-Type: application/json' \
     --header "Authorization: Bearer ${token}" \
@@ -543,6 +547,7 @@ This lab assumes you have:
          "topN":<n=number of top keywords to return>,
          "textList":["<text to score>"]
             }' | jq
+    </copy>   
 
     ```
 

@@ -1,4 +1,4 @@
-# Store an ONNX model and score it using OML Services
+# Store an ONNX model and score it with OML Services
 
 ## Introduction
 
@@ -74,13 +74,13 @@ We are going to run the next steps:
 
 * In the Postman session opened, run the Get method to get the list of models deployed.
 
-    ````
+    ```
     Operation: GET
 
     URI endpoint:
     <copy>https://<oml-cloud-service-location-url>.oraclecloudapps.com/omlmod/v1/models</copy>
 
-    ````
+    ```
 * Replace **`<oml-cloud-service-location-url>`** with your URL saved in the chapter "Scoring OML model using OML Services" Task 1.2: Authorize OML Services User
 
     In the Authorization tab, pick **Bearer Token** and paste the token copied from *Scoring OML using OML Services Task 1*.
@@ -96,13 +96,13 @@ We are going to run the next steps:
 
 * Open a new tab in Postman and run the following POST command to load the model in Autonomous Database.
 
-    ````
+    ```
     Operation: POST
 
     URI endpoint:
     <copy>https://<oml-cloud-service-location-url>.oraclecloudapps.com/omlmod/v1/models</copy>
 
-    ````
+    ```
 * Replace **`<oml-cloud-service-location-url>`** with your URL saved
 
     In the Authorization tab pick **Bearer Token** and the token is pre-filled.
@@ -111,10 +111,10 @@ We are going to run the next steps:
 
     In the Headers tab enter the following:
 
-    ````
+    ```
     Content-Type: multipart/form-data
     boundary: Boundary
-    ````
+    ```
 
     ![ONNX model store headers](images/postman-store-onnx-headers.jpg)
 
@@ -129,12 +129,12 @@ We are going to run the next steps:
 
     Add the following keys in the Body tab and click Send.
 
-    ````
+    ```
      modelName=onnxclassnn
      modelType=ONNX
      version=1.0
      namespace=ONNX_MODELS
-    ````
+    ```
     ![ONNX model store modeldata call](images/postman-store-onnx-body.jpg)
 
     The response status is '201 Created'. We succeeded in saving the model in the repository.
@@ -148,13 +148,13 @@ We are going to run the next steps:
 
 * Open a new tab in Postman and run the following POST command to deploy the model in Autonomous Database.
 
-    ````
+    ```
     Operation: POST
 
     URI endpoint:
     <copy>https://<oml-cloud-service-location-url>.oraclecloudapps.com/omlmod/v1/deployment</copy>
 
-    ````
+    ```
     - Replace **`<oml-cloud-service-location-url>`** with your URL saved
 
 
@@ -164,20 +164,20 @@ We are going to run the next steps:
 
     In the Headers tab, enter the following:
 
-    ````
+    ```
     Content-Type: application/json
-    ````
+    ```
 
     ![ONNX model deploy headers](images/postman-deploy-onnx-headers.jpg)
 
     In the Body tab, enter the following JSON:
 
-    ````
+    ```
     <copy>{
     	"modelId": "feea5ebd-17a1-4502-843b-3f1a624d1fdd",
     	"uri":"onnxclassnn"
     }</copy>
-    ````
+    ```
 
     Where `feea5ebd-17a1-4502-843b-3f1a624d1fdd` is the model Id copied from the previous step. Replace it with the returned model Id from your previous command.
 
@@ -198,12 +198,12 @@ Now, we will score Fran Hobbs against our Neural Network imported model.
 
   - Enter the following details:
 
-    ````
+    ```
     Operation: POST
 
     URI endpoint:
     <copy><oml-cloud-service-location-url>.oraclecloudapps.com/omlmod/v1/deployment/<model_URI>/score </copy>
-    ````
+    ```
   - Replace **`<oml-cloud-service-location-url>`** with your URL saved
   - Replace **`<model_URI>`** with the model URI that we defined in the previous Task **` ONNXCLASSNN`**
 
@@ -214,10 +214,10 @@ Now, we will score Fran Hobbs against our Neural Network imported model.
 
   In the Header tab, enter the details:
 
-    ````
+    ```
     --header 'Content-Type: application/json'
 
-    ````
+    ```
 
   ![ONNX model score headers](images/postman-score-onnx-headers.jpg)  
 
@@ -327,12 +327,12 @@ In this step, we are going to score all three customers against our Neural Netwo
 
 - Enter the following details:
 
-    ````
+    ```
     Operation: POST
 
     URI endpoint:
     <copy><oml-cloud-service-location-url>.oraclecloudapps.com/omlmod/v1/deployment/<model_URI>/score </copy>
-    ````
+    ```
  - Replace **`<oml-cloud-service-location-url>`** with your URL saved
  - Replace **`<model_URI>`** with the model URI that we defined in the previous Task **`onnxclassnn`**
 
@@ -344,10 +344,10 @@ In this step, we are going to score all three customers against our Neural Netwo
 
   In the header Tab enter the details:
 
-    ````
+    ```
     --header 'Content-Type: application/json'
 
-    ````
+    ```
 
   ![ONNX model score multiple inputs headers](images/postman-score-onnx-headers.jpg)  
 

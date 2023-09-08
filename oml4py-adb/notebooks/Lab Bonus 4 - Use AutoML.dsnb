@@ -1,0 +1,941 @@
+[
+  {
+    "name" : "Lab 8 - Use AutoML",
+    "description" : null,
+    "tags" : null,
+    "version" : "6",
+    "layout" : null,
+    "type" : "low",
+    "readOnly" : false,
+    "snapshot" : false,
+    "template" : null,
+    "templateConfig" : null,
+    "paragraphs" : [
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "# Use AutoML",
+          "",
+          "## Introduction",
+          "",
+          "This lab walks you through the steps to use the AutoML functionality.",
+          "",
+          "Estimated Lab Time: 15 minutes",
+          "",
+          "### About AutoML",
+          "AutoML (Automated Machine Learning) provides built-in data science expertise about data analytics and modeling that you can employ to build machine learning models.",
+          "",
+          "### Objectives",
+          "",
+          "In this lab, you will learn how to:",
+          "* Create data set (wine data) as a Pandas DataFrame and load into ADB",
+          "* Use `automl.AlgorithmSelection` to rank the in-database algorithms by predicted score metric for classification or regression problems",
+          "* Use `automl.FeatureSelection` to identify the most relevant feature subsets for the provided training data set and an in-database algorithm",
+          "* Use `automl.ModelTuning` to tune hyperparameters for the specified algorithm and training data",
+          "* Use `automl.ModelSelection` to select the top in-database algorithm and then tune the corresponding model in a single function invocation",
+          "",
+          "**Copyright (c) 2023 Oracle Corporation**",
+          "[The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)",
+          "",
+          "---",
+          "",
+          "#### Task 1: Import libraries supporting OML4Py",
+          "",
+          "##### Task 1.1. Load the `oml` and then the `automl` modules",
+          "Run the following script to import the `oml` module, `Pandas` package, and the `automl` module from oml."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h1>Use AutoML</h1>\n<h2>Introduction</h2>\n<p>This lab walks you through the steps to use the AutoML functionality.</p>\n<p>Estimated Lab Time: 15 minutes</p>\n<h3>About AutoML</h3>\n<p>AutoML (Automated Machine Learning) provides built-in data science expertise about data analytics and modeling that you can employ to build machine learning models.</p>\n<h3>Objectives</h3>\n<p>In this lab, you will learn how to:</p>\n<ul>\n<li>Create data set (wine data) as a Pandas DataFrame and load into ADB</li>\n<li>Use <code>automl.AlgorithmSelection</code> to rank the in-database algorithms by predicted score metric for classification or regression problems</li>\n<li>Use <code>automl.FeatureSelection</code> to identify the most relevant feature subsets for the provided training data set and an in-database algorithm</li>\n<li>Use <code>automl.ModelTuning</code> to tune hyperparameters for the specified algorithm and training data</li>\n<li>Use <code>automl.ModelSelection</code> to select the top in-database algorithm and then tune the corresponding model in a single function invocation</li>\n</ul>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https://oss.oracle.com/licenses/upl/\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n<h4>Task 1: Import libraries supporting OML4Py</h4>\n<h5>Task 1.1. Load the <code>oml</code> and then the <code>automl</code> modules</h5>\n<p>Run the following script to import the <code>oml</code> module, <code>Pandas</code> package, and the <code>automl</code> module from oml.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "import pandas as pd",
+          "import oml",
+          "from oml import automl"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 1.2: Create a proxy object",
+          "Use the `oml.sync` function to create an OML Dataframe `CUST_DF` as a proxy for the database table `CUSTOMER_INSURANCE_LTV`.",
+          "",
+          "Check the `shape` (rows, columns) on the dataset and the data types (`dtypes`) of the columns."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 1.2: Create a proxy object</h5>\n<p>Use the <code>oml.sync</code> function to create an OML Dataframe <code>CUST_DF</code> as a proxy for the database table <code>CUSTOMER_INSURANCE_LTV</code>.</p>\n<p>Check the <code>shape</code> (rows, columns) on the dataset and the data types (<code>dtypes</code>) of the columns.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "CUST_DF = oml.sync(\"OMLUSER\", table = \"CUSTOMER_INSURANCE_LTV\")",
+          "print(CUST_DF.shape)",
+          "print(CUST_DF.dtypes)"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "(13880, 31)\nMARITAL_STATUS              <class 'oml.core.string.String'>\nSTATE                       <class 'oml.core.string.String'>\nCREDIT_BALANCE            <class 'oml.core.integer.Integer'>\nCUSTOMER_TENURE           <class 'oml.core.integer.Integer'>\nMORTGAGE_AMOUNT           <class 'oml.core.integer.Integer'>\nBANK_FUNDS                <class 'oml.core.integer.Integer'>\nNUM_DEPENDENTS            <class 'oml.core.integer.Integer'>\nHAS_CHILDREN              <class 'oml.core.integer.Integer'>\nINCOME                    <class 'oml.core.integer.Integer'>\nCUSTOMER_ID                 <class 'oml.core.string.String'>\nGENDER                      <class 'oml.core.string.String'>\nPROFESSION                  <class 'oml.core.string.String'>\nCREDIT_CARD_LIMITS        <class 'oml.core.integer.Integer'>\nREGION                      <class 'oml.core.string.String'>\nHOME_OWNERSHIP            <class 'oml.core.integer.Integer'>\nNUM_ONLINE_TRANS          <class 'oml.core.integer.Integer'>\nBUY_INSURANCE               <class 'oml.core.string.String'>\nMONTHLY_CHECKS            <class 'oml.core.integer.Integer'>\nNUM_TRANS_KIOSK           <class 'oml.core.integer.Integer'>\nAGE                       <class 'oml.core.integer.Integer'>\nMONEY_MONTLY_OVERDRAWN        <class 'oml.core.float.Float'>\nLTV                           <class 'oml.core.float.Float'>\nTOTAL_AUTOM_PAYMENTS      <class 'oml.core.integer.Integer'>\nNUM_TRANS_TELLER          <class 'oml.core.integer.Integer'>\nCHECKING_BALANCE          <class 'oml.core.integer.Integer'>\nNUM_TRANS_ATM             <class 'oml.core.integer.Integer'>\nLTV_BIN                     <class 'oml.core.string.String'>\nFIRST_NAME                  <class 'oml.core.string.String'>\nNUM_MORTGAGES             <class 'oml.core.integer.Integer'>\nCAR_OWNERSHIP             <class 'oml.core.integer.Integer'>\nLAST_NAME                   <class 'oml.core.string.String'>\ndtype: object\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "#### Task 2: Automated Algorithm Selection",
+          "In this task, you prepare the `CUST_DF` proxy object by separating predictors from the target, as it is standard for Python model building. This produces two new proxy objects that will be used in AutoML functions.",
+          "",
+          "---",
+          "##### Task 2.1: Split the data into X (input columns) and Y (target) ",
+          "Run the following script to split the `CUST_DF` data set into `CUST_X` (only containing the predictor attributes) and `CUST_y` (only containing the target attribute `BUY_INSURANCE`)."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4>Task 2: Automated Algorithm Selection</h4>\n<p>In this task, you prepare the <code>CUST_DF</code> proxy object by separating predictors from the target, as it is standard for Python model building. This produces two new proxy objects that will be used in AutoML functions.</p>\n<hr />\n<h5>Task 2.1: Split the data into X (input columns) and Y (target)</h5>\n<p>Run the following script to split the <code>CUST_DF</code> data set into <code>CUST_X</code> (only containing the predictor attributes) and <code>CUST_y</code> (only containing the target attribute <code>BUY_INSURANCE</code>).</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "CUST_X ,CUST_y  = CUST_DF.drop('BUY_INSURANCE'), CUST_DF['BUY_INSURANCE']"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 2.2: Automatically select the top `classification` algorithms for predicting `BUY_INSURANCE`  ",
+          "Run the following script to select the top `classification` algorithms for predicting whether a customer will buy insurance (`BUY_INSURANCE`). ",
+          "It displays the top 4 ranked algorithms (requested by the `k=4`) and their `accuracy` (the metric we requested in `score_metric`).  ",
+          "",
+          "The script returns Random Forest (rf), Decision Tree (dt), Neural Networks (nn) and Generalized Linear Models (glm) as the Top 4 algorithms, ",
+          "and among these the Random Forest is ranked highest for this problem, and the string `selected_insur_alg` will be used in subsequent AutoML function calls.",
+          " ",
+          "**Note**: AutoML also supports regression, and the AlgorithmSelection function has other options and metrics that can be found in the documentation links at the bottom of this notebook."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 2.2: Automatically select the top <code>classification</code> algorithms for predicting <code>BUY_INSURANCE</code></h5>\n<p>Run the following script to select the top <code>classification</code> algorithms for predicting whether a customer will buy insurance (<code>BUY_INSURANCE</code>).\n<br  />It displays the top 4 ranked algorithms (requested by the <code>k=4</code>) and their <code>accuracy</code> (the metric we requested in <code>score_metric</code>).</p>\n<p>The script returns Random Forest (rf), Decision Tree (dt), Neural Networks (nn) and Generalized Linear Models (glm) as the Top 4 algorithms,\n<br  />and among these the Random Forest is ranked highest for this problem, and the string <code>selected_insur_alg</code> will be used in subsequent AutoML function calls.</p>\n<p><strong>Note</strong>: AutoML also supports regression, and the AlgorithmSelection function has other options and metrics that can be found in the documentation links at the bottom of this notebook.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "as_insur = automl.AlgorithmSelection(mining_function='classification', score_metric='accuracy', parallel=2)",
+          "",
+          "insur_alg_ranking = as_insur.select(CUST_X, CUST_y, k=4, case_id='CUSTOMER_ID')",
+          "",
+          "print(\"Top ranked algorithms:\\n\", insur_alg_ranking)",
+          "",
+          "selected_insur_alg = insur_alg_ranking[0][0]",
+          "",
+          "print(\"\\nTop algorithm: \", selected_insur_alg)"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "Top ranked algorithms:\n [('rf', 0.8422005066956207), ('dt', 0.8143322475570033), ('glm', 0.7886355410785378), ('glm_ridge', 0.7824828085414405)]\n\nTop algorithm:  rf\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "#### Task 3: Automated Feature Selection",
+          "",
+          "In this task, you determine the features that best support the selected algorithm. First define a FeatureSelection object with score metric `accuracy`. ",
+          "Then call the `reduce` function and specify the desired algorithm, in this case, as determined above and stored in the variable `selected_insur_alg`.",
+          "",
+          "The result will be a a subset of the original columns, to which we will append our case ID (`CUSTOMER_ID`) and use it in the next task.",
+          "",
+          "---",
+          "##### Task 3.1: Define a feature selection object and run the `reduce` function ",
+          "Run the following script to define the Feature Selection object `fs_insur` and call the `reduce` function with the selected algorithms and CUST_DF proxy objects."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4>Task 3: Automated Feature Selection</h4>\n<p>In this task, you determine the features that best support the selected algorithm. First define a FeatureSelection object with score metric <code>accuracy</code>.\n<br  />Then call the <code>reduce</code> function and specify the desired algorithm, in this case, as determined above and stored in the variable <code>selected_insur_alg</code>.</p>\n<p>The result will be a a subset of the original columns, to which we will append our case ID (<code>CUSTOMER_ID</code>) and use it in the next task.</p>\n<h5>Task 3.1: Define a feature selection object and run the <code>reduce</code> function</h5>\n<p>Run the following script to define the Feature Selection object <code>fs_insur</code> and call the <code>reduce</code> function with the selected algorithms and CUST_DF proxy objects.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "fs_insur = automl.FeatureSelection(mining_function = 'classification', score_metric = 'accuracy', parallel=2)",
+          "",
+          "selected_insur_features = fs_insur.reduce(selected_insur_alg, CUST_X, CUST_y, case_id='CUSTOMER_ID')",
+          "",
+          "# Add the CUSTOMER_ID back to the list",
+          "selected_insur_features.append('CUSTOMER_ID')",
+          "",
+          "CUST_X_reduced = CUST_X[:,selected_insur_features]",
+          "",
+          "print(\"Selected columns (plus ID):\", CUST_X_reduced.columns)",
+          "",
+          "print(\"Number of columns: \")",
+          "\"{} reduced to {}\".format(len(CUST_X.columns), len(CUST_X_reduced.columns))"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "Selected columns (plus ID): ['CREDIT_BALANCE', 'CUSTOMER_TENURE', 'MORTGAGE_AMOUNT', 'BANK_FUNDS', 'NUM_DEPENDENTS', 'HAS_CHILDREN', 'INCOME', 'GENDER', 'CREDIT_CARD_LIMITS', 'NUM_ONLINE_TRANS', 'MONTHLY_CHECKS', 'NUM_TRANS_KIOSK', 'AGE', 'MONEY_MONTLY_OVERDRAWN', 'LTV', 'TOTAL_AUTOM_PAYMENTS', 'NUM_TRANS_TELLER', 'CHECKING_BALANCE', 'NUM_TRANS_ATM', 'CUSTOMER_ID']\nNumber of columns: \n'30 reduced to 20'\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "##### **Try it Yourself**",
+          "Try other algorithms, such as `Decision Tree` or `Neural Network` in the first argument of the reduce function by replacing the string **selected_insur_alg** for **'dt'** or **'nn'** (with quotes), and see if different columns are selected."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h5><strong>Try it Yourself</strong></h5>\n<p>Try other algorithms, such as <code>Decision Tree</code> or <code>Neural Network</code> in the first argument of the reduce function by replacing the string <strong>selected_insur_alg</strong> for <strong>'dt'</strong> or <strong>'nn'</strong> (with quotes), and see if different columns are selected.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "#### Task 4: Automated Model Tuning",
+          "At this point, you are ready to build and tune the models you want to use.",
+          "",
+          "First, you define a `ModelTuning` object for classification.",
+          "Then, invoke `tune`, which builds and tunes the best model using the algorithm selected above (stored as `selected_insur_alg`) and the reduced data features (stored as `CUST_X_reduced`).",
+          "",
+          "Model tuning returns a dictionary with the best model and the evaluation results of the other models tried. ",
+          "This also contains a list of the hyperparameter choices tried and their corresponding score.",
+          "",
+          "##### Task 4.1: Define a model tuning object and invoke the `tune` function on it",
+          "Run the following script to define the model tuning object `mt_insur` for classification and invoke the `tune` function on it.",
+          "",
+          "**NOTE:** It may take around a minute or two to run depending on the configuration"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4>Task 4: Automated Model Tuning</h4>\n<p>At this point, you are ready to build and tune the models you want to use.</p>\n<p>First, you define a <code>ModelTuning</code> object for classification.\n<br  />Then, invoke <code>tune</code>, which builds and tunes the best model using the algorithm selected above (stored as <code>selected_insur_alg</code>) and the reduced data features (stored as <code>CUST_X_reduced</code>).</p>\n<p>Model tuning returns a dictionary with the best model and the evaluation results of the other models tried.\n<br  />This also contains a list of the hyperparameter choices tried and their corresponding score.</p>\n<h5>Task 4.1: Define a model tuning object and invoke the <code>tune</code> function on it</h5>\n<p>Run the following script to define the model tuning object <code>mt_insur</code> for classification and invoke the <code>tune</code> function on it.</p>\n<p><strong>NOTE:</strong> It may take around a minute or two to run depending on the configuration</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "mt_insur = automl.ModelTuning(mining_function = 'classification', parallel=2)",
+          "",
+          "insur_tuned = mt_insur.tune(selected_insur_alg, CUST_X_reduced, CUST_y, case_id='CUSTOMER_ID')",
+          "",
+          "top_insur_tuned = insur_tuned['best_model']",
+          "top_insur_tuned"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nAlgorithm Name: Random Forest\n\nMining Function: CLASSIFICATION\n\nTarget: BUY_INSURANCE\n\nSettings: \n                    setting name            setting value\n0                      ALGO_NAME       ALGO_RANDOM_FOREST\n1              CLAS_MAX_SUP_BINS                       32\n2          CLAS_WEIGHTS_BALANCED                      OFF\n3                   ODMS_DETAILS             ODMS_DISABLE\n4   ODMS_MISSING_VALUE_TREATMENT  ODMS_MISSING_VALUE_AUTO\n5               ODMS_RANDOM_SEED                        0\n6                  ODMS_SAMPLING    ODMS_SAMPLING_DISABLE\n7                      PREP_AUTO                       ON\n8                      RFOR_MTRY                       13\n9                 RFOR_NUM_TREES                       22\n10           RFOR_SAMPLING_RATIO                      0.5\n11          TREE_IMPURITY_METRIC       TREE_IMPURITY_GINI\n12           TREE_TERM_MAX_DEPTH                       16\n13         TREE_TERM_MINPCT_NODE                     0.05\n14        TREE_TERM_MINPCT_SPLIT                      0.1\n15         TREE_TERM_MINREC_NODE                       10\n16        TREE_TERM_MINREC_SPLIT                       20\n\nAttributes: \nAGE\nBANK_FUNDS\nCHECKING_BALANCE\nCREDIT_BALANCE\nCREDIT_CARD_LIMITS\nCUSTOMER_TENURE\nGENDER\nHAS_CHILDREN\nINCOME\nLTV\nMONEY_MONTLY_OVERDRAWN\nMONTHLY_CHECKS\nMORTGAGE_AMOUNT\nNUM_DEPENDENTS\nNUM_ONLINE_TRANS\nNUM_TRANS_ATM\nNUM_TRANS_KIOSK\nNUM_TRANS_TELLER\nTOTAL_AUTOM_PAYMENTS\n\nPartition: NO\n\n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 4.2: List the hyperparameters tried for the top two models",
+          "Run the following script to **list the hyperparameters and their values** that were tried for the `top two models`, ",
+          "along with the corresponding model's score metric value (`accuracy`)."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 4.2: List the hyperparameters tried for the top two models</h5>\n<p>Run the following script to <strong>list the hyperparameters and their values</strong> that were tried for the <code>top two models</code>,\n<br  />along with the corresponding model's score metric value (<code>accuracy</code>).</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "hyper_tuned = insur_tuned['all_evals']",
+          "",
+          "print(*hyper_tuned[:2], sep='\\n')"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "(0.850260971844446, {'CLAS_MAX_SUP_BINS': 32, 'CLAS_WEIGHTS_BALANCED': 'OFF', 'RFOR_MTRY': 13, 'RFOR_NUM_TREES': 22, 'RFOR_SAMPLING_RATIO': 0.5, 'TREE_IMPURITY_METRIC': 'TREE_IMPURITY_GINI', 'TREE_TERM_MAX_DEPTH': 16, 'TREE_TERM_MINPCT_NODE': 0.05, 'TREE_TERM_MINPCT_SPLIT': 0.1})\n(0.8481033595530397, {'CLAS_MAX_SUP_BINS': 32, 'CLAS_WEIGHTS_BALANCED': 'OFF', 'RFOR_MTRY': 13, 'RFOR_NUM_TREES': 23, 'RFOR_SAMPLING_RATIO': 0.5, 'TREE_IMPURITY_METRIC': 'TREE_IMPURITY_GINI', 'TREE_TERM_MAX_DEPTH': 16, 'TREE_TERM_MINPCT_NODE': 0.05, 'TREE_TERM_MINPCT_SPLIT': 0.1})\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 4.3 List the hyperparameters of the top ten models along with each model's `accuracy`",
+          "Run the following script to **list the hyperparameters and their values** that were tried for the `top ten models`, along with the corresponding model's score metric value (`accuracy`) in a better formatted way."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 4.3 List the hyperparameters of the top ten models along with each model's <code>accuracy</code></h5>\n<p>Run the following script to <strong>list the hyperparameters and their values</strong> that were tried for the <code>top ten models</code>, along with the corresponding model's score metric value (<code>accuracy</code>) in a better formatted way.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "tuning_report = pd.concat([pd.DataFrame([i+1 for i in range(10)], columns=['Ranking']), ",
+          "                           pd.DataFrame(hyper_tuned[:10], columns=['Accuracy','Model_Settings_Tried'])], ",
+          "                           axis=1)",
+          "",
+          "z.show(tuning_report.round(6))                         "
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "Ranking\tAccuracy\tModel_Settings_Tried\n1\t0.850261\t{'CLAS_MAX_SUP_BINS': 32, 'CLAS_WEIGHTS_BALANCED': 'OFF', 'RFOR_MTRY': 13, 'RFOR_NUM_TREES': 22, 'RFOR_SAMPLING_RATIO': 0.5, 'TREE_IMPURITY_METRIC': 'TREE_IMPURITY_GINI', 'TREE_TERM_MAX_DEPTH': 16, 'TREE_TERM_MINPCT_NODE': 0.05, 'TREE_TERM_MINPCT_SPLIT': 0.1}\n2\t0.848103\t{'CLAS_MAX_SUP_BINS': 32, 'CLAS_WEIGHTS_BALANCED': 'OFF', 'RFOR_MTRY': 13, 'RFOR_NUM_TREES': 23, 'RFOR_SAMPLING_RATIO': 0.5, 'TREE_IMPURITY_METRIC': 'TREE_IMPURITY_GINI', 'TREE_TERM_MAX_DEPTH': 16, 'TREE_TERM_MINPCT_NODE': 0.05, 'TREE_TERM_MINPCT_SPLIT': 0.1}\n3\t0.845777\t{'CLAS_MAX_SUP_BINS': 32, 'CLAS_WEIGHTS_BALANCED': 'OFF', 'RFOR_MTRY': 13, 'RFOR_NUM_TREES': 20, 'RFOR_SAMPLING_RATIO': 0.5, 'TREE_IMPURITY_METRIC': 'TREE_IMPURITY_GINI', 'TREE_TERM_MAX_DEPTH': 16, 'TREE_TERM_MINPCT_NODE': 0.05, 'TREE_TERM_MINPCT_SPLIT': 0.1}\n4\t0.845777\t{'CLAS_MAX_SUP_BINS': 32, 'CLAS_WEIGHTS_BALANCED': 'ON', 'RFOR_MTRY': 13, 'RFOR_NUM_TREES': 20, 'RFOR_SAMPLING_RATIO': 0.5, 'TREE_IMPURITY_METRIC': 'TREE_IMPURITY_GINI', 'TREE_TERM_MAX_DEPTH': 16, 'TREE_TERM_MINPCT_NODE': 0.05, 'TREE_TERM_MINPCT_SPLIT': 0.1}\n5\t0.845777\t{'CLAS_MAX_SUP_BINS': 32, 'CLAS_WEIGHTS_BALANCED': 'OFF', 'RFOR_MTRY': 13, 'RFOR_NUM_TREES': 20, 'RFOR_SAMPLING_RATIO': 0.5, 'TREE_IMPURITY_METRIC': 'TREE_IMPURITY_GINI', 'TREE_TERM_MAX_DEPTH': 15, 'TREE_TERM_MINPCT_NODE': 0.05, 'TREE_TERM_MINPCT_SPLIT': 0.1}\n6\t0.845777\t{'CLAS_MAX_SUP_BINS': 32, 'CLAS_WEIGHTS_BALANCED': 'OFF', 'RFOR_MTRY': 13, 'RFOR_NUM_TREES': 20, 'RFOR_SAMPLING_RATIO': 0.5, 'TREE_IMPURITY_METRIC': 'TREE_IMPURITY_GINI', 'TREE_TERM_MAX_DEPTH': 16, 'TREE_TERM_MINPCT_NODE': 0.0500999, 'TREE_TERM_MINPCT_SPLIT': 0.1}\n7\t0.845777\t{'CLAS_MAX_SUP_BINS': 32, 'CLAS_WEIGHTS_BALANCED': 'OFF', 'RFOR_MTRY': 13, 'RFOR_NUM_TREES': 20, 'RFOR_SAMPLING_RATIO': 0.5, 'TREE_IMPURITY_METRIC': 'TREE_IMPURITY_GINI', 'TREE_TERM_MAX_DEPTH': 16, 'TREE_TERM_MINPCT_NODE': 0.05, 'TREE_TERM_MINPCT_SPLIT': 0.10019990000000001}\n8\t0.845777\t{'CLAS_MAX_SUP_BINS': 32, 'CLAS_WEIGHTS_BALANCED': 'OFF', 'RFOR_MTRY': 13, 'RFOR_NUM_TREES': 20, 'RFOR_SAMPLING_RATIO': 0.5, 'TREE_IMPURITY_METRIC': 'TREE_IMPURITY_GINI', 'TREE_TERM_MAX_DEPTH': 14, 'TREE_TERM_MINPCT_NODE': 0.05, 'TREE_TERM_MINPCT_SPLIT': 0.1}\n9\t0.845777\t{'CLAS_MAX_SUP_BINS': 32, 'CLAS_WEIGHTS_BALANCED': 'OFF', 'RFOR_MTRY': 13, 'RFOR_NUM_TREES': 20, 'RFOR_SAMPLING_RATIO': 0.5, 'TREE_IMPURITY_METRIC': 'TREE_IMPURITY_GINI', 'TREE_TERM_MAX_DEPTH': 16, 'TREE_TERM_MINPCT_NODE': 0.4644775518737092, 'TREE_TERM_MINPCT_SPLIT': 0.1}\n10\t0.845777\t{'CLAS_MAX_SUP_BINS': 32, 'CLAS_WEIGHTS_BALANCED': 'OFF', 'RFOR_MTRY': 13, 'RFOR_NUM_TREES': 20, 'RFOR_SAMPLING_RATIO': 0.5, 'TREE_IMPURITY_METRIC': 'TREE_IMPURITY_GINI', 'TREE_TERM_MAX_DEPTH': 16, 'TREE_TERM_MINPCT_NODE': 0.05, 'TREE_TERM_MINPCT_SPLIT': 0.5142702094265429}\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 4.4 Run a custom search space to adjust the model tuning",
+          "Run the following script to specify a custom search space to explore for model building using the `param_space` argument to the `tune` function. ",
+          "With this specification, model tuning will narrow the set of important hyperparameter values.",
+          "",
+          "**Note**: For illustration purposes we are using a different scoring metric, `f1_macro`."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 4.4 Run a custom search space to adjust the model tuning</h5>\n<p>Run the following script to specify a custom search space to explore for model building using the <code>param_space</code> argument to the <code>tune</code> function.\n<br  />With this specification, model tuning will narrow the set of important hyperparameter values.</p>\n<p><strong>Note</strong>: For illustration purposes we are using a different scoring metric, <code>f1_macro</code>.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "search_space={'RFOR_SAMPLING_RATIO': {'type': 'continuous', 'range': [0.05, 0.5]},",
+          "              'RFOR_NUM_TREES': {'type': 'discrete', 'range': [50, 55]},",
+          "              'TREE_IMPURITY_METRIC': {'type': 'categorical',",
+          "                                       'range': ['TREE_IMPURITY_ENTROPY', 'TREE_IMPURITY_GINI']},}",
+          "",
+          "mt2_insur = automl.ModelTuning(mining_function='classification', score_metric='f1_macro', parallel=2)",
+          "",
+          "insur_tuned2 = mt2_insur.tune('rf', CUST_X, CUST_y, case_id='CUSTOMER_ID', param_space=search_space)",
+          "",
+          "score, params = insur_tuned2['all_evals'][0]",
+          "\"{:.2}\".format(score)",
+          "",
+          "print('The top model has an f1_macro of ',score.round(4),' and parameters ',params)",
+          "",
+          "top_insur_tuned2 = insur_tuned2['best_model']",
+          "top_insur_tuned2"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "The top model has an f1_macro of  0.8016  and parameters  {'RFOR_NUM_TREES': 53, 'RFOR_SAMPLING_RATIO': 0.5, 'TREE_IMPURITY_METRIC': 'TREE_IMPURITY_GINI'}\n\nAlgorithm Name: Random Forest\n\nMining Function: CLASSIFICATION\n\nTarget: BUY_INSURANCE\n\nSettings: \n                    setting name            setting value\n0                      ALGO_NAME       ALGO_RANDOM_FOREST\n1              CLAS_MAX_SUP_BINS                       32\n2          CLAS_WEIGHTS_BALANCED                      OFF\n3                   ODMS_DETAILS             ODMS_DISABLE\n4   ODMS_MISSING_VALUE_TREATMENT  ODMS_MISSING_VALUE_AUTO\n5               ODMS_RANDOM_SEED                        0\n6                  ODMS_SAMPLING    ODMS_SAMPLING_DISABLE\n7                      PREP_AUTO                       ON\n8                 RFOR_NUM_TREES                       53\n9            RFOR_SAMPLING_RATIO                      0.5\n10          TREE_IMPURITY_METRIC       TREE_IMPURITY_GINI\n11           TREE_TERM_MAX_DEPTH                       16\n12         TREE_TERM_MINPCT_NODE                      .05\n13        TREE_TERM_MINPCT_SPLIT                       .1\n14         TREE_TERM_MINREC_NODE                       10\n15        TREE_TERM_MINREC_SPLIT                       20\n\nAttributes: \nAGE\nBANK_FUNDS\nCAR_OWNERSHIP\nCHECKING_BALANCE\nCREDIT_BALANCE\nCREDIT_CARD_LIMITS\nCUSTOMER_TENURE\nGENDER\nHAS_CHILDREN\nHOME_OWNERSHIP\nINCOME\nLTV\nLTV_BIN\nMARITAL_STATUS\nMONEY_MONTLY_OVERDRAWN\nMONTHLY_CHECKS\nMORTGAGE_AMOUNT\nNUM_DEPENDENTS\nNUM_MORTGAGES\nNUM_ONLINE_TRANS\nNUM_TRANS_ATM\nNUM_TRANS_KIOSK\nNUM_TRANS_TELLER\nPROFESSION\nSTATE\nTOTAL_AUTOM_PAYMENTS\n\nPartition: NO\n\n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "#### Task 5: Automated Model Selection",
+          "As a short cut, you may choose to go directly to model selection on the training data. Model Selection automatically selects the top ranked algorithm (using Algorithm Selection) from the set of supported algorithms, then builds, tunes, and returns the model.",
+          "",
+          "##### Task 5.1: Define a model selection object and invoke the `select` function on it",
+          "Run the following script to define a` ModelSelection` object and invoke `select` for automatically building the best model on the `CUSTOMER_INSURANCE_LTV` dataset. The final model is displayed.",
+          "",
+          "**Note**: In the script below the option `k=1` (the default is 3) tells ModelSelection to only return the top model, and the option `cv=2` (the default is 'auto') requests that it uses 2 folds for a Stratified kFold Cross-Validation.  Mode details in the documentation links at the bottom of this notebook.",
+          "**Note:** It may take around three to four minutes to run depending on the configuration of your ADB instance"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4>Task 5: Automated Model Selection</h4>\n<p>As a short cut, you may choose to go directly to model selection on the training data. Model Selection automatically selects the top ranked algorithm (using Algorithm Selection) from the set of supported algorithms, then builds, tunes, and returns the model.</p>\n<h5>Task 5.1: Define a model selection object and invoke the <code>select</code> function on it</h5>\n<p>Run the following script to define a<code>ModelSelection</code> object and invoke <code>select</code> for automatically building the best model on the <code>CUSTOMER_INSURANCE_LTV</code> dataset. The final model is displayed.</p>\n<p><strong>Note</strong>: In the script below the option <code>k=1</code> (the default is 3) tells ModelSelection to only return the top model, and the option <code>cv=2</code> (the default is 'auto') requests that it uses 2 folds for a Stratified kFold Cross-Validation.  Mode details in the documentation links at the bottom of this notebook.\n<br  /><strong>Note:</strong> It may take around three to four minutes to run depending on the configuration of your ADB instance</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "ms_cust = automl.ModelSelection(mining_function = 'classification', parallel=2)",
+          "",
+          "top_model = ms_cust.select(CUST_X, CUST_y, case_id='CUSTOMER_ID', k=1, cv=2)",
+          "",
+          "print('The top model is of the type: ', top_model[1])",
+          "",
+          "print('Model details:')",
+          "",
+          "top_model[0]"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "The top model is of the type:  rf\nModel details:\n\nAlgorithm Name: Random Forest\n\nMining Function: CLASSIFICATION\n\nTarget: BUY_INSURANCE\n\nSettings: \n                    setting name            setting value\n0                      ALGO_NAME       ALGO_RANDOM_FOREST\n1              CLAS_MAX_SUP_BINS                       32\n2          CLAS_WEIGHTS_BALANCED                       ON\n3                   ODMS_DETAILS             ODMS_DISABLE\n4   ODMS_MISSING_VALUE_TREATMENT  ODMS_MISSING_VALUE_AUTO\n5               ODMS_RANDOM_SEED                        0\n6                  ODMS_SAMPLING    ODMS_SAMPLING_DISABLE\n7                      PREP_AUTO                       ON\n8                      RFOR_MTRY                       14\n9                 RFOR_NUM_TREES                      203\n10           RFOR_SAMPLING_RATIO                      0.5\n11          TREE_IMPURITY_METRIC       TREE_IMPURITY_GINI\n12           TREE_TERM_MAX_DEPTH                       16\n13         TREE_TERM_MINPCT_NODE                     0.05\n14        TREE_TERM_MINPCT_SPLIT                      0.1\n15         TREE_TERM_MINREC_NODE                       10\n16        TREE_TERM_MINREC_SPLIT                       20\n\nAttributes: \nAGE\nBANK_FUNDS\nCAR_OWNERSHIP\nCHECKING_BALANCE\nCREDIT_BALANCE\nCREDIT_CARD_LIMITS\nCUSTOMER_TENURE\nGENDER\nHAS_CHILDREN\nHOME_OWNERSHIP\nINCOME\nLTV\nLTV_BIN\nMARITAL_STATUS\nMONEY_MONTLY_OVERDRAWN\nMONTHLY_CHECKS\nMORTGAGE_AMOUNT\nNUM_DEPENDENTS\nNUM_MORTGAGES\nNUM_ONLINE_TRANS\nNUM_TRANS_ATM\nNUM_TRANS_KIOSK\nNUM_TRANS_TELLER\nPROFESSION\nSTATE\nTOTAL_AUTOM_PAYMENTS\n\nPartition: NO\n\n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "## Learn More",
+          "",
+          "* [Automated Machine Learning with OML4Py](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/automated-machine-learning1.html#GUID-4B240E7A-1A8B-43B6-99A5-7FF86330805A)",
+          "* [Automated Machine Learning OML4Py API Reference](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpar/oml4py-dwcs-api.pdf#chapter.3)",
+          "* [Automated Machine Learning UI](https://docs.oracle.com/en/database/oracle/machine-learning/oml-automl-ui/index.html)",
+          "* [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)",
+          "* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)",
+          "",
+          "**Last Updated Date** - August 2023",
+          "",
+          "Copyright (c) 2023 Oracle Corporation ",
+          "[The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h2>Learn More</h2>\n<ul>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/automated-machine-learning1.html#GUID-4B240E7A-1A8B-43B6-99A5-7FF86330805A\">Automated Machine Learning with OML4Py</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpar/oml4py-dwcs-api.pdf#chapter.3\">Automated Machine Learning OML4Py API Reference</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-automl-ui/index.html\">Automated Machine Learning UI</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/\">Oracle Machine Learning Notebooks</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B\">Oracle Machine Learning Notebooks - Early Adopter</a></li>\n</ul>\n<p><strong>Last Updated Date</strong> - August 2023</p>\n<p>Copyright (c) 2023 Oracle Corporation\n<br  /><a href=\"https://oss.oracle.com/licenses/upl/\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      }
+    ]
+  }
+]

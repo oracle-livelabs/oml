@@ -1,4 +1,4 @@
-# Store an OML model and score it using OML Services
+# Store an OML model and score it with OML Services
 
 In this chapter, we will import and store the Decision Tree model in our OML Services repository and score it using REST APIs.
 
@@ -23,13 +23,13 @@ We are going to run the next steps:
 
 *  In the Postman session open, run the following Get method to get the list of models deployed.
 
-    ````
+    ```
     Operation: GET
 
     URI endpoint:
     <copy>https://<oml-cloud-service-location-url>.oraclecloudapps.com/omlmod/v1/models</copy>
 
-    ````
+    ```
  - Replace **`<oml-cloud-service-location-url>`** with your URL saved in the chapter "Scoring OML model using OML Services" Task 1.2: Authorize OML Services User
 
     In the Authorization tab, pick **Bearer Token** and paste the token copied from *Scoring OML using OML Services Task 1*.
@@ -44,13 +44,13 @@ We are going to run the next steps:
 
     * Open a new tab in Postman and run the following POST command to store the model in the OML Services repository.
 
-    ````
+    ```
     Operation: POST
 
     URI endpoint:
     <copy>https://<oml-cloud-service-location-url>.oraclecloudapps.com/omlmod/v1/models</copy>
 
-    ````
+    ```
  - Replace **`<oml-cloud-service-location-url>`** with your URL saved.
 
    In the Authorization tab, pick **Bearer Token**, and the token is pre-filled.
@@ -59,10 +59,10 @@ We are going to run the next steps:
 
     In the Headers tab, enter the following:
 
-    ````
+    ```
     Content-Type: multipart/form-data
     boundary: Boundary
-    ````
+    ```
 
     ![Model Import headers](images/postman-store-model-header.jpg)
 
@@ -77,11 +77,11 @@ We are going to run the next steps:
 
     Add the below keys in the Body tab and click Send.
 
-    ````
+    ```
      modelName=DTModel
      modelType=OML
      version=1.0
-    ````
+    ```
     ![Model Import body and call](images/postman-store-model-body.jpg)
 
     The response status is '201 Created'. We succeeded in saving the model in the repository.
@@ -94,13 +94,13 @@ We are going to run the next steps:
 
 * Open a new tab in Postman and run the following POST command to deploy the model in Autonomous Database.
 
-    ````
+    ```
     Operation: POST
 
     URI endpoint:
     <copy>https://<oml-cloud-service-location-url>.oraclecloudapps.com/omlmod/v1/deployment</copy>
 
-    ````
+    ```
  - Replace **`<oml-cloud-service-location-url>`** with your URL saved.
 
 
@@ -110,20 +110,20 @@ We are going to run the next steps:
 
     In the Headers tab enter the following:
 
-    ````
+    ```
     Content-Type: application/json
-    ````
+    ```
 
     ![Model Deploy headers](images/postman-deploy-model-headers.jpg)
 
     In the Body tab enter the following JSON:
 
-    ````
+    ```
      <copy>{
        "uri":"dtmodel",
        "modelId":"50ffc903-aaf6-4a94-a228-4cb7ab6b3c07"
     }</copy>
-    ````
+    ```
 
     Where `50ffc903-aaf6-4a94-a228-4cb7ab6b3c07` is the model Id copied from the previous step. Replace it with the returned model Id from your command in Task 6.2.
 
@@ -144,13 +144,13 @@ In this step, we are going to score Fran Hobbs against our Decision Tree importe
 
   - Enter the following details:
 
-      ````
+      ```
       Operation: POST
 
       URI endpoint:
       <copy>https://<oml-cloud-service-location-url>.oraclecloudapps.com/omlmod/v1/deployment/<model_URI>/score </copy>
 
-      ````
+      ```
   - Replace **`<oml-cloud-service-location-url>`** with your URL saved.
 
   - Replace **`<model_URI>`** with the model URI that we defined in the previous task: **`dtmodel`**
@@ -162,17 +162,17 @@ In this step, we are going to score Fran Hobbs against our Decision Tree importe
 
     In the header Tab enter the details:
 
-      ````
+      ```
       --header 'Content-Type: application/json'
 
-      ````
+      ```
 
       ![Model Score headers](images/postman-score-dtmodel-headers.jpg)  
 
 
     In the Body tab, please enter the Fran Hobs data in RAW format. Notice that we are not providing any of the ``LTV`` or ``LTV_BIN`` data, but provide fully the other important data
 
-      ````
+      ```
       <copy>
       {
          "inputRecords":[
@@ -210,7 +210,7 @@ In this step, we are going to score Fran Hobbs against our Decision Tree importe
          ]
       }
       </copy>
-      ````
+      ```
 
     Click **Send**
 

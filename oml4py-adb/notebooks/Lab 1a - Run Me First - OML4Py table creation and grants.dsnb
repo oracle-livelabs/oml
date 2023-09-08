@@ -1,0 +1,1041 @@
+[
+  {
+    "name" : "Lab 1a - Run Me First - OML4Py table creation and grants",
+    "description" : null,
+    "tags" : null,
+    "version" : "6",
+    "layout" : "jupyter",
+    "type" : "low",
+    "readOnly" : false,
+    "snapshot" : false,
+    "template" : null,
+    "templateConfig" : null,
+    "paragraphs" : [
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "# Run Me First - Oracle Machine Learning for Python (OML4Py)",
+          "",
+          "***Oracle Machine Learning for Python*** (OML4Py) makes the open source Python scripting language and environment ready for the enterprise and big data. Designed for problems involving both large and small data volumes, OML4Py integrates Python with Oracle Autonomous Database, allowing users to run Python commands and scripts for statistical, machine learning, and visualization analyses on database tables and views using Python syntax. Many familiar Python functions are overloaded that translate Python behavior into SQL for running in-database, as well as new automatic machine learning capabilities.",
+          "",
+          "- The following commands should be run before running the Labs, since it creates some tables and grants access to any users of the PDB. ",
+          "",
+          "**Copyright (c) 2023 Oracle Corporation**",
+          "[The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h1>Run Me First - Oracle Machine Learning for Python (OML4Py)</h1>\n<p><strong><em>Oracle Machine Learning for Python</em></strong> (OML4Py) makes the open source Python scripting language and environment ready for the enterprise and big data. Designed for problems involving both large and small data volumes, OML4Py integrates Python with Oracle Autonomous Database, allowing users to run Python commands and scripts for statistical, machine learning, and visualization analyses on database tables and views using Python syntax. Many familiar Python functions are overloaded that translate Python behavior into SQL for running in-database, as well as new automatic machine learning capabilities.</p>\n<ul>\n<li>The following commands should be run before running the Labs, since it creates some tables and grants access to any users of the PDB.</li>\n</ul>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https://oss.oracle.com/licenses/upl/\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "##### Code to create an External Table pointing to data in Github",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h5>Code to create an External Table pointing to data in Github</h5>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create external table by downloading csv file for Customer lifetime insurance dataset",
+        "hasTitle" : false,
+        "message" : [
+          "%script",
+          "",
+          "DECLARE",
+          "     uri_data        varchar2(1000) := 'https://raw.githubusercontent.com/oracle/oracle-db-examples/master/machine-learning/datasets/CUST_INSUR_LTV_APPLY.csv';",
+          "     csv_format      varchar2(1000) := '{\"dateformat\":\"YYYY-MM-DD\", \"skipheaders\":\"1\", \"delimiter\":\",\", \"ignoreblanklines\":\"true\", \"removequotes\":\"true\", \"blankasnull\":\"true\", \"trimspaces\":\"lrtrim\", \"truncatecol\":\"true\", \"ignoremissingcolumns\":\"true\"}';",
+          "BEGIN",
+          "    BEGIN",
+          "       EXECUTE IMMEDIATE 'DROP TABLE EXT_CUSTOMER_INSURANCE_LTV';",
+          "       EXCEPTION WHEN OTHERS THEN NULL;",
+          "    END;",
+          "",
+          "    DBMS_CLOUD.CREATE_EXTERNAL_TABLE(",
+          "            TABLE_NAME => 'EXT_CUSTOMER_INSURANCE_LTV',",
+          "            FILE_URI_LIST => uri_data,",
+          "            FORMAT => csv_format,",
+          "            COLUMN_LIST => 'MARITAL_STATUS          VARCHAR2(26),",
+          "                            STATE                   VARCHAR2(26),",
+          "                            CREDIT_BALANCE          NUMBER(8,0),",
+          "                            CUSTOMER_TENURE         NUMBER(3,0),",
+          "                            MORTGAGE_AMOUNT         NUMBER(7,0),",
+          "                            BANK_FUNDS              NUMBER(7,0),",
+          "                            NUM_DEPENDENTS          NUMBER(3,0),",
+          "                            HAS_CHILDREN            NUMBER(3,0),",
+          "                            INCOME                  NUMBER(7,0),",
+          "                            CUSTOMER_ID             VARCHAR2(26),",
+          "                            GENDER                  VARCHAR2(26),",
+          "                            PROFESSION              VARCHAR2(35),",
+          "                            CREDIT_CARD_LIMITS      NUMBER(6,0),",
+          "                            REGION                  VARCHAR2(26),",
+          "                            HOME_OWNERSHIP          NUMBER(3,0),",
+          "                            NUM_ONLINE_TRANS        NUMBER(6,0),",
+          "                            BUY_INSURANCE           VARCHAR2(26),",
+          "                            MONTHLY_CHECKS          NUMBER(4,0),",
+          "                            NUM_TRANS_KIOSK         NUMBER(3,0),",
+          "                            AGE                     NUMBER(4,0),",
+          "                            MONEY_MONTLY_OVERDRAWN  NUMBER(6,2),",
+          "                            LTV                     NUMBER(9,2),",
+          "                            TOTAL_AUTOM_PAYMENTS    NUMBER(8,0),",
+          "                            NUM_TRANS_TELLER        NUMBER(3,0),",
+          "                            CHECKING_BALANCE        NUMBER(7,0),",
+          "                            NUM_TRANS_ATM           NUMBER(3,0),",
+          "                            LTV_BIN                 VARCHAR2(26),",
+          "                            FIRST_NAME              VARCHAR2(26),",
+          "                            NUM_MORTGAGES           NUMBER(3,0),",
+          "                            CAR_OWNERSHIP           NUMBER(3,0),",
+          "                            LAST_NAME               VARCHAR2(26)');",
+          "                                ",
+          "END;"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "script.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "##### Create a physical table inside the Database from the data in the External Table",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h5>Create a physical table inside the Database from the data in the External Table</h5>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create CUSTOMER_INSURANCE_LTV table from the external table",
+        "hasTitle" : false,
+        "message" : [
+          "%script",
+          "",
+          "BEGIN",
+          "    EXECUTE IMMEDIATE 'DROP TABLE CUSTOMER_INSURANCE_LTV';",
+          "    EXCEPTION WHEN OTHERS THEN NULL;",
+          "END;",
+          "/",
+          "",
+          "BEGIN",
+          "    EXECUTE IMMEDIATE 'create table CUSTOMER_INSURANCE_LTV as select * from EXT_CUSTOMER_INSURANCE_LTV';",
+          "    EXCEPTION WHEN OTHERS THEN NULL;",
+          "END;"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "script.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "##### Create a copy of that table that we will add noise later, in order to demonstrate the data cleansing capabilities",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h5>Create a copy of that table that we will add noise later, in order to demonstrate the data cleansing capabilities</h5>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create noise table for CUSTOMER_INSURANCE_LTV ",
+        "hasTitle" : false,
+        "message" : [
+          "%script",
+          "",
+          "BEGIN",
+          "    EXECUTE IMMEDIATE 'DROP TABLE CUSTOMER_INSURANCE_LTV_NOISE';",
+          "    EXCEPTION WHEN OTHERS THEN NULL;",
+          "END;",
+          "/",
+          "",
+          "",
+          "CREATE TABLE CUSTOMER_INSURANCE_LTV_NOISE AS",
+          "SELECT * FROM CUSTOMER_INSURANCE_LTV"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "script.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nTable CUSTOMER_INSURANCE_LTV_NOISE created.\n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "##### Adds NULLS to many columns of several records",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h5>Adds NULLS to many columns of several records</h5>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 6,
+        "title" : "Change a subset of columns to be NULL",
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "",
+          "UPDATE  CUSTOMER_INSURANCE_LTV_NOISE",
+          "SET INCOME = NULL, BANK_FUNDS = NULL, CREDIT_BALANCE = NULL, MARITAL_STATUS = NULL",
+          "WHERE CUSTOMER_ID < 'CU2';"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 6,
+        "title" : "Add rows with all values to be NULL",
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "",
+          "INSERT INTO CUSTOMER_INSURANCE_LTV_NOISE",
+          "VALUES (NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "##### Loads several datasets from Python's SciKit Learn library into the Oracle Database as tables",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h5>Loads several datasets from Python's SciKit Learn library into the Oracle Database as tables</h5>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create IRIS table in database from scikit-learn",
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "import oml",
+          "",
+          "from sklearn import datasets",
+          "from sklearn import linear_model",
+          "import pandas as pd",
+          "",
+          "iris = datasets.load_iris()",
+          "x = pd.DataFrame(iris.data, columns = ['SEPAL_LENGTH','SEPAL_WIDTH','PETAL_LENGTH','PETAL_WIDTH'])",
+          "y = pd.DataFrame(list(map(lambda x: {0: 'setosa', 1: 'versicolor',2:'virginica'}[x], iris.target)), columns = ['SPECIES'])",
+          "",
+          "try:",
+          "  oml.drop(table='IRIS')",
+          "except:",
+          "  pass",
+          "",
+          "IRIS = oml.create(pd.concat([x, y], axis=1), table = 'IRIS')",
+          "iris_df = pd.concat([x, y], axis=1)",
+          "print(IRIS.columns)"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "['SEPAL_LENGTH', 'SEPAL_WIDTH', 'PETAL_LENGTH', 'PETAL_WIDTH', 'SPECIES']\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create WINE table in database from scikit-learn",
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "import oml",
+          "import pandas as pd",
+          "import matplotlib.pyplot as plt",
+          "from sklearn.datasets import load_wine",
+          "",
+          "try:",
+          "   oml.drop(table=\"WINE\")",
+          "except:",
+          "   pass",
+          "",
+          "wine = load_wine()",
+          "",
+          "x = pd.DataFrame(wine.data, columns = wine[\"feature_names\"])",
+          "y = pd.DataFrame(list(map(lambda x: {0:'class_0', 1: 'class_1', 2:'class_2'}[x], wine.target)), columns = ['target'])",
+          "",
+          "wine_df = pd.concat([x,y], axis=1)",
+          "WINE = oml.create(wine_df, table = \"WINE\")"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create DIGITS table in database scikit-learn",
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "import pandas as pd",
+          "from sklearn.datasets import load_digits",
+          "",
+          "digits = load_digits()",
+          "pd_digits = pd.DataFrame(digits.data, columns=['IMG'+str(i) for i in range(digits['data'].shape[1])])",
+          "pd_digits = pd.concat([pd_digits, pd.Series(digits.target,name = 'target')], axis = 1)",
+          "",
+          "try:",
+          "   oml.drop(table=\"DIGITS\")",
+          "except:",
+          "   pass",
+          "   ",
+          "DIGITS = oml.create(pd_digits, table = \"DIGITS\")"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "###### Creates the Customers360 table that will be used in the Lab for the AutoML UI experiments",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h6>Creates the Customers360 table that will be used in the Lab for the AutoML UI experiments</h6>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%script",
+          "",
+          "BEGIN",
+          "    EXECUTE IMMEDIATE 'DROP TABLE CUSTOMERS360';",
+          "    EXCEPTION WHEN OTHERS THEN NULL;",
+          "END;",
+          "/",
+          "",
+          "CREATE TABLE CUSTOMERS360 AS",
+          "          (SELECT a.CUST_ID, a.CUST_GENDER, a.CUST_MARITAL_STATUS,",
+          "             a.CUST_YEAR_OF_BIRTH, a.CUST_INCOME_LEVEL, a.CUST_CREDIT_LIMIT,",
+          "             b.EDUCATION, b.AFFINITY_CARD,",
+          "             b.HOUSEHOLD_SIZE, b.OCCUPATION, b.YRS_RESIDENCE, b.Y_BOX_GAMES",
+          "       FROM SH.CUSTOMERS a, SH.SUPPLEMENTARY_DEMOGRAPHICS b",
+          "       WHERE a.CUST_ID = b.CUST_ID);"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "script.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nTable CUSTOMERS360 created.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "### Create VIEWS for the TABLES",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h3>Create VIEWS for the TABLES</h3>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "",
+          "CREATE OR REPLACE view CUSTOMER_INSURANCE_LTV_VIEW as select * from CUSTOMER_INSURANCE_LTV;"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "",
+          "CREATE OR REPLACE view IRIS_VIEW as select * from IRIS;"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "",
+          "CREATE OR REPLACE view WINE_VIEW as select * from WINE;"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "",
+          "CREATE OR REPLACE view DIGITS_VIEW as select * from DIGITS;"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "## Grants all users of the PDB access to the tables and Views",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h2>Grants all users of the PDB access to the tables and Views</h2>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Grants access to tables",
+        "hasTitle" : false,
+        "message" : [
+          "%script",
+          "",
+          "",
+          "BEGIN",
+          "    FOR t IN (SELECT * FROM user_tables where TABLE_NAME IN ('IRIS','WINE','DIGITS', 'CUSTOMER_INSURANCE_LTV', 'CUSTOMER_INSURANCE_LTV_NOISE', 'CUSTOMERS360' ) )",
+          "    LOOP   ",
+          "        EXECUTE IMMEDIATE 'GRANT SELECT ON ' || t.table_name || ' TO PUBLIC';    ",
+          "    END LOOP;",
+          "END;",
+          "/"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "script.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Grants access to views",
+        "hasTitle" : false,
+        "message" : [
+          "%script",
+          "",
+          "BEGIN",
+          "    FOR t IN (SELECT * FROM user_views where VIEW_NAME IN ('IRIS_VIEW','WINE_VIEW','DIGITS_VIEW', 'CUSTOMER_INSURANCE_LTV_VIEW') ) ",
+          "    LOOP   ",
+          "        EXECUTE IMMEDIATE 'GRANT SELECT ON ' || t.view_name || ' TO PUBLIC';    ",
+          "    END LOOP;",
+          "END;",
+          "/"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "script.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "## Learn More",
+          "",
+          "* [Loading Data into Autonomous Database Serverless using DBMS_CLOUD Subprograms](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html?target=_blank)",
+          "* [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)",
+          "* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)",
+          "",
+          "**Last Updated Date** - August 2023",
+          " ",
+          "**Copyright (c) 2023 Oracle Corporation**",
+          "[The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h2>Learn More</h2>\n<ul>\n<li><a href=\"https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html?target=_blank\">Loading Data into Autonomous Database Serverless using DBMS_CLOUD Subprograms</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/\">Oracle Machine Learning Notebooks</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B\">Oracle Machine Learning Notebooks - Early Adopter</a></li>\n</ul>\n<p><strong>Last Updated Date</strong> - August 2023</p>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https://oss.oracle.com/licenses/upl/\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      }
+    ]
+  }
+]

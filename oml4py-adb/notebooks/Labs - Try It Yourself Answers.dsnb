@@ -1,0 +1,561 @@
+[
+  {
+    "name" : "Labs - Try It Yourself Answers",
+    "description" : null,
+    "tags" : null,
+    "version" : "6",
+    "layout" : null,
+    "type" : "low",
+    "readOnly" : false,
+    "snapshot" : false,
+    "template" : null,
+    "templateConfig" : null,
+    "paragraphs" : [
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "# \"Try it yourself\" companion section for Introduction to OML4Py",
+          "",
+          "***Oracle Machine Learning for Python*** (OML4Py) makes the open source Python scripting language and environment ready for the enterprise and big data. Designed for problems involving both large and small data volumes, OML4Py integrates Python with Oracle Autonomous Database, allowing users to run Python commands and scripts for statistical, machine learning, and visualization analyses on database tables and views using Python syntax. Many familiar Python functions are overloaded that translate Python behavior into SQL for running in-database, as well as new automatic machine learning capabilities.",
+          "",
+          "This sets of examples contains the answers for the **Try it yourself** exercises in the OML4Py Labs. ",
+          "",
+          "**Note:** The code in the paragraphs are not runnable from this notebook. Refer to the lab notebooks for the location where the each exercise will be invoked.",
+          "",
+          "**Copyright (c) 2023 Oracle Corporation**",
+          "[The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h1>&ldquo;Try it yourself&rdquo; companion section for Introduction to OML4Py</h1>\n<p><strong><em>Oracle Machine Learning for Python</em></strong> (OML4Py) makes the open source Python scripting language and environment ready for the enterprise and big data. Designed for problems involving both large and small data volumes, OML4Py integrates Python with Oracle Autonomous Database, allowing users to run Python commands and scripts for statistical, machine learning, and visualization analyses on database tables and views using Python syntax. Many familiar Python functions are overloaded that translate Python behavior into SQL for running in-database, as well as new automatic machine learning capabilities.</p>\n<p>This sets of examples contains the answers for the <strong>Try it yourself</strong> exercises in the OML4Py Labs.</p>\n<p><strong>Note:</strong> The code in the paragraphs are not runnable from this notebook. Refer to the lab notebooks for the location where the each exercise will be invoked.</p>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https://oss.oracle.com/licenses/upl/\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "### Lab 1: Use Markdown",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h3>Lab 1: Use Markdown</h3>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Lab 1: Use markdown",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "#### Oracle Machine Learning for Python Live Lab",
+          "Welcome to the **OML4Py** Live Lab!"
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "### Lab 2: Merge with outer join",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h3>Lab 2: Merge with outer join</h3>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Lab 2: Merge with outer join",
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "x.merge(other=y, left_on=\"id\", right_on=\"num\", how=\"right\")",
+          "",
+          "Return value:",
+          "",
+          "   id_l val_l  num_r ch_r",
+          "0   3.0     c    3.0    q",
+          "1   4.0     d    4.0    p",
+          "2   5.0     e    5.0    b",
+          "3   NaN  None    6.7    r",
+          "4   NaN  None    7.2    a"
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "### Lab 2: Split the Digit data set into four samples of 25% each",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h3>Lab 2: Split the Digit data set into four samples of 25% each</h3>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Lab 2: Split the digit data set into four samples of 25% each",
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "splits = DIGITS.split(ratio=(.25, .25, .25, .25), use_hash = False)",
+          "print(\"Split lengths: \", [len(split) for split in splits])",
+          "",
+          "Return value:",
+          "",
+          "split lengths:  [432, 460, 451, 454]"
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "### Lab 3: Build an in-database Random Forest model",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h3>Lab 3: Build an in-database Random Forest model</h3>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Lab 3: Build an in-database RandomForest model ",
+        "hasTitle" : false,
+        "message" : [
+          "",
+          "# Build an in-db RandomForest model and compare the RF model's attribute importance ranking with that from MLX.",
+          "",
+          "model = oml.algo.rf(ODMS_RANDOM_SEED=32).fit(X, y, case_id='CASE_ID')",
+          "\"RF accuracy score = {:.2f}\".format(model.score(X_test, y_test))",
+          "",
+          "gfi = GlobalFeatureImportance(mining_function='classification', score_metric='f1_weighted', random_state=32, parallel=4)",
+          "",
+          "explanation = gfi.explain(model, X, y, case_id='CASE_ID', n_iter=10)",
+          "explanation",
+          "",
+          "Return value:",
+          "",
+          "Global Feature Importance: ",
+          "\t[0] petal length (cm): Value: 0.4858, Error: 0.0278",
+          "\t[1] petal width (cm): Value: 0.1183, Error: 0.0276",
+          "\t[2] sepal length (cm): Value: 0.0191, Error: 0.0115",
+          "\t[3] sepal width (cm): Value: 0.0000, Error: 0.0000"
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "### Lab 4: Deleting datastores",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h3>Lab 4: Deleting datastores</h3>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Lab 4: Deleting datastores",
+        "hasTitle" : false,
+        "message" : [
+          "Delete the IRIS table from datastore IRIS, then delete the entire datastore.",
+          "",
+          "%python",
+          "",
+          "oml.ds.delete(name=\"IRIS\", objs=[\"IRIS\"])",
+          "oml.ds.delete(name=\"IRIS\")",
+          "oml.ds.dir()",
+          "",
+          "Return value:",
+          "",
+          "Empty DataFrame",
+          "Columns: [datastore_name, object_count, size, date, description]",
+          "Index: []"
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "### Bonus Lab 1: Use group_apply to count number of species",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h3>Bonus Lab 1: Use group_apply to count number of species</h3>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Lab 5: Use group_apply",
+        "hasTitle" : false,
+        "message" : [
+          "Use the group_apply function to count the number of each species in the data set.",
+          "",
+          "def group_count(dat):",
+          "  import pandas as pd",
+          "  return pd.DataFrame([(dat[\"SPECIES\"][0], dat.shape[0])],",
+          "                      columns = [\"SPECIES\", \"CNT\"])",
+          "",
+          "index = oml.DataFrame(IRIS['SPECIES'])",
+          "res = oml.group_apply(IRIS, index, func=group_count,",
+          "                      oml_input_type=\"pandas.DataFrame\",",
+          "                      func_value=pd.DataFrame([('a', 1)],",
+          "                                              columns=[\"SPECIES\", \"CNT\"]))",
+          "res",
+          "",
+          "Return value:",
+          "",
+          "     SPECIES  CNT",
+          "0   virginica   50",
+          "1      setosa   50",
+          "2  versicolor   50"
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "### Bonus Lab 4: AutoML Algorithm Selection",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h3>Bonus Lab 4: AutoML Algorithm Selection</h3>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Bonus Lab 4: AutoML Algorithm Selection",
+        "hasTitle" : false,
+        "message" : [
+          "",
+          "fs_wine_cl = automl.FeatureSelection(mining_function = 'classification', score_metric = 'accuracy', parallel=2)",
+          "",
+          "selected_wine_features_cl = fs_wine_cl.reduce('svm_linear', WINE_X_cl, WINE_y_cl)",
+          "",
+          "WINE_X_reduced_cl = WINE_X_cl[:,selected_wine_features_cl]",
+          "",
+          "print(\"Selected columns:\", WINE_X_reduced_cl.columns)",
+          "print(\"Number of columns:\")",
+          "\"{} reduced to {}\".format(len(WINE_X_cl.columns), len(selected_wine_features_cl))",
+          "",
+          "",
+          "Return value:",
+          "",
+          "Selected columns: ['alcohol', 'malic_acid', 'ash', 'alcalinity_of_ash', 'total_phenols', 'flavanoids', 'nonflavanoid_phenols', 'color_intensity', 'hue', 'od280/od315_of_diluted_wines', 'proline']",
+          "Number of columns:",
+          "'13 reduced to 11'"
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      }
+    ]
+  }
+]

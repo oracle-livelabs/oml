@@ -1,0 +1,2163 @@
+[
+  {
+    "name" : "Lab 6 - Run UDFs with SQL API for EPE",
+    "description" : null,
+    "tags" : null,
+    "version" : "6",
+    "layout" : "jupyter",
+    "type" : "low",
+    "readOnly" : false,
+    "snapshot" : false,
+    "template" : null,
+    "templateConfig" : null,
+    "paragraphs" : [
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "# Run user-defined functions using Embedded Python Execution",
+          "",
+          "## Introduction",
+          "",
+          "This lab walks you through the steps to use the **OML4Py SQL API** embedded Python execution functions. You will also learn about the script repository.",
+          "",
+          "Estimated Lab Time: 20 minutes",
+          "",
+          "### About Embedded Python Execution",
+          "Embedded Python execution enables you to run user-defined Python functions in Python engines spawned by the Autonomous Database environment. These engines run alongside an OML Notebooks Python interpreter session.",
+          "",
+          "The OML4Py Embedded Python execution SQL API functions are:",
+          "",
+          "* `pyqEval` - Runs the provided user-defined Python function in a Python engine spawned by the Autonomous Database environment.",
+          "* `pyqTablEval` - Runs the provided user-defined Python function data referenced by an OML DataFrame proxy object in a single Python engine.",
+          "* `pyqGroupEval` - Partitions a database table by the values in one or more columns and runs the provided user-defined Python function on each partition, optionally in parallel using multiple Python engines.",
+          "* `pyqRowEval` - Partitions a database table into sets of rows and runs the provided user-defined Python function on the data in each set, optionally in parallel using multiple Python engines.",
+          "* `pyqIndexEval` - Runs a Python function multiple times, passing in a unique index of the invocation to the user-defined function, optionally in parallel using multiple Python engines.",
+          "",
+          "**Note:** Embedded Python Execution functions are also available through the  <a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlepe/rest-endpoints.html\" onclick=\"return ! window.open('https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlepe/rest-endpoints.html');\">Oracle Machine Learning for Python REST API for Embedded Python Execution</a>",
+          "",
+          "### **Objectives**",
+          "",
+          "In this lab, we provide a workflow for using the OML4Py SQL API for embedded Python execution with Oracle Autonomous Database:",
+          "",
+          "As the ADMIN user:",
+          "- Add the OML user to cloud host Access Control List (ACL) ",
+          "",
+          "As the OML user:",
+          "- Obtain an authorization token to access the SQL API for embedded Python execution",
+          "- Create a UDF and store it in the OML4Py script repository",
+          "- Run the UDF using embedded Python execution from the OML4Py Python and SQL APIs",
+          "",
+          "**Copyright (c) 2023 Oracle Corporation**",
+          "[The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h1>Run user-defined functions using Embedded Python Execution</h1>\n<h2>Introduction</h2>\n<p>This lab walks you through the steps to use the <strong>OML4Py SQL API</strong> embedded Python execution functions. You will also learn about the script repository.</p>\n<p>Estimated Lab Time: 20 minutes</p>\n<h3>About Embedded Python Execution</h3>\n<p>Embedded Python execution enables you to run user-defined Python functions in Python engines spawned by the Autonomous Database environment. These engines run alongside an OML Notebooks Python interpreter session.</p>\n<p>The OML4Py Embedded Python execution SQL API functions are:</p>\n<ul>\n<li><code>pyqEval</code> - Runs the provided user-defined Python function in a Python engine spawned by the Autonomous Database environment.</li>\n<li><code>pyqTablEval</code> - Runs the provided user-defined Python function data referenced by an OML DataFrame proxy object in a single Python engine.</li>\n<li><code>pyqGroupEval</code> - Partitions a database table by the values in one or more columns and runs the provided user-defined Python function on each partition, optionally in parallel using multiple Python engines.</li>\n<li><code>pyqRowEval</code> - Partitions a database table into sets of rows and runs the provided user-defined Python function on the data in each set, optionally in parallel using multiple Python engines.</li>\n<li><code>pyqIndexEval</code> - Runs a Python function multiple times, passing in a unique index of the invocation to the user-defined function, optionally in parallel using multiple Python engines.</li>\n</ul>\n<p><strong>Note:</strong> Embedded Python Execution functions are also available through the  <a href=\"https: //docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlepe/rest-endpoints.html\" >Oracle Machine Learning for Python REST API for Embedded Python Execution</a></p>\n<h3><strong>Objectives</strong></h3>\n<p>In this lab, we provide a workflow for using the OML4Py SQL API for embedded Python execution with Oracle Autonomous Database:</p>\n<p>As the ADMIN user:</p>\n<ul>\n<li>Add the OML user to cloud host Access Control List (ACL)</li>\n</ul>\n<p>As the OML user:</p>\n<ul>\n<li>Obtain an authorization token to access the SQL API for embedded Python execution</li>\n<li>Create a UDF and store it in the OML4Py script repository</li>\n<li>Run the UDF using embedded Python execution from the OML4Py Python and SQL APIs</li>\n</ul>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https://oss.oracle.com/licenses/upl/\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Add the OML user to the cloud host ACL list - must be ADMIN user",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "#### Task 1: As ADMIN, authorize the OML user to use the services and resources needed",
+          "",
+          "---",
+          " ",
+          "##### Task 1.1: Enable the OML user to access network services and resources from the database",
+          "You can control and restrict access to your Autonomous Database by specifying network access control lists (ACLs). The ACL provides additional protection to your Autonomous Database by allowing only authorized IP addresses to connect to the database. ",
+          "",
+          "OML4Py provides the `pyqAppendHostAce` function to enable the OML user to access network services and resources from the database, where the root domain is the data center region where the Autonomous Database resides, e.g. *adb.us-region-1.oraclecloudapps.com*. ",
+          "",
+          "Run the `pyqAppendHostAce` function as **ADMIN** user in SQL Developer Web interface under Data Studio, or using you favorite SQL client like SQL Developer Desktop or SQLcl for example.  You can review Task 3 of the Lab \"Provision an Autonomous Data Warehouse with OML users\" to review how to access Data Studio."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Task 1: As ADMIN, authorize the OML user to use the services and resources needed</h4>\n<hr />\n<h5>Task 1.1: Enable the OML user to access network services and resources from the database</h5>\n<p>You can control and restrict access to your Autonomous Database by specifying network access control lists (ACLs). The ACL provides additional protection to your Autonomous Database by allowing only authorized IP addresses to connect to the database.</p>\n<p>OML4Py provides the <code>pyqAppendHostAce</code> function to enable the OML user to access network services and resources from the database, where the root domain is the data center region where the Autonomous Database resides, e.g. <em>adb.us-region-1.oraclecloudapps.com</em>.</p>\n<p>Run the <code>pyqAppendHostAce</code> function as <strong>ADMIN</strong> user in SQL Developer Web interface under Data Studio, or using you favorite SQL client like SQL Developer Desktop or SQLcl for example.  You can review Task 3 of the Lab &ldquo;Provision an Autonomous Data Warehouse with OML users&rdquo; to review how to access Data Studio.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{\"oml_server\":\"\"}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "",
+          "SQL> exec pyqAppendHostAce('OMLUSER','adb.us-ashburn-1.oraclecloudapps.com');",
+          "",
+          "  PL/SQL procedure successfully completed.",
+          "  Elapsed: 00:00:00.370"
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Confirm the host ACL list contains an entry for the OML user",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 1.2: Still as ADMIN, check the user's privileges",
+          "",
+          "The `pyqGetHostACE` function gets the existing host access control entry (ACE) for the specified user. If the user has access to the Autonomous Database cloud host, the ADMIN user can run the following to check the user's privileges. In this example, the hostname is returned if the host ACL entry exists for the specified user, and if not, an exception is raised. "
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 1.2: Still as ADMIN, check the user's privileges</h5>\n<p>The <code>pyqGetHostACE</code> function gets the existing host access control entry (ACE) for the specified user. If the user has access to the Autonomous Database cloud host, the ADMIN user can run the following to check the user's privileges. In this example, the hostname is returned if the host ACL entry exists for the specified user, and if not, an exception is raised.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "SQL> set serveroutput on",
+          "",
+          "DECLARE ",
+          "    hostname VARCHAR2(4000);",
+          "BEGIN",
+          "    hostname := pyqGetHostACE('OMLUSER'); ",
+          "    DBMS_OUTPUT.put_line ('hostname: ' || hostname);",
+          "END;",
+          "/"
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Obtain an authorization token",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "#### Task 2: As the OML user, request a Token by authenticating against the Autonomous Database",
+          "",
+          "The OML4Py SQL API uses tokens to authenticate an OML user. To authenticate and obtain an access token, use `cURL` or another REST client, such as Postman, to exchange the OML user credentials for an authorization token. Send a POST request to the token URL endpoint */oauth2/v1/token* with your OML username and password. The token URL can be obtained from the OML service console in Autonomous Database:",
+          "",
+          "- Sign into your Oracle Cloud Infrastructure account. You will need your OCI user name and password.",
+          "- Click the three-line menu at the top left, and select **Oracle Database** -> **Autonomous Database**.",
+          "- In the list of Autonomous Database instances, click the name of the one you are working on now to open the console.",
+          "- Open Database Actions by clicking on the button in the Autonomous Database console.  Depending on your browser, you might be prompted to login with the ADMIN user.",
+          "- Inside the Database Actions, scroll down to the section  **Related Services**.",
+          "- Click on the tile named **ORACLE MACHINE LEARNING RESTFUL SERVICES** to be able to obtain the URL required.",
+          "",
+          "  Copy the URL (by clicking the button) under the following label:",
+          "  `\"Use this URL to obtain a REST authentication token for OML-provided REST APIs:\"`",
+          "",
+          "  It will show your OML Cloud Service location that we need, plus a folder `omlusers`",
+          "  **`<oml-cloud-service-location-url>`**/omlusers/",
+          "",
+          "The URL *oml-cloud-service-location-url* includes the tenancy ID, location, and database name. ",
+          "",
+          "For example, a URL like **https:///ijxtlx3j6x9uawu-omllabs.adb.us-sanjose-1.oraclecloudapps.com**",
+          "has the following components:",
+          "- **ijxtlx3j6x9uawu** as the tenancy ID",
+          "- **omllabs** as the database name",
+          "- **us-sanjose-1** as the datacenter region",
+          "- **oraclecloudapps.com** as the root domain"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Task 2: As the OML user, request a Token by authenticating against the Autonomous Database</h4>\n<p>The OML4Py SQL API uses tokens to authenticate an OML user. To authenticate and obtain an access token, use <code>cURL</code> or another REST client, such as Postman, to exchange the OML user credentials for an authorization token. Send a POST request to the token URL endpoint <em>/oauth2/v1/token</em> with your OML username and password. The token URL can be obtained from the OML service console in Autonomous Database:</p>\n<ul>\n<li><p>Sign into your Oracle Cloud Infrastructure account. You will need your OCI user name and password.</p>\n</li>\n<li><p>Click the three-line menu at the top left, and select <strong>Oracle Database</strong> -> <strong>Autonomous Database</strong>.</p>\n</li>\n<li><p>In the list of Autonomous Database instances, click the name of the one you are working on now to open the console.</p>\n</li>\n<li><p>Open Database Actions by clicking on the button in the Autonomous Database console.  Depending on your browser, you might be prompted to login with the ADMIN user.</p>\n</li>\n<li><p>Inside the Database Actions, scroll down to the section  <strong>Related Services</strong>.</p>\n</li>\n<li><p>Click on the tile named <strong>ORACLE MACHINE LEARNING RESTFUL SERVICES</strong> to be able to obtain the URL required.</p>\n<p>Copy the URL (by clicking the button) under the following label:\n<br  /><code>\"Use this URL to obtain a REST authentication token for OML-provided REST APIs:\"</code></p>\n<p>It will show your OML Cloud Service location that we need, plus a folder <code>omlusers</code>\n<br  /><strong><code>&lt;oml-cloud-service-location-url&gt;</code></strong>/omlusers/</p>\n</li>\n</ul>\n<p>The URL <em>oml-cloud-service-location-url</em> includes the tenancy ID, location, and database name.</p>\n<p>For example, a URL like <strong>https:///ijxtlx3j6x9uawu-omllabs.adb.us-sanjose-1.oraclecloudapps.com</strong>\n<br  />has the following components:</p>\n<ul>\n<li><strong>ijxtlx3j6x9uawu</strong> as the tenancy ID</li>\n<li><strong>omllabs</strong> as the database name</li>\n<li><strong>us-sanjose-1</strong> as the datacenter region</li>\n<li><strong>oraclecloudapps.com</strong> as the root domain</li>\n</ul>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Define get_token2 function that obtains access token",
+        "hasTitle" : false,
+        "message" : [
+          "%script\r",
+          "\r",
+          "create or replace function get_token2 (\r",
+          "  p_url       varchar2,\r",
+          "  p_username  varchar2,\r",
+          "  p_password  varchar2,\r",
+          "  p_verbose   number default 0) \r",
+          "  return varchar2\r",
+          "  authid definer as pragma autonomous_transaction;\r",
+          "  l_buffer            varchar2(4000);\r",
+          "  l_request_content   clob;\r",
+          "  l_response_content  clob;\r",
+          "  l_request           utl_http.req;\r",
+          "  l_response          utl_http.resp;\r",
+          "  l_url               varchar2(1000);\r",
+          "  l_smt               varchar2(1000);\r",
+          "  l_access_token      varchar2(4000);\r",
+          "begin\r",
+          "  l_url := p_url;\r",
+          "  l_request_content := q'[{\"grant_type\":\"password\", \"username\":\"]' || p_username || q'[\", \"password\":\"]' || p_password ||\r",
+          "  q'[\"}]';\r",
+          "  begin\r",
+          "    utl_http.set_wallet('');\r",
+          "    l_request := utl_http.begin_request(l_url,'POST',' HTTP/1.1');\r",
+          "    utl_http.set_header(l_request,'Content-Type','application/json');\r",
+          "    utl_http.set_header(l_request,'Accept','application/json');\r",
+          "    utl_http.set_header(l_request,'Content-Length',length(l_request_content));\r",
+          "    utl_http.write_text(l_request,l_request_content);\r",
+          "    l_response := utl_http.get_response(l_request);\r",
+          "    if (l_response.status_code != utl_http.HTTP_OK) THEN\r",
+          "      RAISE_APPLICATION_ERROR(-20999, 'Token request failed with status code: '||l_response.status_code||', reason: '||l_response.reason_phrase);\r",
+          "    end if;\r",
+          "    if p_verbose > 0 then\r",
+          "      dbms_output.put_line('HTTP response status code: ' || l_response.status_code);\r",
+          "      dbms_output.put_line('HTTP response reason phrase: ' || l_response.reason_phrase);\r",
+          "    end if;\r",
+          "    begin\r",
+          "      loop\r",
+          "        utl_http.read_line(l_response,l_buffer);\r",
+          "        l_access_token := regexp_substr(l_buffer,'\"accessToken\":\"([^\"]+)\"',1,1,'i',1);\r",
+          "        if p_verbose > 0 then\r",
+          "          dbms_output.put_line('l_access_token: [' || l_access_token || ']');\r",
+          "        end if;\r",
+          "      end loop;\r",
+          "      utl_http.end_response(l_response);\r",
+          "    exception\r",
+          "      when utl_http.end_of_body then utl_http.end_response(l_response);\r",
+          "    end;\r",
+          "  end;\r",
+          "  return(l_access_token);\r",
+          "  dbms_output.put_line('Access token is: ' || l_access_token);\r",
+          "end get_token2;\r",
+          "/\r"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "script.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nFunction GET_TOKEN2 compiled\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%script",
+          "",
+          "BEGIN EXECUTE IMMEDIATE 'DROP TABLE ACCESS_DETAILS';",
+          "EXCEPTION WHEN OTHERS THEN NULL; ",
+          "END;",
+          "/",
+          "",
+          "CREATE TABLE ACCESS_DETAILS (",
+          "  NAME  VARCHAR2(20),",
+          "  VALUE VARCHAR2(1000)",
+          "  );",
+          "/",
+          "",
+          "-- replace <your OML URL> with your own",
+          "INSERT INTO ACCESS_DETAILS VALUES ('URL', '<YOUR OML URL HERE INCLUDING https:// >/omlusers/api/oauth2/v1/token');",
+          "INSERT INTO ACCESS_DETAILS VALUES ('USERNAME', 'OMLUSER');",
+          "INSERT INTO ACCESS_DETAILS VALUES ('PASSWORD', '<YOUR PASSWORD HERE>');"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "script.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nTable ACCESS_DETAILS created.\n\n\n---------------------------\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Obtain and set the authorization token",
+        "hasTitle" : false,
+        "message" : [
+          "%md ",
+          "---",
+          "#### Task 3: Set the token in the Token Store and check its status",
+          "",
+          "OML4Py provides APIs to persist the authorization token for use with the upcoming SQL calls:",
+          "",
+          "- The `pyqSetAuthToken` procedure sets the access token in the token store.",
+          "- The `pyqIsTokenSet` function confirms if the authorization token status. ",
+          "",
+          "The following example shows how to set the token in the token store and confirm it's status. A token has a lifecycle of 3600 seconds, or 1 hour, and it can be refreshed for up to 8 hours."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Task 3: Set the token in the Token Store and check its status</h4>\n<p>OML4Py provides APIs to persist the authorization token for use with the upcoming SQL calls:</p>\n<ul>\n<li>The <code>pyqSetAuthToken</code> procedure sets the access token in the token store.</li>\n<li>The <code>pyqIsTokenSet</code> function confirms if the authorization token status.</li>\n</ul>\n<p>The following example shows how to set the token in the token store and confirm it's status. A token has a lifecycle of 3600 seconds, or 1 hour, and it can be refreshed for up to 8 hours.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%script",
+          "",
+          "DECLARE",
+          "   access_token VARCHAR2(2000);",
+          "   is_set BOOLEAN;",
+          "BEGIN",
+          "   with url_string  as (select VALUE from ACCESS_DETAILS where NAME = 'URL'), ",
+          "        username    as (select VALUE from ACCESS_DETAILS where NAME = 'USERNAME'),",
+          "        pswd        as (select VALUE from ACCESS_DETAILS where NAME = 'PASSWORD')",
+          "   SELECT get_token2(url_string.VALUE, username.VALUE, pswd.VALUE) INTO access_token ",
+          "   FROM url_string, username, pswd ",
+          "   WHERE localtimestamp=localtimestamp;",
+          "",
+          "   pyqSetAuthToken(access_token);",
+          "     is_set := pyqIsTokenSet();",
+          "     IF (is_set) THEN",
+          "        DBMS_OUTPUT.put_line ('token is set');",
+          "       --enable to return token",
+          "       --DBMS_OUTPUT.put_line (''|| access_token);",
+          "    END IF;",
+          "END;"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "script.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "token is set\n\n\nPL/SQL procedure successfully completed.\n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Obtain a proxy object to the IRIS table",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "#### Task 4: Create a proxy object to data set IRIS ",
+          " ",
+          "Run the following script to obtain a proxy object to the IRIS table."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Task 4: Create a proxy object to data set IRIS</h4>\n<p>Run the following script to obtain a proxy object to the IRIS table.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "IRIS table data",
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "import oml",
+          "",
+          "from sklearn import datasets",
+          "from sklearn import linear_model",
+          "import pandas as pd",
+          "",
+          "iris = datasets.load_iris()",
+          "x = pd.DataFrame(iris.data, columns = ['SEPAL_LENGTH','SEPAL_WIDTH','PETAL_LENGTH','PETAL_WIDTH'])",
+          "y = pd.DataFrame(list(map(lambda x: {0: 'setosa', 1: 'versicolor',2:'virginica'}[x], iris.target)), columns = ['SPECIES'])",
+          "",
+          "try:",
+          "  oml.drop(table='IRIS')",
+          "except:",
+          "  pass",
+          "",
+          "IRIS = oml.create(pd.concat([x, y], axis=1), table = 'IRIS')",
+          "iris_df = pd.concat([x, y], axis=1)",
+          "",
+          "z.show(IRIS)"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "SEPAL_LENGTH\tSEPAL_WIDTH\tPETAL_LENGTH\tPETAL_WIDTH\tSPECIES\n4.6\t3.6\t1.0\t0.2\tsetosa\n5.1\t2.5\t3.0\t1.1\tversicolor\n6.0\t2.2\t4.0\t1.0\tversicolor\n5.8\t2.6\t4.0\t1.2\tversicolor\n5.5\t2.3\t4.0\t1.3\tversicolor\n5.5\t2.5\t4.0\t1.3\tversicolor\n6.1\t2.8\t4.0\t1.3\tversicolor\n5.7\t2.5\t5.0\t2.0\tvirginica\n6.0\t2.2\t5.0\t1.5\tvirginica\n6.3\t2.5\t5.0\t1.9\tvirginica\n6.7\t3.0\t5.0\t1.7\tversicolor\n7.2\t3.2\t6.0\t1.8\tvirginica\n6.3\t3.3\t6.0\t2.5\tvirginica\n4.3\t3.0\t1.1\t0.1\tsetosa\n5.8\t4.0\t1.2\t0.2\tsetosa\n5.0\t3.2\t1.2\t0.2\tsetosa\n4.4\t3.0\t1.3\t0.2\tsetosa\n4.4\t3.2\t1.3\t0.2\tsetosa\n4.7\t3.2\t1.3\t0.2\tsetosa\n5.5\t3.5\t1.3\t0.2\tsetosa\n4.5\t2.3\t1.3\t0.3\tsetosa\n5.0\t3.5\t1.3\t0.3\tsetosa\n5.4\t3.9\t1.3\t0.4\tsetosa\n4.8\t3.0\t1.4\t0.1\tsetosa\n4.9\t3.6\t1.4\t0.1\tsetosa\n4.9\t3.0\t1.4\t0.2\tsetosa\n4.4\t2.9\t1.4\t0.2\tsetosa\n4.6\t3.2\t1.4\t0.2\tsetosa\n5.0\t3.3\t1.4\t0.2\tsetosa\n5.2\t3.4\t1.4\t0.2\tsetosa\n5.1\t3.5\t1.4\t0.2\tsetosa\n5.0\t3.6\t1.4\t0.2\tsetosa\n5.5\t4.2\t1.4\t0.2\tsetosa\n4.8\t3.0\t1.4\t0.3\tsetosa\n4.6\t3.4\t1.4\t0.3\tsetosa\n5.1\t3.5\t1.4\t0.3\tsetosa\n4.9\t3.1\t1.5\t0.1\tsetosa\n5.2\t4.1\t1.5\t0.1\tsetosa\n4.6\t3.1\t1.5\t0.2\tsetosa\n4.9\t3.1\t1.5\t0.2\tsetosa\n5.0\t3.4\t1.5\t0.2\tsetosa\n5.1\t3.4\t1.5\t0.2\tsetosa\n5.2\t3.5\t1.5\t0.2\tsetosa\n5.3\t3.7\t1.5\t0.2\tsetosa\n5.4\t3.7\t1.5\t0.2\tsetosa\n5.1\t3.8\t1.5\t0.3\tsetosa\n5.4\t3.4\t1.5\t0.4\tsetosa\n5.1\t3.7\t1.5\t0.4\tsetosa\n5.7\t4.4\t1.5\t0.4\tsetosa\n5.0\t3.0\t1.6\t0.2\tsetosa\n4.8\t3.1\t1.6\t0.2\tsetosa\n4.7\t3.2\t1.6\t0.2\tsetosa\n4.8\t3.4\t1.6\t0.2\tsetosa\n5.1\t3.8\t1.6\t0.2\tsetosa\n5.0\t3.4\t1.6\t0.4\tsetosa\n5.0\t3.5\t1.6\t0.6\tsetosa\n5.4\t3.4\t1.7\t0.2\tsetosa\n5.7\t3.8\t1.7\t0.3\tsetosa\n5.4\t3.9\t1.7\t0.4\tsetosa\n5.1\t3.3\t1.7\t0.5\tsetosa\n4.8\t3.4\t1.9\t0.2\tsetosa\n5.1\t3.8\t1.9\t0.4\tsetosa\n5.0\t2.3\t3.3\t1.0\tversicolor\n4.9\t2.4\t3.3\t1.0\tversicolor\n5.0\t2.0\t3.5\t1.0\tversicolor\n5.7\t2.6\t3.5\t1.0\tversicolor\n5.6\t2.9\t3.6\t1.3\tversicolor\n5.5\t2.4\t3.7\t1.0\tversicolor\n5.5\t2.4\t3.8\t1.1\tversicolor\n5.6\t2.5\t3.9\t1.1\tversicolor\n5.8\t2.7\t3.9\t1.2\tversicolor\n5.2\t2.7\t3.9\t1.4\tversicolor\n5.8\t2.7\t4.1\t1.0\tversicolor\n5.6\t3.0\t4.1\t1.3\tversicolor\n5.7\t2.8\t4.1\t1.3\tversicolor\n5.7\t3.0\t4.2\t1.2\tversicolor\n5.6\t2.7\t4.2\t1.3\tversicolor\n5.7\t2.9\t4.2\t1.3\tversicolor\n5.9\t3.0\t4.2\t1.5\tversicolor\n6.2\t2.9\t4.3\t1.3\tversicolor\n6.4\t2.9\t4.3\t1.3\tversicolor\n5.5\t2.6\t4.4\t1.2\tversicolor\n6.3\t2.3\t4.4\t1.3\tversicolor\n6.6\t3.0\t4.4\t1.4\tversicolor\n6.7\t3.1\t4.4\t1.4\tversicolor\n4.9\t2.5\t4.5\t1.7\tvirginica\n5.7\t2.8\t4.5\t1.3\tversicolor\n5.4\t3.0\t4.5\t1.5\tversicolor\n5.6\t3.0\t4.5\t1.5\tversicolor\n6.2\t2.2\t4.5\t1.5\tversicolor\n6.0\t2.9\t4.5\t1.5\tversicolor\n6.4\t3.2\t4.5\t1.5\tversicolor\n6.0\t3.4\t4.5\t1.6\tversicolor\n6.6\t2.9\t4.6\t1.3\tversicolor\n6.1\t3.0\t4.6\t1.4\tversicolor\n6.5\t2.8\t4.6\t1.5\tversicolor\n6.1\t2.8\t4.7\t1.2\tversicolor\n6.1\t2.9\t4.7\t1.4\tversicolor\n7.0\t3.2\t4.7\t1.4\tversicolor\n6.7\t3.1\t4.7\t1.5\tversicolor\n6.3\t3.3\t4.7\t1.6\tversicolor\n6.0\t3.0\t4.8\t1.8\tvirginica\n6.2\t2.8\t4.8\t1.8\tvirginica\n6.8\t2.8\t4.8\t1.4\tversicolor\n5.9\t3.2\t4.8\t1.8\tversicolor\n5.6\t2.8\t4.9\t2.0\tvirginica\n6.1\t3.0\t4.9\t1.8\tvirginica\n6.3\t2.7\t4.9\t1.8\tvirginica\n6.3\t2.5\t4.9\t1.5\tversicolor\n6.9\t3.1\t4.9\t1.5\tversicolor\n6.5\t3.2\t5.1\t2.0\tvirginica\n6.3\t2.8\t5.1\t1.5\tvirginica\n5.9\t3.0\t5.1\t1.8\tvirginica\n5.8\t2.7\t5.1\t1.9\tvirginica\n5.8\t2.7\t5.1\t1.9\tvirginica\n6.9\t3.1\t5.1\t2.3\tvirginica\n5.8\t2.8\t5.1\t2.4\tvirginica\n6.0\t2.7\t5.1\t1.6\tversicolor\n6.5\t3.0\t5.2\t2.0\tvirginica\n6.7\t3.0\t5.2\t2.3\tvirginica\n6.4\t2.7\t5.3\t1.9\tvirginica\n6.4\t3.2\t5.3\t2.3\tvirginica\n6.9\t3.1\t5.4\t2.1\tvirginica\n6.2\t3.4\t5.4\t2.3\tvirginica\n6.5\t3.0\t5.5\t1.8\tvirginica\n6.4\t3.1\t5.5\t1.8\tvirginica\n6.8\t3.0\t5.5\t2.1\tvirginica\n6.1\t2.6\t5.6\t1.4\tvirginica\n6.3\t2.9\t5.6\t1.8\tvirginica\n6.4\t2.8\t5.6\t2.1\tvirginica\n6.4\t2.8\t5.6\t2.2\tvirginica\n6.7\t3.1\t5.6\t2.4\tvirginica\n6.3\t3.4\t5.6\t2.4\tvirginica\n6.7\t3.3\t5.7\t2.1\tvirginica\n6.9\t3.2\t5.7\t2.3\tvirginica\n6.7\t3.3\t5.7\t2.5\tvirginica\n7.2\t3.0\t5.8\t1.6\tvirginica\n6.7\t2.5\t5.8\t1.8\tvirginica\n6.5\t3.0\t5.8\t2.2\tvirginica\n7.1\t3.0\t5.9\t2.1\tvirginica\n6.8\t3.2\t5.9\t2.3\tvirginica\n7.4\t2.8\t6.1\t1.9\tvirginica\n7.7\t3.0\t6.1\t2.3\tvirginica\n7.2\t3.6\t6.1\t2.5\tvirginica\n7.3\t2.9\t6.3\t1.8\tvirginica\n7.9\t3.8\t6.4\t2.0\tvirginica\n7.6\t3.0\t6.6\t2.1\tvirginica\n7.7\t2.8\t6.7\t2.0\tvirginica\n7.7\t3.8\t6.7\t2.2\tvirginica\n7.7\t2.6\t6.9\t2.3\tvirginica\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Build a Scikit-Learn Python model using embedded Python execution",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "#### Task 5: Write an UDF",
+          "",
+          "##### Task 5.1 Create a UDF that builds a Linear model",
+          "",
+          "Let's create a UDF that builds a linear model using `Scikit-Learn` and runs it from the Python and SQL APIs. First, we'll define our function, `build_lm`, and store it in the script repository. ",
+          "",
+          "This UDF builds a model and stores it in the datastore, and returns the predictor coefficients in a DataFrame. "
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Task 5: Write an UDF</h4>\n<h5>Task 5.1 Create a UDF that builds a Linear model</h5>\n<p>Let's create a UDF that builds a linear model using <code>Scikit-Learn</code> and runs it from the Python and SQL APIs. First, we'll define our function, <code>build_lm</code>, and store it in the script repository.</p>\n<p>This UDF builds a model and stores it in the datastore, and returns the predictor coefficients in a DataFrame.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "import oml",
+          "",
+          "build_lm = \"\"\"def build_lm(dat, dsname):",
+          "            from sklearn import linear_model",
+          "            import oml",
+          "            regr = linear_model.LinearRegression()",
+          "            import pandas as pd",
+          "            X = dat[[\"SEPAL_WIDTH\", \"PETAL_LENGTH\", \"PETAL_WIDTH\"]]",
+          "            y = dat[[\"SEPAL_LENGTH\"]]",
+          "            res = regr.fit(X, y)",
+          "            res_coef = res.coef_",
+          "            res.df = pd.DataFrame(res_coef, columns = ['Coef_SEPAL_WIDTH','Coef_PETAL_LENGTH','Coef_PETAL_WIDTH'])",
+          "            oml.ds.save(objs={'regr':regr}, name=dsname, overwrite=True)",
+          "            return res.df\"\"\"",
+          "            ",
+          "oml.script.create(\"build_lm\", func=build_lm, overwrite=True) "
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "View the UDF in the Python script repository",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 5.2: Check for the existence of the *build_lm* script in the script repository",
+          "",
+          "Check for the existence of the *build_lm* script in the script repository. ",
+          "Run the OML4Py function `oml.script.dir` and pass the script name to the `name` parameter."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 5.2: Check for the existence of the <em>build_lm</em> script in the script repository</h5>\n<p>Check for the existence of the <em>build_lm</em> script in the script repository.\n<br  />Run the OML4Py function <code>oml.script.dir</code> and pass the script name to the <code>name</code> parameter.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "oml.script.dir(name = \"build_lm\")"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "       name  ...                date\n0  build_lm  ... 2023-08-13 18:19:15\n\n[1 rows x 4 columns]\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Use the table-apply function to invoke the script from the Python API for embedded Python execution ",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 5.3: Test the `build_lm` function in the script repository on the IRIS data from the Python API",
+          "",
+          "Invoke the `build_lm` function in the script repository on the IRIS data from the Python API for embedded Python execution using `oml.table_apply`, and specify the datastore name `ds1`. ",
+          "",
+          "The returned value is a DataFrame containing the coefficients of the predictors."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 5.3: Test the <code>build_lm</code> function in the script repository on the IRIS data from the Python API</h5>\n<p>Invoke the <code>build_lm</code> function in the script repository on the IRIS data from the Python API for embedded Python execution using <code>oml.table_apply</code>, and specify the datastore name <code>ds1</code>.</p>\n<p>The returned value is a DataFrame containing the coefficients of the predictors.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "oml.table_apply(data   = IRIS, ",
+          "                func   = \"build_lm\", ",
+          "                dsname = \"ds1\")",
+          "                "
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "   Coef_SEPAL_WIDTH  Coef_PETAL_LENGTH  Coef_PETAL_WIDTH\n0          0.650837           0.709132         -0.556483\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "View datastore contents from Python and SQL",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 5.4: Verify the model object name and class via Python and SQL",
+          "",
+          "Model `regr` is now stored in datastore `ds1`. We can view datastore contents either from Python or SQL. ",
+          "First, display the model object name and class by passing the datastore name to the `oml.ds.describe` command. ",
+          "Then, display the same information by querying the `USER_PYQ_DATASTORES` view."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 5.4: Verify the model object name and class via Python and SQL</h5>\n<p>Model <code>regr</code> is now stored in datastore <code>ds1</code>. We can view datastore contents either from Python or SQL.\n<br  />First, display the model object name and class by passing the datastore name to the <code>oml.ds.describe</code> command.\n<br  />Then, display the same information by querying the <code>USER_PYQ_DATASTORES</code> view.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 6,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "oml.ds.describe(name=\"ds1\")[['object_name', 'class']]"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "  object_name             class\n0        regr  LinearRegression\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 6,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "",
+          "",
+          "select OBJNAME, CLASS from ALL_PYQ_DATASTORE_CONTENTS where DSNAME = 'ds1';"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "OBJNAME\tCLASS\nregr\tLinearRegression\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Run the same function using the SQL API table function pyqTableEval",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "#### Task 6: Using the SQL API to run the UDF, storing the results in a new datastore",
+          "",
+          "##### Task 6.1: Invoke the `build_lm` function by running a SELECT statement that uses `pyqTableEval`.",
+          "",
+          "Invoke the `build_lm` function by running a SELECT statement that uses `pyqTableEval`. ",
+          "The `inp_nam` parameter of `pyqTableEval` specifies the IRIS table as the data to pass to the UDF. ",
+          "The `PAR_LST` parameter specifies the names of the model and datastore to pass to the UDF. ",
+          "The `OUT_FMT` parameter specifies returning the value as a relational table and the `SCR_NAME` parameter specifies the `build_lm` UDF in the script repository to invoke. ",
+          "For this invocation, we persist the model to a new datastore, `ds2`."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Task 6: Using the SQL API to run the UDF, storing the results in a new datastore</h4>\n<h5>Task 6.1: Invoke the <code>build_lm</code> function by running a SELECT statement that uses <code>pyqTableEval</code>.</h5>\n<p>Invoke the <code>build_lm</code> function by running a SELECT statement that uses <code>pyqTableEval</code>.\n<br  />The <code>inp_nam</code> parameter of <code>pyqTableEval</code> specifies the IRIS table as the data to pass to the UDF.\n<br  />The <code>PAR_LST</code> parameter specifies the names of the model and datastore to pass to the UDF.\n<br  />The <code>OUT_FMT</code> parameter specifies returning the value as a relational table and the <code>SCR_NAME</code> parameter specifies the <code>build_lm</code> UDF in the script repository to invoke.\n<br  />For this invocation, we persist the model to a new datastore, <code>ds2</code>.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Return output as a structured table",
+        "hasTitle" : false,
+        "message" : [
+          "%sql\r",
+          "\r",
+          "SELECT * FROM table(pyqTableEval( \r",
+          "    inp_nam  => 'IRIS', \r",
+          "    par_lst  => '{\"oml_input_type\":\"pandas.DataFrame\", \"dsname\":\"ds2\"}',\r",
+          "    out_fmt  => '{\"Coef_SEPAL_WIDTH\":\"number\", \"Coef_PETAL_LENGTH\":\"number\", \"Coef_PETAL_WIDTH\":\"number\"}',\r",
+          "    scr_name => 'build_lm'));\r",
+          "    "
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "Coef_SEPAL_WIDTH\tCoef_PETAL_LENGTH\tCoef_PETAL_WIDTH\n0.6508371593\t0.7091319591\t-0.5564826602\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 6.2: Display the model object name and class",
+          "",
+          "Display the `regr` model object name and class residing in datastore `ds2`;"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 6.2: Display the model object name and class</h5>\n<p>Display the <code>regr</code> model object name and class residing in datastore <code>ds2</code>;</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "",
+          "select OBJNAME, CLASS from ALL_PYQ_DATASTORE_CONTENTS where DSNAME = 'ds2';"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "OBJNAME\tCLASS\nregr\tLinearRegression\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Return output as a JSON string",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 6.3: Repeat the function getting the result as a JSON string and storing it in another datastore",
+          "Run the function again, this time returning the output as a JSON string, and store the model in datastore `ds3`."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 6.3: Repeat the function getting the result as a JSON string and storing it in another datastore</h5>\n<p>Run the function again, this time returning the output as a JSON string, and store the model in datastore <code>ds3</code>.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "JSON output",
+        "hasTitle" : false,
+        "message" : [
+          "%sql\r",
+          "\r",
+          "SELECT value FROM table(pyqTableEval( \r",
+          "    inp_nam  => 'IRIS', \r",
+          "    par_lst  => '{\"oml_input_type\":\"pandas.DataFrame\", \"dsname\":\"ds3\"}',\r",
+          "    out_fmt  => 'JSON', \r",
+          "    scr_name => 'build_lm'));\r",
+          "    "
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "VALUE\n[{\"Coef_PETAL_LENGTH\":0.7091319591,\"Coef_PETAL_WIDTH\":-0.5564826602,\"Coef_SEPAL_WIDTH\":0.6508371593}]\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Return output as an XML string",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 6.4: Repeat the function getting the result as XML and storing it in another datastore",
+          "",
+          "In the SQL query, change the `out_fmt` parameter to `XML` to return an XML string, and persist the model to datastore `ds4`."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 6.4: Repeat the function getting the result as XML and storing it in another datastore</h5>\n<p>In the SQL query, change the <code>out_fmt</code> parameter to <code>XML</code> to return an XML string, and persist the model to datastore <code>ds4</code>.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "XML output",
+        "hasTitle" : false,
+        "message" : [
+          "%sql\r",
+          "\r",
+          "SELECT value FROM table(pyqTableEval( \r",
+          "    inp_nam  => 'IRIS', \r",
+          "    par_lst  => '{\"oml_input_type\":\"pandas.DataFrame\", \"dsname\":\"ds4\"}',\r",
+          "    out_fmt  => 'XML', \r",
+          "    scr_name => 'build_lm'));\r",
+          "    "
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "VALUE\n<root><pandas_dataFrame><ROW-pandas_dataFrame><Coef_SEPAL_WIDTH>0.650837159313218</Coef_SEPAL_WIDTH><Coef_PETAL_LENGTH>0.709131959136729</Coef_PETAL_LENGTH><Coef_PETAL_WIDTH>-0.556482660167024</Coef_PETAL_WIDTH></ROW-pandas_dataFrame></pandas_dataFrame></root>\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create a UDF to score using system-supported data-parallelism",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "#### Task 7: Define a UDF for scoring the model",
+          "",
+          "##### Task 7.1: Define a UDF and store it in the script repository",
+          "Define a UDF to score data using our third-party model created above. We name this UDF `score_mod` and save it to the script repository. The `score_mod` function loads the datastore containing the model and scores the daa using that model."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Task 7: Define a UDF for scoring the model</h4>\n<h5>Task 7.1: Define a UDF and store it in the script repository</h5>\n<p>Define a UDF to score data using our third-party model created above. We name this UDF <code>score_mod</code> and save it to the script repository. The <code>score_mod</code> function loads the datastore containing the model and scores the daa using that model.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "score_mod = \"\"\"def score_mod(dat, dsname):",
+          "            import oml",
+          "            import pandas as pd",
+          "            import matplotlib.pyplot as plt",
+          "            obj_dict = oml.ds.load(name=dsname, to_globals=False)  ",
+          "            regr = obj_dict[\"regr\"]                                      ",
+          "            pred = regr.predict(dat[['SEPAL_WIDTH','PETAL_LENGTH','PETAL_WIDTH']])   ",
+          "            return pd.concat([dat[['SPECIES', 'SEPAL_LENGTH']], pd.DataFrame(pred, columns=['Pred_SEPAL_LENGTH'])], axis=1)\"\"\" ",
+          "",
+          "oml.script.create(\"score_mod\", func=score_mod, overwrite=True) "
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Use row_apply to test the UDF from Python using data parallelism",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 7.2: Test the UDF using EPE via Python API",
+          "To test our UDF working with embedded Python execution, we use `oml.row_apply` to score the IRIS data using the model in the datastore. ",
+          "We'll next invoke the equivalent 'pyqRowEval' table function from the SQL API. ",
+          "",
+          "We run the script `score_mod` from the SQL API synchronously, which is the default. ",
+          "",
+          "Scoring occurs in parallel with 50 rows processed per UDF invocation across the multiple engines. ",
+          "This example results in three function invocations that are run in parallel if the service level is set to `MEDIUM` or `HIGH`, or serially if it's set to `LOW`",
+          "",
+          "In this example, we are loading the model stored in datastore `ds1`."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 7.2: Test the UDF using EPE via Python API</h5>\n<p>To test our UDF working with embedded Python execution, we use <code>oml.row_apply</code> to score the IRIS data using the model in the datastore.\n<br  />We'll next invoke the equivalent 'pyqRowEval' table function from the SQL API.</p>\n<p>We run the script <code>score_mod</code> from the SQL API synchronously, which is the default.</p>\n<p>Scoring occurs in parallel with 50 rows processed per UDF invocation across the multiple engines.\n<br  />This example results in three function invocations that are run in parallel if the service level is set to <code>MEDIUM</code> or <code>HIGH</code>, or serially if it's set to <code>LOW</code></p>\n<p>In this example, we are loading the model stored in datastore <code>ds1</code>.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "res = oml.row_apply(data     = IRIS, ",
+          "                    func     = score_mod, ",
+          "                    dsname   = \"ds1\", ",
+          "                    rows     = 50, ",
+          "                    parallel = True) ",
+          "",
+          "z.show(res)"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "SPECIES\tSEPAL_LENGTH\tPred_SEPAL_LENGTH\nsetosa\t4.6\t4.796846693548454\nversicolor\t5.1\t4.9983553424270495\nversicolor\t6.0\t5.567884419786516\nversicolor\t5.8\t5.716922751478398\nversicolor\t5.5\t5.46602333766773\nversicolor\t5.5\t5.596190769530374\nversicolor\t6.1\t5.79144191732434\nvirginica\t5.7\t5.915784866550187\nvirginica\t6.0\t5.998775048839733\nvirginica\t6.3\t5.971433132566889\nversicolor\t6.7\t6.408148244256902\nvirginica\t7.2\t7.191799369239573\nvirginica\t6.3\t6.867345223053978\nsetosa\t4.3\t4.532905859890898\nsetosa\t5.8\t5.1990079491010865\nsetosa\t5.0\t4.678338221650511\nsetosa\t4.4\t4.6190839857015416\nsetosa\t4.4\t4.749251417564185\nsetosa\t4.7\t4.749251417564185\nsetosa\t5.5\t4.94450256535815\nsetosa\t4.5\t4.107849708165586\nsetosa\t5.0\t4.888854299341448\nsetosa\t5.4\t5.093540897050033\nsetosa\t4.8\t4.745645447631916\nsetosa\t4.9\t5.136147743219848\nsetosa\t4.9\t4.6899971816152135\nsetosa\t4.4\t4.624913465683893\nsetosa\t4.6\t4.820164613477857\nsetosa\t5.0\t4.88524832940918\nsetosa\t5.2\t4.950332045340501\nsetosa\t5.1\t5.015415761271823\nsetosa\t5.0\t5.080499477203145\nsetosa\t5.5\t5.471001772791077\nsetosa\t4.8\t4.634348915598512\nsetosa\t4.6\t4.894683779323799\nsetosa\t5.1\t4.95976749525512\nsetosa\t4.9\t4.881642359476911\nsetosa\t5.2\t5.5324795187901294\nsetosa\t4.6\t4.825994093460208\nsetosa\t4.9\t4.825994093460208\nsetosa\t5.0\t5.021245241254174\nsetosa\t5.1\t5.021245241254174\nsetosa\t5.2\t5.086328957185495\nsetosa\t5.3\t5.216496389048141\nsetosa\t5.4\t5.216496389048141\nsetosa\t5.1\t5.225931838962758\nsetosa\t5.4\t4.909948709220769\nsetosa\t5.1\t5.105199857014735\nsetosa\t5.7\t5.560785868533988\nsetosa\t5.0\t4.83182357344256\nsetosa\t4.8\t4.896907289373882\nsetosa\t4.7\t4.961991005305204\nsetosa\t4.8\t5.092158437167847\nsetosa\t5.1\t5.352493300893134\nsetosa\t5.0\t4.980861905134443\nsetosa\t5.0\t4.934649089032359\nsetosa\t5.4\t5.16307163308152\nsetosa\t5.7\t5.367758230790105\nsetosa\t5.4\t5.377193680704725\nsetosa\t5.1\t4.9310431191000905\nsetosa\t4.8\t5.304898024908866\nsetosa\t5.1\t5.453936356600748\nversicolor\t5.0\t5.136575764322127\nversicolor\t4.9\t5.201659480253449\nversicolor\t5.0\t5.083151008355507\nversicolor\t5.7\t5.473653303943439\nversicolor\t5.6\t5.572872849600969\nversicolor\t5.5\t5.485312263908141\nversicolor\t5.5\t5.5005771938051105\nversicolor\t5.6\t5.636574105650106\nversicolor\t5.8\t5.711093271496047\nversicolor\t5.2\t5.599796739462643\nversicolor\t5.8\t5.964216195356798\nversicolor\t5.6\t5.992522545100656\nversicolor\t5.7\t5.862355113238013\nversicolor\t5.7\t6.119084007031032\nversicolor\t5.6\t5.868184593220365\nversicolor\t5.7\t5.998352025083008\nversicolor\t5.9\t5.952139208980925\nversicolor\t6.2\t6.06926522099668\nversicolor\t6.4\t6.06926522099668\nversicolor\t5.5\t6.00057553513309\nversicolor\t6.3\t5.7496761213224215\nversicolor\t6.6\t6.149613866824973\nversicolor\t6.7\t6.214697582756295\nvirginica\t4.9\t5.72816368503193\nversicolor\t5.7\t6.146007896892704\nversicolor\t5.4\t6.164878796721943\nversicolor\t5.6\t6.164878796721943\nversicolor\t6.2\t5.644209069271368\nversicolor\t6.0\t6.099795080790622\nversicolor\t6.4\t6.295046228584587\nversicolor\t6.0\t6.369565394430528\nversicolor\t6.6\t6.282004808737699\nversicolor\t6.1\t6.291440258652319\nversicolor\t6.5\t6.105624560772972\nversicolor\t6.1\t6.343482554736752\nversicolor\t6.1\t6.29726973863467\nversicolor\t7.0\t6.492520886428636\nversicolor\t6.7\t6.371788904480611\nversicolor\t6.3\t6.446308070326552\nvirginica\t6.0\t6.210673586412855\nvirginica\t6.2\t6.0805061545502115\nversicolor\t6.8\t6.303099218617021\nversicolor\t5.9\t6.340841018275499\nvirginica\t5.6\t6.040122818430479\nvirginica\t6.1\t6.281586782326529\nvirginica\t6.3\t6.0863356345325625\nversicolor\t6.3\t6.123113000720026\nversicolor\t6.9\t6.5136152963079565\nvirginica\t6.5\t6.442284073983112\nvirginica\t6.3\t6.460190540341336\nvirginica\t5.9\t6.423413174153873\nvirginica\t5.8\t6.172513760343206\nvirginica\t5.8\t6.172513760343206\nvirginica\t6.9\t6.210255560001683\nvirginica\t5.8\t5.9593561461910145\nversicolor\t6.0\t6.3394585583933125\nvirginica\t6.5\t6.383029838034141\nvirginica\t6.7\t6.216085039984034\nvirginica\t6.4\t6.314340152170551\nvirginica\t6.4\t6.417165667760352\nvirginica\t6.9\t6.534291679776107\nvirginica\t6.2\t6.618246295536668\nvirginica\t6.5\t6.707065957808566\nvirginica\t6.4\t6.772149673739887\nvirginica\t6.8\t6.540121159758458\nvirginica\t6.1\t6.74023735406376\nvirginica\t6.3\t6.712895437790915\nvirginica\t6.4\t6.4808669238094865\nvirginica\t6.4\t6.425218657792784\nvirginica\t6.7\t6.509173273553346\nvirginica\t6.3\t6.70442442134731\nvirginica\t6.7\t6.877198699379769\nvirginica\t6.9\t6.700818451415043\nvirginica\t6.7\t6.65460563531296\nvirginica\t7.2\t7.031102077582989\nvirginica\t6.7\t6.5943869658929755\nvirginica\t6.5\t6.697212481482774\nvirginica\t7.1\t6.8237739434131495\nvirginica\t6.8\t6.842644843242389\nvirginica\t7.4\t6.946729435411257\nvirginica\t7.7\t6.854303803207091\nvirginica\t7.2\t7.133509566761616\nvirginica\t7.3\t7.209287809186626\nvirginica\t7.9\t7.754657916448791\nvirginica\t7.6\t7.320166314808859\nvirginica\t7.7\t7.316560344876591\nvirginica\t7.7\t7.856100972156405\nvirginica\t7.7\t7.161274506791187\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Run the same function using the SQL API table function pyqRowEval with structured table output",
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "",
+          "SELECT *  FROM table(pyqRowEval(",
+          "        inp_nam  => 'IRIS',",
+          "        par_lst  => '{\"oml_input_type\":\"pandas.DataFrame\", \"dsname\":\"ds1\", \"oml_parallel_flag\":true, \"oml_service_level\":\"MEDIUM\"}',",
+          "        out_fmt  => '{\"SPECIES\":\"varchar2(10)\", \"SEPAL_LENGTH\":\"number\", \"Pred_SEPAL_LENGTH\":\"number\"}',",
+          "        row_num  => 50,",
+          "        scr_name => 'score_mod'));",
+          "        "
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "SPECIES\tSEPAL_LENGTH\tPred_SEPAL_LENGTH\nsetosa\t4.6\t4.7968466935\nversicolor\t5.1\t4.9983553424\nversicolor\t6\t5.5678844198\nversicolor\t5.8\t5.7169227515\nversicolor\t5.5\t5.4660233377\nversicolor\t5.5\t5.5961907695\nversicolor\t6.1\t5.7914419173\nvirginica\t5.7\t5.9157848666\nvirginica\t6\t5.9987750488\nvirginica\t6.3\t5.9714331326\nversicolor\t6.7\t6.4081482443\nvirginica\t7.2\t7.1917993692\nvirginica\t6.3\t6.8673452231\nsetosa\t4.3\t4.5329058599\nsetosa\t5.8\t5.1990079491\nsetosa\t5\t4.6783382217\nsetosa\t4.4\t4.6190839857\nsetosa\t4.4\t4.7492514176\nsetosa\t4.7\t4.7492514176\nsetosa\t5.5\t4.9445025654\nsetosa\t4.5\t4.1078497082\nsetosa\t5\t4.8888542993\nsetosa\t5.4\t5.0935408971\nsetosa\t4.8\t4.7456454476\nsetosa\t4.9\t5.1361477432\nsetosa\t4.9\t4.6899971816\nsetosa\t4.4\t4.6249134657\nsetosa\t4.6\t4.8201646135\nsetosa\t5\t4.8852483294\nsetosa\t5.2\t4.9503320453\nsetosa\t5.1\t5.0154157613\nsetosa\t5\t5.0804994772\nsetosa\t5.5\t5.4710017728\nsetosa\t4.8\t4.6343489156\nsetosa\t4.6\t4.8946837793\nsetosa\t5.1\t4.9597674953\nsetosa\t4.9\t4.8816423595\nsetosa\t5.2\t5.5324795188\nsetosa\t4.6\t4.8259940935\nsetosa\t4.9\t4.8259940935\nsetosa\t5\t5.0212452413\nsetosa\t5.1\t5.0212452413\nsetosa\t5.2\t5.0863289572\nsetosa\t5.3\t5.216496389\nsetosa\t5.4\t5.216496389\nsetosa\t5.1\t5.225931839\nsetosa\t5.4\t4.9099487092\nsetosa\t5.1\t5.105199857\nsetosa\t5.7\t5.5607858685\nsetosa\t5\t4.8318235734\nsetosa\t4.8\t4.8969072894\nsetosa\t4.7\t4.9619910053\nsetosa\t4.8\t5.0921584372\nsetosa\t5.1\t5.3524933009\nsetosa\t5\t4.9808619051\nsetosa\t5\t4.934649089\nsetosa\t5.4\t5.1630716331\nsetosa\t5.7\t5.3677582308\nsetosa\t5.4\t5.3771936807\nsetosa\t5.1\t4.9310431191\nsetosa\t4.8\t5.3048980249\nsetosa\t5.1\t5.4539363566\nversicolor\t5\t5.1365757643\nversicolor\t4.9\t5.2016594803\nversicolor\t5\t5.0831510084\nversicolor\t5.7\t5.4736533039\nversicolor\t5.6\t5.5728728496\nversicolor\t5.5\t5.4853122639\nversicolor\t5.5\t5.5005771938\nversicolor\t5.6\t5.6365741057\nversicolor\t5.8\t5.7110932715\nversicolor\t5.2\t5.5997967395\nversicolor\t5.8\t5.9642161954\nversicolor\t5.6\t5.9925225451\nversicolor\t5.7\t5.8623551132\nversicolor\t5.7\t6.119084007\nversicolor\t5.6\t5.8681845932\nversicolor\t5.7\t5.9983520251\nversicolor\t5.9\t5.952139209\nversicolor\t6.2\t6.069265221\nversicolor\t6.4\t6.069265221\nversicolor\t5.5\t6.0005755351\nversicolor\t6.3\t5.7496761213\nversicolor\t6.6\t6.1496138668\nversicolor\t6.7\t6.2146975828\nvirginica\t4.9\t5.728163685\nversicolor\t5.7\t6.1460078969\nversicolor\t5.4\t6.1648787967\nversicolor\t5.6\t6.1648787967\nversicolor\t6.2\t5.6442090693\nversicolor\t6\t6.0997950808\nversicolor\t6.4\t6.2950462286\nversicolor\t6\t6.3695653944\nversicolor\t6.6\t6.2820048087\nversicolor\t6.1\t6.2914402587\nversicolor\t6.5\t6.1056245608\nversicolor\t6.1\t6.3434825547\nversicolor\t6.1\t6.2972697386\nversicolor\t7\t6.4925208864\nversicolor\t6.7\t6.3717889045\nversicolor\t6.3\t6.4463080703\nvirginica\t6\t6.2106735864\nvirginica\t6.2\t6.0805061546\nversicolor\t6.8\t6.3030992186\nversicolor\t5.9\t6.3408410183\nvirginica\t5.6\t6.0401228184\nvirginica\t6.1\t6.2815867823\nvirginica\t6.3\t6.0863356345\nversicolor\t6.3\t6.1231130007\nversicolor\t6.9\t6.5136152963\nvirginica\t6.5\t6.442284074\nvirginica\t6.3\t6.4601905403\nvirginica\t5.9\t6.4234131742\nvirginica\t5.8\t6.1725137603\nvirginica\t5.8\t6.1725137603\nvirginica\t6.9\t6.21025556\nvirginica\t5.8\t5.9593561462\nversicolor\t6\t6.3394585584\nvirginica\t6.5\t6.383029838\nvirginica\t6.7\t6.21608504\nvirginica\t6.4\t6.3143401522\nvirginica\t6.4\t6.4171656678\nvirginica\t6.9\t6.5342916798\nvirginica\t6.2\t6.6182462955\nvirginica\t6.5\t6.7070659578\nvirginica\t6.4\t6.7721496737\nvirginica\t6.8\t6.5401211598\nvirginica\t6.1\t6.7402373541\nvirginica\t6.3\t6.7128954378\nvirginica\t6.4\t6.4808669238\nvirginica\t6.4\t6.4252186578\nvirginica\t6.7\t6.5091732736\nvirginica\t6.3\t6.7044244213\nvirginica\t6.7\t6.8771986994\nvirginica\t6.9\t6.7008184514\nvirginica\t6.7\t6.6546056353\nvirginica\t7.2\t7.0311020776\nvirginica\t6.7\t6.5943869659\nvirginica\t6.5\t6.6972124815\nvirginica\t7.1\t6.8237739434\nvirginica\t6.8\t6.8426448432\nvirginica\t7.4\t6.9467294354\nvirginica\t7.7\t6.8543038032\nvirginica\t7.2\t7.1335095668\nvirginica\t7.3\t7.2092878092\nvirginica\t7.9\t7.7546579164\nvirginica\t7.6\t7.3201663148\nvirginica\t7.7\t7.3165603449\nvirginica\t7.7\t7.8561009722\nvirginica\t7.7\t7.1612745068\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "PNG output",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "#### Task 8: Returning Graphics",
+          "",
+          "In the Python API, we can return images by setting the `graphics` argument to `True`. ",
+          "This returns the PNG image along with the structured content in OML Notebooks. ",
+          "",
+          "For the SQL API, when `OUT_FMT` is specified with `PNG`, the embedded Python execution functions return the response in a table with fixed columns, including an image bytes column. ",
+          "When calling the OML4Py SQL API, you must set the special control argument `oml_graphics_flag` to `true` to capture images rendered in the script. ",
+          "This is not currently supported for OML Notebooks, but the example is provided here for use in other SQL IDEs like SQL Developer. ",
+          "",
+          "The PNG output consists of four columns:",
+          "- The *NAME* column contains the name of the row. The *NAME* column value is *NULL* for `pyqEval` and `pyqTableEval` function output.",
+          "  For `pyqRowEval`, `pyqGroupEval`, `pyqIndexEval`, the *NAME* column value is the chunk/group/index name.",
+          "- The *ID* column indicates the ID of the image. The *VALUE* column contains the value returned from the UDF. ",
+          "- The *TITLE* column contains the titles of the rendered PNG image(s). ",
+          "- The *IMAGE* column is a BLOB column containing the bytes of the PNG image(s) rendered by the UDF.",
+          "",
+          "---",
+          "##### Task 8.1: Return a density plot with output",
+          "",
+          "The following example shows the OML4Py Python API returning the density plot (with output), and then the corresponding `pyqTableEval` function call."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Task 8: Returning Graphics</h4>\n<p>In the Python API, we can return images by setting the <code>graphics</code> argument to <code>True</code>.\n<br  />This returns the PNG image along with the structured content in OML Notebooks.</p>\n<p>For the SQL API, when <code>OUT_FMT</code> is specified with <code>PNG</code>, the embedded Python execution functions return the response in a table with fixed columns, including an image bytes column.\n<br  />When calling the OML4Py SQL API, you must set the special control argument <code>oml_graphics_flag</code> to <code>true</code> to capture images rendered in the script.\n<br  />This is not currently supported for OML Notebooks, but the example is provided here for use in other SQL IDEs like SQL Developer.</p>\n<p>The PNG output consists of four columns:</p>\n<ul>\n<li>The <em>NAME</em> column contains the name of the row. The <em>NAME</em> column value is <em>NULL</em> for <code>pyqEval</code> and <code>pyqTableEval</code> function output.\n<br  />For <code>pyqRowEval</code>, <code>pyqGroupEval</code>, <code>pyqIndexEval</code>, the <em>NAME</em> column value is the chunk/group/index name.</li>\n<li>The <em>ID</em> column indicates the ID of the image. The <em>VALUE</em> column contains the value returned from the UDF.</li>\n<li>The <em>TITLE</em> column contains the titles of the rendered PNG image(s).</li>\n<li>The <em>IMAGE</em> column is a BLOB column containing the bytes of the PNG image(s) rendered by the UDF.</li>\n</ul>\n<hr />\n<h5>Task 8.1: Return a density plot with output</h5>\n<p>The following example shows the OML4Py Python API returning the density plot (with output), and then the corresponding <code>pyqTableEval</code> function call.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create the density plot UDF in the script repository",
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "density_plt = \"\"\"def density_plt(dat):",
+          "    dat.plot(kind='density')",
+          "    return(True)\"\"\"",
+          "",
+          "oml.script.create(\"density_plt\", func=density_plt, overwrite=True) "
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Invoke UDF from Python and return PNG image",
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "res = oml.table_apply(data = IRIS, ",
+          "                func=\"density_plt\", ",
+          "                graphics=True)",
+          "",
+          "res"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<div style='width:auto;height:auto'><img src=data:image/png;base64,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YAkhhBBCGExmsIQQQgghDCYBSwghhBDCYBKwhBBCCCEMJgFLCCGEEMJgErCEEEIIIQwmAUsIIYQQwmASsIQQQgghDCYBSwghhBDCYBKwhBBCCCEMJgFLCCGEEMJgErCEEEIIIQwmAUsIIYQQwmASsIQQQgghDCYBSwghhBDCYBKwhBBCCCEMJgFLCCGEEMJgErCEEEIIIQwmAUsIIYQQwmASsIQQQgghDCYBSwghhBDCYBKwhBBCCCEMJgFLCCGEEMJgErCEEEIIIQwmAUsIIYQQwmASsIQQQgghDCYBSwghhBDCYBKwhBBCCCEMJgFLCCGEEMJgErCEEEIIIQwmAUsIIYQQwmASsIQQQgghDCYBSwghhBDCYBKwhBBCCCEMJgFLCCGEEMJgErCEEEIIIQwmAUsIIYQQwmASsIQQQgghDCYBSwghhBDCYBKwhBBCCCEMJgFLCCGEEMJgErCEEEIIIQwmAUsIIYQQwmASsIQQQgghDCYBSwghhBDCYBKwhBBCCCEMJgFLCCGEEMJgErCEEEIIIQwmAUsIIYQQwmASsIQQQgghDCYBSwghhBDCYBKwhBBCCCEMJgFLCCGEEMJgErCEEEIIIQwmAUsIIYQQwmASsIQQQgghDCYBSwghhBDCYBKwhBBCCCEMJgFLCCGEEMJgErCEEEIIIQwmAUsIIYQQwmASsIQQQgghDCYBSwghhBDCYBKwhBBCCCEMJgFLCCGEEMJgErCEEEIIIQz2/wF/EmvIs0mbhwAAAABJRU5ErkJggg== style='width=auto;height:auto'><div>\nTrue\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 8.2: Return the density plot via SQL API",
+          "The result is a RAW PNG file.  This file format can be viewed directly inside SQL Developer Desktop for example."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 8.2: Return the density plot via SQL API</h5>\n<p>The result is a RAW PNG file.  This file format can be viewed directly inside SQL Developer Desktop for example.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Corresponding SQL invocation to return PNG images",
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "",
+          "SELECT * FROM table(pyqTableEval( ",
+          "    inp_nam  => 'IRIS', ",
+          "    par_lst  => '{\"oml_input_type\":\"pandas.DataFrame\", \"oml_graphics_flag\":true}',",
+          "    out_fmt  => 'PNG', ",
+          "    scr_name => 'density_plt'));",
+          "    "
+        ],
+        "selectedVisualization" : null,
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : null,
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Asynchronous SQL API jobs",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "#### Task 9: Working with asynchronous jobs",
+          "",
+          "Asynchronous jobs do not wait for the SQL API call to return from the server with the result. ",
+          "If the UDF is performing long running computations, results may take a while to compute. ",
+          "With asynchroous invocation, users may continue working in the notebook or from their client interface.",
+          "",
+          "When a function is run asynchronously, it's run as a job which can be tracked by using the `pyqJobStatus` and `pyqJobResult` functions. ",
+          "In asynchronous mode, the SQL API returns a URL directly after the asynchronous job is submitted to the server. ",
+          "The URL contains a job ID, which can be used to fetch the job status and job result in subsequent SQL calls.",
+          "",
+          "When *submitting* asynchronous jobs, set `OUT_FMT` to `NULL` for JSON, PNG, and relational outputs. ",
+          "",
+          "When *fetching* the job result, specify the `OUT_FMT` in the `pyqJobResult` call. ",
+          "",
+          "**Note:** If XML output is expected from the asynchronous job, you must set `OUT_FMT` to XML when submitting the job and fetching the job result.",
+          "",
+          "##### Task 9.1: Run an asynchronous mode call",
+          "",
+          "To run a function in asynchronous mode, set the control argument `oml_async_flag` to `true` - the default value is `false` for synchronous mode. ",
+          "Asynchronous calls have a default timeout of 1800 seconds, or 30 minutes.",
+          "",
+          "Invoke `pyqRowEval` asynchronously and store the `JOB_ID` in a table for future result retrieval"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Task 9: Working with asynchronous jobs</h4>\n<p>Asynchronous jobs do not wait for the SQL API call to return from the server with the result.\n<br  />If the UDF is performing long running computations, results may take a while to compute.\n<br  />With asynchroous invocation, users may continue working in the notebook or from their client interface.</p>\n<p>When a function is run asynchronously, it's run as a job which can be tracked by using the <code>pyqJobStatus</code> and <code>pyqJobResult</code> functions.\n<br  />In asynchronous mode, the SQL API returns a URL directly after the asynchronous job is submitted to the server.\n<br  />The URL contains a job ID, which can be used to fetch the job status and job result in subsequent SQL calls.</p>\n<p>When <em>submitting</em> asynchronous jobs, set <code>OUT_FMT</code> to <code>NULL</code> for JSON, PNG, and relational outputs.</p>\n<p>When <em>fetching</em> the job result, specify the <code>OUT_FMT</code> in the <code>pyqJobResult</code> call.</p>\n<p><strong>Note:</strong> If XML output is expected from the asynchronous job, you must set <code>OUT_FMT</code> to XML when submitting the job and fetching the job result.</p>\n<h5>Task 9.1: Run an asynchronous mode call</h5>\n<p>To run a function in asynchronous mode, set the control argument <code>oml_async_flag</code> to <code>true</code> - the default value is <code>false</code> for synchronous mode.\n<br  />Asynchronous calls have a default timeout of 1800 seconds, or 30 minutes.</p>\n<p>Invoke <code>pyqRowEval</code> asynchronously and store the <code>JOB_ID</code> in a table for future result retrieval</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Invoke pyqRowEval asynchronously and store the JOB_ID in a table for future result retrieval",
+        "hasTitle" : false,
+        "message" : [
+          "%script",
+          "",
+          "BEGIN EXECUTE IMMEDIATE 'DROP TABLE JOB_TABLE';",
+          "EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "CREATE TABLE JOB_TABLE (JOB_ID) AS",
+          "SELECT SUBSTR(VALUE, INSTR(VALUE, '/', -1 ) + 1, 36) ",
+          "FROM table(pyqRowEval(",
+          "            inp_nam  => 'IRIS',",
+          "            par_lst  => '{\"oml_input_type\":\"pandas.DataFrame\", ",
+          "                          \"dsname\":\"ds1\",",
+          "                          \"oml_parallel_flag\":true, ",
+          "                          \"oml_service_level\":\"MEDIUM\", ",
+          "                          \"oml_async_flag\":true}',   -- setting async flag to true",
+          "            out_fmt  => '{\"SPECIES\":\"varchar2(10)\", ",
+          "                          \"SEPAL_LENGTH\":\"number\", ",
+          "                          \"Pred_SEPAL_LENGTH\":\"number\"}',",
+          "            row_num  => 50,",
+          "            scr_name => 'score_mod'));"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "script.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nTable JOB_TABLE created.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 9.2: Check Job ID"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 9.2: Check Job ID</h5>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "View the JOB_ID",
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "",
+          "SELECT * FROM JOB_TABLE;"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "sql.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "JOB_ID\n81875384-670a-49aa-8106-2f8e599b31e6\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 9.3: Wait for job to complete"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 9.3: Wait for job to complete</h5>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Give the asynchronous job a chance to complete before viewing result",
+        "hasTitle" : false,
+        "message" : [
+          "%script",
+          "",
+          "-- wait for job to complete",
+          "BEGIN sys.dbms_session.sleep(5); END;"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "script.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Check job status",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 9.4: Poll the job status using the Job ID",
+          "",
+          "To poll the job status, pass the job ID to the `pyqJobStatus` function. ",
+          "The response indicates the job is found, completed, and includes the job ID and location containing the results. ",
+          "If the job is pending, the response will be: *job is still running*."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 9.4: Poll the job status using the Job ID</h5>\n<p>To poll the job status, pass the job ID to the <code>pyqJobStatus</code> function.\n<br  />The response indicates the job is found, completed, and includes the job ID and location containing the results.\n<br  />If the job is pending, the response will be: <em>job is still running</em>.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%script",
+          "",
+          "DECLARE",
+          "   job_id varchar2(1000);",
+          "   job_status varchar2(1000);",
+          "BEGIN",
+          "    SELECT JOB_ID INTO job_id FROM JOB_TABLE;",
+          "    -- DBMS_OUTPUT.PUT_LINE('Job ID is: '||job_id);",
+          "    SELECT VALUE INTO job_status FROM pyqJobStatus(job_id => job_id);",
+          "    DBMS_OUTPUT.PUT_LINE('Job status URL is: '|| job_status);",
+          "END;",
+          "/"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "script.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "Job status URL is:\nhttps://ijxtlx3j6x9uawu-omllabs.adb.us-sanjose-1.oraclecloudapps.com/oml/api/py-\nscripts/v1/jobs/81875384-670a-49aa-8106-2f8e599b31e6/result\n\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Retrieve result from completed job",
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 9.5: Inspect the result from the Job",
+          "",
+          "Run a SELECT statement that invokes the `pyqJobResult` function and returns the result. ",
+          "The `OUT_FMT` argument specifies a JSON string that contains the column names and data types of the table returned by `pyqGroupEval`."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 9.5: Inspect the result from the Job</h5>\n<p>Run a SELECT statement that invokes the <code>pyqJobResult</code> function and returns the result.\n<br  />The <code>OUT_FMT</code> argument specifies a JSON string that contains the column names and data types of the table returned by <code>pyqGroupEval</code>.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%script\r",
+          "\r",
+          "SET LINESIZE 1000;\r",
+          "\r",
+          "DECLARE\r",
+          "   job_id varchar2(100);\r",
+          "   job_result varchar2(11500);\r",
+          "BEGIN\r",
+          "    SELECT JOB_ID INTO job_id FROM JOB_TABLE;\r",
+          "      -- enable to print Job Id\r",
+          "      -- DBMS_OUTPUT.PUT_LINE('Job Id is: '|| job_id);\r",
+          "    \r",
+          "    SELECT VALUE INTO job_result from pyqJobResult(job_id => job_id);\r",
+          "    DBMS_OUTPUT.PUT_LINE('Job result is: '|| job_result);\r",
+          "END;\r"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "script.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\n---------------------------\nJob result is:\n[{\"Pred_SEPAL_LENGTH\":4.7968466935,\"SEPAL_LENGTH\":4.6,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.9983553424,\"SEPAL_LENGTH\":5.1,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.5678844198,\"SEPAL_LENGTH\":6,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.7169227515,\"SEPAL_LENGTH\":5.8,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.4660233377,\"SEPAL_LENGTH\":5.5,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.5961907695,\"SEPAL_LENGTH\":5.5,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.7914419173,\"SEPAL_LENGTH\":6.1,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.9157848666,\"SEPAL_LENGTH\":5.7,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":5.9987750488,\"SEPAL_LENGTH\":6,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":5.9714331326,\"SEPAL_LENGTH\":6.3,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.4081482443,\"SEPAL_LENGTH\":6.7,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":7.1917993692,\"SEPAL_LENGTH\":7.2,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.8673452231,\"SEPAL_LENGTH\":6.3,\"SPECIES\":\"virginica\"},{\"Pred_SEPA\nL_LENGTH\":4.5329058599,\"SEPAL_LENGTH\":4.3,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.1990079491,\"SEPAL_LENGTH\":5.8,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.6783382217,\"SEPAL_LENGTH\":5,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.6190839857,\"SEPAL_LENGTH\":4.4,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.7492514176,\"SEPAL_LENGTH\":4.4,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.7492514176,\"SEPAL_LENGTH\":4.7,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.9445025654,\"SEPAL_LENGTH\":5.5,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.1078497082,\"SEPAL_LENGTH\":4.5,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.8888542993,\"SEPAL_LENGTH\":5,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.0935408971,\"SEPAL_LENGTH\":5.4,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.7456454476,\"SEPAL_LENGTH\":4.8,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.1361477432,\"SEPAL_LENGTH\":4.9,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.6899971816,\"SEPAL_LENGTH\":4.9,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.6249134657,\"SEPAL_LENGTH\":4.4,\"SPECIES\":\"se\ntosa\"},{\"Pred_SEPAL_LENGTH\":4.8201646135,\"SEPAL_LENGTH\":4.6,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.8852483294,\"SEPAL_LENGTH\":5,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.9503320453,\"SEPAL_LENGTH\":5.2,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.0154157613,\"SEPAL_LENGTH\":5.1,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.0804994772,\"SEPAL_LENGTH\":5,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.4710017728,\"SEPAL_LENGTH\":5.5,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.6343489156,\"SEPAL_LENGTH\":4.8,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.8946837793,\"SEPAL_LENGTH\":4.6,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.9597674953,\"SEPAL_LENGTH\":5.1,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.8816423595,\"SEPAL_LENGTH\":4.9,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.5324795188,\"SEPAL_LENGTH\":5.2,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.8259940935,\"SEPAL_LENGTH\":4.6,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.8259940935,\"SEPAL_LENGTH\":4.9,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.0212452413,\"SEPAL_LENGTH\"\n:5,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.0212452413,\"SEPAL_LENGTH\":5.1,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.0863289572,\"SEPAL_LENGTH\":5.2,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.216496389,\"SEPAL_LENGTH\":5.3,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.216496389,\"SEPAL_LENGTH\":5.4,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.225931839,\"SEPAL_LENGTH\":5.1,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.9099487092,\"SEPAL_LENGTH\":5.4,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.105199857,\"SEPAL_LENGTH\":5.1,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.5607858685,\"SEPAL_LENGTH\":5.7,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.8318235734,\"SEPAL_LENGTH\":5,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.8969072894,\"SEPAL_LENGTH\":4.8,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.9619910053,\"SEPAL_LENGTH\":4.7,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.0921584372,\"SEPAL_LENGTH\":4.8,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.3524933009,\"SEPAL_LENGTH\":5.1,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.9808619051,\n\"SEPAL_LENGTH\":5,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.934649089,\"SEPAL_LENGTH\":5,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.1630716331,\"SEPAL_LENGTH\":5.4,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.3677582308,\"SEPAL_LENGTH\":5.7,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.3771936807,\"SEPAL_LENGTH\":5.4,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":4.9310431191,\"SEPAL_LENGTH\":5.1,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.3048980249,\"SEPAL_LENGTH\":4.8,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.4539363566,\"SEPAL_LENGTH\":5.1,\"SPECIES\":\"setosa\"},{\"Pred_SEPAL_LENGTH\":5.1365757643,\"SEPAL_LENGTH\":5,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.2016594803,\"SEPAL_LENGTH\":4.9,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.0831510084,\"SEPAL_LENGTH\":5,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.4736533039,\"SEPAL_LENGTH\":5.7,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.5728728496,\"SEPAL_LENGTH\":5.6,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.4853122639,\"SEPAL_LENGTH\":5.5,\"SPECIES\":\"versicolor\n\"},{\"Pred_SEPAL_LENGTH\":5.5005771938,\"SEPAL_LENGTH\":5.5,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.6365741057,\"SEPAL_LENGTH\":5.6,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.7110932715,\"SEPAL_LENGTH\":5.8,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.5997967395,\"SEPAL_LENGTH\":5.2,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.9642161954,\"SEPAL_LENGTH\":5.8,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.9925225451,\"SEPAL_LENGTH\":5.6,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.8623551132,\"SEPAL_LENGTH\":5.7,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.119084007,\"SEPAL_LENGTH\":5.7,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.8681845932,\"SEPAL_LENGTH\":5.6,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.9983520251,\"SEPAL_LENGTH\":5.7,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.952139209,\"SEPAL_LENGTH\":5.9,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.069265221,\"SEPAL_LENGTH\":6.2,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.069265221,\"SEPAL_LENGTH\":6.4,\"SPECIES\":\"versicolor\"},\n{\"Pred_SEPAL_LENGTH\":6.0005755351,\"SEPAL_LENGTH\":5.5,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.7496761213,\"SEPAL_LENGTH\":6.3,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.1496138668,\"SEPAL_LENGTH\":6.6,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.2146975828,\"SEPAL_LENGTH\":6.7,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.728163685,\"SEPAL_LENGTH\":4.9,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.1460078969,\"SEPAL_LENGTH\":5.7,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.1648787967,\"SEPAL_LENGTH\":5.4,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.1648787967,\"SEPAL_LENGTH\":5.6,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":5.6442090693,\"SEPAL_LENGTH\":6.2,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.0997950808,\"SEPAL_LENGTH\":6,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.2950462286,\"SEPAL_LENGTH\":6.4,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.3695653944,\"SEPAL_LENGTH\":6,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.2820048087,\"SEPAL_LENGTH\":6.6,\"SPECIES\":\"versicolor\"},{\"Pre\nd_SEPAL_LENGTH\":6.2914402587,\"SEPAL_LENGTH\":6.1,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.1056245608,\"SEPAL_LENGTH\":6.5,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.3434825547,\"SEPAL_LENGTH\":6.1,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.2972697386,\"SEPAL_LENGTH\":6.1,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.4925208864,\"SEPAL_LENGTH\":7,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.3717889045,\"SEPAL_LENGTH\":6.7,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.4463080703,\"SEPAL_LENGTH\":6.3,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.2106735864,\"SEPAL_LENGTH\":6,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.0805061546,\"SEPAL_LENGTH\":6.2,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.3030992186,\"SEPAL_LENGTH\":6.8,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.3408410183,\"SEPAL_LENGTH\":5.9,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.0401228184,\"SEPAL_LENGTH\":5.6,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.2815867823,\"SEPAL_LENGTH\":6.1,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL\n_LENGTH\":6.0863356345,\"SEPAL_LENGTH\":6.3,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.1231130007,\"SEPAL_LENGTH\":6.3,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.5136152963,\"SEPAL_LENGTH\":6.9,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.442284074,\"SEPAL_LENGTH\":6.5,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.4601905403,\"SEPAL_LENGTH\":6.3,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.4234131742,\"SEPAL_LENGTH\":5.9,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.1725137603,\"SEPAL_LENGTH\":5.8,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.1725137603,\"SEPAL_LENGTH\":5.8,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.21025556,\"SEPAL_LENGTH\":6.9,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":5.9593561462,\"SEPAL_LENGTH\":5.8,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.3394585584,\"SEPAL_LENGTH\":6,\"SPECIES\":\"versicolor\"},{\"Pred_SEPAL_LENGTH\":6.383029838,\"SEPAL_LENGTH\":6.5,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.21608504,\"SEPAL_LENGTH\":6.7,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.314340\n1522,\"SEPAL_LENGTH\":6.4,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.4171656678,\"SEPAL_LENGTH\":6.4,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.5342916798,\"SEPAL_LENGTH\":6.9,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.6182462955,\"SEPAL_LENGTH\":6.2,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.7070659578,\"SEPAL_LENGTH\":6.5,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.7721496737,\"SEPAL_LENGTH\":6.4,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.5401211598,\"SEPAL_LENGTH\":6.8,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.7402373541,\"SEPAL_LENGTH\":6.1,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.7128954378,\"SEPAL_LENGTH\":6.3,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.4808669238,\"SEPAL_LENGTH\":6.4,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.4252186578,\"SEPAL_LENGTH\":6.4,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.5091732736,\"SEPAL_LENGTH\":6.7,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.7044244213,\"SEPAL_LENGTH\":6.3,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.8771986994,\"SEPAL_\nLENGTH\":6.7,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.7008184514,\"SEPAL_LENGTH\":6.9,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.6546056353,\"SEPAL_LENGTH\":6.7,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":7.0311020776,\"SEPAL_LENGTH\":7.2,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.5943869659,\"SEPAL_LENGTH\":6.7,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.6972124815,\"SEPAL_LENGTH\":6.5,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.8237739434,\"SEPAL_LENGTH\":7.1,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.8426448432,\"SEPAL_LENGTH\":6.8,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.9467294354,\"SEPAL_LENGTH\":7.4,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":6.8543038032,\"SEPAL_LENGTH\":7.7,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":7.1335095668,\"SEPAL_LENGTH\":7.2,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":7.2092878092,\"SEPAL_LENGTH\":7.3,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":7.7546579164,\"SEPAL_LENGTH\":7.9,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":7.3201663148,\"SEPAL_LENGTH\":7.6,\n\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":7.3165603449,\"SEPAL_LENGTH\":7.7,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":7.8561009722,\"SEPAL_LENGTH\":7.7,\"SPECIES\":\"virginica\"},{\"Pred_SEPAL_LENGTH\":7.1612745068,\"SEPAL_LENGTH\":7.7,\"SPECIES\":\"virginica\"}]\n\n\nPL/SQL procedure successfully completed.\n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "## Learn More",
+          "",
+          "* [OML4Py Embedded Python Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728)",
+          "* [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)",
+          "* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)",
+          "",
+          "**Last Updated Date** - August 2023",
+          "",
+          "Copyright (c) 2023 Oracle Corporation ",
+          "[The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : "[{\"html\":{\"height\":300,\"lastColumns\":[]}}]",
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h2>Learn More</h2>\n<ul>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728\">OML4Py Embedded Python Execution</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/\">Oracle Machine Learning Notebooks</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B\">Oracle Machine Learning Notebooks - Early Adopter</a></li>\n</ul>\n<p><strong>Last Updated Date</strong> - August 2023</p>\n<p>Copyright (c) 2023 Oracle Corporation\n<br  /><a href=\"https://oss.oracle.com/licenses/upl/\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      }
+    ]
+  }
+]

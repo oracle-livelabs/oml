@@ -1,0 +1,71 @@
+{
+    "workshoptitle": "Introduction to Oracle Machine Learning for Python on Autonomous Database",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "filename": "../../introduction/introduction.md",
+            "type": "freetier-ocw23"
+        },
+        {
+            "title": "Get Started",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable).",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md",
+            "type": "freetier-ocw23"
+        },
+        {
+            "title": "Provision an Autonomous Data Warehouse with OML users",
+            "filename": "../../provision-adb-oml/provision-adb-oml.md",
+            "type": "freetier-ocw23"
+        },
+        {
+            "title": "Lab 1: Get Started with OML4Py",
+            "filename": "../../get-started/get-started.md",
+            "type": "freetier-ocw23"
+        },
+        {
+            "title": "Lab 2: Select and manipulate data with Transparency Layer",
+            "filename": "../../data-slct-mnpn/data-slct-mnpn.md",
+            "type": "freetier-ocw23"
+        },
+        {
+            "title": "Lab 3: Use in-database algorithms and models",
+            "filename": "../../in-db-algo-models/in-db-algo-models.md",
+            "type": "freetier-ocw23"
+        },
+		    {
+            "title": "Lab 4: Store and manage Python objects and UDFs",
+            "filename": "../../dstore-script-repo/dstore-script-repo.md",
+            "type": "freetier-ocw23"
+        },
+        {
+            "title": "Lab 5: Use AutoML UI",
+            "filename": "../../automl-ui/automl-ui.md",
+            "type": "freetier-ocw23"
+        },
+        {
+            "title": "Bonus Lab 1: UDFs with Python API for EPE",
+            "filename": "../../embd-python/embd-python.md",
+            "type": "freetier-ocw23"
+        },
+        {
+            "title": "Bonus Lab 2: UDFs with the SQL API for EPE",
+            "filename": "../../embd-python-sql/embd-python-sql.md",
+            "type": "freetier-ocw23"
+        },
+        {
+            "title": "Bonus Lab 3: UDFs with the REST API for EPE",
+            "filename": "../../embd-python-rest/embd-python-rest.md",
+            "type": "freetier-ocw23"
+        },
+        {
+            "title": "Bonus Lab 4: Use AutoML via Python API",
+            "filename": "../../automl/automl.md",
+            "type": "freetier-ocw23"
+        },
+        {
+            "title": "Oracle CloudWorld 2023 - Support",
+            "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
+        }
+    ]
+}
