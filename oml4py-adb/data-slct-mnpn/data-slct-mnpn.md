@@ -33,28 +33,75 @@ In this lab, you will learn how to:
 
 1. We need to access and run the OML notebook for this lab.
 
+<if type="freetier">
  > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please [**CLICK HERE** to download the "Lab 2 - Select and manipulate data with the Transparency Layer" notebook DSNB file](<./../notebooks/Lab 2 - Select and manipulate data with the Transparency Layer.dsnb?download=1>). This notebook contains the scripts for **Lab 2**. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
+ </if>
+
+ <if type="livelabs">
+ > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please [**CLICK HERE** to download the "Lab 2 - Select and manipulate data with the Transparency Layer" notebook DSNB file](<./../notebooks/Lab 2 - Select and manipulate data with the Transparency Layer.dsnb?download=1>). This notebook contains the scripts for **Lab 2**. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
+ </if>
+
+ <if type="livelabs-ocw23">
+  > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please [**CLICK HERE** to download the "Lab 2 - Abridged OCW23 - Select and manipulate data with the Transparency Layer." notebook DSNB file](<./../notebooks/Lab 2 - Abridged OCW23 - Select and manipulate data with the Transparency Layer.dsnb?download=1>). This notebook contains the scripts for **Lab 2**. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
+ </if>
+
+ <if type="freetier-ocw23">
+  > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please [**CLICK HERE** to download the "Lab 2 - Abridged OCW23 - Select and manipulate data with the Transparency Layer." notebook DSNB file](<./../notebooks/Lab 2 - Abridged OCW23 - Select and manipulate data with the Transparency Layer.dsnb?download=1>). This notebook contains the scripts for **Lab 2**. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
+ </if>
 
    Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks EA**. 
    
    ![Go to main Notebooks EA](images/go-back-to-notebooks.png " ")
-   
+    
+   <if type="freetier">
    Click the **Lab 2** notebook to view it.
    
-   <if type="freetier">
-   ![Open Lab 2 notebook ft](images/click-on-lab2-ft.png " ") </if>
-   <if type="livelabs">
-   ![Open Lab 2 notebook ll](images/click-on-lab2-ft.png " ") </if>
-   <if type="freetier-ocw23">
-   ![Open Lab 2 notebook ft](images/click-on-lab2-ft-ocw23.png " ") </if>
-   <if type="livelabs-ocw23">
-   ![Open Lab 2 notebook ll](images/click-on-lab2-ft-ocw23.png " ") </if>
-
+   ![Open Lab 2 notebook ft](images/click-on-lab2-ft.png " ") 
+   
    OML Notebooks will create a session and make the notebook available for editing.
 
    You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
 
   ![Lab 2 main screen](images/lab2-main.png " ")
+  </if>
+
+  <if type="livelabs">
+   Click the **Lab 2** notebook to view it.
+   
+   ![Open Lab 2 notebook ll](images/click-on-lab2-ft.png " ") 
+   
+   OML Notebooks will create a session and make the notebook available for editing.
+
+   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+
+  ![Lab 2 main screen](images/lab2-main.png " ")
+  </if>
+
+  <if type="freetier-ocw23">
+   Click the **Lab 2 - Abridged OCW23** notebook to view it.
+   
+   ![Open Lab 2 notebook ft](images/click-on-lab2-ft-ocw23.png " ") 
+
+   OML Notebooks will create a session and make the notebook available for editing.
+
+   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+
+  ![Lab 2 main screen](images/lab2-main-abridged.png " ")
+  </if>
+
+  <if type="livelabs-ocw23">
+   Click the **Lab 2 - Abridged OCW23** notebook to view it.
+   
+   ![Open Lab 2 notebook ll](images/click-on-lab2-ft-ocw23.png " ") 
+  
+   OML Notebooks will create a session and make the notebook available for editing.
+
+   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+
+  ![Lab 2 main screen](images/lab2-main-abridged.png " ")
+  </if>
+
+
 
 
 ## Task 1: Import libraries and create Oracle Machine Learning DataFrame proxy object
