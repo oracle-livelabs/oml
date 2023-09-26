@@ -128,6 +128,10 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 </if>
 ## Task 2: Get familiar with OML Notebooks
 
+We will now download a set of Notebooks that will be used throughout the workshop. It is important that you download and uncompress the collection of Notebooks to a memorable place so that you can find them when it's time to import the files.
+
+> **NOTE:** There is no Notebook for Lab 5, even though you see Lab 5 in the main index of the workshop, because we will be using an interactive UI during that Lab.
+
 <if type="freetier">
 1. [**CLICK HERE** to download a ZIP file with all the notebooks we will use for these Labs (in a special DSNB format)](https://objectstorage.us-ashburn-1.oraclecloud.com/p/-i6x7RilAL74Y-CNNwX-sWS7yn14fD86s7ixs18e-YFBigdgYcGcRwAvYsRjjmn1/n/adwc4pm/b/oml4py_labs/o/oml4py_labs_freetier_ds.zip?download=1) which contain the notebooks for the Labs.  Save it to your local machine and __extract them__ to a memorable place.
 </if>
@@ -149,14 +153,14 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
   ![OML Notebooks import](images/click-on-import-notebook.png " ")
 
  - Select all the extracted notebooks at once from your local folder and click on **Open**.
- <if type="freetier">Select the 10 JSON files on your machine and click Open.
-      ![Select the 10 JSON files on your machine and click Open](images/open-lab-files-ft.png " ")</if>
- <if type="freetier-ocw23">Select the 10 JSON files on your machine and click Open.
-      ![Select the 10 JSON files on your machine and click Open](images/open-lab-files-ft-ocw23.png " ")</if>
- <if type="livelabs">Select the 10 JSON files on your machine and click Open
-      ![Select the 10 JSON files on your machine and click Open](images/open-lab-files-ft.png " ") </if>
-<if type="livelabs-ocw23">Select the 10 JSON files on your machine and click Open.
-      ![Select the 10 JSON files on your machine and click Open](images/open-lab-files-ft-ocw23.png " ") </if>
+ <if type="freetier">Select the 10 DSNB files on your machine and click Open.
+      ![Select the 10 DSNB files on your machine and click Open](images/open-lab-files-ft.png " ")</if>
+ <if type="freetier-ocw23">Select the 11 DSNB files on your machine and click Open.
+      ![Select the 11 DSNB files on your machine and click Open](images/open-lab-files-ll-ocw23.png " ")</if>
+ <if type="livelabs">Select the 10 DSNB files on your machine and click Open
+      ![Select the 10 DSNB files on your machine and click Open](images/open-lab-files-ll.png " ") </if>
+<if type="livelabs-ocw23">Select the 11 DSNB files on your machine and click Open.
+      ![Select the 11 DSNB files on your machine and click Open](images/open-lab-files-ll-ocw23.png " ") </if>
 
  - After the notebooks are successfully imported, click the Lab 1 notebook to view it.
  <if type="freetier">   ![In the Notebooks listing open Lab 1 notebook ft](images/click-on-lab1-ft.png " ") </if>

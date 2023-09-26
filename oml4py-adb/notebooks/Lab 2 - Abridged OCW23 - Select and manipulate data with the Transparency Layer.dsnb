@@ -1,0 +1,2369 @@
+[
+  {
+    "name" : "Lab 2 - Abridged - Select and manipulate data with the Transparency Layer",
+    "description" : null,
+    "tags" : null,
+    "version" : "6",
+    "layout" : "jupyter",
+    "type" : "low",
+    "readOnly" : false,
+    "snapshot" : false,
+    "template" : null,
+    "templateConfig" : null,
+    "paragraphs" : [
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "# Select and manipulate data using the Transparency Layer",
+          "# Special Abridged version for OCW 23",
+          "",
+          "## Introduction",
+          "",
+          "This lab shows how to use the transparency layer classes to work with data and to perform exploratory data analysis.",
+          "",
+          "Estimated Lab Time: 10 minutes",
+          "",
+          "###### About Transparency Layer, Data Selection and Manipulation",
+          "The transparency layer classes allow you to convert select Python objects to Oracle Autonomous Database (ADB) objects. You can also invoke a range of familiar overloaded Python functions that run corresponding SQL on tables in the database.",
+          "",
+          "The OML4Py transparency layer supports functions that interact with database data and enables you to:",
+          "* Load Python `pandas.DataFrame` objects to Oracle Database to create database tables",
+          "* Access and manipulate database tables and views through the use of proxy objects",
+          "* Overloads Python functions, translating their functionality into SQL",
+          "* Leverages proxy objects for database data",
+          "* Uses familiar Python syntax to manipulate database data",
+          "",
+          "##### Objectives",
+          "",
+          "In this lab, you will learn how to:",
+          "  * Use the `oml.push` function to create a temporary table",
+          "  * Work with table rows and columns using proxy objects",
+          "  * Work with `pandas.DataFrame` object",
+          "  * Use the `append` function",
+          "  * Use the `concat` function",
+          "  * Use the `split` and `KFold` function",
+          "  * Use the `crosstab` and `pivot_table` functions on a DataFrame",
+          "",
+          "",
+          "**Copyright (c) 2023 Oracle Corporation**",
+          "[The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)",
+          "",
+          "---",
+          "",
+          "##### Task 1: Import libraries and create OML DataFrame proxy object",
+          "",
+          "To use OML4Py, you must first import the `oml` module and the Pandas library to support OML4Py data manipulation and analysis, data exploration and preparation.",
+          "",
+          "##### Task 1.1",
+          "Run the following scripts to import the `oml` module, the Pandas library and set the display options:"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h1>Select and manipulate data using the Transparency Layer</h1>\n<h1>Special Abridged version for OCW 23</h1>\n<h2>Introduction</h2>\n<p>This lab shows how to use the transparency layer classes to work with data and to perform exploratory data analysis.</p>\n<p>Estimated Lab Time: 10 minutes</p>\n<h6>About Transparency Layer, Data Selection and Manipulation</h6>\n<p>The transparency layer classes allow you to convert select Python objects to Oracle Autonomous Database (ADB) objects. You can also invoke a range of familiar overloaded Python functions that run corresponding SQL on tables in the database.</p>\n<p>The OML4Py transparency layer supports functions that interact with database data and enables you to:</p>\n<ul>\n<li>Load Python <code>pandas.DataFrame</code> objects to Oracle Database to create database tables</li>\n<li>Access and manipulate database tables and views through the use of proxy objects</li>\n<li>Overloads Python functions, translating their functionality into SQL</li>\n<li>Leverages proxy objects for database data</li>\n<li>Uses familiar Python syntax to manipulate database data</li>\n</ul>\n<h5>Objectives</h5>\n<p>In this lab, you will learn how to:</p>\n<ul>\n<li>Use the <code>oml.push</code> function to create a temporary table</li>\n<li>Work with table rows and columns using proxy objects</li>\n<li>Work with <code>pandas.DataFrame</code> object</li>\n<li>Use the <code>append</code> function</li>\n<li>Use the <code>concat</code> function</li>\n<li>Use the <code>split</code> and <code>KFold</code> function</li>\n<li>Use the <code>crosstab</code> and <code>pivot_table</code> functions on a DataFrame</li>\n</ul>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https://oss.oracle.com/licenses/upl/\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n<h5>Task 1: Import libraries and create OML DataFrame proxy object</h5>\n<p>To use OML4Py, you must first import the <code>oml</code> module and the Pandas library to support OML4Py data manipulation and analysis, data exploration and preparation.</p>\n<h5>Task 1.1</h5>\n<p>Run the following scripts to import the <code>oml</code> module, the Pandas library and set the display options:</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "import pandas as pd",
+          "import oml",
+          "",
+          "pd.set_option('display.max_rows', 500)",
+          "pd.set_option('display.max_columns', 50)",
+          "pd.set_option('display.width', 1000)"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "###### Task 1.2",
+          "Here, you load the IRIS data and combine the target and predictors into a single DataFrame, which matches the form the data would have as a database table. You use the `oml.push` function to load this Pandas DataFrame into the database, which creates a temporary table and returns a proxy object that you assign to IRIS_TMP.",
+          "",
+          "Such temporary tables will be automatically deleted when the database connection is terminated unless saved in a datastore. You learn more about datastore in lab 4.",
+          "In OML Notebooks, you use the notebook-context `z.show` method to display Python objects and proxy object content. ",
+          "  ",
+          "Display the first few rows of IRIS_TMP using `z.show` for displaying DataFrame results in the notebook viewer."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h6>Task 1.2</h6>\n<p>Here, you load the IRIS data and combine the target and predictors into a single DataFrame, which matches the form the data would have as a database table. You use the <code>oml.push</code> function to load this Pandas DataFrame into the database, which creates a temporary table and returns a proxy object that you assign to IRIS_TMP.</p>\n<p>Such temporary tables will be automatically deleted when the database connection is terminated unless saved in a datastore. You learn more about datastore in lab 4.\n<br  />In OML Notebooks, you use the notebook-context <code>z.show</code> method to display Python objects and proxy object content.</p>\n<p>Display the first few rows of IRIS_TMP using <code>z.show</code> for displaying DataFrame results in the notebook viewer.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "from sklearn.datasets import load_iris",
+          "import pandas as pd",
+          "",
+          "iris = load_iris()",
+          "",
+          "x = pd.DataFrame(iris.data, columns = ['SEPAL_LENGTH','SEPAL_WIDTH', 'PETAL_LENGTH','PETAL_WIDTH'])",
+          "y = pd.DataFrame(list(map(lambda x: {0: 'setosa', 1: 'versicolor', 2:'virginica'}[x], iris.target)), columns = ['SPECIES'])",
+          "",
+          "iris_df = pd.concat([x, y], axis=1)",
+          "",
+          "IRIS_TMP = oml.push(iris_df)"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "z.show(IRIS_TMP)"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "SEPAL_LENGTH\tSEPAL_WIDTH\tPETAL_LENGTH\tPETAL_WIDTH\tSPECIES\n4.6\t3.6\t1.0\t0.2\tsetosa\n5.1\t2.5\t3.0\t1.1\tversicolor\n6.0\t2.2\t4.0\t1.0\tversicolor\n5.8\t2.6\t4.0\t1.2\tversicolor\n5.5\t2.3\t4.0\t1.3\tversicolor\n5.5\t2.5\t4.0\t1.3\tversicolor\n6.1\t2.8\t4.0\t1.3\tversicolor\n5.7\t2.5\t5.0\t2.0\tvirginica\n6.0\t2.2\t5.0\t1.5\tvirginica\n6.3\t2.5\t5.0\t1.9\tvirginica\n6.7\t3.0\t5.0\t1.7\tversicolor\n7.2\t3.2\t6.0\t1.8\tvirginica\n6.3\t3.3\t6.0\t2.5\tvirginica\n4.3\t3.0\t1.1\t0.1\tsetosa\n5.8\t4.0\t1.2\t0.2\tsetosa\n5.0\t3.2\t1.2\t0.2\tsetosa\n4.4\t3.0\t1.3\t0.2\tsetosa\n4.4\t3.2\t1.3\t0.2\tsetosa\n4.7\t3.2\t1.3\t0.2\tsetosa\n5.5\t3.5\t1.3\t0.2\tsetosa\n4.5\t2.3\t1.3\t0.3\tsetosa\n5.0\t3.5\t1.3\t0.3\tsetosa\n5.4\t3.9\t1.3\t0.4\tsetosa\n4.8\t3.0\t1.4\t0.1\tsetosa\n4.9\t3.6\t1.4\t0.1\tsetosa\n4.9\t3.0\t1.4\t0.2\tsetosa\n4.4\t2.9\t1.4\t0.2\tsetosa\n4.6\t3.2\t1.4\t0.2\tsetosa\n5.0\t3.3\t1.4\t0.2\tsetosa\n5.2\t3.4\t1.4\t0.2\tsetosa\n5.1\t3.5\t1.4\t0.2\tsetosa\n5.0\t3.6\t1.4\t0.2\tsetosa\n5.5\t4.2\t1.4\t0.2\tsetosa\n4.8\t3.0\t1.4\t0.3\tsetosa\n4.6\t3.4\t1.4\t0.3\tsetosa\n5.1\t3.5\t1.4\t0.3\tsetosa\n4.9\t3.1\t1.5\t0.1\tsetosa\n5.2\t4.1\t1.5\t0.1\tsetosa\n4.6\t3.1\t1.5\t0.2\tsetosa\n4.9\t3.1\t1.5\t0.2\tsetosa\n5.0\t3.4\t1.5\t0.2\tsetosa\n5.1\t3.4\t1.5\t0.2\tsetosa\n5.2\t3.5\t1.5\t0.2\tsetosa\n5.3\t3.7\t1.5\t0.2\tsetosa\n5.4\t3.7\t1.5\t0.2\tsetosa\n5.1\t3.8\t1.5\t0.3\tsetosa\n5.4\t3.4\t1.5\t0.4\tsetosa\n5.1\t3.7\t1.5\t0.4\tsetosa\n5.7\t4.4\t1.5\t0.4\tsetosa\n5.0\t3.0\t1.6\t0.2\tsetosa\n4.8\t3.1\t1.6\t0.2\tsetosa\n4.7\t3.2\t1.6\t0.2\tsetosa\n4.8\t3.4\t1.6\t0.2\tsetosa\n5.1\t3.8\t1.6\t0.2\tsetosa\n5.0\t3.4\t1.6\t0.4\tsetosa\n5.0\t3.5\t1.6\t0.6\tsetosa\n5.4\t3.4\t1.7\t0.2\tsetosa\n5.7\t3.8\t1.7\t0.3\tsetosa\n5.4\t3.9\t1.7\t0.4\tsetosa\n5.1\t3.3\t1.7\t0.5\tsetosa\n4.8\t3.4\t1.9\t0.2\tsetosa\n5.1\t3.8\t1.9\t0.4\tsetosa\n5.0\t2.3\t3.3\t1.0\tversicolor\n4.9\t2.4\t3.3\t1.0\tversicolor\n5.0\t2.0\t3.5\t1.0\tversicolor\n5.7\t2.6\t3.5\t1.0\tversicolor\n5.6\t2.9\t3.6\t1.3\tversicolor\n5.5\t2.4\t3.7\t1.0\tversicolor\n5.5\t2.4\t3.8\t1.1\tversicolor\n5.6\t2.5\t3.9\t1.1\tversicolor\n5.8\t2.7\t3.9\t1.2\tversicolor\n5.2\t2.7\t3.9\t1.4\tversicolor\n5.8\t2.7\t4.1\t1.0\tversicolor\n5.6\t3.0\t4.1\t1.3\tversicolor\n5.7\t2.8\t4.1\t1.3\tversicolor\n5.7\t3.0\t4.2\t1.2\tversicolor\n5.6\t2.7\t4.2\t1.3\tversicolor\n5.7\t2.9\t4.2\t1.3\tversicolor\n5.9\t3.0\t4.2\t1.5\tversicolor\n6.2\t2.9\t4.3\t1.3\tversicolor\n6.4\t2.9\t4.3\t1.3\tversicolor\n5.5\t2.6\t4.4\t1.2\tversicolor\n6.3\t2.3\t4.4\t1.3\tversicolor\n6.6\t3.0\t4.4\t1.4\tversicolor\n6.7\t3.1\t4.4\t1.4\tversicolor\n4.9\t2.5\t4.5\t1.7\tvirginica\n5.7\t2.8\t4.5\t1.3\tversicolor\n5.4\t3.0\t4.5\t1.5\tversicolor\n5.6\t3.0\t4.5\t1.5\tversicolor\n6.2\t2.2\t4.5\t1.5\tversicolor\n6.0\t2.9\t4.5\t1.5\tversicolor\n6.4\t3.2\t4.5\t1.5\tversicolor\n6.0\t3.4\t4.5\t1.6\tversicolor\n6.6\t2.9\t4.6\t1.3\tversicolor\n6.1\t3.0\t4.6\t1.4\tversicolor\n6.5\t2.8\t4.6\t1.5\tversicolor\n6.1\t2.8\t4.7\t1.2\tversicolor\n6.1\t2.9\t4.7\t1.4\tversicolor\n7.0\t3.2\t4.7\t1.4\tversicolor\n6.7\t3.1\t4.7\t1.5\tversicolor\n6.3\t3.3\t4.7\t1.6\tversicolor\n6.0\t3.0\t4.8\t1.8\tvirginica\n6.2\t2.8\t4.8\t1.8\tvirginica\n6.8\t2.8\t4.8\t1.4\tversicolor\n5.9\t3.2\t4.8\t1.8\tversicolor\n5.6\t2.8\t4.9\t2.0\tvirginica\n6.1\t3.0\t4.9\t1.8\tvirginica\n6.3\t2.7\t4.9\t1.8\tvirginica\n6.3\t2.5\t4.9\t1.5\tversicolor\n6.9\t3.1\t4.9\t1.5\tversicolor\n6.5\t3.2\t5.1\t2.0\tvirginica\n6.3\t2.8\t5.1\t1.5\tvirginica\n5.9\t3.0\t5.1\t1.8\tvirginica\n5.8\t2.7\t5.1\t1.9\tvirginica\n5.8\t2.7\t5.1\t1.9\tvirginica\n6.9\t3.1\t5.1\t2.3\tvirginica\n5.8\t2.8\t5.1\t2.4\tvirginica\n6.0\t2.7\t5.1\t1.6\tversicolor\n6.5\t3.0\t5.2\t2.0\tvirginica\n6.7\t3.0\t5.2\t2.3\tvirginica\n6.4\t2.7\t5.3\t1.9\tvirginica\n6.4\t3.2\t5.3\t2.3\tvirginica\n6.9\t3.1\t5.4\t2.1\tvirginica\n6.2\t3.4\t5.4\t2.3\tvirginica\n6.5\t3.0\t5.5\t1.8\tvirginica\n6.4\t3.1\t5.5\t1.8\tvirginica\n6.8\t3.0\t5.5\t2.1\tvirginica\n6.1\t2.6\t5.6\t1.4\tvirginica\n6.3\t2.9\t5.6\t1.8\tvirginica\n6.4\t2.8\t5.6\t2.1\tvirginica\n6.4\t2.8\t5.6\t2.2\tvirginica\n6.7\t3.1\t5.6\t2.4\tvirginica\n6.3\t3.4\t5.6\t2.4\tvirginica\n6.7\t3.3\t5.7\t2.1\tvirginica\n6.9\t3.2\t5.7\t2.3\tvirginica\n6.7\t3.3\t5.7\t2.5\tvirginica\n7.2\t3.0\t5.8\t1.6\tvirginica\n6.7\t2.5\t5.8\t1.8\tvirginica\n6.5\t3.0\t5.8\t2.2\tvirginica\n7.1\t3.0\t5.9\t2.1\tvirginica\n6.8\t3.2\t5.9\t2.3\tvirginica\n7.4\t2.8\t6.1\t1.9\tvirginica\n7.7\t3.0\t6.1\t2.3\tvirginica\n7.2\t3.6\t6.1\t2.5\tvirginica\n7.3\t2.9\t6.3\t1.8\tvirginica\n7.9\t3.8\t6.4\t2.0\tvirginica\n7.6\t3.0\t6.6\t2.1\tvirginica\n7.7\t2.8\t6.7\t2.0\tvirginica\n7.7\t3.8\t6.7\t2.2\tvirginica\n7.7\t2.6\t6.9\t2.3\tvirginica\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          " ##### Task 1.3",
+          " Run the following script to list all the transparency layer functions:"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 1.3</h5>\n<p>Run the following script to list all the transparency layer functions:</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "res = [x for x in IRIS_TMP.__dir__() if not x.startswith('_')]",
+          "res.sort()",
+          "res"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "['KFold', 'append', 'columns', 'concat', 'corr', 'count', 'create_view', 'crosstab', 'cumsum', 'describe', 'drop', 'drop_duplicates', 'dropna', 'dtypes', 'fillna', 'head', 'info', 'isnull', 'kurtosis', 'materialize', 'max', 'mean', 'median', 'merge', 'min', 'nunique', 'pivot_table', 'pull', 'rename', 'replace', 'round', 'sample', 'select_types', 'shape', 'skew', 'sort_values', 'split', 'std', 'sum', 't_dot', 'tail']\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 1.4",
+          "Use the transparency layer function `shape` to view the shape, or number of rows and columns, of the IRIS table.",
+          "Then use the transparency layer function `head` to check the first 3 records."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 1.4</h5>\n<p>Use the transparency layer function <code>shape</code> to view the shape, or number of rows and columns, of the IRIS table.\n<br  />Then use the transparency layer function <code>head</code> to check the first 3 records.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "IRIS_TMP.shape"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : "[{\"raw\":{\"layout\":\"beautify\",\"lastColumns\":[],\"version\":1}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "(150, 5)\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "z.show(IRIS_TMP.head(n=3))"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : "[{\"raw\":{\"layout\":\"beautify\",\"lastColumns\":[],\"version\":1}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "SEPAL_LENGTH\tSEPAL_WIDTH\tPETAL_LENGTH\tPETAL_WIDTH\tSPECIES\n4.6\t3.6\t1\t0.2\tsetosa\n5.1\t2.5\t3\t1.1\tversicolor\n6.0\t2.2\t4\t1.0\tversicolor\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 1.6",
+          "Use the transparency layer function `describe()` to calculate descriptive statistics that summarize the central tendency, dispersion, and shape of the IRIS table in each numeric column."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 1.6</h5>\n<p>Use the transparency layer function <code>describe()</code> to calculate descriptive statistics that summarize the central tendency, dispersion, and shape of the IRIS table in each numeric column.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "IRIS_TMP.describe()"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "       SEPAL_LENGTH  SEPAL_WIDTH  PETAL_LENGTH  PETAL_WIDTH\ncount    150.000000   150.000000    150.000000   150.000000\nmean       5.843333     3.057333      3.758000     1.199333\nstd        0.828066     0.435866      1.765298     0.762238\nmin        4.300000     2.000000      1.000000     0.100000\n25%        5.100000     2.800000      1.600000     0.300000\n50%        5.800000     3.000000      4.350000     1.300000\n75%        6.400000     3.300000      5.100000     1.800000\nmax        7.900000     4.400000      6.900000     2.500000\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "#### Task 2: Select table columns using proxy object CUST_DF",
+          "In this step, you will select the first three records for columns `MARITAL_STATUS` and `STATE` from the `CUSTOMER_INSURANCE_LTV` table.",
+          "",
+          "##### Task 2.1",
+          "Run the following script to create the proxy object `CUST_DF` in Python that refers to the Oracle Table `CUSTOMER_INSURANCE_LTV`.  Using a combination of the `z.show()` and `head()` functions shows the top 5 records from the Proxy object.",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4>Task 2: Select table columns using proxy object CUST_DF</h4>\n<p>In this step, you will select the first three records for columns <code>MARITAL_STATUS</code> and <code>STATE</code> from the <code>CUSTOMER_INSURANCE_LTV</code> table.</p>\n<h5>Task 2.1</h5>\n<p>Run the following script to create the proxy object <code>CUST_DF</code> in Python that refers to the Oracle Table <code>CUSTOMER_INSURANCE_LTV</code>.  Using a combination of the <code>z.show()</code> and <code>head()</code> functions shows the top 5 records from the Proxy object.</p>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "CUST_DF = oml.sync(table = 'CUSTOMER_INSURANCE_LTV')",
+          "",
+          "z.show(CUST_DF.head())"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "MARITAL_STATUS\tSTATE\tCREDIT_BALANCE\tCUSTOMER_TENURE\tMORTGAGE_AMOUNT\tBANK_FUNDS\tNUM_DEPENDENTS\tHAS_CHILDREN\tINCOME\tCUSTOMER_ID\tGENDER\tPROFESSION\tCREDIT_CARD_LIMITS\tREGION\tHOME_OWNERSHIP\tNUM_ONLINE_TRANS\tBUY_INSURANCE\tMONTHLY_CHECKS\tNUM_TRANS_KIOSK\tAGE\tMONEY_MONTLY_OVERDRAWN\tLTV\tTOTAL_AUTOM_PAYMENTS\tNUM_TRANS_TELLER\tCHECKING_BALANCE\tNUM_TRANS_ATM\tLTV_BIN\tFIRST_NAME\tNUM_MORTGAGES\tCAR_OWNERSHIP\tLAST_NAME\nSINGLE\tCA\t0\t3\t0\t0\t3\t0\t65871\tCU15154\tM\tNurse\t1000\tWest\t0\t0\tNo\t0\t1\t24\t53.06\t14367.75\t0\t0\t25\t0\tMEDIUM\tGAYLE\t0\t0\tDURANT\nSINGLE\tNY\t0\t4\t0\t290\t4\t0\t68747\tCU15155\tM\tProgrammer/Developer\t700\tNorthEast\t0\t0\tYes\t1\t1\t35\t53.84\t14686.75\t287\t2\t25\t4\tMEDIUM\tQUINTON\t0\t1\tMASSEY\nMARRIED\tMI\t0\t3\t1000\t550\t3\t0\t68684\tCU15157\tM\tProgrammer/Developer\t1000\tMidwest\t1\t1000\tYes\t14\t1\t26\t53.48\t25271.0\t132\t2\t25\t4\tHIGH\tANIBAL\t1\t1\tJIMENEZ\nMARRIED\tUT\t0\t5\t1200\t1000\t5\t0\t59354\tCU15286\tF\tFireman\t2500\tSouthwest\t1\t1200\tNo\t4\t5\t24\t53.08\t19738.5\t628\t3\t619\t1\tMEDIUM\tJUNITA\t1\t1\tROBERTSON\nMARRIED\tUT\t0\t4\t1800\t0\t3\t0\t84801\tCU15287\tF\tPROF-26\t2500\tSouthwest\t1\t1800\tNo\t0\t5\t47\t53.06\t31900.25\t0\t0\t25\t0\tVERY HIGH\tCHASITY\t1\t1\tELLIS\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 2.2 - Filter Columns",
+          "Run the following script to select specific columns by name and return the first three records with the specified column names."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 2.2 - Filter Columns</h5>\n<p>Run the following script to select specific columns by name and return the first three records with the specified column names.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "CUST_projected1 = CUST_DF[:, [\"MARITAL_STATUS\", \"STATE\"]]",
+          "",
+          "z.show(CUST_projected1.head(3))"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "MARITAL_STATUS\tSTATE\nSINGLE\tCA\nSINGLE\tNY\nMARRIED\tMI\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 3.2 - Filter Rows",
+          "This step shows an example of a compound row selection using the `OR` filtering condition, denoted by the `|` symbol. Run the following scripts to select all rows in which `MORTGAGE_AMOUNT` is `less than 1500` OR `STATE` is `equal to MA`:"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 3.2 - Filter Rows</h5>\n<p>This step shows an example of a compound row selection using the <code>OR</code> filtering condition, denoted by the <code>|</code> symbol. Run the following scripts to select all rows in which <code>MORTGAGE_AMOUNT</code> is <code>less than 1500</code> OR <code>STATE</code> is <code>equal to MA</code>:</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "CUST_filtered2 = CUST_DF[(CUST_DF[\"MORTGAGE_AMOUNT\"] <= 1500) | (CUST_DF[\"STATE\"] == \"MA\"), :]",
+          "",
+          "print(\"Number of records in the filtered dataset: \", len(CUST_filtered2))",
+          "z.show(CUST_filtered2.head())"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "Number of records in the filtered dataset:  8329\n",
+              "type" : "TEXT"
+            },
+            {
+              "message" : "MARITAL_STATUS\tSTATE\tCREDIT_BALANCE\tCUSTOMER_TENURE\tMORTGAGE_AMOUNT\tBANK_FUNDS\tNUM_DEPENDENTS\tHAS_CHILDREN\tINCOME\tCUSTOMER_ID\tGENDER\tPROFESSION\tCREDIT_CARD_LIMITS\tREGION\tHOME_OWNERSHIP\tNUM_ONLINE_TRANS\tBUY_INSURANCE\tMONTHLY_CHECKS\tNUM_TRANS_KIOSK\tAGE\tMONEY_MONTLY_OVERDRAWN\tLTV\tTOTAL_AUTOM_PAYMENTS\tNUM_TRANS_TELLER\tCHECKING_BALANCE\tNUM_TRANS_ATM\tLTV_BIN\tFIRST_NAME\tNUM_MORTGAGES\tCAR_OWNERSHIP\tLAST_NAME\nSINGLE\tCA\t0\t3\t0\t0\t3\t0\t65871\tCU15154\tM\tNurse\t1000\tWest\t0\t0\tNo\t0\t1\t24\t53.06\t14367.75\t0\t0\t25\t0\tMEDIUM\tGAYLE\t0\t0\tDURANT\nSINGLE\tNY\t0\t4\t0\t290\t4\t0\t68747\tCU15155\tM\tProgrammer/Developer\t700\tNorthEast\t0\t0\tYes\t1\t1\t35\t53.84\t14686.75\t287\t2\t25\t4\tMEDIUM\tQUINTON\t0\t1\tMASSEY\nMARRIED\tMI\t0\t3\t1000\t550\t3\t0\t68684\tCU15157\tM\tProgrammer/Developer\t1000\tMidwest\t1\t1000\tYes\t14\t1\t26\t53.48\t25271.0\t132\t2\t25\t4\tHIGH\tANIBAL\t1\t1\tJIMENEZ\nMARRIED\tUT\t0\t5\t1200\t1000\t5\t0\t59354\tCU15286\tF\tFireman\t2500\tSouthwest\t1\t1200\tNo\t4\t5\t24\t53.08\t19738.5\t628\t3\t619\t1\tMEDIUM\tJUNITA\t1\t1\tROBERTSON\nMARRIED\tUT\t0\t1\t1400\t0\t1\t0\t73987\tCU15289\tM\tProfessor\t2500\tSouthwest\t1\t1400\tNo\t0\t5\t46\t53.06\t31596.75\t0\t0\t25\t0\tVERY HIGH\tFRANKLIN\t1\t1\tKNOX\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "#### Task 4: Use OML DataFrame proxy objects",
+          "",
+          "You can join data from `oml.DataFrame` objects that represent database tables by using the `append`, `concat`, and `merge` methods.",
+          "  * The `append` method appends or adds the other OML data object of the same class to this data object.",
+          "  * The `concat` method combines the current OML data object with the other data objects column-wise.",
+          "  * The `merge` method joins data sets.",
+          "",
+          "These steps show how to use these methods."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4>Task 4: Use OML DataFrame proxy objects</h4>\n<p>You can join data from <code>oml.DataFrame</code> objects that represent database tables by using the <code>append</code>, <code>concat</code>, and <code>merge</code> methods.</p>\n<ul>\n<li>The <code>append</code> method appends or adds the other OML data object of the same class to this data object.</li>\n<li>The <code>concat</code> method combines the current OML data object with the other data objects column-wise.</li>\n<li>The <code>merge</code> method joins data sets.</li>\n</ul>\n<p>These steps show how to use these methods.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 4.2 - Replace \"Yes\" for \"1\" and \"No\" for \"0\"",
+          "Use the replace () function",
+          "In this step, you use the `replace()` function to replace a particular value in columns of an OML dataframe. "
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 4.2 - Replace &ldquo;Yes&rdquo; for &ldquo;1&rdquo; and &ldquo;No&rdquo; for &ldquo;0&rdquo;</h5>\n<p>Use the replace () function\n<br  />In this step, you use the <code>replace()</code> function to replace a particular value in columns of an OML dataframe.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 6,
+        "title" : "Replacing Yes/No for 1/0",
+        "hasTitle" : false,
+        "message" : [
+          "%python ",
+          "",
+          "REPLACED_DF = CUST_DF.replace(old = ['Yes'], new = [1.0], default = 0.0, columns = ['BUY_INSURANCE'])",
+          "",
+          "z.show(REPLACED_DF[['CUSTOMER_ID', 'BUY_INSURANCE']].head())"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "CUSTOMER_ID\tBUY_INSURANCE\nCU15154\t0\nCU15155\t1\nCU15157\t1\nCU15286\t0\nCU15287\t0\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "##### Task 4.4 Use the merge function to JOIN tables",
+          "",
+          "Use the `merge` function to join data from two objects. These examples demonstrate how to use the merge function to perform a cross join and a left outer join from two objects."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h5>Task 4.4 Use the merge function to JOIN tables</h5>\n<p>Use the <code>merge</code> function to join data from two objects. These examples demonstrate how to use the merge function to perform a cross join and a left outer join from two objects.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "###### Task 4.4.2 - LEFT JOIN example",
+          "Run the following script to perform a left outer join on SUBSET1 with the `oml.DataFrame` object on the shared column `CUSTOMER_ID` and apply the suffixes `.l` and `.r` to column names on the left and right side, respectively."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h6>Task 4.4.2 - LEFT JOIN example</h6>\n<p>Run the following script to perform a left outer join on SUBSET1 with the <code>oml.DataFrame</code> object on the shared column <code>CUSTOMER_ID</code> and apply the suffixes <code>.l</code> and <code>.r</code> to column names on the left and right side, respectively.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "SUBSET1 = CUST_DF[['CUSTOMER_ID', 'NUM_DEPENDENTS']]",
+          "",
+          "SUBSET2 = CUST_DF[['CUSTOMER_ID', 'INCOME']]",
+          "",
+          "SUBSET = SUBSET1.merge(SUBSET2, on = 'CUSTOMER_ID', how = 'left', suffixes = ['.l', '.r'])",
+          "",
+          "z.show(SUBSET.head())"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "CUSTOMER_ID\tNUM_DEPENDENTS.l\tINCOME.r\nCU15154\t3\t65871\nCU15155\t4\t68747\nCU15157\t3\t68684\nCU15286\t5\t59354\nCU15287\t3\t84801\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "",
+          "#### Task 6: Use the crosstab and pivot_table functions on a DataFrame proxy object",
+          "",
+          "This ask shows how to use the `crosstab` method to perform cross-column analysis of an OML DataFrame object and the `pivot_table` method to convert an OML DataFrame to a spreadsheet style pivot table.",
+          "",
+          "Cross-tabulation is a statistical technique that finds an interdependent relationship between two columns of values. The `crosstab` method computes a cross-tabulation of two or more columns. By default, it computes a frequency table for the columns unless a column and an aggregation function have been passed to it.",
+          "",
+          "The `pivot_table` method converts a data set into a pivot table. Due to the database 1000 column limit, pivot tables with more than 1000 columns are automatically truncated to display the categories with the most entries for each column value.",
+          "",
+          "---",
+          "",
+          "##### Task 6.1 Try out the crosstab and pivot_table functions",
+          "Use CUSTOMER_INSURANCE_LTV dataset to try out the crosstab and pivot_table functions. "
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Task 6: Use the crosstab and pivot_table functions on a DataFrame proxy object</h4>\n<p>This ask shows how to use the <code>crosstab</code> method to perform cross-column analysis of an OML DataFrame object and the <code>pivot_table</code> method to convert an OML DataFrame to a spreadsheet style pivot table.</p>\n<p>Cross-tabulation is a statistical technique that finds an interdependent relationship between two columns of values. The <code>crosstab</code> method computes a cross-tabulation of two or more columns. By default, it computes a frequency table for the columns unless a column and an aggregation function have been passed to it.</p>\n<p>The <code>pivot_table</code> method converts a data set into a pivot table. Due to the database 1000 column limit, pivot tables with more than 1000 columns are automatically truncated to display the categories with the most entries for each column value.</p>\n<hr />\n<h5>Task 6.1 Try out the crosstab and pivot_table functions</h5>\n<p>Use CUSTOMER_INSURANCE_LTV dataset to try out the crosstab and pivot_table functions.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "CUST_DF = oml.sync(table = 'CUSTOMER_INSURANCE_LTV')"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 6.2 - Use crosstab",
+          "Use the `crosstab` function to find the categories that the most entries belonged to. This example shows how to use the `crosstab` function to find the count of state and gender customers in descending order in the CUST_DF OML frame"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 6.2 - Use crosstab</h5>\n<p>Use the <code>crosstab</code> function to find the categories that the most entries belonged to. This example shows how to use the <code>crosstab</code> function to find the count of state and gender customers in descending order in the CUST_DF OML frame</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "z.show(CUST_DF.crosstab('GENDER', 'STATE').sort_values('count', ascending=False))"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "GENDER\tSTATE\tcount\nM\tNY\t3088\nM\tCA\t2184\nM\tMI\t1556\nF\tNY\t1447\nF\tMI\t846\nF\tCA\t780\nM\tFL\t389\nM\tDC\t296\nM\tNV\t292\nM\tMN\t271\nM\tUT\t223\nF\tNV\t196\nF\tMN\t182\nF\tFL\t169\nM\tOR\t159\nM\tIL\t153\nM\tNC\t142\nM\tWI\t118\nF\tDC\t117\nM\tMS\t110\nM\tWA\t107\nM\tOH\t96\nF\tNC\t96\nF\tIL\t84\nF\tUT\t81\nF\tOR\t74\nM\tCO\t65\nF\tMS\t55\nF\tWA\t47\nM\tTX\t46\nF\tCO\t43\nF\tTX\t39\nF\tOH\t36\nM\tNM\t35\nM\tOK\t32\nF\tWI\t30\nM\tLA\t30\nM\tMO\t27\nM\tAL\t25\nF\tMO\t24\nF\tAL\t21\nF\tOK\t16\nF\tNM\t14\nM\tAK\t12\nF\tLA\t10\nM\tAZ\t6\nF\tAK\t6\nF\tAZ\t5\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 6.4 - Use pivot_table",
+          "",
+          "Use the `pivot_table` function to find the mean bank funds across all State and gender combinations in the `CUST_DF` dataframe."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 6.4 - Use pivot_table</h5>\n<p>Use the <code>pivot_table</code> function to find the mean bank funds across all State and gender combinations in the <code>CUST_DF</code> dataframe.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "z.show(CUST_DF.pivot_table('STATE', 'GENDER', 'BANK_FUNDS').round(2))"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "STATE\tmean(BANK_FUNDS)_(F)\tmean(BANK_FUNDS)_(M)\nAK\t1255.0\t1419.58\nAL\t3932.76\t1230.84\nAZ\t6150.0\t562.83\nCA\t4591.84\t1241.06\nCO\t5716.07\t1101.89\nDC\t4969.48\t1548.65\nFL\t4750.72\t1460.65\nIL\t6021.37\t1151.75\nLA\t6460.0\t1430.37\nMI\t5318.5\t1290.37\nMN\t6852.59\t1357.89\nMO\t3180.92\t1352.78\nMS\t4939.75\t859.94\nNC\t5575.33\t1664.65\nNM\t4021.43\t652.49\nNV\t5834.3\t1812.54\nNY\t5858.82\t1470.93\nOH\t5751.19\t818.08\nOK\t4489.06\t479.41\nOR\t3983.07\t1325.07\nTX\t4742.67\t1825.52\nUT\t2737.81\t444.76\nWA\t5018.23\t1237.81\nWI\t5094.7\t1025.56\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "#### Task 7: Use the oml.boxplot and oml.hist functions",
+          "",
+          "OML4Py provides functions for rendering graphical displays of data. The `oml.boxplot` and `oml.hist` functions compute the statistics necessary to generate box and whisker plots or histograms in-database for scalability and performance. OML4Py uses the `matplotlib` library to render the output.",
+          "",
+          "This lab demonstrates how to use the `oml.boxplot` and `oml.hist` functions using the `CUSTOMER_INSURANCE_LTV` data set. The statistics supporting these plots are computed in-database, so transfer of data or client side memory limitations are avoided.",
+          "",
+          "---",
+          "",
+          "##### Task 7.1 Produce a boxplot for comparing distributions",
+          "Import the `matplotlib` library and create the proxy object `CUST_DF` pointing to the original database table. Run the following script to produce a boxplot comparing the distributions of `MORTGAGE_AMOUNT` and `BANK_FUNDS`."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4>Task 7: Use the oml.boxplot and oml.hist functions</h4>\n<p>OML4Py provides functions for rendering graphical displays of data. The <code>oml.boxplot</code> and <code>oml.hist</code> functions compute the statistics necessary to generate box and whisker plots or histograms in-database for scalability and performance. OML4Py uses the <code>matplotlib</code> library to render the output.</p>\n<p>This lab demonstrates how to use the <code>oml.boxplot</code> and <code>oml.hist</code> functions using the <code>CUSTOMER_INSURANCE_LTV</code> data set. The statistics supporting these plots are computed in-database, so transfer of data or client side memory limitations are avoided.</p>\n<hr />\n<h5>Task 7.1 Produce a boxplot for comparing distributions</h5>\n<p>Import the <code>matplotlib</code> library and create the proxy object <code>CUST_DF</code> pointing to the original database table. Run the following script to produce a boxplot comparing the distributions of <code>MORTGAGE_AMOUNT</code> and <code>BANK_FUNDS</code>.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "import matplotlib.pyplot as plt",
+          "",
+          "CUST_DF = oml.sync(\"OMLUSER\", table = \"CUSTOMER_INSURANCE_LTV\")",
+          "",
+          "plt.style.use('seaborn')",
+          "plt.figure(figsize=[14,6])",
+          "plt.title('Distribution of mortgage amount and bank funds')",
+          "",
+          "oml.graphics.boxplot(CUST_DF[ (CUST_DF['MORTGAGE_AMOUNT'] < 1500 ) & (CUST_DF['BANK_FUNDS'] < 1500)][['MORTGAGE_AMOUNT', 'BANK_FUNDS']], ",
+          "                     showmeans=True, meanline=True, patch_artist=True, labels= ['MORTGAGE_AMOUNT', 'BANK_FUNDS'])",
+          "",
+          "_=plt.show()"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<div style='width:auto;height:auto'><img src=data:image/png;base64,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9Gg9//zz+vTTT/XJJ5/oww8/1DvvvKODBw9KkubPn69vvvlGy5cv16effqr/+7//0zvvvGO3r/z8fG3cuFEzZ86063/Xrl0ym82aN2+eDh06pPXr1yspKanc+alfv74+/PBDffXVVxo5cqTGjh2r7OxsSWUhOT09XcuXL1dycrLWr19vt+2ECRPk6uqqtWvXKiUlRVu2bLnkfdVVqlTRc889p23btunf//63tm7dqo8++shunYyMDC1btkwff/yxEhMTNXnyZL3++uvatGmTfv75Z6WmpkqStm7dqjfeeENz585VRkaGbr/9dsXHx1fYb0X27Nmju+66S9u2bdOgQYM0adIkWa1WPfPMM2rVqpWmTJmiXbt2acqUKRVuHxISojVr1mjr1q269957y92nvmrVKo0cOVJffvml7rjjDrsPvUaOHKm4uDht27ZNd9xxh77++uvL1pqWlqYuXbpox44dioyM1PDhw3Xu3DlJl//ZXe44L3Tw4EH17dtXTzzxhAYNGlSu/8WLF9udk7vuuuvKJ1jS559/rqVLl+rTTz/VZ599ps2bN0sq+53auHGjUlJS9Mknn2j16tW2bU6dOqXp06dr4cKF2rVrl/7973+radOmV9UfAODaEeAB4Cbk5+en/Pz8cu2urq7KycnR4cOHVbVqVbVq1Uomk+my+xo1apRq1Kih6tWrV7g8JiZG99xzj2rUqKGnn35aq1evvuSI7rVYsWKF+vfvr/r166tmzZqKj4/XqlWr7EZpR44cqerVq6tJkyZq0qSJ3UjneSUlJVq1apWeffZZ1apVS/Xq1dOAAQOuaZTQ1dVVw4YNU9WqVdWtWzfl5ubqySefVK1atdSoUSM1bNhQP/74o63uESNGqE6dOvLx8dGIESPs+qpSpYpGjx4tNze3S57Tzz77TEOHDlXt2rXl7++vJ5980m55165dZTabVaVKFXXr1k133nmn9uzZY9v2ySeflL+/v2rXrq0hQ4bYtjt69Kg2bdqkiRMnqkaNGqpTp4769+9vC9kXu++++9SyZUu5urqqXr166tOnj7788ku7dQYNGmQ7D/fcc4/at2+v+vXry8PDQyEhIfruu+9s56Vnz55q1qyZ3NzcFB8fr927dyszM/OqfgYBAQF67LHH5OLioh49eignJ0dHjx69qm0lqVevXqpVq5bc3Nw0atQo/fDDD7YZHZLUuXNnNW/eXK6uroqOjtb3338vSUpPT1ejRo3UpUsXVa1aVf369dNtt9122b6aNWtmW3/AgAEqKirSN998I+nyP7urOc59+/apX79+GjVqlPr06XPVx381Bg8eLE9PTwUEBCgoKMj2/9Nnn32mfv36qW7duvLy8tLQoUPttqtSpYp+/vlnnTlzRn5+fkzdB4AbiIfYAcBNyGKxqHbt2uXa//a3v2nevHkaOHCgJKlPnz52Aa8i/v7+l11et25d238HBATo3Llzys3N/QNV28vOztbtt99ue3377beruLhYx44ds7VdGKTc3d116tSpcvvJzc3VuXPnFBAQYFfn+enbV8PLy0suLi6SZAvdF94zX61aNZ08edJW98V9XTjC6u3trWrVql22v+zsbLvzevHPICUlRUlJSTp06JCkslHQ8+f8ctsePnxYxcXFCg4OtrWVlpbarX+h3377Ta+++qq+/fZbnT59WiUlJWrWrJndOhf+DKpVq1bu9fnwmZ2dbbdtzZo15eXlJYvFIrPZfNnzcXE/7u7utuO+GiUlJZozZ45Wr16t48eP2x7wmJubKw8Pj3L7r169um3f2dnZdufQZDJd8nydd+H6VapUkdlstv0OXO5ndzXHuWLFCt1xxx2KiIi4qmO/Fr6+vnZ9X/g7ffH/5+fVqFFDc+bM0fvvv69JkybpgQce0Pjx49WgQYPrXh8AgBF4ALjp7NmzRxaLRQ8++GC5ZbVq1dKECROUlpam+fPnKykpSVu3br3s/q40Qn/kyBG7/65ataq8vb3l7u6uM2fO2JaVlJTo+PHjV71fPz8/W8iRysKnq6vrNT9sztvbW1WrVtXhw4ft6rya0PhH+Pn5levLz8/P9vri467oPPj6+iorK8v2+sL/PnTokJ5//nlNnjxZ27dv186dO+1GPC+3rb+/v9zc3LRt2zbt3LlTO3fu1Ndff33JEfipU6fq7rvv1po1a/T111/rmWeeueL935dy8c/z1KlTysvLk9lsVo0aNSTJ7vclJyfnD/VTkRUrVigtLU1JSUn66quvtGHDBkm6qmO5+HxarVa73/mKXLh+aWmpLBaL7fgv97O7GiNHjpS3t7eeffbZa5rp4u7urtOnT9teX8vsBV9f33L/n1+oQ4cOSkpKUkZGhu6++25Nnjz5qvcNALg2BHgAuEmcOHFCGzduVHx8vKKjo9W4ceNy62zcuFG///67rFarPDw85OLiYguQt912m+0+7mvx6aefat++fTp9+rTefPNNRUREyMXFRXfddZfOnj2rzz//XOfOndP8+fPtHmhWp04dHTp0SKWlpRXuNzIyUh988IEOHjyokydPas6cOeratatcXa9t8piLi4u6dOmiOXPm6MSJEzp06JCSkpJsD8673rp376758+fr+PHjOn78uN5++21FRUVdcv06deooLy/Pbjp3165dtWDBAuXn58tiseif//ynbdnp06dlMpnk4+MjSfrkk0/sHsjWtWtXLV68WBaLRQUFBVq4cKFtmZ+fn9q3b69XX31VJ06cUGlpqQ4cOKAdO3ZUWNvJkydVs2ZN1axZU7/88ov+9a9//eHzEhkZqWXLlun7779XUVGRZs+erebNm6tevXry8fGR2WzW8uXLVVJSoqVLl17T7+KVfndPnjwpNzc3eXt76/Tp05o9e/ZV77tjx476+eeftXbtWhUXF2vx4sVXDL979+61rf/BBx/Izc1NLVq0uOLP7mpUrVpVb775pk6fPq1x48Zd8v+fizVt2lTr1q3T6dOn9fvvv2vp0qVX3WfXrl31j3/8Q1lZWcrPz1dCQoJt2dGjR23PqHBzc1ONGjVsMxwAANcf77AAYHDnnxzfsWNHvfvuuxowYIBeeeWVCtf9/fffNWDAAAUGBqpPnz56/PHH1bZtW0nSkCFDNH/+fLVq1eqSD6yrSExMjCZMmKD27durqKjI9hV2Hh4eeuGFF/T8888rJCRE7u7udlOLu3TpIkkKCgpSjx49yu23Z8+eio6O1hNPPKFOnTrJzc3tD4/sTZ48We7u7urcubP+8pe/KDIyUj179vxD+7qS4cOH67777lN0dLSio6PVrFkzDR8+/JLrN2jQQN27d1fnzp3VqlUrWSwWjRgxQv7+/urUqZP69++viIgIubm5SZIaNmyogQMH6s9//rMeeugh/fTTT3rggQds+3vsscfUvn17RUdHKzY2Vh07dpSrq6vtFoCZM2fq3Llz6tatm1q3bq3Ro0dfcrR7/PjxWrlypR544AFNnjxZ3bp1+8Pn5aGHHtLTTz+tUaNGKTg4WAcPHrQ9KE4qe9Dge++9p6CgIO3bt0+BgYFXve8nn3xSa9asUevWrSt8iGJsbKwCAgLUoUMHde/eXS1btrzqffv4+OjNN9/U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soBrtnvX3krv09fXQzk5hZXerySH9QsARrLor/MrvU9HXRu4LsDZ8KGS82EK/U3g/vvv1/79+3Xw4EEVFRUpNTVVoaGhji4LAAAAAHAdMQJ/E3B1ddWUKVM0aNAglZSUqGfPnmrUqJGjywIAAAAAXEcmq9VqdXQRqHxM0QLKOHIKPQDAOXFtAMowhd75MIUeAAAAAAADIMADAAAAAGAABHgAAAAAAAyAAA8AAAAAgAEQ4AEAAAAAMAACPAAAAAAABkCABwAAAADAAAjwAAAAAAAYAAEeAAAAAAADIMADAAAAAGAAJqvVanV0EQAAAAAA4PIYgQcAAAAAwAAI8AAAAAAAGAABHgAAAAAAAyDAAwAAAABgAAR4AAAAAAAMgAAPAAAAAIABEOABAAAAADAAAjyAa9K4cWONGTPG9rq4uFht27bV0KFDbW3r169XVFSUunbtqqioKK1fv962bMKECQoNDVVMTIyio6O1detWzZ8/XzExMYqJiVHTpk1t/7148WJJ0vLlyxUVFaXu3bsrOjpakyZNUkFBgW2fx48fV7NmzfSvf/3LrtajR4/q2WefVadOnfToo4+qT58+WrdunSRp+/btevDBB219xcTE6Isvvrjssa9fv16NGzfWL7/8YmvLzMxU48aNNWfOnHL1TJs2zdb2n//8R126dFGXLl3Uq1cv7dy507YsNDRUx48ft73evn277XwuW7ZMTZo00Q8//GBbHhkZqczMTPXu3VsxMTF6+OGH1bZtW9txZGZmXvY4AMCZnb8OREdHq0ePHvr666/tli9atEj333+/CgsLbW3bt29X48aNtWHDBlvb0KFDtX37dklS37599X//93+SpIMHDyo8PFybN2+usP+Lrw/9+/eXVHb9Wr16td26gYGBkv57LfjHP/5hWzZt2jQtW7bMtm1oaKiio6MVERGhcePGKSsry7bu0qVLFRUVpaioKEVGRtpdNwHgQq6OLgCAsdSoUUM///yzzpw5o+rVq2vLli0ym8225T/88INee+01vf/++6pfv74OHjyogQMHql69emrSpIkkady4cerSpYu2bdumKVOmaO3atRo2bJiksj+Gli9fbttfenq6PvjgAyUmJspsNqukpETJyck6evSoPD09JUmrV69WixYtlJqaqscff1ySZLVaNWLECMXGxuqNN96QJB06dMjuj7tWrVpp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 style='width=auto;height:auto'><div>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 7.2 Produce a histogram",
+          "",
+          "Run the following script to render the data in a histogram for `MORTGAGE_AMOUNT`."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 7.2 Produce a histogram</h5>\n<p>Run the following script to render the data in a histogram for <code>MORTGAGE_AMOUNT</code>.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "plt.style.use('seaborn')",
+          "plt.figure(figsize=[14,6])",
+          "plt.title('Distribution of Customer Age')",
+          "plt.xlabel('Customer Age')",
+          "plt.ylabel('# of Customers')",
+          "",
+          "oml.graphics.hist(CUST_DF['AGE'], bins=20, ",
+          "                  color='red', linestyle='solid', edgecolor='black')",
+          "",
+          "_=plt.show()"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<div style='width:auto;height:auto'><img src=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA/AAAAGwCAYAAAAOmI5LAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjMuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/Il7ecAAAACXBIWXMAAAsTAAALEwEAmpwYAAA24UlEQVR4nO3de5xd86E3/s9kRggJkUgmojmRhFAUaRVpSAiJS5CrR7V1COpOlbqX9uX+FEXrGlQ5fZzHNaOScEKEUCmtttJTPA4yiYhMSCISQpLJ/P7Qs39yIm6ZZM+avN+vV16v2WuvtfZn71nW+Oz1XWtVNDQ0NAQAAABo0lqUOwAAAADw+RR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQeg2bngggty/fXXN8q6Zs6cmV69eqW+vj5Jcthhh+Xee+9tlHUnydFHH53Ro0c32vq+qKuvvjq77LJL+vTps8ZfGwD4aioaGhoayh0CAL6o/v3755133kllZWUqKyuzxRZbZPDgwTnkkEPSosWX+166f//+ufjii/Od73znCy9z2GGH5aCDDsrBBx/8ZaPn17/+daZNm5Yrr7zySy/bmGbOnJl99903EydOTPv27T91noULF+baa6/No48+mvnz56d9+/bZc889c/zxx6ddu3Zf+bW/ymdeDocddlhefvnl/OEPf0jLli3LHQcAkjgCD0AB3XTTTfnrX/+aiRMn5oc//GFuueWWnHfeeY3+OkuXLm30dTYFM2fOTNu2bVda3hcvXpzDDz88r776am699dY8//zzufvuu9O2bdv8/e9/X8NpV4+GhoYsW7bsU5+bMWNG/vznP6eioiITJkxYw8kAYOUUeAAKq02bNtlrr71yzTXXZPTo0XnllVeSJGeffXauvvrqJMncuXNz7LHHZqeddsrOO++c733ve1m2bFnOOOOMzJw5M8cdd1x69eqVW265JTNmzMhWW22Ve++9N3vssUcOP/zw0rRPlvnp06dnxIgR+eY3v5njjz8+7777bpLk2WefTd++fZfL2L9//zzzzDOZNGlSbr755jz88MPp1atXDjrooCTLD8lftmxZbrjhhuy5557p3bt3zjzzzCxYsCBJSjlGjx6dPfbYI7vssktuvPHGlX42CxYsyJlnnpldd901e+65Z2644YYsW7YszzzzTI488sjMnj07vXr1ytlnn73Csg8++GDeeuutXHfdddliiy3SokWLtG/fPieeeGL69euXJNlqq60ybdq00jJf9TNPkgkTJmTQoEHZaaedcthhh+W1115b7vO79dZbc+CBB2bHHXfMueeem3feeSdHH310evXqlSOOOCLz588vzf+3v/0t3/3ud7PTTjvloIMOyrPPPlt67rDDDsvVV1+d7373u9lhhx3yxhtvfOpnV1NTkx122CFDhw5NTU3Ncs/Nmzcvxx13XL75zW9m+PDhufrqq3PooYeWnn/ttdcycuTI7Lzzztlnn30ybty4lf6OAODLqip3AABYVdtvv306deqUP//5z+nZs+dyz91+++2prq7O5MmTkyQvvPBCKioqcsUVV+T5559fbjj3jBkzkiR/+tOfMm7cuLRo0SLvvPPOCq9XU1OT2267LV/72tdy1lln5eKLL/7cYfF9+/bNscce+5lD6B944IGMHj06d955Z9q1a5ezzjorF154Ya644orSPM8//3weeeSR1NbWZsSIERk4cGB69OixwrouuuiiLFiwII899ljefffdHHXUUenQoUMOPvjg3HLLLTnjjDMyadKkT83xzDPPZPfdd88GG2zwme9pZb7MZz516tScfvrpuf7667Pzzjvnt7/9bY477riMHTu2NHR9/Pjxuf3221NfX58hQ4bkpZdeyiWXXJIePXrkhz/8Yf7t3/4tJ510Uurq6nLsscfmF7/4RXbfffdMnjw5p5xySh5++OHSsP8HH3wwt9xyS7p165aVnUX44IMP5ogjjsgOO+yQQw45JO+880422WSTJMmFF16YVq1a5Q9/+EPefPPNHHXUUencuXOS5IMPPsiRRx6ZU045JbfcckteeeWVjBw5Mj179swWW2zxlT5LAPgkR+ABaBY6duy43JHY/1ZVVZW33347M2fOzDrrrJOddtopFRUVn7muk08+Oeuvv37WW2+9T31+8ODB6dmzZ9Zff/386Ec/yiOPPFK6yN2qeOihh3LEEUekS5cu2WCDDXLaaadl3Lhxyx39P+mkk7Leeutl6623ztZbb52XX355hfXU19dn3LhxOf3009O6det87Wtfy8iRI/P73//+C+V4991306FDh6/8Pr7MZz5u3Lj069cvffr0yTrrrJOjjjoqH374Yf7617+W5vnBD36QTTbZJNXV1dlpp52y/fbbZ5tttsm6666bAQMG5MUXX0zycfHu27dv+vXrlxYtWqRPnz7Zbrvt8uSTT5bWNXTo0Gy55ZapqqrKOuuss0KeP//5z5k5c2b222+/bLfddunSpUvGjBmT5OPPdfz48Tn55JPTqlWrbLHFFhkyZEhp2SeeeCKbbbZZhg8fnqqqqmyzzTbZZ5998sgjj3zlzxIAPkmBB6BZqKury0YbbbTC9KOOOipdu3bNkUcemb322iujRo363HV16tTpM5/fdNNNSz937tw5S5Ysybx587586P9h9uzZ2WyzzUqPN9tssyxdujRz5swpTfvvI8FJ0qpVq3zwwQcrrGfevHlZsmRJ6cjwf+esq6v7Qjnatm2bt99++6u8hSRf7jOfPXv2cjlbtGiRTTfddLmsn3zP66677nKP11tvvdJnMHPmzDzyyCPZaaedSv+ef/755d7LJ393n6ampiZ9+vQpHbE/4IADSncJmDt3bpYuXbrcOj7585tvvpkpU6Ys9/oPPfTQKn2WAPBJhtADUHhTpkxJXV1dvvWtb63wXOvWrXP22Wfn7LPPziuvvJLDDz883/jGN9K7d++Vru/zjtC/9dZby/28zjrrZOONN06rVq3y4Ycflp6rr6/P3Llzv/B6O3bsmDfffLP0eObMmamqqkr79u0za9asz1z2kzbeeOOss846mTlzZmno9ltvvZXq6uovtPx3vvOdXHPNNfnggw+y/vrrf+o8rVq1yqJFi0qP33777dL6v8xn3rFjx9K1C5KPLy73ZbJ+0qabbprBgwfn4osvXuk8n/U7+PDDD/Pwww9n2bJlpdvrLV68OO+9915efvnl0pH7WbNmpVu3bkmW3xY23XTTfPvb387tt9/+pbMDwBfhCDwAhbVw4cJMnDgxp512Wg466KBstdVWK8wzceLETJs2LQ0NDWnTpk0qKytLJW6TTTZZ6YXMPsvvf//7vPrqq1m0aFGuvfba7LPPPqmsrEy3bt3y0Ucf5YknnsiSJUty4403ZvHixaXl2rdvnzfffHOlVz8/4IADcscdd+SNN97I+++/n6uvvjr77bdfqqq+3PftlZWV2XfffXP11Vdn4cKFefPNN3P77beXLpz3eQYPHpxOnTrl5JNPzmuvvZZly5Zl3rx5uemmm0rD0bfeeuuMGTMm9fX1mTRpUv70pz+Vlv8yn/l+++2XJ598MpMnT86SJUvym9/8Ji1btkyvXr2+1HtOkoMOOigTJ07MU089lfr6+nz00Ud59tlnv/CXH4899lgqKyszduzY1NTUpKamJuPGjctOO+2UmpqaVFZWZsCAAbnuuuuyaNGivPbaa3nwwQdLy++xxx6pra1NTU1NlixZkiVLlmTKlCnLXZQPAFaFAg9A4fz3Vcz79euXm266KSNHjsxll132qfNOmzYtI0eOTK9evXLIIYfk0EMPza677pokOeaYY3LjjTdmp512ym233faFX3/w4ME5++yz06dPnyxevLh0C7s2bdrkZz/7WX7605+mb9++adWq1XLD8ffdd98kyS677JKhQ4eusN7hw4fnoIMOyg9+8IPstddeadmyZc4///wvnOuTzj///LRq1Sp77713vve97+WAAw7I8OHDv9CyLVu2zG9/+9t07949Rx55ZL71rW/l4IMPzrx587L99tsnSc4777xMnDixNEx87733Li3/ZT7z7t2754orrshFF12UXXfdNRMnTsxNN930le69vummm+aGG27IzTffnN69e6dfv3657bbbVvqFyf80evToDBs2LJ07d06HDh1K/77//e/noYceytKlS3PBBRdkwYIF6dOnT84888wMGjSolLV169a57bbbMm7cuOy+++7ZbbfdcuWVVy73JQ4ArIqKhpVdghUAgM90xRVX5J133sn//t//u9xRAFgLOAIPAPAFvfbaa3n55ZfT0NCQKVOm5L777suAAQPKHQuAtYSL2AEAfEHvv/9+Tj/99MyePTvt27cvXWkfANYEQ+gBAACgAAyhBwAAgAJQ4AEAAKAAnAO/lnr77QXljrCcjTdeP/PmfVDuGLBStlGaOtsoTZ1tlKbONrqiDh3alDsC/4Mj8DQJVVWV5Y4An8k2SlNnG6Wps43S1NlGKQIFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAAqgqtwBAIquvr4+tbWvlzvGcjbfvHsqKyvLHQMAgEakwAOsotra1zO/97fSrdxB/mlqktrJz6dHjy3LHQUAgEakwAM0gm5JepY7xCfMLXcAAAAanXPgAQAAoAAUeAAAACgABR4AAAAKQIEHAACAAlDgAQAAoAAUeAAAACgABR4AAAAKQIEHAACAAlDgAQAAoAAUeAAAACgABR4AAAAKQIEHAACAAlDgAQAAoAAUeAAAACgABR4AAAAKQIEHAACAAlDgAQAAoAAUeAAAACgABR4AAAAKQIEHAACAAlDgAQAAoAAUeAAAACgABR4AAAAKQIEHAACAAlDgAQAAoAAUeAAAACgABb6M3nrrrRx22GHZf//9M2jQoNxxxx1JknfffTcjR47MwIEDM3LkyMyfPz9J0tDQkIsvvjgDBgzIgQcemH/84x+ldY0ePToDBw7MwIEDM3r06LK8HwAAAFYfBb6MKisrc/bZZ2fcuHG5++67c9ddd+XVV1/NqFGj0rt374wfPz69e/fOqFGjkiSTJk1KbW1txo8fn4suuig///nPk3xc+K+77rrcc889uffee3PdddeVSj8AAADNgwJfRh07dsy2226bJGndunW6d++eurq6TJgwIUOGDEmSDBkyJI899liSlKZXVFRkxx13zHvvvZfZs2fn6aefTp8+fdK2bdtstNFG6dOnT5566qlyvS0AAABWAwW+iZgxY0Zeeuml7LDDDpkzZ046duyYJOnQoUPmzJmTJKmrq0unTp1Ky3Tq1Cl1dXUrTK+urk5dXd2afQMAAACsVlXlDkDy/vvv55RTTsm5556b1q1bL/dcRUVFKioqGv01N954/VRVVTb6eldFhw5tyh0BPtPKttF581p/6vRyateutf+m1kJ+5zR1tlGaOtsoTZ0CX2ZLlizJKaeckgMPPDADBw5MkrRv3z6zZ89Ox44dM3v27LRr1y7Jx0fWZ82aVVp21qxZqa6uTnV1dZ577rnS9Lq6uuy8886f+brz5n2wGt7NV9ehQ5u8/faCcseAlfqsbXTu3IVpt4bzfJ65cxf6b2otYz9KU2cbpamzja7IFxpNjyH0ZdTQ0JDzzjsv3bt3z8iRI0vT+/fvn5qamiRJTU1N9tprr+WmNzQ05G9/+1vatGmTjh07ZrfddsvTTz+d+fPnZ/78+Xn66aez2267leMtAQAAsJo4Al9Gzz//fB588MH07NkzgwcPTpKcdtppOeaYY3LqqafmvvvuS+fOnXPNNdckSfr165cnn3wyAwYMSKtWrXLppZcmSdq2bZsTTjghI0aMSJKceOKJadu2bTneEgAAAKtJRUNDQ0O5Q7DmNbXhQYYs0dR91jb62mv/lXa9v5WeazjTyrySZO7k59Ojx5bljsIaZD9KU2cbpamzja7IEPqmxxB6AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAApAgQcAAIACUOABAACgABR4AAAAKAAFHgAAAAqgqtwBAGhc9UmmT59W7hglm2/ePZWVleWOAQBQeAo8QDMzPclGhwxLu3IHSTI1Se3k59Ojx5bljgIAUHgKPEAz1C1Jz3KH+Ke55Q4AANBMOAceAAAACkCBBwAAgAJQ4AEAAKAAFHgAAAAoAAUeAAAACkCBBwAAgAJQ4AEAAKAA3AceAEh9fX1qa18vd4ySzTfvnsrKynLHAIAmRYEHAFJb+3rm9/5WupU7SJKpSWonP58ePbYsdxQAaFIU+DI655xz8sQTT6R9+/YZM2ZMkuTXv/517rnnnrRr1y5Jctppp6Vfv35Jkptvvjn33XdfWrRokZ/+9KfZfffdkySTJk3KJZdckmXLluXggw/OMcccU543BEChdUvSs9wh/mluuQMAQBOkwJfRsGHD8oMf/CBnnXXWctOPOOKIHHXUUctNe/XVVzN27NiMHTs2dXV1GTlyZP7jP/4jSXLhhRfm9ttvT3V1dUaMGJH+/ftniy22WGPvAwAAgNVPgS+jb3/725kxY8YXmnfChAkZNGhQWrZsmS5duqRr166ZMmVKkqRr167p0qVLkmTQoEGZMGGCAg8AANDMuAp9E/R//s//yYEHHphzzjkn8+fPT5LU1dWlU6dOpXmqq6tTV1e30ukAAAA0L47ANzGHHnpoTjjhhFRUVOTaa6/N5Zdfnssuu6zRX2fjjddPVVXTurpvhw5tyh0BPtPKttF581qv4STF0q5da/99ryGr8jk3te3YdtM8+Z3S1NlGaeoU+CZmk002Kf188MEH57jjjkvy8ZH1WbNmlZ6rq6tLdXV1kqx0+meZN++DxorcKDp0aJO3315Q7hiwUp+1jc6duzDt1nCeoqhP8ve//SNz5y4sd5SS5np7slXdjza17Xju3IX+LjQz/tbT1NlGV+QLjaZHgW9iZs+enY4dOyZJHnvssWy55ce30Onfv39OP/30jBw5MnV1damtrc3222+fhoaG1NbW5o033kh1dXXGjh2bq666qpxvAaBkepKNDhnWZIqh25MBAEWmwJfRaaedlueeey7z5s1L3759c/LJJ+e5557Lyy+/nCTZbLPNcuGFFyZJttxyy+y3337Zf//9U1lZmQsuuKB0BOmCCy7I0Ucfnfr6+gwfPrxU+gGagqZ0a7LE7ckAgOJS4Mvol7/85QrTDj744JXOf/zxx+f4449fYXq/fv1K94oHAACgeVLgG8G4cePSt2/ftG7dOtdee22mTJmSH//4x9luu+3KHQ2AT6hPMn36tHLHKGmu5+MDAKuHAt8Ibrzxxuy///6ZMmVKnn766fzrv/5rLr744vzf//t/yx0NgE9oSufkOx8fAPiyFPhGUFX18cf4hz/8IQcffHAOPPDA/OY3vylzKgA+TVM6J9/5+ADAl9Gi3AGag4qKiowbNy7jxo1L7969kyRLliwpcyoAAACaEwW+EZx//vkZM2ZMRowYkS5duqS2tja77LJLuWMBAADQjBhCv4rq6+vz1FNP5YYbbihN23zzzXP++eeXMRUAAADNjSPwq6iysjKTJk0qdwwAAACaOQW+Eeyxxx657bbbMmfOnCxatKj0DwAAABqLIfSN4LrrrkuSXHHFFamoqEhDQ0MqKiry0ksvlTkZAAAAzYUC3whefvnlckcAAACgmTOEvpFMnTo1jz32WJLk/fffz7vvvlveQAAAADQrCnwjeOCBB3L88cfnsssuS5LU1dXl1FNPLW8oAAAAmhUFvhHceeeduf/++9OmTZskSffu3fPOO++UORUAAADNiQLfCNZZZ51ssMEGy02rrKwsUxoAAACaIxexawRt27bN1KlTU1FRkSR58MEH06lTpzKnAqApq08yffq0RlvfvHmtM3fuwq+8/PTp09Ku0dIAAKuDAt8Izj333Jx++umZOnVq+vfvn/XWWy833XRTuWMB0IRNT7LRIcMatTSvyrr+0WgpAIDVRYFvBN26dcu9996b2traNDQ0pFu3bobQA/C5uiXpWe4Q/zS13AEAgM/lHPhGsnjx4rRo8fHHOXXq1Lz66qtlTgQAAEBz4gh8I7jzzjtz9dVXp23btqXz4CsqKjJhwoQyJwMAAKC5UOAbwR133JFHHnkk1dXV5Y4CAABAM2UIfSPo1KmT8g4AAMBq5Qh8Izj55JNz3nnnpV+/fll33XVL0/v161fGVAAAADQnCnwjmDhxYiZOnJja2trShewqKioUeAAAABqNAt8IHn300Tz++ONZb731yh0FAACAZso58I2gS5cuqaryXQgAAACrj9bZCLp27ZrDDz88e++9d1q2bFma/v3vf7+MqQAAAGhOFPhGsGTJkvzLv/xLXnnllXJHAQAAoJlS4BvBZZddVu4IAAAANHMKfCNoaGjI3XffnWeeeSZJsttuu+Xggw9ORUVFmZMBAADQXCjwjeAXv/hFXnrppQwbNixJUlNTk9ra2px55pllTgYAAEBzocA3gqeffjqjR48uXYl+v/32y7BhwxR4AAAAGo3byDWSTw6XN3QeAACAxuYIfCPYbbfd8sMf/jBDhw5N8vEQ+t12263MqQAAAGhOFPhGcMYZZ+Tuu+/Oo48+miTZe++9893vfrfMqQAAAGhOFPhG8Oyzz+bQQw/NoYceWpo2efLk9O7du4ypAAAAaE6cA98IfvGLX3yhaQAAAPBVOQK/CqZNm5ba2tosXLgwTz75ZGn6ggULsmjRojImAwAAoLlR4FfBX/7ylzzwwAN55513cuutt5amt27dOmeffXYZkwEAANDcKPCrYOjQoRk6dGgeeOCBDBs2rNxxAAAAaMacA98IunTpkvfffz9Jcu+99+aCCy7IG2+8UeZUAAAANCcKfCO48MILs/766+e//uu/cvvtt6dz584577zzyh0LAACAZkSBbwRVVVWpqKjIpEmTcuihh+a4447Le++9V+5YAAAANCMKfCNYunRpXnjhhTz66KPZddddkyT19fVlTgUAAEBzosA3gh/96Ee54IILssMOO2TLLbfM1KlT07Vr13LHAgAAoBlxFfpGsPfee2fvvfcuPe7WrVuuu+66MiYCAACguVHgG8EvfvGLT51+5plnruEkAAAANFeG0DeC9ddfv/SvsrIyTz31VObNm1fuWAAAADQjjsA3gpNOOmm5x8cee2x+9KMflSkNAAAAzZEj8KvBBhtskJkzZ5Y7BgAAAM2II/CN4JPnwDc0NOQ///M/06NHjzImAgAAoLlR4BvB+uuvX/q5srIyhx56aAYMGFDGRAAAADQ3CvwqqK+vz+LFi1c4B37RokVp0cLZCQAAADQeLXMVXHnllRkzZswK08eMGZOrrrqqDIkAAABorhT4VfDss89m+PDhK0wfNmxYJk2aVIZEAAAANFcK/Cqor6//1KHylZWVqaioKEMiAAAAmisFfhV8+OGHWbRo0QrT33///SxevLgMiQAAAGiuFPhVsP/+++ess87KwoULS9MWLFiQn/70p9l3333LmAwAAIDmRoFfBSeeeGJatmyZ3XffPUOHDs3QoUPTt2/ftGjRIieffHK54wEAANCMuI3cKqiqqsqVV16ZadOm5cUXX0ySbLPNNunatWuZkwEAANDcKPCNoGvXrko7AAAAq5Uh9AAAAFAACjwAAAAUgAK/Ci6//PIkycMPP/yVlj/nnHPSu3fvHHDAAaVp7777bkaOHJmBAwdm5MiRmT9/fpKkoaEhF198cQYMGJADDzww//jHP0rLjB49OgMHDszAgQMzevToVXhHAAAANFUK/CqYPHlykmTUqFFfaflhw4bl1ltvXW7aqFGj0rt374wfPz69e/curXvSpEmpra3N+PHjc9FFF+XnP/95ko8L/3XXXZd77rkn9957b6677rpS6QcAAKD5cBG7VVBdXZ0DDzwwM2bMyIgRI1Z4/r777vvM5b/97W9nxowZy02bMGFC/u3f/i1JMmTIkBx22GE544wzMmHChAwZMiQVFRXZcccd895772X27Nl57rnn0qdPn7Rt2zZJ0qdPnzz11FPLHdUHAACg+BT4VXD99dfnxRdfzBlnnJEzzzyzUdY5Z86cdOzYMUnSoUOHzJkzJ0lSV1eXTp06lebr1KlT6urqVpheXV2durq6RskCAABA06HAr4J11lknO+ywQ26++eZ069at0ddfUVGRioqKRl9vkmy88fqpqqpcLev+qjp0aFPuCPCZVraNzpvXeg0ngeavXbvW/i40Q36nNHW2UZo6Bb4RdOrUKVdddVWeeeaZJB8PYz/++OPTqlWrL72u9u3bZ/bs2enYsWNmz56ddu3aJfn4yPqsWbNK882aNSvV1dWprq7Oc889V5peV1eXnXfe+XNfZ968D750ttWpQ4c2efvtBeWOASv1Wdvo3LkL024N54HmrD7J3//2j8ydu7DcUUo237x7Kiub1hffReNvPU2dbXRFvtBoehT4RnDRRRelvr4+5557bpKPz32/8MILc9lll33pdfXv3z81NTU55phjUlNTk7322qs0/Xe/+10GDRqUF154IW3atEnHjh2z22675Ze//GXpwnVPP/10TjvttMZ7cwCwhk1PstEhw5rMF2NTk9ROfj49emxZ7igArOUU+Ebw97//PQ899FDp8Te/+c0cdNBBn7vcaaedlueeey7z5s1L3759c/LJJ+eYY47Jqaeemvvuuy+dO3fONddckyTp169fnnzyyQwYMCCtWrXKpZdemiRp27ZtTjjhhNJF9E488cTSBe0AoKi6JelZ7hCfMLfcAQAgCnyj+eCDD7L++usnSRYtWvSFlvnlL3/5qdPvuOOOFaZVVFTkZz/72afOP2LEiE+9Cj4AAADNhwLfCA488MAccsghGTRoUJJk3LhxGTx4cJlTAQAA0Jwo8I3gmGOOydZbb53JkycnSX7yk5+kb9++ZU4FAABAc6LAN5K+ffsq7QAAAKw2LcodAAAAAPh8CjwAAAAUgAIPAAAABaDAN4Inn3yy3BEAAABo5hT4VTBr1qwkyY033liadv7555crDgAAAM2Yq9CvgrPOOitz587NvHnz8tBDD2XbbbfN3//+93LHAgAAoBlyBH4V3HHHHbnnnnuy4YYbZtq0abniiisyderUnHLKKfn3f//3cscDAACgGXEEfhWccsop2WWXXdKyZcucdNJJSZLBgwfnhBNOyOTJk8ucDgAAgOZEgV8FJ510UiZPnpyZM2dm4MCB6dKlS+bMmZP3338///qv/1rueAAAADQjhtCvgp49e+bwww9Pt27dMn78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lKztZs2alSeeeCIjRoxIkjQ0NOSPf/xj9tlnnyTJ0KFD7U8pmwULFuRPf/pTafts2bJlNtxwQ/tRmpT6+vp8+OGHWbp0aT788MN06NDBfpRCUOApm7q6unTq1Kn0uLq6OnV1dWVMBMubMWNGXnrppeywww6ZM2dOOnbsmCTp0KFD5syZU+Z0rM0uvfTSnHHGGWnR4uM/4/PmzcuGG26YqqqP7w7bqVMn+1PKZsaMGWnXrl3OOeecDBkyJOedd14++OAD+1GajOrq6hx55JHZc889s9tuu6V169bZdttt7UcpBAUe4FO8//77OeWUU3LuueemdevWyz1XUVGRioqKMiVjbTdx4sS0a9cu2223XbmjwKdaunRpXnzxxRx66KGpqalJq1atVhgubz9KOc2fPz8TJkzIhAkT8tRTT2XRokV56qmnyh0LvpCqcgdg7VVdXZ1Zs2aVHtfV1aW6urqMieBjS5YsySmnnJIDDzwwAwcOTJK0b98+s2fPTseOHTN79uy0a9euzClZW/3lL3/J448/nkmTJuWjjz7KwoULc8kll+S9997L0qVLU1VVlVmzZtmfUjadOnVKp06dssMOOyRJ9t1334waNcp+lCbjmWeeyde+9rXSNjhw4MD85S9/sR+lEByBp2y+8Y1vpLa2Nm+88UYWL16csWPHpn///uWOxVquoaEh5513Xrp3756RI0eWpvfv3z81NTVJkpqamuy1115lSsja7vTTT8+kSZPy+OOP55e//GV23XXXXHXVVdlll13yH//xH0mS0aNH259SNh06dEinTp3y+uuvJ0kmT56cHj162I/SZHTu3DkvvPBCFi1alIaGhkyePDlbbLGF/SiFUNHQ0NBQ7hCsvZ588slceumlqa+vz/Dhw3P88ceXOxJruT//+c/5/ve/n549e5bOLz7ttNOy/fbb59RTT81bb72Vzp0755prrknbtm3LG5a13rPPPpvf/OY3ufnmm/PGG2/kxz/+cebPn5+vf/3rufLKK9OyZctyR2Qt9dJLL+W8887LkiVL0qVLl1x22WVZtmyZ/ShNxq9+9auMGzcuVVVV+frXv55LLrkkdXV19qM0eQo8AAAAFIAh9AAAAFAACjwAAAAUgAIPAAAABaDAAwAAQAEo8AAAAFAAVeUOAABrkyVLluSGG27IuHHj0rJly1RWVmbXXXfN6aefnnXWWedLr++BBx5Ir1690q1bt9WQ9qurr6/PHnvske222y433nhjueMAQLOgwAPAGnTOOefko48+yv3335/WrVtn6dKluf/++7N48eKvVOBHjx6djTfeuGwFfunSpamqWvF/J5566ql07Ngxf/nLX/LOO+9kk002KUM6AGhe3AceANaQ2traDBkyJE8++WQ22mijFZ7/9a9/nQ8++CBnnXXWCo8fe+yxXHvttWnRokXq6+tz/vnnZ8aMGbn44ovTrl27tG7dOmeddVZ22WWXXHnllXnqqaeSJLvvvnt+8pOfpLKyMmeffXZatmyZ2travPHGGxkwYED23HPP/PrXv86sWbNy+OGH5/DDD0+SvP7667n00kszb968LFmyJIcffniGDx+eJNlqq61y0kkn5Yknnsjuu++eU089dYX3cvLJJ6dv377529/+lm7duuXoo49OkixevDgXXXRRnnvuubRr1y5f//rX88477+RXv/pVkmTUqFEZP3586uvrU11dnYsuuigdOnRo9N8FABSRI/AAsIa8+OKL6dq166eW98/zq1/9KhdeeGF69eqV+vr6LFq0KLvssktqampy5JFHZs8990yS3HXXXXnppZfywAMPJEl++MMf5u677873vve9JMl//dd/5Y477kh9fX369++fBQsW5He/+13efvvt7LvvvhkxYkTWXXfd/OQnP8kVV1yRHj16ZOHChRk+fHh23HHH9OjRI0my7rrr5v777//UrHPnzs0f//jHXHbZZenevXvOP//8UoG/++67M3PmzIwdOzb19fU57LDD0qlTpyTJgw8+mDfeeCP33HNPWrRokbvuuiuXX355rrrqqi/9eQFAc6TAA0AB7LrrrrnssssycODA9O3bNz179vzU+SZPnpyhQ4emZcuWSZJhw4blscceKxX4vffeu/Rct27d0q9fv7Ro0SLV1dXZcMMNM2vWrDQ0NOS1117LaaedVlrvkiVL8vrrr5cK/NChQ1ea9fe//3323HPPtG7dOt/61rdSX1+fv/71r+nVq1eeffbZDB48OFVVVamqqsqgQYPy/PPPJ0kef/zx/Od//mdp3fX19WnduvUqfnIA0Hwo8ACwhmyzzTaZNm1a5s+f/6lH4SsrK7Ns2bLS448++qj087nnnpv/9//+X/74xz/mRz/6UUaOHJn/9b/+15fOsO666y73ev/zcX19fSoqKrLxxhvnwQcfXOl61l9//ZU+d//992fu3Lnp379/kmTBggW5//7706tXr8/M1tDQkOOPPz4jRoz4om8HANYqbiMHAGvI5ptvnv79++eCCy7IwoULk3x8lPnee+/N+++/n65du+Yf//hHli1bloULF+aJJ54oLfv6669nq622yuGHH56DDjoof//735MkG2ywQRYsWFCar3fv3qmpqcmSJUuyZMmS1NTU5Dvf+c6XytmtW7est956qampKU177bXXSpk/y5QpU7JgwYI8/fTTefzxx/P4449nzJgxeeSRR7Jo0aLsvPPOeeihh7J06dJ89NFHefjhh0vL9u/fP3fddVfmz5+f5OPz5V9++eUvlR0AmjNH4AFgDbr88stz/fXXZ/jw4VlnnXWybNmy9OvXLy1btsyAAQMybty47LfffuncuXO23Xbb0nJXXXVVpk2blsrKymy44Ya55JJLkiSHHHJILr/88tx2220566yzcsghh2T69OmlYei77bbblz5SX1VVlZtuuimXXnppbrvttixbtizt27fPNddc87nL3n///Rk0aFAqKipK06qrq7PNNtvkkUceyXe/+928/PLLGTRoUDbeeON07969NN+QIUPy7rvv5gc/+EGSj4/IH3roodl6662/VH4AaK5chR4AWKMWLlyY1q1bZ/HixTn++OOz77775uCDDy53LABo8hyBBwDWqJEjR2bx4sX56KOP8p3vfOczL4gHAPz/HIEHAACAAnAROwAAACgABR4AAAAKQIEHAACAAlDgAQAAoAAUeAAAACgABR4AAAAKQIEHAACAAlDgAQAAoAAUeAAAACgABR4AAAAKQIEHAACAAlDgAQAAoAAUeAAAACgABR4AAAAKQIEHAACAAlDgAQAAoAD+P7kI63r9WLS8AAAAAElFTkSuQmCC style='width=auto;height:auto'><div>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "#### Task 8: Manage and Explore Data Using Transparency Layer Functions",
+          "",
+          "With the transparency layer classes, you can convert selected Python objects to Oracle Autonomous Database (ADB) objects and also call a range of familiar Python functions that are overloaded to run the corresponding SQL on tables in the database.",
+          "  * `oml.create:` Creates a table in the database schema from a Python data set.",
+          "  * `oml_object.pull:` Creates a local Python object that contains a copy of data referenced by the `oml` object.",
+          "  * `oml.push:` Pushes data from a Python session into an object in a database schema.",
+          "  * `oml.sync:` Creates a DataFrame proxy object in Python that represents a database table or view.",
+          "  * `oml.dir:` Return the names of `oml` objects in the Python session workspace.",
+          "  * `oml.drop:` Drops a persistent database table or view.",
+          "",
+          "",
+          "##### Task 8.1 Create a persistent database table",
+          "Create and view a persistent database table using oml.create",
+          "",
+          "This example shows how to create a persistent table using the `oml.create` function. The `oml.create` function creates a table in the database schema and returns an `oml.DataFrame` object that is a proxy for the table. The proxy `oml.DataFrame` object has the same name as the table. The resulting table is available from both Python and SQL, even after the session ends - in contrast to the temporary table created when using the `oml.push` function",
+          "",
+          "Use the `z.show` function to automatically pull the desired data to Python for display in the notebook. By doing this, you can also use the built-in notebook visualization options such as bar, pie, area, line, and scatter plots.",
+          "",
+          "To create a persistent database table by using `oml.create` function, then check the shape (dimensions) of the resulting proxy object and list a few records, run the following script."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4>Task 8: Manage and Explore Data Using Transparency Layer Functions</h4>\n<p>With the transparency layer classes, you can convert selected Python objects to Oracle Autonomous Database (ADB) objects and also call a range of familiar Python functions that are overloaded to run the corresponding SQL on tables in the database.</p>\n<ul>\n<li><code>oml.create:</code> Creates a table in the database schema from a Python data set.</li>\n<li><code>oml_object.pull:</code> Creates a local Python object that contains a copy of data referenced by the <code>oml</code> object.</li>\n<li><code>oml.push:</code> Pushes data from a Python session into an object in a database schema.</li>\n<li><code>oml.sync:</code> Creates a DataFrame proxy object in Python that represents a database table or view.</li>\n<li><code>oml.dir:</code> Return the names of <code>oml</code> objects in the Python session workspace.</li>\n<li><code>oml.drop:</code> Drops a persistent database table or view.</li>\n</ul>\n<h5>Task 8.1 Create a persistent database table</h5>\n<p>Create and view a persistent database table using oml.create</p>\n<p>This example shows how to create a persistent table using the <code>oml.create</code> function. The <code>oml.create</code> function creates a table in the database schema and returns an <code>oml.DataFrame</code> object that is a proxy for the table. The proxy <code>oml.DataFrame</code> object has the same name as the table. The resulting table is available from both Python and SQL, even after the session ends - in contrast to the temporary table created when using the <code>oml.push</code> function</p>\n<p>Use the <code>z.show</code> function to automatically pull the desired data to Python for display in the notebook. By doing this, you can also use the built-in notebook visualization options such as bar, pie, area, line, and scatter plots.</p>\n<p>To create a persistent database table by using <code>oml.create</code> function, then check the shape (dimensions) of the resulting proxy object and list a few records, run the following script.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "try:",
+          "   oml.drop(table=\"IRIS\")",
+          "except:",
+          "   pass",
+          "",
+          "IRIS = oml.create(iris_df, table=\"IRIS\")",
+          "print(\"Shape:\",IRIS.shape)",
+          "",
+          "z.show(IRIS.head(10))"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "Shape: (150, 5)\n",
+              "type" : "TEXT"
+            },
+            {
+              "message" : "SEPAL_LENGTH\tSEPAL_WIDTH\tPETAL_LENGTH\tPETAL_WIDTH\tSPECIES\n4.6\t3.6\t1\t0.2\tsetosa\n5.1\t2.5\t3\t1.1\tversicolor\n6.0\t2.2\t4\t1.0\tversicolor\n5.8\t2.6\t4\t1.2\tversicolor\n5.5\t2.3\t4\t1.3\tversicolor\n5.5\t2.5\t4\t1.3\tversicolor\n6.1\t2.8\t4\t1.3\tversicolor\n5.7\t2.5\t5\t2.0\tvirginica\n6.0\t2.2\t5\t1.5\tvirginica\n6.3\t2.5\t5\t1.9\tvirginica\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 8.2 list persistent database tables",
+          "",
+          "Run the following script to view all persistent database tables that match the name `IRIS`."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 8.2 list persistent database tables</h5>\n<p>Run the following script to view all persistent database tables that match the name <code>IRIS</code>.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "list(oml.sync(table=\"IRIS\", regex_match=True).keys())"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "['IRIS']\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "#### Task 9: Use cx_Oracle functions",
+          "`cx_Oracle` is a Python extension module that enables access to Oracle Database, and it is available when you use OML4Py.",
+          "",
+          "The `oml.cursor()` function returns a cx_Oracle cursor object of the current OML database connection. It can be used to execute `SQL queries` against Oracle Database.",
+          "",
+          "---",
+          "",
+          "##### Task 9.1 Create a cursor object and run a query",
+          "Create a cursor object for the database connection using `oml.cursor` from `cx_Oracle`, then shows the SQL data types of the columns in the table `CUSTOMER_INSURANCE_LTV`."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4>Task 9: Use cx_Oracle functions</h4>\n<p><code>cx_Oracle</code> is a Python extension module that enables access to Oracle Database, and it is available when you use OML4Py.</p>\n<p>The <code>oml.cursor()</code> function returns a cx_Oracle cursor object of the current OML database connection. It can be used to execute <code>SQL queries</code> against Oracle Database.</p>\n<hr />\n<h5>Task 9.1 Create a cursor object and run a query</h5>\n<p>Create a cursor object for the database connection using <code>oml.cursor</code> from <code>cx_Oracle</code>, then shows the SQL data types of the columns in the table <code>CUSTOMER_INSURANCE_LTV</code>.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "cr = oml.cursor()",
+          "",
+          "_ = cr.execute(\"select data_type from all_tab_columns where table_name ='CUSTOMER_INSURANCE_LTV'\")",
+          "",
+          "cr.fetchall()"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "[('VARCHAR2',), ('VARCHAR2',), ('NUMBER',), ('NUMBER',), ('NUMBER',), ('NUMBER',), ('NUMBER',), ('NUMBER',), ('NUMBER',), ('VARCHAR2',), ('VARCHAR2',), ('VARCHAR2',), ('NUMBER',), ('VARCHAR2',), ('NUMBER',), ('NUMBER',), ('VARCHAR2',), ('NUMBER',), ('NUMBER',), ('NUMBER',), ('NUMBER',), ('NUMBER',), ('NUMBER',), ('NUMBER',), ('NUMBER',), ('NUMBER',), ('VARCHAR2',), ('VARCHAR2',), ('NUMBER',), ('NUMBER',), ('VARCHAR2',)]\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 9.2",
+          "",
+          "To close the cursor, run `cr.close`."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 9.2</h5>\n<p>To close the cursor, run <code>cr.close</code>.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "cr.close()"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "# Store and manage Python objects and user-defined functions",
+          "# Special abridged version for OCW23",
+          "",
+          "## Introduction",
+          "",
+          "This section walks you through the steps to use and work with datastores and the script repository.",
+          "",
+          "#### About Datastore",
+          "**Datastores** exist in the user's Oracle Database schema. A datastore, and the objects it contains, persist in the database until explicitly deleted. By using a datastore, you can store Python objects in a named datastore entry. This named datastore can then be used in subsequent Python sessions, and even be made available to other users or programs by granting/revoking read permissions.",
+          "",
+          "Python objects, including OML4Py proxy objects, exist for the duration of the current Python session unless you explicitly save them. You can save one or more Python objects, including OML proxy objects, to a named datastore and then load those objects in a later Python session. This is also useful when using embedded Python execution.",
+          "By using a datastore, you can:",
+          "* Save OML4Py and other Python objects for use across Python sessions",
+          "* Grant or revoke read privilege access to a datastore or its objects to one or more users. You can restore the saved objects in another Python session.",
+          "* Easily pass multiple and non-scalar arguments to Python functions for use in embedded Python execution from Python, REST, and SQL  API. ",
+          "**Note:** SQL and REST APIs support passing scalar values, such as datastore name or numeric values, only.",
+          "* List available datastores and explore datastore contents",
+          "",
+          "#### About the Python Script Repository",
+          "OML4Py stores **named user-defined functions** called scripts in the script repository.  You can make scripts either private or global. A private script is available only to the owner. A global script is available to any user. For private scripts, the owner of the script may grant the read privilege to other users or revoke that privilege.",
+          "",
+          "* `oml.script.create` - Creates a script, which contains a single Python function definition, in the script repository.",
+          "* `oml.script.dir` - Lists the scripts present in the script repository.",
+          "* `oml.script.drop` - Drops a script from the script repository.",
+          "* `oml.script.load` - Loads a script from the script repository into a Python session.",
+          "* `oml.grant` - Grants read privilege permission to another user to a datastore or script owned by the current user.",
+          "* `oml.revoke` - Revokes the read privilege permission that was granted to another user to a datastore or script owned by the current user.",
+          "",
+          "---",
+          "##### Task 2.3 Create the Boston table",
+          "Run the following script to create the Boston table proxy object, and also push it to the Database as a new Temporaty table with oml.push"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h1>Store and manage Python objects and user-defined functions</h1>\n<h1>Special abridged version for OCW23</h1>\n<h2>Introduction</h2>\n<p>This section walks you through the steps to use and work with datastores and the script repository.</p>\n<h4>About Datastore</h4>\n<p><strong>Datastores</strong> exist in the user's Oracle Database schema. A datastore, and the objects it contains, persist in the database until explicitly deleted. By using a datastore, you can store Python objects in a named datastore entry. This named datastore can then be used in subsequent Python sessions, and even be made available to other users or programs by granting/revoking read permissions.</p>\n<p>Python objects, including OML4Py proxy objects, exist for the duration of the current Python session unless you explicitly save them. You can save one or more Python objects, including OML proxy objects, to a named datastore and then load those objects in a later Python session. This is also useful when using embedded Python execution.\n<br  />By using a datastore, you can:</p>\n<ul>\n<li>Save OML4Py and other Python objects for use across Python sessions</li>\n<li>Grant or revoke read privilege access to a datastore or its objects to one or more users. You can restore the saved objects in another Python session.</li>\n<li>Easily pass multiple and non-scalar arguments to Python functions for use in embedded Python execution from Python, REST, and SQL  API.\n<br  /><strong>Note:</strong> SQL and REST APIs support passing scalar values, such as datastore name or numeric values, only.</li>\n<li>List available datastores and explore datastore contents</li>\n</ul>\n<h4>About the Python Script Repository</h4>\n<p>OML4Py stores <strong>named user-defined functions</strong> called scripts in the script repository.  You can make scripts either private or global. A private script is available only to the owner. A global script is available to any user. For private scripts, the owner of the script may grant the read privilege to other users or revoke that privilege.</p>\n<ul>\n<li><code>oml.script.create</code> - Creates a script, which contains a single Python function definition, in the script repository.</li>\n<li><code>oml.script.dir</code> - Lists the scripts present in the script repository.</li>\n<li><code>oml.script.drop</code> - Drops a script from the script repository.</li>\n<li><code>oml.script.load</code> - Loads a script from the script repository into a Python session.</li>\n<li><code>oml.grant</code> - Grants read privilege permission to another user to a datastore or script owned by the current user.</li>\n<li><code>oml.revoke</code> - Revokes the read privilege permission that was granted to another user to a datastore or script owned by the current user.</li>\n</ul>\n<hr />\n<h5>Task 2.3 Create the Boston table</h5>\n<p>Run the following script to create the Boston table proxy object, and also push it to the Database as a new Temporaty table with oml.push</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "from sklearn import datasets",
+          "",
+          "boston = datasets.load_boston()",
+          "x = pd.DataFrame(boston.data, columns = boston.feature_names.tolist())",
+          "y = pd.DataFrame(boston.target, columns = ['Value'])",
+          "BOSTON_TMP = oml.push(pd.concat([x, y], axis=1))",
+          "print(BOSTON_TMP.columns)"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT', 'Value']\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "#### Task 3: Save Python objects to a named datastore ",
+          "",
+          "In this task you will save the actual iris data set and the temporary BOSTON proxy object to a datastore named `ds_pydata`, overwriting if the named datastore already exists.",
+          "",
+          "**Note:** You can store actual data objects in a datastore, but large data objects should remain as database tables for performance and scalability.    ",
+          "",
+          "By storing the `BOSTON_TMP` object, the temporary table will not be deleted when the session terminates.",
+          "",
+          "---",
+          "",
+          "##### Task 3.1 Save the tables to the Datastore",
+          "Run the following script to save the `BOSTON_TMP` tables to the Datastore"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4>Task 3: Save Python objects to a named datastore</h4>\n<p>In this task you will save the actual iris data set and the temporary BOSTON proxy object to a datastore named <code>ds_pydata</code>, overwriting if the named datastore already exists.</p>\n<p><strong>Note:</strong> You can store actual data objects in a datastore, but large data objects should remain as database tables for performance and scalability.</p>\n<p>By storing the <code>BOSTON_TMP</code> object, the temporary table will not be deleted when the session terminates.</p>\n<hr />\n<h5>Task 3.1 Save the tables to the Datastore</h5>\n<p>Run the following script to save the <code>BOSTON_TMP</code> tables to the Datastore</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "oml.ds.save(objs={'oml_iris':IRIS, 'oml_boston':BOSTON_TMP},",
+          "                   name=\"ds_pydata\", description = \"python datasets\",",
+          "                   overwrite=True)"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 3.3 Save the IRIS table to a different datastore and list the existing ones",
+          "",
+          "Save the `IRIS` table to a new datastore, and then list the datastores. ",
+          "Notice that you see the datastore name, the number of objects in the datastore, the size in bytes consumed, when the datastore was create/updated, and any description provided by the user. ",
+          "The two datastores `ds_iris_data` and `ds_pydata` are present, with the latter containing the three objects you added."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 3.3 Save the IRIS table to a different datastore and list the existing ones</h5>\n<p>Save the <code>IRIS</code> table to a new datastore, and then list the datastores.\n<br  />Notice that you see the datastore name, the number of objects in the datastore, the size in bytes consumed, when the datastore was create/updated, and any description provided by the user.\n<br  />The two datastores <code>ds_iris_data</code> and <code>ds_pydata</code> are present, with the latter containing the three objects you added.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "oml.ds.save(objs={'iris':IRIS},",
+          "name=\"ds_iris_data\", description = \"iris dataset\", overwrite=True)",
+          "z.show(oml.ds.dir())"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "datastore_name\tobject_count\tsize\tdate\tdescription\nds_iris_data\t1\t694\t2023-09-15 22:05:04\tiris dataset\nds_pydata\t2\t1713\t2023-09-15 22:05:04\tpython datasets\nds_pymodels\t2\t4373\t2023-09-15 21:58:53\tNone\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "#### Task 4: Save model objects in a datastore",
+          "",
+          "This task illustrates how to store other types of objects in datastores. For this, you will create regression models using sklearn and OML4Py.",
+          "",
+          "---",
+          "",
+          "##### Task 4.1 Build two regression models, an open-source `LinearRegression` and an in-Database `oml.glm`",
+          "Run the following script to build two regression models - `regr1` and `regr2`. ",
+          "The `regr1` uses the open  source function `LinearRegression()` and the `regr2` uses the OML function `oml.glm()`.",
+          "",
+          "**Note:** This highlights that both open source models and in-database model proxy objects can be stored in a datastore. ",
+          "Like tables created using `oml.push` function, default-named model proxy objects are dropped at the end of the database connection unless they are saved in a datastore."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4>Task 4: Save model objects in a datastore</h4>\n<p>This task illustrates how to store other types of objects in datastores. For this, you will create regression models using sklearn and OML4Py.</p>\n<hr />\n<h5>Task 4.1 Build two regression models, an open-source <code>LinearRegression</code> and an in-Database <code>oml.glm</code></h5>\n<p>Run the following script to build two regression models - <code>regr1</code> and <code>regr2</code>.\n<br  />The <code>regr1</code> uses the open  source function <code>LinearRegression()</code> and the <code>regr2</code> uses the OML function <code>oml.glm()</code>.</p>\n<p><strong>Note:</strong> This highlights that both open source models and in-database model proxy objects can be stored in a datastore.\n<br  />Like tables created using <code>oml.push</code> function, default-named model proxy objects are dropped at the end of the database connection unless they are saved in a datastore.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "from sklearn import linear_model",
+          "regr1 = linear_model.LinearRegression()",
+          "regr1.fit(boston.data, boston.target)",
+          "regr2 = oml.glm(\"regression\")",
+          "X = BOSTON_TMP.drop('Value')",
+          "y = BOSTON_TMP['Value']",
+          "regr2 = regr2.fit(X, y)"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 4.2 Save both model objects to a new datastore",
+          "Run the following script to save the objects `regr1` and `regr2` to the datastore `ds_pymodels`, and allow the read privilege to be granted to them.",
+          "",
+          "**Note:** `overwrite=True` indicates that the contents of the datastore should be replaced."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 4.2 Save both model objects to a new datastore</h5>\n<p>Run the following script to save the objects <code>regr1</code> and <code>regr2</code> to the datastore <code>ds_pymodels</code>, and allow the read privilege to be granted to them.</p>\n<p><strong>Note:</strong> <code>overwrite=True</code> indicates that the contents of the datastore should be replaced.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "oml.ds.save(objs={'regr1':regr1, 'regr2':regr2},",
+          "            name=\"ds_pymodels\", grantable=True,",
+          "            overwrite=True)",
+          "oml.ds.dir()"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "  datastore_name  object_count  size                date      description\n0   ds_iris_data             1   694 2023-09-15 22:05:04     iris dataset\n1      ds_pydata             2  1713 2023-09-15 22:05:04  python datasets\n2    ds_pymodels             2  4377 2023-09-15 22:05:07             None\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "##### Task 5.2 Load object `regr2` (regression model) into the global workspace",
+          "",
+          "Run the following script to load the named Python object `regr2` (regression model), from the datastore to the global workspace.",
+          "",
+          "**Note:** Using the boolean `to_globals` parameter, you can specify whether the objects are loaded to a global workspace or to a dictionary object. If the argument is `to_globals=True`, then `oml.ds.load` function loads the objects into the global workspace. If the argument is `to_globals=False`, then the function returns a dict object that contains pairs of object names and values."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h5>Task 5.2 Load object <code>regr2</code> (regression model) into the global workspace</h5>\n<p>Run the following script to load the named Python object <code>regr2</code> (regression model), from the datastore to the global workspace.</p>\n<p><strong>Note:</strong> Using the boolean <code>to_globals</code> parameter, you can specify whether the objects are loaded to a global workspace or to a dictionary object. If the argument is <code>to_globals=True</code>, then <code>oml.ds.load</code> function loads the objects into the global workspace. If the argument is <code>to_globals=False</code>, then the function returns a dict object that contains pairs of object names and values.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "oml.ds.load(name=\"ds_pymodels\", objs=[\"regr2\"], to_globals=True)"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "['regr2']\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "#### Task 7: View contents of a datastore",
+          "",
+          "This task shows how to view and describe the content of a datastore. This example shows the `ds_pydata` datastore. Notice that the three proxy objects are listed.",
+          "",
+          "---",
+          "",
+          "##### Task 7.1 List the contents of a datastore",
+          "",
+          "Run the following script to list the content of a datastore. The script returns the description of three proxy objects - `oml_iris`, `oml_boston`, and `oml_diabetes`. It lists the class, size, length, row and column count for each object."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4>Task 7: View contents of a datastore</h4>\n<p>This task shows how to view and describe the content of a datastore. This example shows the <code>ds_pydata</code> datastore. Notice that the three proxy objects are listed.</p>\n<hr />\n<h5>Task 7.1 List the contents of a datastore</h5>\n<p>Run the following script to list the content of a datastore. The script returns the description of three proxy objects - <code>oml_iris</code>, <code>oml_boston</code>, and <code>oml_diabetes</code>. It lists the class, size, length, row and column count for each object.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "",
+          "z.show(oml.ds.describe(name='ds_pydata'))"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "python.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "object_name\tclass\tsize\tlength\trow_count\tcol_count\noml_boston\toml.DataFrame\t1019\t506\t506\t14\noml_iris\toml.DataFrame\t694\t150\t150\t5\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "--- ",
+          "### Complete details on the Transparency Layer, and OML4Py Datastore and Script Repository are available in Lab 2 and Lab 4"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h3>Complete details on the Transparency Layer, and OML4Py Datastore and Script Repository are available in Lab 2 and Lab 4</h3>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "---",
+          "#### Learn More",
+          "",
+          "* [OML4Py Transparency Layer Functions](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/oracle-machine-learning-python.html#GUID-2AD97DE9-B43F-4B0B-8269-C6DFB47576A9)",
+          "* [OML4Py Prepare Data in the Database](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/prepare-and-explore-data1.html#GUID-D560D71C-5FF4-460D-BC1C-FF6EFB509BEC)",
+          "* [OML4Py Explore Data in the Database](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/prepare-and-explore-data1.html#GUID-60B565D7-19E0-426F-BE7B-0E86DAB31925)",
+          "* [Get started with OML4Py Datastores](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/get-started-oracle-machine-learning-python1.html#GUID-C02396D1-2B30-47A0-AE27-37B123E15710)",
+          "* [Get started with OML4Py Script Repository](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/save-and-manage-functions-for-embedded-python-execution.html#GUID-74671038-15FE-44BB-A657-C89C16C1EF43)",
+          "* [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)",
+          "* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)",
+          "",
+          "**Last Updated Date** - August 2023",
+          "",
+          "Copyright (c) 2023 Oracle Corporation ",
+          "[The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)",
+          "",
+          "---"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : null,
+        "result" : {
+          "interpreter" : "md.low",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<hr />\n<h4>Learn More</h4>\n<ul>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/oracle-machine-learning-python.html#GUID-2AD97DE9-B43F-4B0B-8269-C6DFB47576A9\">OML4Py Transparency Layer Functions</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/prepare-and-explore-data1.html#GUID-D560D71C-5FF4-460D-BC1C-FF6EFB509BEC\">OML4Py Prepare Data in the Database</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/prepare-and-explore-data1.html#GUID-60B565D7-19E0-426F-BE7B-0E86DAB31925\">OML4Py Explore Data in the Database</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/get-started-oracle-machine-learning-python1.html#GUID-C02396D1-2B30-47A0-AE27-37B123E15710\">Get started with OML4Py Datastores</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/save-and-manage-functions-for-embedded-python-execution.html#GUID-74671038-15FE-44BB-A657-C89C16C1EF43\">Get started with OML4Py Script Repository</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/\">Oracle Machine Learning Notebooks</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B\">Oracle Machine Learning Notebooks - Early Adopter</a></li>\n</ul>\n<p><strong>Last Updated Date</strong> - August 2023</p>\n<p>Copyright (c) 2023 Oracle Corporation\n<br  /><a href=\"https://oss.oracle.com/licenses/upl/\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      }
+    ]
+  }
+]
