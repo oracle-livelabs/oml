@@ -817,6 +817,7 @@ You can save the python objects you create in one python session and load them i
 In this example, you classified customers who are most likely to be positive responders to an Affinity Card loyal program. You built and applied a classification decision tree model using the Sales history (SH) schema data.
 
 You were also able to successfully evaluate the quality of the model using various metrics, and identify the top attributes that explains each customer prediction.  You also learned how to store and retrieve Python objects from the OML Python Data Store.
+
 You may now **proceed to the next lab**.
 
 ## Learn More
