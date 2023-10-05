@@ -46,12 +46,12 @@ As the OML user:
    <if type="freetier">
    Click the **Lab 5** notebook to view it.
 
-   ![Open Lab 5 notebook ft](images/click-on-la6-ft.png " ") </if>
+   ![Open Lab 5 notebook ft](images/click-on-lab6-ft.png " ") </if>
    
    <if type="livelabs">
    Click the **Lab 5** notebook to view it.
 
-   ![Open Lab 5 notebook ll](images/click-on-lab6-ll.png " ") </if>
+   ![Open Lab 5 notebook ll](images/click-on-lab6-ft.png " ") </if>
    
    <if type="freetier-ocw23">
    Click the **Lab Bonus 2** notebook to view it.
@@ -61,7 +61,7 @@ As the OML user:
    <if type="livelabs-ocw23">
    Click the **Lab Bonus 2** notebook to view it.
    
-   ![Open Lab Bonus 2 notebook ll](images/click-on-labbo2-ll-ocw23.png " ") </if>
+   ![Open Lab Bonus 2 notebook ll](images/click-on-labbo2-ft-ocw23.png " ") </if>
 
    OML Notebooks will create a session and make the notebook available for editing.
 
@@ -90,11 +90,10 @@ As the OML user:
 
   ![Add the OML user to the cloud host ACL](images/1-appendhost.png " ")  
 
-    ```
-    <copy>
-    exec pyqAppendHostAce('OMLUSER','adb.us-ashburn-1.oraclecloudapps.com');
-    </copy>
-    ```
+  ```
+  <copy>
+  exec pyqAppendHostAce('OMLUSER','adb.us-ashburn-1.oraclecloudapps.com');
+  ```
   
   > Note: In this example, `us-ashburn-1` is the region. Make sure to replace it with the region where your Autonomous Database is located.
 
@@ -171,7 +170,7 @@ Here, you run the following script to obtain a proxy object for the IRIS table.
 
 ## Task 6: Use the table-apply function to call the script from the Python API for embedded Python execution
 
->> Note: Here, we are only running the function in the Python API for embedded Python execution as a test step before running it from the SQL API for embedded Python execution.
+> **Note:** Here, we are only running the function in the Python API for embedded Python execution as a test step before running it from the SQL API for embedded Python execution.
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
@@ -181,7 +180,8 @@ Here, you run the following script to obtain a proxy object for the IRIS table.
   The returned value is a DataFrame containing the coefficients of the predictors.
 
 ## Task 7: View Datastore content using Python and SQL
-The model `regr` is now stored in datastore `ds1`. You can view the datastore content, either from Python or SQL. First, display  Then, display the same information by querying the `USER_PYQ_DATASTORES` view.
+  The model `regr` is now stored in datastore `ds1`. You can view the datastore content, either from Python or SQL. First, display  Then, display the same information by querying the `USER_PYQ_DATASTORES` view.
+
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to Task 6.
@@ -191,7 +191,7 @@ The model `regr` is now stored in datastore `ds1`. You can view the datastore co
 
  ![Python Script to view datastore content](images/6-1-view-dscontent-python.png " ")
 
-1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+3. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 6.2.
 
  ![SQL Script to view datastore content](images/6-2-view-dscontent-sql.png " ")
@@ -203,18 +203,20 @@ The model `regr` is now stored in datastore `ds1`. You can view the datastore co
   Scroll down to Task 7.
   ![Run the same function using the SQL API function pyqTableEval](images/7-run-sqlapi-func.png " ")
 
-1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 7.1.   
  ![Return output as a structured table](images/7-1-output-struc-table.png " ")
 
-1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+3. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 7.2.
 
   ![Display model object name and class in datastore](images/7-2-display-modelobject-class-ds.png " ")
-1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+
+4. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 7.3.
   ![Return output as a JSON string](images/7-3-output-json-string.png " ")
-1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+
+5. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
     Scroll down to Task 7.4.
   ![Return output as a XML string](images/7-4-output-xml-string.png " ")
 
@@ -253,7 +255,7 @@ The model `regr` is now stored in datastore `ds1`. You can view the datastore co
 
   ![Call the UDF from Python and return PNG image](images/9-2-invoke-udf-densityplot.png " ")
 
-1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+4. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to Task 9.3.
   ![Corresponding SQL call to return PNG images](images/9-3-invoke-densityplot-sql.png " ")
 

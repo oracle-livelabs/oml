@@ -640,7 +640,8 @@ Having built and evaluated the model, you will now filter scores computed above.
 
 	```
 	<copy>
-	%python  
+	%python
+
 	z.show(RES_DF[RES_DF['PROBABILITY_OF_1'] > 0.5][['PREDICTION', 'PROBABILITY_OF_1', 'CUST_ID', 'AFFINITY_CARD','EDUCATION','OCCUPATION', 'HOUSEHOLD_SIZE', 'YRS_RESIDENCE', 'OS_DOC_SET_KANJI','BULK_PACK_DISKETTES']])
 	</copy>
 	```
@@ -816,6 +817,7 @@ You can save the python objects you create in one python session and load them i
 In this example, you classified customers who are most likely to be positive responders to an Affinity Card loyal program. You built and applied a classification decision tree model using the Sales history (SH) schema data.
 
 You were also able to successfully evaluate the quality of the model using various metrics, and identify the top attributes that explains each customer prediction.  You also learned how to store and retrieve Python objects from the OML Python Data Store.
+
 You may now **proceed to the next lab**.
 
 ## Learn More
@@ -841,4 +843,4 @@ OML4Py enables data scientists to hand-off their user-defined Python functions t
 
 * **Authors** - Sarika Surampudi, Senior User Assistance Developer, Oracle Database User Assistance Development; Dhanish Kumar, Member of Technical Staff, User Assistance Developer.
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning.
-* **Last Updated By/Date** - Moitreyee Hazarika, June 2023
+* **Last Updated By/Date** - Dhanish Kumar, October 2023

@@ -1,7 +1,7 @@
 # Use in-database algorithms and models
 
 ## Introduction
-This lab highlights a few of the machine learning algorithms and features available in OML4Py: Generalized Linear Models (GLM), K-Means Clustering, partitioned models, and model explainability.
+This lab highlights a few of the machine learning algorithms and features available in OML4Py: Generalized Linear Models (GLM), Expectation-Maximization Clustering, partitioned models, and model explainability.
 
 Estimated Time: 25 minutes
 
@@ -16,7 +16,7 @@ In-database machine learning models are first-class objects in Oracle Database. 
 
 In this lab, you will learn how to:
 * Predict numerical values using Regression (Generalized Linear Model)
-* Work with clustering using K-means
+* Work with clustering using Expectation-Maximization
 * Work with partitioned models
 * Use the Model Explainability feature to rank attributes
 
@@ -35,11 +35,11 @@ In this lab, you will learn how to:
    <if type="freetier">
    ![Open Lab 3 notebook ft](images/click-on-lab3-ft.png " ") </if>
    <if type="livelabs">
-   ![Open Lab 3 notebook ll](images/click-on-lab3-ll.png " ") </if>
+   ![Open Lab 3 notebook ll](images/click-on-lab3-ft.png " ") </if>
    <if type="freetier-ocw23">
    ![Open Lab 3 notebook ft](images/click-on-lab3-ft-ocw23.png " ") </if>
    <if type="livelabs-ocw23">
-   ![Open Lab 3 notebook ll](images/click-on-lab3-ll-ocw23.png " ") </if>
+   ![Open Lab 3 notebook ll](images/click-on-lab3-ft-ocw23.png " ") </if>
 
    OML Notebooks will create a session and make the notebook available for editing.
 
@@ -61,12 +61,12 @@ In this lab, you will learn how to:
 
   ![regression using (GLM)](images/lab3-task2.png " ")
 
-## Task 3: Work with clustering using k-Means
+## Task 3: Work with clustering using Expectation-Maximization
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to the beginning of Task 3.
 
-  ![clustering using k-Means](images/lab3-task3.png " ")
+  ![clustering using Expectation-Maximization](images/lab3-task3.png " ")
 
 ## Task 4: Work with Partitioned Models
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.

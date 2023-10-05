@@ -56,7 +56,7 @@
           "",
           "",
           "**Copyright (c) 2023 Oracle Corporation**",
-          "<a href=\"https://oss.oracle.com/licenses/upl/\" onclick=\"return ! window.open('https://oss.oracle.com/licenses/upl/');\">The Universal Permissive License (UPL), Version 1.0</a>",
+          "[The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)",
           "",
           "---"
         ],
@@ -1380,15 +1380,15 @@
           "",
           "## Learn More",
           "",
-          "* <a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728\" onclick=\"return ! window.open('https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728');\">OML4Py Embedded Python Execution</a>",
-          "* <a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/omlss/index.html\" onclick=\"return ! window.open('https://docs.oracle.com/en/database/oracle/machine-learning/omlss/index.html');\">Get started with Oracle Machine Learning Services</a>",
-          "* <a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/\" onclick=\"return ! window.open('https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/');\">Oracle Machine Learning Notebooks</a>",
-          "* <a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B\" onclick=\"return ! window.open('https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B');\">Oracle Machine Learning Notebooks - Early Adopter</a>",
-          " ",
+          "* [OML4Py Embedded Python Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728)",
+          "* [Get started with Oracle Machine Learning Services](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/index.html)",
+          "* [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)",
+          "* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)",
+          "",
           "**Last Updated Date** - August 2023",
-          " ",
-          "**Copyright (c) 2023 Oracle Corporation**",
-          "<a href=\"https://oss.oracle.com/licenses/upl/\" onclick=\"return ! window.open('https://oss.oracle.com/licenses/upl/');\">The Universal Permissive License (UPL), Version 1.0</a>",
+          "",
+          "Copyright (c) 2023 Oracle Corporation ",
+          "[The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)",
           "",
           "---"
         ],
@@ -1407,7 +1407,7 @@
           "status" : "SUCCESS",
           "results" : [
             {
-              "message" : "<h2>Learn More</h2>\n<ul>\n<li><a href=\"https: //docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728\" >OML4Py Embedded Python Execution</a></li>\n<li><a href=\"https: //docs.oracle.com/en/database/oracle/machine-learning/omlss/index.html\" >Get started with Oracle Machine Learning Services</a></li>\n<li><a href=\"https: //docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/\" >Oracle Machine Learning Notebooks</a></li>\n<li><a href=\"https: //docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B\" >Oracle Machine Learning Notebooks - Early Adopter</a></li>\n</ul>\n<p><strong>Last Updated Date</strong> - August 2023</p>\n<p><strong>Copyright (c) 2023 Oracle Corporation</strong>\n<br  /><a href=\"https: //oss.oracle.com/licenses/upl/\" >The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
+              "message" : "<h2>Learn More</h2>\n<ul>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728\">OML4Py Embedded Python Execution</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/omlss/index.html\">Get started with Oracle Machine Learning Services</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/\">Oracle Machine Learning Notebooks</a></li>\n<li><a href=\"https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B\">Oracle Machine Learning Notebooks - Early Adopter</a></li>\n</ul>\n<p><strong>Last Updated Date</strong> - August 2023</p>\n<p>Copyright (c) 2023 Oracle Corporation\n<br  /><a href=\"https://oss.oracle.com/licenses/upl/\">The Universal Permissive License (UPL), Version 1.0</a></p>\n<hr />\n",
               "type" : "HTML"
             }
           ],

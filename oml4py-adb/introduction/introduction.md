@@ -26,8 +26,7 @@ Watch the video below for an introduction to Oracle Machine Learning for Python.
 <if type="freetier">* Provision an Autonomous Database with OML-ready users</if>
 <if type="freetier-ocw23">* Provision an Autonomous Database with OML-ready users</if>
  * Oracle Machine Learning UI and OML Notebooks with a connection to an Oracle Autonomous Database from a Python session
-<if type="freetier">* Load external and internal datasets that will be used by all the Labs</if>
-<if type="freetier-ocw23">* Load external and internal datasets that will be used by all the Labs</if>
+ * Load external and internal datasets that will be used by all the labs
  * Data selection and manipulation with the Transparency Layer
  * In-database algorithms for model building and scoring
  * Datastores to store Python objects

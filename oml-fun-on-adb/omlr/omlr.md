@@ -69,7 +69,7 @@ In this step, the `iris` data set is used for illustrative purposes to create a 
 
 ## Task 2: Create a Persistent Database Table
 
-You can also create a persistent table using the `ore.create` function and specify a table name, `IRIS`. The `ore.create()` function creates a table in the database schema. This table is then accessible both within OML4R and directly from SQL. Use the `z.show` function to display the desired data in the notebook to take advantage of native Zeppelin visualization options, or simply access IRIS for a native R view of the tabular data. 
+You can also create a persistent table using the `ore.create` function and specify a table name, `IRIS`. The `ore.create()` function creates a table in the database schema. This table is then accessible both within OML4R and directly from SQL. Use the `z.show` function to display the desired data in the notebook to take advantage of native Zeppelin visualization options, or simply access IRIS for a native R view of the tabular data.
 
 1. To create the persistent table IRIS, run the following script.
 
@@ -91,7 +91,7 @@ You can also create a persistent table using the `ore.create` function and speci
 
 ## Task 3: Create a Proxy Object for a Database Object
 
-Use the `ore.sync()` function to create an `ore.frame` object named `DEMO` as a proxy for a database table or view. 
+Use the `ore.sync()` function to create an `ore.frame` object named `DEMO` as a proxy for a database table or view.
 
 1. The argument query uses an optional named character vector specifying queries to use for `ore.frame` object creation.
 
@@ -146,7 +146,7 @@ In this example, use `dim()`, `summary()` and `crosstab()` functions to explore 
 
 		CUST_ID        EDUCATION              OCCUPATION          
 	Min.   :100001   Length:4500            Length:4500          
-	1st Qu.:101126   Class :ore.character   Class :ore.character 
+	1st Qu.:101126   Class :ore.character   Class :ore.character
 	Median :102250   Mode  :character       Mode  :character     
 	Mean   :102250                                               
 	3rd Qu.:103375                                               
@@ -167,7 +167,7 @@ In this example, use `dim()`, `summary()` and `crosstab()` functions to explore 
 	Max.   :1.0000     Max.   :1.0000       Max.   :1.0000        
 	PRINTER_SUPPLIES  Y_BOX_GAMES     OS_DOC_SET_KANJI     COMMENTS           
 	Min.   :1        Min.   :0.0000   Min.   :0.000000   Length:4500          
-	1st Qu.:1        1st Qu.:0.0000   1st Qu.:0.000000   Class :ore.character 
+	1st Qu.:1        1st Qu.:0.0000   1st Qu.:0.000000   Class :ore.character
 	Median :1        Median :0.0000   Median :0.000000   Mode  :character     
 	Mean   :1        Mean   :0.3124   Mean   :0.002444                        
 	3rd Qu.:1        3rd Qu.:1.0000   3rd Qu.:0.000000                        
@@ -216,7 +216,7 @@ In this step, you will create a proxy object DEMO2 by selecting columns from the
 	<copy>
 	%r
 
-	DEMO2 <- DEMO[,c("CUST_ID", 'AFFINITY_CARD', 
+	DEMO2 <- DEMO[,c("CUST_ID", 'AFFINITY_CARD',
 					 "BOOKKEEPING_APPLICATION", "BULK_PACK_DISKETTES",
 					 "EDUCATION","FLAT_PANEL_MONITOR", "HOME_THEATER_PACKAGE",
 					 "HOUSEHOLD_SIZE", "OCCUPATION", "OS_DOC_SET_KANJI",
@@ -291,7 +291,7 @@ Use the `ore.odmDT` function to build a Decision Tree model. You can build a mod
 	```r
 	<copy>
 	%r
- 
+
 	dt_mod <- ore.odmDT(AFFINITY_CARD~.,
 	                    TRAIN,
 						odm.settings= list(model_name="DT_CLAS_MODEL"))
@@ -433,28 +433,28 @@ Evaluate the in-database model proxy object using various approaches. Make predi
 	dx <- density(res$"PROB_0")
 	dx2 <- density(res$"PROB_1")
 
-	# PLOTS 3 in 1 , with specific width and height 
+	# PLOTS 3 in 1 , with specific width and height
 	par(mfrow=c(1,3))
 	options(repr.plot.width=8, repr.plot.height=3)
 
-	plot(1 - spec, sens, type = "l", 
-	     col = "darkred", ylab = "Sensitivity", 
+	plot(1 - spec, sens, type = "l",
+	     col = "darkred", ylab = "Sensitivity",
 		 xlab = "1 - Specificity", main = 'ROC Curve')
     abline(c(0,0),c(1,1))
-	text(0.6, 0.2, 
-	     paste(" AUC = ", 
+	text(0.6, 0.2,
+	     paste(" AUC = ",
 		 	   round(sum(spec*diff(c(0, 1 - sens))),3)))
 
-	barplot(table(df_sens$decile), 
-	        xlab = 'Decile', ylab = 'Actual Targets', 
+	barplot(table(df_sens$decile),
+	        xlab = 'Decile', ylab = 'Actual Targets',
 			main = 'Lift Chart', col = "darkred")
 
 	par(mar = c(6, 4, 4, 2))
 	plot(dx, lwd = 2, col = "darkgreen",
          main = "Probability Densities")
 	lines(dx2, lwd = 2, col = "darkred")
-	legend(x = "bottom", legend = c("Negative","Positive"), 
-           col = c("darkred","darkgreen"), 
+	legend(x = "bottom", legend = c("Negative","Positive"),
+           col = c("darkred","darkgreen"),
            lwd = 1,bty = "n",
            xpd = TRUE,inset = c(0, -0.36),
            horiz = TRUE)  
@@ -515,8 +515,8 @@ You can score data and make similar predictions using the SQL interface. The tes
 	</copy>
 	```
 
-2. Run the following SQL command to score and display the prediction details. The `prediction` and `prediction_details` functions apply the decision tree classification model that we created above named `DT_CLAS_MODEL` to the data from the table `DT_TEST_TABLE`. 
-   
+2. Run the following SQL command to score and display the prediction details. The `prediction` and `prediction_details` functions apply the decision tree classification model that we created above named `DT_CLAS_MODEL` to the data from the table `DT_TEST_TABLE`.
+
    The function `prediction_details()` returns prediction details for each row in the selection. The return value is an XML string that ranks the predictors according to their impact on the individual record prediction, providing the attribute name, value, and weight. The XMLTable maps the result of an XQuery evaluation into relational rows and columns. The XMLTYPE column of the OUT.PD table is passed as an input to the XMLTABLE function with the appropriate path as `/Details/Attribute[1]`, `/Details/Attribute[2]` and `/Details/Attribute[3]`.
 
    The query includes information about the predictors that have the greatest influence on the prediction. For more information on XMLTable see [XMLTable](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/XMLTABLE.html#GUID-C4A32C58-33E5-4CF1-A1FE-039550D3ECFA).
@@ -543,7 +543,7 @@ You can score data and make similar predictions using the SQL interface. The tes
 					COLUMNS
 					"Attribute1" XMLType PATH 'Attribute[1]',
 					"Attribute2" XMLType PATH 'Attribute[2]',
-					"Attribute3" XMLType PATH 'Attribute[3]') OUTPRED	
+					"Attribute3" XMLType PATH 'Attribute[3]') OUTPRED
 	</copy>
 	```
 
@@ -553,14 +553,14 @@ You can score data and make similar predictions using the SQL interface. The tes
 
 ## Task 10: Saving and Loading R Objects in a Datastore Instance
 
-You can save the R objects you create in one R session and load them in another session using the OML4R datastore. R objects and OML4R proxy objects exist only during the current R session unless they are saved to a datastore. OML4R creates the datastore in the current user’s database schema. Until you delete the datastore or the individual objects in a datastore, they remain in the database. 
+You can save the R objects you create in one R session and load them in another session using the OML4R datastore. R objects and OML4R proxy objects exist only during the current R session unless they are saved to a datastore. OML4R creates the datastore in the current user’s database schema. Until you delete the datastore or the individual objects in a datastore, they remain in the database.
 
 OML4R provides functions for managing the objects in the datastore, such as `ore.save()`, `ore.load()`, `ore.datastore()`, and others.
 
 1. To save one or more R objects to a datastore, use the `ore.save()` function. Here the `ore.frame()` object is stored to `ds_rdata` and the R model object is stored to `ds_rmodel`.
 
-  - To save `IRIS` and the `RES_DF` ore.frame proxy object to the `ds_rdata` datastore, run the script below. Use the `ore.sync()` function to create an R object as a proxy for the `IRIS` table (created in Task 2). 
-  
+  - To save `IRIS` and the `RES_DF` ore.frame proxy object to the `ds_rdata` datastore, run the script below. Use the `ore.sync()` function to create an R object as a proxy for the `IRIS` table (created in Task 2).
+
   You can give it some descriptive text using the description argumentto the function `ore.save()`, which will appear when you get information on the datastore.
 
 	```r
@@ -569,9 +569,9 @@ OML4R provides functions for managing the objects in the datastore, such as `ore
 
 	IRIS_TMP <- ore.sync(table='IRIS')
 
-	ore.save(IRIS_TMP, RES_DF, 
-	         name="ds_rdata", 
-	         overwrite=TRUE, 
+	ore.save(IRIS_TMP, RES_DF,
+	         name="ds_rdata",
+	         overwrite=TRUE,
 			 description="r datasets")
 	</copy>
 	```
@@ -584,8 +584,8 @@ OML4R provides functions for managing the objects in the datastore, such as `ore
 	<copy>
 	%r
 
-	ore.save(dt_mod, 
-	         name = 'ds_rmodel', 
+	ore.save(dt_mod,
+	         name = 'ds_rmodel',
 			 description = 'r model',  
 			 grantable= TRUE)
 	</copy>
@@ -667,9 +667,9 @@ To learn more about how to use datastores to store R objects click this [link](h
 
 ## Task 11: Run the R UDF using embedded R execution
 
-In this step, you will create a user-defined function (UDF) `buildLM.1` using the IRIS dataset that builds and returns a regression model using the R open source linear regression function `lm`. 
+In this step, you will create a user-defined function (UDF) `buildLM.1` using the IRIS dataset that builds and returns a regression model using the R open source linear regression function `lm`.
 
-You will save the model in a variable `regr` to a datastore named `dsname`. The UDF `buildLM.1` is run using the `ore.tableApply()` function, which dynamically spawns an R engine, loads the UDF, loads the data into the first argument (dat), runs the UDF, and terminates the R engine. 
+You will save the model in a variable `regr` to a datastore named `dsname`. The UDF `buildLM.1` is run using the `ore.tableApply()` function, which dynamically spawns an R engine, loads the UDF, loads the data into the first argument (dat), runs the UDF, and terminates the R engine.
 
 For more information on managing scripts see [manage script](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/use-oracle-r-enterprise-embedded-r-execution.html#GUID-168AECD0-B961-4913-AEC6-2BEC28039334).  On the SQL API for ERE see [SQL API for Embedded R Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/use-oracle-r-enterprise-embedded-r-execution.html#GUID-E4A808B3-7844-4B6E-BBC0-FBFD170831EF) with Autonomous Database, and for the REST API see [REST API for Embedded R Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/mlere/index.html).
 
@@ -685,8 +685,8 @@ buildLM.1 <- function(dat,dsname){
   x <- dat[['Petal.Width']]
   y <- dat[['Petal.Length']]
 
-  xyplot(y~x, 
-         xlab = "Petal Width", 
+  xyplot(y~x,
+         xlab = "Petal Width",
          ylab = "Petal Length",
          panel = function(x,y) {
                  panel.dotplot(x,y)
@@ -695,8 +695,8 @@ buildLM.1 <- function(dat,dsname){
          ylim=c(0,7.5),
          main="Prediction of Petal Length")
 
-  ore.save(regr, 
-           name=dsname, 
+  ore.save(regr,
+           name=dsname,
 		   overwrite=TRUE)
 
   return(as.data.frame(regr$coef))
@@ -722,13 +722,13 @@ The output is similar to the following:
 
 ## Task 12: Building a partitioned Support Vector Machine regression model
 
-As we have seen before in **Task 6**, the argument `odm.settings` specifies a list for the parameter setting in an algorithm build. Each list element's name and value refer to the parameters setting name and value, respectively. The setting value must be numeric or string. 
+As we have seen before in **Task 6**, the argument `odm.settings` specifies a list for the parameter setting in an algorithm build. Each list element's name and value refer to the parameters setting name and value, respectively. The setting value must be numeric or string.
 
-Below we will show an example of building a Support Vector Machine regression model, with a function called `ore.odmSVM()`.  By default the model object will receive a system-generated random name, and the model object will be a temporary model object that would disappear once the session is disconnected or the Notebook is closed. 
+Below we will show an example of building a Support Vector Machine regression model, with a function called `ore.odmSVM()`.  By default the model object will receive a system-generated random name, and the model object will be a temporary model object that would disappear once the session is disconnected or the Notebook is closed.
 
 The usage of the parameter `model_name` can explicitly name the model and persist it in the database for later use, allowing future scoring via OML4SQL and OML4Py too.  
 
-The parameter `odms_partitions_columns` specifies the names of the partition columns, then a partition model with a sub-model in each partition is created from the input data. 
+The parameter `odms_partitions_columns` specifies the names of the partition columns, then a partition model with a sub-model in each partition is created from the input data.
 
 The `ore.odmSVM` function uses the in-database Support Vector Machine (SVM) algorithm.  Refer to [Specify Model Settings](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/oml4r-classes-that-provide-access-database-ml-algorithm1.html) in the OML4R User's Guide for detail.
 
@@ -737,12 +737,12 @@ The `ore.odmSVM` function uses the in-database Support Vector Machine (SVM) algo
 
 INPUT <- ore.get( schema="SH", "SUPPLEMENTARY_DEMOGRAPHICS")
 
-settings <- list(odms_partition_columns = 'HOUSEHOLD_SIZE', 
+settings <- list(odms_partition_columns = 'HOUSEHOLD_SIZE',
                  model_name = 'SVM_PARTITIONED_REGRESSION_MODEL')
 
 mod.svm   <- ore.odmSVM(AFFINITY_CARD~.,
                          data=INPUT,
-                         type="classification", 
+                         type="classification",
 						 kernel.function="linear",
                          odm.settings=settings)
 
@@ -767,4 +767,4 @@ OREdplyr package functions implement the `dplyr` interface for use with `ore.fra
 ## Acknowledgements
 * **Author** - Dhanish Kumar, Member of Technical Staff, User Assistance Developer.
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Suresh Rajan, Senior Manager, Oracle Database User Assistance Development; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning.
-* **Last Updated By/Date** - Marcos Arancibia, March 2023
+* **Last Updated By/Date** - Dhanish Kumar, October 2023

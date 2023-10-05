@@ -33,63 +33,7 @@ In this lab, you will learn how to:
 This lab assumes you have:
 * An Oracle Machine Learning account
 * Access to the OML UI
-<if type="freetier">
-* Successfully run the **Lab 1, Task 5 "Load sample data..."** for loading the necessary data for this Lab</if>
-<if type="freetier-ocw23">
-* Successfully run the **Lab 1, Task 5 "Load sample data..."** for loading the necessary data for this Lab</if>
-<if type="livelabs-ocw23">
-* A new Table that is required to run the experiment.  We will use the **ScrathPad** feature of OML UI to run a simple script to create a table.
-     - Login to OML UI.  Go to the **Home Menu** of OML UI, and then click on the **ScratchPad** icon.
-
-	 ![home page ScratchPad](images/home-scratchpad.png " ")
-
-     - Copy the code below and paste it into the second paragraph, indicated with the **`%script`**.
-      
-	  ```
-	  <copy>
-	  CREATE TABLE CUSTOMERS360 AS
-          (SELECT a.CUST_ID, a.CUST_GENDER, a.CUST_MARITAL_STATUS,
-             a.CUST_YEAR_OF_BIRTH, a.CUST_INCOME_LEVEL, a.CUST_CREDIT_LIMIT,
-             b.EDUCATION, b.AFFINITY_CARD,
-             b.HOUSEHOLD_SIZE, b.OCCUPATION, b.YRS_RESIDENCE, b.Y_BOX_GAMES
-       FROM SH.CUSTOMERS a, SH.SUPPLEMENTARY_DEMOGRAPHICS b
-       WHERE a.CUST_ID = b.CUST_ID);
-	  ```
-  
-     - Your **Scratchpad** should look like the below. Click the **Run play button** as indicated below on the script paragraph to run the code and create the table.  
-
-	 ![paragraph ScratchPad](images/script-scratchpad.png " ")
-
-     - You should see a message **Table CUSTOMERS360 created**, indicating that the code was run successfully.  You are now ready to proceed with the Lab.
-   
- </if>
-<if type="livelabs">
-* A new Table that is required to run the experiment.  We will use the **ScrathPad** feature of OML UI to run a simple script to create a table.
-     - Login to OML UI.  Go to the **Home Menu** of OML UI, and then click on the **ScratchPad** icon.
-
-	 ![home page ScratchPad](images/home-scratchpad.png " ")
-
-     - Copy the code below and paste it into the second paragraph, indicated with the **`%script`**.
-      
-	  ```
-	  <copy>
-	  CREATE TABLE CUSTOMERS360 AS
-          (SELECT a.CUST_ID, a.CUST_GENDER, a.CUST_MARITAL_STATUS,
-             a.CUST_YEAR_OF_BIRTH, a.CUST_INCOME_LEVEL, a.CUST_CREDIT_LIMIT,
-             b.EDUCATION, b.AFFINITY_CARD,
-             b.HOUSEHOLD_SIZE, b.OCCUPATION, b.YRS_RESIDENCE, b.Y_BOX_GAMES
-       FROM SH.CUSTOMERS a, SH.SUPPLEMENTARY_DEMOGRAPHICS b
-       WHERE a.CUST_ID = b.CUST_ID);
-	  ```
-  
-     - Your **Scratchpad** should look like the below. Click the **Run play button** as indicated below on the script paragraph to run the code and create the table.  
-
-	 ![paragraph ScratchPad](images/script-scratchpad.png " ")
-
-     - You should see a message **Table CUSTOMERS360 created**, indicating that the code was run successfully.  You are now ready to proceed with the Lab.
-   
- </if>
-
+* Successfully run the **Lab 1, Task 5 "Load sample data..."** for loading the necessary data for this Lab
 
 ## Task 1: Access Oracle Machine Learning AutoML UI
 
