@@ -25,7 +25,7 @@ This lab assumes you have:
 
 ## Task 1: Examine the Data
 
-1. Click the hamburger icon ![Hamburger image](images/hamburger.png) to open the left navigation menu and click **Notebooks**.
+1. Click the Cloud menu icon ![Hamburger image](images/hamburger.png) to open the left navigation menu and click **Notebooks**.
 
 2. The Notebooks page opens with all the notebooks listed in it. Click the **OML4SQL Time Series ESM (1)** notebook to open it.
 

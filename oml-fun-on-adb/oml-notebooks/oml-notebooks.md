@@ -31,7 +31,7 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 <if type="freetier">
 
-1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right pane under Autonomous Database, click **Autonomous Data Warehouse**.
+1. Sign into your OCI account, click the Cloud menu on the left to open the left navigation pane, and click **Oracle Database**. On the right pane under Autonomous Database, click **Autonomous Data Warehouse**.
 
 	![ADB in OCI](images/adw.png)
 
@@ -53,7 +53,7 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 	![Oracle Machine Learning UI Sign in page](images/omluser-signin.png)
 
-	This opens the Oracle Machine Learning home page.
+	This opens the Oracle Machine Learning user interface home page.
 	![Notebooks option in OML homepage](images/homepage.png)
 </if>
 
@@ -83,7 +83,7 @@ This completes the task of accessing Oracle Machine Learning user interface.
 
 To create a notebook:
 
-1. On the Oracle Machine Learning home page, click **Notebooks**. The Notebooks page opens. Alternatively, you can click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the home page to open the left navigation menu. Click **Notebooks**.
+1. On the Oracle Machine Learning home page, click **Notebooks**. The Notebooks page opens. Alternatively, you can click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the home page to open the left navigation menu. Click **Notebooks**.
 
 	![Notebooks option in hamburger](images/hamburger-notebooks.png)
 >> Note: Observe the new entry **Notebooks EA** on the left navigation menu. To learn how to use Oracle Machine Learning Notebooks Early Adopter - an enhanced web-based notebook platform, refer to [Get Started with Notebooks Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B).
@@ -297,7 +297,7 @@ This task demonstrates how to create notebooks based on Example templates. You w
 
 This step demonstrates how to create the OML4Py Classification notebook based on the OML4Py Classification DT (Decision Tree) Example template:
 
-1. Go to the Examples page by clicking the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. On the left navigation menu, click **Templates** and then click **Examples**.
+1. Go to the Examples page by clicking the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. On the left navigation menu, click **Templates** and then click **Examples**.
 
 	![Oracle Machine Learning home page](images/hamburger-examples.png)
 
@@ -320,7 +320,7 @@ This step demonstrates how to create the OML4Py Classification notebook based on
 
 	![Create notebook message](images/notebook-created-message.png)
 
-5. To view the notebook that you just created, click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to go to the Notebooks page.
+5. To view the notebook that you just created, click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to go to the Notebooks page.
 
 	![Notebooks in left navigation menu](images/notebooks-left-nav-pane.png)
 
@@ -335,7 +335,7 @@ This completes the task of creating a notebook from an Example template.
 
 These steps demonstrate how to create the Time Series notebook based on the Example template:
 
-7. Click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Examples** under Templates to open the Examples page. If you choose to go to the home page, then click **Home** on the left navigation pane, and then click **Examples**.
+7. Click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Examples** under Templates to open the Examples page. If you choose to go to the home page, then click **Home** on the left navigation pane, and then click **Examples**.
 
 	<if type="livelabs"> ![Go to Examples](images/goto-examples.png) </if>
 	<if type="freetier"> ![Go to Examples](images/goto-examples-freetier.png) </if>
@@ -354,7 +354,7 @@ These steps demonstrate how to create the Time Series notebook based on the Exam
 
 	![Time Series notebook message](images/esm-notebook-message.png)
 
-11. To view the notebook, click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to go to the Notebooks page.
+11. To view the notebook, click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to go to the Notebooks page.
 
 	![Notebooks in left navigation menu](images/notebooks-left-nav-pane-esm.png)
 
@@ -386,7 +386,7 @@ This is the initial binding order of the interpreters. You can change the order 
 	> **Note:** The interpreter binding order that is set for a notebook applies to all the paragraphs in that notebook. However, you can override the binding of an individual paragraph also. This is an advanced topic, and is not covered in this workshop.
 
 In this step, you learn how to set the interpreter bindings:
-1. Go to the Notebooks page by clicking the hamburger icon on the top left corner of the page. On the left navigation menu, click **Notebooks**.
+1. Go to the Notebooks page by clicking the Cloud menu icon on the top left corner of the page. On the left navigation menu, click **Notebooks**.
 
 	![hamburger](images/hamburger-gen.png)
 
@@ -422,7 +422,7 @@ Jobs allow you to schedule the running of notebooks. On the Jobs page, you can c
 
 To create a job:
 
-1. Click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu, and click **Jobs** to go to the Jobs page. You can also go to Jobs from the Oracle Machine Learning home page by clicking **Jobs**.
+1. Click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu, and click **Jobs** to go to the Jobs page. You can also go to Jobs from the Oracle Machine Learning home page by clicking **Jobs**.
 
 	![hamburger](images/hamburger-gen.png)
 

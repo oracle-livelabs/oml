@@ -36,11 +36,11 @@ To access AutoML UI, you must sign into the Oracle Machine Learning User Interfa
 
 1. Sign into Oracle Machine Learning user interface (following Lab1, Task 1 instructions).
 
-2. On your Oracle Machine Learning home page, click **AutoML** in the Quick Actions section.
+2. On your Oracle Machine Learning user interface home page, click **AutoML** in the Quick Actions section.
 
 	![home page](images/homepage-automl.png)
 
-	Alternatively, you can click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the home page to open the left navigation menu. Click **AutoML Experiments**. This opens the AutoML Experiments page.
+	Alternatively, you can click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the home page to open the left navigation menu. Click **AutoML Experiments**. This opens the AutoML Experiments page.
 
 	![home page](images/hamburger-automl-homepage.png)
 
@@ -53,7 +53,7 @@ When creating an experiment, you must specify the data source and the target of 
 
 To create an Experiment:
 
-1. Click **AutoML** on your Oracle Machine Learning home page. Alternatively, you can go to the left navigation menu at the upper left corner of the page and click **AutoML Experiments**. The AutoML Experiments page opens.
+1. Click **AutoML** on your Oracle Machine Learning user interface home page. Alternatively, you can go to the left navigation menu at the upper left corner of the page and click **AutoML Experiments**. The AutoML Experiments page opens.
 
 	![home page](images/homepage-automl.png)
 
@@ -163,7 +163,7 @@ The Leader Board displays the top performing models relative to the model metric
 
 	![Go to Experiments page](images/goto_exp.png)
 
-	Alternatively, you can click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the experiment page and click **AutoML Experiments** on the left navigation menu.
+	Alternatively, you can click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the experiment page and click **AutoML Experiments** on the left navigation menu.
 
 ## Task 3: Deploy a Top Model to Oracle Machine Learning Services
 
@@ -173,9 +173,7 @@ When you deploy a model using the Oracle Machine Learning AutoML UI, you create 
 
 To deploy a model:  
 
-1. Go to the AutoML Experiments page by clicking the hamburger icon on the top left corner of the page. Click **AutoML Experiments** on the left navigation menu.  
-
-	![home page](images/hamburger-gen.png)
+1. Go to the AutoML Experiments page by clicking the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation pane, and then clicking **AutoML Experiments.**  Alternatively. you can also click **<-Experiments** to directly open the **AutoML Experiments** page.  
 
 	![home page](images/hamburger-automl.png)
 
@@ -213,7 +211,7 @@ This completes the task of deploying the top model Naïve Bayes to Oracle Machin
 
 The deployed models are listed under **Deployments** on the Models page. To view the metadata of the deployed model **NaiveBayes_CUST360**:
 
-1. To go to Deployments, click the hamburger icon ![hamburger icon](images/hamburger.png) to open the left navigation menu. Click  **Models**. Alternatively, you can click **Models** on the Oracle Machine Learning home page.
+1. To go to Deployments, click the Cloud menu icon ![hamburger icon](images/hamburger.png) to open the left navigation menu. Click  **Models**. Alternatively, you can click **Models** on the Oracle Machine Learning UI home page.
 
   ![Models](images/models-option.png)
 
@@ -239,7 +237,7 @@ This completes the task of viewing the metadata of the deployed model, and its e
 
 You can create notebooks based on the top models produced in the experiment. This provides the code to build a model with the same settings for the selected model. This option is helpful if you want to use the code to re-create a similar machine learning model. To create a notebook:
 
-1. Click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of your page to open the left navigation menu, and click **AutoML Experiments**.
+1. Click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of your page to open the left navigation menu, and click **AutoML Experiments**.
 
 	![Experiments page](images/model-to-exp.png)
 
@@ -267,7 +265,7 @@ This completes the task of creating the notebook **Customer 360 NB (1)** based o
 
 To view the generated notebook Customer 360:
 
-1. Click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks**.
+1. Click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks**.
 
 	![Notebooks](images/hamburger-notebooks1.png)
 
