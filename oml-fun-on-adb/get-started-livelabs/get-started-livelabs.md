@@ -222,4 +222,4 @@ This completes the task of creating the CUSTOMERS360 table. You may now **procee
 
 * **Author** - Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, June 2023
+* **Last Updated By/Date** - Moitreyee Hazarika, October 2023
