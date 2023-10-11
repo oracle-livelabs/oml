@@ -173,7 +173,7 @@ When you deploy a model using the Oracle Machine Learning AutoML UI, you create 
 
 To deploy a model:  
 
-1. Go to the AutoML Experiments page by clicking the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation pane, and then clicking **AutoML Experiments.**  Alternatively. you can also click **<-Experiments** to directly open the **AutoML Experiments** page.  
+1. Go to the AutoML Experiments page by clicking the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation pane, and then clicking **AutoML Experiments.**  Alternatively, you can also click **<-Experiments** to directly open the **AutoML Experiments** page.  
 
 	![home page](images/hamburger-automl.png)
 
