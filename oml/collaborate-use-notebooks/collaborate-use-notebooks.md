@@ -101,7 +101,7 @@ Now, in the Workspaces page, click USER1 Workspace in the upper pane. The lower 
 
     ![user2-ws2-view.png](images/user2-ws2-view.png "user2 workspace2 view")
 
-5. Click **Notebooks** in the Oracle Machine Learning home page. Alternatively, you can go to the navigation menu on the left and click **Notebooks**.
+5. Click **Notebooks** on the Oracle Machine Learning home page. Alternatively, you can open the navigation menu by clicking the cloud menu on the top left of the page, and then click **Notebooks**.
 
     ![notebooks-user2.png](images/notebooks-user2.png "notebooks user2")
 
@@ -133,7 +133,7 @@ Note notebook opened in different browsers, and they work on it
 simultaneously. The changes made by the users are dynamically
 reflected in the notebook in real-time. To try this example on the same client machine, for example, your laptop, use two different types of browsers such as Chrome and Firefox to enable two different logins. To see changes dynamically, try to position these two browser windows side by side on your screen so that both views are visible.
 
-1. Sign in to the Oracle Machine Learning instance as USER1 in Mozilla Firefox browser. Click <b>Notebooks</b> in the home page to view the list of notebooks. Observe that the entry for <b>Updated By</b> column for **Sales Note** notebook shows USER2.
+1. Sign in to the Oracle Machine Learning instance as USER1 in Mozilla Firefox browser. Click <b>Notebooks</b> on the home page to view the list of notebooks. Observe that the entry for <b>Updated By</b> column for **Sales Note** notebook shows USER2.
 
      ![user1-views-notebooks.png](images/user1-views-notebooks.png "user1 views notebooks")
 
@@ -195,4 +195,4 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, March 2023
+* **Last Updated By/Date**: Moitreyee Hazarika, October 2023

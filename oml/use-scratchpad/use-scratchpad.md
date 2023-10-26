@@ -3,7 +3,7 @@
 
 This lab shows you how to use the Scratchpad in Oracle Machine Learning Notebooks.
 
-The Scratchpad provides you convenient one-click access to a notebook for running SQL statements, PL/SQL scripts, Python and r scripts that can be renamed. The Scratchpad is available on the Oracle Machine Learning Notebooks Home Page. The Scratchpad is a regular notebook that is prepopulated with four paragraphs - `%sql`, `%script`, `%python` and `r`.
+The Scratchpad provides you convenient one-click access to a notebook for running SQL statements, PL/SQL scripts, Python and r scripts that can be renamed. The Scratchpad is available on the Oracle Machine Learning Notebooks home page. The Scratchpad is a regular notebook that is prepopulated with four paragraphs - `%sql`, `%script`, `%python` and `r`.
 
 After you run your scripts, the Scratchpad is automatically saved as a notebook by the default name Scratchpad in the Notebooks page. You can access it later in the Notebooks page.
 You can run all the paragraphs together or one paragraph at a time.
@@ -185,4 +185,4 @@ To run PL/SQL scripts:
 ## Acknowledgements
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, March 2023
+* **Last Updated By/Date**: Moitreyee Hazarika, October 2023
