@@ -22,6 +22,9 @@ Estimated Time: 15 minutes
 * In the Autonomous Database instance details page. Click on the Database Actions button.
   ![ADB instance home](images/adb-homepage-dbactions.jpg)
 
+* Click **View all database actions**.
+  ![ADB instance home](images/adb-homepage-dbactions_view_all.jpg)
+
 * The Database Actions launchpad page is now open and connected by default with the ADMIN user.
   ![ADB DB Actions](images/dbactions-homepage.jpg)
 
@@ -56,7 +59,7 @@ Estimated Time: 15 minutes
  Notice the columns ``LTV`` and ``LTV_BIN`` when you scroll to the right. These are our targets for the machine learning process.
 
 
-  * Create the training table. For our AutoML UI a training table is not mandatory because it has the train/test split in the process. Also we can exclude columns later in the process. Considering this demo environment we are still spliting the data in train and test.
+  * Create the training table. For our AutoML UI a training table is not mandatory because it has the train/test split in the process. Also we will exclude columns later in the process. Considering this demo environment we are still spliting the data in train and test.
 
      ```
      <copy>
@@ -183,7 +186,7 @@ Estimated Time: 15 minutes
     - Name: is prefilled with the Model name.
     - URI: choose a specific URI, for example: **classsvmg**
     - Version: **1**
-    - Namespace: OML
+    - Namespace: **OML**
 
 
   Copy the Model URI in an accessible place because we are going to use it in the next sections of the workshop.

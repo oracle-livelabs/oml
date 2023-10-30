@@ -50,18 +50,21 @@ Estimated Time: 15 minutes
   Use the following URL structure to access the REST endpoints:
 
   ```
-  https://\<oml-cloud-service-location-url\>.oraclecloudapps.com
+  https://**oml-cloud-service-location-url**.oraclecloudapps.com
   ```
 
   Where:
-     - `<oml-cloud-service-location-url>`: is a variable containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID, region and database name.
+     - `**oml-cloud-service-location-url**`: is a variable containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID, region and database name.
 
 #### Obtain the `oml-cloud-service-location-url` URL
 
-  * In the Autonomous Database instance details page. Click on the Service Console button.
+  * In the Autonomous Database instance details page. Click on the Database Actions button.
   ![ADB instance home](images/adb-homepage-dbactions.jpg)
 
-  * The service console is opened.
+  * Click **View all database actions**.
+  ![ADB instance home](images/adb-homepage-dbactions_view_all.jpg)
+
+  * The The Database Actions launchpad page is now open.
   ![ADB DB Actions](images/dbactions-homepage.jpg)
 
   * Click on the menu on the top left side on the page and scroll to the right to the **Related Services** section. Click on the **Oracle Machine Learning RESTful services**.
