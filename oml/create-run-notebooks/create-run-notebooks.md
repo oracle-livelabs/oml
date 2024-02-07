@@ -36,7 +36,7 @@ To create a notebook:
 
    ![OML homepage](images/oml-homepage.png "OML homepage")
 
-2. In the Notebooks page, click **Create**. The Create Notebook dialog box opens.
+2. On the Notebooks page, click **Create**. The Create Notebook dialog box opens.
 
    ![Create Notebook dialog](images/create-notebook.png "Create Notebook dialog")
 
@@ -81,7 +81,7 @@ To create a notebook based on a template:
 
      ![message](images/message.png "message")
 
-5. To open the notebook, click **Notebooks** in the left navigation menu.
+5. To open the notebook, click the Cloud menu on the top to open the left navigation menu. On the left navigation menu, click **Notebooks.**
 
      ![Navigation Menu](images/navigation-menu.png "Navigation Menu")
 
@@ -348,4 +348,4 @@ You may now **proceed to the next lab.**
 
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, March 2023
+* **Last Updated By/Date**: Moitreyee Hazarika, October 2023
