@@ -44,12 +44,12 @@ Estimated Time: 15 minutes
 
    ![ADB OML connect](images/oml-login-user.jpg)
 
-* Open a Scratchpad
+* Open a Scratchpad. The Scratchpad will pe opened in Notebooks EA.
 
   ![Open Scratchpad](images/oml-homepage.jpg)
 
 
-* The notebook server is starting. Once opened, we can run a select on the ``CUSTOMER_INSURANCE`` table
+* The Notebook EA server is starting. Once opened, we can run a select on the ``CUSTOMER_INSURANCE`` table
     ```
     <copy> select * from customer_insurance;  </copy>
     ```
@@ -57,6 +57,9 @@ Estimated Time: 15 minutes
     ![customer insurance](images/scratchpad-select-cust-insurance.jpg)
 
  Notice the columns ``LTV`` and ``LTV_BIN`` when you scroll to the right. These are our targets for the machine learning process.
+
+  ![customer insurance results](images/scratchpad-select-cust-insurance_results.jpg)
+
 
 
   * Create the training table. For our AutoML UI a training table is not mandatory because it has the train/test split in the process. Also we will exclude columns later in the process. Considering this demo environment we are still spliting the data in train and test.
@@ -219,7 +222,7 @@ Estimated Time: 15 minutes
 
 ## Task 4: Score data against the model using SQL
 
-* Return to the OML Notebooks Scratchpad we created earlier. Click on the menu and chose Notebooks.
+* Return to the OML Notebooks EA Scratchpad we created earlier. Click on the menu and chose Notebooks.
 ![Classification Prediction](images/oml-menu-notebooks.jpg)
 
 
