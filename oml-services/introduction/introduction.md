@@ -6,7 +6,7 @@ Oracle Machine Learning (OML) in Oracle Autonomous Database provides access to i
 
 The REST API for Oracle Machine Learning Services provides REST API endpoints hosted on Oracle Autonomous Database. These endpoints allow you to store Machine Learning models and their metadata and create scoring endpoints for the model.
 
-[] (youtube:VB8WUOd0dj8)
+[] (youtube:CcoRdejXgio)
 
 Estimated Time: 1 hour
 
