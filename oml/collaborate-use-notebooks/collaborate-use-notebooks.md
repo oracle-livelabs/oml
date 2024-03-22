@@ -116,8 +116,14 @@ The projects under OMLUSER Workspace are listed. To access the notebooks under O
 
      ![add-sql-para.png](images/add-sql-para.png "")
 
-2. Type the SQL statement to fetch data from an Oracle Database. For example, type
-  `SELECT * from SH.SALES;` where `SH` is the schema name and `SALES` is the table name, as shown in the screenshot:
+2. Type the SQL statement to fetch data from an Oracle Database. For example, type the following:
+
+    ```
+    <copy>
+    SELECT * from SH.SALES; 
+    </copy>
+    ```
+    where `SH` is the schema name and `SALES` is the table name, as shown in the screenshot:
 
      ![SQL command in Test Notebook EA](images/sql-test-notebook-ea.png "")
 
@@ -140,15 +146,25 @@ This section shows how `OMLUSER` and `OMLUSER2` collaborate on the Sales Note no
 
     ![user1-views-user2-edits.png](images/user1-views-user2-edits.png "user1 views user2 edits")
 
-3. While signed in as `OMLUSER`, edit the **Test Notebook EA** by adding `ORDER BY CUST_ID` as shown in the screenshot and click **Run.**
-Note the change in display of the data, and also the date and time of edit made by `OMLUSER`.
+3. While signed in as `OMLUSER`, edit the **Test Notebook EA** by adding the following and click **Run**. 
+
+    
+    ```
+    <copy>
+    ORDER BY CUST_ID
+    </copy>
+    ```
+
+    Note the change in display of the data, and also the date and time of edit made by `OMLUSER`.
     ![sales-note-user1-edit.png](images/sales-note-user1-edit.png "sales note user1 edit")
 
 4. Now, sign in as `OMLUSER2` in another browser. In this example, it is Google Chrome. As `OMLUSER2`, you can see the edits made by `OMLUSER`. While signed in as `OMLUSER2`, edit the SQL code to add this:
 
-    <code>
+    ```
+    <copy>
     where AMOUNT_SOLD <= 50.68 
-    </code>
+    </copy>
+    ```
         
     Click **Run**. The **Sales Note** notebook now displays refined data accordingly. Note the date and time.
     ![sales-note-edit-user2.png](images/omluser2-views-nb-chrome.png "sales note edit user2")
