@@ -37,11 +37,7 @@
         {
             "title": "Lab 5: Use the Scratchpad in Oracle Machine Learning User Interface",
             "filename": "../../use-scratchpad/use-scratchpad.md"
-        },
-        {
-            "title": "Lab 6: Use the OML Monitoring Functionality to Monitor your Data and Machine Learning Models",
-            "filename": "../../oml-monitoring/oml-monitoring.md"
-        },
+        },        
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
