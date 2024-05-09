@@ -69,7 +69,7 @@ This lab assumes you have:
 
   ![Database Actions](images/database-actions.png)
 
-   Scroll down the Database Actions page, and click **Oracle Machine Learning RESTful Services** under the Related Services section. The Oracle Machine Learning RESTful Services dialog opens.  
+   On the Database Actions page, and go to the **Related Services** tab and click **Oracle Machine Learning RESTful Services**. The Oracle Machine Learning RESTful Services dialog opens.  
 
   ![Image alt text](images/omls-related-services.png)
 
