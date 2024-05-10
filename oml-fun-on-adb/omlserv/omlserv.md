@@ -44,11 +44,11 @@ This lab assumes you have:
 
 1.  This lab uses OCI Cloud Shell. To access the OCI Cloud Shell, select your compartment and click on the Cloud Shell icon.
 
-	 ![Image alt text](images/oci-cloud-shell-1-new.png)
+	 ![Autonomous Database instance](images/oci-cloud-shell-1-new.png)
 
    On clicking the Cloud Shell icon, the OCI Cloud Shell command prompt is displayed in the lower half of the console as illustrated in the image below.
 
-  ![Image alt text](images/oci-cloud-shell-2-new.png)
+  ![OCI Cloud Shell command prompt](images/oci-cloud-shell-2-new.png)
 
 2. To access Oracle Machine Learning Services using the REST API, you must acquire an access token. To authenticate and obtain an access token, use cURL with the ``-d`` option to pass the user name and password for your Oracle Machine Learning Services account against the Oracle Machine Learning User Management Cloud Service token service. Use the following details to get an authentication token.
     * Your OML user name
@@ -65,17 +65,17 @@ This lab assumes you have:
      </copy>
      ```
 
-   In the syntax above, OML server URL is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from **Oracle Machine Learning RESTful Services** on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
+   In the syntax above, OML server URL is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from **Oracle Machine Learning RESTful services** on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
 
   ![Database Actions](images/database-actions.png)
 
-   On the Database Actions page, and go to the **Related Services** tab and click **Oracle Machine Learning RESTful Services**. The Oracle Machine Learning RESTful Services dialog opens.  
+   On the Database Actions page, and go to the **Related Services** tab and click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.  
 
-  ![Image alt text](images/omls-related-services.png)
+  ![Related Services tab](images/omls-related-services.png)
 
    On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the ``/omlusers/`` segment.
 
-  ![Image alt text](images/omls-url.png)
+  ![Oracle Machine Learning RESTful services](images/omls-url.png)
 
    Now, go back to the Cloud Shell interface and run a command to obtain a token. First set variables for the parameters for ease of use in subsequent requests.
 

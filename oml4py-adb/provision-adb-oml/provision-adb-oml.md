@@ -208,4 +208,4 @@ This completes the task of signing into Oracle Machine Learning user interface.
 
 * **Author** - Marcos Arancibia, Product Manager, Oracle Autonomous Database; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, August 2023
+* **Last Updated By/Date** - Moitreyee Hazarika, May 2024

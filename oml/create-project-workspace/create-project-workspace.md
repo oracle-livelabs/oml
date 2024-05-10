@@ -125,4 +125,4 @@ You may now **proceed to the next lab.**
 
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, March 2024
+* **Last Updated By/Date**: Moitreyee Hazarika, May 2024
