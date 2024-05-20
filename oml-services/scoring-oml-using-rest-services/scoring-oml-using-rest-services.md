@@ -67,7 +67,7 @@ Estimated Time: 15 minutes
   * The The Database Actions launchpad page is now open.
   ![ADB DB Actions](images/dbactions-homepage.jpg)
 
-  * Click on the menu on the top left side on the page and scroll to the right to the **Related Services** section. Click on the **Oracle Machine Learning RESTful services**.
+  * Click on the menu on the **Related Services** tab and click on the **Oracle Machine Learning RESTful services**.
   ![ADB DB Actions](images/dbactions-menu-oml-restful.jpg)
 
   * In the Development section, notice the **Oracle Machine Learning RESTful services** section.
