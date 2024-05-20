@@ -275,4 +275,4 @@ You may now [proceed to the next lab](#next).
 ## Acknowledgements
 * **Authors** -  Andrei Manoliu, Milton Wan
 * **Contributors** - Rajeev Rumale
-* **Last Updated By/Date** -  Andrei Manoliu, December 2021
+* **Last Updated By/Date** -  Andrei Manoliu, May 2024
