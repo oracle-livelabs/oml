@@ -40,6 +40,9 @@ In this workshop, you will learn how to:
     * Get a model scoring endpoint
     * Perform singleton and mini-batch scoring using the scoring endpoint
     * Discover keywords and summaries for a text string using the Cognitive Text feature
+* Use OML Monitoring Services:
+    * Create a data monitor to monitor your data
+    * Create a model monitor to monitor your machine learning models
 
 ### Prerequisites
 
@@ -52,4 +55,4 @@ This workshop assumes you have:
 
 * **Authors** - Moitreyee Hazarika, Principal User Assistance Developer; Sarika Surampudi, Principal User Assistance Developer; Dhanish Kumar, Member Technical Staff; Suresh Rajan, Senior Manager, Oracle Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, June 2023
+* **Last Updated By/Date** - Moitreyee Hazarika, May 2024

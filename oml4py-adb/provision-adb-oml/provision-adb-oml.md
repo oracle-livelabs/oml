@@ -170,7 +170,7 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 	![Database Actions main menu](images/db-users-db-actions.png " ")
 
-2. On the Database Actions page, go to the Development section and click **Oracle Machine Learning**. This opens the Oracle Machine Learning sign in page.
+2. On the Database Actions page, go to the **Development** tab and click **Oracle Machine Learning**. This opens the Oracle Machine Learning sign in page.
 
 	 ![Oracle Machine Learning tile](images/adb-dev-oml.png " ")
 
@@ -208,4 +208,4 @@ This completes the task of signing into Oracle Machine Learning user interface.
 
 * **Author** - Marcos Arancibia, Product Manager, Oracle Autonomous Database; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, August 2023
+* **Last Updated By/Date** - Moitreyee Hazarika, May 2024

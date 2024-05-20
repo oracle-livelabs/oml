@@ -1,6 +1,14 @@
 {
     "workshoptitle": "Oracle Machine Learning Fundamentals on Oracle Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "oml-sign-into-oml.md":"/common/building-blocks/tasks/oml/sign-into-oml.md",
+        "oml-create-cust360-table.md":"/common/building-blocks/tasks/oml/create-cust360-table.md",
+        "oml-create-oml-user.md":"/common/building-blocks/tasks/oml/create-oml-user.md",
+        "oml-oml-notebooks-ea.md":"/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md",
+        "oml-oml-monitoring.md":"/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md",
+        "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md"        
+    },
     "tutorials": [
         {
             "title": "Introduction",
@@ -19,35 +27,45 @@
             "filename": "../../get-started-livelabs/get-started-livelabs.md"
         },
         {
-            "title": "Lab 1: Introduction to Oracle Machine Learning Notebooks",
+            "title": "Lab 1: Introduction to Oracle Machine Learning Notebook",
+            "type": "freetier",
+            "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md"
+        },
+        {
+            "title": "Lab 2: Introduction to Oracle Machine Learning Classic Notebooks",
             "type": "freetier",
             "description": "Labs that follow the introduction are numbered, starting with Lab 1",
             "filename": "../../oml-notebooks/oml-notebooks.md"
-        },
+        },        
         {
-            "title": "Lab 2: Introduction to Oracle Machine Learning for SQL",
+            "title": "Lab 3: Introduction to Oracle Machine Learning for SQL",
             "type": "freetier",
             "filename": "../../omlsql/omlsql.md"
         },
         {
-            "title": "Lab 3: Introduction to Oracle Machine Learning for Python",
+            "title": "Lab 4: Introduction to Oracle Machine Learning for Python",
             "type": "freetier",
             "filename": "../../omlpy/omlpy.md"
         },
         {
-            "title": "Lab 4: Introduction to Oracle Machine Learning for R",
+            "title": "Lab 5: Introduction to Oracle Machine Learning for R",
             "type": "freetier",
             "filename": "../../omlr/omlr.md"
         },
         {
-            "title": "Lab 5: Introduction to Oracle Machine Learning AutoML UI",
+            "title": "Lab 6: Introduction to Oracle Machine Learning AutoML UI",
             "type": "freetier",
             "filename": "../../automl/automl.md"
         },
         {
-            "title": "Lab 6: Introduction to Oracle Machine Learning Services",
+            "title": "Lab 7: Introduction to Oracle Machine Learning Services",
             "type": "freetier",
             "filename": "../../omlserv/omlserv.md"
+        },     
+        {
+            "title": "Lab 8: Introduction to Oracle Machine Learning Monitoring",
+            "type": "freetier",
+            "filename": "/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md"
         },
         {
             "title": "Need Help?",

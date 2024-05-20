@@ -1,6 +1,12 @@
 {
     "workshoptitle": "Introduction to Oracle Machine Learning Notebooks",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "oml-sign-into-oml.md":"/common/building-blocks/tasks/oml/sign-into-oml.md",
+        "oml-create-oml-user.md":"/common/building-blocks/tasks/oml/create-oml-user.md",
+        "oml-oml-notebooks-ea.md":"/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md",
+        "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md"        
+    },
     "tutorials": [
         {
             "title": "Introduction",
@@ -17,17 +23,21 @@
             "filename": "../../create-project-workspace/create-project-workspace.md"
         },
         {
-            "title": "Lab 2: Create and Run Notebooks in Oracle Machine Learning",
+            "title": "Lab 2: Create and Run Notebooks in Oracle Machine Learning User Interface",
+            "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md.md"
+        },
+        {
+            "title": "Lab 3: Create and Run Classic Notebooks in Oracle Machine Learning User Interface",
             "filename": "../../create-run-notebooks/create-run-notebooks.md"
         },
         {
-            "title": "Lab 3: Collaborate in Oracle Machine Learning Notebooks",
+            "title": "Lab 4: Collaborate in Oracle Machine Learning User Interface",
             "filename": "../../collaborate-use-notebooks/collaborate-use-notebooks.md"
         },
         {
-            "title": "Lab 4: Use the Scratchpad in Oracle Machine Learning Notebooks",
+            "title": "Lab 5: Use the Scratchpad in Oracle Machine Learning User Interface",
             "filename": "../../use-scratchpad/use-scratchpad.md"
-        },
+        },        
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
