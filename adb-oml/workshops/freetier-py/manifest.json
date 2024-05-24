@@ -2,41 +2,28 @@
   "workshoptitle":"Machine Learning on ADB - Choose your Journey",
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
-    {
-      "title": "Introduction",
-      "description": "Introduction",
-      "filename": "../../intro/intro-mixed-oml-oml4py.md"
+      {
+        "title": "Introduction",
+        "description": "The Introduction is always first. The title and contents menu title match for the Introduction.",
+        "filename": "../../introduction/introduction.md"
     },
-      {
+    {
         "title": "Get Started",
-        "description": "Get a Free Trial",
+        "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
         "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
-      },
-      {
-        "title": "OML on ADB Introduction - A",
-        "description": "Introduction",
-        "filename": "../../intro/intro.md"
-      },
-      {
-      "title": "Lab A1: Provision and Setup",
-      "filename": "../../connect-provision-adb/connect-provision-adb2.md"
-      },
-      {
-        "title": "Lab A2: Create Machine Learning Model",
-        "description": "Explore Zeppelin notebooks and create a ML model on customer credit data set.",
-        "filename":  "../../create-ml-model/create-ml-model2.md"
-      },
-      {
-        "title": "Lab A3: Migrate Machine Learning Model to ATP",
-        "description": "Export the ML model from ADW and import into ATP",
+    },
+    {
+        "title": "Get Started with Oracle Cloud Free Tier",
         "type": "freetier",
-        "filename": "../../move-model-to-db/move-model-to-db2.md"
-      },
-      {
-        "title": "Lab A4: Using Prediction in an Application",
-        "description": "Set up the ATP environment, import and APEX application and explore how ADB can be embedded into applications.",
-        "filename": "../../integrate-with-app/integrate-with-app2.md"
-      },
+        "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+        "filename": "../../get-started-livelabs/get-started-livelabs.md"
+    },
+    {
+        "title": "Lab 1: Introduction to Oracle Machine Learning Notebook",
+        "type": "freetier",
+        "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md"
+    },
+
       {
         "title": "OML4PY Introduction - B",
         "filename": "../../../oml4py-adb/introduction/introduction.md"

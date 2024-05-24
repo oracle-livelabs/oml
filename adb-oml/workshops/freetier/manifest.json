@@ -1,69 +1,76 @@
 {
-  "workshoptitle":"Machine Learning on Autonomous Database",
-  "help": "livelabs-help-db_us@oracle.com",
-  "tutorials": [
-      {
-        "title": "Introduction",
-        "description": "Introduction",
-        "filename": "../../../oml-fun-on-adb/introduction/introduction.md"
-      },
-      {
-        "title": "Get Started",
-        "description": "Get a Free Trial",
-        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
-      },
-      {
-      "title": "Lab 1: Provision and Setup",
-      "filename": "../../connect-provision-adb/connect-provision-adb2.md"
-      },
-      {
-        "title": "Lab 2: Create Machine Learning Model",
-        "description": "Explore Zeppelin notebooks and create a ML model on customer credit data set.",
-        "filename":  "../../create-ml-model/create-ml-model2.md"
-      },
-      {
-        "title": "Lab 3: Migrate Machine Learning Model to ATP",
-        "description": "Export the machine learning model from ADW and import into ATP",
-        "title": "Setup",
-        "type": "freetier",
-        "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
-        "filename": "../../../oml-fun-on-adb/get-started-livelabs/get-started-livelabs.md"
-      },
-      {
-        "title": "Lab 1: Introduction to Oracle Machine Learning Notebooks",
-        "type": "freetier",
-        "description": "Labs that follow the introduction are numbered, starting with Lab 1",
-        "filename": "../../../oml-fun-on-adb/oml-notebooks/oml-notebooks.md"
-      },
-      {
-        "title": "Lab 2: Introduction to Oracle Machine Learning for SQL",
-        "type": "freetier",
-        "filename": "../../../oml-fun-on-adb/omlsql/omlsql.md"
-      },
-      {
-        "title": "Lab 3: Introduction to Oracle Machine Learning for Python",
-        "type": "freetier",
-        "filename": "../../../oml-fun-on-adb/omlpy/omlpy.md"
-      },
-      {
-        "title": "Lab 4: Introduction to Oracle Machine Learning for R",
-        "type": "freetier",
-        "filename": "../../../oml-fun-on-adb/omlr/omlr.md"
-      },
-      {
-        "title": "Lab 5: Introduction to Oracle Machine Learning AutoML UI",
-        "type": "freetier",
-        "filename": "../../../oml-fun-on-adb/automl/automl.md"
-      },
-      {
-        "title": "Lab 6: Introduction to Oracle Machine Learning Services",
-        "type": "freetier",
-        "filename": "../../../oml-fun-on-adb/omlserv/omlserv.md"
-      },
-      {
-        "title": "Need Help?",
-        "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
-      }
+    "workshoptitle": "Machine Learning on Autonomous Database",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "oml-sign-into-oml.md":"/common/building-blocks/tasks/oml/sign-into-oml.md",
+        "oml-create-cust360-table.md":"/common/building-blocks/tasks/oml/create-cust360-table.md",
+        "oml-create-oml-user.md":"/common/building-blocks/tasks/oml/create-oml-user.md",
+        "oml-oml-notebooks-ea.md":"/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md",
+        "oml-oml-monitoring.md":"/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md",
+        "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md"        
+    },
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "The Introduction is always first. The title and contents menu title match for the Introduction.",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+        },
+        {
+            "title": "Get Started with Oracle Cloud Free Tier",
+            "type": "freetier",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+            "filename": "../../get-started-livelabs/get-started-livelabs.md"
+        },
+        {
+            "title": "Lab 1: Introduction to Oracle Machine Learning Notebook",
+            "type": "freetier",
+            "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md"
+        },
+        {
+            "title": "Lab 2: Introduction to Oracle Machine Learning Classic Notebooks",
+            "type": "freetier",
+            "description": "Labs that follow the introduction are numbered, starting with Lab 1",
+            "filename": "../../oml-notebooks/oml-notebooks.md"
+        },        
+        {
+            "title": "Lab 3: Introduction to Oracle Machine Learning for SQL",
+            "type": "freetier",
+            "filename": "../../omlsql/omlsql.md"
+        },
+        {
+            "title": "Lab 4: Introduction to Oracle Machine Learning for Python",
+            "type": "freetier",
+            "filename": "../../omlpy/omlpy.md"
+        },
+        {
+            "title": "Lab 5: Introduction to Oracle Machine Learning for R",
+            "type": "freetier",
+            "filename": "../../omlr/omlr.md"
+        },
+        {
+            "title": "Lab 6: Introduction to Oracle Machine Learning AutoML UI",
+            "type": "freetier",
+            "filename": "../../automl/automl.md"
+        },
+        {
+            "title": "Lab 7: Introduction to Oracle Machine Learning Services",
+            "type": "freetier",
+            "filename": "../../omlserv/omlserv.md"
+        },     
+        {
+            "title": "Lab 8: Introduction to Oracle Machine Learning Monitoring",
+            "type": "freetier",
+            "filename": "/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
     ]
 }
