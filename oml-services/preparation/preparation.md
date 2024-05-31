@@ -79,7 +79,7 @@ Click on the **+ Create User** button on the right side to create another user.
 * The file is displayed in the Data Loading process with the status Pending. Click on the hamburger menu on the right and click **Settings**.
 ![ADB web SQL data load settings ](images/sqldeveloper-dataload-edit.jpg)
 
-* The file is parsed and a preview is displayed on the screen. Check the preview and    click **Next**.
+* The file is parsed and a preview is displayed on the screen. Check the preview and click **Next**.
 ![ADB web SQL data load file parse](images/sqldeveloper-dataload-filedesc.jpg)
 
 * In the Table Definition screen you should update the following:
@@ -88,7 +88,7 @@ Click on the **+ Create User** button on the right side to create another user.
   
 You can keep the default Create New Table option and mapping options.
 
- * Click **Upload**.
+ * Click **Upload File**.
 ![ADB web SQL data load destination table](images/sqldeveloper-dataload-tabledesc.jpg)
 
 
@@ -112,4 +112,4 @@ You may now [proceed to the next lab](#next).
 ## Acknowledgements
 * **Authors** -  Andrei Manoliu, Milton Wan
 * **Contiributors** - Rajeev Rumale, Mark Hornick, Sherry LaMonica
-* **Last Updated By/Date** -  Andrei Manoliu, December 2022
+* **Last Updated By/Date** -  Andrei Manoliu, May 2024
