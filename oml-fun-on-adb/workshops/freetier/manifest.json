@@ -27,12 +27,12 @@
             "filename": "../../get-started-livelabs/get-started-livelabs.md"
         },
         {
-            "title": "Lab 1: Introduction to Oracle Machine Learning Notebook",
+            "title": "Lab 1: Introduction to Oracle Machine Learning Notebooks",
             "type": "freetier",
             "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md"
         },
         {
-            "title": "Lab 2: Introduction to Oracle Machine Learning Classic Notebooks",
+            "title": "Lab 2: Introduction to Oracle Machine Learning Notebooks Classic",
             "type": "freetier",
             "description": "Labs that follow the introduction are numbered, starting with Lab 1",
             "filename": "../../oml-notebooks/oml-notebooks.md"
