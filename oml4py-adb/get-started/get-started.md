@@ -251,7 +251,11 @@ We will now download a set of Notebooks that will be used throughout the worksho
 
 > **NOTE:** If you have problems with downloading and extracting the ZIP file, please [**CLICK HERE** to download the "Lab 1a - Run Me First - OML4Py table creation and grants" notebook DSNB file](<./../notebooks/Lab 1a - Run Me First - OML4Py table creation and grants.dsnb?download=1>). This notebook contains the scripts for creating tables and views, and granting the required access. Save it to your local machine and import it like illustrated in **Task 2, Step 1**.
 
-2. Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks EA**. Click the **Lab 1a** notebook to view it.
+2. Go back to the main Notebooks page by clicking on the Cloud menu icon ![](images/cloud-menu-icon.png) on the upper left corner of the page to open the left navigation menu.  
+   
+   ![Go to main Notebooks](images/go-back-to-notebooks.png " ")
+3. On the left navigation menu, click **Notebooks**.   
+
 <if type="freetier"> 
  ![Main Menu clicking Lab 1A](images/click-on-lab1a-ft.png " ")
  </if>
