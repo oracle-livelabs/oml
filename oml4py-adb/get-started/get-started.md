@@ -112,7 +112,7 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 
     ![Oracle Machine Learning Notebooks Sign-in page](images/omluser-signin.png " ")
 
-6. Once in the OML UI, click on the three-dashes menu button at the top left.  The main menu will slide open from the left.  Select the **Notebooks EA** in the Quick Actions menu.
+6. Once in the OML UI, click on the Cloud menu icon Cloud menu icon ![](images/cloud-menu-icon.png) on the top left corner of the homepage.  The left navigation menu will slide open from the left.  Click **Notebooks** on the left navigation menu. You may also click **Notebooks** in the Quick Actions menu.
 
     ![Oracle Machine Learning home page](images/oml-notebooks-ea-homepage.png " ")
 
@@ -147,8 +147,8 @@ We will now download a set of Notebooks that will be used throughout the worksho
 
 > **NOTE:** If you have problems with downloading and extracting the ZIP file, please [**CLICK HERE** to download the "Lab 1 - Get Started with OML4Py on Autonomous Database" notebook in DSNB format](<./../notebooks/Lab 1 - Get Started with OML4Py on Autonomous Database.dsnb?download=1>) which contains the notebook version of Lab1, save it to your local machine and import it as illustrated below.
 
-  To import the downloaded notebook files into **OML Notebooks EA**:
-  - Go to the **Notebooks EA** page, and click **Import**.  
+  To import the downloaded notebook files into **OML Notebooks**:
+  - Go to the **Notebooks** page, and click **Import**.  
 
   ![OML Notebooks import](images/click-on-import-notebook.png " ")
 
@@ -289,4 +289,4 @@ You can now *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning; Jie Liu, Data Scientist
-* **Last Updated By/Date** - Moitreyee Hazarika, May 2024
+* **Last Updated By/Date** - Marcos Arancibia, August 2023, Moitreyee Hazarika, June 2024

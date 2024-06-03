@@ -39,7 +39,7 @@ We need to view the markdown in the OML notebook for this lab, and access the OC
  > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please 
  <if type="freetier">[**CLICK HERE** to download the "Lab 7 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab 7 - Run UDFs with REST API for EPE.dsnb?download=1>)</if><if type="livelabs">[**CLICK HERE** to download the "Lab 7 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab 7 - Run UDFs with REST API for EPE.dsnb?download=1>)</if><if type="freetier-ocw23">[**CLICK HERE** to download the "Lab Bonus 3 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 3 - Run UDFs with REST API for EPE.dsnb?download=1>)</if><if type="livelabs-ocw23">[**CLICK HERE** to download the "Lab Bonus 3 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 3 - Run UDFs with REST API for EPE.dsnb?download=1>)</if>. This notebook contains the scripts for this Lab. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
 
-   Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks EA**. 
+   Go back to the main Notebooks page by clicking on the Cloud menu icon ![](images/cloud-menu-icon.png) on the upper left of the screen to open the left navigation pane, and then click **Notebooks**. 
    
    ![Go to main Notebooks EA](images/go-back-to-notebooks.png " ")
    
@@ -242,4 +242,4 @@ You can explore additional workshops related to Oracle Machine Learning from the
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, Sherry LaMonica, Moitreyee Hazarika, August 2023
+* **Last Updated By/Date** - Marcos Arancibia, August 2023, Moitreyee Hazarika, June 2024

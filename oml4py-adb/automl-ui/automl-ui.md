@@ -41,7 +41,7 @@ To access AutoML UI, you must sign into the Oracle Machine Learning User Interfa
 
 1. Sign into Oracle Machine Learning user interface (following Lab1, Task 1 instructions).
 
-2. On the Oracle Machine Learning home page, either click on the **AutoML** icon in the Quick Actions section or click the "hamburger" menu (the three lines) on the upper left of the screen, and then select **AutoML Experiments**.
+2. On the Oracle Machine Learning home page, either click on the **AutoML** icon in the Quick Actions section or click on the Cloud menu icon ![](images/cloud-menu-icon.png) on the upper left of the page to open the left navigation pane, and then select **AutoML Experiments**.
 
 	![home page](images/homepage-automl.png " ")
 
@@ -186,7 +186,7 @@ When you deploy a model using the Oracle Machine Learning AutoML UI, you create 
 
 > **Note:** Through Oracle Machine Learning AutoML UI, you can deploy in-database models only, not ONNX-format (third-party) models.
 
-1. To deploy a model, if you are not already in an AutoML Experiments page, go to one by clicking the hamburger icon on the top left corner of the OML page and click **AutoML Experiments** on the left navigation menu.  
+1. To deploy a model, if you are not already in an AutoML Experiments page, open the left navigation menu by clicking the on the Cloud menu icon ![](images/cloud-menu-icon.png) on the upper left corner of the page, and click **AutoML Experiments**.  
 
 	![home page](images/hamburger-automl.png " ")
 
@@ -221,7 +221,7 @@ This completes the task of deploying the top model to Oracle Machine Learning Se
 
 The deployed models are listed under **Deployments** on the Models page.  To view the metadata of the deployed model **pred_affinity**, follow the steps below.
 
-1. To go to Deployments, click the three-line (hamburger) icon ![hamburger icon](images/hamburger.png) to open the left navigation menu. Click  **Models**. Alternatively, you can click **Models** on the Oracle Machine Learning home page.
+1. To go to Deployments, click the Cloud menu icon ![Cloud menu icon](images/hamburger.png) to open the left navigation menu. Click  **Models**. Alternatively, you can click **Models** on the Oracle Machine Learning home page.
 
   ![Models](images/models-option.png " ")
 
@@ -277,12 +277,11 @@ This completes the task of creating the notebook **Customer 360 RF (1)** based o
 
 To view the generated notebook Customer 360:
 
-1. Click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** (please note, this is not the Notebooks EA).
+1. Click the Cloud menu icon ![Cloud menu icon](images/hamburger.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks.**
 
 	![Notebooks](images/hamburger-notebooks1.png)
 
-	> **Note:** The Automatic creation of a Notebook from AutoML UI is built into the Notebooks version, and not the Notebooks EA version at this time.
-
+	
 2. The Notebooks page opens with any existing notebooks listed in it. Click the **Customer 360 RF (1)** notebook to open it.
 
     ![Generated Notebook](images/notebooks-listed-final.png " ")
@@ -291,7 +290,7 @@ To view the generated notebook Customer 360:
 
 	![Run all](images/run-all.png " ")
 
-    In the Run All confirmation dialog, click **OK**.  
+    In the Run All paragraphs confirmation dialog, click **Confirm**.  
 
 7. Scroll down to view all the paragraphs in the notebook:
 
@@ -299,17 +298,30 @@ To view the generated notebook Customer 360:
 
 	![Experiment metadata](images/experiment-metadata.png " ")
 
-* The paragraph titled _Get proxy object for selected data_ contains the code to get the proxy object for the data used in the experiment, which is the Customers360 table here. The paragraph titled _Prepare Training Data_ contains the code to prepare the training data.
+* The paragraph titled _Get proxy object for selected data_ contains the code to get the proxy object for the data used in the experiment, which is the Customers360 table here. 
 
-	![Generated Notebook](images/generated-proxy-prep.png " ")
+	![Generated Notebook- Proxy object for data](images/generated-proxy-prep.png " ")
 
-* The paragraph titled _Build Model_ contains the code to build the model. In this lab, it is a Random Forest model. The settings (hyperparameters) optimized by AutoML to create the model are shown here, so that you are able to reproduce the model using OML4Py as shown in the ``rf_settings`` variable. The paragraph titled _Show Model Details_ contains the code to view the model details.
+* The paragraph titled _Prepare Training Data_ contains the code to prepare the training data.
+	
+	![Generated Notebook - Prepare Training Data](images/prepare-training-data.png " ")
+
+* The paragraph titled _Build Model_ contains the code to build the model. In this lab, it is a Random Forest model. The settings (hyperparameters) optimized by AutoML to create the model are shown here, so that you are able to reproduce the model using OML4Py as shown in the ``rf_settings`` variable. 
+
+	![Generated Notebook](images/build-model.png " ")
+
+* The paragraph titled _Show Model Details_ contains the code to view the model details.
+
+	![Generated Notebook](images/show-model-details.png " ")
+
+* The paragraph titled _Data for Scoring_ and _Score data_ contains the code to score the data. 
 
 	![Generated Notebook](images/generated-build-show.png " ")
 
-* The paragraph titled _Data for Scoring_ contains the code to score the data, and the paragraph _Show model quality metric_ contains the code to view the model quality metric.
 
-	![Generated Notebook](images/generated-score-metric.png " ")
+* The paragraph _Show model quality metric_ contains the code to view the model quality metric. 
+
+	![Generated Notebook](images/model-quality-metric.png " ")
 
 This completes the task of creating a notebook based on a model and viewing the paragraphs contained in it.
 
@@ -329,4 +341,4 @@ This completes the task of creating a notebook based on a model and viewing the 
 
 * **Author** - Marcos Arancibia, Senior Principal Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, August 2023
+* **Last Updated By/Date** - Marcos Arancibia, August 2023, Moitreyee Hazarika, June 2024
