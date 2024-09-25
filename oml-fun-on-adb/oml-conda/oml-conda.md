@@ -21,8 +21,8 @@ In this lab, you will learn how to:
 * Create a Conda environment for Python with `tensorflow` and `seaborn` packages (ADMIN role)
 * Create a Conda environment for R with `ggplot2` and `forecast` packages (ADMIN role)
 * Upload the Conda environments to an Object Storage bucket associated with the ADB (ADMIN role)
-* Download, activate, and use the Conda environment for Python (OML_DEVELOPER role)
-* Download, Activate, and use the Conda environment for R (OML_DEVELOPER role)
+* Download, activate, and use the Conda environment for Python, and Python API for Embedded Python Execution(OML_DEVELOPER role)
+* Download, Activate, and use the Conda environment for R, R API for Embedded R Execution (OML_DEVELOPER role)
 
 ### Prerequisites
 

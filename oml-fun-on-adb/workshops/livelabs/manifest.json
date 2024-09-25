@@ -62,6 +62,11 @@
             "filename": "/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md"
         },
         {
+            "title": "Lab 9: Introduction to Conda",
+            "type": "livelabs",
+            "filename": "../../oml-conda/oml-conda.md"
+        },
+        {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
             "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
