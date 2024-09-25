@@ -30,45 +30,39 @@
             "title": "Lab 1: Introduction to Oracle Machine Learning Notebooks",
             "type": "freetier",
             "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md"
-        },
+        },              
         {
-            "title": "Lab 2: Introduction to Oracle Machine Learning Notebooks Classic",
-            "type": "freetier",
-            "description": "Labs that follow the introduction are numbered, starting with Lab 1",
-            "filename": "../../oml-notebooks/oml-notebooks.md"
-        },        
-        {
-            "title": "Lab 3: Introduction to Oracle Machine Learning for SQL",
+            "title": "Lab 2: Introduction to Oracle Machine Learning for SQL",
             "type": "freetier",
             "filename": "../../omlsql/omlsql.md"
         },
         {
-            "title": "Lab 4: Introduction to Oracle Machine Learning for Python",
+            "title": "Lab 3: Introduction to Oracle Machine Learning for Python",
             "type": "freetier",
             "filename": "../../omlpy/omlpy.md"
         },
         {
-            "title": "Lab 5: Introduction to Oracle Machine Learning for R",
+            "title": "Lab 4: Introduction to Oracle Machine Learning for R",
             "type": "freetier",
             "filename": "../../omlr/omlr.md"
         },
         {
-            "title": "Lab 6: Introduction to Oracle Machine Learning AutoML UI",
+            "title": "Lab 5: Introduction to Oracle Machine Learning AutoML UI",
             "type": "freetier",
             "filename": "../../automl/automl.md"
         },
         {
-            "title": "Lab 7: Introduction to Oracle Machine Learning Services",
+            "title": "Lab 6: Introduction to Oracle Machine Learning Services",
             "type": "freetier",
             "filename": "../../omlserv/omlserv.md"
         },     
         {
-            "title": "Lab 8: Introduction to Oracle Machine Learning Monitoring",
+            "title": "Lab 7: Introduction to Oracle Machine Learning Monitoring",
             "type": "freetier",
             "filename": "/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md"
         },
         {
-            "title": "Lab 9: Introduction to Conda",
+            "title": "Lab 8: Introduction to Conda",
             "type": "livelabs",
             "filename": "/common/building-blocks/blocks/oml/oml-conda/oml-conda.md"
         },
