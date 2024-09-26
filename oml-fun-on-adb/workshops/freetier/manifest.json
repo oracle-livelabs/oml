@@ -62,7 +62,7 @@
             "filename": "/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md"
         },
         {
-            "title": "Lab 8: Introduction to Conda",
+            "title": "Lab 8: Introduction to the Conda Environments in Oracle Machine Learning Notebook",
             "type": "livelabs",
             "filename": "/common/building-blocks/blocks/oml/oml-conda/oml-conda.md"
         },
