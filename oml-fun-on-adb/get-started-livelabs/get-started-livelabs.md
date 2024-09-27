@@ -36,10 +36,6 @@ In this lab, you will learn how to:
 
 [](include:oml-sign-into-oml.md)
 
-## Task 4: Create the CUSTOMERS360 Table
-
-[](include:oml-create-cust360-table.md)
-
 ## Learn More
 
 * [Get Started with Oracle Machine Learning for Python](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/get-started-with-oml4py.html#GUID-B45A76E6-CE48-4E49-B803-D25CA44B09ED)
@@ -49,4 +45,4 @@ In this lab, you will learn how to:
 
 * **Author** - Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, March 2024
+* **Last Updated By/Date** - Moitreyee Hazarika, September 2024

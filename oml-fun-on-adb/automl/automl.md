@@ -40,9 +40,9 @@ To access AutoML UI, you must sign into the Oracle Machine Learning User Interfa
 
 	![home page](images/homepage-automl.png)
 
-	Alternatively, you can click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of the home page to open the left navigation menu. Click **AutoML Experiments**. This opens the AutoML Experiments page.
+	Alternatively, you can click the Cloud menu icon ![Cloud menu icon](images/cloud-menu-icon.png) on the top left corner of the home page to open the left navigation menu. Click **AutoML Experiments**. This opens the AutoML Experiments page.
 
-	![home page](images/hamburger-automl-homepage.png)
+	![AutoML UI in left navigation pane](images/left-nav-pane-automl.png)
 
 ## Task 2: Create an Experiment
 
