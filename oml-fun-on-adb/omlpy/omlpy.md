@@ -49,23 +49,17 @@ Alternatively, you can click **Notebooks** on the home page to go directly to th
 
 	![List of Notebooks available.](images/open-classification-dt.png)
 
-3. The OML4Py Classification DT (1) notebook opens up in the notebook editor. Click the gear icon ![Gear Icon](images/gear-icon.png) on the top right corner of the notebook to view and set the interpreter binding order.
+3. The OML4Py Classification DT (1) notebook opens up in the notebook editor. Click on the **Update Notebook Type** icon ![Update Notebook type icon](images/update-notebook-type-icon.png)on the top right corner. The available notebook types are displayed. The current notebook type is indicated by a tick mark, and is also displayed next to the **Update Notebook Type** icon.
 
-	![Illustration for getting the configuration for interpreter](images/getting-configuration-interpreter.png)
+	![Illustration for getting the configuration for interpreter](images/classification-dt-nbtype-icon.png)
 
-	You can change the order of the interpreter bindings by clicking and dragging an entry above or below others (turns from white to blue). You can also deselect a binding to disable it (turns from blue to white). This does not require dragging the enabled interpreters above the disabled ones.
-
-	![Illustration for configuring interpreter](images/configuring-interpreter.png)
-
-	Click **Save** to set the interpreter bindings.
-
-4. Click the play icon next to the title of the notebook to run all paragraphs.
+	
+4. Click the play icon at the top to run all paragraphs.
 
 	![Illustration for running all paragraph](images/run-all-paragraphs.png)
 
 5. Click **OK** to confirm in the confirmation dialogue.
-
-	![Confirmation for running all paragraph](images/confirmation-run-all-paragraphs.png)
+	
 
 6. The paragraphs start running one by one and display the status next to the paragraph titles. When the paragraph is running, the status displays **PENDING** and when it finishes, it displays **FINISHED**.
 
