@@ -58,14 +58,12 @@ Alternatively, you can click **Notebooks** on the home page to go directly to th
 
 	![Illustration for running all paragraph](images/run-all-paragraphs.png)
 
-5. Click **OK** to confirm in the confirmation dialogue.
+5. Click **Confirm** to confirm in the confirmation dialogue.
 	
+	![Illustration for confirmation of running all paragraph](images/confirmation-run-all-paragraphs.png)
 
-6. The paragraphs start running one by one and display the status next to the paragraph titles. When the paragraph is running, the status displays **PENDING** and when it finishes, it displays **FINISHED**.
-
-	![Illustration for pending on a paragraph](images/pending-paragraph.png)
-
-	![Illustration for finished on a paragraph](images/finished-paragraph.png)
+6. The paragraphs start running one by one. The status and the output are displayed at the bottom of the paragraph. Hover your cursor over the paragraph to view the time taken to complete the run.
+	
 
 In this step, the iris data set is used for illustrative purposes to load the data into a temporary database table. Such temporary tables are automatically deleted when the OML Notebook connection to the database ends unless you have saved its proxy object to a datastore, which we'll discuss in step 10, before disconnecting.
 To use OML4Py, you must first import the `oml` module and the Pandas library. Use the `oml.push` function to create a temporary table.
