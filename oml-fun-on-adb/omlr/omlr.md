@@ -85,7 +85,7 @@ You can also create a persistent table using the `ore.create` function and speci
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 
 	![The figure shows the shape, columns, and few rows of table IRIS.](images/shape-iris.png)
 
@@ -139,7 +139,7 @@ The output:
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 
 	```r
 
@@ -207,7 +207,7 @@ The output:
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 
 	![The figure shows the distribution of HOUSEHOLD_SIZE according to AFFINITY_CARD responders.](images/distribution-household-affinity.png)
 
@@ -239,7 +239,7 @@ In this step, you will create a proxy object DEMO2 by selecting columns from the
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 
 	![First few rows of DEMO2 are displayed.](images/rows-demo2.png)
 
@@ -276,7 +276,7 @@ In this step, you will create a proxy object DEMO2 by selecting columns from the
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 
 	![Test data and training data.](images/output-test-training-data.png)
 
@@ -318,7 +318,7 @@ Use the `ore.odmDT` function to build a Decision Tree model. You can build a mod
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 
 	![The figure shows the model details of dt_mod proxy object.](images/model-details.png)
 
@@ -387,7 +387,7 @@ Evaluate the in-database model proxy object using various approaches. Make predi
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 	![First few rows of RES_DF are displayed.](images/rows-raw-resdf.png)
 
 	The column "X.0." and "X.1." represent the probability of the case lying in the respective classes of AFFINITY\_CARD. Run the following script to change the column name of "X.0" to Prob\_0 and "X.1" to Prob\_1.
@@ -403,7 +403,7 @@ Evaluate the in-database model proxy object using various approaches. Make predi
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 	![First few rows of RES\_DF are displayed with X.0 as PROB\_0 and X.1 as PROB\_1.](images/rows-resdf.png)
 
 2. The Confusion Matrix displays the number and type of correct and incorrect predictions made with respect to the actual classification in the test data. It is an n-by-n matrix where n is the number of classes. Run the following script to compute the confusion matrix in the database using the proxy object:
@@ -417,7 +417,7 @@ Evaluate the in-database model proxy object using various approaches. Make predi
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 	![The figure shows the confusion matrix between Affinity Card and Prediction column.](images/confusion-matrix.png)
 
 3. Evaluate your model using the ROC curve chart, Lift chart, and Distribution chart. The ROC curve also applies to binary classification and requires the designation of the positive class. These are metrics for comparing predicted and actual target values in a classification model. A lift chart also applies to binary classifications requiring the designation of the positive class. It measures the degree to which the predictions of a classification model are better than randomly generated predictions. The distribution chart here is a density plot of the predicted responders vs. the predicted non-responders. A density plot is a distribution of a numeric variable and gives an idea of the shape, number of peaks, skewness, etc. Here is a custom script to generate the metrics and charts as described above. Run the script below:
@@ -469,7 +469,7 @@ Evaluate the in-database model proxy object using various approaches. Make predi
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 
 	![The figure shows the model evaluation using ROC curve chart, Lift chart, and Distribution chart.](images/roc-lift-distribution-chart.png)
 
@@ -487,7 +487,7 @@ Having built and evaluated the model, you will now filter the `ore.frame` using 
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 	![The figure displays few rows of customers responding to the affinity card campaign with a probability greater than 0.5.](images/rows-responders.png)
 
 2. Use the confusion matrix to get the model accuracy computed on the TEST data provided.
@@ -500,10 +500,7 @@ Having built and evaluated the model, you will now filter the `ore.frame` using 
 	round(sum(diag(ACCURACY)),3)
 	</copy>
 	```
-
-	```r
-	0.834
-	```
+	![Model accuracy using the confusion matrix.](images/confusion-matrix-accuracy.png)
 
 	You obtain an accuracy of 0.834 or approximately 83.4% of the result are correctly predicted.
 
@@ -555,7 +552,7 @@ You can score data and make similar predictions using the SQL interface. The tes
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 
 	![The figure displays the score and display of the prediction details](images/sql-prediction-details.png)
 
@@ -609,7 +606,7 @@ OML4R provides functions for managing the objects in the datastore, such as `ore
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 
 	![The figure shows the existing datastores.](images/existing-datastore.png)
 
@@ -625,7 +622,7 @@ OML4R provides functions for managing the objects in the datastore, such as `ore
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 	![The figure shows the summary of R objects saved within a datastore.](images/datastore-summary.png)
 
 2. In this step, you will use the `ore.load` function for loading one or more R objects from the datastore to the current workspace.
@@ -640,7 +637,7 @@ OML4R provides functions for managing the objects in the datastore, such as `ore
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 	![The figure shows all the R objects of the datastore.](images/load-datastore.png)
 
   - Run the following script to load a specific named R object, `IRIS_TMP` from the datastore to the current workspace. Also, confirm if the R object IRIS_TMP is loaded or not in the current workspace.
@@ -654,7 +651,7 @@ OML4R provides functions for managing the objects in the datastore, such as `ore
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 
 	![The figure loads a specific R object IRIS\_TMP.](images/load-specific-datastore.png)
 
@@ -668,7 +665,7 @@ OML4R provides functions for managing the objects in the datastore, such as `ore
 	</copy>
 	```
 
-	The output is similar to the following:
+	The output is:
 	![The figure loads the model from the datastore.](images/load-datamodel.png)
 
 To learn more about how to use datastores to store R objects click this [link](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/get-started-oracle-machine-learning-r1.html#GUID-A3773AC1-2C23-445C-91C1-6FBC745CCE94).
@@ -723,7 +720,7 @@ ore.datastoreSummary("ds-regr-1")
 </copy>
 ```
 
-The output is similar to the following:
+The output is:
 
 ![The figure shows the datastore and its summary.](images/iris-datastore.png)
 
@@ -759,6 +756,10 @@ mod.svm
 
 </copy>
 ```
+The output is: 
+
+![The figure shows the partitioned SVM regression model.](images/partitioned-svmr-model.png)
+
 
 You may now **proceed to the next lab**.
 
