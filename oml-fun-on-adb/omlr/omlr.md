@@ -116,19 +116,18 @@ In this example, use `dim()`, `summary()` and `crosstab()` functions to explore 
 
 1. Use the `dim()` function to view the rows and columns of an `ore.frame`.
 
-	```r
+	```
 	<copy>
 	%r
 
 	cat("\nShape: ", dim(DEMO))
 	</copy>
 	```
+The output:
 
-	```r
-	%r
+	![The figure shows the rows and columns of an ore.frame.](images/shape-ore-frame.png)
 
-	Shape:  4500 14
-		```
+	
 
 2. Use the `summary()` function to calculate descriptive statistics that summarize the central tendency, and dispersion of the DEMO table in each numeric column and the length, class, and mode for the character column.
 
@@ -174,10 +173,12 @@ In this example, use `dim()`, `summary()` and `crosstab()` functions to explore 
 	Max.   :1        Max.   :1.0000   Max.   :1.000000
 
 	```
+	![The figure shows the output of the summary function.](images/summary-demo.png)
+
 
 3. Use the `crosstab()` function to perform a cross-column analysis of an `ore.frame` object in the database. The `crosstab()` function computes a cross-tabulation of two or more columns. By default, it computes a frequency table for the columns unless a column and an aggregation function have been passed to it.
 
-	In this example, the `crosstab()` function displays the distribution of `AFFINITY_CARD` responders. Click on the Bar chart, then click on settings. Drag the fields to titles as `AFFINITY_CARDS` to keys and `ORE.FREQ` to values. The fields will automatically change to `ORE.FREQ` SUM. Click on Grouped or Stacked to get the required view.
+	In this example, the `crosstab()` function displays the distribution of `AFFINITY_CARD` responders. 
 
 
 	```r
@@ -187,6 +188,10 @@ In this example, use `dim()`, `summary()` and `crosstab()` functions to explore 
 	z.show(ore.crosstab(~AFFINITY_CARD,DEMO))
 	</copy>
 	```
+
+	Click on the Bar chart. Then click on the settings icon ![settings](images/settings-icon.png). In the **Series to Show** field, click to select `ORE.FREQ`. In the Group By field, click to select  `AFFINITY_CARDS`.
+
+	![The figure shows the crosstab output settings.](images/crosstab-settings.png)
 
 	The output is similar to the following using the bar chart visualization in the Zeppelin notebook:
 
@@ -272,6 +277,9 @@ In this step, you will create a proxy object DEMO2 by selecting columns from the
 	```
 
 	The output is similar to the following:
+
+	![Test data and training data.](images/output-test-training-data.png)
+
 
 	```r
 	'ore.frame' Training data:
