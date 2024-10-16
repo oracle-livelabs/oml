@@ -263,7 +263,7 @@ For a time series model, you use the `DM$VP` view to retrieve the forecasts for 
 	- `round(LOWER,2) LOWER_BOUND, round(UPPER,2) UPPER_BOUND`: Specifies the lower and upper confidence levels rounded to two decimal places.
 
 2. To see a visual representation of the predictions in OML Notebooks, run the same query above without ```DESC``` in the ```ORDER BY``` clause. Click the Line Chart graph and apply the following settings:
-Click **settings**. In the settings dialog, click on **Series to Show** and click `FORECASTED_SOLD`, `ACTUAL_SOLD`, `LOWER_BOUND`, and `UPPER_BOUND`. In the **Group_by** field, select `DATE_ID`. In the **Aggregate Duplicates** field, click on the drop down menu and select `Average`. Click on the close icon X to exit the dialog.   
+Click on the **Settings** icon ![settings icon](images/settings-icon.png). In the settings dialog, click on **Series to Show** and click `FORECASTED_SOLD`, `ACTUAL_SOLD`, `LOWER_BOUND`, and `UPPER_BOUND`. In the **Group_by** field, select `DATE_ID`. In the **Aggregate Duplicates** field, click on the drop down menu and select `Average`. Click on the close icon X to exit the dialog.   
 
     ```
     <copy>
