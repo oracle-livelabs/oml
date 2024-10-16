@@ -27,15 +27,11 @@
             "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md.md"
         },
         {
-            "title": "Lab 3: Create and Run Classic Notebooks in Oracle Machine Learning User Interface",
-            "filename": "../../create-run-notebooks/create-run-notebooks.md"
-        },
-        {
-            "title": "Lab 4: Collaborate in Oracle Machine Learning User Interface",
+            "title": "Lab 3: Collaborate in Oracle Machine Learning User Interface",
             "filename": "../../collaborate-use-notebooks/collaborate-use-notebooks.md"
         },
         {
-            "title": "Lab 5: Use the Scratchpad in Oracle Machine Learning User Interface",
+            "title": "Lab 4: Use the Scratchpad in Oracle Machine Learning User Interface",
             "filename": "../../use-scratchpad/use-scratchpad.md"
         },        
         {
