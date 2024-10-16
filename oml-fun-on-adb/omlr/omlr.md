@@ -776,4 +776,4 @@ OREdplyr package functions implement the `dplyr` interface for use with `ore.fra
 ## Acknowledgements
 * **Author** - Dhanish Kumar, Member of Technical Staff, User Assistance Developer.
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Suresh Rajan, Senior Manager, Oracle Database User Assistance Development; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning.
-* **Last Updated By/Date** - Dhanish Kumar, October 2023
+* **Last Updated By/Date** - Sadhana Ashokkumar, October 2024
