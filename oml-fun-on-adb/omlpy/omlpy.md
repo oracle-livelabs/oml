@@ -8,7 +8,10 @@ Estimated Time: 30 minutes
 
 ### About Oracle Machine Learning for Python(OML4Py)
 
-Oracle Machine Learning for Python (OML4Py) is a component of Oracle Autonomous (ADB), which includes Oracle Autonomous Data Warehouse (ADW), Oracle Autonomous Transaction Processing (ATP), and Oracle Autonomous JSON Database (AJD). OML4Py is also included with on-premise Oracle Database and Database Cloud Service with separate installation. By using OML Notebooks, you can use standard Python syntax and overloaded Python functions, use a natural Python API to load in-database machine learning algorithms, call user-defined Python functions in database-spawned and controlled Python engines, and leverage automated machine learning (AutoML).
+<!-- Oracle Machine Learning for Python (OML4Py) is a component of Oracle Autonomous (ADB), which includes Oracle Autonomous Data Warehouse (ADW), Oracle Autonomous Transaction Processing (ATP), and Oracle Autonomous JSON Database (AJD). OML4Py is also included with on-premise Oracle Database and Database Cloud Service with separate installation. By using OML Notebooks, you can use standard Python syntax and overloaded Python functions, use a natural Python API to load in-database machine learning algorithms, call user-defined Python functions in database-spawned and controlled Python engines, and leverage automated machine learning (AutoML). -->
+
+Oracle Machine Learning for Python (OML4Py) is a component of Oracle Autonomous (ADB), which includes Oracle Autonomous Data Warehouse (ADW), Oracle Autonomous Transaction Processing (ATP), and Oracle Autonomous JSON Database (AJD). OML4Py is also included with on-premise Oracle Database licenses and Database Cloud Service with separate installation. Oracle Machine Learning empowers data scientists with Python by leveraging the database as a high-performance computing environment. Database tables and views are accessed through oml.DataFrame proxy objects with overloaded functionality that produces SQL, transparently behind the scenes. The in-database machine learning algorithms are exposed through a native Python API and produce the same first-class, in-database machine learning models as the OML4SQL API. By using OML Notebooks, you can use standard Python syntax and overloaded Python functions, use a natural Python API to load in-database machine learning algorithms, call user-defined Python functions in database-spawned and controlled Python engines, and leverage automated machine learning (AutoML).
+
 
 ### Objectives
 
@@ -77,9 +80,8 @@ To use OML4Py, you must first import the `oml` module and the Pandas library. Us
 	import pandas as pd
 	import oml
 
-	pd.set_option('display.max_rows', 500)
-	pd.set_option('display.max_columns', 500)
-	pd.set_option('display.width', 1000)
+	import warnings
+	warnings.simplefilter(action='ignore', category=FutureWarning)
 	</copy>
 	```
 
@@ -88,6 +90,7 @@ To use OML4Py, you must first import the `oml` module and the Pandas library. Us
 	```
 	<copy>
 	%python
+
 	from sklearn.datasets import load_iris
 	import pandas as pd
 
@@ -114,6 +117,7 @@ To use OML4Py, you must first import the `oml` module and the Pandas library. Us
 	```
 	<copy>
 	%python
+
 	try:
 		oml.drop(table='IRIS')
 	except:
@@ -131,7 +135,7 @@ To use OML4Py, you must first import the `oml` module and the Pandas library. Us
 
 ## Task 3: Create a Proxy Object for a Database Object
 
-1. Use the `oml.sync` function to create a Python object as a proxy for a database table or view. The `oml.sync` function returns an `oml.DataFrame` object or a dictionary of `oml.DataFrame` objects. The `oml.DataFrame` object returned by `oml.sync` is a proxy for the database object.  
+1. Use the `oml.sync` function to create a Python object as a proxy for a database table or view. The `oml.sync` function returns an `oml.DataFrame` object or a dictionary of `oml.DataFrame` objects. The `oml.DataFrame` object returned by `oml.sync` is a proxy for the database object.
 
 	```
 	<copy>
@@ -174,7 +178,7 @@ In this example, use `shape`, `describe` and `crosstab` functions to explore and
 		</copy>
 	```
 
-	![Statistical details of DEMO.](images/statistical-data-demo.png)
+	![Statistical details of DEMO.](images/statistical-data-demo01.png)
 
 3. Use the `crosstab()` function to perform cross-column analysis of an `oml.DataFrame` object. The crosstab method computes a cross-tabulation of two or more columns. By default, it computes a frequency table for the columns unless a column and an aggregation function have been passed to it.  In this example, the crosstab function displays the distribution of `AFFINITY_CARD` response types.
 
@@ -433,178 +437,191 @@ To evaluate your model you need to score the test data using the model and then 
 	<copy>
 	%python
 
-	def evaluate_model(pred_data='',settings_name={''},name='',target=''):
-	    import numpy as np
-	    import matplotlib.pyplot as plt
-	    from sklearn.metrics import auc
-	    from sklearn.metrics import roc_curve
+def evaluate_model(pred_data='', 
+    settings_name={''}, 
+    name='',
+    target=''
+    ):
+    """Evaluate the models by passing an proxy oml.Dataframe containing Predictions
+     and the target column,
+     The Settings name (for the charts), 
+     The name of the model used (for the charts),
+     Supply the target column name for evaluation
+     for computing the confusion matrix with the test dataset"""
+    import oml
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from sklearn.metrics import auc
+    from sklearn.metrics import roc_curve
 
-	    #Creating the confucion matrix using crosstab function.
-	    conf_matrix = pred_data.crosstab(target,'PREDICTION',pivot=True)
+    conf_matrix = pred_data.crosstab(target,'PREDICTION',pivot=True)
+ 
+    # Extract Statistics from the Confusion Matrix
+    cf_local = conf_matrix.pull()
+    TN = int(cf_local[cf_local[target]==0]['count_(0)'])
+    FN = int(cf_local[cf_local[target]==0]['count_(1)'])
+    TP = int(cf_local[cf_local[target]==1]['count_(1)'])
+    FP = int(cf_local[cf_local[target]==1]['count_(0)'])
+    TPR = TP/(TP+FN)
+    FPR = FP/(FP+TN)
+    TNR = TN/(TN+FP)
+    FNR = FN/(FN+TP)
+    Precision = TP/(TP+FP)
+    Accuracy = (TP+TN)/(TP+TN+FP+FN)
+    NPV = TN/(FN+TN)
+    DetectionRate = TN/(FN+TN)
+    BalancedAccuracy = (TPR+TNR)/2
+    
+    # Estimated AUC via Triangle (not very precise) could be
+    # AUC = (1/2)*FPR*TPR + (1/2)*(1-FPR)*(1-TPR) + (1-FPR)*TPR
+    # Compute real AUC using roc_curve by loading the
+    # data locally and using the roc_curve() function
+    pred_local = pred_data.pull()
+    fpr, tpr, _ = roc_curve(pred_local[[target]],pred_local[['PROBABILITY_OF_1']])
+    AUC = auc(fpr, tpr)
+    opt_index = np.argmax(tpr - fpr)
+    FPR_OPT = fpr[opt_index]
+    TPR_OPT = tpr[opt_index]
+    F1Score = 2*Precision*TPR/(Precision+TPR)
+    MathewsCorrCoef = ((TP*TN)-(FP*FN))/((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN))**0.5
+    
+    # Store all statistics to export
+    statistics = {'Algorithm' : name,
+                  'Algorithm_setting' : settings_name,
+                  'TN' : TN,
+                  'TP' : TP,
+                  'FP' : FP,
+                  'FN' : FN,
+                  'TPR' : TPR,
+                  'FPR' : FPR,
+                  'TNR' : TNR,
+                  'FNR' : FNR,
+                  'Precision' : Precision,
+                  'Accuracy' : Accuracy,
+                  'NPV' : NPV,
+                  'DetectionRate' : DetectionRate,
+                  'BalancedAccuracy' : BalancedAccuracy,
+                  'AUC' : AUC,
+                  'F1Score' : F1Score,
+                  'MathewsCorrCoef' : MathewsCorrCoef
+                  }
+    # Nice round stats for printing to screen
+    TOTAL = TP+TN+FP+FN
+    TN_P = round((TN/TOTAL*100),2)
+    FP_P = round((FP/TOTAL*100),2)
+    FN_P = round((FN/TOTAL*100),2)
+    TP_P = round((TP/TOTAL*100),2)
+    # Print the output nicely on Zeppelin native Table
+    print("%table CONFUSION MATRIX\tPREDICTED 0\tPREDICTED 1\nACTUAL 0\t"+
+          "True Negative: "+str(TN)+" ("+str(TN_P)+"%)\t"+
+          "False Positive: "+str(FP)+" ("+str(FP_P)+"%)\nACTUAL 1\t"+
+          "False Negative: "+str(FN)+" ("+str(FN_P)+"%)\t"+
+          "True Positive: "+str(TP)+" ("+str(TP_P)+"%)\n"+
+          "Accuracy: "+str(round(Accuracy*100,4))+"%\t"+
+          "AUC: "+str(round(AUC,4))+"\t"+
+          "F1Score: "+str(round(F1Score,4))
+          )
+    
+    # Multiple Charts for Evaluation
+    fig, axes = plt.subplots(nrows=1, ncols=4,figsize=[22,5])
+    ax1, ax2, ax3, ax4 = axes.flatten()
+    fig.suptitle('Evaluation of the '+str(name)+' Model, with settings: '+str(settings_name), size=16)
+    
+    # Statistics
+    ax1.axis('off')
+    
+    # Function to return rounded numbers if the string is float, return
+    # integers otherwise and return characters if not a number
+    def round_if_float(content):
+        try:
+            val = float(content)
+        except ValueError:
+            return(content)
+        else:
+            if val.is_integer():
+                return(int(content))
+            else:
+                return(round(float(content),4))
 
-	    # Extract Statistics from the Confusion Matrix
-	    cf_local = conf_matrix.pull()
-	    TN = int(cf_local[cf_local[target]==0]['count_(0)'])
-	    FN = int(cf_local[cf_local[target]==0]['count_(1)'])
-	    TP = int(cf_local[cf_local[target]==1]['count_(1)'])
-	    FP = int(cf_local[cf_local[target]==1]['count_(0)'])
-	    TPR = TP/(TP+FN)
-	    FPR = FP/(FP+TN)
-	    TNR = TN/(TN+FP)
-	    FNR = FN/(FN+TP)
-	    Precision = TP/(TP+FP)
-	    Accuracy = (TP+TN)/(TP+TN+FP+FN)
-	    NPV = TN/(FN+TN)
-	    DetectionRate = TN/(FN+TN)
-	    BalancedAccuracy = (TPR+TNR)/2
-
-	    # Estimated AUC
-	    pred_local = pred_data.pull()
-	    fpr, tpr, _ = roc_curve(pred_local[[target]],pred_local[['PROBABILITY_OF_1']])
-	    AUC = auc(fpr, tpr)
-	    opt_index = np.argmax(tpr - fpr)
-	    FPR_OPT = fpr[opt_index]
-	    TPR_OPT = tpr[opt_index]
-	    F1Score = 2*Precision*TPR/(Precision+TPR)
-	    MathewsCorrCoef = ((TP*TN)-(FP*FN))/((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN))**0.5
-
-	    # Store all statistics to export
-	    statistics = {'Algorithm' : name,
-	                  'Algorithm_setting' : settings_name,
-	                  'TN' : TN,
-	                  'TP' : TP,
-	                  'FP' : FP,
-	                  'FN' : FN,
-	                  'TPR' : TPR,
-	                  'FPR' : FPR,
-	                  'TNR' : TNR,
-	                  'FNR' : FNR,
-	                  'Precision' : Precision,
-	                  'Accuracy' : Accuracy,
-	                  'NPV' : NPV,
-	                  'DetectionRate' : DetectionRate,
-	                  'BalancedAccuracy' : BalancedAccuracy,
-	                  'AUC' : AUC,
-	                  'F1Score' : F1Score,
-	                  'MathewsCorrCoef' : MathewsCorrCoef
-	                  }
-	    # Nice round stats for printing to screen
-	    TOTAL = TP+TN+FP+FN
-	    TN_P = round((TN/TOTAL*100),2)
-	    FP_P = round((FP/TOTAL*100),2)
-	    FN_P = round((FN/TOTAL*100),2)
-	    TP_P = round((TP/TOTAL*100),2)
-	    # Print the output nicely on Zeppelin native Table
-	    print("%table CONFUSION MATRIX\tPREDICTED 0\tPREDICTED 1\nACTUAL 0\t"+
-	          "True Negative: "+str(TN)+" ("+str(TN_P)+"%)\t"+
-	          "False Positive: "+str(FP)+" ("+str(FP_P)+"%)\nACTUAL 1\t"+
-	          "False Negative: "+str(FN)+" ("+str(FN_P)+"%)\t"+
-	          "True Positive: "+str(TP)+" ("+str(TP_P)+"%)\n"+
-	          "Accuracy: "+str(round(Accuracy*100,4))+"%\t"+
-	          "AUC: "+str(round(AUC,4))+"\t"+
-	          "F1Score: "+str(round(F1Score,4))
-	          )
-
-	    # Multiple Charts for Evaluation
-	    fig, axes = plt.subplots(nrows=1, ncols=4,figsize=[22,5])
-	    ax1, ax2, ax3, ax4 = axes.flatten()
-	    fig.suptitle('Evaluation of the '+str(name)+' Model, with settings: '+str(settings_name), size=16)
-
-	    # Statistics
-	    ax1.axis('off')
-
-	    # Function to return rounded numbers if the string is float, return
-	    # integers otherwise and return characters if not a number
-	    def round_if_float(content):
-	        try:
-	            val = float(content)
-	        except ValueError:
-	            return(content)
-	        else:
-	            if val.is_integer():
-	                return(int(content))
-	            else:
-	                return(round(float(content),4))
-
-	    for num, name in enumerate(statistics):
-	        ax1.text(0.01,
-	        (-num*0.06+0.94),
-	        "{0}: {1}".format(name,round_if_float(statistics[name])),
-	        ha='left',
-	        va='bottom',
-	        fontsize=12)
-
-	    # Produce Lift Chart
-	    ax2.set_title('Lift Chart')
-	    data = pred_local.sort_values(by='PROBABILITY_OF_1', ascending=False)
-	    data['row_id'] = range(0,0+len(data))
-	    data['decile'] = ( data['row_id'] / (len(data)/10) ).astype(int)
-	    lift = data.groupby('decile')[target].agg(['count','sum'])
-	    lift.columns = ['count', target]
-	    lift['decile'] = range(1,11)
-
-	    data_ideal = pred_local.sort_values(by=target, ascending=False)
-	    data_ideal['row_id'] = range(0,0+len(data))
-	    data_ideal['decile'] = ( data_ideal['row_id'] / (len(data_ideal)/10) ).astype(int)
-	    lift_ideal = data_ideal.groupby('decile')[target].agg(['count','sum'])
-	    lift_ideal.columns = ['count', 'IDEAL']
-	    lift['IDEAL']=lift_ideal['IDEAL']
-
-	    ax2.bar(lift['decile'],lift['IDEAL']/lift['count'],
-	    color='darkorange', label='Ideal')
-	    ax2.bar(lift['decile'],lift[target]/lift['count'],
-	    color='blue', alpha=0.6, label='Model')
-	    ax2.axhline((lift[target]/lift['count']).mean(),
-	    color='grey', linestyle='--', label='Avg TARGET')
-	    ax2.set_ylim(0,1.15)
-	    ax2.set_xlabel('Decile', size=13)
-	    ax2.set_ylabel('Percent of Actual Targets', size=13)
-	    # Print labels.
-	    for dec in lift['decile']:
-	        ax2.text(dec, lift[lift.decile==dec][target]/lift[lift.decile==dec]['count'] + 0.05,
-	        ("%.0f" % int(round((lift[(lift.decile==dec)][target]/lift[lift.decile==dec]['count'])*100,0)))+"%",
-	        ha='center', va='bottom')
-	    ax2.legend(loc="upper right")
-
-	    # Produce Gains Chart
-	    ax3.set_title('Distributions of Predictions')
-	    pred_local[pred_local[target]==1]['PROBABILITY_OF_1'].rename("Target = 1").plot(kind='density', bw_method=0.1, grid=True, ax=ax3)
-	    pred_local[pred_local[target]==0]['PROBABILITY_OF_1'].rename("Target = 0").plot(kind='density', bw_method=0.1, grid=True, ax=ax3)
-	    ax3.axvline(.5, color='grey', linestyle='--', label='Cutoff at 0.5')
-	    ax3.set_xlim([0,1])
-	    ax3.set_xlabel('Probability of 1', size=13)
-	    ax3.set_ylabel('Density', size=13)
-	    ax3.legend(loc="upper right")
-
-	    # ROC curve Chart
-	    ax4.set_title('ROC Curve')
-	    ax4.plot(fpr, tpr, color='blue', lw=2, label='ROC curve')
-	    ax4.plot(FPR_OPT, TPR_OPT, 'bo', color='orange', markersize=6)
-	    ax4.plot([0, 1], [0, 1], lw=2, linestyle='--', color='grey', label='Random guess')
-	    ax4.annotate('Optimal Cutoff:\nTPR: '+str(round(TPR_OPT,2))+' FPR: '+str(round(FPR_OPT,2)),
-	                 fontsize=11, xy=(FPR_OPT, TPR_OPT), xycoords='data', xytext=(0.98, 0.54),
-	                 textcoords='data',
-	                 arrowprops=dict(facecolor='gray', shrink=0.1, width=2,
-	                                 connectionstyle='arc3, rad=0.3'),
-	                 horizontalalignment='right', verticalalignment='top')
-	    ax4.annotate('AUC ='+str(round(AUC,4)), xy=(0.5, 0.35),
-	                 xycoords='axes fraction', size=13)
-	    ax4.annotate('Precision ='+str(round(Precision,4)), xy=(0.45, 0.3),
-	                 xycoords='axes fraction', size=13)
-	    ax4.annotate('Recall ='+str(round(TPR,4)), xy=(0.4, 0.25),
-	                 xycoords='axes fraction', size=13)
-	    ax4.annotate('Accuracy ='+str(round(Accuracy,4)), xy=(0.35, 0.2),
-	                 xycoords='axes fraction', size=13)
-	    ax4.annotate('F1 Score ='+str(round(F1Score,4)), xy=(0.3, 0.15),
-	                 xycoords='axes fraction', size=13)
-	    ax4.set_xlim([-0.02, 1.02])
-	    ax4.set_ylim([0.0, 1.02])
-	    ax4.set_xlabel('False Positive Rate', size=13)
-	    ax4.set_ylabel('True Positive Rate', size=13)
-	    ax4.legend(loc="lower right")
-
-	    return(statistics, pred_local)
-	_ = evaluate_model(pred_data=RES_DF, settings_name='Gini,Max Depth:7,Min%Node:0.05,Min%Split:0.1', name='Decision Tree', target='AFFINITY_CARD')
+    for num, name in enumerate(statistics):
+        ax1.text(0.01, 
+        (-num*0.06+0.94),
+        "{0}: {1}".format(name,round_if_float(statistics[name])),
+        ha='left', 
+        va='bottom', 
+        fontsize=12)
+    
+    # Produce Lift Chart
+    ax2.set_title('Lift Chart')
+    data = pred_local.sort_values(by='PROBABILITY_OF_1', ascending=False)
+    data['row_id'] = range(0,0+len(data))
+    data['decile'] = ( data['row_id'] / (len(data)/10) ).astype(int)
+    lift = data.groupby('decile')[target].agg(['count','sum'])
+    lift.columns = ['count', target]
+    lift['decile'] = range(1,11)
+    
+    data_ideal = pred_local.sort_values(by=target, ascending=False)
+    data_ideal['row_id'] = range(0,0+len(data))
+    data_ideal['decile'] = ( data_ideal['row_id'] / (len(data_ideal)/10) ).astype(int)
+    lift_ideal = data_ideal.groupby('decile')[target].agg(['count','sum'])
+    lift_ideal.columns = ['count', 'IDEAL']
+    lift['IDEAL']=lift_ideal['IDEAL']
+    
+    ax2.bar(lift['decile'],lift['IDEAL']/lift['count'],
+    color='darkorange', label='Ideal')
+    ax2.bar(lift['decile'],lift[target]/lift['count'],
+    color='blue', alpha=0.6, label='Model')
+    ax2.axhline((lift[target]/lift['count']).mean(), 
+    color='grey', linestyle='--', label='Avg TARGET')
+    ax2.set_ylim(0,1.15)
+    ax2.set_xlabel('Decile', size=13)
+    ax2.set_ylabel('Percent of Actual Targets', size=13)
+    # Print labels.
+    for dec in lift['decile']:
+        ax2.text(dec, lift[lift.decile==dec][target]/lift[lift.decile==dec]['count'] + 0.05, 
+        ("%.0f" % int(round((lift[(lift.decile==dec)][target]/lift[lift.decile==dec]['count'])*100,0)))+"%",
+        ha='center', va='bottom')
+    ax2.legend(loc="upper right")
+    
+    # Produce Gains Chart
+    ax3.set_title('Distributions of Predictions')
+    pred_local[pred_local[target]==1]['PROBABILITY_OF_1'].rename("Target = 1").plot(kind='density', bw_method=0.1, grid=True, ax=ax3)
+    pred_local[pred_local[target]==0]['PROBABILITY_OF_1'].rename("Target = 0").plot(kind='density', bw_method=0.1, grid=True, ax=ax3)
+    ax3.axvline(.5, color='grey', linestyle='--', label='Cutoff at 0.5')
+    ax3.set_xlim([0,1])
+    ax3.set_xlabel('Probability of 1', size=13)
+    ax3.set_ylabel('Density', size=13)
+    ax3.legend(loc="upper right")
+    
+    # ROC curve Chart
+    ax4.set_title('ROC Curve')
+    ax4.plot(fpr, tpr, color='blue', lw=2, label='ROC curve')
+    ax4.plot(FPR_OPT, TPR_OPT,  color='orange', markersize=6)
+    ax4.plot([0, 1], [0, 1], lw=2, linestyle='--', color='grey', label='Random guess')
+    ax4.annotate('Optimal Cutoff:\nTPR: '+str(round(TPR_OPT,2))+' FPR: '+str(round(FPR_OPT,2)),
+                 fontsize=11, xy=(FPR_OPT, TPR_OPT), xycoords='data', xytext=(0.98, 0.54), 
+                 textcoords='data', 
+                 arrowprops=dict(facecolor='gray', shrink=0.1, width=2,
+                                 connectionstyle='arc3, rad=0.3'), 
+                 horizontalalignment='right', verticalalignment='top')
+    ax4.annotate('AUC ='+str(round(AUC,4)), xy=(0.5, 0.35), 
+                 xycoords='axes fraction', size=13)
+    ax4.annotate('Precision ='+str(round(Precision,4)), xy=(0.45, 0.3), 
+                 xycoords='axes fraction', size=13)
+    ax4.annotate('Recall ='+str(round(TPR,4)), xy=(0.4, 0.25), 
+                 xycoords='axes fraction', size=13)
+    ax4.annotate('Accuracy ='+str(round(Accuracy,4)), xy=(0.35, 0.2),
+                 xycoords='axes fraction', size=13)
+    ax4.annotate('F1 Score ='+str(round(F1Score,4)), xy=(0.3, 0.15), 
+                 xycoords='axes fraction', size=13)
+    ax4.set_xlim([-0.02, 1.02])
+    ax4.set_ylim([0.0, 1.02])
+    ax4.set_xlabel('False Positive Rate', size=13)
+    ax4.set_ylabel('True Positive Rate', size=13) 
+    ax4.legend(loc="lower right")
+    
+    return(statistics, pred_local)
+_ = evaluate_model(pred_data=RES_DF, settings_name='Gini,Max Depth:7,Min%Node:0.05,Min%Split:0.1', name='Decision Tree', target='AFFINITY_CARD')
 	</copy>
 	```
 
@@ -617,6 +634,7 @@ To evaluate your model you need to score the test data using the model and then 
 	```
 	<copy>
 	%python
+
 	dt_mod.score(TEST_X, TEST_Y)
 	</copy>
 
@@ -638,7 +656,7 @@ Having built and evaluated the model, you will now filter scores computed above.
 	<copy>
 	%python
 
-	z.show(RES_DF[RES_DF['PROBABILITY_OF_1'] > 0.5][['PREDICTION', 'PROBABILITY_OF_1', 'CUST_ID', 'AFFINITY_CARD','EDUCATION','OCCUPATION', 'HOUSEHOLD_SIZE', 'YRS_RESIDENCE', 'OS_DOC_SET_KANJI','BULK_PACK_DISKETTES']])
+	z.show(RES_DF[RES_DF['PROBABILITY_OF_1'] > 0.5][['PREDICTION', 'PROBABILITY_OF_1'] + RES_DF.columns].head())
 	</copy>
 	```
 
@@ -713,100 +731,107 @@ You can score data and make similar predictions using the SQL interface. The tes
 
 You can save the python objects you create in one python session and load them in another session using the OML4Py datastore. Python objects and OML4Py proxy objects exist only during the current Python session, unless they are saved to a Datastore. OML4Py creates the datastore in the current user’s database schema. Until you delete the datastore and objects, they remain in the database. OML4Py provides functions for managing the objects in the datastore, such as `oml.ds.save`, `oml.ds.load`, `oml.ds.dir`, and others.
 
-1. First insert a new paragraph at the bottom of the Notebook. Click on the gear icon in the top-right corner of the last paragraph. Then, click on **Insert new** in the drop-down list. The default paragraph shows %md indicating that it is a markdown paragraph. To run a Python code, enter %python to change it to a Python paragraph.
+1. To insert a new paragraph, hover at the end of the paragraph and click on the Python icon. The newly created paragraph will be a Python paragraph, prefixed with %python.<!-- Click on the gear icon in the top-right corner of the last paragraph. Then, click on **Insert new** in the drop-down list. The default paragraph shows %md indicating that it is a markdown paragraph. To run a Python code, enter %python to change it to a Python paragraph. -->
 
 	![Drop down-list of setting of a paragraph.](images/setting-paragraph.png)
 
 2. To save one or more python objects to a datastore, use the `oml.ds.save` function. Here the DataFrame object is stored to `ds_pydata` and python model object is stored to `ds_pymodel`.
 	- To save IRIS and res_df `oml.DataFrame` proxy object to the `ds_pydata` datastore, run the script below. Use the `oml.sync()` function to create a python object as a proxy for IRIS table (see Task 3). You can give some descriptive text using the description argument, which will appear when you get information on the datastore.
 
-	```
-	<copy>
-	%python
-	IRIS = oml.sync(table='IRIS')
-	oml.ds.save(objs={'iris':IRIS, 'res_df':RES_DF},name="ds_pydata", description = "python datasets", overwrite=True)
-	</copy>
-	```
+		```
+		<copy>
+		%python
+
+		IRIS = oml.sync(table='IRIS')
+		oml.ds.save(objs={'iris':IRIS, 'res_df':RES_DF},name="ds_pydata", description = "python datasets", overwrite=True)
+		</copy>
+		```
 
 	- Run the below script to save the `dt_mod` model proxy object to the `ds_pymodel` datastore. When the **overwrite**  boolean argument is set to TRUE (overwrite=TRUE), an existing datastore is replaced with a new datastore with the same name when using the `oml.ds.save()` function.
 
-	```
-	<copy>
-	%python
-	oml.ds.save(objs={'dt_mod':dt_mod},name="ds_pymodel",description = "python model", grantable=True, overwrite=True)
-	</copy>
-	```
+		```
+		<copy>
+		%python
+
+		oml.ds.save(objs={'dt_mod':dt_mod},name="ds_pymodel",description = "python model", grantable=True, overwrite=True)
+		</copy>
+		```
 
 	- The `oml.ds.dir` function returns a list of existing datastores that are available in the database to you. Run the script below to get the list.
 
-	```
-	<copy>
-	%python
-	oml.ds.dir()
-	</copy>
-	```
+		```
+		<copy>
+		%python
 
-	The output is similar to the following:
-	![List of all datastore available and their object_count, size, date and description.](images/datastore-list.png)
-	The output also includes the size in bytes consumed, the date, and the descriptive text provided by the user when loading the python objects into the datastore.
+		oml.ds.dir()
+		</copy>
+		```
+
+		The output is similar to the following:
+		![List of all datastore available and their object_count, size, date and description.](images/datastore-list01.png)
+		The output also includes the size in bytes consumed, the date, and the descriptive text provided by the user when loading the python objects into the datastore.
 
 3. In this step, you will use `oml.ds.load()` function for loading one or more python objects from the datastore to the global workspace or the user's workspace.
 	- Run the following script to load all the python objects of a datastore into global Workspace and sort them by their name.
 
-	```
+		```
 		<copy>
 		%python
+
 		sorted(oml.ds.load(name="ds_pydata"))
 		</copy>
-	```
+		```
 
-	The output is similar to the following:
+		The output is similar to the following:
 
-	![Sorted list of python proxy objects in a datastore.](images/sorted-objects-datastore.png)
+		![Sorted list of python proxy objects in a datastore.](images/sorted-objects-datastore.png)
 
 	- Run the following script to load the named python object from the datastore into the global workspace.
 
-	```
+		```
 		<copy>
 		%python
+
 		oml.ds.load(name="ds_pymodel", objs=["dt_mod"])
 		</copy>
-	```
+		```
 
-	The output is similar to the following:
+		The output is similar to the following:
 
-	![list of python model proxy objects in a datastore.](images/model-object-datastore.png)
+		![list of python model proxy objects in a datastore.](images/model-object-datastore.png)
 
 	-	Run the following script to use the `dt_mod` model from the datastore to make predictions on the test data using the predict function.
 
-	```
+		```
 		<copy>
 		%python
+
 		RES_DS= dt_mod.predict(TEST_X, supplemental_cols = TEST_X)
 		z.show(RES_DS)
 		</copy>
-	```
+		```
 
-	The output is similar to the following:
+		The output is similar to the following:
 
-	![Rows of res_ds after prediction by loaded model.](images/rows-res-ds.png)
+		![Rows of res_ds after prediction by loaded model.](images/rows-res-ds.png)
 
 	- Run the following script to load the named python object from the datastore into the user's workspace.
 
-	```
+		```
 		<copy>
 		%python
+
 		oml.ds.load(name="ds_pymodel", objs=["dt_mod"], to_globals=False)
 		</copy>
-	```
+		```
 
-	The output is similar to the following:
+		The output is similar to the following:
 
-	![Illustration of a dictionary object containing the models name and value.](images/loaded-dictionaryobject-datastore.png)
+		![Illustration of a dictionary object containing the models name and value.](images/loaded-dictionaryobject-datastore.png)
 
-	Also, the boolean input **to\_globals** is set to True by default.
+		Also, the boolean input **to\_globals** is set to True by default.
 
-	If **to\_globals=True** then the `oml.ds.load` loads the python object to the global workspace. If **to\_globals=False**, then the `oml.ds.load()` function returns a dictionary object containing the object's name and value.
+		If **to\_globals=True** then the `oml.ds.load` loads the python object to the global workspace. If **to\_globals=False**, then the `oml.ds.load()` function returns a dictionary object containing the object's name and value.
 
 	To learn more about how to use datastores to store python objects click this [link](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/save-python-objects-in-database.html#GUID-C02396D1-2B30-47A0-AE27-37B123E15710).
 
@@ -839,4 +864,4 @@ OML4Py enables data scientists to hand-off their user-defined Python functions t
 
 * **Authors** - Sarika Surampudi, Senior User Assistance Developer, Oracle Database User Assistance Development; Dhanish Kumar, Member of Technical Staff, User Assistance Developer.
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning.
-* **Last Updated By/Date** - Dhanish Kumar, October 2023
+* **Last Updated By/Date** - Dhanish Kumar, October 2024
