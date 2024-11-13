@@ -6,6 +6,7 @@
         "oml-create-cust360-table.md":"/common/building-blocks/tasks/oml/create-cust360-table.md",
         "oml-create-oml-user.md":"/common/building-blocks/tasks/oml/create-oml-user.md",
         "oml-oml-notebooks-ea.md":"/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md",
+        "oml-nb-visualizations.md":"/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md", 
         "oml-oml-monitoring.md":"/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md",
         "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md"       
     },
@@ -24,6 +25,11 @@
             "title": "Lab 1: Introduction to Oracle Machine Learning Notebook",
             "type": "livelabs",
             "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md"
+        },
+        {
+            "title": "Lab 1: Introduction to Visualizations in Oracle Machine Learning Notebooks",
+            "type": "freetier",
+            "filename": "/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md"
         },                
         {
             "title": "Lab 2: Introduction to Oracle Machine Learning for SQL",
