@@ -27,42 +27,42 @@
             "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md"
         },
         {
-            "title": "Lab 1: Introduction to Visualizations in Oracle Machine Learning Notebooks",
+            "title": "Lab 2: Visualize Your Data in Oracle Machine Learning Notebooks",
             "type": "freetier",
             "filename": "/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md"
         },                
         {
-            "title": "Lab 2: Introduction to Oracle Machine Learning for SQL",
+            "title": "Lab 3: Introduction to Oracle Machine Learning for SQL",
             "type": "livelabs",
             "filename": "../../omlsql/omlsql.md"
         },
         {
-            "title": "Lab 3: Introduction to Oracle Machine Learning for Python",
+            "title": "Lab 4: Introduction to Oracle Machine Learning for Python",
             "type": "livelabs",
             "filename": "../../omlpy/omlpy.md"
         },
         {
-            "title": "Lab 4: Introduction to Oracle Machine Learning for R",
+            "title": "Lab 5: Introduction to Oracle Machine Learning for R",
             "type": "livelabs",
             "filename": "../../omlr/omlr.md"
         },
         {
-            "title": "Lab 5: Introduction to Oracle Machine Learning AutoML UI",
+            "title": "Lab 6: Introduction to Oracle Machine Learning AutoML UI",
             "type": "livelabs",
             "filename": "../../automl/automl.md"
         },
         {
-            "title": "Lab 6: Introduction to Oracle Machine Learning Services",
+            "title": "Lab 7: Introduction to Oracle Machine Learning Services",
             "type": "livelabs",
             "filename": "../../omlserv/omlserv.md"
         },
         {
-            "title": "Lab 7: Introduction to Oracle Machine Learning Monitoring",
+            "title": "Lab 8: Introduction to Oracle Machine Learning Monitoring",
             "type": "livelabs",
             "filename": "/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md"
         },
         {
-            "title": "Lab 8: Introduction to the Conda Environments in Oracle Machine Learning Notebook",
+            "title": "Lab 9: Introduction to the Conda Environments in Oracle Machine Learning Notebook",
             "type": "livelabs",
             "filename": "/common/building-blocks/blocks/oml/oml-conda/oml-conda.md"
         },
