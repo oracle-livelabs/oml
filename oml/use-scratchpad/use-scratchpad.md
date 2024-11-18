@@ -1,4 +1,4 @@
-# Use the Scratchpad In Oracle Machine Learning Notebooks
+# Use the Scratchpad in Oracle Machine Learning Notebooks
 ## Introduction
 
 This lab shows you how to use the Scratchpad in Oracle Machine Learning Notebooks.
