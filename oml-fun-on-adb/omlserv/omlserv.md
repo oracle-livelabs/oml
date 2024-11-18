@@ -985,15 +985,101 @@ To score a mini batch:
   ```
 
 
-## Task 7: Work with Data Bias Detection
+## Task 7: Create and Run a Data Bias Detection Job
+
+The OML Services Data Bias Detector provides REST endpoints for creating bias detector jobs. To help address data biases and mitigate its effects in later stages of the modeling process, the bias mitigation method **Reweighing** has been added to the `data_bias` API. The Database Bias Detector calculates metrics to identify common types of data bias: Class Imbalance (CI), Statistical Parity (SP), and Conditional Demographic Disparity (CDD). 
+
+Biased labels in data can come from various sources such as human annotators and social stereotypes. If machine learning models are trained on biased datasets, there is high chance that the biases are reproduced and reinforced during the inference stage. Proactively addressing data bias has multiple benefits:
+* As AI/ML models are under increasing scrutiny and regulation, detecting and mitigating potential biases and issues can help in complying with relevant laws and guidelines.
+* Detecting data biases, especially in the early stages of machine learning lifecycle, is important to understand potential impacts on fairness and equity.
+
+In this example, you will learn how to:
+
+* Create and run a data bias detection job.
+* View the details of the data bias job.
+* Query the output table to view the data bias details detected for the sensitive features.
+
+**Prerequisites:**
+
+* Access to the Adult dataset. The dataset used in this example— the **Adult** dataset, also known as the **Census Income** dataset, is a multivariate dataset. It contains census data of `30,940` adults. The prediction task associated with the dataset is to determine whether a person makes over `50K` a year.  
+  This dataset can be accessed here at: 
+* Obtain the authentication token 
+
+To create and run a data bias detection job: 
+
+1. Obtain the access token as described in **Task 1 Authenticate**. 
+
+2. To create a job for data bias detection and data bias mitigation, send the following POST request to the `/omlmod/v1/jobs` endpoint in OML Services. 
+
+  >**Note:** OML Services interacts with the `DBMS_SCHEDULER` to perform actions on jobs. 
+
+  Here is an example of a data bias detection job request:
+
+  ```
+    curl -v -X POST <oml-cloud-service-location-url>/-H "Content-Type: 
+    application/json" -H "accept: application/json" -d
+    '{"jobProperties":{
+	    "jobName":"jobNametest",
+	    "jobType":"DATA_BIAS",
+	    "jobServiceLevel":"MEDIUM",
+	    "inputSchemaName":"OMLUSER",
+	    "outputSchemaName":"OMLUSER",
+	    "outputData":"adultbias_tab",
+	    "jobDescription":"Data_Bias job,specify all parameters",
+	    "inputData":"ADULT",
+	    "sensitiveFeatures":["\"GENDER\""],
+	    "strata":["\"MARITAL_STATUS\""],
+	    "outcomeColumn":"INCOME",
+	    "positiveOutcome":">50K",
+	    "categoricalBinNum":6
+	    "numericalBinNum":10}}'
+        -H 'Authorization:Bearer <token>'
+
+  ```
+
+  Here is a sample response of the data bias detection job creation request:
+
+  ```
+  "jobId":"OML$53D60B34_A275_4B2B_831C_2C8AE40BCB53","links":[{"rel":"self","href":"http://<oml-cloud-service-location-url>/omlmod/v1/jobs/OML%2453D60B34_A275_4B2B_831C_2C8AE40BCB53"}]}
+
+  ```
+
+3. Now, run the following command to view job details:
+
+    ```
+    <copy>
+    curl -v -X GET <oml-cloud-service-location-url>/omlmod/v1/jobs/'OML$53D60B34_A275_4B2B_831C_2C8AE40BCB53' 
+    -H "Content-Type: application/json" -H 'Authorization:Bearer <token>'
+    </copy>
+    ```
+    In this example:
+
+      * `$token` - Represents an environmental variable that is assigned to the token obtained through the  Authorization API.
+      * `OML$53D60B34_A275_4B2B_831C_2C8AE40BCB53` - This is the job ID
 
 
 
-## Task 8: Work with Data Monitoring
+4. After the data bias job is submitted successfully, you must connect to the database to access the output table in the output schema. Run the following SQL query to count the number of records in the output table: 
+
+  ```
+  <copy>
+  select * from
+    OML$53D60B34_A275_4B2B_831C_2C8AE40BCB53_ADULTBIAS_TAB;
+
+  </copy>
+
+  ```
+
+ 
 
 
 
-## Task 9: Work with Model Monitoring
+
+## Task 8: Create and Run a Data Monitoring Job
+
+
+
+## Task 9: Create and Run a Model Monitoring Job
 
 
 
