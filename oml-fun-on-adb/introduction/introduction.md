@@ -10,37 +10,37 @@ Estimated Workshop Time: 02 hours 30 minutes
 
 In this workshop, you will learn how to:
 
-* Use OML Notebooks:
+* Use OML Notebooks
     * Create a notebook based on an example template
     * Check and update the service levels for a notebook
     * Schedule a notebook to run at a specific time using the Jobs interface
-* Build a time series model and view forecasts using OML4SQL:
+* Build a time series model and view forecasts using OML4SQL
     * Explore data using SQL queries
     * Build a time series-based model
     * Evaluate the time series model using standard diagnostic metrics provided by OML4SQL
     * Access the forecasts from the DM$VP model view
-* Build a decision tree model and classify data using OML4Py:
+* Build a decision tree model and classify data using OML4Py
     * Create a table and proxy to the table
     * Explore and prepare data
     * Build and evaluate a Decision Tree classifier
     * Score with the classifier
-* Build a decision tree model and classify data using OML4R:
+* Build a decision tree model and classify data using OML4R
     * Create a table and proxy to the table
     * Explore and prepare data
     * Build and evaluate a Decision Tree classifier
     * Score with the classifier
-* Use OML AutoML UI:
+* Use OML AutoML UI
     * Create an experiment, adjust experiment settings and run the experiment
     * Deploy top model to OML Services
     * View the OML Models user interface with deployed metadata and endpoint JSON
     * Create a notebook for the top model
     * View generated notebook and individual paragraphs
-* Use OML Services:
+* Use OML Services
     * Obtain an authentication token to use OML Services via REST endpoints
     * Get a model scoring endpoint
     * Perform singleton and mini-batch scoring using the scoring endpoint
     * Discover keywords and summaries for a text string using the Cognitive Text feature
-* Use OML Monitoring:
+* Use OML Monitoring
     * Create a data monitor to monitor your data
     * Create a model monitor to monitor your machine learning models
 
