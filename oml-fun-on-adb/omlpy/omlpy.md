@@ -2,13 +2,11 @@
 
 ## Introduction
 
-This lab walks you through the steps to create a database table, create a proxy object, explore and prepare data, build and evaluate models, and use those models to score data using OML4Py. This will use a classification example available in OML Notebooks. For illustrative purposes, Task 1 and Task 2 of this lab use iris data set from sklearn datasets to create a database table. The rest of the steps take you through the example that uses the SH schema and is available in OML Notebooks. In Oracle Autonomous Database (ADB), the SH schema and associated data sets are easily accessible.
+This lab walks you through the steps to create a database table, create a proxy object, explore and prepare data, build and evaluate models, and use those models to score data using OML4Py. This will use a classification example available in OML Notebooks. For illustrative purposes, Task 1 and Task 2 of this lab use iris data set from sklearn.datasets to create a database table. The rest of the steps take you through the example that uses the SH schema and is available in OML Notebooks. In Oracle Autonomous Database (ADB), the SH schema and associated data sets are easily accessible.
 
 Estimated Time: 30 minutes
 
 ### About Oracle Machine Learning for Python(OML4Py)
-
-<!-- Oracle Machine Learning for Python (OML4Py) is a component of Oracle Autonomous (ADB), which includes Oracle Autonomous Data Warehouse (ADW), Oracle Autonomous Transaction Processing (ATP), and Oracle Autonomous JSON Database (AJD). OML4Py is also included with on-premise Oracle Database and Base Database Service with separate installation. By using OML Notebooks, you can use standard Python syntax and overloaded Python functions, use a natural Python API to load in-database machine learning algorithms, call user-defined Python functions in database-spawned and controlled Python engines, and leverage automated machine learning (AutoML). -->
 
 Oracle Machine Learning for Python (OML4Py) is a component of Oracle Autonomous Database (ADB), which includes Oracle Autonomous Data Warehouse (ADW), Oracle Autonomous Transaction Processing (ATP), and Oracle Autonomous JSON Database (AJD). OML4Py is also included with on-premise Oracle Database licenses and Base Database Service with separate installation. Oracle Machine Learning empowers data scientists with Python by leveraging the database as a high-performance computing environment. Database tables and views are accessed through oml.DataFrame proxy objects with overloaded functionality that produces SQL, transparently behind the scenes. The in-database machine learning algorithms are exposed through a native Python API and produce the same first-class, in-database machine learning models as the OML4SQL API. By using OML Notebooks, you can use standard Python syntax and overloaded Python functions, use a natural Python API to load in-database machine learning algorithms, call user-defined Python functions in database-spawned and controlled Python engines, and leverage automated machine learning (AutoML).
 
@@ -34,36 +32,34 @@ This lab assumes you have:
 
 ## Task 1: Create a Database Table
 
-With OML4Py, you can create Python proxy objects that can be used to access, analyze, and manipulate data that reside in the database. OML4Py uses these proxy objects and transparently translates many standard Python functions into SQL. First access the OML4Py Classification DT (1) notebook and then create the database table.
+With OML4Py, you can create Python proxy objects that can be used to access, analyze, and manipulate data that reside in the database. OML4Py uses these proxy objects and transparently translates many standard Python functions into SQL. First access the OML4Py Classification DT notebook and then create the database table.
 
 ### Access the OML4Py Classification DT (1) notebook
 
-This step illustrates how you can access the OML4Py Classification DT (1) notebook available on the Notebook page which was created in Lab 1. The OML4Py Classification DT (1) notebook was created based on the example template of the OML4Py Classification Decision Tree.
+This step illustrates how you can access the OML4Py Classification DT notebook available on the Notebook page which was created in Lab 1. The OML4Py Classification DT notebook was created based on the example template of the OML4Py Classification Decision Tree.
 
-1. Click the Cloud menu icon ![Cloud menu icon](images/cloud-menu-icon.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to proceed to the Notebook page. 
+1. Click the Cloud menu icon ![Cloud menu icon](images/cloud-menu-icon.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to proceed to the Notebook page.
 	![Left pane navigation to Notebooks through Cloud menu icon.](images/left-nav-pane-notebooks.png)
 	Alternatively, you can click **Notebooks** on the home page to go directly to the Notebooks page.
 	![Homepage Notebooks.](images/homepage-notebooks.png)
 
-2. The Notebook page opens with the list of notebooks available. Click the OML4Py Classification DT (1) notebook to open it.
+2. The Notebook page opens with the list of notebooks available. Click the OML4Py Classification DT notebook to open it.
 
 	![List of Notebooks available.](images/open-classification-dt.png)
 
-3. The OML4Py Classification DT (1) notebook opens up in the notebook editor. Click on the **Update Notebook Type** icon ![Update Notebook type icon](images/update-notebook-type-icon.png)on the top right corner. The available notebook types are displayed. The current notebook type is indicated by a tick mark, and is also displayed next to the **Update Notebook Type** icon.
+3. The OML4Py Classification DT notebook opens up in the notebook editor. Click on the **Update Notebook Type** icon ![Update Notebook type icon](images/update-notebook-type-icon.png)on the top right corner. The available notebook types are displayed. The current notebook type is indicated by a tick mark, and is also displayed next to the **Update Notebook Type** icon.
 
 	![Illustration for getting the configuration for interpreter](images/classification-dt-nbtype-icon.png)
 
-	
 4. Click the play icon at the top to run all paragraphs.
 
 	![Illustration for running all paragraph](images/run-all-paragraphs.png)
 
 5. Click **Confirm** to confirm in the confirmation dialogue.
-	
+
 	![Illustration for confirmation of running all paragraph](images/confirmation-run-all-paragraphs.png)
 
 6. The paragraphs start running one by one. The status and the output are displayed at the bottom of the paragraph. Hover your cursor over the paragraph to view the time taken to complete the run.
-	
 
 In this step, the iris data set is used for illustrative purposes to load the data into a temporary database table. Such temporary tables are automatically deleted when the OML Notebook connection to the database ends unless you have saved its proxy object to a datastore, which we'll discuss in step 10, before disconnecting.
 To use OML4Py, you must first import the `oml` module and the Pandas library. Use the `oml.push` function to create a temporary table.
@@ -130,7 +126,7 @@ To use OML4Py, you must first import the `oml` module and the Pandas library. Us
 	The output is as follows:
 	![Columns,Shape and Top rows of IRIS.](images/description-iris.png)
 
-## Task 3: Create a Proxy Object for a Database Object
+## Task 3: Create a Proxy Object for a Database Table
 
 1. Use the `oml.sync` function to create a Python object as a proxy for a database table or view. The `oml.sync` function returns an `oml.DataFrame` object or a dictionary of `oml.DataFrame` objects. The `oml.DataFrame` object returned by `oml.sync` is a proxy for the database object.
 
@@ -163,7 +159,7 @@ In this example, use `shape`, `describe` and `crosstab` functions to explore and
 	The output is (4500, 14).
 	```
 
-2. Use the transparency layer function `describe()` to calculate descriptive statistics that summarize the central tendency, dispersion, and shape of the DEMO table in each numeric column.Note that all computations are computed in the database and only the summary results are returned to the Python client, in this case, the notebook. Eliminating the need to move data greatly increases scalability.  A few rows of the output are displayed using the `z.show` function.
+2. Use the transparency layer function `describe()` to calculate descriptive statistics that summarize the count, mean, standard deviation and other key aspects of the DEMO table in each numeric column.Note that all computations are computed in the database and only the summary results are returned to the Python client, in this case, the notebook. Eliminating the need to move data greatly increases scalability.  A few rows of the output are displayed using the `z.show` function.
 
 	```
 		<copy>
@@ -189,7 +185,8 @@ In this example, use `shape`, `describe` and `crosstab` functions to explore and
 
 	![Crosstab of attribute AFFINITY_CARD.](images/crosstab-affinity-card.png)
 
-4. Run the following script to view the distribution of `HOUSEHOLD_SIZE` according to `AFFINITY_CARD` response types with the following setting. Click on the **Bar chart**, then click on **settings**. Drag the fields to titles as `HOUSEHOLD_SIZE` to **keys**, `AFFINITY_CARDS`  to **groups**, and count to **values**. Click on **Stacked** to get the required view.
+4. Use the `crosstab()` function to view the distribution of `HOUSEHOLD_SIZE` and `AFFINITY_CARD` with the following setting. Click on the **Settings**, then add the fields `HOUSEHOLD_SIZE` and `AFFINITY_CARDS` to the title **Group By**.
+<!-- click on **settings**. Drag the fields to titles as `HOUSEHOLD_SIZE` to **keys**, `AFFINITY_CARDS`  to **groups**, and count to **values**. Click on **Stacked** to get the required view. -->
 
 	```
 	<copy>
@@ -203,7 +200,8 @@ In this example, use `shape`, `describe` and `crosstab` functions to explore and
 
 ## Task 5: Prepare the Data
 
-In this step, you will create a `DEMO_DF` which is a new `oml.DataFrame` based on a subset of the original `DEMO`, then select the necessary columns for further analysis, display a few rows of the `DEMO_DF` `oml.DataFrame`, and split your data into TRAIN and TEST sets in preparation for building the machine learning model.
+In this step, you will create a new `oml.DataFrame` called `DEMO_DF` by selecting specific columns from the existing `DEMO` `oml.DataFrame`. Next, you will display a few rows of the `DEMO_DF` `oml.DataFrame`. Finally, you will split the data into TRAIN and TEST sets in preparation for building the machine learning model.
+
 1. Use the `DEMO` proxy object to create a new proxy object `DEMO_DF` by selecting the necessary columns. Run the following script:
 
 	```
@@ -230,7 +228,13 @@ In this step, you will create a `DEMO_DF` which is a new `oml.DataFrame` based o
 
 3. In this example, you are randomly splitting the `DEMO_DF` data with 60 percent of the records for the TRAIN data set and 40 percent for the TEST data set. The split method splits the data referenced by the `oml.DataFrame` proxy object `DEMO_DF` into two new `oml.DataFrame` proxy objects, TRAIN, and TEST.  
 
-   Furthermore the machine learning algorithms require the separation of the target column `Y` from the input columns `X`.  In this case the column `AFFINITY_CARD`, which indicates whether a person has accepted the offer (=1) or not (=0) in past marketing campaigns, is what we are trying to predict with the model for future campaigns, and it is used to further split the data.
+	**_NOTE:_**
+	The target variable (y) can either be an OML object or a string.
+	- If y is a single-column OML object, the target values specified by y must be compatible with the input data (x), meaning they should align in structure (e.g., the same number of rows).
+	- If y is a string, it refers to the name of the column in x that contains the target values (labels) for the model. In this case, x is expected to have a column with the name specified by y, and that column will be used as the target for training or prediction.
+
+   <!-- Furthermore the machine learning algorithms require the separation of the target column `Y` from the input columns `X`.   -->
+   In this case the column `AFFINITY_CARD`, which indicates whether a person has accepted the offer (=1) or not (=0) in past marketing campaigns, is what we are trying to predict with the model for future campaigns, and it is used to further split the data.
 
 	```
 	<copy>
@@ -677,7 +681,7 @@ Having built and evaluated the model, you will now filter scores computed above.
 
 ## Task 9: Use the SQL Interface to Score Data and Display Prediction Details
 
-You can score data and make similar predictions using the SQL interface. The test data is materialized into `DT_TEST_TABLE` so that you can query it using SQL. The materialized method writes the contents of an Oracle Machine Learning `oml.DataFrame` proxy object (a view, a table, and so on) to an Oracle Database table.
+You can score data and make similar predictions using the SQL interface. The test data is materialized into `DT_TEST_TABLE` so that you can query it using SQL. The materialized method writes the contents of an `oml.DataFrame` proxy object (a view, a table, and so on) to an Oracle Database table.
 
 1. Run the following command to materialize the test dataset:
 
