@@ -889,23 +889,100 @@ To score a mini batch:
 
 2. Next, run the following command to make the `test.sh` file executable: 
 
+    ```
+    <copy>
+    $ chmod +x test.sh 
+    </copy>
 
+    ```
 
 3. Run the bash script file test.sh: 
 
-
+    ```
+    <copy>
+    Run script test.sh$ 
+    ./test.sh
+    </copy>
+    ```
 
 4. Now, obtain the authentication token, and run the following cURL command to score a mini batch containing base64 encoded strings in the input record: 
 
+    ```
+    <copy>
+    $ curl -X POST "${omlservice}/omlmod/v1/cognitive-image/classification" \
+    --header "Authorization: Bearer $token" \
+    --header 'Content-Type: application/json' --data "@$json_data" | jq
+    </copy>
+    ```
 
 
   >**Note:** Here, you use the flag --data to fetch the input records from the temporary file json_data. Since the base64 encoded strings are very long, the application will throw the error Argument list too long. Hence, it is recommended to use the --data flag. 
 
 
 5. Use the Linux utility jq to parse the JSON output into a readable format. The jq utility is included in all the major Linux distribution repositories. On Oracle Linux and Red Hat systems, you can install this utility by running this command: 
+    ```
+    <copy>
+    $ sudo yum install jq
+    </copy>
+    ```
 
+  The command returns the follwing scoring results:
 
+  ```
+  {
+  "scoringResults": [
+    {
+      "classifications": [
+        {
+          "label": "Cat",
+          "probability": 0.9999594688415527
+        },
+        {
+          "label": "Felidae",
+          "probability": 0.9997081756591797
+        },
+        {
+          "label": "Whiskers",
+          "probability": 0.9994940757751465
+        }
+      ]
+    },
+    {
+      "classifications": [
+        {
+          "label": "Snout",
+          "probability": 0.9996676445007324
+        },
+        {
+          "label": "Dog",
+          "probability": 0.996991753578186
+        },
+        {
+          "label": "Vertebrate",
+          "probability": 0.9954350590705872
+        }
+      ]
+    },
+    {
+      "classifications": [
+        {
+          "label": "Pink",
+          "probability": 0.9993271827697754
+        },
+        {
+          "label": "Flowering plant",
+          "probability": 0.9986602663993835
+        },
+        {
+          "label": "Flower",
+          "probability": 0.99815833568573
+        }
+      ]
+    }
+  ]
+}
 
+  ```
 
 
 ## Task 7: Work with Data Bias Detection
