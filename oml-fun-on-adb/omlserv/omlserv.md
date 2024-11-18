@@ -613,17 +613,312 @@ For each summary, an associated weight is also returned.
 
     ```
 
-## Task 5: Review OML Services support for ONNX Models
+## Task 5: Deploy and score an ONNX Format Models
 
    Open Neural Network Exchange or ONNX is an open standard format of machine learning models. By using the Oracle Machine Learning Services REST API, you can deploy and score with your ONNX format models (both image and non-image).
 
    The REST API is exposed as part of the Oracle Machine Learning Services on Oracle Autonomous Database cloud service. The Oracle Machine Learning Services REST API supports ONNX format model deployment through REST endpoints for:
 
    * Classification models (both non-image models and image models)
-   * Regression models
-   * Clustering models
+   * Clustering models (non-image models)
+   * Feature Extraction models (image models)
+   * Regression models (non-image models)
+   
+In this example, you will learn how to deploy and score an ONNX format regression model.  
 
-To learn more about how OML Services support ONNX format models, see resources listed under the Learn More section of this lab.
+**Prerequisites:** 
+Before deploying your ONNX model, ensure the following: 
+  * Create the ONNX model zip file containing the `modelName.onnx` file, `metadata.json` file, and `label.txt` (optional) file. 
+  * Ensure that the `metadata.json` file contains the following information:
+    * `function`
+    * `regressionOutput` 
+    * `classificationLabelOutput`
+    * `classificationProbOutput` 
+    * `inputTensorDimNames` 
+    * `height` 
+    * `width` 
+    * `channel` 
+    * `mean`
+    * `scale` 
+    * `inputChannel` 
+    * `clusteringDistanceOutput` 
+    * `clusteringProbOutput`
+
+
+To know more about the the `metadata.json` file, see:  [Specifications for ONNX Format Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/onnx_spec.html)
+
+To deploy and score an ONNX format regression model: 
+1. Create the ONNX.zip file by using the following command: 
+
+      ```
+      <copy>
+      zip -r modelName.zip modelName.onnx, metadata.json and label.txt
+      </copy>
+      ```
+    The zip file must contain the following files:
+    * `modelName.onnx` file (Mandatory). This is the ONNX model file. 
+    * `metadata.json` file (Mandatory). 
+
+  Example of a metadata.json file: 
+
+      ```
+      {
+      "function": "classification",
+      "classificationProbOutput": "dense/Sigmoid:0",
+      "inputTensorDimNames": ["batch", "height", "width", "channel"],
+      "height": 224,
+      "width": 224,
+      "channel": 3,
+      "mean": [123.68, 116.779, 103.939],
+      "scale": [1.0,1.0,1.0],
+      "inputChannel": "BGR"
+      }
+      ```
+    * `label.txt` file (Optional). This file stores labels for Classification or Clustering models. The labels should be listed in the same order as the model was trained. This file is not required if the scoring outputs contain label information. It those cases, it will be ignored.
+
+    Example of a label.txt file: 
+
+      ```
+      scorpion-winter
+      cinturato-winter
+      ice-zero-fr
+      winter-sottozero
+      ```
+
+  
+2. Obtain a token by following the instructions provided in **Task 1 Authenticate.** This is the bearer token - a security token in the HTTP authentication scheme. You must send this token in the Authorization header when making requests. 
+
+3. Store the ONNX model in the model repository in the database by sending a POST request to the Model Repository Service. 
+  Here is an example of a `POST` request to store an ONNX format regresison model. 
+
+    ```
+    curl -X POST --header "Authorization: Bearer $token" 
+    <oml-cloud-service-location-url>/omlmod/v1/models \
+    -H 'content-type: multipart/form-data; boundary=Boundary' \
+    -F modelData=@sk_rg_onnx.zip \
+    -F modelName=onnxRegressionModel \
+    -F modelType=ONNX \
+    -F version=1.0 \
+    -F 'description=onnx sk regression model version 1.' \
+    -F shared=true
+    ```
+
+    > **Note:** When you store the model in the repository, a unique ID is generated. This is the `modelId` that you use when creating the model endpoint.
+  
+    In this example:
+      * `$token` - Represents an environmental variable that is assigned to the token obtained through the Authorization API.
+      * `sk_rg_onnx.zip` - This is the ONNX zip file.
+      * `onnxRegressionModel` - This is the model name.
+
+4. Create the model endpoint by sending a `POST` request to the Deployment Service. This request takes the `modelId` and `URI` as inputs.
+
+    > **Note:** Only the model owner can deploy the model. The model owner is the user who stores the model. A new endpoint is created for the deployed model. 
+
+    Example of POST request to deploy an ONNX model: 
+
+    ```
+    curl -X POST --header "Authorization: Bearer $token" 
+    <oml-cloud-service-location-url> /omlmod/v1/deployment \
+    -H 'Content-Type: application/json' \
+    -d '{\
+      "modelId": "29e99b4b-cfc2-4189-952a-bd8e50fb8046",\
+      "uri": "onnxrg"\
+        }' 
+    ```
+
+    In this example: 
+      * `$token` - Represents an environmental variable that is assigned to the token obtained through the Authorization API.
+      * `29e99b4b-cfc2-4189-952a-bd8e50fb8046` - This is the modelId. The `modelId` is generated when you store the model in the repository.
+      * `onnxrg` - This is the URI.
+
+
+5. Get the Open API document for this model endpoint by sending a `GET` request to `/deployment/{uri}/api`. 
+
+    Example of getting the Open API document of a deployed ONNX regression model:
+
+    ```
+    curl -X GET --header "Authorization: Bearer $token" 
+    <oml-cloud-service-location-url>/omlmod/v1/deployment/onnxrg/api
+
+    ```
+
+    In this example: 
+    * `$token` - Represents an environmental variable that is assigned to the token obtained through the Authorization API.
+    * `onnxrg` - This is the URI.
+
+
+6. Score with the model by sending a POST request to `deployment/{uri}/score`. The GET response to `{uri}/api` provides detailed information about it.
+
+    >**Note:** Prediction details are not supported for ONNX model scoring. 
+
+    ```
+    curl -X POST --header "Authorization: Bearer $token" 
+    <oml-cloud-service-location-url> /omlmod/v1/deployment/onnxrg/score \
+    -H 'Content-Type: application/json' \
+    -d '{\
+      "inputRecords": [\
+        {\
+          "input": [\
+            [\
+              -0.07816532,\
+              0.05068012,\
+              0.07786339,\
+              0.05285819,\
+              0.07823631,\
+              0.0644473,\
+              0.02655027,\
+              -0.00259226,\
+              0.04067226,\
+              -0.00936191\
+            ]\
+          ]\
+        },\
+        {\
+          "input": [\
+            [\
+              0.0090156,\
+              0.05068012,\
+              -0.03961813,\
+              0.0287581,\
+              0.03833367,\
+              0.0735286,\
+              -0.07285395,\
+              0.1081111,\
+              0.01556684,\
+              -0.04664087\
+            ]\
+          ]\
+        }\
+      ]\
+    }
+
+    ```
+    This is a deployed ONNX regression model with URI onnxrg. In this example: 
+    * `$token` - Represents an environmental variable that is assigned to the token obtained through the Authorization API.
+    * `POST` request is sent to `/deployment/onnxrg/score`.  
+
+  This completes the task of scoring an ONNX regression model.
+
+
+## Task 6: Use the Cognitive Image Functionality to Score a Mini Batch Containing base64 Encoded String
+
+OML Services supports base64 encoded strings and image tensors (matrices) for image classification. In this example, you will learn how to score a mini batch of images that are converted to base64 encoded strings. Use the mini batch functionality to score multiple images, since it is not possible to upload multiple image files directly. Here, the images must be first converted to some form of text.
+
+> **Note:** OML Services supports batch scoring for regression, classification, clustering, and feature extraction models.
+
+The cognitive image module accepts three different kinds of image inputs - the image file, image tensors, and base64 encoded strings. You must then send a `POST` request to the `cognitive-image/classification` endpoint. 
+
+This functionality uses the prebuilt ONNX image model for scoring.
+
+> **Note:** Use the Linux utility `jq` to parse the JSON output into a readable format. The `jq` utility is included in all the major Linux distribution repositories. 
+
+On Oracle Linux and Red Hat systems, you can install this utility by running this command: 
+
+  ```
+  <copy>
+  $ sudo yum install jq
+  </copy>
+  ```
+
+**Prerequisites:**
+
+* Image Files. This example uses the following image files `cat.jpg`, `dog.jpg`, `flowers.jpg`. 
+* Bash script `test.sh`. The bash script contains the json code, and is stored locally. 
+
+To score a mini batch:
+
+1. First, run the following command to view the content of the bash script:
+    ```
+    <copy>
+    $ cat test.sh
+    #!/bin/bash
+    </copy>
+
+    ```
+
+    The script returns the following:
+
+    ```
+    # get the paths to the images
+    image1="./cat.jpg"
+    image2="./dog.jpg"
+    image3="./flowers.jpg"
+    # get base64 encoded strings
+    base64_1=`base64 -w 0 $image1`
+    base64_2=`base64 -w 0 $image2`
+    base64_3=`base64 -w 0 $image3`
+    json_data=$(mktemp)
+    echo "{\"inputRecords\":[
+    {\"input\": \"$base64_1\"},
+    {\"input\": \"$base64_2\"},
+    {\"input\": \"$base64_3\"}], \"topN\":3}" > "$json_data"
+    ```
+
+
+    In this script:
+
+
+    * The paths to the images are set here: 
+         ```
+        image1="./cat.jpg"
+        image2="./dog.jpg"
+        image3="./flowers.jpg"
+
+        ```
+
+    * Then, the .jpg images are converted to base64 encoded strings. 
+         ```      
+        base64_1=`base64 -w 0 $image1`
+        base64_2=`base64 -w 0 $image2`
+        base64_3=`base64 -w 0 $image3`
+        ```
+
+
+
+    * In this part of the script, a temporary file `json_data` is created to which the input records comprising the base64 strings are added. It also specifies the topN class, and uses the `@$json_data` argument to fetch the content. During image classification, for each image the possible classes that the image belongs to will be sorted based on the probability. 
+
+
+        ```
+        json_data=$(mktemp)
+        echo "{\"inputRecords\":[
+        {\"input\": \"$base64_1\"},
+        {\"input\": \"$base64_2\"},
+        {\"input\": \"$base64_3\"}], \"topN\":3}" > "$json_data"
+        ```
+
+
+2. Next, run the following command to make the `test.sh` file executable: 
+
+
+
+3. Run the bash script file test.sh: 
+
+
+
+4. Now, obtain the authentication token, and run the following cURL command to score a mini batch containing base64 encoded strings in the input record: 
+
+
+
+  >**Note:** Here, you use the flag --data to fetch the input records from the temporary file json_data. Since the base64 encoded strings are very long, the application will throw the error Argument list too long. Hence, it is recommended to use the --data flag. 
+
+
+5. Use the Linux utility jq to parse the JSON output into a readable format. The jq utility is included in all the major Linux distribution repositories. On Oracle Linux and Red Hat systems, you can install this utility by running this command: 
+
+
+
+
+
+## Task 7: Work with Data Bias Detection
+
+
+
+## Task 8: Work with Data Monitoring
+
+
+
+## Task 9: Work with Model Monitoring
+
+
 
 ## Learn More
 
@@ -631,6 +926,7 @@ To learn more about how OML Services support ONNX format models, see resources l
 * [Work with Oracle Machine Learning ONNX Format Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-example-onnx-ml.html)
 * [Work with Oracle Machine Learning ONNX Image Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-example-onnx-image.html)
 * [Create the proper ONNX files that work with OML Services](https://github.com/oracle/oracle-db-examples/blob/main/machine-learning/oml-services/SKLearn%20kMeans%20and%20GMM%20export%20to%20ONNX.ipynb)
+
 
 ## Acknowledgements
 

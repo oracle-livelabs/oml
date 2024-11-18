@@ -52,14 +52,14 @@
             "filename": "../../automl/automl.md"
         },
         {
-            "title": "Lab 7: Introduction to Oracle Machine Learning Services",
-            "type": "livelabs",
-            "filename": "../../omlserv/omlserv.md"
-        },
-        {
-            "title": "Lab 8: Introduction to Oracle Machine Learning Monitoring",
+            "title": "Lab 7: Introduction to Oracle Machine Learning Monitoring",
             "type": "livelabs",
             "filename": "/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md"
+        },
+        {
+            "title": "Lab 8: Introduction to Oracle Machine Learning Services",
+            "type": "livelabs",
+            "filename": "../../omlserv/omlserv.md"
         },
         {
             "title": "Lab 9: Introduction to the Conda Environments in Oracle Machine Learning Notebook",

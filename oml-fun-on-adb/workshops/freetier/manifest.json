@@ -56,16 +56,16 @@
             "title": "Lab 6: Introduction to Oracle Machine Learning AutoML UI",
             "type": "freetier",
             "filename": "../../automl/automl.md"
-        },
+        },        
         {
-            "title": "Lab 7: Introduction to Oracle Machine Learning Services",
-            "type": "freetier",
-            "filename": "../../omlserv/omlserv.md"
-        },     
-        {
-            "title": "Lab 8: Introduction to Oracle Machine Learning Monitoring",
+            "title": "Lab 7: Introduction to Oracle Machine Learning Monitoring",
             "type": "freetier",
             "filename": "/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md"
+        },
+        {
+            "title": "Lab 8: Introduction to Oracle Machine Learning Services",
+            "type": "freetier",
+            "filename": "../../omlserv/omlserv.md"
         },
         {
             "title": "Lab 9: Introduction to the Conda Environments in Oracle Machine Learning Notebook",
