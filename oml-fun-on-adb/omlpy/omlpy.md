@@ -34,7 +34,7 @@ This lab assumes you have:
 
 With OML4Py, you can create Python proxy objects that can be used to access, analyze, and manipulate data that reside in the database. OML4Py uses these proxy objects and transparently translates many standard Python functions into SQL. First access the OML4Py Classification DT notebook and then create the database table.
 
-### Access the OML4Py Classification DT (1) notebook
+### Access the OML4Py Classification DT notebook
 
 This step illustrates how you can access the OML4Py Classification DT notebook available on the Notebook page which was created in Lab 1. The OML4Py Classification DT notebook was created based on the example template of the OML4Py Classification Decision Tree.
 
@@ -186,7 +186,6 @@ In this example, use `shape`, `describe` and `crosstab` functions to explore and
 	![Crosstab of attribute AFFINITY_CARD.](images/crosstab-affinity-card.png)
 
 4. Use the `crosstab()` function to view the distribution of `HOUSEHOLD_SIZE` and `AFFINITY_CARD` with the following setting. Click on the **Settings**, then add the fields `HOUSEHOLD_SIZE` and `AFFINITY_CARDS` to the title **Group By**.
-<!-- click on **settings**. Drag the fields to titles as `HOUSEHOLD_SIZE` to **keys**, `AFFINITY_CARDS`  to **groups**, and count to **values**. Click on **Stacked** to get the required view. -->
 
 	```
 	<copy>
@@ -229,11 +228,11 @@ In this step, you will create a new `oml.DataFrame` called `DEMO_DF` by selectin
 3. In this example, you are randomly splitting the `DEMO_DF` data with 60 percent of the records for the TRAIN data set and 40 percent for the TEST data set. The split method splits the data referenced by the `oml.DataFrame` proxy object `DEMO_DF` into two new `oml.DataFrame` proxy objects, TRAIN, and TEST.  
 
 	**_NOTE:_**
+
 	The target variable (y) can either be an OML object or a string.
 	- If y is a single-column OML object, the target values specified by y must be compatible with the input data (x), meaning they should align in structure (e.g., the same number of rows).
 	- If y is a string, it refers to the name of the column in x that contains the target values (labels) for the model. In this case, x is expected to have a column with the name specified by y, and that column will be used as the target for training or prediction.
 
-   <!-- Furthermore the machine learning algorithms require the separation of the target column `Y` from the input columns `X`.   -->
    In this case the column `AFFINITY_CARD`, which indicates whether a person has accepted the offer (=1) or not (=0) in past marketing campaigns, is what we are trying to predict with the model for future campaigns, and it is used to further split the data.
 
 	```
@@ -248,7 +247,7 @@ In this step, you will create a new `oml.DataFrame` called `DEMO_DF` by selectin
 	</copy>
 	```
 
-Since we’ll be using automatic data preparation provided by the in-database algorithms, no further data preparation is required.
+	Since we’ll be using automatic data preparation provided by the in-database algorithms, no further data preparation is required.
 
 ## Task 6: Build Your Model
 
@@ -865,4 +864,4 @@ OML4Py enables data scientists to hand-off their user-defined Python functions t
 
 * **Authors** - Sarika Surampudi, Senior User Assistance Developer, Oracle Database User Assistance Development; Dhanish Kumar, Member of Technical Staff, User Assistance Developer.
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning.
-* **Last Updated By/Date** - Dhanish Kumar, October 2024
+* **Last Updated By/Date** - Dhanish Kumar, November 2024
