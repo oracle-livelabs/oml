@@ -4,7 +4,7 @@
 
  In this lab, you will get a quick tour of basic OML Services features. You will learn how to obtain an authentication token for your user account to get started with OML Services and then use OML Services to explore the APIs, get model information and score with a model. You will also get a chance to use Oracle's proprietary Cognitive Text model.
 
-Estimated Time: 30 minutes
+Estimated Time: 40 minutes
 
 ### About Oracle Machine Learning Services
 
@@ -30,10 +30,23 @@ In this lab, you will:
     * Perform singleton scoring and mini-batch scoring.
     * Use Oracle's Cognitive Text functionality to discover keywords and get a summary for a given text string.
 * Deploy and score an ONNX format models
-* Use the Cognitive Image Functionality to Score a Mini Batch 
+* Use the Cognitive Image Functionality to Score a Mini Batch
+    * Score a mini batch of images that are converted to base64 encoded strings
 * Create and Run a Data Bias Detection Job
+    * Create and run a data bias detection job
+    * View the details of the data bias job
+    * Query the output table to view the data bias details detected for the sensitive features
 * Create and Run a Data Monitoring Job
+    * Create a data monitoring job
+    * View the job details
+    * Enable the job to run
+    * View job output
 * Create and Run a Model Monitoring Job
+    * Get the Model ID of the model to be used for monitoring
+    * Create a model monitoring job
+    * View the details of a model monitoring job
+    * Enable a model monitoring job
+    * View and understand the output of a model monitoring job
 
 ### Prerequisites
 
@@ -1500,9 +1513,8 @@ _Sample Response:_
 Model monitoring in OML REST Services is supported for classification and regression models. Performance of the model is tracked using model accuracy metrics. For classification, the model quality metrics includes Accuracy, Balanced Accuracy, Recall, Precision, F1 Score, and AUC (Area Under ROC Curve). For regression, model quality metrics includes R2, Mean Squared Error, Mean Absolute Error, and Median Absolute Error.
 
 
-To monitor machine learning models through OML REST Services, follow these steps:
+In this example, you will learn how to: 
  
-* Obtain the access token
 * Get the Model ID of the model to be used for monitoring
 * Create a model monitoring job
 * View the details of a model monitoring job
@@ -1513,7 +1525,10 @@ To monitor machine learning models through OML REST Services, follow these steps
 
 **Prerequisites:**
 
-* Deploy a model through AutoML UI
+* Deploy a model using AutoML UI
+* A valid authentication token
+* oml-cloud-service-location-url
+* `modelID` of the models to be monitored
 
 To monitor your models:
 
@@ -1535,7 +1550,10 @@ To monitor your models:
     * `<yourpassword>` - This is the password for the user name
     * `<oml-cloud-service-location-url>` - This is a URL containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID and database name. You can obtain the URL from the Development tab in the Service Console of your Oracle Autonomous Database instance.
 
-2. To get the `modelId`, send a `GET` request to the deployment endpoint and specify the model `URI`. Here is an example of a `GET` Request to obtain the `modelId`:
+2. To get the `modelId`, send a `GET` request to the deployment endpoint and specify the model `URI`. 
+
+  _Example of a `GET` Request to obtain the `modelId`:_
+  
 
     ```
     <copy>
@@ -1546,13 +1564,16 @@ To monitor your models:
 
     In this example, the model URI is `HousePowerNN`
 
+  _Sample Response:_
+
     The GET request returns the following:
 
     `"modelId": "0bf13d1f-86a6-465d-93d1-8985afd1bbdb"`
 
 3. After obtaining the access token and the `modelId`, you can now create a model monitoring job by sending a POST request to the deployment endpoint and by specifying the model URI. To create a model monitoring job, you require the `model IDs` for the models that you want to monitor. The request body may include a single model, or a list of up to 20 models identified by their model IDs.
 
-  Here is an example of a POST request to create a model monitoring job:
+  _Example of a POST request to create a model monitoring job:_ 
+   
 
     ```
     <copy>
@@ -1642,7 +1663,10 @@ To monitor your models:
 
 
 
-4. To view the details of your submitted job, send a `GET` request to the `/omlmod/v1/jobs/{jobId}` endpoint. Here, `jobId` is the ID provided in response to the successful submission of your model monitoring job. Here is an example of a GET request to view details of a submitted job: 
+4. To view the details of your submitted job, send a `GET` request to the `/omlmod/v1/jobs/{jobId}` endpoint. Here, `jobId` is the ID provided in response to the successful submission of your model monitoring job. 
+
+  _Example of a GET request to view details of a submitted job:_
+    
 
     ```
     <copy>
@@ -1655,9 +1679,11 @@ To monitor your models:
     </copy>
 
     ```
+  
+  _Sample Response of the GET request:_
+  
   Here is a sample output of the job details request. The `jobStatus` `CREATED` indicates that the job has been created. If your job has already run once, you will see information returned about the last job run.
-
-  Response of the GET request:
+ 
 
     ```
     <copy>
@@ -1717,6 +1743,8 @@ To monitor your models:
 
 5. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table you specified in your job request with the `outputData` parameter. The full name of the table is `{jobId}_{outputData}`. You can check if your job is complete by sending a request to view its details. If your job has run at least once you should see the `lastRunDetail` parameter with information on that run. 
 
+  _Example of a query view the model monitoring output table:_
+
     ```
     <copy>
     %sql
@@ -1729,7 +1757,7 @@ To monitor your models:
     </copy>
 
     ```
-
+  The query returns a table with the columns `IS_BASELINE`, `MODEL_ID`, `ROUND (METRIC, 4)`, `HAS_DRIFT`, `ROUND (DRIFT, 4)`, `MODEL_TYPE`, `THRESHOLD`, and `MODEL_METRICS`. Note that the first row of results is the `baseline` time period. As drift is not calculated on data in the `baseline` time period, that is why the columns `HAS_DRIFT` , `ROUND (DRIFT, 4)`, and `THRESHOLD` are empty for this row. 
 
 
 ## Learn More
@@ -1738,6 +1766,10 @@ To monitor your models:
 * [Work with Oracle Machine Learning ONNX Format Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-example-onnx-ml.html)
 * [Work with Oracle Machine Learning ONNX Image Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-example-onnx-image.html)
 * [Create the proper ONNX files that work with OML Services](https://github.com/oracle/oracle-db-examples/blob/main/machine-learning/oml-services/SKLearn%20kMeans%20and%20GMM%20export%20to%20ONNX.ipynb)
+* [Work with Batch Scoring](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-batch-scoring.html)
+* [Work with Data Monitoring](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-data-monitoring.html)
+* [Work with Model Monitoring](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-model-monitoring.html)
+* * [Work with Data Bias Detection](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-data-bias-detector.html)
 
 
 ## Acknowledgements
