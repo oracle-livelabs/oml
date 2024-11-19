@@ -1007,7 +1007,14 @@ In this example, you will learn how to:
 
 To create and run a data bias detection job: 
 
-1. Obtain the access token as described in **Task 1 Authenticate**. 
+1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. To authenticate and obtain a token, use `cURL` with the `-d` option to pass the credentials for your Oracle Machine Learning account against the Oracle Machine Learning user management cloud service REST endpoint `/oauth2/v1/token`. Run the following command to obtain the access token: 
+
+    ```
+    <copy>
+    $ curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"grant_type":"password", "username":"'<yourusername>'", 
+    "password":"' <yourpassword>'"}'"<oml-cloud-service-location-url>/omlusers/api/oauth2/v1/token"
+    </copy>
+    ``` 
 
 2. To create a job for data bias detection and data bias mitigation, send the following POST request to the `/omlmod/v1/jobs` endpoint in OML Services. 
 
@@ -1205,9 +1212,283 @@ In this example:
 
 ## Task 8: Create and Run a Data Monitoring Job
 
+Using the OML Services REST API, you can evaluate how your data evolves over time. It provides you with insights on trends and multivariate dependencies in the data. It also gives you an early warning about data drift.
 
+In this example, you will learn how to:
+
+  * Create a data monitoring job
+  * View the job details
+  * Update the job (optional)
+  * Enable the job to run
+  * View job output
+
+To create a data monitoring job:
+
+1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. To authenticate and obtain a token, use `cURL` with the `-d` option to pass the credentials for your Oracle Machine Learning account against the Oracle Machine Learning user management cloud service REST endpoint `/oauth2/v1/token`. Run the following command to obtain the access token: 
+
+    ```
+    <copy>
+    $ curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"grant_type":"password", "username":"'<yourusername>'", 
+    "password":"' <yourpassword>'"}'"<oml-cloud-service-location-url>/omlusers/api/oauth2/v1/token"
+    </copy>
+    ```
+  Here,  
+    * `-X POST` - Specifies to use a POST request when communicating with the HTTP server
+    * `-header` - Defines the headers required for the request (application/json)
+    * `-d` - Sends the username and password authentication credentials as data in a POST request to the HTTP server
+    * `Content-Type` - Defines the response format (JSON)
+    * `Accept` - Defines the response format (JSON)
+    * `<yourusername>` - This is the user name of a Oracle Machine Learning user with the default OML_DEVELOPER role
+    * `<yourpassword>` - This is the password for the user name
+    * `<oml-cloud-service-location-url>` This is a URL containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID and database name. You can obtain the URL from the Development tab in the Service Console of your Oracle Autonomous Database instance.
+
+2. Send the following `POST` request to the `/omlmod/v1/jobs` endpoint in OML Services to create a data monitoring job. 
+
+    >**Note:** OML Services interacts with the DBMS_SCHEDULER to perform actions on jobs. 
+
+  The details for data monitoring are specified in `jobProperties` parameter, that includes: 
+    * Data monitoring job name and type
+    * Autonomous Database service level
+    * Table where the data monitoring details will be saved
+    * Drift alert trigger
+    * Threshold
+    * Maximum number of runs
+    * Baseline and new data to be used
+    * Performance metric
+    * Start date (optional ) and end date (optional ) correspond to a `DATE` or `TIMESTAMP` column in the table or view denoted by `newData`, and contained in the `timeColumn` field. If the start and end dates are not specified, the earliest and latest dates and times in the `timeColumn` are used.
+
+  >**Note:** The command uses `jq`, a command-line JSON processor available on Linux and Mac OS systems to extract relevant components from the response. 
+
+  Here is an example of a data monitoring job request:
+
+  ```
+    <copy>
+    $ curl -X POST "<oml-cloud-service-location-url>/omlmod/v1/jobs" \
+       --header "Authorization: Bearer ${token}" \
+      --header 'Content-Type: application/json' \
+      --data '{
+         "jobSchedule": {
+             "jobStartDate": "2023-03-24T20:30:26Z",            # job start date and time 
+             "repeatInterval": "FREQ=HOURLY",                   # job frequency
+             "jobEndDate": "2023-03-24T23:30:26Z",              # job end date and time
+             "maxRuns": "10"                                    # max runs within the schedule
+         },
+         "jobProperties": {
+             "jobName": "HouseholdPowerDataMonitoring",         # job name
+             "jobType": "DATA_MONITORING",                      # job type; DATA_MONITORING
+             "disableJob": false,                               # flag to disable the job at submission
+             "outputData": "householdPowerConsumption",         # table where the job results will be saved in the format {jobID}_{outputData}
+             "baselineData": "HOUSEHOLD_POWER_BASE",            # table/view containing baseline data 
+             "newData": "HOUSEHOLD_POWER_NEW",                  # table/view with new data to compare against baseline
+             "inputSchemaName": "OMLUSER",                      # database schema that owns the input table/view
+             "outputSchemaName": "OMLUSER",                     # database schema that owns the output table/view
+             "jobDescription": "Monitor household power",       # job description
+             "jobServiceLevel": "LOW",                          # Autonomous Database service level; either LOW, MEDIUM, or HIGH
+             "timeColumn": "DATES",                             # date or timestamp column in newData
+             "startDate": "2008-01-01T00:00:00Z",               # the start date of the monitoring in the new data
+             "endDate": "2010-11-26T00:00:00Z",                 # the end date of the monitoring in the new data
+             "frequency": "Year",                               # the time window unit on which monitoring is performed on the new data
+             "threshold": 0.8,                                  # threshold to trigger drift alert
+             "recompute": false,                                # flag to determine whether to replace the output table
+             "caseidColumn": null,                              # case identifier column in the baseline and new data
+             "anchorColumn": null,                              # anchor column for bivariate analysis
+             "featureList": [                                   # features to perform data monitoring on
+                "GLOBAL_ACTIVE_POWER",
+                "GLOBAL_REACTIVE_POWER",
+                "VOLTAGE",
+                "SUB_METERING_1",
+                "SUB_METERING_2",
+                "SUB_METERING_3"
+              ]
+           }
+      }' | jq
+  
+
+    </copy>
+  ```
+
+  The parameters in this command are:
+  
+  * `jobName` specifies the name of the submitted job.
+  * `jobType` specifies the type of job to be run.
+
+    >**Note:** For model monitoring jobs, this parameter is set to `MODEL_MONITORING`
+    `outputData` is the output data identifier. The results of the job will be written to a table named `{jobId}_{ouputData}`
+  * `baselineData` is a table or view name that contains baseline data to monitor. At least 50 rows per period are required for model monitoring, otherwise analysis is skipped.
+  * `newData` is a table or view name with new data to be compared against the baseline. At least 100 rows per period are required for data monitoring, otherwise analysis is skipped.
+
+When your job is submitted successfully, you will receive a response with a `jobid`. 
+
+  >**Note:** the `jobId` to use it in submit requests to retrieve job details or to perform any other actions on the job. 
+
+  Here is an example of a data monitoring job creation response: 
+
+  ```
+     {
+       "jobId": "OML$7ABB6308_1664_4CB4_84B1_598A6EA599D1",
+       "links": [
+       {
+         "rel": "self",
+             "href": "<OML Service URL>/omlmod/v1/jobs/OML%247ABB6308_1664_4CB4_84B1_598A6EA599D1"
+       }
+     ]
+     }
+   ```
+
+
+3. To view details of your submitted job, send a GET request to the `/omlmod/v1/jobs/{jobID}` endpoint. Here, `jobId` is the ID provided in response to the successful submission of your data monitoring job in the previous step. Run the following command to view job details:
+
+    ```
+    <copy>
+    $ export jobid='OML$7ABB6308_1664_4CB4_84B1_598A6EA599D1'  # save the job ID to a single-quoted variable
+
+    $ curl -X GET "<oml-cloud-service-location-url>/omlmod/v1/jobs/${jobid}"  \
+         --header 'Accept: application/json' \
+         --header 'Content-Type: application/json' \
+         --header "Authorization: Bearer ${token}" | jq
+    </copy>
+
+    ```
+  Here is a response of the job details request. If your job has already run once earlier, you will see information returned about the last job run.
+
+    ```
+    <copy>
+      {
+        "jobId": "OML$7ABB6308_1664_4CB4_84B1_598A6EA599D1",
+          "jobRequest": {
+          "jobSchedule": {
+          "jobStartDate": "2023-03-24T20:30:26Z",
+          "repeatInterval": "FREQ=HOURLY",
+          "jobEndDate": "2023-03-24T23:30:26Z",
+          "maxRuns": 3
+      },
+        "jobProperties": {
+          "jobType": "DATA_MONITORING",
+          "inputSchemaName": "OMLUSER",
+          "outputSchemaName": "OMLUSER",
+          "outputData": "householdPowerConsumption",
+          "jobDescription": "Monitor household power",
+          "jobName": "HouseholdPowerDataMonitoring",
+          "disableJob": false,
+          "jobServiceLevel": "LOW",
+          "baselineData": "HOUSEHOLD_POWER_BASE",
+          "newData": "HOUSEHOLD_POWER_NEW",
+          "timeColumn": "DATES",
+          "startDate": "2008-01-01T00:00:00Z",
+          "endDate": "2010-11-26T00:00:00Z",
+          "frequency": "Year",
+          "threshold": 0.8,
+          "recompute": false,
+          "caseidColumn": null,
+          "featureList": [
+            "GLOBAL_ACTIVE_POWER",
+            "GLOBAL_REACTIVE_POWER",
+            "VOLTAGE",
+            "SUB_METERING_1",
+            "SUB_METERING_2",
+            "SUB_METERING_3"
+          ],
+            "anchorColumn": null
+        }
+      },
+      "jobStatus": "CREATED",
+      "dateSubmitted": "2023-03-24T20:23:31.53651Z",
+      "links": [
+        {
+          "rel": "self",
+          "href": "<OML Service URL>/omlmod/v1/jobs/OML%247ABB6308_1664_4CB4_84B1_598A6EA599D1"
+        }
+      ],
+        "jobFlags": [],
+        "state": "SCHEDULED",
+        "enabled": true,
+        "runCount": 0,
+        "nextRunDate": "2023-03-24T20:30:26Z" 
+    }
+
+    </copy>
+    ```
+
+
+
+4. After you submit an asynchronous job, you have the option to update your job. This is an optional task. To update a job, send a `POST` request to the `/omlmod/v1/jobs/{jobID}` endpoint with the updated options in the `updateProperties`  parameters. 
+
+
+5. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table you specified in your job request with the outputData parameter. The full name of the table is `{jobid}_{outputData}`. You can check if your job is complete by sending a request to view its details.
+
+  Here is an example to query the output table associated with this example. After you run the query, scroll down the output table to view if there is information for the baseline time period and newdata time period for each of the dataset features being monitored for drift. Many of the columns may be empty in the baseline rows, as the data monitoring is done on the new data, not the baseline data. 
+
+    ```
+    <copy>
+    %sql
+
+    SELECT START_TIME, END_TIME, IS_BASELINE, THRESHOLD, HAS_DRIFT, round(DRIFT, 3), 
+         FEATURE_NAME, ROUND(IMPORTANCE_VALUE, 3) 
+    FROM OML$7ABB6308_1664_4CB4_84B1_598A6EA599D1_householdPowerConsumption
+    ORDER BY FEATURE_NAME, IS_BASELINE DESC
+
+    </copy>
+    ```
 
 ## Task 9: Create and Run a Model Monitoring Job
+
+
+
+To monitor machine learning models through OML REST Services, follow these steps:
+ 
+* Obtain the access token
+* Get the Model ID of the model to be used for monitoring
+* Create a model monitoring job
+* View the details of a model monitoring job
+* Enable a model monitoring job
+* View and understand the output of a model monitoring job
+
+**Prerequisites:**
+
+* Deploy a model through AutoML UI
+
+To monitor your models
+
+1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. To authenticate and obtain a token, use `cURL` with the `-d` option to pass the credentials for your Oracle Machine Learning account against the Oracle Machine Learning user management cloud service REST endpoint `/oauth2/v1/token`. Run the following command to obtain the access token: 
+
+    ```
+    <copy>
+    $ curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"grant_type":"password", "username":"'<yourusername>'", 
+    "password":"' <yourpassword>'"}'"<oml-cloud-service-location-url>/omlusers/api/oauth2/v1/token"
+    </copy>
+    ```
+  Here,  
+    * `-X POST` - Specifies to use a POST request when communicating with the HTTP server
+    * `-header` - Defines the headers required for the request (application/json)
+    * `-d` - Sends the username and password authentication credentials as data in a POST request to the HTTP server
+    * `Content-Type` - Defines the response format (JSON)
+    * `Accept` - Defines the response format (JSON)
+    * `<yourusername>` - This is the user name of a Oracle Machine Learning user with the default OML_DEVELOPER role
+    * `<yourpassword>` - This is the password for the user name
+    * `<oml-cloud-service-location-url>` This is a URL containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID and database name. You can obtain the URL from the Development tab in the Service Console of your Oracle Autonomous Database instance.
+
+2. To get the modelId , send a GET request to the deployment endpoint and specify the model URI. Get Request to obtain the modelId:
+
+    ```
+    <copy>
+    $ curl -X GET "<oml-cloud-service-location-url>/omlmod/v1/deployment/HousePowerNN" \
+        --header "Authorization: Bearer ${token}" | jq '.modelId'
+    </copy>
+    ```
+
+    In this example, the model URI is `HousePowerNN`
+
+    The GET request returns the following:
+
+    `"modelId": "0bf13d1f-86a6-465d-93d1-8985afd1bbdb"`
+
+3. After obtaining the access token, you can create a model monitoring job by sending a POST request to the deployment endpoint and by specifying the model URI. To create a model monitoring job, you require the `model IDs` for the models that you want to monitor. The request body may include a single model, or a list of up to 20 models identified by their model IDs.
+
+
+4. To view the details of your submitted job, send a `GET` request to the `/omlmod/v1/jobs/{jobId}` endpoint, where jobId is the ID provided in response to the successful submission of your model monitoring job. 
+
+
+5. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table you specified in your job request with the `outputData` parameter. The full name of the table is `{jobId}_{outputData}`. You can check if your job is complete by sending a request to view its details. If your job has run at least once you should see the `lastRunDetail` parameter with information on that run. 
 
 
 
@@ -1221,6 +1502,6 @@ In this example:
 
 ## Acknowledgements
 
-* **Author** - Suresh Rajan, Senior Manager, Oracle Database User Assistance Development
+* **Author** - Suresh Rajan, Senior Manager, Oracle Database User Assistance Development; Moitreyee Hazarika, Principal UAD, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, March 2023
+* **Last Updated By/Date** - Moitreyee Hazarika, November 2024
