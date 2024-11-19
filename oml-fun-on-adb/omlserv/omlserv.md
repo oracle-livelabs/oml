@@ -1321,9 +1321,9 @@ To create a data monitoring job:
         --header 'Content-Type: application/json' \
         --data '{
           "jobSchedule": {
-              "jobStartDate": "2023-03-24T20:30:26Z",            # job start date and time 
+              "jobStartDate": "2024-11-11T20:30:26Z",            # job start date and time 
               "repeatInterval": "FREQ=HOURLY",                   # job frequency
-              "jobEndDate": "2023-03-24T23:30:26Z",              # job end date and time
+              "jobEndDate": "2024-11-19T23:30:26Z",              # job end date and time
               "maxRuns": "10"                                    # max runs within the schedule
           },
           "jobProperties": {
@@ -1418,9 +1418,9 @@ _Sample Response:_
         "jobId": "OML$7ABB6308_1664_4CB4_84B1_598A6EA599D1",
           "jobRequest": {
           "jobSchedule": {
-          "jobStartDate": "2023-03-24T20:30:26Z",
+          "jobStartDate": "2024-11-11T20:30:26Z",
           "repeatInterval": "FREQ=HOURLY",
-          "jobEndDate": "2023-03-24T23:30:26Z",
+          "jobEndDate": "2024-11-19T23:30:26Z",
           "maxRuns": 3
       },
         "jobProperties": {
@@ -1453,7 +1453,7 @@ _Sample Response:_
         }
       },
       "jobStatus": "CREATED",
-      "dateSubmitted": "2023-03-24T20:23:31.53651Z",
+      "dateSubmitted": "2024-11-19T20:23:31.53651Z",
       "links": [
         {
           "rel": "self",
@@ -1464,7 +1464,7 @@ _Sample Response:_
         "state": "SCHEDULED",
         "enabled": true,
         "runCount": 0,
-        "nextRunDate": "2023-03-24T20:30:26Z" 
+        "nextRunDate": "204-11-20T20:30:26Z" 
     }
 
     </copy>
@@ -1473,6 +1473,8 @@ _Sample Response:_
 
 
 4. After you submit an asynchronous job, you have the option to update your job. This is an optional task. To update a job, send a `POST` request to the `/omlmod/v1/jobs/{jobID}` endpoint with the updated options in the `updateProperties` parameters. 
+
+
 
 
 5. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table. You specify the table in your job request with the `outputData` parameter. The full name of the table is `{jobid}_{outputData}`. You can check if your job is complete by sending a request to view its details.
@@ -1665,9 +1667,9 @@ To monitor your models:
     "jobId": "OML$736F509B_FC1A_400A_AC75_553F1D6C5D97",
     "jobRequest": {
       "jobSchedule": {
-        "jobStartDate": "2023-03-25T00:30:07Z",
+        "jobStartDate": "2024-11-11T00:30:07Z",
         "repeatInterval": "FREQ=DAILY",
-        "jobEndDate": "2023-03-30T00:30:07Z",
+        "jobEndDate": "2024-11-19T00:30:07Z",
         "maxRuns": 5
       },
       "jobProperties": {
@@ -1695,7 +1697,7 @@ To monitor your models:
       }
     },
     "jobStatus": "CREATED",
-    "dateSubmitted": "2023-03-25T00:26:16.127906Z",
+    "dateSubmitted": "2024-11-11T00:26:16.127906Z",
     "links": [
       {
         "rel": "self",
@@ -1706,7 +1708,7 @@ To monitor your models:
     "state": "SCHEDULED",
     "enabled": true,
     "runCount": 0,
-    "nextRunDate": "2023-03-25T00:30:07Z"
+    "nextRunDate": "2024-11-11T00:30:07Z"
   }
 
     </copy>
