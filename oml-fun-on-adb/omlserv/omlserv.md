@@ -1264,6 +1264,16 @@ In this example, you will learn how to:
   * Enable the job to run
   * View job output
 
+  >**Note:** This example uses the `HOUSEHOLD POWER CONSUMPTION` dataset.
+
+**Prerequisites:**
+
+  * A valid authentication token
+  * oml-cloud-service-location-url
+  * Access to the dataset to monitor
+ 
+
+
 To create a data monitoring job:
 
 1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. To authenticate and obtain a token, use `cURL` with the `-d` option to pass the credentials for your Oracle Machine Learning account against the Oracle Machine Learning user management cloud service REST endpoint `/oauth2/v1/token`. Run the following command to obtain the access token: 
@@ -1284,9 +1294,9 @@ To create a data monitoring job:
     * `<yourpassword>` - This is the password for the user name
     * `<oml-cloud-service-location-url>` This is a URL containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID and database name. You can obtain the URL from the Development tab in the Service Console of your Oracle Autonomous Database instance.
 
-2. Send the following `POST` request to the `/omlmod/v1/jobs` endpoint in OML Services to create a data monitoring job. 
+2. Create a data monitoring job by sending a `POST` request to the `/omlmod/v1/jobs` endpoint in OML Services. 
 
-    >**Note:** OML Services interacts with the DBMS_SCHEDULER to perform actions on jobs. 
+    >**Note:** OML Services interacts with the `DBMS_SCHEDULER` to perform actions on jobs. 
 
   The details for data monitoring are specified in `jobProperties` parameter, that includes: 
     * Data monitoring job name and type
@@ -1301,53 +1311,54 @@ To create a data monitoring job:
 
   >**Note:** The command uses `jq`, a command-line JSON processor available on Linux and Mac OS systems to extract relevant components from the response. 
 
-  Here is an example of a data monitoring job request:
-
-  ```
-    <copy>
-    $ curl -X POST "<oml-cloud-service-location-url>/omlmod/v1/jobs" \
-       --header "Authorization: Bearer ${token}" \
-      --header 'Content-Type: application/json' \
-      --data '{
-         "jobSchedule": {
-             "jobStartDate": "2023-03-24T20:30:26Z",            # job start date and time 
-             "repeatInterval": "FREQ=HOURLY",                   # job frequency
-             "jobEndDate": "2023-03-24T23:30:26Z",              # job end date and time
-             "maxRuns": "10"                                    # max runs within the schedule
-         },
-         "jobProperties": {
-             "jobName": "HouseholdPowerDataMonitoring",         # job name
-             "jobType": "DATA_MONITORING",                      # job type; DATA_MONITORING
-             "disableJob": false,                               # flag to disable the job at submission
-             "outputData": "householdPowerConsumption",         # table where the job results will be saved in the format {jobID}_{outputData}
-             "baselineData": "HOUSEHOLD_POWER_BASE",            # table/view containing baseline data 
-             "newData": "HOUSEHOLD_POWER_NEW",                  # table/view with new data to compare against baseline
-             "inputSchemaName": "OMLUSER",                      # database schema that owns the input table/view
-             "outputSchemaName": "OMLUSER",                     # database schema that owns the output table/view
-             "jobDescription": "Monitor household power",       # job description
-             "jobServiceLevel": "LOW",                          # Autonomous Database service level; either LOW, MEDIUM, or HIGH
-             "timeColumn": "DATES",                             # date or timestamp column in newData
-             "startDate": "2008-01-01T00:00:00Z",               # the start date of the monitoring in the new data
-             "endDate": "2010-11-26T00:00:00Z",                 # the end date of the monitoring in the new data
-             "frequency": "Year",                               # the time window unit on which monitoring is performed on the new data
-             "threshold": 0.8,                                  # threshold to trigger drift alert
-             "recompute": false,                                # flag to determine whether to replace the output table
-             "caseidColumn": null,                              # case identifier column in the baseline and new data
-             "anchorColumn": null,                              # anchor column for bivariate analysis
-             "featureList": [                                   # features to perform data monitoring on
-                "GLOBAL_ACTIVE_POWER",
-                "GLOBAL_REACTIVE_POWER",
-                "VOLTAGE",
-                "SUB_METERING_1",
-                "SUB_METERING_2",
-                "SUB_METERING_3"
-              ]
-           }
-      }' | jq
+  _Example of a data monitoring job request:_
   
 
-    </copy>
   ```
+      <copy>
+      $ curl -X POST "<oml-cloud-service-location-url>/omlmod/v1/jobs" \
+        --header "Authorization: Bearer ${token}" \
+        --header 'Content-Type: application/json' \
+        --data '{
+          "jobSchedule": {
+              "jobStartDate": "2023-03-24T20:30:26Z",            # job start date and time 
+              "repeatInterval": "FREQ=HOURLY",                   # job frequency
+              "jobEndDate": "2023-03-24T23:30:26Z",              # job end date and time
+              "maxRuns": "10"                                    # max runs within the schedule
+          },
+          "jobProperties": {
+              "jobName": "HouseholdPowerDataMonitoring",         # job name
+              "jobType": "DATA_MONITORING",                      # job type; DATA_MONITORING
+              "disableJob": false,                               # flag to disable the job at submission
+              "outputData": "householdPowerConsumption",         # table where the job results will be saved in the format {jobID}_{outputData}
+              "baselineData": "HOUSEHOLD_POWER_BASE",            # table/view containing baseline data 
+              "newData": "HOUSEHOLD_POWER_NEW",                  # table/view with new data to compare against baseline
+              "inputSchemaName": "OMLUSER",                      # database schema that owns the input table/view
+              "outputSchemaName": "OMLUSER",                     # database schema that owns the output table/view
+              "jobDescription": "Monitor household power",       # job description
+              "jobServiceLevel": "LOW",                          # Autonomous Database service level; either LOW, MEDIUM, or HIGH
+              "timeColumn": "DATES",                             # date or timestamp column in newData
+              "startDate": "2008-01-01T00:00:00Z",               # the start date of the monitoring in the new data
+              "endDate": "2010-11-26T00:00:00Z",                 # the end date of the monitoring in the new data
+              "frequency": "Year",                               # the time window unit on which monitoring is performed on the new data
+              "threshold": 0.8,                                  # threshold to trigger drift alert
+              "recompute": false,                                # flag to determine whether to replace the output table
+              "caseidColumn": null,                              # case identifier column in the baseline and new data
+              "anchorColumn": null,                              # anchor column for bivariate analysis
+              "featureList": [                                   # features to perform data monitoring on
+                  "GLOBAL_ACTIVE_POWER",
+                  "GLOBAL_REACTIVE_POWER",
+                  "VOLTAGE",
+                  "SUB_METERING_1",
+                  "SUB_METERING_2",
+                  "SUB_METERING_3"
+                ]
+            }
+        }' | jq
+    
+
+      </copy>
+   ```
 
   The parameters in this command are:
   
@@ -1359,10 +1370,13 @@ To create a data monitoring job:
   * `baselineData` is a table or view name that contains baseline data to monitor. At least 50 rows per period are required for model monitoring, otherwise analysis is skipped.
   * `newData` is a table or view name with new data to be compared against the baseline. At least 100 rows per period are required for data monitoring, otherwise analysis is skipped.
 
+
+
 When your job is submitted successfully, you will receive a response with a `jobid`. 
 
   >**Note:** the `jobId` to use it in submit requests to retrieve job details or to perform any other actions on the job. 
 
+_Sample Response:_
   Here is an example of a data monitoring job creation response: 
 
   ```
@@ -1378,7 +1392,10 @@ When your job is submitted successfully, you will receive a response with a `job
    ```
 
 
-3. To view details of your submitted job, send a GET request to the `/omlmod/v1/jobs/{jobID}` endpoint. Here, `jobId` is the ID provided in response to the successful submission of your data monitoring job in the previous step. Run the following command to view job details:
+3. To view details of your submitted job, send a GET request to the `/omlmod/v1/jobs/{jobID}` endpoint. Here, `jobId` is the ID provided in response to the successful submission of your data monitoring job in the previous step. 
+
+  _Example of a GET request to view job details:_
+
 
     ```
     <copy>
@@ -1391,7 +1408,9 @@ When your job is submitted successfully, you will receive a response with a `job
     </copy>
 
     ```
-  Here is a response of the job details request. If your job has already run once earlier, you will see information returned about the last job run.
+  
+  _Sample Response:_
+  Here is the response of the job details request. If your job has already run once earlier, you will see information returned about the last job run.
 
     ```
     <copy>
@@ -1453,12 +1472,14 @@ When your job is submitted successfully, you will receive a response with a `job
 
 
 
-4. After you submit an asynchronous job, you have the option to update your job. This is an optional task. To update a job, send a `POST` request to the `/omlmod/v1/jobs/{jobID}` endpoint with the updated options in the `updateProperties`  parameters. 
+4. After you submit an asynchronous job, you have the option to update your job. This is an optional task. To update a job, send a `POST` request to the `/omlmod/v1/jobs/{jobID}` endpoint with the updated options in the `updateProperties` parameters. 
 
 
-5. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table you specified in your job request with the outputData parameter. The full name of the table is `{jobid}_{outputData}`. You can check if your job is complete by sending a request to view its details.
+5. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table. You specify the table in your job request with the `outputData` parameter. The full name of the table is `{jobid}_{outputData}`. You can check if your job is complete by sending a request to view its details.
 
-  Here is an example to query the output table associated with this example. After you run the query, scroll down the output table to view if there is information for the baseline time period and newdata time period for each of the dataset features being monitored for drift. Many of the columns may be empty in the baseline rows, as the data monitoring is done on the new data, not the baseline data. 
+  _Example to query the output table associated with this example:_
+  
+  After you run the query, scroll down the output table to view if there is information for the `baseline` time period and `newdata` time period for each of the dataset features being monitored for drift. Many of the columns may be empty in the baseline rows, as the data monitoring is done on the new data, not the baseline data. 
 
     ```
     <copy>
@@ -1485,6 +1506,8 @@ To monitor machine learning models through OML REST Services, follow these steps
 * View the details of a model monitoring job
 * Enable a model monitoring job
 * View and understand the output of a model monitoring job
+
+>**Note:** This example uses the HOUSEHOLD POWER CONSUMPTION dataset.
 
 **Prerequisites:**
 
