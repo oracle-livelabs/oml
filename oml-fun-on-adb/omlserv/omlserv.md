@@ -752,9 +752,10 @@ To deploy and score an ONNX format regression model:
     Example of getting the Open API document of a deployed ONNX regression model:
 
     ```
+    <copy>
     curl -X GET --header "Authorization: Bearer $token" 
     <oml-cloud-service-location-url>/omlmod/v1/deployment/onnxrg/api
-
+    </copy>
     ```
 
     In this example: 
@@ -762,11 +763,12 @@ To deploy and score an ONNX format regression model:
     * `onnxrg` - This is the URI.
 
 
-6. Score the model by sending a POST request to `deployment/{uri}/score`. The `GET` response to `{uri}/api` provides detailed information about the model.
+6. Score the model by sending a POST request to the `deployment/{uri}/score` endpoint. The `GET` response to `{uri}/api` provides detailed information about the model.
 
     >**Note:** Prediction details are not supported for ONNX model scoring. 
 
     ```
+    <copy>
     curl -X POST --header "Authorization: Bearer $token" 
     <oml-cloud-service-location-url> /omlmod/v1/deployment/onnxrg/score \
     -H 'Content-Type: application/json' \
@@ -806,7 +808,7 @@ To deploy and score an ONNX format regression model:
         }\
       ]\
     }
-
+    </copy>
     ```
     This is a deployed ONNX regression model with URI `onnxrg`. In this example: 
     * `$token` - Represents an environmental variable that is assigned to the token obtained through the Authorization API.
@@ -817,7 +819,7 @@ To deploy and score an ONNX format regression model:
 
 ## Task 6: Use the Cognitive Image Functionality to Score a Mini Batch Containing base64 Encoded String
 
-OML Services supports base64 encoded strings and image tensors (matrices) for image classification. In this example, you will learn how to score a mini batch of images that are converted to base64 encoded strings. Use the mini batch functionality to score multiple images, since it is not possible to upload multiple image files directly. Here, the images must be first converted to some form of text.
+OML Services supports base64 encoded strings and image tensors (matrices) for image classification. Use the mini batch functionality to score multiple images, since it is not possible to upload multiple image files directly. Here, the images must be first converted to some form of text.
 
 > **Note:** OML Services supports batch scoring for regression, classification, clustering, and feature extraction models.
 
@@ -825,20 +827,15 @@ The cognitive image module accepts three different kinds of image inputs - the i
 
 This functionality uses the prebuilt ONNX image model for scoring.
 
-> **Note:** Use the Linux utility `jq` to parse the JSON output into a readable format. The `jq` utility is included in all the major Linux distribution repositories. 
-
-On Oracle Linux and Red Hat systems, you can install this utility by running this command: 
-
-  ```
-  <copy>
-  $ sudo yum install jq
-  </copy>
-  ```
+In this example, you will learn how to:
+* Score a mini batch of images that are converted to base64 encoded strings. 
 
 **Prerequisites:**
 
 * Image Files. This example uses the following image files `cat.jpg`, `dog.jpg`, `flowers.jpg`. 
 * Bash script `test.sh`. The bash script contains the json code, and is stored locally. 
+* A valid authentication token
+* oml-cloud-service-location-url 
 
 To score a mini batch:
 
@@ -920,7 +917,16 @@ To score a mini batch:
     </copy>
     ```
 
-4. Now, obtain the authentication token, and run the following cURL command to score a mini batch containing base64 encoded strings in the input record: 
+4. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. To authenticate and obtain a token, use `cURL` with the `-d` option to pass the credentials for your Oracle Machine Learning account against the Oracle Machine Learning user management cloud service REST endpoint `/oauth2/v1/token`. Run the following command to obtain the access token: 
+
+    ```
+    <copy>
+    $ curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"grant_type":"password", "username":"'<yourusername>'", 
+    "password":"' <yourpassword>'"}'"<oml-cloud-service-location-url>/omlusers/api/oauth2/v1/token"
+    </copy>
+    ```  
+
+5. Run the following cURL command to score a mini batch containing base64 encoded strings in the input record: 
 
     ```
     <copy>
@@ -931,94 +937,97 @@ To score a mini batch:
     ```
 
 
-  >**Note:** Here, you use the flag --data to fetch the input records from the temporary file json_data. Since the base64 encoded strings are very long, the application will throw the error Argument list too long. Hence, it is recommended to use the --data flag. 
+    >**Note:** Here, you use the flag `--data` to fetch the input records from the temporary file `json_data`. Since the base64 encoded strings are very long, the application will throw the error Argument list too long. Hence, it is recommended to use the `--data` flag. 
 
+    In this example, you use the Linux utility `jq` to parse the JSON output into a readable format. 
+    
+    >**Note:** The `jq` utility is included in all the major Linux distribution repositories. On Oracle Linux and Red Hat systems, you can install this utility by running this command: 
 
-5. Use the Linux utility jq to parse the JSON output into a readable format. The jq utility is included in all the major Linux distribution repositories. On Oracle Linux and Red Hat systems, you can install this utility by running this command: 
     ```
     <copy>
     $ sudo yum install jq
     </copy>
     ```
 
-  The command returns the follwing scoring results:
+  _Sample Response:_
 
-  ```
-  {
-  "scoringResults": [
-    {
-      "classifications": [
+  The command returns the following scoring results:
+
+    ```
         {
-          "label": "Cat",
-          "probability": 0.9999594688415527
+      "scoringResults": [
+        {
+          "classifications": [
+            {
+              "label": "Cat",
+              "probability": 0.9999594688415527
+            },
+            {
+              "label": "Felidae",
+              "probability": 0.9997081756591797
+            },
+            {
+              "label": "Whiskers",
+              "probability": 0.9994940757751465
+            }
+          ]
         },
         {
-          "label": "Felidae",
-          "probability": 0.9997081756591797
+          "classifications": [
+            {
+              "label": "Snout",
+              "probability": 0.9996676445007324
+            },
+            {
+              "label": "Dog",
+              "probability": 0.996991753578186
+            },
+            {
+              "label": "Vertebrate",
+              "probability": 0.9954350590705872
+            }
+          ]
         },
         {
-          "label": "Whiskers",
-          "probability": 0.9994940757751465
-        }
-      ]
-    },
-    {
-      "classifications": [
-        {
-          "label": "Snout",
-          "probability": 0.9996676445007324
-        },
-        {
-          "label": "Dog",
-          "probability": 0.996991753578186
-        },
-        {
-          "label": "Vertebrate",
-          "probability": 0.9954350590705872
-        }
-      ]
-    },
-    {
-      "classifications": [
-        {
-          "label": "Pink",
-          "probability": 0.9993271827697754
-        },
-        {
-          "label": "Flowering plant",
-          "probability": 0.9986602663993835
-        },
-        {
-          "label": "Flower",
-          "probability": 0.99815833568573
+          "classifications": [
+            {
+              "label": "Pink",
+              "probability": 0.9993271827697754
+            },
+            {
+              "label": "Flowering plant",
+              "probability": 0.9986602663993835
+            },
+            {
+              "label": "Flower",
+              "probability": 0.99815833568573
+            }
+          ]
         }
       ]
     }
-  ]
-}
 
-  ```
 
+    ```
+
+The scoring result computes the probability of each label. This completes the task of scoring a mini batch containing base64 encoded strings in the input record. 
 
 ## Task 7: Create and Run a Data Bias Detection Job
 
 The OML Services Data Bias Detector provides REST endpoints for creating bias detector jobs. To help address data biases and mitigate its effects in later stages of the modeling process, the bias mitigation method **Reweighing** has been added to the `data_bias` API. The Database Bias Detector calculates metrics to identify common types of data bias: Class Imbalance (CI), Statistical Parity (SP), and Conditional Demographic Disparity (CDD). 
 
-Biased labels in data can come from various sources such as human annotators and social stereotypes. If machine learning models are trained on biased datasets, there is high chance that the biases are reproduced and reinforced during the inference stage. Proactively addressing data bias has multiple benefits:
-* As AI/ML models are under increasing scrutiny and regulation, detecting and mitigating potential biases and issues can help in complying with relevant laws and guidelines.
-* Detecting data biases, especially in the early stages of machine learning lifecycle, is important to understand potential impacts on fairness and equity.
-
 In this example, you will learn how to:
 
-* Create and run a data bias detection job.
-* View the details of the data bias job.
-* Query the output table to view the data bias details detected for the sensitive features.
+* Create and run a data bias detection job
+* View the details of the data bias job
+* Query the output table to view the data bias details detected for the sensitive features
 
 **Prerequisites:**
 
 * Access to the Adult dataset. The dataset used in this example— the **Adult** dataset, also known as the **Census Income** dataset, is a multivariate dataset. It contains census data of `30,940` adults. The prediction task associated with the dataset is to determine whether a person makes over `50K` a year.  
   This dataset can be accessed here at: 
-* Obtain the authentication token 
+* A valid authentication token 
+* oml-cloud-service-location-url
 
 To create and run a data bias detection job: 
 
@@ -1035,7 +1044,7 @@ To create and run a data bias detection job:
 
     >**Note:** OML Services interacts with the `DBMS_SCHEDULER` to perform actions on jobs. 
 
-    Here is an example of a data bias detection job request:
+    _Example of a data bias detection job request:_
 
     ```
       curl -v -X POST <oml-cloud-service-location-url>/-H "Content-Type: 
@@ -1058,11 +1067,30 @@ To create and run a data bias detection job:
             -H 'Authorization:Bearer <token>'
       ```
 
-    Here is a sample response of the data bias detection job creation request:
+    _Sample response of the data bias detection job:_
 
     ```
     "jobId":"OML$53D60B34_A275_4B2B_831C_2C8AE40BCB53","links":[{"rel":"self","href":"http://<oml-cloud-service-location-url>/omlmod/v1/jobs/OML%2453D60B34_A275_4B2B_831C_2C8AE40BCB53"}]}
     ```
+  The parameters used in this command are:
+
+    * `jobName` - The name of the OML job. In this example, the name is jobNametest.
+    * `jobType` - Specifies the type of job to be run. It is set to DATA_BIAS for data bias jobs.
+    * `jobServiceLevel` - MEDIUM
+    * `inputSchemaName` - OMLUSER
+    * `outputSchemaName` - OMLUSER
+    * `outputData` - This is the name of the output data table. In this example, the output data table name is `adultbias_tab`
+    * `jobDescription` - This is a description of the `Data_Bias` job.
+    * `inputData` - This is the name of the input data table. In this example, the table name is `ADULT`.
+    * `sensitiveFeatures` - This is a list of features on which data bias detection and mitigation is performed. By default, 250 features can be monitored for data bias detection. If there are more than 250 features, it will error out. The features can be either numeric or categorical. In this example, the attribute passed for sensitive feature is `GENDER`.
+
+      >**Note:** `Text`, `Nested`, and `Date` data types are not supported in this release.
+    
+    * `strata` - This is an array of strata names to calculate the Conditional Demographihc Disparity (CDD) to mitigate the impact of data bias from confounding variables by conditioning a third variable called strata. In this example, the name provided for strata is `MARITAL_STATUS`.
+    * `outcomeColumn` - This is the name of the feature in the input data that is the outcome of training a machine learning model. The outcome must be either numeric or categorical. In this examplem it is `INCOME`.
+    * `positiveOutcome` - This is a value that is in favor of a specific group in a dataset. It essentially indicates a positive outcome for that group. In the example, the positive outcome value is `>50K`.
+    * `categoricalBinNum` - Indicates whether to perform binning on categorical features. The number of bins is set to `6`.
+    * `numericalBinNum` - Indicates whether to perform binning on numerical features. The number of bins is set to the default value `10`.
 
 3. Now, run the following command to view job details:
 
@@ -1079,13 +1107,11 @@ To create and run a data bias detection job:
 
 
 
-4. After the data bias job is submitted successfully, you must connect to the database to access the output table in the output schema. Note the In this example, `inputSchemaName`, `outputSchemaName`, and `outputData`:
+4. After the data bias job is submitted successfully, you must connect to the database to access the output table in the output schema. Note the `inputSchemaName`, `outputSchemaName`, and `outputData` in this example:
 
-    * inputSchemaName: `OMLUSER`
-    * outputSchemaName: `OMLUSER`
-    * outputData: This is the output data table. In this example, the name is `adultbias_tab`.
-
-
+    * `inputSchemaName` - It is `OMLUSER`
+    * `outputSchemaName` - It is `OMLUSER`
+    * `outputData` - This is the output data table. In this example, the name is `adultbias_tab`.
 
     Run the following SQL query to count the number of records in the output table: 
 
@@ -1100,8 +1126,9 @@ To create and run a data bias detection job:
     In this example,
 
     * `OML$53D60B34_A275_4B2B_831C_2C8AE40BCB53` - This is the job ID.
-    * `ADULTBIAS_TAB` This is the output table name.
+    * `ADULTBIAS_TAB` - This is the output table name.
 
+    _Sample Response:_
     Here is the data bias result for `GENDER` passed for the parameter `sensitiveFeature` , and `MARITAL_STATUS` passed for the parameter strata:
 
     ```
