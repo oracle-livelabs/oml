@@ -222,11 +222,11 @@ You can share a notebook by saving an existing notebook as a template in My Libr
         - Select **Shared** if you want to save and share this notebook. The **Shared** template is visible to all users of the system within the scope of the tenant.
 
 3. Once the notebook is successfully saved as a template in the designated location, the message appears. On the message, you have the option to open the notebook directly by clicking **Open template**.
-    ![Message](images/template-message.png "templates")
+    ![Screenshot shows the Message about successful creation of the notebook from template](images/template-message.png "templates")
 
 4. You can also view the template in the **Personal** or **Shared** location, whereever it is saved. Click on the Cloud menu icon to open the left navigation pane, click **Templates** and then click **Shared** to view this notebook. 
 
-    ![Shared template](images/shared-template.png "")
+    ![Screenshot shows the Shared template page](images/shared-template.png "")
 
 >**Note:** Notebook templates under **Examples** are provided by Oracle and are visible to all tenants. Users cannot add notebooks to the Examples template.     
 
