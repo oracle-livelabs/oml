@@ -7,6 +7,7 @@
         "oml-create-oml-user.md":"/common/building-blocks/tasks/oml/create-oml-user.md",
         "oml-oml-notebooks-ea.md":"/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md",
         "oml-oml-monitoring.md":"/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md",
+        "oml-nb-visualizations.md":"/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md", 
         "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md"        
     },
     "tutorials": [
@@ -30,7 +31,7 @@
             "title": "Lab 1: Introduction to Oracle Machine Learning Notebooks",
             "type": "freetier",
             "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md"
-        },              
+        },          
         {
             "title": "Lab 2: Introduction to Oracle Machine Learning for SQL",
             "type": "freetier",
@@ -50,16 +51,16 @@
             "title": "Lab 5: Introduction to Oracle Machine Learning AutoML UI",
             "type": "freetier",
             "filename": "../../automl/automl.md"
-        },
+        },        
         {
-            "title": "Lab 6: Introduction to Oracle Machine Learning Services",
-            "type": "freetier",
-            "filename": "../../omlserv/omlserv.md"
-        },     
-        {
-            "title": "Lab 7: Introduction to Oracle Machine Learning Monitoring",
+            "title": "Lab 6: Introduction to Oracle Machine Learning Monitoring",
             "type": "freetier",
             "filename": "/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md"
+        },
+        {
+            "title": "Lab 7: Introduction to Oracle Machine Learning Services",
+            "type": "freetier",
+            "filename": "../../omlserv/omlserv.md"
         },
         {
             "title": "Lab 8: Introduction to the Conda Environments in Oracle Machine Learning Notebook",

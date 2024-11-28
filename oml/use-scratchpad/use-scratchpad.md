@@ -1,4 +1,4 @@
-# Use the Scratchpad In Oracle Machine Learning Notebooks
+# Use the Scratchpad in Oracle Machine Learning Notebooks
 ## Introduction
 
 This lab shows you how to use the Scratchpad in Oracle Machine Learning Notebooks.
@@ -6,12 +6,10 @@ This lab shows you how to use the Scratchpad in Oracle Machine Learning Notebook
 The Scratchpad provides you convenient one-click access to a notebook for running SQL statements, PL/SQL scripts, Python and r scripts that can be renamed. The Scratchpad is available on the Oracle Machine Learning Notebooks home page. The Scratchpad is a regular notebook that is prepopulated with four paragraphs - `%sql`, `%script`, `%python` and `r`.
 
 After you run your scripts, the Scratchpad is automatically saved as a notebook by the default name Scratchpad in the Notebooks page. You can access it later in the Notebooks page.
-You can run all the paragraphs together or one paragraph at a time.
+You can run all the paragraphs together or one paragraph at a time. 
 
 ### Estimated Time
-This lab takes approximately 10 minutes to complete.
-
-
+This lab takes approximately 10 minutes to complete. 
 
 ### Prerequisites
 
@@ -23,7 +21,7 @@ This lab takes approximately 10 minutes to complete.
 
 To open and use the scratchpad, click <b>Scratchpad</b> on the Oracle Machine Learning Notebooks home page under Quick Actions.
 
-  ![Developer Homepage](images/developer-homepage.png "Developer Homepage")
+  ![This is the Developer Homepage of Oracle Machine Learning UI](images/developer-homepage.png "Developer Homepage")
 
   The Scratchpad opens. The Scratchpad has three paragraphs each with the following directives:
 
@@ -36,7 +34,7 @@ To run python script:
 
 1. Go to the paragraph with the <code>%python</code> directive.
 
-   ![scratchpad with py directive](images/scratchpad-py.png "Scratchpad with py directive")
+   ![Screenshot shows the Scratchpad with py directive](images/scratchpad-py.png "Scratchpad with py directive")
 
 2. To use OML4Py, you must first import the `oml` module.
    `oml` is the OML4Py module that allows you to manipulate Oracle Database objects such as tables and views, call user-defined Python functions using embedded execution, and use the database machine learning algorithms. To import the `oml` module, type the following command and click the Run icon. Alternatively, you can press **Shift+Enter** keys to run the paragraph.
@@ -76,7 +74,7 @@ To run python script:
     </copy>
     ```
 
-    ![Scratchpad with python script](images/scratchpad-python.png "Python script in scratchpad")
+    ![Screenshot shows the Scratchpad with python script](images/scratchpad-python.png "Python script in scratchpad")
 
     In this example, the commands import two python packages to compute and render the data in two histograms for `list1` and `list2`. The Python packages are:
 
@@ -108,7 +106,7 @@ To run R functions in an Oracle Machine Learning notebook, you must first connec
   </copy>
   ```
 
-  ![ore.isconnected command](images/ore-connected.png "ore.isconnected command")
+  ![Screenshot shows the ore.isconnected command](images/ore-connected.png "ore.isconnected command")
 
   Once your notebook is connected, the command returns TRUE, as shown in the screenshot here. The notebook is now connected to the R interpreter, and you are ready to run R commands in your notebook.
 3. To import R Libraries, run the following commands:
@@ -120,7 +118,7 @@ To run R functions in an Oracle Machine Learning notebook, you must first connec
   </copy>
   ```
 
-  ![Command to load r packages](images/load-r-packages.png "Command to load r packages")
+  ![Screenshot shows the Command to load r packages](images/load-r-packages.png "Command to load r packages")
 
   Once the packages are loaded successfully, the list of ORE packages are displayed as shown in the screenshot here. Scroll down to view the entire list.
 
@@ -130,7 +128,7 @@ To run SQL statements:
 
 1. Go to the paragraph with the `%sql` directive.
 
-   ![SQL directive in Scratchpad](images/scratchpad-sql.png "SQL directive in Scratchpad")
+   ![Screenshot shows the SQL directive in Scratchpad](images/scratchpad-sql.png "SQL directive in Scratchpad")
 
 2. Type the following command and click the Run icon. Alternatively, you can pres **Shift+Enter** keys to run the paragraph.
 
@@ -140,7 +138,7 @@ To run SQL statements:
     SELECT * FROM SH.SALES;
     </copy>
     ```
-       ![SQL statement in scratchpad](images/sql-statement.png "SQL statement in scratchpad")
+       ![Screenshot shows the SQL statement in scratchpad](images/sql-statement.png "SQL statement in scratchpad")
 
     In this example, the SQL statement fetches all of the data about product sales from the table SALES. Here, `SH` is the schema name, and `SALES` is the table name. Oracle Machine Learning fetches the relevant data from the database and displays it in a tabular format.
 
@@ -150,7 +148,7 @@ To run PL/SQL scripts:
 
 1. Go to the paragraph with the `%script` directive.
 
-   ![PL/SQL script in Scratchpad](images/scratchpad-script.png "PL/SQL script in Scratchpad")
+   ![Screenshot shows the PL/SQL script in Scratchpad](images/scratchpad-script.png "PL/SQL script in Scratchpad")
 
 2. Enter the following PL/SQL script and click the **Run** icon. Alternatively, you can press **Shift+Enter** keys to run the paragraph.
 
@@ -180,9 +178,9 @@ To run PL/SQL scripts:
     * The second part of the script begins with the keyword `BEGIN`. It inserts 100 rows in to the table small_table.
 
 
-         ![PL/SQL Procedure](images/plsql-procedure.png "PL/SQL Procedure")
+         ![Screenshot shows the PL/SQL Procedure](images/plsql-procedure.png "PL/SQL Procedure")
 
 ## Acknowledgements
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, March 2024
+* **Last Updated By/Date**: Moitreyee Hazarika, November 2024
