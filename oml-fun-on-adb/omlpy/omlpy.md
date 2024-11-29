@@ -229,11 +229,11 @@ In this step, you will create a new `oml.DataFrame` called `DEMO_DF` by selectin
 
 	**_NOTE:_**
 
-	The target variable (y) can either be an OML object or a string.
-	- If y is a single-column OML object, the target values specified by y must be compatible with the input data (x), meaning they should align in structure (e.g., the same number of rows).
-	- If y is a string, it refers to the name of the column in x that contains the target values (labels) for the model. In this case, x is expected to have a column with the name specified by y, and that column will be used as the target for training or prediction.
-	
-	To learn more, see [Define the Target Variable](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2-23ai/mlpug/target-variable.html).
+	The target variable (y) can be an OML object or a string.
+	- If target variable (y) is a single-column OML object, the target values specified by y must be compatible with the input data (x), meaning they should have the same structure (e.g., the same number of rows).
+	- If target variable (y) is a string, it represents the name of the column in x that contains the target values (labels) for the model. In this case, x is expected to include a column with the name specified by y, which will be used as the target for training or prediction.
+
+	To learn more, see [Define the Target Variable](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4py/2-23ai&id=MLPUG-GUID-00EC5BC0-4D23-4410-88AE-1E1C5B2CB16D).
 
    In this case the column `AFFINITY_CARD`, which indicates whether a person has accepted the offer (=1) or not (=0) in past marketing campaigns, is what we are trying to predict with the model for future campaigns, and it is used to further split the data.
 
