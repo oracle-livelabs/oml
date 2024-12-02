@@ -1053,7 +1053,6 @@ To create and run a data bias detection job:
     </copy>
     ``` 
 
-<<<<<<< HEAD
   In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
 
   ![Database Actions](images/database-actions.png)
@@ -1067,8 +1066,7 @@ To create and run a data bias detection job:
   ![Oracle Machine Learning RESTful services](images/omls-url.png)
 
 
-=======
->>>>>>> upstream/main
+
 2. To create a job for data bias detection and data bias mitigation, send the following POST request to the `/omlmod/v1/jobs` endpoint in OML Services. 
 
     >**Note:** OML Services interacts with the `DBMS_SCHEDULER` to perform actions on jobs. 
@@ -1323,7 +1321,6 @@ To create a data monitoring job:
     * `<yourpassword>` - This is the password for the user name
     * `<oml-cloud-service-location-url>` This is a URL containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID and database name. You can obtain the URL from the Development tab in the Service Console of your Oracle Autonomous Database instance.
 
-<<<<<<< HEAD
 
   In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
 
@@ -1338,8 +1335,7 @@ To create a data monitoring job:
   ![Oracle Machine Learning RESTful services](images/omls-url.png)
 
 
-=======
->>>>>>> upstream/main
+
 2. Create a data monitoring job by sending a `POST` request to the `/omlmod/v1/jobs` endpoint in OML Services. 
 
     >**Note:** OML Services interacts with the `DBMS_SCHEDULER` to perform actions on jobs. 
@@ -1367,7 +1363,7 @@ To create a data monitoring job:
         --header 'Content-Type: application/json' \
         --data '{
           "jobSchedule": {
-<<<<<<< HEAD
+
               "jobStartDate": "2024-11-11T20:30:26Z",             
               "repeatInterval": "FREQ=HOURLY",                   
               "jobEndDate": "2024-11-19T23:30:26Z",              
@@ -1393,33 +1389,32 @@ To create a data monitoring job:
               "caseidColumn": null,                              
               "anchorColumn": null,                              
               "featureList": [                                   
-=======
-              "jobStartDate": "2024-11-11T20:30:26Z",            # job start date and time 
-              "repeatInterval": "FREQ=HOURLY",                   # job frequency
-              "jobEndDate": "2024-11-19T23:30:26Z",              # job end date and time
-              "maxRuns": "10"                                    # max runs within the schedule
+              "jobStartDate": "2024-11-11T20:30:26Z",             
+              "repeatInterval": "FREQ=HOURLY",                   
+              "jobEndDate": "2024-11-19T23:30:26Z",              
+              "maxRuns": "10"                                    
           },
           "jobProperties": {
-              "jobName": "HouseholdPowerDataMonitoring",         # job name
-              "jobType": "DATA_MONITORING",                      # job type; DATA_MONITORING
-              "disableJob": false,                               # flag to disable the job at submission
-              "outputData": "householdPowerConsumption",         # table where the job results will be saved in the format {jobID}_{outputData}
-              "baselineData": "HOUSEHOLD_POWER_BASE",            # table/view containing baseline data 
-              "newData": "HOUSEHOLD_POWER_NEW",                  # table/view with new data to compare against baseline
-              "inputSchemaName": "OMLUSER",                      # database schema that owns the input table/view
-              "outputSchemaName": "OMLUSER",                     # database schema that owns the output table/view
-              "jobDescription": "Monitor household power",       # job description
-              "jobServiceLevel": "LOW",                          # Autonomous Database service level; either LOW, MEDIUM, or HIGH
-              "timeColumn": "DATES",                             # date or timestamp column in newData
-              "startDate": "2008-01-01T00:00:00Z",               # the start date of the monitoring in the new data
-              "endDate": "2010-11-26T00:00:00Z",                 # the end date of the monitoring in the new data
-              "frequency": "Year",                               # the time window unit on which monitoring is performed on the new data
-              "threshold": 0.8,                                  # threshold to trigger drift alert
-              "recompute": false,                                # flag to determine whether to replace the output table
-              "caseidColumn": null,                              # case identifier column in the baseline and new data
-              "anchorColumn": null,                              # anchor column for bivariate analysis
-              "featureList": [                                   # features to perform data monitoring on
->>>>>>> upstream/main
+              "jobName": "HouseholdPowerDataMonitoring",         
+              "jobType": "DATA_MONITORING",                      
+              "disableJob": false,                               
+              "outputData": "householdPowerConsumption",         
+              "baselineData": "HOUSEHOLD_POWER_BASE",             
+              "newData": "HOUSEHOLD_POWER_NEW",                  
+              "inputSchemaName": "OMLUSER",                      
+              "outputSchemaName": "OMLUSER",                     
+              "jobDescription": "Monitor household power",       
+              "jobServiceLevel": "LOW",                          
+              "timeColumn": "DATES",                             
+              "startDate": "2008-01-01T00:00:00Z",               
+              "endDate": "2010-11-26T00:00:00Z",                 
+              "frequency": "Year",                               
+              "threshold": 0.8,                                  
+              "recompute": false,                                
+              "caseidColumn": null,                              
+              "anchorColumn": null,                              
+              "featureList": [                                   
+
                   "GLOBAL_ACTIVE_POWER",
                   "GLOBAL_REACTIVE_POWER",
                   "VOLTAGE",
@@ -1546,16 +1541,11 @@ _Sample Response:_
 
 
 
-<<<<<<< HEAD
+
 4. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table. You specify the table in your job request with the `outputData` parameter. The full name of the table is `{jobid}_{outputData}`. You can check if your job is complete by sending a request to view its details.
-=======
-4. After you submit an asynchronous job, you have the option to update your job. This is an optional task. To update a job, send a `POST` request to the `/omlmod/v1/jobs/{jobID}` endpoint with the updated options in the `updateProperties` parameters. 
 
+4. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table. You specify the table in your job request with the `outputData` parameter. The full name of the table is `{jobid}_{outputData}`. You can check if your job is complete by sending a request to view its details.
 
-
-
-5. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table. You specify the table in your job request with the `outputData` parameter. The full name of the table is `{jobid}_{outputData}`. You can check if your job is complete by sending a request to view its details.
->>>>>>> upstream/main
 
   _Example to query the output table associated with this example:_
   
@@ -1615,7 +1605,7 @@ To monitor your models:
     * `<yourpassword>` - This is the password for the user name
     * `<oml-cloud-service-location-url>` - This is a URL containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID and database name. You can obtain the URL from the Development tab in the Service Console of your Oracle Autonomous Database instance.
 
-<<<<<<< HEAD
+
   In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
 
   ![Database Actions](images/database-actions.png)
@@ -1629,10 +1619,6 @@ To monitor your models:
   ![Oracle Machine Learning RESTful services](images/omls-url.png)
 
 
-
-
-=======
->>>>>>> upstream/main
 2. To get the `modelId`, send a `GET` request to the deployment endpoint and specify the model `URI`. 
 
   _Example of a `GET` Request to obtain the `modelId`:_
@@ -1665,7 +1651,6 @@ To monitor your models:
           --header 'Content-Type: application/json' \
           --data '{
               "jobSchedule": {
-<<<<<<< HEAD
               "jobStartDate": "2024-11-10T00:30:07Z",            
               "repeatInterval": "FREQ=DAILY",                   
               "jobEndDate": "2024-11-15T20:50:06Z",              
@@ -1693,35 +1678,33 @@ To monitor your models:
                   "0bf13d1f-86a6-465d-93d1-8985afd1bbdb"
               ],
               "recompute": false                                      
-=======
-              "jobStartDate": "2024-11-10T00:30:07Z",           # job start date and time 
-              "repeatInterval": "FREQ=DAILY",                   # job frequency
-              "jobEndDate": "2024-11-15T20:50:06Z",             # job end date and time 
-              "maxRuns": "5"                                    # max runs within the schedule
+              "jobStartDate": "2024-11-10T00:30:07Z",            
+              "repeatInterval": "FREQ=DAILY",                   
+              "jobEndDate": "2024-11-15T20:50:06Z",              
+              "maxRuns": "5"                                    
           },
           "jobProperties": {
-              "jobName": "MY_MODEL_MONITOR1",                         # job name
-              "jobType": "MODEL_MONITORING",                          # job type; MODEL_SCORING
-              "disableJob": false,                                    # flag to disable the job at submission
-              "jobServiceLevel": "LOW",                               # Autonomous Database service level; either LOW, MEDIUM, and HIGH
-              "inputSchemaName": "OMLUSER",                           # database schema that owns the input table/view
-              "outputSchemaName": "OMLUSER",                          # database schema that owns the output table
-              "outputData": "Global_Active_Power_Monitor",            # table where the job results will be saved in the format {jobID}_{outputData}
-              "jobDescription": "Global active power monitoring job", # job description
-              "baselineData": "HOUSEHOLD_POWER_BASE",                 # table/view containing baseline data 
-              "newData": "HOUSEHOLD_POWER_NEW",                       # table/view with new data to compare against baseline
-              "frequency": "Year",                                    # time window unit that the monitoring is done on in the new data
-              "threshold": 0.15,                                      # threshold to trigger drift alert
-              "timeColumn": "DATES",                                  # date or timestamp column in newData
-              "startDate": "2008-01-01T00:00:00Z",                    # the start date and time of monitoring in the new data
-              "endDate": "2010-11-26T00:00:00Z",                      # the end date and time of monitoring in the new data
-              "caseidColumn": null,                                   # case identifier column in the baseline and new data
-              "performanceMetric": "MEAN_SQUARED_ERROR",              # metric used to measure model performance
-              "modelList": [                                          # model ID or list of model IDs to be monitored
+              "jobName": "MY_MODEL_MONITOR1",                         
+              "jobType": "MODEL_MONITORING",                          
+              "disableJob": false,                                    
+              "jobServiceLevel": "LOW",                               
+              "inputSchemaName": "OMLUSER",                           
+              "outputSchemaName": "OMLUSER",                          
+              "outputData": "Global_Active_Power_Monitor",            
+              "jobDescription": "Global active power monitoring job", 
+              "baselineData": "HOUSEHOLD_POWER_BASE",                  
+              "newData": "HOUSEHOLD_POWER_NEW",                       
+              "frequency": "Year",                                    
+              "threshold": 0.15,                                      
+              "timeColumn": "DATES",                                  
+              "startDate": "2008-01-01T00:00:00Z",                    
+              "endDate": "2010-11-26T00:00:00Z",                      
+              "caseidColumn": null,                                   
+              "performanceMetric": "MEAN_SQUARED_ERROR",              
+              "modelList": [                                          
                   "0bf13d1f-86a6-465d-93d1-8985afd1bbdb"
               ],
-              "recompute": false                                      # flag to determine whether to overwrite the results table
->>>>>>> upstream/main
+              "recompute": false                                      
           }
       }' | jq
     </copy>
