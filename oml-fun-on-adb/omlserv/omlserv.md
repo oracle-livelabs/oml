@@ -54,7 +54,7 @@ This lab assumes you have:
 * OCI Cloud Shell, which has cURL installed by default. If you are using the Workshops tenancy, you get OCI Cloud Shell as part of the reservation. However, if you are in your own OCI tenancy or using a free trial account, ensure you have OCI Cloud Shell or install cURL for your operating system to run the OML Services commands.
 * An Autonomous Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
     * Your OML user name and password
-    * OML server URL
+    * `oml-cloud-service-location-url`
 * Completed all previous labs successfully.
 
 ## Task 1: Authenticate Your User Account with Your Autonomous Database Instance to Use OML Services
@@ -70,7 +70,7 @@ This lab assumes you have:
 2. To access Oracle Machine Learning Services using the REST API, you must acquire an access token. To authenticate and obtain an access token, use cURL with the ``-d`` option to pass the user name and password for your Oracle Machine Learning Services account against the Oracle Machine Learning User Management Cloud Service token service. Use the following details to get an authentication token.
     * Your OML user name
     * Your OML password
-    * OML server URL
+    * `oml-cloud-service-location-url`
 
    Here is the syntax:
 
@@ -78,11 +78,11 @@ This lab assumes you have:
      <copy>
      curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json'\
      -d '{"grant_type":"password", "username":"'${oml_username}'", "password":"'${oml_password}'"}'\
-     "<OML server URL>/omlusers/api/oauth2/v1/token"
+     "<oml-cloud-service-location-url>/omlusers/api/oauth2/v1/token"
      </copy>
      ```
 
-   In the syntax above, OML server URL is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from **Oracle Machine Learning RESTful services** on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
+   In the syntax above, `oml-cloud-service-location-url` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from **Oracle Machine Learning RESTful services** on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
 
   ![Database Actions](images/database-actions.png)
 
@@ -353,7 +353,7 @@ This lab assumes you have:
 1. Get model endpoint details for the model that you created in the preceding lab (Lab 4). Use the following values:
 
     * authentication token=generated in Task 1 or if expired then a refreshed or regenerated token
-    * omlserver= OML server URL that you copied from the ADB console (in Task 1 Step 2), without the /omlusers/ segment in it. This URL is already saved to the ``omlserver`` variable so you don't have to copy it again. An example of an OML server URL is https://aabbcc123456xyz-db2.adb.us-ashburn-1.oraclecloudapps.com. In this example URL, ``aabbcc123456xyz`` is the tenancy ID, ``db2`` is the database name and ``adb.us-ashburn-1.oraclecloudapps.com`` is the region name.
+    * omlserver= `oml-cloud-service-location-url` that you copied from the ADB console (in Task 1 Step 2), without the /omlusers/ segment in it. This URL is already saved to the ``omlserver`` variable so you don't have to copy it again. An example of an OML server URL is https://aabbcc123456xyz-db2.adb.us-ashburn-1.oraclecloudapps.com. In this example URL, ``aabbcc123456xyz`` is the tenancy ID, ``db2`` is the database name and ``adb.us-ashburn-1.oraclecloudapps.com`` is the region name.
     * model URI=`nb_cust360` (To get the URI for the model that you want the endpoint for, log in to OML Notebooks, go to the Models page,  Deployed tab.)
 
     ```
@@ -1053,6 +1053,22 @@ To create and run a data bias detection job:
     </copy>
     ``` 
 
+<<<<<<< HEAD
+  In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
+
+  ![Database Actions](images/database-actions.png)
+
+  On the **Database Actions** page, and go to the **Related Services** tab and click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.
+
+  ![Related Services tab](images/omls-related-services.png)
+
+  On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
+
+  ![Oracle Machine Learning RESTful services](images/omls-url.png)
+
+
+=======
+>>>>>>> upstream/main
 2. To create a job for data bias detection and data bias mitigation, send the following POST request to the `/omlmod/v1/jobs` endpoint in OML Services. 
 
     >**Note:** OML Services interacts with the `DBMS_SCHEDULER` to perform actions on jobs. 
@@ -1307,6 +1323,23 @@ To create a data monitoring job:
     * `<yourpassword>` - This is the password for the user name
     * `<oml-cloud-service-location-url>` This is a URL containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID and database name. You can obtain the URL from the Development tab in the Service Console of your Oracle Autonomous Database instance.
 
+<<<<<<< HEAD
+
+  In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
+
+  ![Database Actions](images/database-actions.png)
+
+  On the **Database Actions** page, and go to the **Related Services** tab and click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.
+
+  ![Related Services tab](images/omls-related-services.png)
+
+  On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
+
+  ![Oracle Machine Learning RESTful services](images/omls-url.png)
+
+
+=======
+>>>>>>> upstream/main
 2. Create a data monitoring job by sending a `POST` request to the `/omlmod/v1/jobs` endpoint in OML Services. 
 
     >**Note:** OML Services interacts with the `DBMS_SCHEDULER` to perform actions on jobs. 
@@ -1334,6 +1367,33 @@ To create a data monitoring job:
         --header 'Content-Type: application/json' \
         --data '{
           "jobSchedule": {
+<<<<<<< HEAD
+              "jobStartDate": "2024-11-11T20:30:26Z",             
+              "repeatInterval": "FREQ=HOURLY",                   
+              "jobEndDate": "2024-11-19T23:30:26Z",              
+              "maxRuns": "10"                                    
+          },
+          "jobProperties": {
+              "jobName": "HouseholdPowerDataMonitoring",         
+              "jobType": "DATA_MONITORING",                      
+              "disableJob": false,                      
+              "outputData": "householdPowerConsumption",         
+              "baselineData": "HOUSEHOLD_POWER_BASE",             
+              "newData": "HOUSEHOLD_POWER_NEW",                  
+              "inputSchemaName": "OMLUSER",                      
+              "outputSchemaName": "OMLUSER",                     
+              "jobDescription": "Monitor household power",       
+              "jobServiceLevel": "LOW",                          
+              "timeColumn": "DATES",                             
+              "startDate": "2008-01-01T00:00:00Z",               
+              "endDate": "2010-11-26T00:00:00Z",                 
+              "frequency": "Year",                               
+              "threshold": 0.8,                                  
+              "recompute": false,                                
+              "caseidColumn": null,                              
+              "anchorColumn": null,                              
+              "featureList": [                                   
+=======
               "jobStartDate": "2024-11-11T20:30:26Z",            # job start date and time 
               "repeatInterval": "FREQ=HOURLY",                   # job frequency
               "jobEndDate": "2024-11-19T23:30:26Z",              # job end date and time
@@ -1359,6 +1419,7 @@ To create a data monitoring job:
               "caseidColumn": null,                              # case identifier column in the baseline and new data
               "anchorColumn": null,                              # anchor column for bivariate analysis
               "featureList": [                                   # features to perform data monitoring on
+>>>>>>> upstream/main
                   "GLOBAL_ACTIVE_POWER",
                   "GLOBAL_REACTIVE_POWER",
                   "VOLTAGE",
@@ -1485,12 +1546,16 @@ _Sample Response:_
 
 
 
+<<<<<<< HEAD
+4. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table. You specify the table in your job request with the `outputData` parameter. The full name of the table is `{jobid}_{outputData}`. You can check if your job is complete by sending a request to view its details.
+=======
 4. After you submit an asynchronous job, you have the option to update your job. This is an optional task. To update a job, send a `POST` request to the `/omlmod/v1/jobs/{jobID}` endpoint with the updated options in the `updateProperties` parameters. 
 
 
 
 
 5. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table. You specify the table in your job request with the `outputData` parameter. The full name of the table is `{jobid}_{outputData}`. You can check if your job is complete by sending a request to view its details.
+>>>>>>> upstream/main
 
   _Example to query the output table associated with this example:_
   
@@ -1550,6 +1615,24 @@ To monitor your models:
     * `<yourpassword>` - This is the password for the user name
     * `<oml-cloud-service-location-url>` - This is a URL containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID and database name. You can obtain the URL from the Development tab in the Service Console of your Oracle Autonomous Database instance.
 
+<<<<<<< HEAD
+  In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
+
+  ![Database Actions](images/database-actions.png)
+
+  On the **Database Actions** page, and go to the **Related Services** tab and click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.
+
+  ![Related Services tab](images/omls-related-services.png)
+
+  On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
+
+  ![Oracle Machine Learning RESTful services](images/omls-url.png)
+
+
+
+
+=======
+>>>>>>> upstream/main
 2. To get the `modelId`, send a `GET` request to the deployment endpoint and specify the model `URI`. 
 
   _Example of a `GET` Request to obtain the `modelId`:_
@@ -1582,6 +1665,35 @@ To monitor your models:
           --header 'Content-Type: application/json' \
           --data '{
               "jobSchedule": {
+<<<<<<< HEAD
+              "jobStartDate": "2024-11-10T00:30:07Z",            
+              "repeatInterval": "FREQ=DAILY",                   
+              "jobEndDate": "2024-11-15T20:50:06Z",              
+              "maxRuns": "5"                                    
+          },
+          "jobProperties": {
+              "jobName": "MY_MODEL_MONITOR1",                         
+              "jobType": "MODEL_MONITORING",                          
+              "disableJob": false,                                    
+              "jobServiceLevel": "LOW",                               
+              "inputSchemaName": "OMLUSER",                           
+              "outputSchemaName": "OMLUSER",                          
+              "outputData": "Global_Active_Power_Monitor",            
+              "jobDescription": "Global active power monitoring job", 
+              "baselineData": "HOUSEHOLD_POWER_BASE",                  
+              "newData": "HOUSEHOLD_POWER_NEW",                       
+              "frequency": "Year",                                    
+              "threshold": 0.15,                                      
+              "timeColumn": "DATES",                                  
+              "startDate": "2008-01-01T00:00:00Z",                    
+              "endDate": "2010-11-26T00:00:00Z",                      
+              "caseidColumn": null,                                   
+              "performanceMetric": "MEAN_SQUARED_ERROR",              
+              "modelList": [                                          
+                  "0bf13d1f-86a6-465d-93d1-8985afd1bbdb"
+              ],
+              "recompute": false                                      
+=======
               "jobStartDate": "2024-11-10T00:30:07Z",           # job start date and time 
               "repeatInterval": "FREQ=DAILY",                   # job frequency
               "jobEndDate": "2024-11-15T20:50:06Z",             # job end date and time 
@@ -1609,6 +1721,7 @@ To monitor your models:
                   "0bf13d1f-86a6-465d-93d1-8985afd1bbdb"
               ],
               "recompute": false                                      # flag to determine whether to overwrite the results table
+>>>>>>> upstream/main
           }
       }' | jq
     </copy>
