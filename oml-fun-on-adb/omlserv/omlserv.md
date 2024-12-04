@@ -122,7 +122,7 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
 5. Run the following command to obtain an authentication token using the variables set above and save the token string to the variable `token`.
 
     ```
-    <copy>export token=$(curl -X POST -H 'Content-Type: application/json'  -d '{"grant_type":"password", "username":"'${oml_username}'",  "password":"'${oml_password}'"}' "$<oml-cloud-service-location-url>/omlusers/api/oauth2/v1/token" | grep -o -P '(?<="accessToken":").*(?=","expiresIn)' )
+    <copy>export token=$(curl -X POST -H 'Content-Type: application/json'  -d '{"grant_type":"password", "username":"'${oml_username}'",  "password":"'${oml_password}'"}' "${omlservice}/omlusers/api/oauth2/v1/token" | grep -o -P '(?<="accessToken":").*(?=","expiresIn)' )
     </copy>
     ```
 
@@ -143,7 +143,7 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
    Here's the command for refreshing a token:
 
     ```
-    <copy>export token=$(curl -i -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer ${token}" -d '{"grant_type":"refresh_token", "refresh_token":"'${token}'"}' "$<oml-cloud-service-location-url>/omlusers/api/oauth2/v1/token" | grep -o -P '(?<="accessToken":").*(?=","expiresIn)' )</copy>
+    <copy>export token=$(curl -i -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer ${token}" -d '{"grant_type":"refresh_token", "refresh_token":"'${token}'"}' "${omlservice}/omlusers/api/oauth2/v1/token" | grep -o -P '(?<="accessToken":").*(?=","expiresIn)' )</copy>
     ```
 
 7. To visually inspect the token, run the command below:
@@ -158,7 +158,7 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
     > **Note:** For this Workshop, do not perform this step. The syntax is provided for your reference.
 
     ```
-    <copy>curl -i -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer ${token}" "$<oml-cloud-service-location-url>/omlusers/api/oauth2/v1/token/revoke"</copy>
+    <copy>curl -i -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer ${token}" "${omlservice}/omlusers/api/oauth2/v1/token/revoke"</copy>
     ```
 
   Running the command above produces a result similar to this:
@@ -196,7 +196,7 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
    Run the curl command to view the APIs.
 
     ```
-    <copy>curl -i -X GET --header "Authorization: Bearer ${token}" "$<oml-cloud-service-location-url>/omlmod/v1/api" | head -n 50</copy>
+    <copy>curl -i -X GET --header "Authorization: Bearer ${token}" "${omlservice}/omlmod/v1/api" | head -n 50</copy>
 
     ```
 
@@ -235,7 +235,7 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
 2.  Get a list of saved models. For this step to return results, you need to have models deployed in your OML user account. If you have completed Lab 5, your account should include deployed models. Refer back to Lab 5 Using OML AutoML UI  to know how to quickly create and save a model.
 
     ```
-    <copy>curl -X GET --header "Authorization: Bearer ${token}" "$<oml-cloud-service-location-url>/omlmod/v1/models" | jq</copy>
+    <copy>curl -X GET --header "Authorization: Bearer ${token}" "${omlservice}/omlmod/v1/models" | jq</copy>
 
     ```
 
@@ -274,7 +274,7 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
 3. View a model's details by providing its name in the REST API call. In this case, the model name is `NaiveBayes_CUST360`.
 
     ```
-    <copy>curl -X GET --header "Authorization: Bearer $token" "$<oml-cloud-service-location-url>/omlmod/v1/models?modelName=NaiveBayes_CUST360" | jq</copy>
+    <copy>curl -X GET --header "Authorization: Bearer $token" "${omlservice}/omlmod/v1/models?modelName=NaiveBayes_CUST360" | jq</copy>
 
     ```
 
@@ -316,7 +316,7 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
 
 
     ```
-    <copy>curl -X GET --header "Authorization: Bearer $token" "$<oml-cloud-service-location-url>/omlmod/v1/models?version=1.0&namespace=DEMO" | jq</copy>
+    <copy>curl -X GET --header "Authorization: Bearer $token" "${omlservice}/omlmod/v1/models?version=1.0&namespace=DEMO" | jq</copy>
 
     ```
 
@@ -450,7 +450,7 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
 
     ```
     <copy>
-    curl -X POST "$<oml-cloud-service-location-url>/omlmod/v1/deployment/${model_URI}/score" \
+    curl -X POST "${omlservice}/omlmod/v1/deployment/${model_URI}/score" \
     --header "Authorization: Bearer ${token}" \
     --header 'Content-Type: application/json' \
     -d '{"topNdetails":n,"inputRecords":[{"XXX":value,"YYY":value}]}'| jq
@@ -460,7 +460,7 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
   In the syntax above, the parameter `topNdetails` is optional. It fetches the top n prediction details for the record you are scoring. Prediction details refer to the attributes or features that impact a prediction. In the following example,  you specify the model URI `nb_cust360` and a valid token generated in Task 1. The model was built using the Supplementary Demographics data set. To score with a single record, for XXX use `YRS_RESIDENCE` with the value of 10 and for YYY  use `Y_BOX_GAMES` with a value of 0. You want to predict the probability that the person associated with this record will purchase the affinity card.
 
     ```
-   <copy>curl -X POST "$<oml-cloud-service-location-url>/omlmod/v1/deployment/nb_cust360/score"  --header "Authorization: Bearer ${token}" --header 'Content-Type: application/json'  -d '{"inputRecords":[{"YRS_RESIDENCE":10,"Y_BOX_GAMES":0}]}' | jq</copy>
+   <copy>curl -X POST "${omlservice}/omlmod/v1/deployment/nb_cust360/score"  --header "Authorization: Bearer ${token}" --header 'Content-Type: application/json'  -d '{"inputRecords":[{"YRS_RESIDENCE":10,"Y_BOX_GAMES":0}]}' | jq</copy>
 
     ```
 
@@ -492,7 +492,7 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
     * `topNdetails` = 3
 
     ```
-    <copy>curl -X POST "$<oml-cloud-service-location-url>/omlmod/v1/deployment/nb_cust360/score" --header "Authorization: Bearer ${token}" --header 'Content-Type: application/json' -d '{"topNdetails":3, "inputRecords":[{"YRS_RESIDENCE":10,"Y_BOX_GAMES":0},{"YRS_RESIDENCE":5,"Y_BOX_GAMES":1}]}' | jq</copy>
+    <copy>curl -X POST "${omlservice}/omlmod/v1/deployment/nb_cust360/score" --header "Authorization: Bearer ${token}" --header 'Content-Type: application/json' -d '{"topNdetails":3, "inputRecords":[{"YRS_RESIDENCE":10,"Y_BOX_GAMES":0},{"YRS_RESIDENCE":5,"Y_BOX_GAMES":1}]}' | jq</copy>
 
     ```
 
@@ -562,7 +562,7 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
 
     ```
     <copy>
-    curl -X POST "$<oml-cloud-service-location-url>/omlmod/v1/cognitive-text/keywords" \
+    curl -X POST "${omlservice}/omlmod/v1/cognitive-text/keywords" \
     --header 'Content-Type: application/json' \
     --header "Authorization: Bearer ${token}" \
     --data '{
@@ -581,7 +581,7 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
    Run the following command to obtain the top 2 most relevant keywords in the provided text string.
 
     ```
-    <copy>curl -X POST "$<oml-cloud-service-location-url>/omlmod/v1/cognitive-text/keywords" --header 'Content-Type: application/json' --header "Authorization: Bearer ${token}" --data '{"topN":2,"textList":["With Oracle Machine Learning, Oracle moves the algorithms to the data. Oracle runs machine learning within the database, where the data reside. This approach minimizes or eliminates data movement, achieves scalability, preserves data security, and accelerates time-to-model deployment. Oracle delivers parallelized in-database implementations of machine learning algorithms and integration with the leading open source environments R and Python. Oracle Machine Learning delivers the performance, scalability, and automation required by enterprise-scale data science projects - both on-premises and in the Cloud."]}' | jq</copy>
+    <copy>curl -X POST "${omlservice}/omlmod/v1/cognitive-text/keywords" --header 'Content-Type: application/json' --header "Authorization: Bearer ${token}" --data '{"topN":2,"textList":["With Oracle Machine Learning, Oracle moves the algorithms to the data. Oracle runs machine learning within the database, where the data reside. This approach minimizes or eliminates data movement, achieves scalability, preserves data security, and accelerates time-to-model deployment. Oracle delivers parallelized in-database implementations of machine learning algorithms and integration with the leading open source environments R and Python. Oracle Machine Learning delivers the performance, scalability, and automation required by enterprise-scale data science projects - both on-premises and in the Cloud."]}' | jq</copy>
 
     ```
 
@@ -609,7 +609,7 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
 4. Next, get a summary of the same text string that you passed in the previous step by using the summary endpoint. Run the following command:
 
     ```
-    <copy>curl -X POST "$<oml-cloud-service-location-url>/omlmod/v1/cognitive-text/summary" --header 'Content-Type: application/json' --header "Authorization: Bearer ${token}" --data '{"topN":2,"textList":["With Oracle Machine Learning, Oracle moves the algorithms to the data. Oracle runs machine learning within the database, where the data reside. This approach minimizes or eliminates data movement, achieves scalability, preserves data security, and accelerates time-to-model deployment. Oracle delivers parallelized in-database implementations of machine learning algorithms and integration with the leading open source environments R and Python. Oracle Machine Learning delivers the performance, scalability, and automation required by enterprise-scale data science projects - both on-premises and in the Cloud."]}' | jq</copy>
+    <copy>curl -X POST "${omlservice}/omlmod/v1/cognitive-text/summary" --header 'Content-Type: application/json' --header "Authorization: Bearer ${token}" --data '{"topN":2,"textList":["With Oracle Machine Learning, Oracle moves the algorithms to the data. Oracle runs machine learning within the database, where the data reside. This approach minimizes or eliminates data movement, achieves scalability, preserves data security, and accelerates time-to-model deployment. Oracle delivers parallelized in-database implementations of machine learning algorithms and integration with the leading open source environments R and Python. Oracle Machine Learning delivers the performance, scalability, and automation required by enterprise-scale data science projects - both on-premises and in the Cloud."]}' | jq</copy>
 
     ```
 
