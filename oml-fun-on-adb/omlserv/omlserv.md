@@ -61,11 +61,11 @@ This lab assumes you have:
 
 1.  This lab uses OCI Cloud Shell. To access the OCI Cloud Shell, select your compartment and click on the Cloud Shell icon.
 
-	 ![Autonomous Database instance](images/oci-cloud-shell-1-new.png)
+	 ![Autonomous Database instance](images/oci-cloud-shell-1-new1.png)
 
    On clicking the Cloud Shell icon, the OCI Cloud Shell command prompt is displayed in the lower half of the console as illustrated in the image below.
 
-  ![OCI Cloud Shell command prompt](images/oci-cloud-shell-2-new.png)
+  ![OCI Cloud Shell command prompt](images/oci-cloud-shell-2-new2.png)
 
 2. To access Oracle Machine Learning Services using the REST API, you must acquire an access token. To authenticate and obtain an access token, use cURL with the ``-d`` option to pass the user name and password for your Oracle Machine Learning Services account against the Oracle Machine Learning User Management Cloud Service token service. Use the following details to get an authentication token.
     * Your OML user name
@@ -82,81 +82,84 @@ This lab assumes you have:
      </copy>
      ```
 
-   In the syntax above, `oml-cloud-service-location-url` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from **Oracle Machine Learning RESTful services** on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
+   In the syntax above, `oml-cloud-service-location-url` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID.  
+   
+### Task 1.1: Get the `oml-cloud-service-location-url` to Obtain Your REST Authentication Token
 
-  ![Database Actions](images/database-actions.png)
+You can obtain this URL information from **Oracle Machine Learning RESTful services** on the Database Actions page. To access **Database actions** and obtain the url:
 
-   On the Database Actions page, and go to the **Related Services** tab and click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.  
+1. On your Oracle ADB instance details page, click **Database actions**  and then click **View all database actions.**
 
-  ![Related Services tab](images/omls-related-services.png)
+   ![Database Actions](images/dbactions-view-all-dbactions.png)
+      
+2. The Database Actions Launchpad opens in a different tab. Here, go to **Related Services** tab and then click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.  
 
-   On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the ``/omlusers/`` segment.
+   ![Related Services tab](images/omls-related-services.png)
 
-  ![Oracle Machine Learning RESTful services](images/omls-url.png)
+3. On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the ``/omlusers/`` segment.
 
-   Now, go back to the Cloud Shell interface and run a command to obtain a token. First set variables for the parameters for ease of use in subsequent requests.
+   ![Oracle Machine Learning RESTful services](images/omls-url.png)
+
+4. Now, go back to the Cloud Shell interface and run a command to obtain a token. First set variables for the parameters for ease of use in subsequent requests.
 
     ```
     <copy>export oml_username=OMLUSER
     export oml_password=AAbbcc123456
     export omlserver=<omlserver url></copy>
-
     ```
 
-   In the command above,
+    In the command above,
 
-     * OMLUSER is your OML user name.
-     * AAbbcc123456 is your OML password.
-     * omlserver url is the URL that you copied from the ADB console, without the /omlusers/ segment in it.
+    * OMLUSER is your OML user name.
+    * AAbbcc123456 is your OML password.
+    * omlserver url is the URL that you copied from the ADB console, without the /omlusers/ segment in it.
 
-   An example of omlserver URL is https://aabbcc123456xyz-omllabs.adb.us-ashburn-1.oraclecloudapps.com. In this URL:
-     * `aabbcc123456xyz` is the tenancy ID (not to be confused with the very long tenancy OCID)
-     * `omllabs` is the database name, and
-     * `adb.us-ashburn-1.oraclecloudapps.com` is the region name.
+  An example of omlserver URL is https://aabbcc123456xyz-omllabs.adb.us-ashburn-1.oraclecloudapps.com. In this URL:
+    * `aabbcc123456xyz` is the tenancy ID (not to be confused with the very long tenancy OCID)
+    * `omllabs` is the database name, and
+    * `adb.us-ashburn-1.oraclecloudapps.com` is the region name.
 
-   Run the following command to obtain an authentication token using the variables set above and save the token string to the variable `token`.
+5. Run the following command to obtain an authentication token using the variables set above and save the token string to the variable `token`.
 
     ```
     <copy>export token=$(curl -X POST -H 'Content-Type: application/json'  -d '{"grant_type":"password", "username":"'${oml_username}'",  "password":"'${oml_password}'"}' "${omlserver}/omlusers/api/oauth2/v1/token" | grep -o -P '(?<="accessToken":").*(?=","expiresIn)' )
     </copy>
     ```
 
-   Successfully running the command above results in a token string that is saved to the variable ``token``. To visually inspect the token, run the command below:
+6. Successfully running the command above results in a token string that is saved to the variable ``token``. To visually inspect the token, run the command below:
 
     ```
     <copy>echo $token</copy>
-
     ```
 
-   Running the command above should display the token string. Note that the token string displayed below is truncated for security reasons.
+    Running the command above should display the token string. Note that the token string displayed below is truncated for security reasons.
 
     ```
     eyJhbGci... KLbI1wQ==
-
     ```
 
-3. A token is valid for an hour. You can refresh a token for up to 8 hours after generating it. Each refresh will extend its validity by an hour.
+7. A token is valid for an hour. You can refresh a token for up to 8 hours after generating it. Each refresh will extend its validity by an hour.
 
-     Here's the command for refreshing a token:
+   Here's the command for refreshing a token:
 
     ```
     <copy>export token=$(curl -i -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer ${token}" -d '{"grant_type":"refresh_token", "refresh_token":"'${token}'"}' "${omlserver}/omlusers/api/oauth2/v1/token" | grep -o -P '(?<="accessToken":").*(?=","expiresIn)' )</copy>
     ```
 
-    To visually inspect the token, run the command below:
+7. To visually inspect the token, run the command below:
 
     ```
     <copy>echo $token</copy>
 
     ```
 
-4. You can also revoke a token. You cannot use or refresh a token you have revoked. For this Workshop, do not perform this step. The syntax is provided for your reference.
+8. You can also revoke a token. You cannot use or refresh a token you have revoked. For this Workshop, do not perform this step. The syntax is provided for your reference.
 
     ```
     <copy>curl -i -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer ${token}" "${omlserver}/omlusers/api/oauth2/v1/token/revoke"</copy>
     ```
 
-   Running the command above produces a result similar to this:
+    Running the command above produces a result similar to this:
 
     ```
     HTTP/1.1 200 OK
@@ -921,14 +924,8 @@ To score a mini batch:
 
     ```
 
-3. Run the bash script file test.sh: 
+3. Run the bash script file `test.sh`: 
 
-    ```
-    <copy>
-    Run script test.sh$ 
-    ./test.sh
-    </copy>
-    ```
 
 4. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. To authenticate and obtain a token, use `cURL` with the `-d` option to pass the credentials for your Oracle Machine Learning account against the Oracle Machine Learning user management cloud service REST endpoint `/oauth2/v1/token`. Run the following command to obtain the access token: 
 
@@ -1053,18 +1050,18 @@ To create and run a data bias detection job:
     </copy>
     ``` 
 
-  In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
+  In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. 
+    * On your Oracle ADB instance details page, click **Database actions**  and then click **View all database actions.**
 
-  ![Database Actions](images/database-actions.png)
+      ![Database Actions](images/dbactions-view-all-dbactions.png)
+        
+    * The Database Actions Launchpad opens in a different tab. Here, go to **Related Services** tab and then click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.  
 
-  On the **Database Actions** page, and go to the **Related Services** tab and click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.
+      ![Related Services tab](images/omls-related-services.png)
 
-  ![Related Services tab](images/omls-related-services.png)
+    * On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
 
-  On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
-
-  ![Oracle Machine Learning RESTful services](images/omls-url.png)
-
+      ![Oracle Machine Learning RESTful services](images/omls-url.png)
 
 
 2. To create a job for data bias detection and data bias mitigation, send the following POST request to the `/omlmod/v1/jobs` endpoint in OML Services. 
@@ -1322,18 +1319,18 @@ To create a data monitoring job:
     * `<oml-cloud-service-location-url>` This is a URL containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID and database name. You can obtain the URL from the Development tab in the Service Console of your Oracle Autonomous Database instance.
 
 
-  In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
+  In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. 
+    * On your Oracle ADB instance details page, click **Database actions**  and then click **View all database actions.**
 
-  ![Database Actions](images/database-actions.png)
+      ![Database Actions](images/dbactions-view-all-dbactions.png)
+        
+    * The Database Actions Launchpad opens in a different tab. Here, go to **Related Services** tab and then click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.  
 
-  On the **Database Actions** page, and go to the **Related Services** tab and click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.
+      ![Related Services tab](images/omls-related-services.png)
 
-  ![Related Services tab](images/omls-related-services.png)
+    * On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
 
-  On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
-
-  ![Oracle Machine Learning RESTful services](images/omls-url.png)
-
+      ![Oracle Machine Learning RESTful services](images/omls-url.png)
 
 
 2. Create a data monitoring job by sending a `POST` request to the `/omlmod/v1/jobs` endpoint in OML Services. 
@@ -1468,7 +1465,7 @@ _Sample Response:_
 
     ```
     <copy>
-    $ export jobid='OML$7ABB6308_1664_4CB4_84B1_598A6EA599D1'  # save the job ID to a single-quoted variable
+    $ export jobid='OML$7ABB6308_1664_4CB4_84B1_598A6EA599D1'  
 
     $ curl -X GET "<oml-cloud-service-location-url>/omlmod/v1/jobs/${jobid}"  \
          --header 'Accept: application/json' \
@@ -1606,17 +1603,19 @@ To monitor your models:
     * `<oml-cloud-service-location-url>` - This is a URL containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID and database name. You can obtain the URL from the Development tab in the Service Console of your Oracle Autonomous Database instance.
 
 
-  In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. To access Database Actions, click **Database Actions** on your Oracle ADB instance details page.
+  In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. 
+    * On your Oracle ADB instance details page, click **Database actions**  and then click **View all database actions.**
 
-  ![Database Actions](images/database-actions.png)
+      ![Database Actions](images/dbactions-view-all-dbactions.png)
+        
+    * The Database Actions Launchpad opens in a different tab. Here, go to **Related Services** tab and then click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.  
 
-  On the **Database Actions** page, and go to the **Related Services** tab and click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.
+      ![Related Services tab](images/omls-related-services.png)
 
-  ![Related Services tab](images/omls-related-services.png)
+    * On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
 
-  On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
+      ![Oracle Machine Learning RESTful services](images/omls-url.png)
 
-  ![Oracle Machine Learning RESTful services](images/omls-url.png)
 
 
 2. To get the `modelId`, send a `GET` request to the deployment endpoint and specify the model `URI`. 
