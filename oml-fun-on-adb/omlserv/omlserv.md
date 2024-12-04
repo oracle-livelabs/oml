@@ -153,13 +153,15 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
 
     ```
 
-8. You can also revoke a token. You cannot use or refresh a token you have revoked. For this Workshop, do not perform this step. The syntax is provided for your reference.
+8. You can also revoke a token. You cannot use or refresh a token you have revoked. 
+
+    > **Note:** For this Workshop, do not perform this step. The syntax is provided for your reference.
 
     ```
     <copy>curl -i -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer ${token}" "${omlserver}/omlusers/api/oauth2/v1/token/revoke"</copy>
     ```
 
-    Running the command above produces a result similar to this:
+  Running the command above produces a result similar to this:
 
     ```
     HTTP/1.1 200 OK
