@@ -677,7 +677,7 @@ To deploy and score an ONNX format regression model:
 
       ```
       <copy>
-      zip -r modelName.zip modelName.onnx, metadata.json and label.txt
+      zip -r modelName.zip modelName.onnx, metadata.json, label.txt
       </copy>
       ```
     The zip file must contain the following files:
@@ -927,6 +927,13 @@ To score a mini batch:
     ```
 
 3. Run the bash script file `test.sh`: 
+
+    ```
+    <copy>
+    ./test.sh 
+    </copy>
+
+    ```
 
 
 4. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. To authenticate and obtain a token, use `cURL` with the `-d` option to pass the credentials for your Oracle Machine Learning account against the Oracle Machine Learning user management cloud service REST endpoint `/oauth2/v1/token`. Run the following command to obtain the access token: 
