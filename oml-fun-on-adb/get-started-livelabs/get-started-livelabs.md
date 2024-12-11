@@ -1,8 +1,8 @@
-# Get started with Oracle Cloud Free Tier Setup
+# Provision an Autonomous Data Warehouse with OML users
 
 ## Introduction
 
-This lab walks you through the steps to set up your Oracle Cloud Free Tier environment that includes provisioning an Oracle Autonomous Database, and signing into Oracle Machine Learning user interface.
+This lab walks to the steps of provisioning an Oracle Autonomous Database, creating an OML-enabled user and signing into Oracle Machine Learning user interface..
 
 Estimated Time: 15 minutes
 
@@ -20,8 +20,9 @@ In this lab, you will learn how to:
 ### Prerequisites
 
 * Sign up for a Free Tier Oracle Cloud account.
+* Bring your own Oracle Cloud Infrastructure tenancy
 
-> **Note:** You may see differences in account details (eg: Compartment Name is different in different places) as you work through the labs. This is because the workshop was developed using different accounts over time.
+> **Note:** You may see differences in account details (eg: Compartment Name is different in different places) as you work through the labs.
 
 
 ## Task 1: Provision an Oracle Autonomous Database
@@ -35,6 +36,11 @@ In this lab, you will learn how to:
 ## Task 3: Sign into Oracle Machine Learning User Interface
 
 [](include:oml-sign-into-oml.md)
+
+## Task 4: Create the Customer360 Table
+
+[](include:oml-create-cust360-table.md)
+
 
 ## Learn More
 
