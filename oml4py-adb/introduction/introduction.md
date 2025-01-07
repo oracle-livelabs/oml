@@ -67,9 +67,9 @@ As additional **Bonus Labs**
 
 * [About OML4Py](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/oracle-machine-learning-python.html#GUID-D13E274D-653E-4285-B52F-AF38CCFD9A5B)
 * [Get Started with Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
-* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)
+
 
 ## Acknowledgements
-* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
+* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning;  Jie Liu, Data Scientist
-* **Last Updated By/Date** - Marcos Arancibia, Sherry LaMonica, Moitreyee Hazarika, August 2023
+* **Last Updated By/Date** - Marcos Arancibia, Sherry LaMonica, Moitreyee Hazarika, August 2023, Dhanish Kumar, January 2025

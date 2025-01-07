@@ -1,6 +1,9 @@
 {
     "workshoptitle": "Introduction to Oracle Machine Learning for Python on Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "oml-create-cust360-table.md":"/common/building-blocks/tasks/oml/create-cust360-table.md"
+    },
     "tutorials": [
         {
             "title": "Introduction",
