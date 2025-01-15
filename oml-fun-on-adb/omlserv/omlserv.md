@@ -635,7 +635,7 @@ For each summary, an associated weight is also returned.
 
     ```
 
-## Task 5: Deploy and score an ONNX Format Models
+## Task 5: Deploy and score an ONNX Format Model
 
    Open Neural Network Exchange or ONNX is an open standard format of machine learning models. By using the Oracle Machine Learning Services REST API, you can deploy and score with your ONNX format models (both image and non-image).
 
