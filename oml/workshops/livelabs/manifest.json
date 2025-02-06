@@ -25,6 +25,7 @@
         },
         {
             "title": "Lab 2: Create and Run Notebooks in Oracle Machine Learning User Interface",
+            "type": "livelabs",
             "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md"
         },
         {
