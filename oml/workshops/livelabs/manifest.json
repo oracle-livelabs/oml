@@ -3,6 +3,7 @@
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
         "oml-sign-into-oml.md":"/common/building-blocks/tasks/oml/sign-into-oml.md",
+        "oml-sign-into-oml-livelabs.md":"/common/building-blocks/tasks/oml/sign-into-oml-livelabs.md",
         "oml-create-oml-user.md":"/common/building-blocks/tasks/oml/create-oml-user.md",
         "oml-oml-notebooks-ea.md":"/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md",
         "oml-nb-visualizations.md":"/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md",
@@ -21,6 +22,7 @@
         },
         {
             "title": "Lab 1: Create Projects and Workspaces in Oracle Machine Learning Notebooks",
+            "type": "livelabs",
             "filename": "../../create-project-workspace/create-project-workspace.md"
         },
         {

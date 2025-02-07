@@ -27,7 +27,18 @@ Access to your Oracle Machine Learning Notebooks account
 
 ## Task 2: Sign into Oracle Machine Learning User Interface
 
+<if type="freetier">
+
 [](include:oml-sign-into-oml.md)
+
+</if>
+
+<if type="livelabs">
+
+[](include:oml-sign-into-oml-livelabs.md)
+
+</if>
+
 
 ## Task 3: Create Project in Oracle Machine Learning Notebooks
 

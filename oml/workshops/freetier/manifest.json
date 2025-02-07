@@ -26,6 +26,7 @@
         },
         {
             "title": "Lab 1: Create Projects and Workspaces in Oracle Machine Learning User Interface",
+            "type": "freetier",
             "filename": "../../create-project-workspace/create-project-workspace.md"
         },
         {
