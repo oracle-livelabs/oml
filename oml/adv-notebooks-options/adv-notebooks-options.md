@@ -1,25 +1,22 @@
-# Introduction to Oracle Machine Learning Notebooks 
+# Advanced Options in Oracle Machine Learning Notebooks 
 
 ## Introduction
 
 This lab walks you through the steps to explore the advanced options available in Oracle Machine Learning notebooks.
 
-Estimated Time: 15 minutes
+Estimated Time: 20 minutes
 
-### About Oracle Machine Learning Notebooks
+### About the Advanced options in Oracle Machine Learning Notebooks
 
-Oracle Machine Learning Notebooks offer rich visualization capabilities of your data. The visualizations depend on the type of your dataset. You can write code, text, create a wide range of visualizations, and perform data analytics and machine learning modeling. 
+Oracle Machine Learning Notebooks offer a wide range of advanced options such as:   
 
-To support data science team collaboration, you can post  and respond to comments on individual paragraphs within a notebook and share notebooks as templates.
+* Paragraph dependencies - Allows you to add runtime sequence dependencies between paragraphs. The child paragraph automatically run after the parent paragraph is run
+* Notebook versioning - Allows archiving your work in a notebook, viewing of version history, and version comparison.
+* Comments in notebook paragraphs - Allows you to write comments in notebook paragraphs thereby supporting collaborative work. 
+* Notebook Templates - Allows you to create notebooks based on example templates.
+* Notebook Service levels - Allows you to change the notebook type. Notebook type corresponds to the ADB service levels — low, medium, high and gpu. 
+* Jobs - Allows you to create jobs to schedule the running of notebooks.
 
-The Oracle Machine Learning Notebooks provides:
-* The Oracle look and feel as it based on the Oracle Redwood theme.
-* Enriched visualization in its line chart, area chart, bar chart, pyramid chart, pie chart, donut chart, funnel chart, scatter plot, box plot and so on.
-* Comments in notebook paragraphs to support team collaboration.
-* Paragraph Dependencies, which allows you to add runtime sequence dependencies between paragraphs. The child paragraph automatically run after the parent paragraph is run.
-* Simplified service level selection of High, Medium, Low and gpu  through drop-down menu.
-* Layout style of Zeppelin or Jupyter notebook interfaces.
-* On-page versioning, viewing of version history, and version comparison.
 
 ### Objectives
 
@@ -97,6 +94,7 @@ To create paragraph dependencies:
 	This screenshot shows the successful run of paragraph 3 (dependent paragraph 2):
 	![Paragraph 3 run success](images/para-3-run.png)
 
+This completes the task of creating paragraph dependencies in a notebook, and run the paragraphs according to the dependency order.  
 
 ## Task 2: Create Notebook Versions
 
@@ -127,6 +125,8 @@ In this task, you will create Version 1 of the _Paragraph Dependencies Demo_ not
 	* Click **Restore Version** to restore the selected version of the notebook.
 5. Click **Back to Notebooks** to go back to the Notebooks page.
 	![Notebook versions page](images/view-ver1.png)
+
+This completes the task of creating a notebook version on the Notebooks page.
 
 ### Task 2.2: Create Versions in the Notebooks Editor
 By creating versions of your notebook, you can archive your work in a notebook. You can create versions of an open notebook, as well as on the notebooks listing page. In this example:
@@ -192,6 +192,8 @@ To create a new notebook version and view version history:
 	* A message is displayed confirming the creation of the new version.
 	![Notebook EA versions page](images/message-version2.png)
 
+This completes the task of creating a notebook version in the Notebooks editor.
+
 ### Task 2.3: View Version History and Compare Notebooks Versions
 To view the version that you created in Task 6.2:
 
@@ -214,6 +216,7 @@ To view the version that you created in Task 6.2:
 	* Click **Cancel** to exit the dialog.
 	* Click **Restore** to restore the selected version.
 	>**Note:** Restoring a selected version of the notebook will discard all the unversioned changes, if any.
+This completes the task of viewing version history, and comparing notebook versions. 
 
 ## Task 3: Create a Notebook using a Template Example
 
@@ -338,7 +341,7 @@ In this step, you learn how to change the notebook service levels:
 
 	> **Note:** The updated notebook type is applicable to all the paragraphs in the notebook. You cannot change the notebook type at the paragraph level.
 
-	This completes the task of changing notebook service level.
+This completes the task of changing notebook service level.
 
 
 ## Task 5: Create Jobs to Schedule Notebook Run
@@ -400,7 +403,7 @@ You can also go to Jobs from the Oracle Machine Learning home page by clicking *
 
 	![Job created](images/job-created.png)
 
-This completes the task of creating a job. 
+This completes the task of creating a job to schedule running of notebooks. 
 
 
 
