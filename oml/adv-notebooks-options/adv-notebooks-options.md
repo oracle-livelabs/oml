@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab walks you through the steps to sign into Oracle Machine Learning UI, create an Oracle Machine Learning (OML) notebook from scratch using the notebook environment, and explore the features.
+This lab walks you through the steps to explore the advanced options available in Oracle Machine Learning notebooks.
 
 Estimated Time: 15 minutes
 
@@ -24,9 +24,8 @@ The Oracle Machine Learning Notebooks provides:
 ### Objectives
 
 In this lab, you will learn how to:
-* Create notebook versions
-* View version history and compare notebook versions
 * Create paragraph dependencies, and run the paragraphs based on paragraph dependency order
+* Create notebook versions, view version history and compare notebook versions
 * Create a notebook using the Example template
 * Change notebook service levels
 * Create jobs to schedule notebook run

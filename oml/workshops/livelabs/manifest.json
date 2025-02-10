@@ -35,16 +35,16 @@
             "filename": "/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md"
         },
         {
-            "title": "Lab 4: Advanced Notebooks Options",
-            "filename": "../../adv-notebooks-options/adv-notebooks-options.md"
-        },
-        {
-            "title": "Lab 5: Collaborate in Oracle Machine Learning User Interface",
+            "title": "Lab 4: Collaborate in Oracle Machine Learning User Interface",
             "filename": "../../collaborate-use-notebooks/collaborate-use-notebooks.md"
         },
         {
-            "title": "Lab 6: Use the Scratchpad in Oracle Machine Learning User Interface",
+            "title": "Lab 5: Use the Scratchpad in Oracle Machine Learning User Interface",
             "filename": "../../use-scratchpad/use-scratchpad.md"
+        },
+        {
+            "title": "Lab 6: Advanced Notebooks Options",
+            "filename": "../../adv-notebooks-options/adv-notebooks-options.md"
         },        
         {
             "title": "Need Help?",
