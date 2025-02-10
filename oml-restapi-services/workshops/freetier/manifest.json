@@ -1,0 +1,59 @@
+{
+    "workshoptitle": "Introduction to Oracle Machine Learning Notebooks",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "oml-sign-into-oml.md":"/common/building-blocks/tasks/oml/sign-into-oml.md",
+        "oml-create-oml-user.md":"/common/building-blocks/tasks/oml/create-oml-user.md",
+        "oml-oml-notebooks-ea.md":"/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md",
+        "oml-nb-visualizations.md":"/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md",
+        "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md"        
+    },
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Introduction to Oracle Machine Learning Notebooks.",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+        },
+		{
+            "title": "Get Started with Free Tier Setup",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+            "filename": "../../get-started-livelabs/get-started-livelabs.md"
+        },
+        {
+            "title": "Lab 1: Create Projects and Workspaces in Oracle Machine Learning User Interface",
+            "type": "freetier",
+            "filename": "../../create-project-workspace/create-project-workspace.md"
+        },
+        {
+            "title": "Lab 2: Create and Run Notebooks in Oracle Machine Learning User Interface",
+            "type": "freetier",
+            "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md"
+        },
+        {
+            "title": "Lab 3: Visualize Data in Oracle Machine Learning Notebooks",
+            "filename": "/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md"
+        },
+        {
+            "title": "Lab 4: Collaborate in Oracle Machine Learning User Interface",
+            "filename": "../../collaborate-use-notebooks/collaborate-use-notebooks.md"
+        },
+        {
+            "title": "Lab 5: Use the Scratchpad in Oracle Machine Learning User Interface",
+            "filename": "../../use-scratchpad/use-scratchpad.md"
+        },
+        {
+            "title": "Lab 6: Advanced Notebooks Options",
+            "filename": "../../adv-notebooks-options/adv-notebooks-options.md"
+        },        
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

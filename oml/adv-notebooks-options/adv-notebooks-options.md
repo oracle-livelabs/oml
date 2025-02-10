@@ -8,16 +8,16 @@ Estimated Time: 15 minutes
 
 ### About Oracle Machine Learning Notebooks
 
-Oracle Machine Learning Notebooks is a web-based notebook platform for data engineers, data analysts, R and Python users, and data scientists. You can write code, text, create visualizations, and perform data analytics and machine learning modeling. You can also leverage third-party packages from the R and Python ecosystems. In Oracle Machine Learning, notebooks are organized in projects, and projects within a workspace. You can create, edit, delete, copy, move, and version notebooks, and even save notebooks as private or sharable templates.
+Oracle Machine Learning Notebooks offer rich visualization capabilities of your data. The visualizations depend on the type of your dataset. You can write code, text, create a wide range of visualizations, and perform data analytics and machine learning modeling. 
 
 To support data science team collaboration, you can post  and respond to comments on individual paragraphs within a notebook and share notebooks as templates.
+
 The Oracle Machine Learning Notebooks provides:
-* Faster notebook loading time than the original notebook interface.
 * The Oracle look and feel as it based on the Oracle Redwood theme.
-* Enriched visualization in its line chart, area chart, bar chart, pyramid chart, pie chart, donut chart, funnel chart, tag Cloud, treemap diagram, sunburst diagram, scatter plot, box plot.
+* Enriched visualization in its line chart, area chart, bar chart, pyramid chart, pie chart, donut chart, funnel chart, scatter plot, box plot and so on.
 * Comments in notebook paragraphs to support team collaboration.
 * Paragraph Dependencies, which allows you to add runtime sequence dependencies between paragraphs. The child paragraph automatically run after the parent paragraph is run.
-* Simplified service level selection of High, Medium, Low through drop-down menu.
+* Simplified service level selection of High, Medium, Low and gpu  through drop-down menu.
 * Layout style of Zeppelin or Jupyter notebook interfaces.
 * On-page versioning, viewing of version history, and version comparison.
 
