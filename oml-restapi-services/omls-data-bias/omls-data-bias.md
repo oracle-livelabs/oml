@@ -2,22 +2,21 @@
 
 ## Introduction
 
-The OML Services Data Bias Detector provides REST endpoints for creating bias detector jobs. To help address data biases and mitigate its effects in later stages of the modeling process, the bias mitigation method **Reweighing** has been added to the `data_bias` API. The Database Bias Detector calculates metrics to identify common types of data bias: Class Imbalance (CI), Statistical Parity (SP), and Conditional Demographic Disparity (CDD). 
- In this lab, you will learn how to create and run a data bias detection job, view the job details, and query the output table to view the data bias details.
+This lab walks you through the steps to create and run a data bias detection job, view the job details, and query the output table to view the data bias details.
 
 Estimated Time: 40 minutes
 
-### About Oracle Machine Learning Services
+### About Data Bias Detection in Oracle Machine Learning Services
 
-OML Services 
+The OML Services Data Bias Detector provides REST endpoints for creating bias detection jobs. To help address data biases and mitigate its effects in later stages of the modeling process, the bias mitigation method **Reweighing** has been added to the `data_bias` API. The Database Bias Detector calculates metrics to identify common types of data bias: Class Imbalance (CI), Statistical Parity (SP), and Conditional Demographic Disparity (CDD). 
 
 ### Objectives
 
 In this lab, you will:
 * Create and Run a Data Bias Detection Job
-    * Create and run a data bias detection job
-    * View the details of the data bias job
-    * Query the output table to view the data bias details detected for the sensitive features
+* Create and run a data bias detection job
+* View the details of the data bias job
+* Query the output table to view the data bias details detected for the sensitive features
 
 
 ### Prerequisites
@@ -28,48 +27,16 @@ This lab assumes you have:
     * Your OML user name and password
     * `oml-cloud-service-location-url`
 * Completed all previous labs successfully.
-
-## Task 1: Create and Run a Data Bias Detection Job in OML Services
-
-
-
-In this example, you will learn how to:
-
-* Create and run a data bias detection job
-* View the details of the data bias job
-* Query the output table to view the data bias details detected for the sensitive features
-
-**Prerequisites:**
-
 * Access to the Adult dataset. The dataset used in this example— the **Adult** dataset, also known as the **Census Income** dataset, is a multivariate dataset. It contains census data of `30,940` adults. The prediction task associated with the dataset is to determine whether a person makes over `50K` a year.  
   This dataset can be accessed here at: 
 * A valid authentication token 
 * oml-cloud-service-location-url
 
+## Task 1: Create and Run a Data Bias Detection Job in OML Services
+
 To create and run a data bias detection job: 
 
-1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. To authenticate and obtain a token, use `cURL` with the `-d` option to pass the credentials for your Oracle Machine Learning account against the Oracle Machine Learning user management cloud service REST endpoint `/oauth2/v1/token`. Run the following command to obtain the access token: 
-
-    ```
-    <copy>
-    $ curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"grant_type":"password", "username":"'<yourusername>'", 
-    "password":"' <yourpassword>'"}'"<oml-cloud-service-location-url>/omlusers/api/oauth2/v1/token"
-    </copy>
-    ``` 
-
-  In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. 
-    * On your Oracle ADB instance details page, click **Database actions**  and then click **View all database actions.**
-
-      ![Database Actions](images/dbactions-view-all-dbactions.png)
-        
-    * The Database Actions Launchpad opens in a different tab. Here, go to **Related Services** tab and then click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.  
-
-      ![Related Services tab](images/omls-related-services.png)
-
-    * On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
-
-      ![Oracle Machine Learning RESTful services](images/omls-url.png)
-
+1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. See Lab 1 in this workshop on how to obtain an authentication token. 
 
 2. To create a job for data bias detection and data bias mitigation, send the following POST request to the `/omlmod/v1/jobs` endpoint in OML Services. 
 
@@ -284,17 +251,11 @@ Some machine learning packages accept row or sample weights as a training parame
 ## Learn More
 
 * [REST API for Oracle Machine Learning Services](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/index.html)
-* [Work with Oracle Machine Learning ONNX Format Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-example-onnx-ml.html)
-* [Work with Oracle Machine Learning ONNX Image Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-example-onnx-image.html)
-* [Create the proper ONNX files that work with OML Services](https://github.com/oracle/oracle-db-examples/blob/main/machine-learning/oml-services/SKLearn%20kMeans%20and%20GMM%20export%20to%20ONNX.ipynb)
-* [Work with Batch Scoring](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-batch-scoring.html)
-* [Work with Data Monitoring](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-data-monitoring.html)
-* [Work with Model Monitoring](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-model-monitoring.html)
-* * [Work with Data Bias Detection](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-data-bias-detector.html)
+* [Work with Data Bias Detection](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-data-bias-detector.html)
 
 
 ## Acknowledgements
 
-* **Author** - Suresh Rajan, Senior Manager, Oracle Database User Assistance Development; Moitreyee Hazarika, Principal UAD, Database User Assistance Development
+* **Author** - Moitreyee Hazarika, Principal UAD, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning
 * **Last Updated By/Date** - Moitreyee Hazarika, February 2025

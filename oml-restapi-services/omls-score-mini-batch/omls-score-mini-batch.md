@@ -6,18 +6,15 @@
 
 Estimated Time: 40 minutes
 
-### About Oracle Machine Learning Services
+### About Cognitive Image Functionality in Oracle Machine Learning Services
 
-OML Services extends OML functionality to support model deployment and model lifecycle management for both in-database OML models and third-party Open Neural Networks Exchange (ONNX) machine learning models via REST APIs. These third-party classification, regression or clustering models can be built using tools that support the ONNX format, which includes packages like Scikit-learn and TensorFlow, among several others.
-
-Oracle Machine Learning Services provides REST endpoints through the Oracle Autonomous Database environment. These endpoints enable the storage of machine learning models along with their metadata, the creation of scoring endpoints for the model, and producing scores using these endpoints.
 
 ### Objectives
 
 In this lab, you will:
 
 * Use the Cognitive Image Functionality to Score a Mini Batch
-    * Score a mini batch of images that are converted to base64 encoded strings
+* Score a mini batch of images that are converted to base64 encoded strings
 
 
 ### Prerequisites
@@ -32,7 +29,7 @@ This lab assumes you have:
 
 
 
-## Task 6: Use the Cognitive Image Functionality to Score a Mini Batch Containing base64 Encoded String
+## Task 1: Use the Cognitive Image Functionality to Score a Mini Batch Containing base64 Encoded String
 
 OML Services supports base64 encoded strings and image tensors (matrices) for image classification. Use the mini batch functionality to score multiple images, since it is not possible to upload multiple image files directly. Here, the images must be first converted to some form of text.
 

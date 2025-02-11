@@ -1,20 +1,24 @@
-# Create and Deploy an ONNX Format model Using OML Services
+# Create and Deploy an ONNX Format model Using Oracle Machine Learning Services
 
 ## Introduction
 
- In this lab, you will .
+ In this lab, you will learn how to use Oracle Machine Learning Services REST API to deploy and score with your ONNX format models.
 
 Estimated Time: 40 minutes
 
-### About Oracle Machine Learning Services
+### About ONNX Format Model Deployment and Scoring in Oracle Machine Learning Services
 
-OML Services extends OML functionality to support model deployment and model lifecycle management for both in-database OML models and third-party Open Neural Networks Exchange (ONNX) machine learning models via REST APIs. These third-party classification, regression or clustering models can be built using tools that support the ONNX format, which includes packages like Scikit-learn and TensorFlow, among several others.
+The Oracle Machine Learning Services REST API supports ONNX format model deployment through REST endpoints for:
+* Classification models (both non-image models and image models)
+* Clustering models
+* Features Extraction models (image models)
+* Regression models
 
-Oracle Machine Learning Services provides REST endpoints through the Oracle Autonomous Database environment. These endpoints enable the storage of machine learning models along with their metadata, the creation of scoring endpoints for the model, and producing scores using these endpoints.
+Open Neural Network Exchange or ONNX is an open standard format of machine learning models. By using the Oracle Machine Learning Services REST API, you can deploy and score with your ONNX format models.
 
 ### Objectives
 
-In this lab, you will:
+In this lab, you will learn how to:
 * Deploy and score an ONNX format models
 
 
@@ -23,41 +27,37 @@ In this lab, you will:
 * OML server name
 * oml-cloud-service-location-url
 * A valid authentication token
-* Create the ONNX model zip file containing the `modelName.onnx` file, `metadata.json` file, and `label.txt` (optional) file. 
-* Ensure that the `metadata.json` file contains the following information:
-    * `function`
-    * `regressionOutput` 
-    * `classificationLabelOutput`
-    * `classificationProbOutput` 
-    * `inputTensorDimNames` 
-    * `height` 
-    * `width` 
-    * `channel` 
-    * `mean`
-    * `scale` 
-    * `inputChannel` 
-    * `clusteringDistanceOutput` 
-    * `clusteringProbOutput`
+
+## Task 1: Create the ONNX model zip file
+
+Before deploying an ONNX format model, you must create the ONNX model zip file. The zip file contains the following files: 
+
+* `modelName.onnx` file 
+* `metadata.json` file and 
+* `label.txt` (optional) file. 
+
+> **Note:** Ensure that the `metadata.json` file contains the following information:
+
+
+  * `function`
+  * `regressionOutput` 
+  * `classificationLabelOutput`
+  * `classificationProbOutput` 
+  * `inputTensorDimNames` 
+  * `height` 
+  * `width` 
+  * `channel` 
+  * `mean`
+  * `scale` 
+  * `inputChannel` 
+  * `clusteringDistanceOutput` 
+  * `clusteringProbOutput`
 
 
 To know more about the the `metadata.json` file, see:  [Specifications for ONNX Format Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/onnx_spec.html)
 
 
-
-## Task 1: Deploy an ONNX Format Model
-
-Open Neural Network Exchange or ONNX is an open standard format of machine learning models. By using the Oracle Machine Learning Services REST API, you can deploy and score with your ONNX format models (both image and non-image).
-
-The REST API is exposed as part of the Oracle Machine Learning Services on Oracle Autonomous Database cloud service. The Oracle Machine Learning Services REST API supports ONNX format model deployment through REST endpoints for:
-
-   * Classification models (both non-image models and image models)
-   * Clustering models (non-image models)
-   * Feature Extraction models (image models)
-   * Regression models (non-image models)
-
-
-To deploy and score an ONNX format regression model: 
-1. Create the ONNX.zip file by using the following command: 
+1. To create the ONNX.zip file, run the following command: 
 
       ```
       <copy>
@@ -94,19 +94,16 @@ To deploy and score an ONNX format regression model:
       winter-sottozero
       ```
 
+2. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. 
   
-2. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. To authenticate and obtain a token, use `cURL` with the `-d` option to pass the credentials for your Oracle Machine Learning account against the Oracle Machine Learning user management cloud service REST endpoint `/oauth2/v1/token`. Run the following command to obtain the access token: 
+  See **Lab 1 - Authenticate your OML Account with your Autonomous Database instance to use OML Services** in this workshop for details. 
 
-    ```
-    <copy>
-    $ curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"grant_type":"password", "username":"'<yourusername>'", 
-    "password":"' <yourpassword>'"}'"<oml-cloud-service-location-url>/omlusers/api/oauth2/v1/token"
-    </copy>
-    ```  
+## Task 2: Store the ONNX Model in the Repository
+You must now store the ONNX model in the model repository in the database. 
+To store the ONNX model:
 
-3. Store the ONNX model in the model repository in the database by sending a POST request to the Model Repository Service. 
+1. Send a POST request to the model repository Service. Here is an example of a `POST` request to store an ONNX format regression model: 
 
-  Here is an example of a `POST` request to store an ONNX format regression model: 
 
     ```
     curl -X POST --header "Authorization: Bearer $token" 
@@ -127,9 +124,10 @@ To deploy and score an ONNX format regression model:
       * `sk_rg_onnx.zip` - This is the ONNX zip file.
       * `onnxRegressionModel` - This is the model name.
 
-## Task 2: Deploy the ONNX Model
+## Task 3: Deploy the ONNX Format Model
+To deploy and score an ONNX format regression model: 
 
-1. Now, send a `POST` request to the `/omlmod/v1/deployment` endpoint to deploy the ONNX model. The inputs for this request are the `modelId` and `URI`.
+1. Send a `POST` request to the `/omlmod/v1/deployment` endpoint to deploy the ONNX model. The inputs for this request are the `modelId` and `URI`.
 
     > **Note:** Only the model owner can deploy the model. The model owner is the user who stores the model. A new endpoint is created for the deployed model. 
 
@@ -166,7 +164,7 @@ To deploy and score an ONNX format regression model:
     * `$token` - Represents an environmental variable that is assigned to the token obtained through the Authorization API.
     * `onnxrg` - This is the URI.
 
-## Task 3: Score the ONNX Model
+## Task 4: Score the ONNX Model
 
 1. Score the model by sending a POST request to the `deployment/{uri}/score` endpoint. The `GET` response to `{uri}/api` provides detailed information about the model.
 
@@ -219,10 +217,7 @@ To deploy and score an ONNX format regression model:
     * `$token` - Represents an environmental variable that is assigned to the token obtained through the Authorization API.
     * `POST` request is sent to `/deployment/onnxrg/score`.  
 
-  This completes the task of scoring an ONNX regression model.
-
-
-
+  This completes the task of deploying and scoring an ONNX regression model.
 
 
 ## Learn More

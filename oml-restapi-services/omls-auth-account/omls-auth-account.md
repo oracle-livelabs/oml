@@ -1,8 +1,8 @@
-# Introduction to Oracle Machine Learning Services
+# Authenticate your OML Account with your Autonomous Database instance to use OML Services
 
 ## Introduction
 
- In this lab, you will get a quick tour of basic OML Services features. You will learn how to obtain an authentication token for your user account to get started with OML Services and then use OML Services to explore the APIs, get model information and score with a model. You will also get a chance to use Oracle's proprietary Cognitive Text model.
+In this lab, you will get a quick tour of basic OML Services features. You will learn how to obtain an authentication token for your user account to get started with OML Services.
 
 Estimated Time: 40 minutes
 
@@ -56,6 +56,8 @@ This lab assumes you have:
      ```
 
    In the syntax above, `oml-cloud-service-location-url` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID.  
+
+   This completes the task of authenticating your OML user account with your Autonomous Database instance to use OML Services.
    
 ## Task 2: Get the `oml-cloud-service-location-url` to Obtain Your REST Authentication Token
 
@@ -99,7 +101,13 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
     </copy>
     ```
 
-6. Successfully running the command above results in a token string that is saved to the variable ``token``. To visually inspect the token, run the command below:
+    This completes the task of obtaining the `oml-cloud-service-location-url`. 
+
+## Task 3: View the Token
+
+Successfully running the command in Task 3 results in a token string that is saved to the variable ``token``. YOu can also visually inspect the token.
+
+1. To visually inspect the token, run the command below:
 
     ```
     <copy>echo $token</copy>
@@ -110,25 +118,27 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
     ```
     eyJhbGci... KLbI1wQ==
     ```
+    This completes the task of visually inspecting the authentication token. 
 
-7. A token is valid for an hour. You can refresh a token for up to 8 hours after generating it. Each refresh will extend its validity by an hour.
+## Task 4: Refresh the Authentication Token
 
-   Here's the command for refreshing a token:
+An authentication token is valid for an hour. You can refresh a token for up to 8 hours after generating it. Each refresh will extend its validity by an hour. : 
+
+1. To refresh your token, run the following command: 
+   
 
     ```
     <copy>export token=$(curl -i -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer ${token}" -d '{"grant_type":"refresh_token", "refresh_token":"'${token}'"}' "${omlservice}/omlusers/api/oauth2/v1/token" | grep -o -P '(?<="accessToken":").*(?=","expiresIn)' )</copy>
     ```
 
-7. To visually inspect the token, run the command below:
+    This completes the task of refreshing the authentication token. 
 
-    ```
-    <copy>echo $token</copy>
-
-    ```
-
-8. You can also revoke a token. You cannot use or refresh a token you have revoked. 
+## Task 5: Revoke a Token
+You can also revoke a token. You cannot use or refresh a token you have revoked.
 
     > **Note:** For this Workshop, do not perform this step. The syntax is provided for your reference.
+
+1. Run the following command to revoke a token:
 
     ```
     <copy>curl -i -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer ${token}" "${omlservice}/omlusers/api/oauth2/v1/token/revoke"</copy>
@@ -138,7 +148,7 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
 
     ```
     HTTP/1.1 200 OK
-    Date: Mon, 06 Sep 2021 07:12:49 GMT
+    Date: Mon, 10 Feb 2025 07:12:49 GMT
     Content-Type: application/json
     Content-Length: 15
     Connection: keep-alive
@@ -152,19 +162,14 @@ You can obtain this URL information from **Oracle Machine Learning RESTful servi
 
     {"status":"ok"}
     ```
+    This completes the task of revoking the authentication token. 
 
-
+    You may now **proceed to the next lab.**
 
 ## Learn More
 
 * [REST API for Oracle Machine Learning Services](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/index.html)
-* [Work with Oracle Machine Learning ONNX Format Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-example-onnx-ml.html)
-* [Work with Oracle Machine Learning ONNX Image Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-example-onnx-image.html)
-* [Create the proper ONNX files that work with OML Services](https://github.com/oracle/oracle-db-examples/blob/main/machine-learning/oml-services/SKLearn%20kMeans%20and%20GMM%20export%20to%20ONNX.ipynb)
-* [Work with Batch Scoring](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-batch-scoring.html)
-* [Work with Data Monitoring](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-data-monitoring.html)
-* [Work with Model Monitoring](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-model-monitoring.html)
-* * [Work with Data Bias Detection](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-data-bias-detector.html)
+
 
 
 ## Acknowledgements
