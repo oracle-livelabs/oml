@@ -12,20 +12,35 @@
         "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
       },
       {
-        "title": "Lab 1: Create a Machine Learning Model",
-        "description": "Explore OML Notebooks and create a machine learning model on customer credit data set.",
-        "filename":  "../../create-ml-model/create-ml-model-ll2.md"
+        "title": "Lab 1: Introduction to Machine Learning Notebooks",
+        "description": "Explore OML Notebooks",
+        "filename":  "https://oracle-livelabs.github.io/oml/oml-fun-on-adb/oml-notebooks/oml-notebooks.md"
       },
       {
-        "title": "Lab 2: Migrate Machine Learning Model to ATP",
-        "description": "Export the machine learning model from ADW and import into ATP",
+        "title": "Lab 2: Introduction to Oracle Machine Learning for SQL",
+        "description": "Learn to forecast sales using Time Series",
         "type": "livelabs",
-        "filename": "../../move-model-to-db/move-model-to-db-ll2.md"
+        "filename": "https://oracle-livelabs.github.io/oml/oml-fun-on-adb/oml4sql/omlsql.md"
       },
       {
-        "title": "Lab 3: Using Prediction in an Application",
-        "description": "Set up the ATP environment, import and APEX application and explore how ADB can be embedded into applications.",
-        "filename": "../../integrate-with-app/integrate-with-app-ll2.md"
+        "title": "Lab 3: Introduction to Oracle Machine Learning for Python",
+        "description": "Explore machine learning techniques using OML4Py",
+        "filename": "https://oracle-livelabs.github.io/oml/oml-fun-on-adb/omlpy/omlpy.md"
+      },
+      {
+        "title": "Lab 4: Introduction to Oracle Machine Learning for R",
+        "type": "livelabs",
+        "filename": "https://oracle-livelabs.github.io/oml/oml-fun-on-adb/omlr/omlr.md"
+      },
+      {
+        "title": "Lab 5: Introduction to Oracle Machine Learning AutoML UI",
+        "type": "livelabs",
+        "filename": "../../automl/automl.md"
+      },
+      {
+        "title": "Lab 6: Introduction to Oracle Machine Learning Services",
+        "type": "livelabs",
+        "filename": "https://oracle-livelabs.github.io/oml/oml-fun-on-adb/omlserv/omlserv.md"
       },
       {
         "title": "Need Help?",
