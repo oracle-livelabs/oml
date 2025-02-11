@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Introduction to Oracle Machine Learning Notebooks",
+    "workshoptitle": "Introduction to Oracle Machine Learning Services",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
         "oml-sign-into-oml.md":"/common/building-blocks/tasks/oml/sign-into-oml.md",
@@ -21,30 +21,30 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
         },
         {
-            "title": "Lab 1: Create Projects and Workspaces in Oracle Machine Learning Notebooks",
+            "title": "Lab 1: Authenticate Your User Account with Your Autonomous Database Instance to Use OML Services",
             "type": "livelabs",
-            "filename": "../../create-project-workspace/create-project-workspace.md"
+            "filename": "../../omls-auth-account/omls-auth-account.md"
         },
         {
-            "title": "Lab 2: Create and Run Notebooks in Oracle Machine Learning User Interface",
+            "title": "Lab 2: Deploy and score an ONNX Format Model",
             "type": "livelabs",
-            "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md"
+            "filename": "../../omls-onnx/omls-onnx.md"
         },
         {
-            "title": "Lab 3: Visualize Data in Oracle Machine Learning Notebooks",
-            "filename": "/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md"
+            "title": "Lab 3: Use the Cognitive Image Functionality to Score a Mini Batch Containing base64 Encoded String",
+            "filename": "../../omls-score-mini-batch/omls-score-mini-batch.md"
         },
         {
-            "title": "Lab 4: Collaborate in Oracle Machine Learning User Interface",
-            "filename": "../../collaborate-use-notebooks/collaborate-use-notebooks.md"
+            "title": "Lab 4: Create and Run a Data Bias Detection Job",
+            "filename": "../../omls-data-bias/omls-data-bias.md"
         },
         {
-            "title": "Lab 5: Use the Scratchpad in Oracle Machine Learning User Interface",
-            "filename": "../../use-scratchpad/use-scratchpad.md"
+            "title": "Lab 5: Create and Run a Data Monitoring Job",
+            "filename": "../../omls-data-monitoring/omls-data-monitoring.md"
         },
         {
-            "title": "Lab 6: Advanced Notebooks Options",
-            "filename": "../../adv-notebooks-options/adv-notebooks-options.md"
+            "title": "Lab 6: Create and Run a Model Monitoring Job",
+            "filename": "../../omls-model-monitoring/omls-model-monitoring.md"
         },        
         {
             "title": "Need Help?",
