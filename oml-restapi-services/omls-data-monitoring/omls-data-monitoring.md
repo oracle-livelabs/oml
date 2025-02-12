@@ -1,16 +1,16 @@
-# Create and Run a Data Monitoring Job Using OML Services REST API
+# Create and Run a Data Monitoring Job using Oracle Machine Learning Services
 
 ## Introduction
 
- In this lab, you 
+This lab walks you through the steps to create and run a data monitoring job using Oracle Machine Learning Services. 
 
 Estimated Time: 40 minutes
 
-### About Oracle Machine Learning Services
+### About Data Monitoring in Oracle Machine Learning Services
 
-OML Services extends OML functionality to support model deployment and model lifecycle management for both in-database OML models and third-party Open Neural Networks Exchange (ONNX) machine learning models via REST APIs. These third-party classification, regression or clustering models can be built using tools that support the ONNX format, which includes packages like Scikit-learn and TensorFlow, among several others.
+Data Monitoring evaluates how your data evolves over time. It helps you with insights on trends and multivariate dependencies in the data. It also gives you an early warning about data drift.
 
-Oracle Machine Learning Services provides REST endpoints through the Oracle Autonomous Database environment. These endpoints enable the storage of machine learning models along with their metadata, the creation of scoring endpoints for the model, and producing scores using these endpoints.
+Oracle Machine Learning Services extends OML functionality to support data monitoring. The output data is written to the user specified output tables. This table is created by Oracle Machine Learning Services and its format also depends on the job type. The output schema name is `outputSchemaName`. You can overwrite the default by the `outputSchemaName` attribute. 
 
 ### Objectives
 
@@ -21,6 +21,7 @@ In this lab, you will:
     * Enable the job to run
     * View job output
 
+  >**Note:** This example in this lab uses the `HOUSEHOLD POWER CONSUMPTION` dataset.
 
 ### Prerequisites
 
@@ -30,67 +31,13 @@ This lab assumes you have:
     * Your OML user name and password
     * `oml-cloud-service-location-url`
 * Completed all previous labs successfully.
-
-
-
-
-
+* Access to the dataset to monitor
 
 ## Task 1: Create and Run a Data Monitoring Job
 
-Using the OML Services REST API, you can evaluate how your data evolves over time. It provides you with insights on trends and multivariate dependencies in the data. It also gives you an early warning about data drift.
-
-In this example, you will learn how to:
-
-  * Create a data monitoring job
-  * View the job details
-  * Update the job (optional)
-  * Enable the job to run
-  * View job output
-
-  >**Note:** This example uses the `HOUSEHOLD POWER CONSUMPTION` dataset.
-
-**Prerequisites:**
-
-  * A valid authentication token
-  * oml-cloud-service-location-url
-  * Access to the dataset to monitor
- 
-
-
 To create a data monitoring job:
 
-1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. To authenticate and obtain a token, use `cURL` with the `-d` option to pass the credentials for your Oracle Machine Learning account against the Oracle Machine Learning user management cloud service REST endpoint `/oauth2/v1/token`. Run the following command to obtain the access token: 
-
-    ```
-    <copy>
-    $ curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"grant_type":"password", "username":"'<yourusername>'", 
-    "password":"' <yourpassword>'"}'"<oml-cloud-service-location-url>/omlusers/api/oauth2/v1/token"
-    </copy>
-    ```
-  Here,  
-    * `-X POST` - Specifies to use a POST request when communicating with the HTTP server
-    * `-header` - Defines the headers required for the request (application/json)
-    * `-d` - Sends the username and password authentication credentials as data in a POST request to the HTTP server
-    * `Content-Type` - Defines the response format (JSON)
-    * `Accept` - Defines the response format (JSON)
-    * `<yourusername>` - This is the user name of a Oracle Machine Learning user with the default OML_DEVELOPER role
-    * `<yourpassword>` - This is the password for the user name
-    * `<oml-cloud-service-location-url>` This is a URL containing the REST server portion of the Oracle Machine Learning User Management Cloud Service instance URL that includes the tenancy ID and database name. You can obtain the URL from the Development tab in the Service Console of your Oracle Autonomous Database instance.
-
-
-  In the syntax above, `<oml-cloud-service-location-url>` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID. You can obtain this URL information from Oracle Machine Learning RESTful services on the Database Actions page. 
-    * On your Oracle ADB instance details page, click **Database actions**  and then click **View all database actions.**
-
-      ![Database Actions](images/dbactions-view-all-dbactions.png)
-        
-    * The Database Actions Launchpad opens in a different tab. Here, go to **Related Services** tab and then click **Oracle Machine Learning RESTful services**. The Oracle Machine Learning RESTful Services dialog opens.  
-
-      ![Related Services tab](images/omls-related-services.png)
-
-    * On the Oracle Machine Learning RESTful Services dialog, copy the URL for your ADB instance. Paste the URL to a text editor, such as Notepad. From the URL, remove the /omlusers/ segment.
-
-      ![Oracle Machine Learning RESTful services](images/omls-url.png)
+1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. See **Lab 1-Authenticate your OML Account with your Autonomous Database instance to use OML Services** in this workshop on how to obtain the authentication token. 
 
 
 2. Create a data monitoring job by sending a `POST` request to the `/omlmod/v1/jobs` endpoint in OML Services. 
@@ -198,9 +145,9 @@ To create a data monitoring job:
 
 
 
-When your job is submitted successfully, you will receive a response with a `jobid`. 
+When your job is submitted successfully, you will receive a response with a `jobid`. Note the `jobId` to use it in submit requests to retrieve job details or to perform any other actions on the job.
 
-  >**Note:** the `jobId` to use it in submit requests to retrieve job details or to perform any other actions on the job. 
+    
 
 _Sample Response:_
   Here is an example of a data monitoring job creation response: 
@@ -216,6 +163,8 @@ _Sample Response:_
      ]
      }
    ```
+
+This completes the task of creating and running a data monitoring job. 
 
 ## Task 2: View Details of the Submitted Job
 
@@ -298,15 +247,25 @@ _Sample Response:_
     ```
 
 
-## Task 3: Query the Output Table
+## Task 3: Query the Output Table to view the Data Monitoring Details 
 
-1. Once your job has run, either according to its schedule or by the RUN action, you can view its output in the table. You specify the table in your job request with the `outputData` parameter. The full name of the table is `{jobid}_{outputData}`. You can check if your job is complete by sending a request to view its details.
+Once your job has run, either according to its schedule or by the RUN action, you can view its output in the output table. You must specify the table in your job request with the `outputData` parameter. The full name of the table is in the format `{jobid}_{outputData}`.
 
+1. Check if your job is complete by sending a request to view its details.
+
+2. Run the following SQL command to query the output table. Here is the syntax:
+
+    ```
+    %sql
+
+    SELECT {column_1}, {column_2}, {column_3}, {column_4}, {column_5}, {column_6}, 
+      {column_7}, {column_8} 
+    FROM {jobId}_{outputData}
+    ORDER BY {column_1}, {column3}
+    ```
 
   _Example to query the output table associated with this example:_
   
-  After you run the query, scroll down the output table to view if there is information for the `baseline` time period and `newdata` time period for each of the dataset features being monitored for drift. Many of the columns may be empty in the baseline rows, as the data monitoring is done on the new data, not the baseline data. 
-
     ```
     <copy>
     %sql
@@ -318,9 +277,9 @@ _Sample Response:_
 
     </copy>
     ```
+  After you run the query, scroll down the output table to view if there is information for the `baseline` time period and `newdata` time period for each of the dataset features being monitored for drift. Many of the columns may be empty in the baseline rows, as the data monitoring is done on the new data, not the baseline data. 
 
-
-
+This completes the task of creating and running a data monitoring job. You may now **proceed to the next lab.**
 
 ## Learn More
 

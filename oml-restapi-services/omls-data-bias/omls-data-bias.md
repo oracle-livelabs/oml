@@ -13,9 +13,8 @@ The OML Services Data Bias Detector provides REST endpoints for creating bias de
 ### Objectives
 
 In this lab, you will:
-* Create and Run a Data Bias Detection Job
 * Create and run a data bias detection job
-* View the details of the data bias job
+* View details of the data bias detection job
 * Query the output table to view the data bias details detected for the sensitive features
 
 
@@ -27,16 +26,15 @@ This lab assumes you have:
     * Your OML user name and password
     * `oml-cloud-service-location-url`
 * Completed all previous labs successfully.
-* Access to the Adult dataset. The dataset used in this example— the **Adult** dataset, also known as the **Census Income** dataset, is a multivariate dataset. It contains census data of `30,940` adults. The prediction task associated with the dataset is to determine whether a person makes over `50K` a year.  
-  This dataset can be accessed here at: 
+* Access to the `Adult` dataset. The dataset used in this example— the **Adult** dataset, also known as the **Census Income** dataset, is a multivariate dataset. It contains census data of `30,940` adults. The prediction task associated with the dataset is to determine whether a person makes over `50K` a year.
 * A valid authentication token 
-* oml-cloud-service-location-url
+
 
 ## Task 1: Create and Run a Data Bias Detection Job in OML Services
 
 To create and run a data bias detection job: 
 
-1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. See Lab 1 in this workshop on how to obtain an authentication token. 
+1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. See **Lab 1-Authenticate your OML Account with your Autonomous Database instance to use OML Services** in this workshop on how to obtain the authentication token.
 
 2. To create a job for data bias detection and data bias mitigation, send the following POST request to the `/omlmod/v1/jobs` endpoint in OML Services. 
 
@@ -65,11 +63,7 @@ To create and run a data bias detection job:
             -H 'Authorization:Bearer <token>'
       ```
 
-    _Sample response of the data bias detection job:_
 
-    ```
-    "jobId":"OML$53D60B34_A275_4B2B_831C_2C8AE40BCB53","links":[{"rel":"self","href":"http://<oml-cloud-service-location-url>/omlmod/v1/jobs/OML%2453D60B34_A275_4B2B_831C_2C8AE40BCB53"}]}
-    ```
   The parameters used in this command are:
 
     * `jobName` - The name of the OML job. In this example, the name is jobNametest.
@@ -90,7 +84,18 @@ To create and run a data bias detection job:
     * `categoricalBinNum` - Indicates whether to perform binning on categorical features. The number of bins is set to `6`.
     * `numericalBinNum` - Indicates whether to perform binning on numerical features. The number of bins is set to the default value `10`.
 
-## Task 2: View the Data Bias Detection Job Details
+
+        _Sample response of the data bias detection job:_
+
+    ```
+    "jobId":"OML$53D60B34_A275_4B2B_831C_2C8AE40BCB53","links":[{"rel":"self","href":"http://<oml-cloud-service-location-url>/omlmod/v1/jobs/OML%2453D60B34_A275_4B2B_831C_2C8AE40BCB53"}]}
+    ```
+
+    In the response, `OML$53D60B34_A275_4B2B_831C_2C8AE40BCB53` is the Job ID. 
+
+    This completes the task of creating a data bias detection job. 
+
+## Task 2: View details of Data Bias Detection Job
 
 1. Run the following command to view job details:
 
@@ -105,15 +110,19 @@ To create and run a data bias detection job:
       * `$token` - Represents an environmental variable that is assigned to the token obtained through the  Authorization API.
       * `OML$53D60B34_A275_4B2B_831C_2C8AE40BCB53` - This is the job ID
 
+## Task 3: Query the Output table to view the Data Bias Detection Details 
 
+After the data bias job is submitted successfully, you must connect to the database to access the output table in the output schema. The data bias detection details are available in the output table. 
 
-2. After the data bias job is submitted successfully, you must connect to the database to access the output table in the output schema. Note the `inputSchemaName`, `outputSchemaName`, and `outputData` in this example:
+Note the `inputSchemaName`, `outputSchemaName`, and `outputData`. 
 
-    * `inputSchemaName` - It is `OMLUSER`
-    * `outputSchemaName` - It is `OMLUSER`
-    * `outputData` - This is the output data table. In this example, the name is `adultbias_tab`.
+In this example:
 
-    Run the following SQL query to count the number of records in the output table: 
+* `inputSchemaName` - It is `OMLUSER`
+* `outputSchemaName` - It is `OMLUSER`
+* `outputData` - This is the output data table. In this example, the name of the output table is `adultbias_tab`.
+
+1. Run the following SQL query to count the number of records in the output table: 
 
     ```
     <copy>
@@ -128,10 +137,12 @@ To create and run a data bias detection job:
     * `OML$53D60B34_A275_4B2B_831C_2C8AE40BCB53` - This is the job ID.
     * `ADULTBIAS_TAB` - This is the output table name.
 
-    _Sample Response:_
-    Here is the data bias result for `GENDER` passed for the parameter `sensitiveFeature` , and `MARITAL_STATUS` passed for the parameter strata:
 
-    ```
+
+
+_Sample Output:_ Here is the data bias result for `GENDER` passed for the parameter `sensitiveFeature` , and `MARITAL_STATUS` passed for the parameter strata:
+
+```
     {
     "metric": [
         {
@@ -237,7 +248,7 @@ To create and run a data bias detection job:
         }
     ]
 }
-
+```
 
 In this example:
 
@@ -247,7 +258,12 @@ In this example:
 * For `GENDER`, reweighing matrix is computed. Reweighing is a method to mitigate data bias. Reweighing reduces the data bias by assigning greater weights to instances in the disadvantaged groups and with positive labels. Essentially, the classifier pays more attention to the instances with greater weights, and prioritize their correct classification. The goal is to ensure that the classifier does not favor the advantaged groups or allow existing biases against disadvantage groups. Here's how you can apply the reweighing matrix:
 
 Some machine learning packages accept row or sample weights as a training parameter for certain models. For example, in the Oracle `DBMS_DATA_MINING` package, you can set the `ODMS_ROW_WEIGHT_COLUMN_NAME` in Global Settings while training a generalized linear model (GLM). For Classification algorithms that cannot incorporate row weights in the training process, the weighing matrices can serve as guidance for resampling the data.
-    
+
+This completes the task of creating a data bias detection job, and viewing the data bias detection details.
+
+You may now **proceed to the next lab.**
+
+
 ## Learn More
 
 * [REST API for Oracle Machine Learning Services](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/index.html)
