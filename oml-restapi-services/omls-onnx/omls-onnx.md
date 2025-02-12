@@ -19,16 +19,109 @@ Open Neural Network Exchange or ONNX is an open standard format of machine learn
 ### Objectives
 
 In this lab, you will learn how to:
-* Deploy and score an ONNX format models
+* Train an open source xgboost model
+* Convert the open source xgboost model to ONNX format
+* Deploy the model to OML Services on Autonomous Database
 
 
 ### Prerequisites 
 
-* OML server name
-* oml-cloud-service-location-url
+This lab assumes you have:
+* OCI Cloud Shell, which has cURL installed by default. If you are using the Workshops tenancy, you get OCI Cloud Shell as part of the reservation. However, if you are in your own OCI tenancy or using a free trial account, ensure you have OCI Cloud Shell or install cURL for your operating system to run the OML Services commands.
+* An Autonomous Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
+    * Your OML user name and password
+    * `oml-cloud-service-location-url`
 * A valid authentication token
 
-## Task 1: Create the ONNX model zip file
+## Task 1: Train an open source xgboost model
+In this lab, we will create a machine learning regression model that can predict average house price. We will use the Boston Housing price dataset. It contains the details of 506 houses in Boston.
+
+To create and train the model:
+
+1. Import the Boston Housing price dataset and store it in a variable called `boston`. 
+
+  The boston variable is a dictionary. You can view its keys by using the `keys` method and view its shape by using the `data.shape` attribute. This will return the size of the dataset in rows and columns. Use the `feature_names` attribute to return the feature names.
+
+  Run the following command to import the dataset:
+
+    ```
+    <copy>
+    from sklearn.datasets import load_boston
+    boston = load_boston()
+    </copy>
+    ```
+
+2. Run the following command to view the description of the dataset. can be viewed by printing the contents of the .DESCR attribute.
+
+    ```
+    <copy>
+    print(boston.DESCR)
+    </copy>
+
+    ```
+3. Now separate the data into target and predictor variables. Then split the data into train and test sets. Run the following command. 
+
+
+    ```
+    <copy>
+    from sklearn.model_selection import train_test_split
+
+    x, y = boston.data, boston.target
+    xtrain, xtest, ytrain, ytest=train_test_split(x, y, test_size=0.30, random_state=99)
+    </copy>
+    ```
+
+  In this example, we are using the `train_test_split` function from sklearn's `model_selection` module. The test size equal to 30% of the data. A `random_state` is assigned for reproducibility.
+
+4. Run the following command to: 
+    * Build the regression model. Use the `XGBRegressor` class of the `xgboost` package with the hyper-parameter values passed as arguments. 
+    * Initialize the regressor object
+    * Fit the regressor to the training set 
+    * Print all of the model parameters
+
+    ```
+    <copy>
+    import xgboost as xgb
+
+    model = xgb.XGBRegressor(objective ='reg:squarederror', colsample_bytree = 0.3, learning_rate = 0.1,
+                max_depth = 5, alpha = 10, n_estimators = 10)
+    print(model)
+    </copy>
+    ```
+
+5. Run the following command to train the model using the `fit` method and make predictions using the `predict` method on the model:
+
+    ```
+    <copy>
+    model.fit(xtrain, ytrain)
+
+    pred = model.predict(xtest)
+    </copy>
+    ```
+
+
+6. Next, compute the Root Mean Square error (RMSE) by using the `mean_squared_error` function. This function is available in the `metrics` module of sklearn. 
+
+    ```
+    <copy>
+    import numpy as np
+    from sklearn.metrics import mean_squared_error 
+
+    rmse = np.sqrt(mean_squared_error(ytest, pred))
+
+    print("RMSE: %f" % (rmse))
+
+    </copy>
+    ```
+
+  The RMSE for the price prediction is approximately 10.4 per $1000.
+
+  This completes the task of creating and training an open source xgboost model. 
+
+
+## Task 2: Convert the open source xgboost model to ONNX format
+
+To convert the xgboost model to ONNX, we need the model in .onnx format, zipped together with a metadata.json file. 
 
 Before deploying an ONNX format model, you must create the ONNX model zip file. The zip file contains the following files: 
 
@@ -36,10 +129,85 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
 * `metadata.json` file and 
 * `label.txt` (optional) file. 
 
+
+
+
+1. Run the following command to import the required libraries - onnxmltools, ZipFile, json, and FloatTensorType:
+
+    ```
+    <copy>
+    import onnxmltools
+    import json
+    from zipfile import ZipFile
+    from skl2onnx.common.data_types import FloatTensorType
+    </copy>
+    ```
+
+2. Run the following command to set up the directories on the file system where the ONNX model will be created:
+    ```
+    <copy>
+    import os
+    home = os.path.expanduser('~')
+    target_folder = os.path.join(home, 'onnx_test' )
+    try:
+      os.makedirs(target_folder)
+    except:
+      pass
+    os.chdir(target_folder)
+    </copy>
+    ```
+
+3. Now run the following command to define the model inputs: 
+
+    ```
+    <copy>
+    initial_types = [('float_input', FloatTensorType([None, xtrain.shape[1]]))]
+    </copy>
+    ```
+
+  In this example:
+
+  * `initial_types` - This is an argument present in the `convert_xgboost` function. Since, `scikit-learn` does not store information about the training data, so it is not possible to retrieve the number of features or their types.
+  * `float_input` - This is the name or identifier of the input tensor. Numpy array is called a tensor in ONNX. This is passed on to the model.
+  * `FloatTensorType([None, xtrain.shape[1]` - Defines the type and shape of the input tensor.
+    * `[None, xtrain.shape[1]]` - This is a list that defines the shape of the tensor - the number of rows and number of features (or input dimensions) for each data point.
+    * `None` - This is the first dimension. It represents the number of rows. The number of rows is undefined as the the number of requested predictions is unknown at the time the model is converted.
+    * `xtrain.shape[1]` - This is the second dimension. It represents the number of features (or input dimensions) for each data point.
+   
+
+4. Now that we have defined the model inputs, run the following command to convert the xgboost model to ONNX format: 
+    ```
+    <copy>
+    onnx_model = onnxmltools.convert_xgboost(model, initial_types=initial_types)
+    onnxmltools.utils.save_model(onnx_model, './xgboost_boston.onnx')
+    </copy>
+    ```
+
+  In this example, we are using the `convert_xgboost` function from onnxmltools and save the model to file `xgboost.onnx`.
+
+4. Now, run the following command to create the `metadata.json` file and compress and create the zip file by the name `onnx_xgboost.model.zip`:
+
+    ```
+    <copy>
+    metadata = {
+    "function": "regression",
+    }
+
+    with open('./metadata.json', mode='w') as f:
+      json.dump(metadata, f)
+
+    with ZipFile('./onnx_xgboost.model.zip', mode='w') as zf:
+      zf.write('./metadata.json')
+      zf.write('./xgboost_boston.onnx')
+    </copy>
+    ```
+
+
+
 > **Note:** Ensure that the `metadata.json` file contains the following information:
 
 
-  * `function`
+  * `function` (mandatory for all models)
   * `regressionOutput` 
   * `classificationLabelOutput`
   * `classificationProbOutput` 
@@ -56,53 +224,70 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
 
 To know more about the the `metadata.json` file, see:  [Specifications for ONNX Format Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/onnx_spec.html)
 
+5. Run the followng command to view and examine the string representation of the ONNX model. It contains the version of OnnxMLTools used to create the ONNX model, and a text representation of the graph structure, including the input types that you defined in step 3.
+    ```
+    <copy>
+    print(str(onnx_model))
+    </copy>
+    ```
 
-1. To create the ONNX.zip file, run the following command: 
 
-      ```
-      <copy>
-      zip -r modelName.zip modelName.onnx, metadata.json, label.txt
-      </copy>
-      ```
-    The zip file must contain the following files:
-    * `modelName.onnx` file (Mandatory). This is the ONNX model file. 
-    * `metadata.json` file (Mandatory). 
+This completes the task of creating and training an ONNX model. 
 
-  Example of a metadata.json file: 
+## Task 3: Validate the ONNX model by score with the data in the ONNX Runtime environment 
 
-      ```
-      {
-      "function": "classification",
-      "classificationProbOutput": "dense/Sigmoid:0",
-      "inputTensorDimNames": ["batch", "height", "width", "channel"],
-      "height": 224,
-      "width": 224,
-      "channel": 3,
-      "mean": [123.68, 116.779, 103.939],
-      "scale": [1.0,1.0,1.0],
-      "inputChannel": "BGR"
-      }
-      ```
-    * `label.txt` file (Optional). This file stores labels for Classification or Clustering models. The labels should be listed in the same order as the model was trained. This file is not required if the scoring outputs contain label information. It those cases, it will be ignored.
 
-    Example of a label.txt file: 
+1. Run the following command to import the ONNX runtime environment:
+    ```
+    <copy>
+    import onnxruntime as rt
+    </copy>
+    ```
 
-      ```
-      scorpion-winter
-      cinturato-winter
-      ice-zero-fr
-      winter-sottozero
-      ```
 
-2. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. 
+2. Run the following command to set up the runtime:
+
+    ```
+    <copy>
+    sess = rt.InferenceSession("xgboost_boston.onnx")
+    </copy>
+    ```
+3. Run the following command to get model metadata to enable mapping of new input to the runtime model:
+
+    ```
+    <copy>
+    input_name = sess.get_inputs()[0].name
+    label_name = sess.get_outputs()[0].name
+    </copy>
+    ```
+
+4. Run the following command to create predictions. The inputs are the xtest values.
+
+    ```
+    <copy>
+    pred_onnx = sess.run([label_name], {input_name: xtest.astype(np.float32)})[0]
+    </copy>
+    ```
+5. Run the following command to print first 10 predictions:
+    ```
+    <copy>
+    print("Prediction:\n", pred_onnx[0:10])
+    </copy>
+    ```
+
+This completes the task of validating the ONNX model. 
+
+
+
+## Task 4: Deploy the model to OML Services on Autonomous Database
+Before deploying the model, you must store the ONNX model in the model repository in the database. 
+
+1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. 
   
   See **Lab 1 - Authenticate your OML Account with your Autonomous Database instance to use OML Services** in this workshop for details. 
 
-## Task 2: Store the ONNX Model in the Repository
-You must now store the ONNX model in the model repository in the database. 
-To store the ONNX model:
 
-1. Send a POST request to the model repository Service. Here is an example of a `POST` request to store an ONNX format regression model: 
+2. To store the ONNX model, send a POST request to the model repository Service. Here is an example of a `POST` request to store an ONNX format regression model: 
 
 
     ```
@@ -124,7 +309,7 @@ To store the ONNX model:
       * `sk_rg_onnx.zip` - This is the ONNX zip file.
       * `onnxRegressionModel` - This is the model name.
 
-## Task 3: Deploy the ONNX Format Model
+## Task 5: Deploy the ONNX Format Model
 To deploy and score an ONNX format regression model: 
 
 1. Send a `POST` request to the `/omlmod/v1/deployment` endpoint to deploy the ONNX model. The inputs for this request are the `modelId` and `URI`.
@@ -164,7 +349,7 @@ To deploy and score an ONNX format regression model:
     * `$token` - Represents an environmental variable that is assigned to the token obtained through the Authorization API.
     * `onnxrg` - This is the URI.
 
-## Task 4: Score the ONNX Model
+## Task 6: Score the ONNX Model
 
 1. Score the model by sending a POST request to the `deployment/{uri}/score` endpoint. The `GET` response to `{uri}/api` provides detailed information about the model.
 
