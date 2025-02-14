@@ -127,13 +127,13 @@ The projects under OMLUSER Workspace are listed. To access the notebooks under O
 
      ![SQL command in Test Notebook EA](images/sql-test-notebook-ea.png "")
 
-4. Click the Run icon to run the paragraph to render the data in a table. 
+3. Click the Run icon to run the paragraph to render the data in a table. 
 
      ![Run Test Notebook](images/run-test-notebook-ea.png "")
 
      >**Note:** You have edited and run the _Test Notebook_ which is present in the **OMLUSER Project** in **OMLUSER Workspace**, while signed in in as `OMLUSER2`.  
 
-5. Sign out of the Oracle Machine Learning user interface.
+4. Sign out of the Oracle Machine Learning user interface.
 
 ## Task 1.4: OMLUSER Collaborates with OMLUSER2 on the Same Notebook in Real-Time
 This section shows how `OMLUSER` and `OMLUSER2` collaborate on the Sales Note notebook in real-time. Both users have the Sales Note notebook opened in different browsers, and they work on it simultaneously. The changes made by the users are dynamically reflected in the notebook in real-time. To try this example on the same client machine, for example, your laptop, use two different types of browsers such as Chrome and Firefox to enable two different logins. To see changes dynamically, try to position these two browser windows side by side on your screen so that both views are visible.
@@ -236,4 +236,4 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, November 2024
+* **Last Updated By/Date**: Moitreyee Hazarika, February 2025

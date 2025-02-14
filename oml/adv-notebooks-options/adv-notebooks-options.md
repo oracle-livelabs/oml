@@ -10,22 +10,22 @@ Estimated Time: 20 minutes
 
 Oracle Machine Learning Notebooks offer a wide range of advanced options such as:   
 
-* Paragraph dependencies - Allows you to add runtime sequence dependencies between paragraphs. The child paragraph automatically run after the parent paragraph is run
+* Notebook Service levels - Allows you to change the notebook type. Notebook type corresponds to the ADB service levels — low, medium, high and gpu. 
 * Notebook versioning - Allows archiving your work in a notebook, viewing of version history, and version comparison.
 * Comments in notebook paragraphs - Allows you to write comments in notebook paragraphs thereby supporting collaborative work. 
 * Notebook Templates - Allows you to create notebooks based on example templates.
-* Notebook Service levels - Allows you to change the notebook type. Notebook type corresponds to the ADB service levels — low, medium, high and gpu. 
 * Jobs - Allows you to create jobs to schedule the running of notebooks.
+* Paragraph dependencies - Allows you to add runtime sequence dependencies between paragraphs. The child paragraph automatically run after the parent paragraph is run.
 
 
 ### Objectives
 
 In this lab, you will learn how to:
-* Create paragraph dependencies, and run the paragraphs based on paragraph dependency order
+* Change notebook service levels
 * Create notebook versions, view version history and compare notebook versions
 * Create a notebook using the Example template
-* Change notebook service levels
 * Create jobs to schedule notebook run
+* Create paragraph dependencies, and run the paragraphs based on paragraph dependency order
 
 
 ### Prerequisites
@@ -34,67 +34,52 @@ This lab assumes you have:
 * An Oracle Machine Learning account
 * Access to Oracle Machine Learning USER account.
 
+## Task 1: Change Notebook Service Level
 
-## Task 1: Create Paragraph Dependencies and Run Paragraphs as per Dependency Order
+Notebook type corresponds to the ADB service levels — low, medium, high and gpu. These service levels affect parallelism in the database. The notebook type that is set for a notebook applies to all the paragraphs in that notebook. For the notebooks in Oracle Machine Learning Notebooks, you can use the following interpreters:
 
-Paragraph Dependencies allow you to add dependencies between paragraphs. The dependent paragraphs automatically run after the original paragraph is run, according to the order of dependency.
-To create paragraph dependencies:
-1. On the Notebooks page, click **Create**.
-2. In the Create Notebooks dialog, enter the name _Paragraph Dependencies Demo_ in the **Name** field and click **OK.** The notebook is created and it opens in the notebook editor.
-3. On the notebook, hover your cursor over the lower border of the paragraph and click the + icon to add a paragraph. Or, click on the **Add SQL Paragraph** icon to call the PL/SQL interpreter.
-	![Add PLSQL paragraph](images/add-sql-script-toolbar.png)
-4. In the first paragraph, copy and paste the following PL/SQL script. This script creates the view ESM_SH_DATA from the SALES table present in the SH schema.
-	```
-	<copy>
-	CREATE OR REPLACE VIEW ESM_SH_DATA AS
-	  SELECT TIME_ID, AMOUNT_SOLD FROM SH.SALES;
-	</copy>
-	```
+* SQL interpreter for SQL statements
+* PL/SQL  interpreter for PL/SQL scripts/statements
+* Python interpreter to process Python scripts
+* R interpreter to run R commands and scripts
+* md (MarkDown) interpreter for plain text formatting syntax so that it can be converted to HTML.
 
-5. In the second paragraph, copy and paste the following SQL script. This script gives a count of the record present in the view ESM_SH_DATA.
 
-	```
-	<copy>
-	SELECT COUNT(*) FROM ESM_SH_DATA;
+	> **Note:** The service level that is set for a notebook applies to all the paragraphs in that notebook. 
 
-	</copy>
-	```
+In this step, you learn how to change the notebook service levels:
+1. Go to the Notebooks page by clicking the Cloud menu icon on ![Cloud menu icon](images/cloud-menu-icon.png) the top left corner of the page. On the left navigation menu, click **Notebooks**.
+	
 
-6. In the third paragraph, copy and paste the following SQL script to review the data in a tabular format.
+	![Notebooks in left navigation menu](images/left-nav-pane-notebooks.png)
 
-	```
-	<copy>
-	SELECT * FROM ESM_SH_DATA
-	FETCH FIRST 10 ROWS ONLY;
+2. On the Notebooks page, click on the **OML4PY Classification_DT (1)** notebook to open it in the Notebook editor.
 
-	</copy>
-	```
+	![Open Classification notebook](images/open-classification-dt.png)
+	
 
-7. Go to the first paragraph and click on the **Enter Dependency Mode** icon.
-	![Enter Dependency Mode](images/enter-dep-mode-1.png)
+3. Click on the **Update Notebook Type** icon ![Update Notebook type icon](images/update-notebook-type-icon.png)on the top right corner. The available notebook types are displayed. The current notebook type is indicated by a tick mark, and is also displayed next to the **Update Notebook Type** icon. 
 
-	The message appears: _You are selecting dependents for this paragraph._
+	![Update Notebook Type icon](images/classification-dt-nbtype-icon.png)
 
-8. Click on the second and third paragraph to add them as dependents of paragraph one.
+	The Notebook Types (ADB service levels) are: 
 
-	>**Note:** The order of paragraph dependency is based on the order of your click.
+	* **low** — Provides the least level of resources for in-database operations, typically serial (non-parallel) execution. It supports the maximum number of concurrent in-database operations by multiple users. The interpreter with low priority is listed at the top of the interpreter list, and hence, is the default.
+	* **medium** — Provides a fixed number of CPUs to run in-database operations in parallel, where possible. It supports a limited number of concurrent users, typically 1.25 times the number of CPUs allocated to the pluggable database.
+	* **high** — Provides the highest level of CPUs to run in-database operations in parallel, up to the number of CPUs allocated to the pluggable database. It offers the highest performance, but supports the minimum number of concurrent in-database operations, typically 3.
+	* **gpu** — Provides GPU compute capabilities in a notebook through the Python interpreter with the database service level set to high. The notebook memory setting is 32 GB (DDR4), by default. It is extensible up to 200 GB.
 
-	![Add Dependents](images/add-dependents.png)
+	![Notebook Type low](images/notebook-type-low.png)
 
-9. Click **Save.**
-	![Save Dependents](images/save-dependents.png)
+4. To change the notebook type, click on the type that you want to select. In this example, let's click high. A confirmation message is displayed stating: `Notebook Type is updated to "high".`
 
-	Once the dependent paragraphs are defined and saved, it is indicated by the numbers as shown in the screenshot here:
-	![Dependent Paragraphs](images/dep-para-created.png)
-10. Now, go to the first paragraph and click the run icon . After the first paragraph starts successfully, the subsequent dependent paragraphs start to run according to the order of dependency.
-	![Dependent Paragraphs](images/run-para-1.png)
-	This screenshot shows the successful run of paragraph 1 and 2 (dependent paragraph 1):
-	![Paragraphs 1 and 2 run success ](images/para-1-2-run.png)
+	![Notebook Type high](images/notebook-type-high.png)
 
-	This screenshot shows the successful run of paragraph 3 (dependent paragraph 2):
-	![Paragraph 3 run success](images/para-3-run.png)
+	> **Note:** The updated notebook type is applicable to all the paragraphs in the notebook. You cannot change the notebook type at the paragraph level.
 
-This completes the task of creating paragraph dependencies in a notebook, and run the paragraphs according to the dependency order.  
+This completes the task of changing notebook service level.
+
+
 
 ## Task 2: Create Notebook Versions
 
@@ -131,7 +116,7 @@ This completes the task of creating a notebook version on the Notebooks page.
 ### Task 2.2: Create Versions in the Notebooks Editor
 By creating versions of your notebook, you can archive your work in a notebook. You can create versions of an open notebook, as well as on the notebooks listing page. In this example:
 
-* The original notebook _Paragraph Dependencies Demo_, is edited to add a script to build a machine learning model.
+* The original notebook _Paragraph Dependencies Demo_ is edited to add a script to build a machine learning model.
 * The notebook _Paragraph Dependencies Demo_ is then versioned as **Version 2** to archive the code to build the machine learning model.
 * The **Version 2** and **Version 1** of the _Paragraph Dependencies Demo_ notebook are compared using the **Compare Versions** feature.
 
@@ -237,13 +222,13 @@ This step demonstrates how to create the OML4Py Classification notebook based on
 	![Oracle Machine Learning home page](images/homepage-examples.png)
 
 
-2. Navigate to the **OML4Py Classification DT** example template notebook. You can search for the notebook by typing in keywords in the search box on the upper right corner of the page. Click on the grey box around the notebook. This highlights the notebook and enables the **Create Notebook** button. Click **Create Notebook**.
+2. Navigate to the **OML4Py Classification DT** example template notebook. You can search for the notebook by typing in the name in the search box on the upper right corner of the page. Click on the grey box around the notebook. This highlights the notebook and enables the **Create Notebook** button. Click **Create Notebook**.
 
 	![Create Notebook](images/classification-dt-example.png)
 
 3. The Create Notebook dialog opens. The Name field displays the same name as the template with the suffix `(1)`. You can edit this name. In this example, we will retain the auto-generated name `OML4PY Classification DT (1)`. Click **OK**.
 
-	> **Note:** In the Project field, the current user, project and workspace is selected by default. You have the option to choose a different project or a workspace by clicking the edit icon here.  
+	> **Note:** In the Project field, the current user, project, and workspace is selected by default. You have the option to choose a different project or a workspace by clicking the edit icon here.  
 
 	![Create Classification DT notebook from example template](images/create-notebook-classification.png)
 
@@ -298,53 +283,8 @@ If you choose to go to the home page, then click **Home** on the left navigation
 
 This completes the task of creating the Time Series notebook from the OML4SQL Time Series ESM Example template.
 
-## Task 4: Change Notebook Service Level
 
-Notebook type corresponds to the ADB service levels — low, medium, high and gpu. These service levels affect parallelism in the database. The notebook type that is set for a notebook applies to all the paragraphs in that notebook. For the notebooks in Oracle Machine Learning UI, you use the following interpreters:
-
-* SQL interpreter for SQL statements
-* PL/SQL  interpreter for PL/SQL scripts/statements
-* Python interpreter to process Python scripts
-* R interpreter to run R commands and scripts
-* md (MarkDown) interpreter for plain text formatting syntax so that it can be converted to HTML.
-
-
-	> **Note:** The service level that is set for a notebook applies to all the paragraphs in that notebook. 
-
-In this step, you learn how to change the notebook service levels:
-1. Go to the Notebooks page by clicking the Cloud menu icon on ![Cloud menu icon](images/cloud-menu-icon.png) the top left corner of the page. On the left navigation menu, click **Notebooks**.
-	
-
-	![Notebooks in left navigation menu](images/left-nav-pane-notebooks.png)
-
-2. On the Notebooks page, click on the **OML4PY Classification_DT (1)** notebook to open it in the Notebook editor.
-
-	![Open Classification notebook](images/open-classification-dt.png)
-	
-
-3. Click on the **Update Notebook Type** icon ![Update Notebook type icon](images/update-notebook-type-icon.png)on the top right corner. The available notebook types are displayed. The current notebook type is indicated by a tick mark, and is also displayed next to the **Update Notebook Type** icon. 
-
-	![Update Notebook Type icon](images/classification-dt-nbtype-icon.png)
-
-	The Notebook Types (ADB service levels) are: 
-
-	* **low** — Provides the least level of resources for in-database operations, typically serial (non-parallel) execution. It supports the maximum number of concurrent in-database operations by multiple users. The interpreter with low priority is listed at the top of the interpreter list, and hence, is the default.
-	* **medium** — Provides a fixed number of CPUs to run in-database operations in parallel, where possible. It supports a limited number of concurrent users, typically 1.25 times the number of CPUs allocated to the pluggable database.
-	* **high** — Provides the highest level of CPUs to run in-database operations in parallel, up to the number of CPUs allocated to the pluggable database. It offers the highest performance, but supports the minimum number of concurrent in-database operations, typically 3.
-	* **gpu** — Provides GPU compute capabilities in a notebook through the Python interpreter with the database service level set to high. The notebook memory setting is 32 GB (DDR4), by default. It is extensible up to 200 GB.
-
-	![Notebook Type low](images/notebook-type-low.png)
-
-4. To change the notebook type, click on the type that you want to select. In this example, let's click high. A confirmation message is displayed stating: `Notebook Type is updated to "high".`
-
-	![Notebook Type high](images/notebook-type-high.png)
-
-	> **Note:** The updated notebook type is applicable to all the paragraphs in the notebook. You cannot change the notebook type at the paragraph level.
-
-This completes the task of changing notebook service level.
-
-
-## Task 5: Create Jobs to Schedule Notebook Run
+## Task 4: Create Jobs to Schedule Notebook Run
 
 Jobs allow you to schedule the running of notebooks. On the Jobs page, you can create jobs, duplicate jobs, start and stop jobs, delete jobs, and monitor job status by viewing job logs, which are read-only notebooks. In this lab, you will learn how to create a job to schedule the running of the notebook Classification_DT.
 
@@ -381,7 +321,7 @@ You can also go to Jobs from the Oracle Machine Learning home page by clicking *
 
 	![Create Job](images/create-jobs-adv-settings1.png)
 
-	* **Send Notifications:** Click this option and in the **Email Address(es)** field, enter the email addresses to which you want to send notifications about the selected events for the job. By default, you can enter three email IDs, separated by comma.
+	* **Send Notifications:** Click this option and in the **Email Address(es)** field, enter the email addresses to which you want to send notifications about the selected events for the job. By default, you can enter up to three email IDs, separated by comma.
 
 	* **Events:** Click to select the events for which you want to send the notification. The supported job events are `JOB_START, JOB_SUCCEEDED, JOB_FAILED, JOB_BROKEN, JOB_COMPLETED` and `JOB_STOPPED`. 
 	
@@ -404,6 +344,70 @@ You can also go to Jobs from the Oracle Machine Learning home page by clicking *
 	![Job created](images/job-created.png)
 
 This completes the task of creating a job to schedule running of notebooks. 
+
+
+## Task 5: Create Paragraph Dependencies and Run Paragraphs as per Dependency Order
+
+Paragraph Dependencies allow you to add dependencies between paragraphs. The dependent paragraphs automatically run after the original paragraph is run, according to the order of dependency.
+To create paragraph dependencies:
+1. On the Notebooks page, click **Create**.
+2. In the Create Notebooks dialog, enter the name _Paragraph Dependencies Demo_ in the **Name** field and click **OK.** The notebook is created, and it opens in the notebook editor.
+3. On the notebook, hover your cursor over the lower border of the paragraph and click the + icon to add a paragraph. Or, click on the **Add SQL Paragraph** icon to call the PL/SQL interpreter.
+	![Add PLSQL paragraph](images/add-sql-script-toolbar.png)
+4. In the first paragraph, copy and paste the following PL/SQL script. This script creates the view `ESM_SH_DATA` from the SALES table present in the SH schema.
+	```
+	<copy>
+	CREATE OR REPLACE VIEW ESM_SH_DATA AS
+	  SELECT TIME_ID, AMOUNT_SOLD FROM SH.SALES;
+	</copy>
+	```
+
+5. In the second paragraph, copy and paste the following SQL script. This script gives a count of the record present in the view  `ESM_SH_DATA` .
+
+	```
+	<copy>
+	SELECT COUNT(*) FROM ESM_SH_DATA;
+
+	</copy>
+	```
+
+6. In the third paragraph, copy and paste the following SQL script to review the data in a tabular format.
+
+	```
+	<copy>
+	SELECT * FROM ESM_SH_DATA
+	FETCH FIRST 10 ROWS ONLY;
+
+	</copy>
+	```
+
+7. Go to the first paragraph and click on the **Enter Dependency Mode** icon.
+	![Enter Dependency Mode](images/enter-dep-mode-1.png)
+
+	The message appears: _You are selecting dependents for this paragraph._
+
+8. Click on the second and third paragraph to add them as dependents of paragraph one.
+
+	>**Note:** The order of paragraph dependency is based on the order of your click.
+
+	![Add Dependents](images/add-dependents.png)
+
+9. Click **Save.**
+	![Save Dependents](images/save-dependents.png)
+
+	Once the dependent paragraphs are defined and saved, it is indicated by the numbers as shown in the screenshot here:
+	![Dependent Paragraphs](images/dep-para-created.png)
+10. Now, go to the first paragraph and click the run icon. After the first paragraph starts successfully, the subsequent dependent paragraphs start to run according to the order of dependency.
+	![Dependent Paragraphs](images/run-para-1.png)
+	This screenshot shows the successful run of paragraph 1 and 2 (dependent paragraph 1):
+	![Paragraphs 1 and 2 run success ](images/para-1-2-run.png)
+
+	This screenshot shows the successful run of paragraph 3 (dependent paragraph 2):
+	![Paragraph 3 run success](images/para-3-run.png)
+
+This completes the task of creating paragraph dependencies in a notebook, and run the paragraphs according to the dependency order.  
+
+
 
 
 
