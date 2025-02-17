@@ -183,7 +183,7 @@ You can export a notebook in two ways:
 
     * Select the notebook that you want to export, and click **Export**.
       ![Export option](images/export-option-nb-page.png "user1 views sales")   
-    * In the Export Notebook dialog, for Notebooks to export, click **Selected**. Select the format in which you want to export the notebook, and then click **OK**.
+    * In the Export Notebook dialog, for Notebooks to export, click **Selected**. Select the format in which you want to export the notebook, and then click *Export**.
       ![Export dialog](images/export-nb-dialog1.png "user1 views sales")  
 
 2. From the Notebook editor: 
