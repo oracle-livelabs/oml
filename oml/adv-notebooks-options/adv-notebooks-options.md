@@ -240,7 +240,7 @@ This step demonstrates how to create the OML4Py Classification notebook based on
 
 	![Notebooks in left navigation menu](images/left-nav-pane-notebooks.png)
 
-6. The OML4PY Classification DT (1) notebook is now listed on the Notebooks page, as shown in the screenshot. Click it to open the notebook in the Notebooks editor. Note that you will run this notebook in the subsequent steps.
+6. The OML4PY Classification DT notebook is now listed on the Notebooks page, as shown in the screenshot. Click it to open the notebook in the Notebooks editor. Note that you will run this notebook in the subsequent steps.
 
 	![Notebook listed](images/notebook-listed.png)
 	

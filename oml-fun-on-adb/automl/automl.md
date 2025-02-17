@@ -247,7 +247,7 @@ You can create notebooks based on the top models produced in the experiment. Thi
 
 1. Click the Cloud menu icon ![hamburger icon](images/hamburger.png) on the top left corner of your page to open the left navigation menu, and click **AutoML Experiments**.
 
-	![Experiments page](images/model-to-exp.png)
+	![Experiments page](images/left-nav-pane-automl.png)
 
 2. On the AutoML Experiments page, click the **Customers 360** experiment.  
 
