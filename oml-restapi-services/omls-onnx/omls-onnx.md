@@ -38,16 +38,17 @@ In this lab, we will create a machine learning regression model that can predict
 
 To create and train the model:
 
-1. Import the Boston Housing price dataset and store it in a variable called `boston`. 
-
-  The boston variable is a dictionary. You can view its keys by using the `keys` method and view its shape by using the `data.shape` attribute. This will return the size of the dataset in rows and columns. Use the `feature_names` attribute to return the feature names.
+1. Import the Diabetes dataset and store it in a variable called `diabetes`. 
 
   Run the following command to import the dataset:
 
     ```
     <copy>
-    from sklearn.datasets import load_boston
-    boston = load_boston()
+    from sklearn.datasets import load_diabetes
+
+    diabetes = load_diabetes()
+    X = diabetes.data  # Features
+    y = diabetes.target  # Target variable (progression)
     </copy>
     ```
 
@@ -55,7 +56,7 @@ To create and train the model:
 
     ```
     <copy>
-    print(boston.DESCR)
+    print(diabetes.DESCR)
     </copy>
 
     ```
@@ -64,9 +65,10 @@ To create and train the model:
 
     ```
     <copy>
+    %python
     from sklearn.model_selection import train_test_split
 
-    x, y = boston.data, boston.target
+    x, y = diabetes.data, diabetes.target
     xtrain, xtest, ytrain, ytest=train_test_split(x, y, test_size=0.30, random_state=99)
     </copy>
     ```

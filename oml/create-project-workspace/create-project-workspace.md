@@ -1,11 +1,11 @@
-# Create Projects and Workspaces in Oracle Machine Learning Notebooks
+# Create Projects and Workspaces in Oracle Machine Learning User Interface
 ## Introduction
 
-This lab walks you through the steps to create a project and a workspace in Oracle Machine Learning Notebooks.
+This lab walks you through the steps to create a project and a workspace in Oracle Machine Learning User Interface (UI).
 
->**Note:** The initial workspaces and the default project are created by the Oracle Machine Learning service automatically when you log in to Oracle Machine Learning Notebooks for the first time. The term default applies to the last project that you work on, and it is stored in the browser cache. If you clear the cache, then there would be no default project selected. Then you must select a project to work with notebooks.
+>**Note:** The initial workspaces and the default project are created by the Oracle Machine Learning service automatically when you log in to Oracle Machine Learning UI for the first time. The term default applies to the last project that you work on, and it is stored in the browser cache. If you clear the cache, then there would be no default project selected. Then you must select a project to work with notebooks.
 
-A project is a container for storing your notebooks and other objects such as dashboards and so on. A workspace is a virtual space where your projects reside, and multiple users with the appropriate permission type can work on different projects. While you may own many projects, other workspaces and projects may be shared with you.
+A project is a logical grouping of notebooks and experiments within a workspace. A workspace is a virtual space where your projects reside, and multiple users with the appropriate permission type can work on different projects. While you may own many projects, other workspaces and projects may be shared with you. Permissions are granted on workspaces, and not on projects.
 
 This lab explains the steps to
 
@@ -40,9 +40,9 @@ Access to your Oracle Machine Learning Notebooks account
 </if>
 
 
-## Task 3: Create Project in Oracle Machine Learning Notebooks
+## Task 3: Create Project in Oracle Machine Learning UI
 
-A project is a container for your notebooks, and a workspace is a container for your projects. While you may own many projects, other workspaces and projects may be shared with you.
+A project is a container for your notebooks and experiments, and a workspace is a container for your projects. While you may own many projects, other workspaces and projects may be shared with you.
 The initial workspace and the default project is created by the Oracle Machine Learning service automatically when you log in to Oracle Machine Learning for the first time. 
 
 In this task, you will create a project by the name _Project A_ in _OMLUSER Workspace_.  
@@ -76,7 +76,7 @@ To create a new project:
 3. Click **OK**. This completes the task of creating a project and assigning it to a workspace. In this example, the newly created project is _Project A_ and the assigned workspace is _OMLUSER Workspace_.
 
 
-## Task 4: Create Workspace in Oracle Machine Learning Notebooks
+## Task 4: Create Workspace in Oracle Machine Learning UI
 
 You can create and manage new projects and workspaces, provide access to your workspace, manage permissions for users, and edit and delete workspace.
 The Workspaces page comprises two sections, one for workspaces and the other for projects.
@@ -136,4 +136,4 @@ You may now **proceed to the next lab.**
 
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, November 2024
+* **Last Updated By/Date**: Moitreyee Hazarika, February 2025

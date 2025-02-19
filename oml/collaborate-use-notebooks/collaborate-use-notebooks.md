@@ -1,4 +1,4 @@
-# Collaborate in Oracle Machine Learning Notebooks
+# Collaborate in Oracle Machine Learning User Interface
 ## Introduction
 
 This lab shows you how to two or more users can collaborate and share SQL notebooks with other Oracle Machine Learning Notebooks users.

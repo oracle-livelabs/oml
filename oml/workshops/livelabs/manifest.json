@@ -21,7 +21,7 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
         },
         {
-            "title": "Lab 1: Create Projects and Workspaces in Oracle Machine Learning Notebooks",
+            "title": "Lab 1: Create Projects and Workspaces in Oracle Machine Learning User Interface",
             "type": "livelabs",
             "filename": "../../create-project-workspace/create-project-workspace.md"
         },
