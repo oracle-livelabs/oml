@@ -22,6 +22,7 @@ In this workshop, you will learn how to:
 * Visualize your data in Oracle Machine Learning Notebooks
 * Collaborate and share notebooks with other Oracle Machine Learning Notebooks users
 * Use the Scratchpad in Oracle Machine Learning User Interface to run Python, SQL, PL/SQL, and R scripts
+* Explore the advanced options in Oracle Machine Learning Notebooks
 
 
 ### Prerequisites
@@ -47,4 +48,4 @@ Use these links to get more information about Oracle Machine Learning and Oracle
 ## Acknowledgements
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM, Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, November 2024
+* **Last Updated By/Date**: Moitreyee Hazarika, February 2025
