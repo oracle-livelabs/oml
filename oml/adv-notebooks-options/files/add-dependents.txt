@@ -1,0 +1,4 @@
+This images shows the creation of dependencies in a notebook paragraph.
+
+
+Copyright © 2017, 2025 Oracle and/or its affiliates. All rights reserved.
