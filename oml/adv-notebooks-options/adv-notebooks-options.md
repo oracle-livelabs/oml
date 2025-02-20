@@ -69,11 +69,11 @@ In this step, you learn how to change the notebook service levels:
 	* **high** — Provides the highest level of CPUs to run in-database operations in parallel, up to the number of CPUs allocated to the pluggable database. It offers the highest performance, but supports the minimum number of concurrent in-database operations, typically 3.
 	* **gpu** — Provides GPU compute capabilities in a notebook through the Python interpreter with the database service level set to high. The notebook memory setting is 32 GB (DDR4), by default. It is extensible up to 200 GB.
 
-	![Notebook Type low](images/notebook-type-low.png)
+	![This image shows the Notebook Type icon. It shows the options - Low, Medium, High and gpu. It has the option low highlighted.](images/notebook-type-low.png)
 
 4. To change the notebook type, click on the type that you want to select. In this example, let's click high. A confirmation message is displayed stating: `Notebook Type is updated to "high".`
 
-	![Notebook Type high](images/notebook-type-high.png)
+	![This image shows the Notebook Type icon. It shows the options - Low, Medium, High and gpu. It has the option High highlighted.](images/notebook-type-high.png)
 
 	> **Note:** The updated notebook type is applicable to all the paragraphs in the notebook. You cannot change the notebook type at the paragraph level.
 
@@ -93,23 +93,23 @@ You can create versions of notebooks on the notebooks page, as well as in the no
 ### Task 2.1: Create Versions on the Notebooks page
 In this task, you will create Version 1 of the _Paragraph Dependencies Demo_ notebook.
 1. On the Notebooks page, select the _Paragraph Dependencies Demo_ notebook to enable all the edit options.
-	![Notebooks page with options enabled](images/nbea-options-enabled.png)
+	![This image shows the Notebooks page with the Paragraph Depencies notebook selected. It has all the edit options enabled.](images/nbea-options-enabled.png)
 2. Click **Version** to go to the versions page for this notebook.
-	![Notebooks page with options enabled](images/nbea-versions-clicked.png)
+	![This image shows the Notebooks page with the Paragraph Depencies notebook selected. It has all the edit options enabled, and the Versions option is highlighted.](images/nbea-versions-clicked.png)
 3. On the Versions page for this notebook, click **Versions** to open the Create Versions dialog.
-	![Notebooks versions page](images/nbea-versions-page.png)
+	![This image shows the Notebooks versions page of the Paragraph Dependencies notebook.](images/nbea-versions-page.png)
 
 3. In the Create Versions dialog:
 	* **Name:** Enter _Version 1_ for the new version of this notebook
 	* **Descriptions:** Enter comments, if any.
 	* Click **OK.** Once the notebook version is created, it is listed on the Versions - Notebook Versioning Demo page.
 
-	![Notebooks versions page](images/create-version1-dialog.png)
+	![Create Versions dialog](images/create-version1-dialog.png)
 4. On the _Paragraph Dependencies Demo_ page, select **Version 1** of the notebook version that you just created to enable all the available options.
 	* Click **Delete** to delete the selected version of the notebook.
 	* Click **Restore Version** to restore the selected version of the notebook.
 5. Click **Back to Notebooks** to go back to the Notebooks page.
-	![Notebook versions page](images/view-ver1.png)
+	![Notebook versions page of the Paragraph Dependencies Demo ](images/view-ver1.png)
 
 This completes the task of creating a notebook version on the Notebooks page.
 
@@ -127,11 +127,11 @@ To create a new notebook version and view version history:
 1. On the Notebooks page, click on the _Paragraph Dependencies Demo_ notebook to open it in the notebook editor.
 	> **Note:**  **Version 1** of this notebook is already created as part Task 6.1 in this lab. It contains the archived code to create the view `ESM_SH_DATA`, count the number of records, and view the data. Clicking on the notebook opens the original editable version.
 
-	![Notebooks versions page](images/click-para-dep-nb.png)
+	![The Notebooks page with the Paragraph Dependencies Demo notebook selected. ](images/click-para-dep-nb.png)
 
 2. Now, edit the notebook to add a script to build a machine learning model. On the notebook, hover your cursor over the lower border of the third paragraph, and click the **Add SQL Script Paragraph**  to call the PL/SQL Interpreter.
 
-	![Add PL/SQL Paragraph](images/add-sql-script-toolbar.png)
+	![The Add PL/SQL Paragraph icon in a notebook paragraph](images/add-sql-script-toolbar.png)
 
 3. Copy and paste the following script to the new paragraph. This script builds a machine learning model using the ESM algorithm.
 
@@ -162,20 +162,20 @@ To create a new notebook version and view version history:
 	```
 4. Now, archive this notebook along with the code to build the machine learning model by versioning it. On the top left corner of the notebook editor, click the Versioning icon.
 
-	![Notebooks versions page](images/create-version2.png)
+	![The Versioning icon highlighted on the Paragraph Dependencies Demo notebook. The notebook is opened in the editor.](images/create-version2.png)
 
 5. The options to **Create Version** and **View Version History** opens. Click **Create Version**.
 
-	![Notebooks versions page](images/create-version-option.png)
+	![The Versioning icon highlighted on the Paragraph Dependencies Demo notebook. The notebook is opened in the editor. It shows the Create Versions page.](images/create-version-option.png)
 
 6. In the New Version dialog:
 
 	* **Name:** Here, the name Version 2 is taken by default. Let's retain this name.
 	* **Description:** Enter notes, if any.
 	* Click **Create.**
-	![Notebooks versions page](images/create-version2-dialog.png)
+	![New Version dialog](images/create-version2-dialog.png)
 	* A message is displayed confirming the creation of the new version.
-	![Notebook EA versions page](images/message-version2.png)
+	![Notebook versions creation message](images/message-version2.png)
 
 This completes the task of creating a notebook version in the Notebooks editor.
 
@@ -183,21 +183,21 @@ This completes the task of creating a notebook version in the Notebooks editor.
 To view the version that you created in Task 6.2:
 
 1. Click the versioning icon, and then click **View Version History**.
-	![Notebooks versions page](images/view-version-history.png)
+	![The View Version History icon highlighted on the Paragraph Dependencies Demo notebook. The notebook is opened in the editor.](images/view-version-history.png)
 
 2. On the right pane of the notebook editor, the Version History panel opens.
-	![Notebooks versions page](images/version-history-pane.png)
+	![This image shows the View Version History pane in the Paragraph Dependencies Demo notebook.](images/version-history-pane.png)
 3. Hover your cursor over any notebook version and click on it to enable the available options. You can perform the following tasks in the Version History panel. On the Version History pane on the right:
-	![Notebooks versions page](images/version-history-options.png)
+	![This image shows the View Version History - Version 2. This is on the right pane in the Paragraph Dependencies Demo notebook.](images/version-history-options.png)
 	* Click the open version icon to open the selected version. Clicking on any versioned notebook opens the notebook in read-only mode, as versioned notebooks are non-editable.
-	![Open Notebooks version](images/open-version.png)
+	![This image shows the View Version History - Version 2. This is on the right pane in the Paragraph Dependencies Demo notebook. It has the open version icon highlighted.](images/open-version.png)
 	To view the current editable version, click View current version of the notebook.
-	![View Current Notebook version](images/view-current-version.png)
+	![View Current Notebook version option in the Paragraph Dependencies Demo notebook.](images/view-current-version.png)
 	* Click **Delete** to delete the selected version.
 	* Click **Compare Versions** to compare the current version of the notebook with another version.
-	![Compare Notebook version](images/click-compare-version.png)
+	![This image shows the View Version History - Version 2. This is on the right pane in the Paragraph Dependencies Demo notebook. It has the Compare Version option highlighted.](images/click-compare-version.png)
 	You can select other available versions from the drop-down list. In this example, **Version 2** of the notebook, which is under Current State is compared with **Version 1**. The new additions are highlighted in green, as shown in the screenshot here.
-	![Compare Notebook version](images/compare-version.png)
+	![This is the Compare Versions dialog.](images/compare-version.png)
 	* Click **Cancel** to exit the dialog.
 	* Click **Restore** to restore the selected version.
 	>**Note:** Restoring a selected version of the notebook will discard all the unversioned changes, if any.
