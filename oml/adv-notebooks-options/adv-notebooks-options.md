@@ -51,11 +51,11 @@ In this step, you learn how to change the notebook service levels:
 1. Go to the Notebooks page by clicking the Cloud menu icon on ![Cloud menu icon](images/cloud-menu-icon.png) the top left corner of the page. On the left navigation menu, click **Notebooks**.
 	
 
-	![Notebooks in left navigation menu](images/left-nav-pane-notebooks.png)
+	![Notebooks in the left navigation menu](images/left-nav-pane-notebooks.png)
 
-2. On the Notebooks page, click on the **OML4PY Classification_DT (1)** notebook to open it in the Notebook editor.
+2. On the Notebooks page, click on the **OML4PY Classification_DT** notebook to open it in the Notebook editor.
 
-	![Open Classification notebook](images/open-classification-dt.png)
+	![The OML4PY Classification_DT notebook highlighted on the Listing page](images/open-classification-dt.png)
 	
 
 3. Click on the **Update Notebook Type** icon ![Update Notebook type icon](images/update-notebook-type-icon.png)on the top right corner. The available notebook types are displayed. The current notebook type is indicated by a tick mark, and is also displayed next to the **Update Notebook Type** icon. 
@@ -219,30 +219,30 @@ This step demonstrates how to create the OML4Py Classification notebook based on
 
   Alternatively, on the Oracle Machine Learning home page, click **Examples** in the Quick Actions section to go Examples.
 
-	![Oracle Machine Learning home page](images/homepage-examples.png)
+	![The Oracle Machine Learning UI home page](images/homepage-examples.png)
 
 
 2. Navigate to the **OML4Py Classification DT** example template notebook. You can search for the notebook by typing in the name in the search box on the upper right corner of the page. Click on the grey box around the notebook. This highlights the notebook and enables the **Create Notebook** button. Click **Create Notebook**.
 
-	![Create Notebook](images/classification-dt-example.png)
+	![The Create Notebook button activated with OML4Py Classification DT example notebook selected](images/classification-dt-example.png)
 
 3. The Create Notebook dialog opens. The Name field displays the same name as the template with the suffix `(1)`. You can edit this name. In this example, we will retain the original name `OML4PY Classification DT`. Delete the suffix (1) and click **OK**.
 
 	> **Note:** In the Project field, the current user, project, and workspace is selected by default. You have the option to choose a different project or a workspace by clicking the edit icon here.  
 
-	![Create Classification DT notebook from example template](images/create-notebook-classification.png)
+	![Create Classification DT notebook dialog](images/create-notebook-classification.png)
 
 4. Once the notebook is created, the message _This Notebook was created in project "OMLUSER Project" and will appear under the Notebooks Listing "_ is displayed, as shown in the screenshot. The notebook is now available on the Notebooks page. You may also click **Open Notebook** in the message dialog to open the notebook directly from here.
 
-	![Create notebook message](images/notebook-created-message.png)
+	![The notebook created message for the OML4Py Classification DT notebook](images/notebook-created-message.png)
 
 5. To view the notebook that you just created, click the Cloud menu icon ![Cloud menu icon](images/cloud-menu-icon.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to go to the Notebooks page.
 
-	![Notebooks in left navigation menu](images/left-nav-pane-notebooks.png)
+	![Notebooks entry in the left navigation menu](images/left-nav-pane-notebooks.png)
 
 6. The OML4PY Classification DT notebook is now listed on the Notebooks page, as shown in the screenshot. Click it to open the notebook in the Notebooks editor. Note that you will run this notebook in the subsequent steps.
 
-	![Notebook listed](images/notebook-listed.png)
+	![The list of notebooks created as listed on the Listing page](images/notebook-listed.png)
 	
 
 This completes the task of creating a notebook from an Example template.
@@ -251,34 +251,34 @@ This completes the task of creating a notebook from an Example template.
 
 These steps demonstrate how to create the Time Series notebook based on the Example template:
 
-7. Click the Cloud menu icon ![Cloud menu icon](images/cloud-menu-icon.png) on the top left corner of the page to open the left navigation menu. Click **Examples** under Templates to open the Examples page. 
+1. Click the Cloud menu icon ![Cloud menu icon](images/cloud-menu-icon.png) on the top left corner of the page to open the left navigation menu. Click **Examples** under Templates to open the Examples page. 
 
-	![Examples in Left Navigation menu](images/left-nav-pane-examples.png)
+	![Examples entry in Left Navigation menu](images/left-nav-pane-examples.png)
 
 If you choose to go to the home page, then click **Home** on the left navigation pane, and then click **Examples**.	
 
-8. Navigate to the **OML4SQL Time Series ESM** example template notebook. You may type ESM in the search box on the upper right corner of the page to get a list of the ESM-related notebooks. Click the grey box around the notebook. This highlights the notebook and enables the **Create Notebook** button. Click **Create Notebook**.
+2. Navigate to the **OML4SQL Time Series ESM** example template notebook. You may type ESM in the search box on the upper right corner of the page to get a list of the ESM-related notebooks. Click the grey box around the notebook. This highlights the notebook and enables the **Create Notebook** button. Click **Create Notebook**.
 
-	![Create Notebook](images/oml4sql-time-series.png)
+	![The Create Notebook button activated with OML4SQL Time Series notebook selected](images/oml4sql-time-series.png)
 
-9. The Create Notebook dialog opens. By default, the **Name** field displays the same name as the template with the suffix `(1)`. You can edit this field. In this example, let's remove the suffix and retain the original name **OML4SQL Time Series ESM** and click **OK**.
+3. The Create Notebook dialog opens. By default, the **Name** field displays the same name as the template with the suffix `(1)`. You can edit this field. In this example, let's remove the suffix and retain the original name **OML4SQL Time Series ESM** and click **OK**.
 
 	> **Note:** In the Project field, the current user, project and workspace is selected by default. You have the option to choose a different project or a workspace by clicking the edit icon here.  
 
-	![Create Time Series notebook from example template](images/create-notebook-time-series.png)
+	![Create Time Series notebook dialog. The notebook is being created on the Example page.](images/create-notebook-time-series.png)
 
-10. Once the notebook is created, the message _This Notebook was created in project "OMLUSER Project" and will appear under the Notebooks Listing "_ is displayed. The notebook is now available on the Notebooks page. You may also click **Open Notebook** in the message dialog to open the notebook directly from here.
+4. Once the notebook is created, the message _This Notebook was created in project "OMLUSER Project" and will appear under the Notebooks Listing "_ is displayed. The notebook is now available on the Notebooks page. You may also click **Open Notebook** in the message dialog to open the notebook directly from here.
 
-	![Time Series notebook message](images/notebook-created-message.png)
+	![The notebook created message for the Time Series notebook](images/notebook-created-message.png)
 
-11. To view the notebook, click the Cloud menu icon ![Cloud menu icon icon](images/cloud-menu-icon.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to go to the Notebooks page.
+5. To view the notebook, click the Cloud menu icon ![Cloud menu icon icon](images/cloud-menu-icon.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to go to the Notebooks page.
 
-	![Notebooks in left navigation menu](images/notebooks-left-nav-pane-esm.png)
+	![The Notebooks entry in left navigation menu. It has the OML4SQL Time Series notebook selected on the Examples page on the right pane.](images/notebooks-left-nav-pane-esm.png)
 
 
-12. The notebook **Notebook "OML4SQL Time Series ESM (1)** is now listed on the Notebooks page, as shown in the screenshot. Click on the notebook to open it in the Notebooks editor and work on it.
+6. The notebook **Notebook "OML4SQL Time Series ESM (1)** is now listed on the Notebooks page, as shown in the screenshot. Click on the notebook to open it in the Notebooks editor and work on it.
 
-	![Notebook listed](images/notebook-list-1.png)
+	![The list of notebooks on the Listing page](images/notebook-list-1.png)
 
 
 This completes the task of creating the Time Series notebook from the OML4SQL Time Series ESM Example template.
@@ -292,7 +292,7 @@ To create a job:
 
 1. Click the Cloud menu icon ![Cloud menu icon](images/cloud-menu-icon.png) on the top left corner of the page to open the left navigation menu, and click **Jobs** to go to the Jobs page. 
 
-	![Job](images/left-nav-pane-jobs.png)
+	![The Jobs entry in the left navigation menu](images/left-nav-pane-jobs.png)
 
 You can also go to Jobs from the Oracle Machine Learning home page by clicking **Jobs**.
 
@@ -300,17 +300,17 @@ You can also go to Jobs from the Oracle Machine Learning home page by clicking *
 
 2. On the Jobs page, click **Create**. The Create Job dialog opens.
 
-	![Create Job](images/create-job.png)
+	![The Create button on the Jobs page.](images/create-job.png)
 
 3. In the **Name** field, enter `Job1`. The number of characters in the job name must not exceed 128 bytes.
 
-	![Create Job](images/create-jobs1.png)
+	![The Create Job dialog. It shows the first half of the dialog.](images/create-jobs1.png)
 
 4. In the **Notebook** field, click the search icon. This opens the Search Notebook dialog. In the Search Notebook dialog, navigate through the OMLUSER workspace and OMLUSER project, select `OML4PY Classification_DT (1)`, and click **OK**.
 
 	> **Note:** Only notebooks that are owned by the user or shared are available for selection.
 
-	![Select notebook to schedule job](images/select-notebook-for-job-livelabs.png)
+	![The Select Notebooks dialog that opens when clicking on the Search icon. It shows the notebooks available in the OMLUSER project in the OMLUSER workspace.](images/select-notebook-for-job-livelabs.png)
 	
 
 5. In the **Start Date** field, click the date-time editor to set the date and time for your job to commence. You can select the current date or any future date and time. Based on the selected date and time, the next run date is computed.
@@ -319,7 +319,7 @@ You can also go to Jobs from the Oracle Machine Learning home page by clicking *
 
 7. Expand **Advanced Settings**, and specify the following settings:
 
-	![Create Job](images/create-jobs-adv-settings1.png)
+	![The Advanced settings section in the Create Jobs dialog. This section shows the email notification option.](images/create-jobs-adv-settings1.png)
 
 	* **Send Notifications:** Click this option and in the **Email Address(es)** field, enter the email addresses to which you want to send notifications about the selected events for the job. By default, you can enter up to three email IDs, separated by comma.
 
@@ -327,7 +327,7 @@ You can also go to Jobs from the Oracle Machine Learning home page by clicking *
 	
 	* **Maximum Number of Runs:** Select **3**. This specifies the maximum number of times the job must run before it is stopped. When the job reaches the maximum run limit, it will stop.  
 
-	![Create Job](images/create-jobs-adv-settings2.png)
+	![The Advanced settings section in the Create Jobs dialog. This section shows the Max run options, Automatic Retry, Failure Handling etc.](images/create-jobs-adv-settings2.png)
 
 	* **Timeout in Minutes:** Select **60**. This specifies the maximum amount of time a job should be allowed to run.
 
@@ -337,11 +337,11 @@ You can also go to Jobs from the Oracle Machine Learning home page by clicking *
 
 8. Click **OK**. The job is now listed on the Jobs page with the status SCHEDULED.
 
-	![Job created](images/job-created1.png)
+	![This image shows the Jobs page with the job that you created listed there.](images/job-created1.png)
 
 9. Click on the job row to enable the options to either **Edit**, **Duplicate**, **Start**, or **Delete** the selected job.
 
-	![Job created](images/job-created.png)
+	![This image shows the Jobs page with the job Jobs1 selected.](images/job-created.png)
 
 This completes the task of creating a job to schedule running of notebooks. 
 
@@ -353,7 +353,7 @@ To create paragraph dependencies:
 1. On the Notebooks page, click **Create**.
 2. In the Create Notebooks dialog, enter the name _Paragraph Dependencies Demo_ in the **Name** field and click **OK.** The notebook is created, and it opens in the notebook editor.
 3. On the notebook, hover your cursor over the lower border of the paragraph and click the + icon to add a paragraph. Or, click on the **Add SQL Paragraph** icon to call the PL/SQL interpreter.
-	![Add PLSQL paragraph](images/add-sql-script-toolbar.png)
+	![Add PLSQL paragraph icon in an OML Notebook](images/add-sql-script-toolbar.png)
 4. In the first paragraph, copy and paste the following PL/SQL script. This script creates the view `ESM_SH_DATA` from the SALES table present in the SH schema.
 	```
 	<copy>
@@ -382,7 +382,7 @@ To create paragraph dependencies:
 	```
 
 7. Go to the first paragraph and click on the **Enter Dependency Mode** icon.
-	![Enter Dependency Mode](images/enter-dep-mode-1.png)
+	![The Enter Dependency Mode icon highlighted in an OML Notebook](images/enter-dep-mode-1.png)
 
 	The message appears: _You are selecting dependents for this paragraph._
 
@@ -390,20 +390,20 @@ To create paragraph dependencies:
 
 	>**Note:** The order of paragraph dependency is based on the order of your click.
 
-	![Add Dependents](images/add-dependents.png)
+	![This image shows the Paragraph Dependencies notebook with few paragraphs selected to be added as dependent paragraphs.](images/add-dependents.png)
 
 9. Click **Save.**
 	![Save Dependents](images/save-dependents.png)
 
 	Once the dependent paragraphs are defined and saved, it is indicated by the numbers as shown in the screenshot here:
-	![Dependent Paragraphs](images/dep-para-created.png)
+	![This image shows the Paragraph Dependencies notebook. It shows the dependent paragraphs along with the dependency order highlighted](images/dep-para-created.png)
 10. Now, go to the first paragraph and click the run icon. After the first paragraph starts successfully, the subsequent dependent paragraphs start to run according to the order of dependency.
-	![Dependent Paragraphs](images/run-para-1.png)
+	![The dependent paragraphs are shown in the Paragraph Dependencies notebook. The run icon is highlighted.](images/run-para-1.png)
 	This screenshot shows the successful run of paragraph 1 and 2 (dependent paragraph 1):
-	![Paragraphs 1 and 2 run success ](images/para-1-2-run.png)
+	![The dependent paragraphs runs successfully in the Paragraph Dependencies notebook.Paragraphs 1 and 2 run successfully. ](images/para-1-2-run.png)
 
 	This screenshot shows the successful run of paragraph 3 (dependent paragraph 2):
-	![Paragraph 3 run success](images/para-3-run.png)
+	![This image shows the successful run of the dependent paragraph 3](images/para-3-run.png)
 
 This completes the task of creating paragraph dependencies in a notebook, and run the paragraphs according to the dependency order.  
 
