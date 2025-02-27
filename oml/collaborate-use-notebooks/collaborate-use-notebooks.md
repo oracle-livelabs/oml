@@ -16,7 +16,7 @@ This lab takes approximately 15 minutes to complete.
 
 ### Objectives
 
-This lab shows you can collaborate with other users by:
+In this lab, you will learn how to collaborate with other OML users by:
 * Granting permission to access your workspace and projects
 * Using the export and import options
 * Using the Oracle Machine Learning templates
