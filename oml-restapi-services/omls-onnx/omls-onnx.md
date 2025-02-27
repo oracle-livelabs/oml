@@ -32,6 +32,7 @@ This lab assumes you have:
     * Your OML user name and password
     * `oml-cloud-service-location-url`
 * A valid authentication token
+<<<<<<< HEAD
 * onnxruntime and onnxmltools
 * A Conda environment with xgboost installed
 
@@ -81,6 +82,10 @@ In this lab, you will create a Conda environment by the name xgbenv and install 
 This sets up the environment to create and train a xgboost model, and convert it to ONNX format.
 
 ## Task 2: Train an open source xgboost model
+=======
+
+## Task 1: Train an open source xgboost model
+>>>>>>> cbc3b63332f44394cec5fa499863739bfe8bb5b9
 In this lab, we will create a machine learning regression model that can predict average house price. We will use the Boston Housing price dataset. It contains the details of 506 houses in Boston.
 
 To create and train the model:
@@ -91,7 +96,10 @@ To create and train the model:
 
     ```
     <copy>
+<<<<<<< HEAD
     %python
+=======
+>>>>>>> cbc3b63332f44394cec5fa499863739bfe8bb5b9
     from sklearn.datasets import load_diabetes
 
     diabetes = load_diabetes()
@@ -104,9 +112,15 @@ To create and train the model:
 
     ```
     <copy>
+<<<<<<< HEAD
     %python
     print(diabetes.DESCR)
     </copy>
+=======
+    print(diabetes.DESCR)
+    </copy>
+
+>>>>>>> cbc3b63332f44394cec5fa499863739bfe8bb5b9
     ```
 3. Now separate the data into target and predictor variables. Then split the data into train and test sets. Run the following command. 
 
