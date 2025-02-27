@@ -3,10 +3,23 @@
 
 This lab shows you how to two or more users can collaborate and share SQL notebooks with other Oracle Machine Learning Notebooks users.
 
+### About Collaboration in Oracle Machine Learning User Interface
+
+You can collaborate with other users in Oracle Machine Learning Notebooks by granting permissions to access your workspace. Your workspace contains your projects, and the projects contain notebooks. Oracle Machine Learning Notebooks allows three types of permissions. By granting different types of permissions such as Manager, Developer, and Viewer, you can allow other user to view your workspace and perform different tasks in your projects and notebooks such as edit, create, update, delete, run, view notebooks and so on.
+
+>**Note**: If you grant the permission type **Manager** or **Developer** , then the user can also drop tables, create tables, and run any scripts at any time on your account. The user with Viewer permission type can only view your notebooks, and is not authorized to run or make any changes to your notebooks.
+
 A notebook is a web-based interface for data visualization, machine learning, and collaboration.
 
 ### Estimated Time
 This lab takes approximately 15 minutes to complete.
+
+### Objectives
+
+This lab shows you can collaborate with other users by:
+* Granting permission to access your workspace and projects
+* Using the export and import options
+* Using the Oracle Machine Learning templates
 
 ### Prerequisites
 
@@ -18,10 +31,6 @@ This lab takes approximately 15 minutes to complete.
 
 
 ## Task 1: Collaborate by Granting Access to Projects of Another User
-
-You can collaborate with other users in Oracle Machine Learning Notebooks by granting permissions to access your workspace. Your workspace contains your projects, and the projects contain notebooks. Oracle Machine Learning Notebooks allows three types of permissions. By granting different types of permissions such as Manager, Developer, and Viewer, you can allow other user to view your workspace and perform different tasks in your projects and notebooks such as edit, create, update, delete, run, view notebooks and so on.
-
->**Note**: If you grant the permission type **Manager** or **Developer** , then the user can also drop tables, create tables, and run any scripts at any time on your account. The user with Viewer permission type can only view your notebooks, and is not authorized to run or make any changes to your notebooks.
 
 This use case demonstrates how two Oracle Machine Learning Notebooks users - `OMLUSER` and `OMLUSER2` collaborate to share notebooks by granting permission to access notebooks in **OMLUSER Project** under **OMLUSER Workspace**. For each user, a workspace along with a project are created by default, at the time of user creation. In this tutorial the notebook that `OMLUSER2` accesses and edits, is in **OMLUSER Project**, which is the default project owned by `OMLUSER`.
 
