@@ -41,40 +41,42 @@ In this lab, you will create a Conda environment by the name xgbenv and install 
 
 1. Sign into your Oracle Machine Learning UI as `ADMIN` and run the following commands:
 
-  ``
-  <copy>
-  %conda
-  create -n xgbenv -c conda-forge --strict-channel-priority python=3.12.6 xgboost onnxruntime onnxmltools
-  upload xgbenv --overwrite -t application "OML4PY"  
-  </copy>
-  ``
+    ```
+    <copy>
+
+    %conda
+    create -n xgbenv -c conda-forge --strict-channel-priority python=3.12.6 xgboost onnxruntime onnxmltools
+    upload xgbenv --overwrite -t application "OML4PY" 
+
+    </copy>
+    ```
 
   This command created the conda environment `xgbenv`, installs Python 3.12.6, xgboost, onnxruntime, and onnxmltools. The command also uploads the environment to Object Storage. 
 
 2. Now, sign in as `OMLUSER` and download and activate the Conda environment `xgbenv`.
 
-  ``
-  <copy>
-  %conda 
+    ```
+    <copy>
+    %conda 
 
-  download xgbenv
-  activate xgbenv
-  </copy>
-  ``
+    download xgbenv
+    activate xgbenv
+    </copy>
+    ```
 
 3. In a Python paragraph, import the following Python packages:
 
-  ``
-  <copy>
-  import xgboost as xgb
-  import onnxruntime
-  import onnxmltools
-  </copy>
-  ``
+    ```
+    <copy>
+    import xgboost as xgb
+    import onnxruntime
+    import onnxmltools
+    </copy>
+    ```
 
-  * xgboost - A python package.
-  * onnxruntime - A runtime engine to allows you to run ONNX format models.
-  * onnxmltools - A Python package that allows you to convert the traditional machine learning models, for example, xgboost into the ONNX format.
+    * xgboost - A python package.
+    * onnxruntime - A runtime engine to allows you to run ONNX format models.
+    * onnxmltools - A Python package that allows you to convert the traditional machine learning models, for example, xgboost into the ONNX format.
 
 This sets up the environment to create and train a xgboost model, and convert it to ONNX format.
 
