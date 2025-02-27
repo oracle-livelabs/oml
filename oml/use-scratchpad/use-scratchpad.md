@@ -11,7 +11,7 @@ After you run your scripts, the Scratchpad is automatically saved as a notebook 
 This lab takes about 10 minutes to complete.
 
 ### Objectives
-This lab shows how to use the Scratchpad option to run Python, R, SQL and PL/SQL Scripts.
+This lab shows how to use the Scratchpad to run Python, R, SQL and PL/SQL Scripts.
 
 
 ### Prerequisites
