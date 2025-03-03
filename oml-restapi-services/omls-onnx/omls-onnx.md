@@ -52,6 +52,8 @@ In this lab, you will create a Conda environment by the name xgbenv and install 
     </copy>
     ```
 
+  ![Commands to set up the Conda environment](images/conda-env-setup.png)
+
   This command created the conda environment `xgbenv`, installs Python 3.12.6, xgboost, onnxruntime, and onnxmltools. The command also uploads the environment to Object Storage. 
 
 2. Now, sign in as `OMLUSER` and download and activate the Conda environment `xgbenv`.
@@ -65,6 +67,8 @@ In this lab, you will create a Conda environment by the name xgbenv and install 
     </copy>
     ```
 
+  ![Commands to download and activate the Conda environment](images/download-activate-xgbenv.png)
+
 3. In a Python paragraph, import the following Python packages:
 
     ```
@@ -75,6 +79,9 @@ In this lab, you will create a Conda environment by the name xgbenv and install 
     </copy>
     ```
 
+  
+  ![Commands to import XGBoost and other onnx tools](images/import-xgboost.png)
+
     * xgboost - A python package.
     * onnxruntime - A runtime engine to allows you to run ONNX format models.
     * onnxmltools - A Python package that allows you to convert the traditional machine learning models, for example, xgboost into the ONNX format.
@@ -82,11 +89,7 @@ In this lab, you will create a Conda environment by the name xgbenv and install 
 This sets up the environment to create and train a xgboost model, and convert it to ONNX format.
 
 ## Task 2: Train an open source xgboost model
-=======
 
-## Task 1: Train an open source xgboost model
->>>>>>> cbc3b63332f44394cec5fa499863739bfe8bb5b9
-In this lab, we will create a machine learning regression model that can predict average house price. We will use the Boston Housing price dataset. It contains the details of 506 houses in Boston.
 
 To create and train the model:
 
@@ -96,10 +99,8 @@ To create and train the model:
 
     ```
     <copy>
-<<<<<<< HEAD
+
     %python
-=======
->>>>>>> cbc3b63332f44394cec5fa499863739bfe8bb5b9
     from sklearn.datasets import load_diabetes
 
     diabetes = load_diabetes()
@@ -108,20 +109,21 @@ To create and train the model:
     </copy>
     ```
 
+  ![Commands to import the Diabetes dataset](images/import-diabetes-dataset.png)
+
 2. Run the following command to view the description of the dataset. can be viewed by printing the contents of the .DESCR attribute.
 
     ```
     <copy>
-<<<<<<< HEAD
     %python
     print(diabetes.DESCR)
     </copy>
-=======
     print(diabetes.DESCR)
     </copy>
-
->>>>>>> cbc3b63332f44394cec5fa499863739bfe8bb5b9
     ```
+
+  ![Commands to print and view the Diabetes dataset](images/print-diabetes.png)
+
 3. Now separate the data into target and predictor variables. Then split the data into train and test sets. Run the following command. 
 
 
@@ -134,6 +136,7 @@ To create and train the model:
     xtrain, xtest, ytrain, ytest=train_test_split(x, y, test_size=0.30, random_state=99)
     </copy>
     ```
+  ![Commands to split the dataset](images/split-dataset.png)
 
   In this example, we are using the `train_test_split` function from sklearn's `model_selection` module. The test size equal to 30% of the data. A `random_state` is assigned for reproducibility.
 
@@ -145,13 +148,13 @@ To create and train the model:
 
     ```
     <copy>
-    import xgboost as xgb
-
-    model = xgb.XGBRegressor(objective ='reg:squarederror', colsample_bytree = 0.3, learning_rate = 0.1,
+        model = xgb.XGBRegressor(objective ='reg:squarederror', colsample_bytree = 0.3, learning_rate = 0.1,
                 max_depth = 5, alpha = 10, n_estimators = 10)
     print(model)
     </copy>
     ```
+
+  ![XGboost model](images/model-xgbregressor.png)
 
 5. Run the following command to train the model using the `fit` method and make predictions using the `predict` method on the model:
 
@@ -163,7 +166,7 @@ To create and train the model:
     </copy>
     ```
 
-
+  ![Fit model and predict](images/model-train-pred.png)
 6. Next, compute the Root Mean Square error (RMSE) by using the `mean_squared_error` function. This function is available in the `metrics` module of sklearn. 
 
     ```
@@ -178,7 +181,9 @@ To create and train the model:
     </copy>
     ```
 
-  The RMSE for the price prediction is approximately 10.4 per $1000.
+  ![RMSE Computation](images/rmse.png)
+  
+  The RMSE for the price prediction is approximately 62.972 per $1000.
 
   This completes the task of creating and training an open source xgboost model. 
 
@@ -196,11 +201,10 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
 
 
 
-1. Run the following command to import the required libraries - onnxmltools, ZipFile, json, and FloatTensorType:
+1. Run the following command to import the required libraries - ZipFile, json, and FloatTensorType:
 
     ```
     <copy>
-    import onnxmltools
     import json
     from zipfile import ZipFile
     from skl2onnx.common.data_types import FloatTensorType
