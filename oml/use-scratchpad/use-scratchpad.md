@@ -1,20 +1,24 @@
-# Use the Scratchpad in Oracle Machine Learning Notebooks
+# Use the Scratchpad in Oracle Machine Learning User Interface
 ## Introduction
 
-This lab shows you how to use the Scratchpad in Oracle Machine Learning Notebooks.
+This lab shows you how to use the Scratchpad in Oracle Machine Learning UI.
+### About the Scratchpad in Oracle Machine Learning UI
 
-The Scratchpad provides you convenient one-click access to a notebook for running SQL statements, PL/SQL scripts, Python and r scripts that can be renamed. The Scratchpad is available on the Oracle Machine Learning Notebooks home page. The Scratchpad is a regular notebook that is prepopulated with four paragraphs - `%sql`, `%script`, `%python` and `r`.
+The Scratchpad provides you convenient one-click access to a notebook for running SQL statements, PL/SQL scripts, Python and R scripts that can be renamed. The Scratchpad is available on the Oracle Machine Learning UI home page. The Scratchpad is a regular notebook that is prepopulated with four paragraphs - `%sql`, `%script`, `%python` and `r`.
 
-After you run your scripts, the Scratchpad is automatically saved as a notebook by the default name Scratchpad in the Notebooks page. You can access it later in the Notebooks page.
-You can run all the paragraphs together or one paragraph at a time. 
-
+After you run your scripts, the Scratchpad is automatically saved as a notebook by the default name Scratchpad on the Notebooks page. You can access it later on the Notebooks page. You can run all the paragraphs together or one paragraph at a time. 
 ### Estimated Time
-This lab takes approximately 10 minutes to complete. 
+This lab takes about 10 minutes to complete.
+
+### Objectives
+This lab shows how to use the Scratchpad to run Python, R, SQL and PL/SQL Scripts.
+
 
 ### Prerequisites
 
 * Access to your Oracle Machine Learning Notebooks account
 * A project created in your Oracle Machine Learning Notebooks account, where the notebook will reside
+
 
 
 ## Task 1: Use the Scratchpad to Run Python Scripts

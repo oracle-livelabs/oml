@@ -1,0 +1,4 @@
+This images shows OML4Py Classification notebook opened in the Notebook editor. It has the Update Notebook type icon highlighted. 
+
+
+Copyright © 2017, 2025 Oracle and/or its affiliates. All rights reserved.

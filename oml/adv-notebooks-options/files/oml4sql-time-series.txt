@@ -1,0 +1,4 @@
+This images shows the OML4SQL Time Series ESM example template notebook selected in the Examples page. It also has the Create Notebook button active. 
+
+
+Copyright © 2017, 2021 Oracle and/or its affiliates. All rights reserved.

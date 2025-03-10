@@ -1,12 +1,25 @@
-# Collaborate in Oracle Machine Learning Notebooks
+# Collaborate in Oracle Machine Learning User Interface
 ## Introduction
 
 This lab shows you how to two or more users can collaborate and share SQL notebooks with other Oracle Machine Learning Notebooks users.
+
+### About Collaboration in Oracle Machine Learning User Interface
+
+You can collaborate with other users in Oracle Machine Learning Notebooks by granting permissions to access your workspace. Your workspace contains your projects, and the projects contain notebooks. Oracle Machine Learning Notebooks allows three types of permissions. By granting different types of permissions such as Manager, Developer, and Viewer, you can allow other user to view your workspace and perform different tasks in your projects and notebooks such as edit, create, update, delete, run, view notebooks and so on.
+
+>**Note**: If you grant the permission type **Manager** or **Developer** , then the user can also drop tables, create tables, and run any scripts at any time on your account. The user with Viewer permission type can only view your notebooks, and is not authorized to run or make any changes to your notebooks.
 
 A notebook is a web-based interface for data visualization, machine learning, and collaboration.
 
 ### Estimated Time
 This lab takes approximately 15 minutes to complete.
+
+### Objectives
+
+In this lab, you will learn how to collaborate with other OML users by:
+* Granting permission to access your workspace and projects
+* Using the export and import options
+* Using the Oracle Machine Learning templates
 
 ### Prerequisites
 
@@ -18,10 +31,6 @@ This lab takes approximately 15 minutes to complete.
 
 
 ## Task 1: Collaborate by Granting Access to Projects of Another User
-
-You can collaborate with other users in Oracle Machine Learning Notebooks by granting permissions to access your workspace. Your workspace contains your projects, and the projects contain notebooks. Oracle Machine Learning Notebooks allows three types of permissions. By granting different types of permissions such as Manager, Developer, and Viewer, you can allow other user to view your workspace and perform different tasks in your projects and notebooks such as edit, create, update, delete, run, view notebooks and so on.
-
->**Note**: If you grant the permission type **Manager** or **Developer** , then the user can also drop tables, create tables, and run any scripts at any time on your account. The user with Viewer permission type can only view your notebooks, and is not authorized to run or make any changes to your notebooks.
 
 This use case demonstrates how two Oracle Machine Learning Notebooks users - `OMLUSER` and `OMLUSER2` collaborate to share notebooks by granting permission to access notebooks in **OMLUSER Project** under **OMLUSER Workspace**. For each user, a workspace along with a project are created by default, at the time of user creation. In this tutorial the notebook that `OMLUSER2` accesses and edits, is in **OMLUSER Project**, which is the default project owned by `OMLUSER`.
 
@@ -127,13 +136,13 @@ The projects under OMLUSER Workspace are listed. To access the notebooks under O
 
      ![SQL command in Test Notebook EA](images/sql-test-notebook-ea.png "")
 
-4. Click the Run icon to run the paragraph to render the data in a table. 
+3. Click the Run icon to run the paragraph to render the data in a table. 
 
      ![Run Test Notebook](images/run-test-notebook-ea.png "")
 
      >**Note:** You have edited and run the _Test Notebook_ which is present in the **OMLUSER Project** in **OMLUSER Workspace**, while signed in in as `OMLUSER2`.  
 
-5. Sign out of the Oracle Machine Learning user interface.
+4. Sign out of the Oracle Machine Learning user interface.
 
 ## Task 1.4: OMLUSER Collaborates with OMLUSER2 on the Same Notebook in Real-Time
 This section shows how `OMLUSER` and `OMLUSER2` collaborate on the Sales Note notebook in real-time. Both users have the Sales Note notebook opened in different browsers, and they work on it simultaneously. The changes made by the users are dynamically reflected in the notebook in real-time. To try this example on the same client machine, for example, your laptop, use two different types of browsers such as Chrome and Firefox to enable two different logins. To see changes dynamically, try to position these two browser windows side by side on your screen so that both views are visible.
@@ -183,7 +192,7 @@ You can export a notebook in two ways:
 
     * Select the notebook that you want to export, and click **Export**.
       ![Export option](images/export-option-nb-page.png "user1 views sales")   
-    * In the Export Notebook dialog, for Notebooks to export, click **Selected**. Select the format in which you want to export the notebook, and then click **OK**.
+    * In the Export Notebook dialog, for Notebooks to export, click **Selected**. Select the format in which you want to export the notebook, and then click *Export**.
       ![Export dialog](images/export-nb-dialog1.png "user1 views sales")  
 
 2. From the Notebook editor: 
@@ -236,4 +245,4 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 
-* **Last Updated By/Date**: Moitreyee Hazarika, November 2024
+* **Last Updated By/Date**: Moitreyee Hazarika, February 2025
