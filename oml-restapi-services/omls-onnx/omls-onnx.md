@@ -188,7 +188,7 @@ To create and train the model:
   This completes the task of creating and training an open source xgboost model. 
 
 
-## Task 2: Convert the open source xgboost model to ONNX format
+## Task 3: Convert the open source xgboost model to ONNX format
 
 To convert the xgboost model to ONNX, we need the model in .onnx format, zipped together with a metadata.json file. 
 
@@ -211,12 +211,14 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
     </copy>
     ```
 
+    ![Import zip and json](images/import-json-zip.png)
+
 2. Run the following command to set up the directories on the file system where the ONNX model will be created:
     ```
     <copy>
+    %python
     import os
-    home = os.path.expanduser('~')
-    target_folder = os.path.join(home, 'onnx_test' )
+    target_folder = os.path.expanduser('/tmp')
     try:
       os.makedirs(target_folder)
     except:
@@ -225,13 +227,26 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
     </copy>
     ```
 
-3. Now run the following command to define the model inputs: 
+    ![define home](images/define-target-folder-1.png)
+
+3. Define the folder tmp as the target forlder
+
+  ![define target folder](images/target-foler-tmp.png)
+
+3. Now define the model inputs to the ONNX conversion function `convert_xgboost`. scikit-learn does not store information about the training data, so it is not always possible to retrieve the number of features or their types. For this reason, `convert_xgboost` contains an argument called `initial_types` to define the model input types.
+
+  For each numpy array (called a tensor in ONNX) passed to the model, choose a name and declare its data type and shape. Here, float_input is the chosen name of the input tensor. The shape is defined as None, xtrain.shape[1], the first dimension is the number of rows, and the second is the number of features. The number of rows is undefined as the the number of requested predictions is unknown at the time the model is converted.
+
 
     ```
     <copy>
     initial_types = [('float_input', FloatTensorType([None, xtrain.shape[1]]))]
     </copy>
     ```
+
+
+
+  ![Define model inputs to the ONNX conversion function](images/define-initial-types.png)
 
   In this example:
 
@@ -246,10 +261,13 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
 4. Now that we have defined the model inputs, run the following command to convert the xgboost model to ONNX format: 
     ```
     <copy>
+    %python
     onnx_model = onnxmltools.convert_xgboost(model, initial_types=initial_types)
-    onnxmltools.utils.save_model(onnx_model, './xgboost_boston.onnx')
+    onnxmltools.utils.save_model(onnx_model, 'xgboost_diabetes.onnx') 
     </copy>
     ```
+
+  ![Define model inputs to the ONNX conversion function](images/convert-xgb-onnx-model.png)
 
   In this example, we are using the `convert_xgboost` function from onnxmltools and save the model to file `xgboost.onnx`.
 
@@ -257,18 +275,22 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
 
     ```
     <copy>
+    %python
     metadata = {
     "function": "regression",
     }
 
-    with open('./metadata.json', mode='w') as f:
+    with open('metadata.json', mode='w') as f:
       json.dump(metadata, f)
 
-    with ZipFile('./onnx_xgboost.model.zip', mode='w') as zf:
-      zf.write('./metadata.json')
-      zf.write('./xgboost_boston.onnx')
+    with ZipFile('onnx_diabetes.model.zip', mode='w') as zf:
+      zf.write('metadata.json')
+      zf.write('xgboost_diabetes.onnx')
     </copy>
     ```
+
+  ![Define model inputs to the ONNX conversion function](images/create-metadata-json.png)
+    
 
 
 
@@ -292,12 +314,21 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
 
 To know more about the the `metadata.json` file, see:  [Specifications for ONNX Format Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/onnx_spec.html)
 
-5. Run the followng command to view and examine the string representation of the ONNX model. It contains the version of OnnxMLTools used to create the ONNX model, and a text representation of the graph structure, including the input types that you defined in step 3.
+5. Run the followng command to print and view the metadata.json file that you created in the  step above.
     ```
     <copy>
-    print(str(onnx_model))
+    %python  
+    with open('metadata.json', mode='r') as f:
+        print(f.read())  
     </copy>
     ```
+
+   ![VIew the content of the metadata.json file](images/view-metadata-json.png)
+
+
+6. Run the followng command to view and examine the string representation of the ONNX model. It contains the version of OnnxMLTools used to create the ONNX model, and a text representation of the graph structure, including the input types that you defined in step 3.
+
+  ![Print and view the ONNX model](images/print-onnx-model.png)
 
 
 This completes the task of creating and training an ONNX model. 
