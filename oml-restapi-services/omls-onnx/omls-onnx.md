@@ -32,13 +32,13 @@ This lab assumes you have:
     * Your OML user name and password
     * `oml-cloud-service-location-url`
 * A valid authentication token
-<<<<<<< HEAD
+
 * onnxruntime and onnxmltools
 * A Conda environment with xgboost installed
 
 ## Task 1: Create and set up a Conda Environment
 
-In this lab, you will create a Conda environment by the name xgbenv and install the libraries xgboost, onnxruntime and onnxmltools.
+In this task, you will create a Conda environment by the name xgbenv and install the libraries xgboost, onnxruntime and onnxmltools.
 
 1. Sign into your Oracle Machine Learning UI as `ADMIN` and run the following commands:
 
@@ -88,7 +88,7 @@ In this lab, you will create a Conda environment by the name xgbenv and install 
 
 This sets up the environment to create and train a xgboost model, and convert it to ONNX format.
 
-## Task 2: Train an open source xgboost model
+## Task 2: Load and prepare the data
 
 
 To create and train the model:
@@ -122,7 +122,16 @@ To create and train the model:
 
   ![Commands to print and view the Diabetes dataset](images/print-diabetes.png)
 
-3. Now separate the data into target and predictor variables. Then split the data into train and test sets. Run the following command. 
+## Task 3: Train, Score and Evaluate the model 
+
+In this task, you will perform the following tasks:
+
+* Separate the data into target and predictor variables 
+* Split the data into train and test set
+* Score with the model
+* Evaluate the model
+
+1. Run the following command to separate the data into target and predictor variables, and then split the data into train and test sets:
 
 
     ```
@@ -146,15 +155,22 @@ To create and train the model:
 
     ```
     <copy>
-        model = xgb.XGBRegressor(objective ='reg:squarederror', colsample_bytree = 0.3, learning_rate = 0.1,
-                max_depth = 5, alpha = 10, n_estimators = 10)
-    print(model)
+
+        % python
+        model = xgb.XGBRegressor(objective ='reg:squarederror', 
+                         colsample_bytree = 0.3, 
+                         learning_rate = 0.1,
+                         max_depth = 5, 
+                         alpha = 10, 
+                         n_estimators = 10)
+        print(model)
+
     </copy>
     ```
 
   ![XGboost model](images/model-xgbregressor.png)
 
-5. Run the following command to train the model using the _fit_ method and make predictions using the _predict_ method on the model:
+5. Run the following command to score with the model using the _fit_ method and make predictions using the _predict_ method on the model:
 
     ```
     <copy>
@@ -166,7 +182,7 @@ To create and train the model:
 
   ![Fit model and predict](images/model-train-fit.png)
 
-6. Next, compute the Root Mean Square error (RMSE) by using the `mean_squared_error` function. This function is available in the _metrics_ module of sklearn. 
+6. Next, the model is ready to be evaluated. For this, run the following to compute the Root Mean Square error (RMSE) by using the `mean_squared_error` function. This function is available in the _metrics_ module of sklearn. 
 
     ```
     <copy>
@@ -187,7 +203,7 @@ To create and train the model:
   This completes the task of creating and training an open source xgboost model. 
 
 
-## Task 3: Convert the open source xgboost model to ONNX format
+## Task 4: Convert the open source xgboost model to ONNX format
 
 To convert the xgboost model to ONNX, we need the model in .onnx format, zipped together with a metadata.json file. 
 
@@ -197,13 +213,11 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
 * `metadata.json` file and 
 * `label.txt` (optional) file. 
 
-
-
-
 1. Run the following command to import the required libraries - ZipFile, json, and FloatTensorType:
 
     ```
     <copy>
+    %python
     import json
     from zipfile import ZipFile
     from skl2onnx.common.data_types import FloatTensorType
@@ -212,10 +226,11 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
 
     ![Import zip and json](images/import-json-zip.png)
 
-2. Run the following command to set up the directories on the file system where the ONNX model will be created:
+2. Now, you must prepare the folder structure to set up the directories on the file system where the ONNX model will be created and stored. Run the following command:
     ```
     <copy>
     %python
+
     import os
     target_folder = os.path.expanduser('/tmp')
     try:
@@ -228,11 +243,8 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
 
     ![define home](images/define-target-folder-1.png)
 
-3. Define the folder tmp as the target forlder
 
-  ![define target folder](images/target-foler-tmp.png)
-
-4. Now define the model inputs to the ONNX conversion function `convert_xgboost`. scikit-learn does not store information about the training data, so it is not always possible to retrieve the number of features or their types. For this reason, `convert_xgboost` contains an argument called `initial_types` to define the model input types.
+3. Now define the model inputs to the ONNX conversion function `convert_xgboost`. scikit-learn does not store information about the training data, so it is not always possible to retrieve the number of features or their types. For this reason, `convert_xgboost` contains an argument called `initial_types` to define the model input types.
 
   For each numpy array (called a tensor in ONNX) passed to the model, choose a name and declare its data type and shape. Here, float_input is the chosen name of the input tensor. The shape is defined as None, xtrain.shape[1], the first dimension is the number of rows, and the second is the number of features. The number of rows is undefined as the the number of requested predictions is unknown at the time the model is converted.
 
@@ -306,7 +318,19 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
 
 To know more about the the `metadata.json` file, see:  [Specifications for ONNX Format Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/onnx_spec.html)
 
-7. Run the following command to print and view the metadata.json file that you created in the step above.
+7. Run the following command to view the zip file in the /tmp folder:
+
+     ```
+    <copy>
+    %python  
+    import os
+    os.listdir('/tmp')
+    </copy>
+    ```
+
+    ![View the content of the zip file](images/view-zip-file.png)
+
+8. Run the following command to read and view the metadata.json file:
     ```
     <copy>
     %python  
@@ -318,28 +342,37 @@ To know more about the the `metadata.json` file, see:  [Specifications for ONNX 
    ![View the content of the metadata.json file](images/view-metadata-json.png)
 
 
-8. Run the following commands to view the files in the tmp folder.
+9. Run the following commands to view the contents of the zip file: 
 
     ```
     <copy>
     %python  
-    with open('metadata.json', mode='r') as f:
-        print(f.read())  
+    import zipfile 
+    with zipfile.ZipFile("onnx_diabetes.model.zip", "r") as zip_ref:
+        zip_ref.printdir()  # Print file list to confirm the structure
     </copy>
     ```
 
-   ![View the content of the metadata.json file](images/view-tmp-dir.png) 
+   ![View the content of the zip file](images/view-zipfile-content.png)
 
 
 
 9. Run the followng command to view and examine the string representation of the ONNX model. It contains the version of OnnxMLTools used to create the ONNX model, and a text representation of the graph structure, including the input types that you defined in step 3.
 
+    ```
+    <copy>
+    %python  
+    print(str(onnx_model))
+    </copy>
+    ```
+
+
   ![Print and view the ONNX model](images/print-onnx-model.png)
 
 
-This completes the task of creating and training an ONNX model. 
+This completes the task of creating and converting the open source xgboost model to an ONNX format model. 
 
-## Task 4: Validate the ONNX model by score with the data in the ONNX Runtime environment 
+## Task 5 (DRAFT): Validate the ONNX model by score with the data in the ONNX Runtime environment 
 
 
 1. Run the following command to import the ONNX runtime environment:
