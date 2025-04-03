@@ -17,7 +17,7 @@
             "type": "freetier"
         },
         {
-            "title": "Provision an Autonomous Data Warehouse with OML users",
+            "title": "Provision an Autonomous Database with OML users",
             "filename": "../../provision-adb-oml/provision-adb-oml.md",
             "type": "freetier"
         },

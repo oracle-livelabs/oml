@@ -9,6 +9,7 @@ Python is a major programming language used for data science and machine learnin
 Watch this quick video on Oracle Machine Learning for Python (OML4Py).
 
  [Overview of OML4Py](youtube:wciO-5CyS2M)
+ <!-- [Overview of OML4Py](youtube:https://www.youtube.com/watch?v=Fv5w5-mJu-Y&list=PLdtXkK5KBY57_y3Z0SW2cbCqGUPbfc94w&index=4&ab_channel=OracleDatabaseProductManagement) -->
 
 Estimated Time:  <if type="freetier">230 minutes</if><if type="freetier-ocw23">150 minutes (plus 80 minutes of Bonus Labs)</if><if type="livelabs">215 minutes</if><if type="livelabs-ocw23">135 minutes (plus 80 minutes of Bonus Labs)</if>
 

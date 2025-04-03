@@ -1,8 +1,8 @@
-# Provision an Autonomous Database in Oracle Cloud
+# Provision an Autonomous Database with OML Users
 
 ## Introduction
 
-This lab walks you through the steps to provision an Autonomous Database in your Oracle Cloud account, whether it is a Free Tier one or a Paid one.  You will also create an OML-enabled user and sign into Oracle Machine Learning user interface.
+This lab walks you through the steps to provision an Oracle Autonomous Database in your Oracle Cloud account.  You will also create an OML-enabled user and sign into Oracle Machine Learning user interface.
 
 Estimated Time: 20 minutes
 
@@ -18,7 +18,7 @@ In this lab, you will learn how to:
 
 * Sign up for a Free Tier Oracle Cloud account (check the **Get Started** Lab in this workshop for instructions) or use your own paid Oracle Cloud account.
   
-* If you are using your own **Paid OCI Tenancy**, make sure you have the appropriate Quotas available to provision **Autonomous Data Warehouse** services.  You can read more about "Quotas and Limits" in the [OCI Documentation for Service Limits](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm " "). 
+* If you are using your own **Paid OCI Tenancy**, make sure you have the appropriate Quotas available to provision **Autonomous Database** services.  You can read more about "Quotas and Limits" in the [OCI Documentation for Service Limits](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm " ").
 
 
  > **Note:** You may see differences in account details in the screenshots (eg: Database Name is different than yours) as you work through the labs. This is because of the flexibility of choice you will have when creating your own.
@@ -46,7 +46,7 @@ To provision an Oracle Autonomous Database:
 
 3. On the Create Autonomous Database page, provide the basic information about the database. By default, a database name and a display name for the database are provided. You can modify these names to enter a user-friendly display name for the ADB instance to easily identify the resource. The display name does not have to be unique.    
 
-   > **Note:** We will choose the Display Name *OML_LABS* and the Database Name *OMLLABS* for our example.  You can use the same or create your own, but neither supports blank spaces in the name
+   > **Note:** We will choose the Display Name *OMLLABS* and the Database Name *OMLLABS* for our example.  You can use the same or create your own, but neither supports blank spaces in the name
 
    ![Autonomous Database information](images/adb-basic-inform.png " ")
 
@@ -54,7 +54,7 @@ To provision an Oracle Autonomous Database:
 
    ![Autonomous Database Workload type](images/workload-type.png " ")
 
-5. For Deployment, select **Serverless Infrastructure**.
+5. For Deployment, select **Serverless**.
 
    ![Autonomous Database deployment type](images/deployment-type.png " ")
 
@@ -170,7 +170,7 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 	![Database Actions main menu](images/db-users-db-actions.png " ")
 
-2. On the Database Actions page, go to the **Development** tab and click **Oracle Machine Learning**. This opens the Oracle Machine Learning sign in page.
+2. On the Database Actions page, go to the **Development** tab and click **Machine Learning**. This opens the Oracle Machine Learning sign in page.
 
 	 ![Oracle Machine Learning tile](images/adb-dev-oml.png " ")
 
@@ -208,4 +208,4 @@ This completes the task of signing into Oracle Machine Learning user interface.
 
 * **Author** - Marcos Arancibia, Product Manager, Oracle Autonomous Database; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, June 2024
+* **Last Updated By/Date** - Dhanish Kumar, June 2024
