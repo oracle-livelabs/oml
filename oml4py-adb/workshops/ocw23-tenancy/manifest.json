@@ -64,8 +64,9 @@
             "type": "freetier-ocw23"
         },
         {
-            "title": "Oracle CloudWorld 2023 - Support",
-            "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
+          "title": "Need Help?",
+          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
         }
     ]
 }
