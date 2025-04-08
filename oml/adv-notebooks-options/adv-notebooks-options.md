@@ -339,4 +339,4 @@ This completes the task of creating paragraph dependencies in a notebook, and ru
 
 * **Author** -  Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -   Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, February 2025
+* **Last Updated By/Date** - Moitreyee Hazarika, April 2025
