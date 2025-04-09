@@ -1,4 +1,4 @@
-# Provision an Autonomous Data Warehouse with OML users
+# Provision an Autonomous Database with OML users
 
 ## Introduction
 

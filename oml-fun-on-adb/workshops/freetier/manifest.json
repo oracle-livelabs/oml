@@ -8,6 +8,7 @@
         "oml-oml-notebooks-ea.md":"/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md",
         "oml-oml-monitoring.md":"/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md",
         "oml-nb-visualizations.md":"/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md", 
+        "oml-automl.md":"/common/building-blocks/blocks/oml/oml-automl/oml-automl.md", 
         "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md"        
     },
     "tutorials": [
@@ -22,7 +23,7 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
         },
         {
-            "title": "Provision an Autonomous Data Warehouse with OML users",
+            "title": "Provision an Autonomous Database with OML users",
             "type": "freetier",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
             "filename": "../../get-started-livelabs/get-started-livelabs.md"
@@ -50,7 +51,7 @@
         {
             "title": "Lab 5: Introduction to Oracle Machine Learning AutoML UI",
             "type": "freetier",
-            "filename": "../../automl/automl.md"
+            "filename": "/common/building-blocks/blocks/oml/oml-automl/oml-automl.md"
         },        
         {
             "title": "Lab 6: Introduction to Oracle Machine Learning Monitoring",

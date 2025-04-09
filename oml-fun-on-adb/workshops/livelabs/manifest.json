@@ -8,6 +8,7 @@
         "oml-oml-notebooks-ea.md":"/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md",
         "oml-nb-visualizations.md":"/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md", 
         "oml-oml-monitoring.md":"/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md",
+        "oml-automl.md":"/common/building-blocks/blocks/oml/oml-automl/oml-automl.md",
         "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md"       
     },
     "tutorials": [
@@ -44,7 +45,7 @@
         {
             "title": "Lab 5: Introduction to Oracle Machine Learning AutoML UI",
             "type": "livelabs",
-            "filename": "../../automl/automl.md"
+            "filename": "/common/building-blocks/blocks/oml/oml-automl/oml-automl.md"
         },
         {
             "title": "Lab 6: Introduction to Oracle Machine Learning Monitoring",
