@@ -1,6 +1,9 @@
 {
     "workshoptitle": "Introduction to Oracle Machine Learning for Python on Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "oml-automl.md":"/common/building-blocks/blocks/oml/oml-automl/oml-automl.md"
+    },
     "tutorials": [
         {
             "title": "Get Started with Live Labs",
@@ -34,7 +37,7 @@
         },
         {
             "title": "Lab 5: Use AutoML UI",
-            "filename": "../../automl-ui/automl-ui.md",
+            "filename": "/common/building-blocks/blocks/oml/oml-automl/oml-automl.md",
             "type": "livelabs-ocw23"
         },
         {
