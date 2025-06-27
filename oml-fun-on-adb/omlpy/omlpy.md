@@ -39,7 +39,7 @@ With OML4Py, you can create Python proxy objects that can be used to access, ana
 This step illustrates how you can access the OML4Py Classification DT notebook available on the Notebook page which was created in Lab 1. The OML4Py Classification DT notebook was created based on the example template of the OML4Py Classification Decision Tree.
 
 1. Click the Cloud menu icon ![Cloud menu icon](images/cloud-menu-icon.png) on the top left corner of the page to open the left navigation menu. Click **Notebooks** to proceed to the Notebook page.
-	![Left pane navigation to Notebooks through Cloud menu icon.](images/left-nav-pane-notebooks.png)
+	![Left pane navigation to Notebooks through Cloud menu icon.](images/notebooks-ea-leftnav.png)
 	Alternatively, you can click **Notebooks** on the home page to go directly to the Notebooks page.
 	![Homepage Notebooks.](images/homepage-notebooks.png)
 
@@ -866,4 +866,4 @@ OML4Py enables data scientists to hand-off their user-defined Python functions t
 
 * **Authors** - Sarika Surampudi, Senior User Assistance Developer, Oracle Database User Assistance Development; Dhanish Kumar, Member of Technical Staff, User Assistance Developer.
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning.
-* **Last Updated By/Date** - Dhanish Kumar, November 2024
+* **Last Updated By/Date** - Dhanish Kumar, June 2025

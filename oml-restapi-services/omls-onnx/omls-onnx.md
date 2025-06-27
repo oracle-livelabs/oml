@@ -246,7 +246,7 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
 
 3. Now define the model inputs to the ONNX conversion function `convert_xgboost`. scikit-learn does not store information about the training data, so it is not always possible to retrieve the number of features or their types. For this reason, `convert_xgboost` contains an argument called `initial_types` to define the model input types.
 
-  For each numpy array (called a tensor in ONNX) passed to the model, choose a name and declare its data type and shape. Here, float_input is the chosen name of the input tensor. The shape is defined as None, xtrain.shape[1], the first dimension is the number of rows, and the second is the number of features. The number of rows is undefined as the the number of requested predictions is unknown at the time the model is converted.
+  For each numpy array (inpout tensor) passed to the model, choose a name and declare its data type and shape. Here, `float_input` is the name chosen for the input tensor.
 
     ```
     <copy>
@@ -265,7 +265,7 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
       * `None` - This is the first dimension. It represents the number of rows. The number of rows is undefined as the the number of requested predictions is unknown at the time the model is converted.
       * `xtrain.shape[1]` - This is the second dimension. It represents the number of features (or input dimensions) for each data point.
 
-5. Now that we have defined the model inputs, run the following command to convert the xgboost model to ONNX format: 
+4. Now that we have defined the model inputs, run the following command to convert the xgboost model to ONNX format: 
     ```
     <copy>
     %python
@@ -276,10 +276,11 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
 
   ![Define model inputs to the ONNX conversion function](images/convert-xgb-onnx-model.png)
 
-  In this example, we are using the `convert_xgboost` function from onnxmltools and save the model to file `xgboost.onnx`.
+  In this example, we are using the `convert_xgboost` function from onnxmltools. The model is saved to the file `xgboost_diabetes.onnx`. This completes the task of converting the xgboost model to ONNX format.
 
+## Task 4.1: Create metadata.json file, zip file and validate 
 
-6. Now, run the following command to create the `metadata.json` file and compress and create the zip file by the name `onnx_xgboost.model.zip`:
+1. Now, run the following command to create the `metadata.json` file and compress and create the zip file by the name `onnx_xgboost.model.zip`:
 
     ```
     <copy>
@@ -318,7 +319,7 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
 
 To know more about the the `metadata.json` file, see:  [Specifications for ONNX Format Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/onnx_spec.html)
 
-7. Run the following command to view the zip file in the /tmp folder:
+2. Run the following command to view the zip file in the /tmp folder:
 
      ```
     <copy>
@@ -330,7 +331,7 @@ To know more about the the `metadata.json` file, see:  [Specifications for ONNX 
 
     ![View the content of the zip file](images/view-zip-file.png)
 
-8. Run the following command to read and view the metadata.json file:
+3. Run the following command to read and view the metadata.json file:
     ```
     <copy>
     %python  
@@ -342,7 +343,7 @@ To know more about the the `metadata.json` file, see:  [Specifications for ONNX 
    ![View the content of the metadata.json file](images/view-metadata-json.png)
 
 
-9. Run the following commands to view the contents of the zip file: 
+4. Run the following commands to view the contents of the zip file: 
 
     ```
     <copy>
@@ -355,25 +356,11 @@ To know more about the the `metadata.json` file, see:  [Specifications for ONNX 
 
    ![View the content of the zip file](images/view-zipfile-content.png)
 
+This completes the task of creating the metadata.json file, the zip file (containing the metadata.json file and xgboost model in onnx format), and validating the contents of these files.
 
+## Task 4.2: Compare predictions made by the original XGboost model and the ONNX model 
 
-9. Run the followng command to view and examine the string representation of the ONNX model. It contains the version of OnnxMLTools used to create the ONNX model, and a text representation of the graph structure, including the input types that you defined in step 3.
-
-    ```
-    <copy>
-    %python  
-    print(str(onnx_model))
-    </copy>
-    ```
-
-
-  ![Print and view the ONNX model](images/print-onnx-model.png)
-
-
-This completes the task of creating and converting the open source xgboost model to an ONNX format model. 
-
-## Task 5 (DRAFT): Validate the ONNX model by score with the data in the ONNX Runtime environment 
-
+In this task, you will compare the original XGBoost prediction with the predictions made by the ONNX model. 
 
 1. Run the following command to import the ONNX runtime environment:
     ```
@@ -389,56 +376,53 @@ This completes the task of creating and converting the open source xgboost model
 
     ```
     <copy>
-    sess = rt.InferenceSession("xgboost_diabetes.onnx")
+    sess = rt.InferenceSession("/tmp/xgboost_diabetes.onnx")
+
+    input_name = sess.get_inputs()[0].name
+    label_name = sess.get_outputs()[0].name
+
+    pred_onnx = sess.run([label_name], {input_name: xtest.astype(np.float32)})[0]
     </copy>
     ```
 
   ![Define inference session](images/inference-session.png)
 
-3. Run the following command to get model metadata to enable mapping of new input to the runtime model:
+3. Run the following command to compare the original XGBoost prediction with the predictions made by the ONNX model:
 
     ```
     <copy>
-    input_name = sess.get_inputs()[0].name
-    label_name = sess.get_outputs()[0].name
+    %python
+    print("First 5 XGBoost predictions:")
+    print(pred[:5])
+
+    print("\nFirst 5 ONNX predictions:")
+    print(pred_onnx[:5])
+
+    # Calculate and display difference
+    diff = np.abs(pred - pred_onnx.flatten())
+    print("\nMaximum difference:", np.max(diff))
+    print("Validation successful: Model converted correctly")
     </copy>
     ```
+    ![Prediction Comparison](images/model-prediction-comparison.png)
 
-  ![Define input labels](images/define-input-label-names.png)
+As you can see, the predictions made by the original XGBoost model and the ONNX model are almost similar. We can conclude that the XGBoost model has been converted to the ONNX format correctly. 
 
-4. Run the following command to create predictions. The inputs are the xtest values.
+This completes the task of validating the predictions made by the ONNX model with the prediction made by the XGboost model. 
 
-    ```
-    <copy>
-    pred_onnx = sess.run([label_name], {input_name: xtest.astype(np.float32)})[0]
-    </copy>
-    ```
-  ![Define predictions](images/define-onnx-prediction.png)
+## Task 5: Obtain authentication token for use with OML Services REST API 
 
-
-5. Run the following command to print first 10 predictions:
-    ```
-    <copy>
-    print("Prediction:\n", pred_onnx[0:10])
-    </copy>
-    ```
-
-  ![Print top 10 predictions](images/onnx-prediction.png)
-
-This completes the task of validating the ONNX model. 
-
-## Task 4: Authenticate
-
-Before deploying the model, you must store the ONNX model in the model repository in the database. 
+Before deploying the ONNX model to OML Services, you must obtain an authentication token to access OML Services REST API, and store the ONNX model in the model repository in the database. 
 
 1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. 
+
   ```
   <copy>
   %python
   import requests
 
   # Define variables. Replace OML_SERVICE with your URL
-  OML_SERVICE = "https://hmugvwhgda3dbym-omllabs137721.adb.sa-saopaulo-1.oraclecloudapps.com"
+  OML_SERVICE = "https://wp206m0hg0kgxod-omllabs138190.adb.ca-toronto-1.oraclecloudapps.com"
   USERNAME = "OMLUSER"
   PASSWORD = "AAbbcc123456"
 
@@ -468,42 +452,37 @@ Before deploying the model, you must store the ONNX model in the model repositor
     ```
   ![Obtain authentication token](images/obtain-auth-token.png)
   
-  
+  The command returns the access token. 
+
   See **Lab 1 - Authenticate your OML Account with your Autonomous Database instance to use OML Services** in this workshop for details. 
 
-2. Import the zip file and print it from the tmp folder to view the content of the zip file and also to confirm the structure. 
+
+## Task 5.1: Store the model in the OML Services Model Repository
+
+1. To store the ONNX model, run the following command: 
+
 
     ```
     <copy>
     %python
-    import zipfile    
-    with zipfile.ZipFile("/tmp/onnx_diabetes.model.zip", "r") as zip_ref:
-        zip_ref.printdir()  
-    </copy>
-    ```
 
-  ![View the content of the zip file](images/import-view-zipfile.png)
-
-3. Run the following command to get information from the model endpoint, open the model.zip file, send the model upload request, and print the response. 
-
-    ```
-    <copy>
-    %python
     import requests
 
+    # OML Services models endpoint
     url = f"{OML_SERVICE}/omlmod/v1/models"
 
     headers = {
         "Authorization": f"Bearer {TOKEN}"
     }
+
     # Open the model zip file
-    with open("/tmp/onnx_diabetes.model.zip", "rb") as model_file:
+    with open("onnx_diabetes.model.zip", "rb") as model_file:
         files = {
             "modelData": ("onnx_diabetes.model.zip", model_file, "application/zip")
         }
 
         data = {
-            "modelName": "onnxRegressionModel",
+            "modelName": "onnxRegressionModel2",
             "modelType": "ONNX",
             "version": "1.0",
             "description": "onnx xgb regression model version 1.",
@@ -511,48 +490,19 @@ Before deploying the model, you must store the ONNX model in the model repositor
         }
 
         # Send the model upload request
-      response = requests.post(url, headers=headers, files=files, data=data)
+        response = requests.post(url, headers=headers, files=files, data=data)
 
-    # Print the response status and message
-      print(response.status_code)
-      print(response.text)
-    </copy>
-    ```
+  # Print the response status and message
+  print(response.status_code)
+  print(response.text)
+  </copy>
+      ```
 
-  ![View the content of the zip file](images/omls-model-endpoint-req.png)
-
-  Response:
-  ![View the response](images/omls-model-endpoint-response.png)
-
-
-## DRAFT
-
-2. To store the ONNX model, send a POST request to the model repository Service. Here is an example of a `POST` request to store an ONNX format regression model: 
-
-
-    ```
-    curl -X POST --header "Authorization: Bearer $token" 
-    <oml-cloud-service-location-url>/omlmod/v1/models \
-    -H 'content-type: multipart/form-data; boundary=Boundary' \
-    -F modelData=@sk_rg_onnx.zip \
-    -F modelName=onnxRegressionModel \
-    -F modelType=ONNX \
-    -F version=1.0 \
-    -F 'description=onnx sk regression model version 1.' \
-    -F shared=true
-    ```
+  ![Model stored in OML Services model repository. Model ID generated](images/modelID-model-repo.png)
 
     > **Note:** When you store the model in the repository, a unique ID is generated. This is the `modelId` that you use when creating the model endpoint.
   
-    In this example:
-      * `$token` - Represents an environmental variable that is assigned to the token obtained through the Authorization API.
-      * `sk_rg_onnx.zip` - This is the ONNX zip file.
-      * `onnxRegressionModel` - This is the model name.
-
-
-
-
-## Task 5:  (DRAFT) Deploy the ONNX Format Model
+## Task 5.2:  Deploy the ONNX Format Model
 To deploy and score an ONNX format regression model: 
 
 1. Send a `POST` request to the `/omlmod/v1/deployment` endpoint to deploy the ONNX model. The inputs for this request are the `modelId` and `URI`.
@@ -562,37 +512,33 @@ To deploy and score an ONNX format regression model:
     Example of POST request to deploy an ONNX model: 
 
     ```
-    curl -X POST --header "Authorization: Bearer $token" 
-    <oml-cloud-service-location-url> /omlmod/v1/deployment \
-    -H 'Content-Type: application/json' \
-    -d '{\
-      "modelId": "29e99b4b-cfc2-4189-952a-bd8e50fb8046",\
-      "uri": "onnxrg"\
-        }' 
-    ```
-
-    In this example: 
-      * `$token` - Represents an environmental variable that is assigned to the token obtained through the Authorization API.
-      * `29e99b4b-cfc2-4189-952a-bd8e50fb8046` - This is the `modelId`. The `modelId` is generated when you store the model in the repository.
-      * `onnxrg` - This is the URI.
-
-
-5. Get the Open API document for this model endpoint by sending a `GET` request to `/deployment/{uri}/api`. 
-
-    Example of getting the Open API document of a deployed ONNX regression model:
-
-    ```
     <copy>
-    curl -X GET --header "Authorization: Bearer $token" 
-    <oml-cloud-service-location-url>/omlmod/v1/deployment/onnxrg/api
+    %python
+
+    import requests
+
+    url = f"{OML_SERVICE}/omlmod/v1/deployment"
+    headers = {
+        "Authorization": f"Bearer {TOKEN}",
+        "Content-Type": "application/json"
+    }
+    data = {
+        "modelId": "700d4458-4ee3-4a92-876a-a8103eca5cc7",
+        "uri": "onnxrg"
+    }
+
+    response = requests.post(url, headers=headers, json=data)
+
+    print(response.status_code)
+    print(response.json())  
+
     </copy>
     ```
+  ![ONNX Model deployed](images/onnx-model-deployed.png)
+     
+      
 
-    In this example: 
-    * `$token` - Represents an environmental variable that is assigned to the token obtained through the Authorization API.
-    * `onnxrg` - This is the URI.
-
-## Task 6:  (DRAFT) Score the ONNX Model
+## Task 5.3:  Score the ONNX Model
 
 1. Score the model by sending a POST request to the `deployment/{uri}/score` endpoint. The `GET` response to `{uri}/api` provides detailed information about the model.
 
@@ -600,47 +546,49 @@ To deploy and score an ONNX format regression model:
 
     ```
     <copy>
-    curl -X POST --header "Authorization: Bearer $token" 
-    <oml-cloud-service-location-url> /omlmod/v1/deployment/onnxrg/score \
-    -H 'Content-Type: application/json' \
-    -d '{\
-      "inputRecords": [\
-        {\
-          "input": [\
-            [\
-              -0.07816532,\
-              0.05068012,\
-              0.07786339,\
-              0.05285819,\
-              0.07823631,\
-              0.0644473,\
-              0.02655027,\
-              -0.00259226,\
-              0.04067226,\
-              -0.00936191\
-            ]\
-          ]\
-        },\
-        {\
-          "input": [\
-            [\
-              0.0090156,\
-              0.05068012,\
-              -0.03961813,\
-              0.0287581,\
-              0.03833367,\
-              0.0735286,\
-              -0.07285395,\
-              0.1081111,\
-              0.01556684,\
-              -0.04664087\
-            ]\
-          ]\
-        }\
-      ]\
+    %python
+
+    # Scoring endpoint URL
+    url = f"{OML_SERVICE}/omlmod/v1/deployment/onnxrg/score"
+
+    # Headers
+    headers = {
+        "Authorization": f"Bearer {TOKEN}",
+        "Content-Type": "application/json"
     }
+
+    data = {
+        "inputRecords": [
+            {
+                "float_input": [  
+                    [
+                        0.03807591, 0.05068012, 0.06169621, 0.02187235, -0.0442235,
+                        -0.03482076, -0.04340085, -0.00259226, 0.01990749, -0.01764613
+                    ]
+                ]
+            },
+            {
+                "float_input": [  # Second record
+                    [
+                        -0.00188202, -0.04464164, -0.05147406, -0.02632795, -0.00844872,
+                        -0.01916334, 0.07441156, -0.03949338, -0.06833155, -0.09220405
+                    ]
+                ]
+            }
+        ]
+    }
+
+    # Send request
+    response = requests.post(url, headers=headers, json=data)
+
+    # Print response
+    print(response.status_code)
+    print(response.json())  
     </copy>
     ```
+    ![Scoring the ONNX Model](images/onnx-model-scoring-results.png)
+    
+    
     This is a deployed ONNX regression model with URI `onnxrg`. In this example: 
     * `$token` - Represents an environmental variable that is assigned to the token obtained through the Authorization API.
     * `POST` request is sent to `/deployment/onnxrg/score`.  
