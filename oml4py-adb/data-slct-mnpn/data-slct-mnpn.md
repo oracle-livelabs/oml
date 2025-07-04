@@ -51,7 +51,7 @@ In this lab, you will learn how to:
 
       Go back to the main Notebooks page by clicking on the Cloud menu icon ![](images/cloud-menu-icon.png) on the upper left of the screen to open the left navigation pane, and then click **Notebooks**. 
       
-      ![Go to main Notebooks](images/go-back-to-notebooks.png " ")
+      ![Go to main Notebooks](images/go-back-to-notebooks-rw.png " ")
       
       <if type="freetier">
       Click the **Lab 2** notebook to view it.

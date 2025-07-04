@@ -28,7 +28,7 @@ In this lab, you will learn how to:
 
 2. Go back to the main Notebooks page by clicking on the Cloud menu icon ![Cloud menu icon](cloud-menu-icon.png) on the upper left corner of the page, and then select **Notebooks**. 
    
-   ![Go to main Notebooks](images/go-back-to-notebooks.png " ")
+   ![Go to main Notebooks](images/go-back-to-notebooks-rw.png " ")
    
 3. Click the **Lab 3** notebook to view it.
    
