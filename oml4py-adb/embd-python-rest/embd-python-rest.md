@@ -46,7 +46,7 @@ In this lab, we provide a workflow for using the OML4Py REST API for embedded Py
   <if type="freetier">
   Click the **Lab 7** notebook to view it.
 
-  ![Open Lab 7 notebook ft](images/click-on-la7-ft.png " ") </if>
+  ![Open Lab 7 notebook ft](images/click-on-lab7-ft.png " ") </if>
 
   <if type="livelabs">
   Click the **Lab 7** notebook to view it.
@@ -87,11 +87,11 @@ To access the OCI Cloud Shell to run the associated cURL commands:
 
 1. Click the Developer Tools icon on your OCI console and then click Cloud Shell.  
 
-  ![Cloud shell icon under Developer tools](images/devtools-cloud-shell.png " ")
+  ![Cloud shell icon under Developer tools](images/devtools-cloud-shell-rw.png " ")
 
 2. The Oracle Cloud Shell interface opens at the bottom of your OCI console page. Here, you can run your cURL commands.  At the right in the green bar that opens up you also have options to maximize, minimize or close the Cloud Shell window.
 
-  ![Cloud shell pane](images/cloud-shell-pane.png " ")
+  ![Cloud shell pane](images/cloud-shell-pane-rw.png " ")
 
 ## Task 1: Obtain an Access Token
 
@@ -241,4 +241,4 @@ You can explore additional workshops related to Oracle Machine Learning from the
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Dhanish Kumar, January 2025
+* **Last Updated By/Date** - Dhanish Kumar, July 2025

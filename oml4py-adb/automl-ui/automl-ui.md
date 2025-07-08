@@ -1209,4 +1209,4 @@ This completes the task of creating a notebook based on a model and viewing the 
 
 * **Author** - Marcos Arancibia, Senior Principal Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Dhanish Kumar, January 2025
+* **Last Updated By/Date** - Dhanish Kumar, July 2025
