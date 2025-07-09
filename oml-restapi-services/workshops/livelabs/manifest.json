@@ -12,7 +12,7 @@
     "tutorials": [
         {
             "title": "Introduction",
-            "description": "Introduction to Oracle Machine Learning Notebooks.",
+            "description": "Introduction to REST API for Oracle Machine Learning Services",
             "filename": "../../introduction/introduction.md"
         },
         {

@@ -12,7 +12,7 @@ In this workshop, you will learn how to:
 
 * Use OML Services:
     * Obtain an authentication token to use OML Services via REST endpoints
-    * Deploy and score an ONNX Format Model
+    * Deploy an ONNX format models and perform scoring
     * Score a Mini Batch Using Cognitive Image Functionality in Oracle Machine Learning Services
     * Create and Run a Data Bias Detection Job Using Oracle Machine Learning REST API
     * Create and Run a Data Monitoring Job Using OML Services REST API
@@ -31,4 +31,4 @@ This workshop assumes you have:
 
 * **Authors** - Moitreyee Hazarika, Principal User Assistance Developer; Sherry LaMonica, Consulting Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning, Suresh Rajan, Senior Manager, Oracle Database User Assistance Development
-* **Last Updated By/Date** - Moitreyee Hazarika, February 2025
+* **Last Updated By/Date** - Moitreyee Hazarika, July 2025
