@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Introduction to Oracle Machine Learning Notebooks",
+    "workshoptitle": "Introduction to REST API for Oracle Machine Learning Services",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
         "oml-sign-into-oml.md":"/common/building-blocks/tasks/oml/sign-into-oml.md",
