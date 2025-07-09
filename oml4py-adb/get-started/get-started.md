@@ -25,10 +25,11 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
     ![Live Labs My Reservations](images/ll-launch-workshop.png " ")
 
 2. In the window with instructions that opens, click on the **View Login Info** at the **top left** of the page, and then click on the **Launch OCI** button.  Make sure to click on the **Copy Password** button since you will need it to login.
-    ![Live Labs Launch OCI](images/ll-view-login-info.png " ")
+    ![Live Labs Launch OCI](images/ll-view-login-info-dk.png " ")
 
 3. Login into OCI with the user provided (it should be filled automatically) and the password you copied.  
-    ![Live Labs Login into OCI](images/ll-login-oci.png " ")
+    ![Live Labs Identity domain into OCI](images/ll-identity-domain-oci-dk.png " ")
+    ![Live Labs Login into OCI](images/ll-login-oci-dk.png " ")
 
     > **Note:** The first time you login to OCI, you will be asked to reset your password.
 
@@ -82,9 +83,9 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 <if type="freetier-ocw23">
      ![Oracle Autonomous Database instances](images/provisioned-adb-rw.png " ")</if>
 <if type="livelabs">
-     ![Oracle Autonomous Database instances](images/ll-adb-listing.png " ")</if>
+     ![Oracle Autonomous Database instances](images/ll-adb-listing-rw.png " ")</if>
 <if type="livelabs-ocw23">
-     ![Oracle Autonomous Database instances](images/ll-adb-listing.png " ")</if>
+     ![Oracle Autonomous Database instances](images/ll-adb-listing-rw.png " ")</if>
 
 3. On the Autonomous Database details page, click **Database Actions** and then select **View all Database Actions**.
 
@@ -118,12 +119,12 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 
 <if type="livelabs">
     > **Note:** There is another option to get straight into OML UI from the Live Labs reservation.  When you click on **View Login Info**, you can click on the **OML Notebooks** button to go to the OML UI.
-    ![Oracle Machine Learning UI from Live Labs](images/ll-oml-ui-link.png " ")
+    ![Oracle Machine Learning UI from Live Labs](images/ll-oml-ui-link-dk.png " ")
 
 </if>
 <if type="livelabs-ocw23">
     > **Note:** There is another option to get straight into OML UI from the Live Labs reservation.  When you click on **View Login Info**, you can click on the **OML Notebooks** button to go to the OML UI.
-    ![Oracle Machine Learning UI from Live Labs](images/ll-oml-ui-link.png " ")
+    ![Oracle Machine Learning UI from Live Labs](images/ll-oml-ui-link-dk.png " ")
 
 </if>
 ## Task 2: Get familiar with OML Notebooks
