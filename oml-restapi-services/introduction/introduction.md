@@ -2,7 +2,7 @@
 
 ## About this Workshop
 
-In this workshop, you will explore Oracle Machine Learning Services. The REST API for Oracle Machine Learning Services provides REST API endpoints hosted on Oracle Autonomous Database. Using the REST APIs, you will learn how to deploy an ONNX format model, score a mni batch record using the Cognitive image functionality, create and run a data monitoring and model monitoring job to deploy a model, and run a data bias detection job. 
+In this workshop, you will explore the REST APIs for Oracle Machine Learning Services. The REST API for Oracle Machine Learning Services provides REST API endpoints hosted on Oracle Autonomous Database. Using the REST APIs, you will learn how to deploy an ONNX format model, perform scoring, score a mni batch record using the Cognitive image functionality, create and run a data monitoring and model monitoring job to deploy a model, and run a data bias detection job. 
 
 Estimated Workshop Time: 02 hours
 
