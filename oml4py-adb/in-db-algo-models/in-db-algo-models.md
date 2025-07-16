@@ -26,7 +26,7 @@ In this lab, you will learn how to:
 
     > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please [**CLICK HERE** to download the "Lab 3 - Use in-database algorithms and models" notebook DSNB file](<./../notebooks/Lab 3 - Use in-database algorithms and models.dsnb?download=1>). This notebook contains the scripts for **Lab 3**. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
 
-2. Go back to the main Notebooks page by clicking on the Cloud menu icon ![Cloud menu icon](cloud-menu-icon.png) on the upper left corner of the page, and then select **Notebooks**. 
+2. Go back to the main Notebooks page by clicking on the Cloud menu icon ![Cloud menu icon](images/cloud-menu-icon.png) on the upper left corner of the page, and then select **Notebooks**. 
    
    ![Go to main Notebooks](images/go-back-to-notebooks-rw.png " ")
    
