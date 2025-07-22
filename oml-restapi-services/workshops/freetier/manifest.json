@@ -35,10 +35,6 @@
             "filename": "../../omls-onnx/omls-onnx.md"
         },
         {
-            "title": "Lab 3: Use the Cognitive Image Functionality to Score a Mini Batch Containing base64 Encoded String",
-            "filename": "../../omls-score-mini-batch/omls-score-mini-batch.md"
-        },
-        {
             "title": "Lab 4: Create and Run a Data Bias Detection Job",
             "filename": "../../omls-data-bias/omls-data-bias.md"
         },
