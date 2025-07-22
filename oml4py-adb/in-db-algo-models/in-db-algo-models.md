@@ -24,11 +24,11 @@ In this lab, you will learn how to:
 
 1. We need to access and run the OML notebook for this lab.
 
- > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please [**CLICK HERE** to download the "Lab 3 - Use in-database algorithms and models" notebook DSNB file](<./../notebooks/Lab 3 - Use in-database algorithms and models.dsnb?download=1>). This notebook contains the scripts for **Lab 3**. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
+    > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please [**CLICK HERE** to download the "Lab 3 - Use in-database algorithms and models" notebook DSNB file](<./../notebooks/Lab 3 - Use in-database algorithms and models.dsnb?download=1>). This notebook contains the scripts for **Lab 3**. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
 
-2. Go back to the main Notebooks page by clicking on the Cloud menu icon ![Cloud menu icon](cloud-menu-icon.png) on the upper left corner of the page, and then select **Notebooks**. 
+2. Go back to the main Notebooks page by clicking on the Cloud menu icon ![Cloud menu icon](images/cloud-menu-icon.png) on the upper left corner of the page, and then select **Notebooks**. 
    
-   ![Go to main Notebooks](images/go-back-to-notebooks.png " ")
+   ![Go to main Notebooks](images/go-back-to-notebooks-rw.png " ")
    
 3. Click the **Lab 3** notebook to view it.
    
@@ -88,10 +88,8 @@ After you reach the end of Lab 3, you can *proceed to the next lab*.
 
 * [About Machine Learning Classes and Algorithms](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/classes-that-provide-access-database-ml-algorithms1.html#GUID-00F8AF8F-6652-4161-BEEF-E737A68FB53C)
 * [Get Started with Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
-* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)
-
 
 ## Acknowledgements
-* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
+* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** -  Marcos Arancibia, August 2023, Moitreyee Hazarika, June 2024
+* **Last Updated By/Date** -  Marcos Arancibia, August 2023, Moitreyee Hazarika, June 2024, Dhanish Kumar, July 2025

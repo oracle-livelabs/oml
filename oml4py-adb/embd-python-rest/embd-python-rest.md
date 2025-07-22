@@ -32,53 +32,53 @@ In this lab, we provide a workflow for using the OML4Py REST API for embedded Py
 
 ### Prerequisites
 
-We need to view the markdown in the OML notebook for this lab, and access the OCI Cloud Shell to run the associated cURL commands.
+  We need to view the markdown in the OML notebook for this lab, and access the OCI Cloud Shell to run the associated cURL commands.
 
 **Access and run the OML notebook for this lab.**
 
- > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please 
- <if type="freetier">[**CLICK HERE** to download the "Lab 7 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab 7 - Run UDFs with REST API for EPE.dsnb?download=1>)</if><if type="livelabs">[**CLICK HERE** to download the "Lab 7 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab 7 - Run UDFs with REST API for EPE.dsnb?download=1>)</if><if type="freetier-ocw23">[**CLICK HERE** to download the "Lab Bonus 3 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 3 - Run UDFs with REST API for EPE.dsnb?download=1>)</if><if type="livelabs-ocw23">[**CLICK HERE** to download the "Lab Bonus 3 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 3 - Run UDFs with REST API for EPE.dsnb?download=1>)</if>. This notebook contains the scripts for this Lab. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
+  > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please 
+  <if type="freetier">[**CLICK HERE** to download the "Lab 7 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab 7 - Run UDFs with REST API for EPE.dsnb?download=1>)</if><if type="livelabs">[**CLICK HERE** to download the "Lab 7 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab 7 - Run UDFs with REST API for EPE.dsnb?download=1>)</if><if type="freetier-ocw23">[**CLICK HERE** to download the "Lab Bonus 3 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 3 - Run UDFs with REST API for EPE.dsnb?download=1>)</if><if type="livelabs-ocw23">[**CLICK HERE** to download the "Lab Bonus 3 - Run UDFs with REST API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 3 - Run UDFs with REST API for EPE.dsnb?download=1>)</if>. This notebook contains the scripts for this Lab. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
 
-   Go back to the main Notebooks page by clicking on the Cloud menu icon ![](images/cloud-menu-icon.png) on the upper left of the screen to open the left navigation pane, and then click **Notebooks**. 
-   
-   ![Go to main Notebooks EA](images/go-back-to-notebooks.png " ")
-   
-   <if type="freetier">
-   Click the **Lab 7** notebook to view it.
+  Go back to the main Notebooks page by clicking on the Cloud menu icon ![](images/cloud-menu-icon.png) on the upper left of the screen to open the left navigation pane, and then click **Notebooks**. 
 
-   ![Open Lab 7 notebook ft](images/click-on-la7-ft.png " ") </if>
-   
-   <if type="livelabs">
-   Click the **Lab 7** notebook to view it.
+  ![Go to main Notebooks EA](images/go-back-to-notebooks-rw.png " ")
 
-   ![Open Lab 7 notebook ll](images/click-on-lab7-ft.png " ") </if>
-   
-   <if type="freetier-ocw23">
-   Click the **Lab Bonus 3** notebook to view it.
+  <if type="freetier">
+  Click the **Lab 7** notebook to view it.
 
-   ![Open Lab Bonus 3 notebook ft](images/click-on-labbo3-ft-ocw23.png " ") </if>
-   
-   <if type="livelabs-ocw23">
-   Click the **Lab Bonus 3** notebook to view it.
-   
-   ![Open Lab Bonus 3 notebook ll](images/click-on-labbo3-ft-ocw23.png " ") </if>
+  ![Open Lab 7 notebook ft](images/click-on-lab7-ft.png " ") </if>
 
-   OML Notebooks will create a session and make the notebook available for editing.
+  <if type="livelabs">
+  Click the **Lab 7** notebook to view it.
 
-   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+  ![Open Lab 7 notebook ll](images/click-on-lab7-ft.png " ") </if>
 
-   <if type="freetier">
-   ![Lab 7 main screen](images/lab7-main.png " ")
-   </if>
-   <if type="livelabs">
-   ![Lab 7 main screen](images/lab7-main.png " ")
-   </if>
-   <if type="freetier-ocw23">
-   ![Lab Bonus 3 main screen](images/labbo3-main.png " ")
-   </if>
-   <if type="livelabs-ocw23">
-   ![Lab Bonus 3 main screen](images/labbo3-main.png " ")
-   </if>
+  <if type="freetier-ocw23">
+  Click the **Lab Bonus 3** notebook to view it.
+
+  ![Open Lab Bonus 3 notebook ft](images/click-on-labbo3-ft-ocw23.png " ") </if>
+
+  <if type="livelabs-ocw23">
+  Click the **Lab Bonus 3** notebook to view it.
+
+  ![Open Lab Bonus 3 notebook ll](images/click-on-labbo3-ft-ocw23.png " ") </if>
+
+  OML Notebooks will create a session and make the notebook available for editing.
+
+  You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+
+  <if type="freetier">
+  ![Lab 7 main screen](images/lab7-main.png " ")
+  </if>
+  <if type="livelabs">
+  ![Lab 7 main screen](images/lab7-main.png " ")
+  </if>
+  <if type="freetier-ocw23">
+  ![Lab Bonus 3 main screen](images/labbo3-main.png " ")
+  </if>
+  <if type="livelabs-ocw23">
+  ![Lab Bonus 3 main screen](images/labbo3-main.png " ")
+  </if>
 
 
 **Access the OCI Cloud Shell to run cURL commands**
@@ -87,11 +87,11 @@ To access the OCI Cloud Shell to run the associated cURL commands:
 
 1. Click the Developer Tools icon on your OCI console and then click Cloud Shell.  
 
-  ![Cloud shell icon under Developer tools](images/devtools-cloud-shell.png " ")
+  ![Cloud shell icon under Developer tools](images/devtools-cloud-shell-rw.png " ")
 
 2. The Oracle Cloud Shell interface opens at the bottom of your OCI console page. Here, you can run your cURL commands.  At the right in the green bar that opens up you also have options to maximize, minimize or close the Cloud Shell window.
 
-  ![Cloud shell pane](images/cloud-shell-pane.png " ")
+  ![Cloud shell pane](images/cloud-shell-pane-rw.png " ")
 
 ## Task 1: Obtain an Access Token
 
@@ -105,13 +105,13 @@ To access the OCI Cloud Shell to run the associated cURL commands:
 
   You will use the following code in OCI Cloud Shell, replacing `yourusername`, `yourpassword` and `OML Service URL` with the ones for your service.
 
-  ``` 
-  <copy>
-    curl -X POST --header 'Content-Type:application/json' \
-    --header 'Accept:application/json' \
-    -d '{"grant_type":"password", "username":"'yourusername'","password":"'yourpassword'"}' 
-    "OML service URL/omlusers/api/oauth2/v1/token"
-  ```
+    ``` 
+    <copy>
+      curl -X POST --header 'Content-Type:application/json' \
+      --header 'Accept:application/json' \
+      -d '{"grant_type":"password", "username":"'yourusername'","password":"'yourpassword'"}' 
+      "OML service URL/omlusers/api/oauth2/v1/token"
+    ```
 
 1. First, let's export the appropriate environmental variables.  Follow the flow of the notebook by scrolling to view the code, and copy and run each paragraph of the lab as appropriate in the OCI Cloud Shell, replacing the required information with yours.
 
@@ -175,11 +175,11 @@ To access the OCI Cloud Shell to run the associated cURL commands:
 
   ![Run the function using the REST API](images/5-run-restapi-function.png " ")
 
-  >> Note: To run cURL commands, see **Access the OCI Cloud Shell to run cURL commands** in the **Prerequisites** section.
+    >> Note: To run cURL commands, see **Access the OCI Cloud Shell to run cURL commands** in the **Prerequisites** section.
 
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-   Scroll down to the beginning of Task 5.1.
+  Scroll down to the beginning of Task 5.1.
 
   ![Display object name and class in datastore](images/5-1-display-objectname-class.png " ")
 
@@ -237,9 +237,8 @@ You can explore additional workshops related to Oracle Machine Learning from the
 
 * [Embedded Python Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
-* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)
-  
+
 ## Acknowledgements
-* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
+* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, August 2023, Moitreyee Hazarika, June 2024
+* **Last Updated By/Date** - Dhanish Kumar, July 2025

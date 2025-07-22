@@ -32,102 +32,102 @@ In this lab, you will:
 
 1. We need to access and run the OML notebook for this lab.
 
- > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please 
- <if type="freetier">[**CLICK HERE** to download the "Lab 5 - Run UDFs with Python API for EPE" notebook DSNB file](<./../notebooks/Lab 5 - Run UDFs with Python API for EPE.dsnb?download=1>)</if><if type="livelabs">[**CLICK HERE** to download the "Lab 5 - Run UDFs with Python API for EPE" notebook DSNB file](<./../notebooks/Lab 5 - Run UDFs with Python API for EPE.dsnb?download=1>)</if><if type="freetier-ocw23">[**CLICK HERE** to download the "Lab Bonus 1 - Run UDFs with Python API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 1 - Run UDFs with Python API for EPE.dsnb?download=1>)</if><if type="livelabs-ocw23">[**CLICK HERE** to download the "Lab Bonus 1 - Run UDFs with Python API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 1 - Run UDFs with Python API for EPE.dsnb?download=1>)</if>. This notebook contains the scripts for this Lab. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
+    > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please 
+    <if type="freetier">[**CLICK HERE** to download the "Lab 5 - Run UDFs with Python API for EPE" notebook DSNB file](<./../notebooks/Lab 5 - Run UDFs with Python API for EPE.dsnb?download=1>)</if><if type="livelabs">[**CLICK HERE** to download the "Lab 5 - Run UDFs with Python API for EPE" notebook DSNB file](<./../notebooks/Lab 5 - Run UDFs with Python API for EPE.dsnb?download=1>)</if><if type="freetier-ocw23">[**CLICK HERE** to download the "Lab Bonus 1 - Run UDFs with Python API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 1 - Run UDFs with Python API for EPE.dsnb?download=1>)</if><if type="livelabs-ocw23">[**CLICK HERE** to download the "Lab Bonus 1 - Run UDFs with Python API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 1 - Run UDFs with Python API for EPE.dsnb?download=1>)</if>. This notebook contains the scripts for this Lab. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
 
-   Go back to the main Notebooks page by clicking on the Cloud menu icon ![](images/cloud-menu-icon.png) on the upper left of the screen to open the left navigation pane, and then click **Notebooks**. 
-   
-   ![Go to main Notebooks EA](images/go-back-to-notebooks.png " ")
-   
-   <if type="freetier">
-   Click the **Lab 5** notebook to view it.
+    Go back to the main Notebooks page by clicking on the Cloud menu icon ![](images/cloud-menu-icon.png) on the upper left of the screen to open the left navigation pane, and then click **Notebooks**. 
 
-   ![Open Lab 5 notebook ft](images/click-on-lab5-ft.png " ") </if>
-   
-   <if type="livelabs">
-   Click the **Lab 5** notebook to view it.
+    ![Go to main Notebooks EA](images/go-back-to-notebooks-rw.png " ")
 
-   ![Open Lab 5 notebook ll](images/click-on-lab5-ft.png " ") </if>
-   
-   <if type="freetier-ocw23">
-   Click the **Lab Bonus 1** notebook to view it.
+    <if type="freetier">
+    Click the **Lab 5** notebook to view it.
 
-   ![Open Lab Bonus 1 notebook ft](images/click-on-labbo1-ft-ocw23.png " ") </if>
-   
-   <if type="livelabs-ocw23">
-   Click the **Lab Bonus 1** notebook to view it.
-   
-   ![Open Lab Bonus 1 notebook ll](images/click-on-labbo1-ft-ocw23.png " ") </if>
+    ![Open Lab 5 notebook ft](images/click-on-lab5-ft.png " ") </if>
 
-   OML Notebooks will create a session and make the notebook available for editing.
+    <if type="livelabs">
+    Click the **Lab 5** notebook to view it.
 
-   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+    ![Open Lab 5 notebook ll](images/click-on-lab5-ft.png " ") </if>
 
-   <if type="freetier">
-   ![Lab 5 main screen](images/lab5-main.png " ")
-   </if>
-   <if type="livelabs">
-   ![Lab 5 main screen](images/lab5-main.png " ")
-   </if>
-   <if type="freetier-ocw23">
-   ![Lab Bonus 1 main screen](images/labbo1-main.png " ")
-   </if>
-   <if type="livelabs-ocw23">
-   ![Lab Bonus 1 main screen](images/labbo1-main.png " ")
-   </if>
+    <if type="freetier-ocw23">
+    Click the **Lab Bonus 1** notebook to view it.
+
+    ![Open Lab Bonus 1 notebook ft](images/click-on-labbo1-ft-ocw23.png " ") </if>
+
+    <if type="livelabs-ocw23">
+    Click the **Lab Bonus 1** notebook to view it.
+
+    ![Open Lab Bonus 1 notebook ll](images/click-on-labbo1-ft-ocw23.png " ") </if>
+
+    OML Notebooks will create a session and make the notebook available for editing.
+
+    You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+
+    <if type="freetier">
+    ![Lab 5 main screen](images/lab5-main.png " ")
+    </if>
+    <if type="livelabs">
+    ![Lab 5 main screen](images/lab5-main.png " ")
+    </if>
+    <if type="freetier-ocw23">
+    ![Lab Bonus 1 main screen](images/labbo1-main.png " ")
+    </if>
+    <if type="livelabs-ocw23">
+    ![Lab Bonus 1 main screen](images/labbo1-main.png " ")
+    </if>
 
 ## Task 1: Import OML4Py and supporting libraries and create data table
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 1.
+    Scroll down to the beginning of Task 1.
 
-  ![Import OML4Py and supporting libraries](images/lab5-task1.png " ")  
+    ![Import OML4Py and supporting libraries](images/lab5-task1.png " ")  
 
 ## Task 2: Build and score a linear model from sklearn in Python
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 2.
+    Scroll down to the beginning of Task 2.
 
-  ![Build and score a linear model from sklearn in Python](images/lab5-task2.png " ")
+    ![Build and score a linear model from sklearn in Python](images/lab5-task2.png " ")
 
 ## Task 3: Build the model using Embedded Python Execution
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 3.
+    Scroll down to the beginning of Task 3.
 
-  ![Build the model using EPE](images/lab5-task3.png " ")
+    ![Build the model using EPE](images/lab5-task3.png " ")
 
 ## Task 4: Build one model per species using group_apply function
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 4.
+    Scroll down to the beginning of Task 4.
 
-  ![Build one model per species using group_apply](images/lab5-task4.png " ")
+    ![Build one model per species using group_apply](images/lab5-task4.png " ")
 
 ## Task 5: Return multiple images from Embedded Python Execution
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-Scroll down to the beginning of Task 5.
+    Scroll down to the beginning of Task 5.
 
-  ![Return multiple images from EPE](images/lab5-task5.png " ")
+    ![Return multiple images from EPE](images/lab5-task5.png " ")
 
-<if type="freetier">After you reach the end of Lab 5, you can *proceed to the next lab*.</if>
+    <if type="freetier">After you reach the end of Lab 5, you can *proceed to the next lab*.</if>
 
-<if type="livelabs">After you reach the end of Lab 5, you can *proceed to the next lab*.</if>
+    <if type="livelabs">After you reach the end of Lab 5, you can *proceed to the next lab*.</if>
 
-<if type="freetier-ocw23">After you reach the end of Lab Bonus 1, you can *proceed to the next lab*. </if>
+    <if type="freetier-ocw23">After you reach the end of Lab Bonus 1, you can *proceed to the next lab*. </if>
 
-<if type="livelabs-ocw23">After you reach the end of Lab Bonus 1, you can *proceed to the next lab*.</if>
+    <if type="livelabs-ocw23">After you reach the end of Lab Bonus 1, you can *proceed to the next lab*.</if>
 
 
 ## Learn more
 
 * [Embedded Python Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
-* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)
+
 
 ## Acknowledgements
-* **Author** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
+* **Author** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, August 2023, Moitreyee Hazarika, June 2024
+* **Last Updated By/Date** - Dhanish Kumar, July 2025

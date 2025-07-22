@@ -36,66 +36,66 @@ As the OML user:
 
 1. We need to access and run the OML notebook for this lab.
 
- > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please 
- <if type="freetier">[**CLICK HERE** to download the "Lab 6 - Run UDFs with SQL API for EPE" notebook DSNB file](<./../notebooks/Lab 6 - Run UDFs with SQL API for EPE.dsnb?download=1>)</if><if type="livelabs">[**CLICK HERE** to download the "Lab 6 - Run UDFs with SQL API for EPE" notebook DSNB file](<./../notebooks/Lab 6 - Run UDFs with SQL API for EPE.dsnb?download=1>)</if><if type="freetier-ocw23">[**CLICK HERE** to download the "Lab Bonus 2 - Run UDFs with SQL API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 2 - Run UDFs with SQL API for EPE.dsnb?download=1>)</if><if type="livelabs-ocw23">[**CLICK HERE** to download the "Lab Bonus 2 - Run UDFs with SQL API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 2 - Run UDFs with SQL API for EPE.dsnb?download=1>)</if>. This notebook contains the scripts for this Lab. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
+    > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please 
+    <if type="freetier">[**CLICK HERE** to download the "Lab 6 - Run UDFs with SQL API for EPE" notebook DSNB file](<./../notebooks/Lab 6 - Run UDFs with SQL API for EPE.dsnb?download=1>)</if><if type="livelabs">[**CLICK HERE** to download the "Lab 6 - Run UDFs with SQL API for EPE" notebook DSNB file](<./../notebooks/Lab 6 - Run UDFs with SQL API for EPE.dsnb?download=1>)</if><if type="freetier-ocw23">[**CLICK HERE** to download the "Lab Bonus 2 - Run UDFs with SQL API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 2 - Run UDFs with SQL API for EPE.dsnb?download=1>)</if><if type="livelabs-ocw23">[**CLICK HERE** to download the "Lab Bonus 2 - Run UDFs with SQL API for EPE" notebook DSNB file](<./../notebooks/Lab Bonus 2 - Run UDFs with SQL API for EPE.dsnb?download=1>)</if>. This notebook contains the scripts for this Lab. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
 
-   Go back to the main Notebooks page by clicking on the Cloud menu icon ![](images/cloud-menu-icon.png) on the upper left of the screen to open the left navigation pane, and then click **Notebooks**. 
-   
-   ![Go to main Notebooks EA](images/go-back-to-notebooks.png " ")
-   
-   <if type="freetier">
-   Click the **Lab 5** notebook to view it.
+    Go back to the main Notebooks page by clicking on the Cloud menu icon ![](images/cloud-menu-icon.png) on the upper left of the screen to open the left navigation pane, and then click **Notebooks**. 
 
-   ![Open Lab 5 notebook ft](images/click-on-lab6-ft.png " ") </if>
-   
-   <if type="livelabs">
-   Click the **Lab 5** notebook to view it.
+    ![Go to main Notebooks EA](images/go-back-to-notebooks-rw.png " ")
 
-   ![Open Lab 5 notebook ll](images/click-on-lab6-ft.png " ") </if>
-   
-   <if type="freetier-ocw23">
-   Click the **Lab Bonus 2** notebook to view it.
+    <if type="freetier">
+    Click the **Lab 5** notebook to view it.
 
-   ![Open Lab Bonus 2 notebook ft](images/click-on-labbo2-ft-ocw23.png " ") </if>
-   
-   <if type="livelabs-ocw23">
-   Click the **Lab Bonus 2** notebook to view it.
-   
-   ![Open Lab Bonus 2 notebook ll](images/click-on-labbo2-ft-ocw23.png " ") </if>
+    ![Open Lab 5 notebook ft](images/click-on-lab6-ft.png " ") </if>
 
-   OML Notebooks will create a session and make the notebook available for editing.
+    <if type="livelabs">
+    Click the **Lab 5** notebook to view it.
 
-   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+    ![Open Lab 5 notebook ll](images/click-on-lab6-ft.png " ") </if>
 
-   <if type="freetier">
-   ![Lab 6 main screen](images/lab6-main.png " ")
-   </if>
-   <if type="livelabs">
-   ![Lab 6 main screen](images/lab6-main.png " ")
-   </if>
-   <if type="freetier-ocw23">
-   ![Lab Bonus 2 main screen](images/labbo2-main.png " ")
-   </if>
-   <if type="livelabs-ocw23">
-   ![Lab Bonus 2 main screen](images/labbo2-main.png " ")
-   </if>
+    <if type="freetier-ocw23">
+    Click the **Lab Bonus 2** notebook to view it.
+
+    ![Open Lab Bonus 2 notebook ft](images/click-on-labbo2-ft-ocw23.png " ") </if>
+
+    <if type="livelabs-ocw23">
+    Click the **Lab Bonus 2** notebook to view it.
+
+    ![Open Lab Bonus 2 notebook ll](images/click-on-labbo2-ft-ocw23.png " ") </if>
+
+    OML Notebooks will create a session and make the notebook available for editing.
+
+    You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+
+    <if type="freetier">
+    ![Lab 6 main screen](images/lab6-main.png " ")
+    </if>
+    <if type="livelabs">
+    ![Lab 6 main screen](images/lab6-main.png " ")
+    </if>
+    <if type="freetier-ocw23">
+    ![Lab Bonus 2 main screen](images/labbo2-main.png " ")
+    </if>
+    <if type="livelabs-ocw23">
+    ![Lab Bonus 2 main screen](images/labbo2-main.png " ")
+    </if>
 
 
 ## Task 1: Add the OML user to the cloud host ACL
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-  Scroll down to Task 1.
-  > Note: You must be an ADMIN user to perform this task.
+    Scroll down to Task 1.
+    > Note: You must be an ADMIN user to perform this task.
 
-  ![Add the OML user to the cloud host ACL](images/1-appendhost.png " ")  
+    ![Add the OML user to the cloud host ACL](images/1-appendhost.png " ")  
 
-  ```
-  <copy>
-  exec pyqAppendHostAce('OMLUSER','adb.us-ashburn-1.oraclecloudapps.com');
-  ```
-  
-  > Note: In this example, `us-ashburn-1` is the region. Make sure to replace it with the region where your Autonomous Database is located.
+    ```
+    <copy>
+    exec pyqAppendHostAce('OMLUSER','adb.us-ashburn-1.oraclecloudapps.com');
+    ```
+
+    > Note: In this example, `us-ashburn-1` is the region. Make sure to replace it with the region where your Autonomous Database is located.
 
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to end of Task 1.1.
@@ -133,7 +133,7 @@ As the OML user:
 
   Scroll down to Task 2.2.
 
-  > IMPORTANT: Replace the Password and the URL with your own, otherwise the rest of the Lab will not run successfully.
+    > IMPORTANT: Replace the Password and the URL with your own, otherwise the rest of the Lab will not run successfully.
 
   ![Script to create ACCESS_DETAILS](images/2-2-create-access-details.png " ")
 
@@ -300,9 +300,9 @@ You can explore additional workshops related to Oracle Machine Learning from the
 
 * [Embedded Python Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/embedded-python-execution.html#GUID-AF448E56-B843-4749-979A-F89D359A8728)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
-* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)
+
 
 ## Acknowledgements
-* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
+* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, August 2023, Moitreyee Hazarika, June 2024
+* **Last Updated By/Date** - Dhanish Kumar, July 2025

@@ -9,6 +9,7 @@ Python is a major programming language used for data science and machine learnin
 Watch this quick video on Oracle Machine Learning for Python (OML4Py).
 
  [Overview of OML4Py](youtube:wciO-5CyS2M)
+ <!-- [Overview of OML4Py](youtube:https://www.youtube.com/watch?v=Fv5w5-mJu-Y&list=PLdtXkK5KBY57_y3Z0SW2cbCqGUPbfc94w&index=4&ab_channel=OracleDatabaseProductManagement) -->
 
 Estimated Time:  <if type="freetier">230 minutes</if><if type="freetier-ocw23">150 minutes (plus 80 minutes of Bonus Labs)</if><if type="livelabs">215 minutes</if><if type="livelabs-ocw23">135 minutes (plus 80 minutes of Bonus Labs)</if>
 
@@ -67,9 +68,9 @@ As additional **Bonus Labs**
 
 * [About OML4Py](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/oracle-machine-learning-python.html#GUID-D13E274D-653E-4285-B52F-AF38CCFD9A5B)
 * [Get Started with Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
-* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)
+
 
 ## Acknowledgements
-* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
+* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning;  Jie Liu, Data Scientist
-* **Last Updated By/Date** - Marcos Arancibia, Sherry LaMonica, Moitreyee Hazarika, August 2023
+* **Last Updated By/Date** - Marcos Arancibia, Sherry LaMonica, Moitreyee Hazarika, August 2023, Dhanish Kumar, July 2025

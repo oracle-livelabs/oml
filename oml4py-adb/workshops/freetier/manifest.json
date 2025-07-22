@@ -1,6 +1,13 @@
 {
     "workshoptitle": "Introduction to Oracle Machine Learning for Python on Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "oml-create-cust360-table.md":"/common/building-blocks/tasks/oml/create-cust360-table.md",
+        "oml-sign-into-oml.md":"/common/building-blocks/tasks/oml/sign-into-oml.md",
+        "oml-create-oml-user.md":"/common/building-blocks/tasks/oml/create-oml-user.md",
+        "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md",
+        "oml-automl.md":"/common/building-blocks/blocks/oml/oml-automl/oml-automl.md"
+    },
     "tutorials": [
         {
             "title": "Introduction",
@@ -14,7 +21,7 @@
             "type": "freetier"
         },
         {
-            "title": "Provision an Autonomous Data Warehouse with OML users",
+            "title": "Provision an Autonomous Database with OML users",
             "filename": "../../provision-adb-oml/provision-adb-oml.md",
             "type": "freetier"
         },
@@ -60,7 +67,7 @@
         }, 
         {
             "title": "Lab 9: Use AutoML UI",
-            "filename": "../../automl-ui/automl-ui.md",
+            "filename": "/common/building-blocks/blocks/oml/oml-automl/oml-automl.md",
             "type": "freetier"
         },
         {

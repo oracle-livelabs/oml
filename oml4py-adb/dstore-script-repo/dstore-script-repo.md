@@ -52,28 +52,28 @@ In this lab, you will learn how to:
 
 1. We need to access and run the OML notebook for this lab.
 
- > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please [**CLICK HERE** to download the "Lab 4 - Store and manage Python objects and UDFs" notebook DSNB file](<./../notebooks/Lab 4 - Store and manage Python objects and UDFs.dsnb?download=1>). This notebook contains the scripts for **Lab 4**. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
+    > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please [**CLICK HERE** to download the "Lab 4 - Store and manage Python objects and UDFs" notebook DSNB file](<./../notebooks/Lab 4 - Store and manage Python objects and UDFs.dsnb?download=1>). This notebook contains the scripts for **Lab 4**. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
 
-   Go back to the main Notebooks page by clicking on the Cloud menu icon ![](images/cloud-menu-icon.png) on the upper left of the screen to open the left navigation pane, and then click **Notebooks**. 
-   
-   ![Go to main Notebooks EA](images/go-back-to-notebooks.png " ")
-   
-   Click the **Lab 4** notebook to view it.
-   
-   <if type="freetier">
-   ![Open Lab 4 notebook ft](images/click-on-lab4-ft.png " ") </if>
-   <if type="livelabs">
-   ![Open Lab 4 notebook ll](images/click-on-lab4-ft.png " ") </if>
-   <if type="freetier-ocw23">
-   ![Open Lab 4 notebook ft](images/click-on-lab4-ft-ocw23.png " ") </if>
-   <if type="livelabs-ocw23">
-   ![Open Lab 4 notebook ll](images/click-on-lab4-ft-ocw23.png " ") </if>
+    Go back to the main Notebooks page by clicking on the Cloud menu icon ![](images/cloud-menu-icon.png) on the upper left of the screen to open the left navigation pane, and then click **Notebooks**. 
 
-   OML Notebooks will create a session and make the notebook available for editing.
+    ![Go to main Notebooks EA](images/go-back-to-notebooks-rw.png " ")
 
-   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+    Click the **Lab 4** notebook to view it.
 
-   ![Lab 4 main screen](images/lab4-main.png " ")
+    <if type="freetier">
+    ![Open Lab 4 notebook ft](images/click-on-lab4-ft.png " ") </if>
+    <if type="livelabs">
+    ![Open Lab 4 notebook ll](images/click-on-lab4-ft.png " ") </if>
+    <if type="freetier-ocw23">
+    ![Open Lab 4 notebook ft](images/click-on-lab4-ft-ocw23.png " ") </if>
+    <if type="livelabs-ocw23">
+    ![Open Lab 4 notebook ll](images/click-on-lab4-ft-ocw23.png " ") </if>
+
+    OML Notebooks will create a session and make the notebook available for editing.
+
+    You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+
+    ![Lab 4 main screen](images/lab4-main.png " ")
 
 ## Task 1: Import libraries supporting OML4Py and create data table
 
@@ -175,9 +175,8 @@ After you reach the end of Lab 4, you can *proceed to the next lab*.
 * [Get started with OML4Py Datastores](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/get-started-oracle-machine-learning-python1.html#GUID-C02396D1-2B30-47A0-AE27-37B123E15710)
 * [Get started with OML4Py Script Repository](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlpug/save-and-manage-functions-for-embedded-python-execution.html#GUID-74671038-15FE-44BB-A657-C89C16C1EF43)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
-* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)
 
 ## Acknowledgements
-* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
+* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, August 2023, Moitreyee Hazarika, June 2024
+* **Last Updated By/Date** - Dhanish Kumar, July 2025
