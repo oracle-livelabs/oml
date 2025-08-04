@@ -2,21 +2,20 @@
 
 ## About this Workshop
 
-In this workshop, you will explore the REST APIs for Oracle Machine Learning Services. The REST API for Oracle Machine Learning Services provides REST API endpoints hosted on Oracle Autonomous Database. Using the REST APIs, you will learn how to deploy an ONNX format model, perform scoring, score a mni batch record using the Cognitive image functionality, create and run a data monitoring and model monitoring job to deploy a model, and run a data bias detection job. 
+In this workshop, you will explore the REST APIs for Oracle Machine Learning (OML) Services. The REST API for OML Services provides REST API endpoints hosted on Oracle Autonomous Database. Using the REST APIs, you will learn how to deploy an ONNX format model, perform scoring, create and run a data monitoring and model monitoring job to deploy a model, and run a data bias detection job. 
 
-Estimated Workshop Time: 02 hours
+Estimated Workshop Time: 2 hours
 
 ### Objectives
 
 In this workshop, you will learn how to:
 
-* Use OML Services:
+* Use OML Services REST API:
     * Obtain an authentication token to use OML Services via REST endpoints
     * Deploy an ONNX format models and perform scoring
-    * Score a Mini Batch Using Cognitive Image Functionality in Oracle Machine Learning Services
-    * Create and Run a Data Bias Detection Job Using Oracle Machine Learning REST API
     * Create and Run a Data Monitoring Job Using OML Services REST API
     * Create and Run a Model Monitoring Job Using OML Services REST API
+    * Create and Run a Data Bias Detection Job Using OML Services REST API
 
 
 
@@ -31,4 +30,4 @@ This workshop assumes you have:
 
 * **Authors** - Moitreyee Hazarika, Principal User Assistance Developer; Sherry LaMonica, Consulting Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning, Suresh Rajan, Senior Manager, Oracle Database User Assistance Development
-* **Last Updated By/Date** - Moitreyee Hazarika, July 2025
+* **Last Updated By/Date** - Moitreyee Hazarika, August 2025

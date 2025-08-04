@@ -292,4 +292,4 @@ This completes the task of creating and running a data monitoring job. You may n
 
 * **Author** - Moitreyee Hazarika, Principal UAD, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, July 2025
+* **Last Updated By/Date** - Moitreyee Hazarika, August 2025
