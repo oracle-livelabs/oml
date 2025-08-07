@@ -8,7 +8,7 @@ Estimated Time: 40 minutes
 
 ### About Data Bias Detection in Oracle Machine Learning Services
 
-The OML Services Data Bias Detector provides REST endpoints for creating bias detection jobs. To help address data biases and mitigate its effects in later stages of the modeling process, the bias mitigation method **Reweighing** has been added to the `data_bias` API. The Database Bias Detector calculates metrics to identify common types of data bias: Class Imbalance (CI), Statistical Parity (SP), and Conditional Demographic Disparity (CDD). 
+The OML Services Data Bias Detector provides REST endpoints for creating bias detection jobs. To help identify potential data bias so that you can mitigate effects in later stages, the bias mitigation method **Reweighing** has been added to the `data_bias` API. The Database Bias Detector calculates metrics to identify common types of data bias: Class Imbalance (CI), Statistical Parity (SP), and Conditional Demographic Disparity (CDD). 
 
 ### Objectives
 
