@@ -74,7 +74,7 @@ This lab assumes you have completed the following labs:
 
 Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Data Warehouse**.
 
-	![Cloud menu](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
+	![Cloud menu](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
 2. Navigate to your ADW instance.
   ![Navigate to your instance](./images/adw-instance.png " ")
