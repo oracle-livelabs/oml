@@ -37,7 +37,7 @@ This lab assumes you have completed the following labs:
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse**.
 
-    ![Cloud menu](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
+    ![Cloud menu](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
 2. Navigate to your instance.
      ![Navigate to your instance](./images/adw-instance.png " ")
@@ -112,7 +112,7 @@ This lab assumes you have completed the following labs:
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse**.
 
-    ![Cloud menu](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
+    ![Cloud menu](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
 2.  Navigate to your instance.
      ![Navigate to your instance](./images/adw-instance.png " ")
@@ -139,7 +139,7 @@ This lab assumes you have completed the following labs:
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Storage**, and select **Buckets**.
 
-	![Cloud menu](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/storage-buckets.png " ")
+	![Cloud menu](https://oracle-livelabs.github.io/common/images/console/storage-buckets.png " ")
 
 2.  Choose the compartment and click **Create Bucket**.
 
@@ -197,7 +197,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage you will 
 
 1.  Click the  **Navigation Menu** in the upper left, navigate to Oracle Database, select **Autonomous Transaction Processing**, and choose your compartment.
 
-    ![Cloud menu](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-atp.png " ")
+    ![Cloud menu](https://oracle-livelabs.github.io/common/images/console/database-atp.png " ")
 
 2. Navigate to your ATP instance.
      ![Navigate to your instance](./images/atp-instance.png " ")

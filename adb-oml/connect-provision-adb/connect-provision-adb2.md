@@ -42,7 +42,7 @@ First, we are going to create an ADW Instance.
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse**.
 
-	![Cloud menu](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
+	![Cloud menu](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
 2.  From the Oracle Cloud Infrastructure console, on the Oracle Autonomous Database page choose your region and select a compartment by clicking on the drop-down list. Click **Create Autonomous Database**. This opens the Create Autonomous Database page.
 
@@ -80,7 +80,7 @@ You now have created your first ADW instance. Now, we are going to work on very 
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Transaction Processing**.
 
-	![Cloud menu](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-atp.png " ")
+	![Cloud menu](https://oracle-livelabs.github.io/common/images/console/database-atp.png " ")
 
 2.  Choose your **Compartment** by clicking on the drop-down list and then click **Create Autonomous Database**.
 
@@ -141,7 +141,7 @@ You now have created your first ATP instance.
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Data Warehouse**.
 
-	![Cloud menu](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-adw.png " ")
+	![Cloud menu](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
 2. Navigate to your ADW instance.
   ![Navigate to your instance](./images/adw-instance.png " ")
@@ -205,7 +205,7 @@ You now have created your first ATP instance.
 
 1.  Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, select **Autonomous Transaction Processing**.
 
-    ![Cloud menu](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-atp.png " ")
+    ![Cloud menu](https://oracle-livelabs.github.io/common/images/console/database-atp.png " ")
 
 2. Navigate to your ATP instance.
     ![Navigate to your instance](./images/atp-instance.png " ")
