@@ -27,7 +27,7 @@ In this workshop, you will learn how to:
 
 ### Prerequisites
 
-This workshop requires access to your Oracle Machine Learning Notebooks account in Oracle Autonomous Database. You may use your own cloud account or a training account whose details were given to you by an Oracle instructor.
+This workshop requires access to your Oracle Machine Learning Notebooks account in Oracle Autonomous AI Database. You may use your own cloud account or a training account whose details were given to you by an Oracle instructor.
 
 You are all set to begin the labs!
 Please click Lab 1: Create Projects and Workspaces in Oracle Machine Learning Notebooks in the Contents menu on the right.
@@ -46,6 +46,6 @@ Use these links to get more information about Oracle Machine Learning and Oracle
 
 
 ## Acknowledgements
-* **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM, Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
-
-* **Last Updated By/Date**: Moitreyee Hazarika, February 2025
+* **Author** : Moitreyee Hazarika, Consulting User Assistance Developer, Database User Assistance Development
+* **Contributors**: Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
+* **Last Updated By/Date**: Moitreyee Hazarika, October 2025

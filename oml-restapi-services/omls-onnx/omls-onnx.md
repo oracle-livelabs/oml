@@ -21,14 +21,14 @@ Open Neural Network Exchange or ONNX is an open standard format of machine learn
 In this lab, you will learn how to:
 * Train an open source xgboost model
 * Convert the open source xgboost model to ONNX format
-* Deploy the model to OML Services on Autonomous Database
+* Deploy the model to OML Services on Autonomous AI Database
 
 
 ### Prerequisites 
 
 This lab assumes you have:
 * OCI Cloud Shell, which has cURL installed by default. If you are using the Workshops tenancy, you get OCI Cloud Shell as part of the reservation. However, if you are in your own OCI tenancy or using a free trial account, ensure you have OCI Cloud Shell or install cURL for your operating system to run the OML Services commands.
-* An Autonomous Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
+* An Autonomous AI Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
     * Your OML user name and password
     * `oml-cloud-service-location-url`
 * A valid authentication token
@@ -457,7 +457,7 @@ Before deploying the ONNX model to OML Services, you must obtain an authenticati
   
   The command returns the access token. 
 
-  See **Lab 1 - Authenticate your OML Account with your Autonomous Database instance to use OML Services** in this workshop for details. 
+  See **Lab 1 - Authenticate your OML Account with your Autonomous AI Database instance to use OML Services** in this workshop for details. 
 
 
 ## Task 5.1: Store the model in the OML Services Model Repository
@@ -609,6 +609,6 @@ To deploy and score an ONNX format regression model:
 
 ## Acknowledgements
 
-* **Author** - Moitreyee Hazarika, Principal UAD, Database User Assistance Development
-* **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, August 2025
+* **Author** : Moitreyee Hazarika, Consulting User Assistance Developer, Database User Assistance Development
+* **Contributors**: Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
+* **Last Updated By/Date**: Moitreyee Hazarika, October 2025

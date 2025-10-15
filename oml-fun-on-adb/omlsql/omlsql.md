@@ -2,7 +2,7 @@
 
 ## Introduction
 
- This lab walks you through the steps to explore, build, evaluate, develop and forecast using a time series model with OML4SQL from a Time Series example available in OML Notebooks. The data set used in this example is from the SH schema. The SH schema can be readily accessed in Oracle Autonomous Database. Oracle includes the Exponential Smoothing (ESM) algorithm for time series. Exponential smoothing is a forecasting method for time series data. It is a moving average method where exponentially decreasing weights are assigned to past observations.
+ This lab walks you through the steps to explore, build, evaluate, develop and forecast using a time series model with OML4SQL from a Time Series example available in OML Notebooks. The data set used in this example is from the SH schema. The SH schema can be readily accessed in Oracle Autonomous AI Database. Oracle includes the Exponential Smoothing (ESM) algorithm for time series. Exponential smoothing is a forecasting method for time series data. It is a moving average method where exponentially decreasing weights are assigned to past observations.
 
 Estimated Time: 30 minutes
 
@@ -295,4 +295,4 @@ This completes the prediction step. The model has successfully forecast sales fo
 
 * **Author** - Sarika Surampudi, Principal User Assistance Developer, Oracle Database User Assistance Development
 * **Contributors** -  Mark Hornick, Sr. Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Machine Learning;  Marcos Arancibia, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Sarika Surampudi, January 2025
+* **Last Updated By/Date** - Sarika Surampudi, October 2025

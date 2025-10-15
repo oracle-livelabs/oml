@@ -91,7 +91,7 @@ To run python script:
 To run R functions in an Oracle Machine Learning notebook, you must first connect to the R interpreter. This example shows how to:
 
 * Connect to the R interpreter to run R commands in a notebook.
-* Verify the connection to Oracle Autonomous Database, and
+* Verify the connection to Oracle Autonomous AI Database, and
 * Load the ORE libraries
 
 1. To connect to the R interpreter, type the following directive at the beginning of the notebook paragraph, and press Enter:
@@ -185,6 +185,6 @@ To run PL/SQL scripts:
          ![Screenshot shows the PL/SQL Procedure](images/plsql-procedure.png "PL/SQL Procedure")
 
 ## Acknowledgements
-* **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
-
-* **Last Updated By/Date**: Moitreyee Hazarika, November 2024
+* **Author** : Moitreyee Hazarika, Consulting User Assistance Developer, Database User Assistance Development
+* **Contributors**: Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
+* **Last Updated By/Date**: Moitreyee Hazarika, October 2025

@@ -2,13 +2,13 @@
 
 ## Introduction
 
-This lab walks you through the steps to create a database table, create a proxy object, explore and prepare data, build and evaluate models, and use those models to score data using OML4Py. This will use a classification example available in OML Notebooks. For illustrative purposes, Task 1 and Task 2 of this lab use iris data set from sklearn.datasets to create a database table. The rest of the steps take you through the example that uses the SH schema and is available in OML Notebooks. In Oracle Autonomous Database (ADB), the SH schema and associated data sets are easily accessible.
+This lab walks you through the steps to create a database table, create a proxy object, explore and prepare data, build and evaluate models, and use those models to score data using OML4Py. This will use a classification example available in OML Notebooks. For illustrative purposes, Task 1 and Task 2 of this lab use iris data set from sklearn.datasets to create a database table. The rest of the steps take you through the example that uses the SH schema and is available in OML Notebooks. In Oracle Autonomous AI Database (ADB), the SH schema and associated data sets are easily accessible.
 
 Estimated Time: 30 minutes
 
 ### About Oracle Machine Learning for Python(OML4Py)
 
-Oracle Machine Learning for Python (OML4Py) is a component of Oracle Autonomous Database (ADB), which includes Oracle Autonomous Data Warehouse (ADW), Oracle Autonomous Transaction Processing (ATP), and Oracle Autonomous JSON Database (AJD). OML4Py is also included with on-premise Oracle Database licenses and Base Database Service with separate installation. Oracle Machine Learning empowers data scientists with Python by leveraging the database as a high-performance computing environment. Database tables and views are accessed through oml.DataFrame proxy objects with overloaded functionality that produces SQL, transparently behind the scenes. The in-database machine learning algorithms are exposed through a native Python API and produce the same first-class, in-database machine learning models as the OML4SQL API. By using OML Notebooks, you can use standard Python syntax and overloaded Python functions, use a natural Python API to load in-database machine learning algorithms, call user-defined Python functions in database-spawned and controlled Python engines, and leverage automated machine learning (AutoML).
+Oracle Machine Learning for Python (OML4Py) is a component of Oracle Autonomous AI Database (ADB), which includes Oracle Autonomous Data Warehouse (ADW), Oracle Autonomous Transaction Processing (ATP), and Oracle Autonomous JSON Database (AJD). OML4Py is also included with on-premise Oracle Database licenses and Base Database Service with separate installation. Oracle Machine Learning empowers data scientists with Python by leveraging the database as a high-performance computing environment. Database tables and views are accessed through oml.DataFrame proxy objects with overloaded functionality that produces SQL, transparently behind the scenes. The in-database machine learning algorithms are exposed through a native Python API and produce the same first-class, in-database machine learning models as the OML4SQL API. By using OML Notebooks, you can use standard Python syntax and overloaded Python functions, use a natural Python API to load in-database machine learning algorithms, call user-defined Python functions in database-spawned and controlled Python engines, and leverage automated machine learning (AutoML).
 
 
 ### Objectives
@@ -866,4 +866,4 @@ OML4Py enables data scientists to hand-off their user-defined Python functions t
 
 * **Authors** - Sarika Surampudi, Senior User Assistance Developer, Oracle Database User Assistance Development; Dhanish Kumar, Member of Technical Staff, User Assistance Developer.
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning.
-* **Last Updated By/Date** - Dhanish Kumar, June 2025
+* **Last Updated By/Date** - Dhanish Kumar, October 2025

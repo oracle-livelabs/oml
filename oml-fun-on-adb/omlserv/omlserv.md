@@ -10,12 +10,12 @@ Estimated Time: 40 minutes
 
 OML Services extends OML functionality to support model deployment and model lifecycle management for both in-database OML models and third-party Open Neural Networks Exchange (ONNX) machine learning models via REST APIs. These third-party classification, regression or clustering models can be built using tools that support the ONNX format, which includes packages like Scikit-learn and TensorFlow, among several others.
 
-Oracle Machine Learning Services provides REST endpoints through the Oracle Autonomous Database environment. These endpoints enable the storage of machine learning models along with their metadata, the creation of scoring endpoints for the model, and producing scores using these endpoints.
+Oracle Machine Learning Services provides REST endpoints through the Oracle Autonomous AI Database environment. These endpoints enable the storage of machine learning models along with their metadata, the creation of scoring endpoints for the model, and producing scores using these endpoints.
 
 ### Objectives
 
 In this lab, you will:
-* Authenticate your user account with your Autonomous Database instance to use OML Services.
+* Authenticate your user account with your Autonomous AI Database instance to use OML Services.
     * Obtain authentication token.
     * Refresh authentication token.
     * Revoke authentication token.
@@ -52,16 +52,16 @@ In this lab, you will:
 
 This lab assumes you have:
 * OCI Cloud Shell, which has cURL installed by default. If you are using the Workshops tenancy, you get OCI Cloud Shell as part of the reservation. However, if you are in your own OCI tenancy or using a free trial account, ensure you have OCI Cloud Shell or install cURL for your operating system to run the OML Services commands.
-* An Autonomous Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
+* An Autonomous AI Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
     * Your OML user name and password
     * `oml-cloud-service-location-url`
 * Completed all previous labs successfully.
 
-## Task 1: Authenticate Your User Account with Your Autonomous Database Instance to Use OML Services
+## Task 1: Authenticate Your User Account with Your Autonomous AI Database Instance to Use OML Services
 
 1.  This lab uses OCI Cloud Shell. To access the OCI Cloud Shell, select your compartment and click on the Cloud Shell icon.
 
-	 ![Autonomous Database instance](images/oci-cloud-shell-1-new1.png)
+	 ![Autonomous AI Database instance](images/oci-cloud-shell-1-new1.png)
 
    On clicking the Cloud Shell icon, the OCI Cloud Shell command prompt is displayed in the lower half of the console as illustrated in the image below.
 
@@ -82,7 +82,7 @@ This lab assumes you have:
      </copy>
      ```
 
-   In the syntax above, `oml-cloud-service-location-url` is the Autonomous Database URL and points to the region where the Autonomous Database instance resides. The URL also contains the database name and tenancy ID.  
+   In the syntax above, `oml-cloud-service-location-url` is the Autonomous AI Database URL and points to the region where the Autonomous AI Database instance resides. The URL also contains the database name and tenancy ID.  
    
 ### Task 1.1: Get the `oml-cloud-service-location-url` to Obtain Your REST Authentication Token
 

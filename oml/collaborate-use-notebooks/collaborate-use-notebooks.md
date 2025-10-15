@@ -23,7 +23,7 @@ In this lab, you will learn how to collaborate with other OML users by:
 
 ### Prerequisites
 
-* Access to your account in Oracle Autonomous Database
+* Access to your account in Oracle Autonomous AI Database
 * Provide workspace permission to users with whom you want to collaborate
 * Two users - `OMLUSER` and `OMLUSER2` are created.
 * A notebook created in your OML account
@@ -243,6 +243,6 @@ You can share a notebook by saving an existing notebook as a template in My Libr
 You may now **proceed to the next lab.**
 
 ## Acknowledgements
-* **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
-
-* **Last Updated By/Date**: Moitreyee Hazarika, February 2025
+* **Author** : Moitreyee Hazarika, Consulting User Assistance Developer, Database User Assistance Development
+* **Contributors**: Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
+* **Last Updated By/Date**: Moitreyee Hazarika, October 2025
