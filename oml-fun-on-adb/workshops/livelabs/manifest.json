@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Oracle Machine Learning Fundamentals on Oracle Autonomous Database",
+    "workshoptitle": "Oracle Machine Learning Fundamentals on Oracle Autonomous AI Database",
     "help": "livelabs-help-**enterarea**_us@oracle.com",
     "include": {
         "oml-sign-into-oml.md":"/common/building-blocks/tasks/oml/sign-into-oml.md",
