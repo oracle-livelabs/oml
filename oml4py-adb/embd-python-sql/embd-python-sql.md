@@ -7,11 +7,11 @@ This lab walks you through the steps to use the SQL API to call OML4Py Embedded 
 Estimated Time: 20 minutes
 
 ### About Embedded Python Execution
-Embedded Python execution enables you to run user-defined Python functions in Python engines spawned by the Autonomous Database environment. The SQL API for embedded Python execution with Autonomous Database provides SQL interfaces for setting authorization tokens, managing access control list (ACL) privileges, executing Python scripts, and synchronously and asynchronously running jobs.
+Embedded Python execution enables you to run user-defined Python functions in Python engines spawned by the Autonomous AI Database environment. The SQL API for embedded Python execution with Autonomous AI Database provides SQL interfaces for setting authorization tokens, managing access control list (ACL) privileges, executing Python scripts, and synchronously and asynchronously running jobs.
 
 The OML4Py embedded Python execution SQL API functions are:
 
-* `pyqEval`&mdash;Runs the provided user-defined Python function in a Python engine spawned by the Autonomous Database environment.
+* `pyqEval`&mdash;Runs the provided user-defined Python function in a Python engine spawned by the Autonomous AI Database environment.
 * `pyqTableEval`&mdash;Runs the provided user-defined Python function data referenced by an OML DataFrame proxy object in a single Python engine.
 * `pyqGroupEval`&mdash;Partitions a database table by the values in one or more columns and runs the provided user-defined Python function on each partition, optionally in parallel using multiple Python engines.
 * `pyqRowEval`&mdash;Partitions a database table into sets of rows and runs the provided user-defined Python function on the data in each set, optionally in parallel using multiple Python engines.
@@ -20,7 +20,7 @@ The OML4Py embedded Python execution SQL API functions are:
 > **Note:** Embedded Python Execution functions are also available through the [Oracle Machine Learning for Python](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/about-embedded-python-execution.html#GUID-A15F3A62-736A-4276-83F2-7C54BE026639) and the [REST APIs for Embedded Python Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlepe/rest-endpoints.html)
 
 ### Objectives
-In this lab, we provide a workflow for using the OML4Py SQL API for embedded Python execution with Oracle Autonomous Database:
+In this lab, we provide a workflow for using the OML4Py SQL API for embedded Python execution with Oracle Autonomous AI Database:
 
 As the ADMIN user:
 * Add the OML user to cloud host Access Control List (ACL)
@@ -95,7 +95,7 @@ As the OML user:
     exec pyqAppendHostAce('OMLUSER','adb.us-ashburn-1.oraclecloudapps.com');
     ```
 
-    > Note: In this example, `us-ashburn-1` is the region. Make sure to replace it with the region where your Autonomous Database is located.
+    > Note: In this example, `us-ashburn-1` is the region. Make sure to replace it with the region where your Autonomous AI Database is located.
 
 2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
   Scroll down to end of Task 1.1.
@@ -305,4 +305,4 @@ You can explore additional workshops related to Oracle Machine Learning from the
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Dhanish Kumar, July 2025
+* **Last Updated By/Date** - Dhanish Kumar, November 2025

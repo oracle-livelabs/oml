@@ -7,7 +7,7 @@ This lab walks you through the steps to use and work with OML4Py datastores and 
 Estimated Time: 20 minutes
 
 ### About datastores
-Datastores exist in the user’s Oracle database schema. A datastore, and the objects it contains, persist in the database until explicitly deleted. By using a datastore, you can store Python objects in a named datastore entry. This named datastore can then be used in subsequent Python sessions, and even be made available to other users or programs by granting/revoking read permissions.
+Datastores exist in the user’s Oracle AI Database schema. A datastore, and the objects it contains, persist in the database until explicitly deleted. By using a datastore, you can store Python objects in a named datastore entry. This named datastore can then be used in subsequent Python sessions, and even be made available to other users or programs by granting/revoking read permissions.
 
 Python objects, including Oracle Machine Learning for Python (OML4Py) proxy objects, exist for the duration of the current Python session unless you explicitly save them. You can save one or more Python objects, including OML proxy objects, to a named datastore and then load those objects in a later Python session. This is also useful when using embedded Python execution.
 By using a datastore, you can:
@@ -83,7 +83,7 @@ In this lab, you will learn how to:
 
   ![Import libraries supporting OML4Py](images/lab4-task1.png " ")  
 
-## Task 2: Create pandas dataFrames and load them into Oracle Autonomous Database
+## Task 2: Create pandas dataFrames and load them into Oracle Autonomous AI Database
 
 1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
@@ -179,4 +179,4 @@ After you reach the end of Lab 4, you can *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Dhanish Kumar, July 2025
+* **Last Updated By/Date** - Dhanish Kumar, November 2025
