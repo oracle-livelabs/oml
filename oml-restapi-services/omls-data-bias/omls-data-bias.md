@@ -8,7 +8,7 @@ Estimated Time: 40 minutes
 
 ### About Data Bias Detection in Oracle Machine Learning Services
 
-The OML Services Data Bias Detector provides REST endpoints for creating bias detection jobs. To help address data biases and mitigate its effects in later stages of the modeling process, the bias mitigation method **Reweighing** has been added to the `data_bias` API. The Database Bias Detector calculates metrics to identify common types of data bias: Class Imbalance (CI), Statistical Parity (SP), and Conditional Demographic Disparity (CDD). 
+The OML Services Data Bias Detector provides REST endpoints for creating bias detection jobs. To help identify potential data bias so that you can mitigate effects in later stages, the bias mitigation method **Reweighing** has been added to the `data_bias` API. The Database Bias Detector calculates metrics to identify common types of data bias: Class Imbalance (CI), Statistical Parity (SP), and Conditional Demographic Disparity (CDD). 
 
 ### Objectives
 
@@ -22,7 +22,7 @@ In this lab, you will:
 
 This lab assumes you have:
 * OCI Cloud Shell, which has cURL installed by default. If you are using the Workshops tenancy, you get OCI Cloud Shell as part of the reservation. However, if you are in your own OCI tenancy or using a free trial account, ensure you have OCI Cloud Shell or install cURL for your operating system to run the OML Services commands.
-* An Autonomous Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
+* An Autonomous AI Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
     * Your OML user name and password
     * `oml-cloud-service-location-url`
 * Completed all previous labs successfully.
@@ -30,11 +30,41 @@ This lab assumes you have:
 * A valid authentication token 
 
 
+## Task 1: Load the Dataset
+
+
+1. Run the following command to load the Adult dataset into Python memory:
+
+    <code>
+    %python
+
+    import oml
+
+    import pandas as pd
+    import ssl
+
+    ssl._create_default_https_context = ssl._create_unverified_context
+
+    # Load the dataset
+    url = "https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data"
+    columns = ['AGE', 'WORKCLASS', 'FNLWGT', 'EDUCATION', 'EDUCATION_NUM', 'MARITAL_STATUS',
+            'OCCUPATION', 'RELATIONSHIP', 'RACE', 'GENDER', 'CAPITAL_GAIN', 'CAPITAL_LOSS',
+            'HOURS_PER_WEEK', 'NATIVE_COUNTRY', 'INCOME']
+    adult_df = pd.read_csv(url, names=columns, na_values=" ?", skipinitialspace=True)
+
+    # Create a table from the DataFrame
+    try: oml.drop(table="ADULT")
+    except: pass
+
+    oml.create(adult_df, table="ADULT")
+
+    </code>
+
 ## Task 1: Create and Run a Data Bias Detection Job in OML Services
 
 To create and run a data bias detection job: 
 
-1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. See **Lab 1-Authenticate your OML Account with your Autonomous Database instance to use OML Services** in this workshop on how to obtain the authentication token.
+1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. See **Lab 1-Authenticate your OML Account with your Autonomous AI Database instance to use OML Services** in this workshop on how to obtain the authentication token.
 
 2. To create a job for data bias detection and data bias mitigation, send the following POST request to the `/omlmod/v1/jobs` endpoint in OML Services. 
 
@@ -272,6 +302,6 @@ You may now **proceed to the next lab.**
 
 ## Acknowledgements
 
-* **Author** - Moitreyee Hazarika, Principal UAD, Database User Assistance Development
-* **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, February 2025
+* **Author** : Moitreyee Hazarika, Consulting User Assistance Developer, Database User Assistance Development
+* **Contributors**: Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
+* **Last Updated By/Date**: Moitreyee Hazarika, October 2025

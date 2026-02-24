@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Introduction to Oracle Machine Learning Notebooks",
+    "workshoptitle": "Introduction to REST API for Oracle Machine Learning Services",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
         "oml-sign-into-oml.md":"/common/building-blocks/tasks/oml/sign-into-oml.md",
@@ -11,7 +11,7 @@
     "tutorials": [
         {
             "title": "Introduction",
-            "description": "Introduction to Oracle Machine Learning Notebooks.",
+            "description": "Introduction to REST API for Oracle Machine Learning Services",
             "filename": "../../introduction/introduction.md"
         },
         {
@@ -34,21 +34,17 @@
             "type": "freetier",
             "filename": "../../omls-onnx/omls-onnx.md"
         },
-        {
-            "title": "Lab 3: Use the Cognitive Image Functionality to Score a Mini Batch Containing base64 Encoded String",
-            "filename": "../../omls-score-mini-batch/omls-score-mini-batch.md"
-        },
-        {
-            "title": "Lab 4: Create and Run a Data Bias Detection Job",
-            "filename": "../../omls-data-bias/omls-data-bias.md"
-        },
-        {
-            "title": "Lab 5: Create and Run a Data Monitoring Job",
+                {
+            "title": "Lab 3: Create and Run a Data Monitoring Job",
             "filename": "../../omls-data-monitoring/omls-data-monitoring.md"
         },
         {
-            "title": "Lab 6: Create and Run a Model Monitoring Job",
+            "title": "Lab 4: Create and Run a Model Monitoring Job",
             "filename": "../../omls-model-monitoring/omls-model-monitoring.md"
+        },
+        {
+            "title": "Lab 5: Create and Run a Data Bias Detection Job",
+            "filename": "../../omls-data-bias/omls-data-bias.md"
         },        
         {
             "title": "Need Help?",

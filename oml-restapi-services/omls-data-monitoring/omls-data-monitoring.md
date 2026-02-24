@@ -27,7 +27,7 @@ In this lab, you will:
 
 This lab assumes you have:
 * OCI Cloud Shell, which has cURL installed by default. If you are using the Workshops tenancy, you get OCI Cloud Shell as part of the reservation. However, if you are in your own OCI tenancy or using a free trial account, ensure you have OCI Cloud Shell or install cURL for your operating system to run the OML Services commands.
-* An Autonomous Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
+* An Autonomous AI Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
     * Your OML user name and password
     * `oml-cloud-service-location-url`
 * Completed all previous labs successfully.
@@ -37,7 +37,7 @@ This lab assumes you have:
 
 To create a data monitoring job:
 
-1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. See **Lab 1-Authenticate your OML Account with your Autonomous Database instance to use OML Services** in this workshop on how to obtain the authentication token. 
+1. Obtain an authentication token by using your Oracle Machine Learning (OML) account credentials to send requests to OML Services. See **Lab 1-Authenticate your OML Account with your Autonomous AI Database instance to use OML Services** in this workshop on how to obtain the authentication token. 
 
 
 2. Create a data monitoring job by sending a `POST` request to the `/omlmod/v1/jobs` endpoint in OML Services. 
@@ -46,7 +46,7 @@ To create a data monitoring job:
 
   The details for data monitoring are specified in `jobProperties` parameter, that includes: 
     * Data monitoring job name and type
-    * Autonomous Database service level
+    * Autonomous AI Database service level
     * Table where the data monitoring details will be saved
     * Drift alert trigger
     * Threshold
@@ -290,6 +290,6 @@ This completes the task of creating and running a data monitoring job. You may n
 
 ## Acknowledgements
 
-* **Author** - Moitreyee Hazarika, Principal UAD, Database User Assistance Development
-* **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, February 2025
+* **Author** : Moitreyee Hazarika, Consulting User Assistance Developer, Database User Assistance Development
+* **Contributors**: Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
+* **Last Updated By/Date**: Moitreyee Hazarika, October 2025

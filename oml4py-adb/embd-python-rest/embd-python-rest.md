@@ -7,11 +7,11 @@ This lab walks you through the steps to use the REST API to call OML4Py Embedded
 Estimated Time: 20 minutes
 
 ### About Embedded Python Execution
-Embedded Python execution enables you to run user-defined Python functions in Python engines spawned by the Autonomous Database environment. The REST API for embedded Python execution with Autonomous Database provides REST endpoints for setting authorization tokens, executing Python scripts, and synchronously and asynchronously running jobs.
+Embedded Python execution enables you to run user-defined Python functions in Python engines spawned by the Autonomous AI Database environment. The REST API for embedded Python execution with Autonomous AI Database provides REST endpoints for setting authorization tokens, executing Python scripts, and synchronously and asynchronously running jobs.
 
 To run a script from the REST API, it must reside in the Python script repository. An Oracle Machine Learning username and password must be provided for authentication.
 
-* `do-eval`&mdash;Runs the provided user-defined Python function in a Python engine spawned by the Autonomous Database environment.
+* `do-eval`&mdash;Runs the provided user-defined Python function in a Python engine spawned by the Autonomous AI Database environment.
 * `table-apply`&mdash;Runs the provided user-defined Python function data referenced by an OML DataFrame proxy object in a single Python engine.
 * `group-apply`&mdash;Partitions a database table by the values in one or more columns and runs the provided user-defined Python function on each partition, optionally in parallel using multiple Python engines.
 * `row-apply`&mdash;Partitions a database table into sets of rows and runs the provided user-defined Python function on the data in each set, optionally in parallel using multiple Python engines.
@@ -23,7 +23,7 @@ To view the full list of endpoints available, refer to the Oracle Machine Learni
 
 ### Objectives
 
-In this lab, we provide a workflow for using the OML4Py REST API for embedded Python execution with Oracle Autonomous Database:
+In this lab, we provide a workflow for using the OML4Py REST API for embedded Python execution with Oracle Autonomous AI Database:
 
 * Obtain an authorization token to access the REST API for embedded Python execution
 * Create a user defined function (UDF) and store it in the OML4Py script repository
@@ -241,4 +241,4 @@ You can explore additional workshops related to Oracle Machine Learning from the
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Dhanish Kumar, July 2025
+* **Last Updated By/Date** - Dhanish Kumar, November 2025

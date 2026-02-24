@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab walks to the steps of provisioning an Oracle Autonomous Database, creating an OML-enabled user and signing into Oracle Machine Learning user interface..
+This lab walks to the steps of provisioning an Oracle Autonomous AI Database, creating an OML-enabled user and signing into Oracle Machine Learning user interface..
 
 Estimated Time: 15 minutes
 
@@ -10,7 +10,7 @@ Estimated Time: 15 minutes
 
 In this lab, you will learn how to:
 
-* Provision an Oracle Autonomous Database
+* Provision an Oracle Autonomous AI Database
 * Create an Oracle Machine Learning user
 * Sign into Oracle Machine Learning user interface
 * Create the CUSTOMERS360 table.
@@ -25,7 +25,7 @@ In this lab, you will learn how to:
 > **Note:** You may see differences in account details (eg: Compartment Name is different in different places) as you work through the labs.
 
 
-## Task 1: Provision an Oracle Autonomous Database
+## Task 1: Provision an Oracle Autonomous AI Database
 
 [](include:oml-prov-an-adb.md)
 
@@ -37,9 +37,7 @@ In this lab, you will learn how to:
 
 [](include:oml-sign-into-oml.md)
 
-## Task 4: Create the Customer360 Table
 
-[](include:oml-create-cust360-table.md)
 
 
 ## Learn More
@@ -49,6 +47,6 @@ In this lab, you will learn how to:
 
 ## Acknowledgements
 
-* **Author** - Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
-* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, December 2024
+* **Author** : Moitreyee Hazarika, Consulting User Assistance Developer, Database User Assistance Development
+* **Contributors**: Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
+* **Last Updated By/Date**: Moitreyee Hazarika, October 2025

@@ -7,11 +7,11 @@ This lab walks you through the steps to use OML4Py Embedded Python Execution fun
 Estimated Time: 20 minutes
 
 ### About Embedded Python Execution
-Embedded Python Execution enables you to run user-defined Python functions in Python engines spawned in the Oracle Autonomous Database environment. These engines run alongside an OML Notebooks Python interpreter session.
+Embedded Python Execution enables you to run user-defined Python functions in Python engines spawned in the Oracle Autonomous AI Database environment. These engines run alongside an OML Notebooks Python interpreter session.
 
 The OML4Py Embedded Python Execution functions are:
 
-* `oml.do_eval`&mdash;Calls a Python function in Python engines spawned by the Oracle Autonomous Database environment.
+* `oml.do_eval`&mdash;Calls a Python function in Python engines spawned by the Oracle Autonomous AI Database environment.
 * `oml.group_apply`&mdash;Partitions a database table by the values in one or more columns and runs the provided user-defined Python function on each partition.
 * `oml.index_apply`&mdash;Calls a Python function multiple times, passing in a unique index of the invocation to the user-defined function.
 * `oml.row_apply`&mdash;Partitions a database table into sets of rows and runs the provided user-defined Python function on the data in each set.
@@ -130,4 +130,4 @@ In this lab, you will:
 ## Acknowledgements
 * **Author** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Dhanish Kumar, July 2025
+* **Last Updated By/Date** - Dhanish Kumar, November 2025

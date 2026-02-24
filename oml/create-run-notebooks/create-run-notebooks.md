@@ -172,7 +172,7 @@ Type:
 To run R functions in an Oracle Machine Learning notebook, you must first connect to the R interpreter.
 An Oracle Machine Learning notebook supports multiple languages. For this, you must create a notebook with some paragraphs to run SQL queries, and other paragraphs to run R and Python scripts. To run a notebook in different scripting languages, you must first connect the notebook paragraphs with the respective interpreters such as R, Python, or SQL. This example shows how to:
   * Connect to the R interpreter to run R commands in a notebook.
-  * Verify the connection to Oracle Autonomous Database, and
+  * Verify the connection to Oracle Autonomous AI Database, and
   * Load the ORE libraries
 
 1. To connect to the R interpreter, type the following directive at the beginning of the notebook paragraph, and press Enter:
@@ -240,7 +240,7 @@ This example assumes that you have a notebook called Py Note notebook created. T
         * TRUE - Indicates that the `oml` module is connected to the Oracle Database
         * FALSE - Indicates that the `oml` module is not connected to the Oracle Database
 
-4. Once the `oml` module is connected to the Oracle Database, the command returns `TRUE`. On Oracle Autonomous Database, if the interpreter bindings are properly specified, this should always return `TRUE` as the database connection is established by the OML Notebook environment automatically. You are now ready to run python commands in your notebook.
+4. Once the `oml` module is connected to the Oracle Database, the command returns `TRUE`. On Oracle Autonomous AI Database, if the interpreter bindings are properly specified, this should always return `TRUE` as the database connection is established by the OML Notebook environment automatically. You are now ready to run python commands in your notebook.
 
    ![connect py true](images/connect-py-true.png "connect py true")
 
@@ -346,6 +346,6 @@ You may now **proceed to the next lab.**
 
 ## Acknowledgements
 
-* **Author** : Mark Hornick, Sr. Director, Data Science / Machine Learning PM; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
-
-* **Last Updated By/Date**: Moitreyee Hazarika, March 2024
+* **Author** : Moitreyee Hazarika, Consulting User Assistance Developer, Database User Assistance Development
+* **Contributors**: Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
+* **Last Updated By/Date**: Moitreyee Hazarika, October 2025

@@ -2,7 +2,7 @@
 
 ## Introduction
 
- In this lab, you will learn how to use Oracle Machine Learning Services REST API to deploy and score with your ONNX format models.
+ In this lab, you will learn how to use Oracle Machine Learning Services REST API to deploy your ONNX format models and then perform scoring.
 
 Estimated Time: 40 minutes
 
@@ -21,20 +21,19 @@ Open Neural Network Exchange or ONNX is an open standard format of machine learn
 In this lab, you will learn how to:
 * Train an open source xgboost model
 * Convert the open source xgboost model to ONNX format
-* Deploy the model to OML Services on Autonomous Database
+* Deploy the model to OML Services on Autonomous AI Database
 
 
 ### Prerequisites 
 
 This lab assumes you have:
 * OCI Cloud Shell, which has cURL installed by default. If you are using the Workshops tenancy, you get OCI Cloud Shell as part of the reservation. However, if you are in your own OCI tenancy or using a free trial account, ensure you have OCI Cloud Shell or install cURL for your operating system to run the OML Services commands.
-* An Autonomous Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
+* An Autonomous AI Database instance created in your account/tenancy if you are using your own tenancy or a free trial account. You should have handy the following information for your instance:
     * Your OML user name and password
     * `oml-cloud-service-location-url`
 * A valid authentication token
+* A Conda environment with xgboost, onnxruntime, and onnxmltools installed
 
-* onnxruntime and onnxmltools
-* A Conda environment with xgboost installed
 
 ## Task 1: Create and set up a Conda Environment
 
@@ -54,7 +53,8 @@ In this task, you will create a Conda environment by the name xgbenv and install
 
   ![Commands to set up the Conda environment](images/conda-env-setup.png)
 
-  This command created the conda environment `xgbenv`, installs Python 3.12.6, xgboost, onnxruntime, and onnxmltools. The command also uploads the environment to Object Storage. 
+  This command created the conda environment `xgbenv` as ADMIN with the libraries xgboost, onnxruntime, and onnxmltools for use with Python 3.12.6. This is Python version currently used in OML Notebooks. The command also uploads the environment to Object Storage for non-ADMIN users to download, activate, and use in OML Notebooks.
+
 
 2. Now, sign in as `OMLUSER` and download and activate the Conda environment `xgbenv`.
 
@@ -147,7 +147,7 @@ In this task, you will perform the following tasks:
 
   In this example, we are using the `train_test_split` function from sklearn's `model_selection` module. The test size equal to 30% of the data. A `random_state` is assigned for reproducibility.
 
-4. Run the following command to: 
+2. Run the following command to: 
     * Build the regression model. Use the `XGBRegressor` class of the `xgboost` package with the hyper-parameter values passed as arguments. 
     * Initialize the regressor object
     * Fit the regressor to the training set 
@@ -156,7 +156,7 @@ In this task, you will perform the following tasks:
     ```
     <copy>
 
-        % python
+        %python
         model = xgb.XGBRegressor(objective ='reg:squarederror', 
                          colsample_bytree = 0.3, 
                          learning_rate = 0.1,
@@ -170,7 +170,7 @@ In this task, you will perform the following tasks:
 
   ![XGboost model](images/model-xgbregressor.png)
 
-5. Run the following command to score with the model using the _fit_ method and make predictions using the _predict_ method on the model:
+3. Run the following command to train the model using the _fit_ method and score data using the _predict_ method on the model:
 
     ```
     <copy>
@@ -182,7 +182,7 @@ In this task, you will perform the following tasks:
 
   ![Fit model and predict](images/model-train-fit.png)
 
-6. Next, the model is ready to be evaluated. For this, run the following to compute the Root Mean Square error (RMSE) by using the `mean_squared_error` function. This function is available in the _metrics_ module of sklearn. 
+4. Next, the model is ready to be evaluated. For this, run the following to compute the Root Mean Square error (RMSE) by using the `mean_squared_error` function. This function is available in the _metrics_ module of sklearn. 
 
     ```
     <copy>
@@ -270,6 +270,7 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
     <copy>
     %python
     onnx_model = onnxmltools.convert_xgboost(model, initial_types=initial_types)
+
     onnxmltools.utils.save_model(onnx_model, 'xgboost_diabetes.onnx') 
     </copy>
     ```
@@ -319,6 +320,8 @@ Before deploying an ONNX format model, you must create the ONNX model zip file. 
 
 To know more about the the `metadata.json` file, see:  [Specifications for ONNX Format Models](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/onnx_spec.html)
 
+Steps 2 - 4 are optional steps. They are for validation only. 
+
 2. Run the following command to view the zip file in the /tmp folder:
 
      ```
@@ -358,7 +361,7 @@ To know more about the the `metadata.json` file, see:  [Specifications for ONNX 
 
 This completes the task of creating the metadata.json file, the zip file (containing the metadata.json file and xgboost model in onnx format), and validating the contents of these files.
 
-## Task 4.2: Compare predictions made by the original XGboost model and the ONNX model 
+## Task 4.2: Compare predictions made by the original XGboost model and the ONNX model (Optional)
 
 In this task, you will compare the original XGBoost prediction with the predictions made by the ONNX model. 
 
@@ -421,13 +424,13 @@ Before deploying the ONNX model to OML Services, you must obtain an authenticati
   %python
   import requests
 
-  # Define variables. Replace OML_SERVICE with your URL
-  OML_SERVICE = "https://wp206m0hg0kgxod-omllabs138190.adb.ca-toronto-1.oraclecloudapps.com"
+  # Define variables. Replace the below URL with your URL. 
+  oml-cloud-service-location-url = "https://wp206m0hg0kgxod-omllabs138190.adb.ca-toronto-1.oraclecloudapps.com"
   USERNAME = "OMLUSER"
   PASSWORD = "AAbbcc123456"
 
   def get_token():
-      url = f"{OML_SERVICE}/omlusers/api/oauth2/v1/token"
+      url = f"{oml-cloud-service-location-url}/omlusers/api/oauth2/v1/token"
       payload = {
           "grant_type": "password",
           "username": USERNAME,
@@ -454,7 +457,7 @@ Before deploying the ONNX model to OML Services, you must obtain an authenticati
   
   The command returns the access token. 
 
-  See **Lab 1 - Authenticate your OML Account with your Autonomous Database instance to use OML Services** in this workshop for details. 
+  See **Lab 1 - Authenticate your OML Account with your Autonomous AI Database instance to use OML Services** in this workshop for details. 
 
 
 ## Task 5.1: Store the model in the OML Services Model Repository
@@ -469,7 +472,7 @@ Before deploying the ONNX model to OML Services, you must obtain an authenticati
     import requests
 
     # OML Services models endpoint
-    url = f"{OML_SERVICE}/omlmod/v1/models"
+    url = f"{oml-cloud-service-location-url}/omlmod/v1/models"
 
     headers = {
         "Authorization": f"Bearer {TOKEN}"
@@ -517,7 +520,7 @@ To deploy and score an ONNX format regression model:
 
     import requests
 
-    url = f"{OML_SERVICE}/omlmod/v1/deployment"
+    url = f"{oml-cloud-service-location-url}/omlmod/v1/deployment"
     headers = {
         "Authorization": f"Bearer {TOKEN}",
         "Content-Type": "application/json"
@@ -538,7 +541,7 @@ To deploy and score an ONNX format regression model:
      
       
 
-## Task 5.3:  Score the ONNX Model
+## Task 5.3:  Score using the ONNX Model
 
 1. Score the model by sending a POST request to the `deployment/{uri}/score` endpoint. The `GET` response to `{uri}/api` provides detailed information about the model.
 
@@ -549,7 +552,7 @@ To deploy and score an ONNX format regression model:
     %python
 
     # Scoring endpoint URL
-    url = f"{OML_SERVICE}/omlmod/v1/deployment/onnxrg/score"
+    url = f"{oml-cloud-service-location-url}/omlmod/v1/deployment/onnxrg/score"
 
     # Headers
     headers = {
@@ -606,6 +609,6 @@ To deploy and score an ONNX format regression model:
 
 ## Acknowledgements
 
-* **Author** - Moitreyee Hazarika, Principal UAD, Database User Assistance Development
-* **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, February 2025
+* **Author** : Moitreyee Hazarika, Consulting User Assistance Developer, Database User Assistance Development
+* **Contributors**: Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
+* **Last Updated By/Date**: Moitreyee Hazarika, October 2025

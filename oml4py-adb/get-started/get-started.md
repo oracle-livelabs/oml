@@ -1,4 +1,4 @@
-# Get started with OML4Py on Oracle Autonomous Database
+# Get started with OML4Py on Oracle Autonomous AI Database
 
 ## Introduction
 This lab walks you through the steps of accessing Oracle Machine Learning UI, loading notebooks and running OML4Py scripts.
@@ -11,14 +11,14 @@ In this lab, you will learn how to:
 * Access Notebooks under Oracle Machine Learning UI
 * Get familiar with the Oracle Machine Learning Notebooks toolbar
 * Get familiar with the Oracle Machine Learning Notebooks interpreters
-* Verify the connection to the Oracle Autonomous Database
+* Verify the connection to the Oracle Autonomous AI Database
 * Load the datasets necessary to run the workshop
 
 * View help files
 
 ## Task 1: Access Oracle Machine Learning UI
 
-You create notebooks in Oracle Machine Learning UI. You can access Oracle Machine Learning UI from Autonomous Database.
+You create notebooks in Oracle Machine Learning UI. You can access Oracle Machine Learning UI from Autonomous AI Database.
 
 <if type="livelabs">
 1. Go to the site [**My Reservations**](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/my-reservations) and make sure you can see that your reservation is ready.  When it is, it will show you a button called **`Launch Workshop`**.  Click on it.
@@ -33,8 +33,8 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 
     > **Note:** The first time you login to OCI, you will be asked to reset your password.
 
-4. When you are in OCI, click the left navigation pane on the upper left corner, and click **Autonomous Database** under **Oracle Database**.  
-    ![Autonomous Database under Oracle Database](images/database-adw-rw.png " ")
+4. When you are in OCI, click the left navigation pane on the upper left corner, and click **Autonomous AI Database** under **Oracle AI Database**.  
+    ![Autonomous AI Database under Oracle AI Database](images/database-adw-rw.png " ")
 
 </if>
 
@@ -50,48 +50,48 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 
     > **Note:** The first time you login to OCI, you will be asked to reset your password.
 
-4. When you are in OCI, click the left navigation pane on the upper left corner, and click **Autonomous Database** under **Oracle Database**.  
-    ![Autonomous Database under Oracle Database](images/database-adw-rw.png " ")
+4. When you are in OCI, click the left navigation pane on the upper left corner, and click **Autonomous AI Database** under **Oracle AI Database**.  
+    ![Autonomous AI Database under Oracle AI Database](images/database-adw-rw.png " ")
 
 </if>
 
 <if type="freetier">
 
-1. Sign into your OCI account, click the left navigation pane on the upper left corner, and click **Autonomous Database** under **Oracle Database**.  
+1. Sign into your OCI account, click the left navigation pane on the upper left corner, and click **Autonomous AI Database** under **Oracle AI Database**.  
 
-     > **Note:** It is possible to select a different type of Autonomous Database if you previously provisioned a different one and have created OML Users for it, since OML is available in AJD and ATP as well.
+     > **Note:** It is possible to select a different type of Autonomous AI Database if you previously provisioned a different one and have created OML Users for it, since OML is available in AJD and ATP as well.
 
-    ![Autonomous Database under Oracle Database](images/database-adw-rw.png " ")
+    ![Autonomous AI Database under Oracle AI Database](images/database-adw-rw.png " ")
 
 </if>
 
 
 <if type="freetier-ocw23">
 
-1. Sign into your OCI account, click the left navigation pane on the upper left corner, and click **Autonomous Database** under **Oracle Database**.  
+1. Sign into your OCI account, click the left navigation pane on the upper left corner, and click **Autonomous AI Database** under **Oracle AI Database**.  
 
-     > **Note:** It is possible to select a different type of Autonomous Database if you previously provisioned a different one and have created OML Users for it, since OML is available in AJD and ATP as well.
+     > **Note:** It is possible to select a different type of Autonomous AI Database if you previously provisioned a different one and have created OML Users for it, since OML is available in AJD and ATP as well.
 
-    ![Autonomous Database under Oracle Database](images/database-adw-rw.png " ")
+    ![Autonomous AI Database under Oracle AI Database](images/database-adw-rw.png " ")
 
 </if>
 
-2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Select the compartment corresponding to the <if type="livelabs">provisioned **Live Labs** instance (the Compartment name is shown in the Login info for your reservation, as shown in Task 2).  Click on the Autonomous Database with your unique **Display Name ADWXXXXX** shown in Task 2</if><if type="livelabs-ocw23">provisioned **Live Labs** instance (the Compartment name is shown in the Login info for your reservation, as shown in Task 2).  Click on the Autonomous Database with your unique **Display Name ADWXXXXX** shown in Task 2</if><if type="freetier">previously provisioned instance, and click the Oracle Autonomous Database name (in the example below, **OMLLABS**)</if><if type="freetier-ocw23">previously provisioned instance, and click the Oracle Autonomous Database name (in the example below, **OMLLABS**)</if>.
+2. The Autonomous AI Database dashboard lists all the AI Databases that are provisioned in the tenancy. Select the compartment corresponding to the <if type="livelabs">provisioned **Live Labs** instance (the Compartment name is shown in the Login info for your reservation, as shown in Task 2).  Click on the Autonomous AI Database with your unique **Display Name ADWXXXXX** shown in Task 2</if><if type="livelabs-ocw23">provisioned **Live Labs** instance (the Compartment name is shown in the Login info for your reservation, as shown in Task 2).  Click on the Autonomous AI Database with your unique **Display Name ADWXXXXX** shown in Task 2</if><if type="freetier">previously provisioned instance, and click the Oracle Autonomous AI Database name (in the example below, **OMLLABS**)</if><if type="freetier-ocw23">previously provisioned instance, and click the Oracle Autonomous AI Database name (in the example below, **OMLLABS**)</if>.
 
 <if type="freetier">
-     ![Oracle Autonomous Database instances](images/provisioned-adb-rw.png " ")</if>
+     ![Oracle Autonomous AI Database instances](images/provisioned-adb-rw.png " ")</if>
 <if type="freetier-ocw23">
-     ![Oracle Autonomous Database instances](images/provisioned-adb-rw.png " ")</if>
+     ![Oracle Autonomous AI Database instances](images/provisioned-adb-rw.png " ")</if>
 <if type="livelabs">
-     ![Oracle Autonomous Database instances](images/ll-adb-listing-rw.png " ")</if>
+     ![Oracle Autonomous AI Database instances](images/ll-adb-listing-rw.png " ")</if>
 <if type="livelabs-ocw23">
-     ![Oracle Autonomous Database instances](images/ll-adb-listing-rw.png " ")</if>
+     ![Oracle Autonomous AI Database instances](images/ll-adb-listing-rw.png " ")</if>
 
-3. On the Autonomous Database details page, click **Database Actions** and then select **View all Database Actions**.
+3. On the Autonomous AI Database details page, click **Database Actions** and then select **View all Database Actions**.
 
 	  ![Database Actions button in ADB Console](images/view-all-database-actions-rw.png " ")
 
-     Before you get to the Oracle Database Actions Launchpad page, you might be asked to login, depending on the browser you are using.  If this is the case make sure to enter **ADMIN** for the user, and the <if type="freetier">password you have given the ADMIN user</if><if type="freetier-ocw23">password you have given the ADMIN user</if><if type="livelabs">password shown in the **View Login Info** in Task 1, Step 2 (you can click on the **Copy Password** button)</if><if type="livelabs-ocw23">password shown in the **View Login Info** in Task 1, Step 2 (you can click on the **Copy Password** button)</if>.
+     Before you get to the Oracle AI Database Actions Launchpad page, you might be asked to login, depending on the browser you are using.  If this is the case make sure to enter **ADMIN** for the user, and the <if type="freetier">password you have given the ADMIN user</if><if type="freetier-ocw23">password you have given the ADMIN user</if><if type="livelabs">password shown in the **View Login Info** in Task 1, Step 2 (you can click on the **Copy Password** button)</if><if type="livelabs-ocw23">password shown in the **View Login Info** in Task 1, Step 2 (you can click on the **Copy Password** button)</if>.
    
     ![ADB login into Database Actions](images/login-to-actions.png " ")
 
@@ -106,7 +106,7 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 
 	 ![OML option in ADB Console tool](images/oml-ui-tool-adb-console-rw.png " ")
 
-	  <!-- > **Note:** If you are are using a **Paid Account** and deployed a **Paid Autonomous Database** you would also see an additional column that show any customizations made to the compute power available specifically to OML jobs, along with the  `Max idle time` defined to release those resources.
+	  <!-- > **Note:** If you are are using a **Paid Account** and deployed a **Paid Autonomous AI Database** you would also see an additional column that show any customizations made to the compute power available specifically to OML jobs, along with the  `Max idle time` defined to release those resources.
 	   ![OML option in ADB Console tool Paid Account](images/oml-ui-tool-adb-console-paid.png " ") -->
 
 5. You should be in the Sign In page for OML. <if type="livelabs">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="livelabs-ocw23">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="freetier">Enter the **`OMLUSER`** credentials using the password that you used earlier when creating the users. Then click the blue **Sign in** button.</if><if type="freetier-ocw23">Enter the **`OMLUSER`** credentials using the password that you used earlier when creating the users. Then click the blue **Sign in** button.</if>
@@ -146,7 +146,7 @@ We will now download a set of Notebooks that will be used throughout the worksho
 1. [**CLICK HERE** to download a ZIP file with all the notebooks we will use for these Labs (in special DSNB format)](https://objectstorage.us-ashburn-1.oraclecloud.com/p/EsN3wpucP7-gzMGjoV55UrXnFMrpt5ySbsT7TE1CiT99Q-gqXPSGy0P2oCYGyRn1/n/adwc4pm/b/oml4py_labs/o/oml4py_labs_sandbox_ds_ocw23.zip?download=1) which contain the notebooks for the Labs.  Save it to your local machine and __extract them__ to a memorable place.
 </if>
 
-> **NOTE:** If you have problems with downloading and extracting the ZIP file, please [**CLICK HERE** to download the "Lab 1 - Get Started with OML4Py on Autonomous Database" notebook in DSNB format](<./../notebooks/Lab 1 - Get Started with OML4Py on Autonomous Database.dsnb?download=1>) which contains the notebook version of Lab1, save it to your local machine and import it as illustrated below.
+> **NOTE:** If you have problems with downloading and extracting the ZIP file, please [**CLICK HERE** to download the "Lab 1 - Get Started with OML4Py on Autonomous AI Database" notebook in DSNB format](<./../notebooks/Lab 1 - Get Started with OML4Py on Autonomous AI Database.dsnb?download=1>) which contains the notebook version of Lab1, save it to your local machine and import it as illustrated below.
 
   To import the downloaded notebook files into **OML Notebooks**:
   - Go to the **Notebooks** page, and click **Import**.  
@@ -183,14 +183,14 @@ We will now download a set of Notebooks that will be used throughout the worksho
 
 ## Task 3: Getting started with OML Notebooks and interpreter types
 
-1. OML Notebooks contain a default list of interpreter bindings that operate under the different Autonomous Database processing groups.  These interpreter bindings are used to run scripts in the different languages, and it will be processed by the Autonomous Database that it is linked to.  
+1. OML Notebooks contain a default list of interpreter bindings that operate under the different Autonomous AI Database processing groups.  These interpreter bindings are used to run scripts in the different languages, and it will be processed by the Autonomous AI Database that it is linked to.  
    
   For this lab, we will **set the processing group type to `low`**, by making sure it is the selected option in the top right of the Notebook when it's open.
 
   Click the processing group type button in the upper right-corner of the notebook to view the list of available processing group types.
     ![Oracle Machine Learning Notebooks DB Level](images/interpreter_level.png " ")
 
-  The default type is `low`, and you can select among the ones available to your Autonomous Database depending on type of service (Autonomous Datawarehouse or Autonomous Transaction Processing).
+  The default type is `low`, and you can select among the ones available to your Autonomous AI Database depending on type of service (Oracle Autonomous AI Lakehouse (ALK) or Oracle Autonomous AI Transaction Processing (ATP)).
 
   An interpreter is a plug-in that allows you to use a specific data processing language in your Oracle Machine Learning notebook. You can add multiple paragraphs, and each paragraph can be connected to different interpreters such as SQL (%sql), PL/SQL (%script), Python (%python), R (%r) and Conda (%conda).
 
@@ -293,4 +293,4 @@ You can now *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning; Jie Liu, Data Scientist
-* **Last Updated By/Date** - Marcos Arancibia, August 2023, Moitreyee Hazarika, June 2024, Dhanish Kumar, July 2025
+* **Last Updated By/Date** - Marcos Arancibia, August 2023, Moitreyee Hazarika, June 2024, Dhanish Kumar, November 2025

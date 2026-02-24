@@ -52,7 +52,7 @@ In this step, you learn how to change the notebook service levels:
 
 	![Notebooks in the left navigation menu](images/left-nav-pane-notebooks.png)
 
-2. On the Notebooks page, click on the **OML4PY Classification_DT** notebook to open it in the Notebook editor. This notebook is created as part of _Task 4 - Create a Notebook using a Template Example_ of the _Oracle Machine Learning Fundamentals on Autonomous Database workshop_.
+2. On the Notebooks page, click on the **OML4PY Classification_DT** notebook to open it in the Notebook editor. This notebook is created as part of _Task 4 - Create a Notebook using a Template Example_ of the _Oracle Machine Learning Fundamentals on Autonomous AI Database workshop_.
 
 	![The OML4PY Classification_DT notebook highlighted on the Listing page](images/notebook-list-1.png)
 	
@@ -332,6 +332,6 @@ This completes the task of creating a job to schedule running of notebooks.
 
 ## Acknowledgements
 
-* **Author** -  Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
-* **Contributors** -   Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, April 2025
+* **Author** -  Moitreyee Hazarika, Consulting User Assistance Developer, Database User Assistance Development
+* **Contributors**: Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
+* **Last Updated By/Date** - Moitreyee Hazarika, October 2025
