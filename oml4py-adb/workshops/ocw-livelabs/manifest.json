@@ -7,7 +7,7 @@
     "tutorials": [
         {
             "title": "Get Started with Live Labs",
-            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md",
+            "filename": "https://livelabs.oracle.com/cdn/common/labs/cloud-login/cloud-login-livelabs2.md",
             "type": "livelabs"
         },
         {
@@ -48,7 +48,7 @@
         {
             "title": "Lab 7: Clean Up",
             "description": "Workshop clean up",
-            "filename":"https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
+            "filename":"https://livelabs.oracle.com/cdn/common/labs/terminate-adb/terminate-adb.md"
         },
         {
         "title": "Appendix: OML user administration",
@@ -58,7 +58,7 @@
         {
           "title": "Need Help?",
           "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+          "filename":"https://livelabs.oracle.com/cdn/common/labs/need-help/need-help-livelabs.md"
         }
     ]
 }
