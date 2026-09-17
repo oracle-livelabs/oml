@@ -40,7 +40,7 @@ In this task, continue the `Predict Subscription` conversation you created in La
 
     ![Data Science Agent tips shown at the start of a new conversation](images/ml-prompt-01.png "Goal and context setting")
 
-2. Enter the following prompt to set the goal and context for the conversation. This prompt tells Data Science Agent that you are an analyst without formal machine learning experience and asks it to explain the data and the machine learning framing.
+2. Enter the following prompt to set the goal and context for the conversation. This prompt tells Data Science Agent that you are an analyst without a data science background. It asks to explain the data and you can use it to solve a business problem.
 
     ```text
     <copy>
@@ -52,41 +52,41 @@ In this task, continue the `Predict Subscription` conversation you created in La
 
 3. Review the summary of the data in each table and the key columns identified by Data Science Agent. Also, review the explanation on how to use this data to solve business problems. 
 
+    Data Science Agent lists the four tables - CLIENTS, CONTACTS, PAST_CAMPAIGNS, and PROSPECTS. It provides a crisp summary of what data the table contains, and how it can be used to understand and solve a business problem.
+
     ![Prompt 1 response showing table summaries and key columns](images/t1-p1.png "Prompt 1 and response")
 
 ## Task 2: Create a single modeling table
 
-In this task, you will ask Data Science Agent to create a view, explore the dataset and provide basic statistics for the data. This helps you understand table contents, attribute distributions, and data patterns before moving into feature engineering and modeling.
+In this task, you will ask Data Science Agent to create a single view to use it to train a model. A single modeling table or view is useful because model training typically requires one row per training example with the target variable and input features in the same dataset.
 
-In this task, you will ask Data Science Agent to show the joins required to create a single modeling table. A single modeling table is useful because model training typically requires one row per training example with the target variable and input features in the same dataset.
-
-1. Enter the following prompt to request basic statistics about the available data. This prompt asks Data Science Agent to inspect the Associated Objects and summarize the dataset in a structured way.
+1. Enter the following prompt to create a single view by joining the CLIENT, CONTACTS, and PAST_CAMPAIGN data for every client who has been contacted.
 
     ```text
     <copy>
-    Create a single view joining the client, contact, and campaign data for every client who has been contacted, so we can use it to train a model. Exclude `DURATION_SECONDS` and `CONTACT_DATE`, since we won't have call duration or a contact date for prospects who haven't been reached yet.
+    Create a single view joining the client, contact, and campaign data for every client who has been contacted, so we can use it to train a model. Exclude DURATION_SECONDS and CONTACT_DATE, since we won't have call duration or a contact date for prospects who haven't been reached yet.
     </copy>
     ```
 
-    Here, Data Science Agent creates a named `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9` by combining client demographics, contact history (excluding call duration and contact date), and past campaign data for every client who has ever been contacted.
+    Here, Data Science Agent creates a view named `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9` by combining client demographics, contact history (excluding call duration and contact date), and past campaign data for every client who has ever been contacted.
 
-2. Review the initial response, including the insight on the `CLIENTS`, `CONTACTS`, `PAST_CAMPAIGNS`, and `PROSPECTS` tables.
+2. Review the response. Data Science Agent provides a crisp summary of what is included in the view and how you can use it. 
 
-    ![Prompt 2 response showing dataset insights across associated tables](images/t2-p1-r1.png "Prompt 2 and response")
+    ![Prompt 2 response showing the details of the view](images/t2-p1-r1.png "Prompt 2 and response")
 
-3. Expand the **Details on Created View** section. Data Science Agent presents xxx.
+3. Expand the **Details on Created View** section to view the SQL code defining the view.
 
     ![Attribute Statistic section showing statistical analysis for the associated tables](images/t2-p1-r2.png "Response 2 continued")
 
-4. Expand the **Visual Diagram** section. Data Science Agent presents xxx.
+4. Expand the **Visual Diagram** section to view the visual diagram for the view.
 
     ![Attribute Analysis section showing tabular and graphical analysis](images/t2-p1-r3.png "Response 2")
 
 ## Task 3: Explore the dataset
 
-In this task, you will ask Data Science Agent to explain xxx.
+In this task, you will ask Data Science Agent to explain the basic statistics for the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9`.
 
-1. Enter the following prompt to ask Data Science Agent to frame the use case as a machine learning problem. This prompt focuses the conversation on predicting subscription likelihood and asks for the target variable and possible input features.
+1. Enter the following prompt to explore the dataset and understand the basic statistics.
 
     ```text
     <copy>
@@ -94,23 +94,25 @@ In this task, you will ask Data Science Agent to explain xxx.
     </copy>
     ```
 
-    In response to this prompt, Data Science Agent xxx.
+    In response to this prompt, Data Science Agent provides a descriptive summary of the datastet. It describes the dataset in the following categories - Demographics, Financials, Contact & Campaigns, Outcomes, and Missing Values. It is a highly imbalanced client marketing dataset combining demographic, financial, contact-history, and campaign-response features, with substantial missing values in previous campaign information. It is suitable for predicting offer subscription and analyzing factors associated with campaign success.
 
     [Prompt 3 response showing machine learning problem framing and target variable](images/t3-p1-r1.png "Prompt 3 and response")
 
-2. Review the **Attribute Analysis** section. Here, xxx
+2. Expand the **Attribute Analysis** section for a detailed description and analysis of the attributes.
 
     ![Prompt 3 response showing machine learning problem framing and target variable](images/t3-p1-r2.png "Prompt 3 and response")
 
-3. Review the **Attribute Statistics** section. Here, xxx.
+3. Review the **Attribute Statistics** section for a detailed view of the attributes. For each attribute, it shows the data distribution and statistics, along with a statistical visualization - boxplot, bar chart etc as applicable.
 
     ![Response to prompt 3 concluded showing input features and next steps](images/t3-p1-r3.png "Response to prompt 3 concluded")
 
+    The agent also asks if you would like to analyze the relationship between these features and a particular outcome,  or proceed to identify the most influential factors for prediction.
+
 ## Task 4: Perform predictive modeling
 
-In this task, you will ask Data Science Agent to create a predictive model. 
+In this task, you will ask Data Science Agent to create a predictive model.
 
-1. Enter the following prompt to ask Data Science Agent to create the unified modeling table and show the exact joins. This prompt moves the workflow from conceptual framing into data preparation.
+1. Enter the following prompt to ask Data Science Agent to create a predictive model.
 
     ```text
     <copy>
@@ -118,11 +120,11 @@ In this task, you will ask Data Science Agent to create a predictive model.
     </copy>
     ```
 
-    In this example, Data Science Agent asks for confirmation xxx 
+    In response to this prompt, Data Science Agent asks you to confirm the target for prediction. It also mentions that the most common business goal here would be to predict whether a contacted client will subscribe (the `SUBSCRIBED` column).
 
     ![Prompt 4 response showing creation of unified modeling view](images/t4-p1-r1.png "Prompt 4 and response")
 
-2. Review the response sxxx
+2. Enter the following prompt to confirm.
 
     ![Prompt 4 response showing creation of unified modeling view](images/t4-p1-r2.png "Prompt 4 and response")
 
@@ -132,13 +134,14 @@ In this task, you will ask Data Science Agent to create a predictive model.
     </copy>
     ```
 
-    In this example, Data Science Agent creates the unified modeling view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_TOP_XGB`
-    
+    In this example, Data Science Agent creates the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_TOP_XGB` using the XGBoost algorithm. 
+
     > **Note:** Views and objects created by Data Science Agent have the prefix `DSAGENT$`.
 
-    Review the jxxxxe view.
-
+    
     >**Note:**  The outputs in this lab are examples only. The suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
+
+    Data Science Agent also suggests the 
 
 ## Task 5: Perform feature engineering to improve model 
 
@@ -365,4 +368,4 @@ In this task, you will ask Data Science Agent to use the trained model to score 
 
 * **Author** - Moitreyee Hazarika, Consulting User Assistance Developer, Oracle AI Database User Assistance Development
 * **Contributors** - Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, July 2026
+* **Last Updated By/Date** - Moitreyee Hazarika, September 2026
