@@ -134,22 +134,22 @@ In this task, you will ask Data Science Agent to create a predictive model.
     </copy>
     ```
 
-    In this example, Data Science Agent creates the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_TOP_XGB` using the XGBoost algorithm. 
+    In this example, Data Science Agent determines the most important features for predicting the likelihood of subscription by using XGBoost, and creates the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_TOP_XGB`.
 
     > **Note:** Views and objects created by Data Science Agent have the prefix `DSAGENT$`.
 
     
     >**Note:**  The outputs in this lab are examples only. The suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
-    Data Science Agent also suggests the 
+    Data Science Agent suggests the next recommended path - to split the data into training and test sets, then train and evaluate a predictive model. It also asks whether to proceed with building and evaluating a single model, or test and compare several modeling algorithms to check their best performance.
 
-## Task 5: Perform feature engineering to improve model 
+## Task 5: Perform feature engineering for model improvement
 
-In this task, you will ask Data Science Agent to validate features and enhance the model. Feature engineering helps in identifying columns that are suitable for modeling and prepares a clean view for downstream training.
+In this task, you will ask Data Science Agent to identify features to enhance the model. Feature engineering helps in identifying columns that are suitable for modeling and prepares a clean view for downstream training.
 
 >**Note:**  The outputs in this lab are examples only. The view names, suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
-1. Enter the following prompt to continue with feature validation and modeling. This prompt asks Data Science Agent to prepare the unified data for model training.
+1. Enter the following prompt to proceed with new feature identification and modeling.
 
     ```text
     <copy>
@@ -157,11 +157,10 @@ In this task, you will ask Data Science Agent to validate features and enhance t
     </copy>
     ```
 
-    ![Prompt 5a response showing xxx](images/t5-p1-r1.png "Prompt 5 and response")
+    ![Prompt 5 response](images/t5-p1-r1.png "Prompt 5 and response")
 
-    In this example, Data Science Agent suggests xxx.
-
-2. Review the response and xxxx.
+    In response to this prompt, Data Science Agent suggests new features for feature engineering, identifies non-useful features, and lists features with >80 percent missing values. The agent asks whether to proceed with feature engineering or drop all low-importance columns and move forward to model training with the existing lean, high-value feature set.
+2. Review the response and enter the following prompt to ask Data Science Agent to proceed with feature engineering after dropping the low-importance columns.
 
     ```text
     <copy>
@@ -169,26 +168,28 @@ In this task, you will ask Data Science Agent to validate features and enhance t
     </copy>
     ```
 
-    ![Prompt 5b response showing xxx](images/t5-p2-r1.png "Prompt 5 and response")
+    ![Prompt 5 response](images/t5-p2-r1.png "Prompt 5 and response")
 
-    Data Science Agent transforms the CONTACT_DATE column, and replaces it with these columns - CONTACT_YEAR (numeric), CONTACT_MONTH (month as a name), CONTACT_DAY (day of month), CONTACT_DAY_OF_WEEK (day name). It then creates the view `DSAGENT$MODELING_READY_9B43`. It also provides the SQL code the for the view, and the processing diagram. It also provides the most important suggestion to select only the most important features for predicting subscription, citing the reason that it improves both performance and interpretability.
+    In response to the prompt, Data Science Agent updates the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9` with only the high-importance predictors, adds the new engineered feature `RECENTLY_CONTACTED`, and relevant columns for clean, focused modeling.
 
-3. Expand the **Details on Created View** section. Data Science Agent presents xxx.
+3. Expand the **Details on Created View** section to view the SQL code used for creating the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`.
 
-    ![Attribute Statistic section showing statistical analysis for the associated tables](images/t5-p2-r2.png "Response 2 continued")
+    ![SQL code](images/t5-p2-r2.png "Response 2 continued")
 
-4. Expand the **Visual Diagram** section. Data Science Agent presents xxx.
+4. Expand the **Visual Diagram** section to view the workflow behind the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`.
 
-    ![Attribute Analysis section showing tabular and graphical analysis](images/t5-p2-r3.png "Response 2")
+    ![Visual diagram](images/t5-p2-r3.png "Response 2")
+
+    Data Science Agent also provides you the next steps: whether to build and evaluate a single model, or to test and compare several modeling algorithms to choose the best performing model.
 
 
-## Task 6: Model Training
+## Task 6: Model Evaluation and Training
 
-In this task, you will ask Data Science Agent to split the clean modeling view into training, validation, and test sets. Data Science Agent uses the clean view for model training and evaluation, splitting the data into 70% training, 10% validation, and 20% test.
+In this task, you will ask Data Science Agent evaluate the model.
 
 >**Note:**  The outputs in this lab are examples only. The view names, model names, suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
-1. Enter the following prompt to xxx.
+1. Enter the following prompt to evaluate the model.
 
     ```text
     <copy>
@@ -197,20 +198,22 @@ In this task, you will ask Data Science Agent to split the clean modeling view i
     ```
 
     ![Prompt 6 response showing xxx](images/t6-p1-r1.png "Prompt 5 and response")
-    In response to this prompt, Data Science Agent does the following:
-    * Sp xxxx
+    In response to this prompt, Data Science Agent evaluates the model and determines the best model for predicting client subscription is a Naive Bayes classifier. It splits the data into train set, validation set, test set, and an unlabeled view and presents the following:
+    * An independent test result
+    * An interpretation of the model evaluation
+    * The model scorecard
 
-2. Review the split details `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`
+2. Expand the **Details on Split** section to review the split details `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`
 
     ![Prompt 6 response showing data split and model training](images/t6-p1-r2.png "Prompt 6 and response")
 
-3. Review the scorecard for the model `DSAGENT$SUBSCRIBE_CLASSIFIER_AUTOML_E6B9`:
+3. Expand the **Model Scorecard** to review the scorecard for the model `DSAGENT$SUBSCRIBE_CLASSIFIER_AUTOML_E6B9`:
 
     ![Response 6 concluded showing model scorecard and binary confusion matrix](images/t6-p1-r3.png "Response 6 ")
 
 ## Task 7: Score prospects to predict subscription likelihood
 
-In this task, you will ask Data Science Agent to use the trained model to score the 100 prospects in the `PROSPECTS` table. Scoring applies the trained model to new or prospective clients and returns a predicted subscription value and probability.
+In this task, you will ask Data Science Agent to score the prospects for the next campaign.
 
 >**Note:**  The outputs in this lab are examples only. The view names, model names, suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
@@ -224,27 +227,29 @@ In this task, you will ask Data Science Agent to use the trained model to score 
 
     ![Prompt 7 response showing scored prospects and prediction probabilities](images/t7-p1-r1.png "Prompt 7 and response")
 
-    In this example, Data Science Agent scores xxx
+    In this example, Data Science Agent could not perform scoring. It correctly states the reason for this - it is because the latest view used for modeling excluded the CLIENT_ID column. This column is required to identify and report predictions for the prospects. 
 
-2. Enter 
+2. Prompt "Yes" in response to the agent's suggestion "Would you like me to update the feature set to include CLIENT_ID and then proceed with scoring your prospect list?"
 
     ```text
     <copy>
     Yes
     </copy>
     ```
-    ![Prompt 7 response showing xxx](images/t7-p2-r2.png "Prompt 7 and response")
+    ![Prompt 7 and response](images/t7-p2-r2.png "Prompt 7 and response")
 
-3. Review the details on the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_SCR_E6B9`.
+    Here, Data Science Agent performs scoring using the predictive model and presents the list of prospects for the next campaign. 
 
-    ![Prompt 7 response xxx](images/t7-p2-r3.png "Prompt 7 response concluded")
+3. Expand the **Details on Created View** section to review the details of the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_SCR_E6B9`.
+
+    ![Prompt 7 response ](images/t7-p2-r3.png "Prompt 7 response concluded")
 
 
-4. Review the visual diagram provided by Data Science Agent to create the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_SCR_E6B9`.
+4. Expand the **Visual Diagram** section to review the visual diagram of the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_SCR_E6B9`.
 
-    ![Prompt 7 response xxx](images/t7-p2-r4.png "Prompt 7 response concluded")
+    ![Prompt 7 response](images/t7-p2-r4.png "Prompt 7 response concluded")
 
-5. Review the SQL query provided by Data Science Agent to run the inference manually.
+5. Expand the **SQL Code for Manual Inference** section to review the SQL query to run the inference manually.
 
     ![Prompt 7 response concluded showing manual inference SQL query](images/t7-p2-r5.png "Prompt 7 response concluded")
 
