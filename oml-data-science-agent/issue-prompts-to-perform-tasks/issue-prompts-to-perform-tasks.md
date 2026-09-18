@@ -50,11 +50,13 @@ In this task, continue the `Predict Subscription` conversation you created in La
 
     In this example, Data Science Agent summarizes the available tables, describes key columns, and explains how the data can be framed as a supervised machine learning problem.
 
-3. Review the summary of the data in each table and the key columns identified by Data Science Agent. Also, review the explanation on how to use this data to solve business problems. 
+3. Review the summary of the data in each table and the key columns identified by Data Science Agent. Also, review the explanation on how to use this data to solve business problems.
 
     Data Science Agent lists the four tables - CLIENTS, CONTACTS, PAST_CAMPAIGNS, and PROSPECTS. It provides a crisp summary of what data the table contains, and how it can be used to understand and solve a business problem.
 
     ![Prompt 1 response showing table summaries and key columns](images/t1-p1.png "Prompt 1 and response")
+
+    > **Note:** The outputs in this lab are examples only. The suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
 ## Task 2: Create a single modeling table
 
@@ -70,6 +72,8 @@ In this task, you will ask Data Science Agent to create a single view to use it 
 
     Here, Data Science Agent creates a view named `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9` by combining client demographics, contact history (excluding call duration and contact date), and past campaign data for every client who has ever been contacted.
 
+    > **Note:** The outputs in this lab are examples only. The suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
+
 2. Review the response. Data Science Agent provides a crisp summary of what is included in the view and how you can use it. 
 
     ![Prompt 2 response showing the details of the view](images/t2-p1-r1.png "Prompt 2 and response")
@@ -81,6 +85,8 @@ In this task, you will ask Data Science Agent to create a single view to use it 
 4. Expand the **Visual Diagram** section to view the workflow visual of the view.
 
     ![Attribute Analysis section showing tabular and graphical analysis](images/t2-p1-r3.png "Response 2")
+
+    > **Note:** The outputs in this lab are examples only. The suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
 ## Task 3: Explore the dataset
 
@@ -107,6 +113,8 @@ In this task, you will ask Data Science Agent to explain the basic statistics fo
     ![Response to prompt 3 concluded showing input features and next steps](images/t3-p1-r3.png "Response to prompt 3 concluded")
 
     The agent also asks if you would like to analyze the relationship between these features and a particular outcome,  or proceed to identify the most influential factors for prediction.
+
+    > **Note:** The outputs in this lab are examples only. The suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
 ## Task 4: Perform predictive modeling
 
@@ -138,16 +146,13 @@ In this task, you will ask Data Science Agent to create a predictive model.
 
     > **Note:** Views and objects created by Data Science Agent have the prefix `DSAGENT$`.
 
-    
-    >**Note:**  The outputs in this lab are examples only. The suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
-
     Data Science Agent suggests the next recommended path - to split the data into training and test sets, then train and evaluate a predictive model. It also asks whether to proceed with building and evaluating a single model, or test and compare several modeling algorithms to check their best performance.
+
+    >**Note:**  The outputs in this lab are examples only. The suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
 ## Task 5: Perform feature engineering for model improvement
 
 In this task, you will ask Data Science Agent to identify features to enhance the model. Feature engineering helps in identifying columns that are suitable for modeling and prepares a clean view for downstream training.
-
->**Note:**  The outputs in this lab are examples only. The view names, suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
 1. Enter the following prompt to proceed with new feature identification and modeling.
 
@@ -182,12 +187,12 @@ In this task, you will ask Data Science Agent to identify features to enhance th
 
     Data Science Agent also provides you the next steps: whether to build and evaluate a single model, or to test and compare several modeling algorithms to choose the best performing model.
 
+    >**Note:**  The outputs in this lab are examples only. The view names, suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
 ## Task 6: Model Evaluation and Training
 
 In this task, you will ask Data Science Agent evaluate the model.
 
->**Note:**  The outputs in this lab are examples only. The view names, model names, suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
 1. Enter the following prompt to evaluate the model.
 
@@ -210,6 +215,8 @@ In this task, you will ask Data Science Agent evaluate the model.
 3. Expand the **Model Scorecard** to review the scorecard for the model `DSAGENT$SUBSCRIBE_CLASSIFIER_AUTOML_E6B9`:
 
     ![Response 6 concluded showing model scorecard and binary confusion matrix](images/t6-p1-r3.png "Response 6 ")
+
+    >**Note:**  The outputs in this lab are examples only. The view names, model names, suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
 ## Task 7: Score prospects to predict subscription likelihood
 
@@ -361,6 +368,8 @@ In this task, you will ask Data Science Agent to score the prospects for the nex
 | 35627 | N | 1.53 |
 | 38748 | N | 1.09 |
 | 15249 | N | 0.6 |
+
+>**Note:**  The outputs in this lab are examples only. The view names, model names, suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
 ## Learn More
 
