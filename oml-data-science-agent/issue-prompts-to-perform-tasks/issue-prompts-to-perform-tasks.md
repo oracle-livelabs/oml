@@ -78,7 +78,7 @@ In this task, you will ask Data Science Agent to create a single view to use it 
 
     ![Attribute Statistic section showing statistical analysis for the associated tables](images/t2-p1-r2.png "Response 2 continued")
 
-4. Expand the **Visual Diagram** section to view the visual diagram for the view.
+4. Expand the **Visual Diagram** section to view the workflow visual of the view.
 
     ![Attribute Analysis section showing tabular and graphical analysis](images/t2-p1-r3.png "Response 2")
 
@@ -176,7 +176,7 @@ In this task, you will ask Data Science Agent to identify features to enhance th
 
     ![SQL code](images/t5-p2-r2.png "Response 2 continued")
 
-4. Expand the **Visual Diagram** section to view the workflow behind the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`.
+4. Expand the **Visual Diagram** section to view the workflow visual of the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`.
 
     ![Visual diagram](images/t5-p2-r3.png "Response 2")
 
@@ -245,7 +245,7 @@ In this task, you will ask Data Science Agent to score the prospects for the nex
     ![Prompt 7 response ](images/t7-p2-r3.png "Prompt 7 response concluded")
 
 
-4. Expand the **Visual Diagram** section to review the visual diagram of the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_SCR_E6B9`.
+4. Expand the **Visual Diagram** section to view the workflow visual of the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_SCR_E6B9`.
 
     ![Prompt 7 response](images/t7-p2-r4.png "Prompt 7 response concluded")
 
