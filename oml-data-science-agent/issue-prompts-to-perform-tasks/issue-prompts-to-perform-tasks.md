@@ -80,7 +80,7 @@ In this task, you will ask Data Science Agent to create a single view to use it 
 
     ![Attribute Statistic section showing statistical analysis for the associated tables](images/t2-p1-r2.png "Response 2 continued")
 
-4. Expand the **Visual Diagram** section to understand the workflow visual of the view.
+4. Expand the **Visual Diagram** section to understand the workflow of the view.
 
     ![Attribute Analysis section showing tabular and graphical analysis](images/t2-p1-r3.png "Response 2")
 
