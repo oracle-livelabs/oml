@@ -40,7 +40,7 @@ In this task, continue the `Predict Subscription` conversation you created in La
 
     ![Data Science Agent tips shown at the start of a new conversation](images/ml-prompt-01.png "Goal and context setting")
 
-2. Enter the following prompt to set the goal and context for the conversation. This prompt tells Data Science Agent that you are an analyst without a data science background. It asks to explain the data and you can use it to solve a business problem.
+2. Enter the following prompt to set the goal and context for the conversation. This prompt tells Data Science Agent that you are an analyst without any data science background. You ask the agent to explain the data and how to use it to solve a business problem.
 
     ```text
     <copy>
@@ -52,7 +52,7 @@ In this task, continue the `Predict Subscription` conversation you created in La
 
 3. Review the summary of the data in each table and the key columns identified by Data Science Agent. Also, review the explanation on how to use this data to solve business problems.
 
-    Data Science Agent lists the four tables - CLIENTS, CONTACTS, PAST_CAMPAIGNS, and PROSPECTS. It provides a crisp summary of what data the table contains, and how it can be used to understand and solve a business problem.
+    Data Science Agent lists the four tables - CLIENTS, CONTACTS, PAST_CAMPAIGNS, and PROSPECTS present in your schema. It provides a crisp summary of what data the table contains, and how it can be used to understand and solve a business problem.
 
     ![Prompt 1 response showing table summaries and key columns](images/t1-p1.png "Prompt 1 and response")
 
@@ -72,17 +72,15 @@ In this task, you will ask Data Science Agent to create a single view to use it 
 
     Here, Data Science Agent creates a view named `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9` by combining client demographics, contact history (excluding call duration and contact date), and past campaign data for every client who has ever been contacted.
 
-    > **Note:** The outputs in this lab are examples only. The suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
-
-2. Review the response. Data Science Agent provides a crisp summary of what is included in the view and how you can use it. 
+2. Review the response. Data Science Agent provides a crisp summary of what is included in the view and how you can use it.
 
     ![Prompt 2 response showing the details of the view](images/t2-p1-r1.png "Prompt 2 and response")
 
-3. Expand the **Details on Created View** section to view the SQL code defining the view.
+3. Expand the **Details on Created View** section to view the SQL code that it generates to define the view.
 
     ![Attribute Statistic section showing statistical analysis for the associated tables](images/t2-p1-r2.png "Response 2 continued")
 
-4. Expand the **Visual Diagram** section to view the workflow visual of the view.
+4. Expand the **Visual Diagram** section to understand the workflow visual of the view.
 
     ![Attribute Analysis section showing tabular and graphical analysis](images/t2-p1-r3.png "Response 2")
 
@@ -100,19 +98,19 @@ In this task, you will ask Data Science Agent to explain the basic statistics fo
     </copy>
     ```
 
-    In response to this prompt, Data Science Agent provides a descriptive summary of the datastet. It describes the dataset in the following categories - Demographics, Financials, Contact & Campaigns, Outcomes, and Missing Values. It is a highly imbalanced client marketing dataset combining demographic, financial, contact-history, and campaign-response features, with substantial missing values in previous campaign information. It is suitable for predicting offer subscription and analyzing factors associated with campaign success.
+    In response to this prompt, Data Science Agent provides a descriptive summary of the datastet. It describes the dataset in the following categories - Demographics, Financials, Contact & Campaigns, Outcomes, and Missing Values. It is a highly imbalanced client marketing dataset that combines demographic, financial, contact-history, and campaign-response features, with substantial missing values in previous campaign information. It is suitable for predicting offer subscription and in analyzing factors associated with campaign success.
 
-    [Prompt 3 response showing machine learning problem framing and target variable](images/t3-p1-r1.png "Prompt 3 and response")
+    ![Prompt 3 response showing machine learning problem framing and target variable](images/t3-p1-r1.png "Prompt 3 and response")
 
 2. Expand the **Attribute Analysis** section for a detailed description and analysis of the attributes.
 
     ![Prompt 3 response showing machine learning problem framing and target variable](images/t3-p1-r2.png "Prompt 3 and response")
 
-3. Review the **Attribute Statistics** section for a detailed view of the attributes. For each attribute, it shows the data distribution and statistics, along with a statistical visualization - boxplot, bar chart etc as applicable.
+3. Review the **Attribute Statistics** section for a detailed view of the attributes. For each attribute, it shows the data distribution and statistics, along with a statistical visualization - boxplot, bar chart etc, as applicable. In this example, Data Science Agent depicts the age distribution in a boxplot and it computes these statistics - Mean, Median, Standard Deviation, Minimum value, Maximum value, Quartile 1, Quartile 3, Row counts, and the counts for NON_NULL.
 
     ![Response to prompt 3 concluded showing input features and next steps](images/t3-p1-r3.png "Response to prompt 3 concluded")
 
-    The agent also asks if you would like to analyze the relationship between these features and a particular outcome,  or proceed to identify the most influential factors for prediction.
+    The agent also asks if you would like to analyze the relationship between these features and a particular outcome, or proceed to identify the most influential factors for prediction.
 
     > **Note:** The outputs in this lab are examples only. The suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
@@ -128,11 +126,11 @@ In this task, you will ask Data Science Agent to create a predictive model.
     </copy>
     ```
 
-    In response to this prompt, Data Science Agent asks you to confirm the target for prediction. It also mentions that the most common business goal here would be to predict whether a contacted client will subscribe (the `SUBSCRIBED` column).
+    In response to this prompt, Data Science Agent asks you to confirm the target for prediction. It also mentions that the most common business goal here would be to predict whether a contacted client will subscribe (the `SUBSCRIBED` column) to the product being offered during a marketing campaign.
 
     ![Prompt 4 response showing creation of unified modeling view](images/t4-p1-r1.png "Prompt 4 and response")
 
-2. Enter the following prompt to confirm.
+2. Enter the following prompt to confirm:
 
     ![Prompt 4 response showing creation of unified modeling view](images/t4-p1-r2.png "Prompt 4 and response")
 
@@ -142,7 +140,7 @@ In this task, you will ask Data Science Agent to create a predictive model.
     </copy>
     ```
 
-    In this example, Data Science Agent determines the most important features for predicting the likelihood of subscription by using XGBoost, and creates the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_TOP_XGB`.
+    In this example, Data Science Agent determines the most important features for predicting the likelihood of subscription by using the XGBoost algorithm, and creates the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_TOP_XGB`.
 
     > **Note:** Views and objects created by Data Science Agent have the prefix `DSAGENT$`.
 
@@ -152,7 +150,7 @@ In this task, you will ask Data Science Agent to create a predictive model.
 
 ## Task 5: Perform feature engineering for model improvement
 
-In this task, you will ask Data Science Agent to identify features to enhance the model. Feature engineering helps in identifying columns that are suitable for modeling and prepares a clean view for downstream training.
+ Feature engineering helps in identifying columns that are suitable for modeling and prepares a clean view for downstream training. In this task, you will ask Data Science Agent to identify features to enhance the model.
 
 1. Enter the following prompt to proceed with new feature identification and modeling.
 
@@ -177,11 +175,11 @@ In this task, you will ask Data Science Agent to identify features to enhance th
 
     In response to the prompt, Data Science Agent updates the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9` with only the high-importance predictors, adds the new engineered feature `RECENTLY_CONTACTED`, and relevant columns for clean, focused modeling.
 
-3. Expand the **Details on Created View** section to view the SQL code used for creating the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`.
+3. Expand the **Details on Created View** section to view the SQL code generated by Data Science Agent to create the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`.
 
     ![SQL code](images/t5-p2-r2.png "Response 2 continued")
 
-4. Expand the **Visual Diagram** section to view the workflow visual of the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`.
+4. Expand the **Visual Diagram** section to understand the workflow of the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`.
 
     ![Visual diagram](images/t5-p2-r3.png "Response 2")
 
@@ -203,16 +201,16 @@ In this task, you will ask Data Science Agent evaluate the model.
     ```
 
     ![Prompt 6 response showing xxx](images/t6-p1-r1.png "Prompt 5 and response")
-    In response to this prompt, Data Science Agent evaluates the model and determines the best model for predicting client subscription is a Naive Bayes classifier. It splits the data into train set, validation set, test set, and an unlabeled view and presents the following:
+    In response to this prompt, Data Science Agent evaluates the model and determines the best model for predicting client subscription. It also splits the data into train set, validation set, test set, and an unlabeled view and presents the following:
     * An independent test result
-    * An interpretation of the model evaluation
+    * An interpretation of the model evaluation, and
     * The model scorecard
 
-2. Expand the **Details on Split** section to review the split details `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`
+2. Expand the **Details on Split** section to review the split created from  `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`
 
     ![Prompt 6 response showing data split and model training](images/t6-p1-r2.png "Prompt 6 and response")
 
-3. Expand the **Model Scorecard** to review the scorecard for the model `DSAGENT$SUBSCRIBE_CLASSIFIER_AUTOML_E6B9`:
+3. Expand the **Model Scorecard** to review the scorecard of the model `DSAGENT$SUBSCRIBE_CLASSIFIER_AUTOML_E6B9`:
 
     ![Response 6 concluded showing model scorecard and binary confusion matrix](images/t6-p1-r3.png "Response 6 ")
 
@@ -234,9 +232,9 @@ In this task, you will ask Data Science Agent to score the prospects for the nex
 
     ![Prompt 7 response showing scored prospects and prediction probabilities](images/t7-p1-r1.png "Prompt 7 and response")
 
-    In this example, Data Science Agent could not perform scoring. It correctly states the reason for this - it is because the latest view used for modeling excluded the CLIENT_ID column. This column is required to identify and report predictions for the prospects. 
+    In this example, Data Science Agent could not perform scoring. It correctly states the reason - it is because the latest view used for modeling excluded the CLIENT_ID column. This column is required to identify and report predictions for the prospects.
 
-2. Prompt "Yes" in response to the agent's suggestion "Would you like me to update the feature set to include CLIENT_ID and then proceed with scoring your prospect list?"
+2. Prompt "Yes" in your response to the agent's suggestion "Would you like me to update the feature set to include CLIENT_ID and then proceed with scoring your prospect list?"
 
     ```text
     <copy>
@@ -245,14 +243,14 @@ In this task, you will ask Data Science Agent to score the prospects for the nex
     ```
     ![Prompt 7 and response](images/t7-p2-r2.png "Prompt 7 and response")
 
-    Here, Data Science Agent performs scoring using the predictive model and presents the list of prospects for the next campaign. 
+    Now, Data Science Agent adds CLIENT_ID into the dataset, then performs scoring using the predictive model, and presents the list of prospects for the next campaign.
 
 3. Expand the **Details on Created View** section to review the details of the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_SCR_E6B9`.
 
     ![Prompt 7 response ](images/t7-p2-r3.png "Prompt 7 response concluded")
 
 
-4. Expand the **Visual Diagram** section to view the workflow visual of the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_SCR_E6B9`.
+4. Expand the **Visual Diagram** section to understand the workflow of the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_SCR_E6B9`.
 
     ![Prompt 7 response](images/t7-p2-r4.png "Prompt 7 response concluded")
 
@@ -264,7 +262,7 @@ In this task, you will ask Data Science Agent to score the prospects for the nex
 
     ![Prompt 7 response showing scored prospects and prediction probabilities](images/t7-p2-r6.png "Prompt 7 and response")
 
-    In this example, Data Science Agent returns the following:
+    In this example, Data Science Agent returns the probability of subscription for the prospects in the following table:
 
     | CLIENT_ID | PREDICTED | PROBABILITY OF Y (%) |
 |---:|:---:|---:|
