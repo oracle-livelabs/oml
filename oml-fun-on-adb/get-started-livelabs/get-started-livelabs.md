@@ -1,4 +1,4 @@
-# Provision an Autonomous AI Database with OML users
+# Set up Your Workshop Environment
 
 ## Introduction
 

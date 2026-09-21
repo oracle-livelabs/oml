@@ -1,4 +1,4 @@
-# Provision an Autonomous Data Warehouse with OML users
+# Set up Your Workshop Environment
 
 ## Introduction
 

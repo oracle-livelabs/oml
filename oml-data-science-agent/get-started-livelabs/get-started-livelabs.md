@@ -1,4 +1,4 @@
-# Get started with Free Tier Setup
+# Set up Your Workshop Environment
 
 ## Introduction
 This lab walks you through the steps to set up your free tier environment that includes provisioning an Oracle Autonomous AI Database, and signing into Oracle Machine Learning user interface.
@@ -10,9 +10,9 @@ Estimated Time: X
 In this lab, you will learn how to:
 
 * Provision an Oracle Autonomous AI Database
+* Create an OML User
+* Sign into OML User
 
-
-	>**Note:** You will use this table in the lab on AutoML UI and OML Services.
 
 ### Prerequisites
 * Sign up for a free tier Oracle Cloud account.
@@ -24,6 +24,13 @@ In this lab, you will learn how to:
 
 [](include:oml-prov-an-adb.md)
 
+## Task 2: Create an OML User
+
+[](include:oml-create-oml-user.md)
+
+## Task 3: Sign into Oracle Machine Learning UI
+
+[](include:oml-sign-into-oml.md)
 
 
 You may now **proceed to the next lab.**

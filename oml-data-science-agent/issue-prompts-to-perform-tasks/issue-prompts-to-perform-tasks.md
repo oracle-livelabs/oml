@@ -40,232 +40,334 @@ In this task, continue the `Predict Subscription` conversation you created in La
 
     ![Data Science Agent tips shown at the start of a new conversation](images/ml-prompt-01.png "Goal and context setting")
 
-2. Enter the following prompt to set the goal and context for the conversation. This prompt tells Data Science Agent that you are an analyst without formal machine learning experience and asks it to explain the data and the machine learning framing.
+2. Enter the following prompt to set the goal and context for the conversation. This prompt tells Data Science Agent that you are an analyst without any data science background. You ask the agent to explain the data and how to use it to solve a business problem.
 
     ```text
     <copy>
-    I'm an analyst with no formal ML background. Using the tables added here as Associated Objects, explain the data and how to frame this as a machine learning problem.
+    I'm an analyst without a data science background. Using our client, contact, past campaign, and prospect data, explain what we have and how it could be used to solve a business problem.
     </copy>
     ```
 
-    The expected output should look similar to:
+    In this example, Data Science Agent summarizes the available tables, describes key columns, and explains how the data can be framed as a supervised machine learning problem.
 
-    ```text
-    Data Science Agent summarizes the available tables, describes key columns, and explains how the data can be framed as a supervised machine learning problem.
-    ```
+3. Review the summary of the data in each table and the key columns identified by Data Science Agent. Also, review the explanation on how to use this data to solve business problems.
 
-3. Review the summary of the data in each table and the key columns identified by Data Science Agent.
+    Data Science Agent lists the four tables - CLIENTS, CONTACTS, PAST_CAMPAIGNS, and PROSPECTS present in your schema. It provides a crisp summary of what data the table contains, and how it can be used to understand and solve a business problem.
 
-    ![Prompt 1 response showing table summaries and key columns](images/grok-res-01a.png "Prompt 1 and response")
+    ![Prompt 1 response showing table summaries and key columns](images/t1-p1.png "Prompt 1 and response")
 
-4. Review the explanation of how to frame a machine learning problem, the steps required to frame the problem, and the summary of the dataset.
+    > **Note:** The outputs in this lab are examples only. The suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
-    ![Response 1 concluded showing machine learning framing and dataset summary](images/grok-res-01b.png "Response 1 concluded")
+## Task 2: Create a single modeling table
 
-## Task 2: Explore the dataset
+In this task, you will ask Data Science Agent to create a single view to use it to train a model. A single modeling table or view is useful because model training typically requires one row per training example with the target variable and input features in the same dataset.
 
-In this task, you will ask Data Science Agent to explore the dataset and provide basic statistics. This helps you understand table contents, attribute distributions, and data patterns before moving into feature engineering and modeling.
-
-1. Enter the following prompt to request basic statistics about the available data. This prompt asks Data Science Agent to inspect the Associated Objects and summarize the dataset in a structured way.
+1. Enter the following prompt to create a single view by joining the CLIENT, CONTACTS, and PAST_CAMPAIGN data for every client who has been contacted.
 
     ```text
     <copy>
-    Show some basic statistics about the data.
+    Create a single view joining the client, contact, and campaign data for every client who has been contacted, so we can use it to train a model. Exclude DURATION_SECONDS and CONTACT_DATE, since we won't have call duration or a contact date for prospects who haven't been reached yet.
     </copy>
     ```
 
-    The expected output should look similar to:
+    Here, Data Science Agent creates a view named `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9` by combining client demographics, contact history (excluding call duration and contact date), and past campaign data for every client who has ever been contacted.
 
-    ```text
-    Data Science Agent provides insights for the CLIENTS, CONTACTS, PAST_CAMPAIGNS, and PROSPECTS tables, including row-level summaries and attribute-level statistics.
-    ```
+2. Review the response. Data Science Agent provides a crisp summary of what is included in the view and how you can use it.
 
-2. Review the initial response, including the insight on the `CLIENTS`, `CONTACTS`, `PAST_CAMPAIGNS`, and `PROSPECTS` tables.
+    ![Prompt 2 response showing the details of the view](images/t2-p1-r1.png "Prompt 2 and response")
 
-    ![Prompt 2 response showing dataset insights across associated tables](images/grok-res-02a.png "Prompt 2 and response")
+3. Expand the **Details on Created View** section to view the SQL code that it generates to define the view.
 
-3. Expand the **Attribute Statistic** section for each table. Data Science Agent presents statistical analysis in a tabular format and, where applicable, as graphs.
+    ![Attribute Statistic section showing statistical analysis for the associated tables](images/t2-p1-r2.png "Response 2 continued")
 
-    ![Attribute Statistic section showing statistical analysis for the associated tables](images/grok-res-02b.png "Response 2 continued")
+4. Expand the **Visual Diagram** section to understand the workflow of the view.
 
-    The expected output should look similar to:
+    ![Attribute Analysis section showing tabular and graphical analysis](images/t2-p1-r3.png "Response 2")
 
-    ```text
-    Attribute statistics are available for each table. Numeric columns show values such as counts, minimums, maximums, averages, and distributions.
-    ```
+    > **Note:** The outputs in this lab are examples only. The suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
-4. Expand the **Attribute Analysis** section for each table. Data Science Agent presents attribute-level analysis in a tabular format and, where applicable, as graphs.
+## Task 3: Explore the dataset
 
-    ![Attribute Analysis section showing tabular and graphical analysis](images/grok-res-02c.png "Response 2")
+In this task, you will ask Data Science Agent to explain the basic statistics for the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9`.
 
-## Task 3: Frame the data as a machine learning problem
-
-In this task, you will ask Data Science Agent to explain how the available tables can be used to predict subscription likelihood. This establishes the target variable, candidate input features, and the overall supervised learning setup.
-
-1. Enter the following prompt to ask Data Science Agent to frame the use case as a machine learning problem. This prompt focuses the conversation on predicting subscription likelihood and asks for the target variable and possible input features.
+1. Enter the following prompt to explore the dataset and understand the basic statistics.
 
     ```text
     <copy>
-    Explain how to frame this as a machine learning problem to predict subscription likelihood. Explain the target variable and the possible input features.
+    Provide the basic statistics for this data..
     </copy>
     ```
 
-    The expected output should look similar to:
+    In response to this prompt, Data Science Agent provides a descriptive summary of the datastet. It describes the dataset in the following categories - Demographics, Financials, Contact & Campaigns, Outcomes, and Missing Values. It is a highly imbalanced client marketing dataset that combines demographic, financial, contact-history, and campaign-response features, with substantial missing values in previous campaign information. It is suitable for predicting offer subscription and in analyzing factors associated with campaign success.
 
-    ```text
-    Data Science Agent explains the prediction goal, identifies the target variable, and lists candidate input features from the available tables.
-    ```
+    ![Prompt 3 response showing machine learning problem framing and target variable](images/t3-p1-r1.png "Prompt 3 and response")
 
-2. Review the explanation of how to frame the machine learning problem and how the target variable is defined.
+2. Expand the **Attribute Analysis** section for a detailed description and analysis of the attributes.
 
-    ![Prompt 3 response showing machine learning problem framing and target variable](images/grok-res-03a.png "Prompt 3 and response")
+    ![Prompt 3 response showing machine learning problem framing and target variable](images/t3-p1-r2.png "Prompt 3 and response")
 
-3. Review the input feature explanation, the summary of the machine learning setup, and the suggested next steps.
+3. Review the **Attribute Statistics** section for a detailed view of the attributes. For each attribute, it shows the data distribution and statistics, along with a statistical visualization - boxplot, bar chart etc, as applicable. In this example, Data Science Agent depicts the age distribution in a boxplot and it computes these statistics - Mean, Median, Standard Deviation, Minimum value, Maximum value, Quartile 1, Quartile 3, Row counts, and the counts for NON_NULL.
 
-    ![Response to prompt 3 concluded showing input features and next steps](images/grok-res-03b.png "Response to prompt 3 concluded")
+    ![Response to prompt 3 concluded showing input features and next steps](images/t3-p1-r3.png "Response to prompt 3 concluded")
 
-## Task 4: Create a single modeling table
+    The agent also asks if you would like to analyze the relationship between these features and a particular outcome, or proceed to identify the most influential factors for prediction.
 
-In this task, you will ask Data Science Agent to show the joins required to create a single modeling table. A single modeling table is useful because model training typically requires one row per training example with the target variable and input features in the same dataset.
+    > **Note:** The outputs in this lab are examples only. The suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
-1. Enter the following prompt to ask Data Science Agent to create the unified modeling table and show the exact joins. This prompt moves the workflow from conceptual framing into data preparation.
+## Task 4: Perform predictive modeling
+
+In this task, you will ask Data Science Agent to create a predictive model.
+
+1. Enter the following prompt to ask Data Science Agent to create a predictive model.
 
     ```text
     <copy>
-    Yes. Show the exact joins to create a single modeling table.
+    Proceed to predictive modeling.
     </copy>
     ```
 
-    The expected output should look similar to:
+    In response to this prompt, Data Science Agent asks you to confirm the target for prediction. It also mentions that the most common business goal here would be to predict whether a contacted client will subscribe (the `SUBSCRIBED` column) to the product being offered during a marketing campaign.
+
+    ![Prompt 4 response showing creation of unified modeling view](images/t4-p1-r1.png "Prompt 4 and response")
+
+2. Enter the following prompt to confirm:
+
+    ![Prompt 4 response showing creation of unified modeling view](images/t4-p1-r2.png "Prompt 4 and response")
 
     ```text
-    Data Science Agent creates the unified modeling view DSAGENT$MODELING_DATA_A6CB and explains the join logic used to combine the source tables.
+    <copy>
+    Yes, SUBSCRIBED is correct.
+    </copy>
     ```
 
-2. Review the response showing the unified modeling view `DSAGENT$MODELING_DATA_A6CB`, the summary of the view, and the explanation of the join logic.
-
-    ![Prompt 4 response showing creation of unified modeling view](images/grok-res-04a.png "Prompt 4 and response")
+    In this example, Data Science Agent determines the most important features for predicting the likelihood of subscription by using the XGBoost algorithm, and creates the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_TOP_XGB`.
 
     > **Note:** Views and objects created by Data Science Agent have the prefix `DSAGENT$`.
 
-3. Review the join type summary, generated SQL code, and visual diagram for the view.
-
-    ![Response 4 concluded showing join summary, SQL, and visual diagram](images/grok-res-04b.png "Response 4 concluded")
+    Data Science Agent suggests the next recommended path - to split the data into training and test sets, then train and evaluate a predictive model. It also asks whether to proceed with building and evaluating a single model, or test and compare several modeling algorithms to check their best performance.
 
     >**Note:**  The outputs in this lab are examples only. The suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
-## Task 5: Perform feature validation and modeling preparation
+## Task 5: Perform feature engineering for model improvement
 
-In this task, you will ask Data Science Agent to validate features and prepare the modeling data. Feature validation helps identify columns that are suitable for modeling and prepares a clean view for downstream training.
+ Feature engineering helps in identifying columns that are suitable for modeling and prepares a clean view for downstream training. In this task, you will ask Data Science Agent to identify features to enhance the model.
 
->**Note:**  The outputs in this lab are examples only. The view names, suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
-
-1. Enter the following prompt to continue with feature validation and modeling. This prompt asks Data Science Agent to prepare the unified data for model training.
+1. Enter the following prompt to proceed with new feature identification and modeling.
 
     ```text
     <copy>
-    Proceed with feature validation and modeling.
+    Before ranking, identify any new features that would improve the model, and remove any that are not useful.
     </copy>
     ```
 
-    The expected output should look similar to:
+    ![Prompt 5 response](images/t5-p1-r1.png "Prompt 5 and response")
 
-    ```text
-    Data Science Agent creates the clean modeling view DSAGENT$MODELING_DATA_CLEAN_A6CB, prepares it for modeling, and provides next step options.
-    ```
-
-2. Review the response showing the creation of `DSAGENT$MODELING_DATA_CLEAN_A6CB`, the SQL code, the visual diagram, and the suggested next steps.
-
-    ![Prompt 5 response showing clean modeling view and next step options](images/grok-res-05a.png "Prompt 5 and response")
-
-
-## Task 6: Split the data, train models, and evaluate the final model
-
-In this task, you will ask Data Science Agent to split the clean modeling view into training, validation, and test sets. Data Science Agent uses the clean view for model training and evaluation, splitting the data into 70% training, 10% validation, and 20% test.
-
->**Note:**  The outputs in this lab are examples only. The view names, model names, suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
-
-1. Enter the following prompt to split the clean view and start model training. This prompt starts the model development stage of the workflow.
+    In response to this prompt, Data Science Agent suggests new features for feature engineering, identifies non-useful features, and lists features with >80 percent missing values. The agent asks whether to proceed with feature engineering or drop all low-importance columns and move forward to model training with the existing lean, high-value feature set.
+2. Review the response and enter the following prompt to ask Data Science Agent to proceed with feature engineering after dropping the low-importance columns.
 
     ```text
     <copy>
-    Proceed with splitting the clean view into training, validation, and test sets. Then start training the models.
+    Add the recent contacted indicator, and drop the low-importance columns. Then move forward with model training.
     </copy>
     ```
 
-    The expected output should look similar to:
+    ![Prompt 5 response](images/t5-p2-r1.png "Prompt 5 and response")
+
+    In response to the prompt, Data Science Agent updates the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9` with only the high-importance predictors, adds the new engineered feature `RECENTLY_CONTACTED`, and relevant columns for clean, focused modeling.
+
+3. Expand the **Details on Created View** section to view the SQL code generated by Data Science Agent to create the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`.
+
+    ![SQL code](images/t5-p2-r2.png "Response 2 continued")
+
+4. Expand the **Visual Diagram** section to understand the workflow of the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`.
+
+    ![Visual diagram](images/t5-p2-r3.png "Response 2")
+
+    Data Science Agent also provides you the next steps: whether to build and evaluate a single model, or to test and compare several modeling algorithms to choose the best performing model.
+
+    >**Note:**  The outputs in this lab are examples only. The view names, suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
+
+## Task 6: Model Evaluation and Training
+
+In this task, you will ask Data Science Agent evaluate the model.
+
+
+1. Enter the following prompt to evaluate the model.
 
     ```text
-    Data Science Agent creates DSAGENT$MODELING_DATA_CLEAN_A6CB_TRAIN with 31,750 rows, DSAGENT$MODELING_DATA_CLEAN_A6CB_VAL with 4,461 rows, and DSAGENT$MODELING_DATA_CLEAN_A6CB_TEST with 9,000 rows.
+    <copy>
+    Compare several algorithms and pick the best one.
+    </copy>
     ```
 
-2. Review the response showing the data split summary and the start of model training. Data Science Agent uses the clean view `OMLUSER.DSAGENT$MODELING_DATA_CLEAN_A6CB` and selects Neural Network as the best algorithm for this machine learning problem.
+    ![Prompt 6 response showing xxx](images/t6-p1-r1.png "Prompt 5 and response")
+    In response to this prompt, Data Science Agent evaluates the model and determines the best model for predicting client subscription. It also splits the data into train set, validation set, test set, and an unlabeled view and presents the following:
+    * An independent test result
+    * An interpretation of the model evaluation, and
+    * The model scorecard
 
-    ![Prompt 6 response showing data split and model training](images/grok-res-06a.png "Prompt 6 and response")
+2. Expand the **Details on Split** section to review the split created from  `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_E6B9`
 
-3. Review the response showing details of the final model build and evaluation.
+    ![Prompt 6 response showing data split and model training](images/t6-p1-r2.png "Prompt 6 and response")
 
-    ![Response 6 continued showing final model build and evaluation](images/grok-res-06b.png "Response 6 continued")
+3. Expand the **Model Scorecard** to review the scorecard of the model `DSAGENT$SUBSCRIBE_CLASSIFIER_AUTOML_E6B9`:
 
-    The expected output should look similar to:
+    ![Response 6 concluded showing model scorecard and binary confusion matrix](images/t6-p1-r3.png "Response 6 ")
 
-    ```text
-    Data Science Agent builds and evaluates the final model DSAGENT$SUBSCRIPTION_MODEL_A6CB.
-    ```
-
-4. Review the scorecard for the model `OMLUSER.DSAGENT$SUBSCRIPTION_MODEL_A6CB`, including model metrics and the binary confusion matrix.
-
-    ![Response 6 concluded showing model scorecard and binary confusion matrix](images/grok-res-06d.png "Response 6 concluded")
-
-    The expected output should look similar to:
-
-    ```text
-    Model Name: OMLUSER.DSAGENT$SUBSCRIPTION_MODEL_A6CB
-    Metrics: Accuracy, Precision, Recall, F1, and AUC
-    Evaluation: Binary confusion matrix displayed for subscribed and not subscribed classes
-    ```
-
-5. Open the **Models** page and verify that the final model `OMLUSER.DSAGENT$SUBSCRIPTION_MODEL_A6CB` is listed.
-
-    ![DSAGENT$SUBSCRIPTION_MODEL_A6CB listed on the Models page](images/grok-model-ui.png "DSAGENT$SUBSCRIPTION_MODEL_A6CB model listed on the Models page")
+    >**Note:**  The outputs in this lab are examples only. The view names, model names, suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
 ## Task 7: Score prospects to predict subscription likelihood
 
-In this task, you will ask Data Science Agent to use the trained model to score the 100 prospects in the `PROSPECTS` table. Scoring applies the trained model to new or prospective clients and returns a predicted subscription value and probability.
+In this task, you will ask Data Science Agent to score the prospects for the next campaign.
 
 >**Note:**  The outputs in this lab are examples only. The view names, model names, suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
-1. Enter the following prompt to score the 100 prospects. This prompt asks Data Science Agent to use the trained model for inference on the `PROSPECTS` table.
+1. Enter the following prompt to score the xxx
 
     ```text
     <copy>
-    Use the model to score the 100 prospects in the PROSPECTS table
+    Score the prospects for our next campaign. Who should we prioritize reaching out to?
     </copy>
     ```
 
-    The expected output should look similar to:
+    ![Prompt 7 response showing scored prospects and prediction probabilities](images/t7-p1-r1.png "Prompt 7 and response")
+
+    In this example, Data Science Agent could not perform scoring. It correctly states the reason - it is because the latest view used for modeling excluded the CLIENT_ID column. This column is required to identify and report predictions for the prospects.
+
+2. Prompt "Yes" in your response to the agent's suggestion "Would you like me to update the feature set to include CLIENT_ID and then proceed with scoring your prospect list?"
 
     ```text
-    Data Science Agent scores 100 prospective clients in the PROSPECTS table and returns subscription predictions with probability values.
+    <copy>
+    Yes
+    </copy>
     ```
+    ![Prompt 7 and response](images/t7-p2-r2.png "Prompt 7 and response")
 
-2. Review the prediction table showing the probability of subscription for the prospects.
+    Now, Data Science Agent adds CLIENT_ID into the dataset, then performs scoring using the predictive model, and presents the list of prospects for the next campaign.
 
-    ![Prompt 7 response showing scored prospects and prediction probabilities](images/grok-res-07a.png "Prompt 7 and response")
+3. Expand the **Details on Created View** section to review the details of the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_SCR_E6B9`.
 
-3. Review the SQL query provided by Data Science Agent to run the inference manually.
+    ![Prompt 7 response ](images/t7-p2-r3.png "Prompt 7 response concluded")
 
-    ![Prompt 7 response concluded showing manual inference SQL query](images/grok-res-07b.png "Prompt 7 response concluded")
 
-    The expected output should look similar to:
+4. Expand the **Visual Diagram** section to understand the workflow of the view `DSAGENT$CLIENTS_CONTACTS_CAMPAIGNS_E6B9_FE_SCR_E6B9`.
 
-    ```text
-    CLIENT_ID    PREDICTION    PREDICTION_PROBABILITY
-    42001        1             89.28
-    42002        0             84.11
-    42003        1             78.46
-    42004        0             91.03
-    ```
+    ![Prompt 7 response](images/t7-p2-r4.png "Prompt 7 response concluded")
+
+5. Expand the **SQL Code for Manual Inference** section to review the SQL query to run the inference manually.
+
+    ![Prompt 7 response concluded showing manual inference SQL query](images/t7-p2-r5.png "Prompt 7 response concluded")
+
+6. Review the prediction table showing the probability of subscription for the prospects.
+
+    ![Prompt 7 response showing scored prospects and prediction probabilities](images/t7-p2-r6.png "Prompt 7 and response")
+
+    In this example, Data Science Agent returns the probability of subscription for the prospects in the following table:
+
+    | CLIENT_ID | PREDICTED | PROBABILITY OF Y (%) |
+|---:|:---:|---:|
+| 44864 | Y | 84.74 |
+| 41426 | Y | 73.15 |
+| 42062 | Y | 61.62 |
+| 39530 | Y | 61.38 |
+| 42271 | Y | 57.82 |
+| 43388 | Y | 56.27 |
+| 40622 | Y | 54.1 |
+| 42421 | Y | 52 |
+| 41516 | Y | 50.91 |
+| 42999 | N | 47.7 |
+| 34209 | N | 42.11 |
+| 39606 | N | 42.11 |
+| 28649 | N | 34.96 |
+| 39361 | N | 34.12 |
+| 42881 | N | 32.57 |
+| 31511 | N | 32.4 |
+| 42471 | N | 31.01 |
+| 39974 | N | 25.03 |
+| 43021 | N | 24.82 |
+| 28092 | N | 24.81 |
+| 28803 | N | 22.63 |
+| 19884 | N | 21.09 |
+| 9900 | N | 21.09 |
+| 33871 | N | 20.17 |
+| 26416 | N | 19.78 |
+| 28122 | N | 19.19 |
+| 35610 | N | 18.55 |
+| 33972 | N | 18.37 |
+| 34337 | N | 17.81 |
+| 32596 | N | 17.21 |
+| 7803 | N | 16.73 |
+| 9371 | N | 16.73 |
+| 18373 | N | 16.73 |
+| 42756 | N | 16.19 |
+| 38445 | N | 15.96 |
+| 43531 | N | 15.88 |
+| 19187 | N | 15.73 |
+| 19727 | N | 15.41 |
+| 13147 | N | 15.3 |
+| 8245 | N | 14.92 |
+| 43691 | N | 14.92 |
+| 27938 | N | 14.69 |
+| 33429 | N | 14.46 |
+| 29635 | N | 13.72 |
+| 34756 | N | 13.07 |
+| 15737 | N | 12.96 |
+| 44398 | N | 12.4 |
+| 13506 | N | 11.64 |
+| 28653 | N | 10.54 |
+| 18175 | N | 10.28 |
+| 3245 | N | 10.16 |
+| 23636 | N | 9.9 |
+| 13693 | N | 9.57 |
+| 23692 | N | 9.56 |
+| 6609 | N | 9.36 |
+| 19622 | N | 9.11 |
+| 29400 | N | 9.11 |
+| 33840 | N | 9.11 |
+| 19347 | N | 8.62 |
+| 35998 | N | 8.17 |
+| 32365 | N | 8.14 |
+| 34426 | N | 8.14 |
+| 26727 | N | 8.04 |
+| 21997 | N | 7.71 |
+| 10157 | N | 7.69 |
+| 11472 | N | 7.52 |
+| 32507 | N | 7.52 |
+| 12261 | N | 7.25 |
+| 35599 | N | 7.09 |
+| 33168 | N | 7.09 |
+| 27509 | N | 7.09 |
+| 5756 | N | 6.73 |
+| 23828 | N | 6.27 |
+| 36589 | N | 6.1 |
+| 20560 | N | 5.7 |
+| 21200 | N | 5.66 |
+| 11943 | N | 5.47 |
+| 300 | N | 5.06 |
+| 5346 | N | 5.06 |
+| 15421 | N | 4.26 |
+| 18254 | N | 4.25 |
+| 5752 | N | 4.18 |
+| 23293 | N | 4.06 |
+| 3122 | N | 3.8 |
+| 38629 | N | 3.66 |
+| 12945 | N | 3.63 |
+| 24120 | N | 3.44 |
+| 16154 | N | 3.17 |
+| 17138 | N | 3.17 |
+| 19715 | N | 2.56 |
+| 34440 | N | 2.46 |
+| 12686 | N | 2.37 |
+| 4712 | N | 2.37 |
+| 3995 | N | 2.21 |
+| 1522 | N | 2.15 |
+| 35231 | N | 1.93 |
+| 33149 | N | 1.75 |
+| 35627 | N | 1.53 |
+| 38748 | N | 1.09 |
+| 15249 | N | 0.6 |
+
+>**Note:**  The outputs in this lab are examples only. The view names, model names, suffixes, selected algorithm, metrics, and row counts may differ in your environment. Use the object names generated in your session wherever needed.
 
 ## Learn More
 
@@ -278,4 +380,4 @@ In this task, you will ask Data Science Agent to use the trained model to score 
 
 * **Author** - Moitreyee Hazarika, Consulting User Assistance Developer, Oracle AI Database User Assistance Development
 * **Contributors** - Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, July 2026
+* **Last Updated By/Date** - Moitreyee Hazarika, September 2026

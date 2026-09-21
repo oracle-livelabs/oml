@@ -6,7 +6,7 @@
         "oml-create-cust360-table.md":"/common/building-blocks/tasks/oml/create-cust360-table.md",
         "oml-create-oml-user.md":"/common/building-blocks/tasks/oml/create-oml-user.md",
         "oml-oml-notebooks-ea.md":"/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md",
-        "oml-nb-visualizations.md":"/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md", 
+        "oml-nb-visualizations.md":"/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md",
         "oml-oml-monitoring.md":"/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md",
         "oml-automl.md":"/common/building-blocks/blocks/oml/oml-automl/oml-automl.md",
         "oml-sign-into-oml-livelabs.md":"/common/building-blocks/tasks/oml/sign-into-oml-livelabs.md",
@@ -32,7 +32,7 @@
             "title": "Lab 2: Work with GitHub Notebooks in Oracle Machine Learning UI",
             "type": "livelabs",
             "filename": "../../oml-github-nb/oml-github-nb.md"
-        },                        
+        },
         {
             "title": "Lab 3: Introduction to Oracle Machine Learning for SQL",
             "type": "livelabs",

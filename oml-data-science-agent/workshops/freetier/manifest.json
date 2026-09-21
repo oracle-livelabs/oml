@@ -6,7 +6,7 @@
         "oml-create-oml-user.md":"/common/building-blocks/tasks/oml/create-oml-user.md",
         "oml-oml-notebooks-ea.md":"/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md",
         "oml-nb-visualizations.md":"/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md",
-        "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md"        
+        "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md"
     },
     "tutorials": [
         {
@@ -20,32 +20,35 @@
             "filename": "https://livelabs.oracle.com/cdn/common/labs/cloud-login/pre-register-free-tier-account.md"
         },
 		{
-            "title": "Get Started with Free Tier Setup",
+            "title": "Lab 1: Set up Your Workshop Environment",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
             "filename": "../../get-started-livelabs/get-started-livelabs.md"
         },
         {
-            "title": "Lab 1: Introduction to Oracle Data Science Agent",
+            "title": "Lab 2: Introduction to Oracle Data Science Agent",
             "type": "freetier",
             "filename": "../../intro-to-dsa/intro-to-dsa.md"
         },
         {
-            "title": "Lab 2: Create AI Credential and AI Profile for use with Data Science Agent",
+            "title": "Lab 3: Create AI Credential and AI Profile for use with Data Science Agent",
             "type": "freetier",
             "filename": "../../define-ai-profile/define-ai-profile.md"
         },
         {
-            "title": "Lab 3: Create a Data Science Conversation",
+            "title": "Lab 4: Create a Data Science Conversation",
+            "type": "freetier",
             "filename": "../../create-conversation/create-conversation.md"
         },
         {
-            "title": "Lab 4: Configure your Data Science Agent Conversation",
+            "title": "Lab 5: Configure your Data Science Agent Conversation",
+            "type": "freetier",
             "filename": "../../add-objects-to-conversation/add-objects-to-conversation.md"
         },
         {
-            "title": "Lab 5: Issue prompts to perform Data Science and Machine Learning tasks",
+            "title": "Lab 6: Issue prompts to perform Data Science and Machine Learning tasks",
+            "type": "freetier",
             "filename": "../../issue-prompts-to-perform-tasks/issue-prompts-to-perform-tasks.md"
-        },        
+        },
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",

@@ -1,12 +1,17 @@
-# Create OCI Generative AI Credential and AI Profile  for use with Data Science Agent
+# Create OCI Generative AI Credential and AI Profile for use with Data Science Agent
 
 ## Introduction
 
-In this lab, you will create an OCI Generative AI Credential and an AI profile. You will define the AI profile for use with Data Science Agent (DSA). 
+In this lab, you will configure an Oracle Machine Learning (OML) user in Autonomous AI Database to use generative AI capabilities with Data Science Agent (DSA).
 
-Autonomous AI Database uses AI profiles to configure access to a large language model (LLM), generate SQL from natural language prompts, run SQL, explain SQL, and support retrieval augmented generation with embedding models and vector indexes.
+This configuration enables the OML user to connect securely to a large language model (LLM) and use AI-assisted database features, such as generating SQL from natural-language prompts, running and explaining SQL, and supporting retrieval-augmented generation with embedding models and vector indexes.
 
-You will also grant the required OML role to the OML user and configure host Access Control List (ACL) access for model providers that require outbound network access.
+To enable these capabilities, you will:
+
+* Create an OCI Generative AI credential that securely stores the authentication information required to access an AI provider and cloud resources.
+* Create an AI profile that defines the model provider, credential, model, and other settings used by Data Science Agent.
+* Grant the required OML role so the user can access Oracle Machine Learning features.
+* Configure a host Access Control List (ACL) when the model provider requires outbound network access.
 
 Estimated Time: X
 
@@ -34,7 +39,7 @@ This lab assumes you have:
 * private_key
 * fingerprint
 
-## Task 1: Create an OCI Generative AI Credential and an AI Profile
+## Task 1: Create an OCI Generative AI Credential
 
 An AI credential stores authentication details that the database uses to access the selected AI provider or related cloud resources. Depending on the provider, it may contain an API key, OCI signing key details, or other provider-specific authentication fields. The credential comprises the following information:
 
@@ -45,11 +50,10 @@ An AI credential stores authentication details that the database uses to access 
 
 To create an OCI Generative AI credential:
 
-1. Create a notebook and in a %script paragraph, run the following command: 
+1. Create a notebook and in a `%script` paragraph, run the following command: 
 
     ```sql
     <copy>
-    %script
 
     DECLARE
             credential_name VARCHAR2(128) := 'OCI_CRED';
@@ -75,16 +79,28 @@ To create an OCI Generative AI credential:
     This PL/SQL script calls the `DBMS_CLOUD.CREATE_CREDENTIAL` procedure to create a new credential with the given parameters:
 
     * `credential_name`: Name of the credential. In this example, the credential name is `OCI_CRED`.
-    * `user_ocid`: This is the Oracle Cloud Identifier, a unique ID for the user. See Where to Get the Tenancy's OCID and User's OCID for details.
-    * `tenancy_ocid`: This is the Oracle Cloud Identifier for your tenancy (your OCI account). See Where to Get the Tenancy's OCID and User's OCID for details.
-    * `private_key`: Specify the generated private key. Private keys generated with a passphrase are not supported. You must generate the private key without a passphrase. See How to Generate an API Signing Key for details.
-    * `fingerprint`: Specify the fingerprint. After a generated public key is uploaded to your account the fingerprint is displayed in the console. Use the displayed fingerprint for this argument. See How to Get the Key's Fingerprint and How to Generate an API Signing Key for more information.
+    * `user_ocid`: This is the Oracle Cloud Identifier, a unique ID for the user. You get the user OCID from the Oracle Cloud Infrastructure Console on the User Information page. To obtain the `user_ocid`, click on the profile icon and then click **User Settings**. On the User Information section, click **Copy** on the OCID field.
+
+    ![User OCID](images/user-ocid.png "User OCID Information")
+
+    * `tenancy_ocid`: This is the Oracle Cloud Identifier for your tenancy (your OCI account). You get the tenancy OCID from the Oracle Cloud Infrastructure Console on the Tenancy Details page. To obtain the `tenancy_ocid`, click on the profile icon and then click **Tenancy**. On the Tenancy Details page, click **Copy** on the OCID field.
+
+    ![Tenancy OCID](images/tenancy-ocid.png "Tenancy OCID Information")
+
+    * `private_key`: Specify the generated private key. Private keys generated with a passphrase are not supported. You must generate the private key without a passphrase. See [How to Generate an API Signing Key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#Other) for details.
+    * `fingerprint`: Specify the fingerprint. After a generated public key is uploaded to your account the fingerprint is displayed in the console. Use the displayed fingerprint for this argument. For more information:
+        * See [How to Generate an API Signing Key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#two)
+        * See [How to Get the Key's Fingerprint](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#How3)
 
 
 
-## Task 2: Create an AI Profile 
+## Task 2: Create an AI Profile
 
-AI profiles define how Autonomous AI Database connects to an LLM and which profile attributes are used for natural language to SQL translation. These profiles can include metadata from database objects such as table names, column names, column data types, and comments.
+An AI profile is a configuration object that defines how Autonomous AI Database connects to a large language model (LLM) and which settings are used for natural-language-to-SQL translation.
+
+The profile can also reference metadata from database objects, including table names, column names, data types, and comments. This metadata provides context that helps the LLM generate SQL that is relevant to the database schema.
+
+To create an AI Profile:
 
 1. In another `%script` paragraph in the same notebook, run the following command to create an AI profile by the name `GROK_4_3_PROFILE`. This script uses the `DBMS_CLOUD_AI.CREATE_PROFILE` procedure.
 
@@ -92,7 +108,6 @@ AI profiles define how Autonomous AI Database connects to an LLM and which profi
 
     ```sql
     <copy>
-    %script
 
     DECLARE
         profile_name VARCHAR2(128) := 'GROK_4_3_PROFILE';
@@ -123,23 +138,23 @@ AI profiles define how Autonomous AI Database connects to an LLM and which profi
     * `credential_name`: This is the name of the credential used to authenticate requests to the selected AI provider.
     * `model`: The name of the AI model being used to generate responses in the conversation. In this example, it is xai.grok-4.3. For more information, see Recommended Models.
     * `provider`: This is the provider of the model. It is a mandatory field. Supported providers are:
-    * openai
-    * cohere
-    * azure
-    * database
-    * oci
-    * google
-    * anthropic
-    * huggingface
-    * aws
+        * openai
+        * cohere
+        * azure
+        * database
+        * oci
+        * google
+        * anthropic
+        * huggingface
+        * aws
     * `max_tokens`: Specify the maximum number of tokens (words and pieces of words) in the response. Prevents overly long outputs and manages cost.
     * `oci_compartment_id`: This is the OCID of the compartment you are permitted to access when calling the OCI Generative AI service. The compartment ID can contain alphanumeric characters, hyphens and dots.
 
-2. Check the status of the profile creation by running the following:
+2. Check the status of the profile creation by running the following in a `%sql` paragraph in a notebook:
 
     ```sql
     <copy>
-    %sql 
+
     select * from
     user_cloud_ai_profiles;
     </copy>
@@ -149,7 +164,7 @@ AI profiles define how Autonomous AI Database connects to an LLM and which profi
 
 ## Task 3: Grant OML_DEVELOPER Role to OML User
 
-To use Data Science Agent, the administrator must grant the `OML_DEVELOPER` role to the OML user. 
+To use Data Science Agent, the administrator user ADMIN must grant the `OML_DEVELOPER` role to the OML user.
 
 > **Note:** If the OML user, such as `OMLUSER`, is created through Database Actions, the `OML_DEVELOPER` role is automatically granted.
 
@@ -211,6 +226,7 @@ You may now **proceed to the next lab**.
 
 * [Oracle Machine Learning](https://docs.oracle.com/en/database/oracle/machine-learning/)
 * [Oracle Data Science Agent](https://docs.oracle.com/en/database/oracle/machine-learning/data-science-agent/index.html)
+* [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#Other) for details.
 * [Oracle Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/)
 * [Oracle LiveLabs](https://livelabs.oracle.com/ords/r/dbpm/livelabs/home)
 
