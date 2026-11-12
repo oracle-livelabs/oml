@@ -173,7 +173,7 @@ In this lab, you will:
 
 1.  Click the link below to download the Wine Reviews CSV file.
 
-    [WINEREVIEWS130KTEXT.csv](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/WINEREVIEWS130KTEXT.csv)
+    [WINEREVIEWS130KTEXT.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/data-management-library-files/WINEREVIEWS130KTEXT.csv)
 
 2.  Save the WINEREVIEWS130KTEXT.csv to a location and note the path for later.
 

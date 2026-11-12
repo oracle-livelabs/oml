@@ -32,7 +32,7 @@ In this lab, you will:
 
 1. Download the project DVA file from the link below.
 
-  [Picking-a-Good-Wine.dva](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/oracle-machine-learning/Picking%20a%20Good%20Wine.dva)
+  [Picking-a-Good-Wine.dva](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/data-management-library-files/oracle-machine-learning/Picking%20a%20Good%20Wine.dva)
 
 2. Click the **Navigation Menu** in the upper left, navigate to **Analytics**, and select **Analytics Cloud**.
 
