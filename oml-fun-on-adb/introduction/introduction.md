@@ -43,6 +43,19 @@ In this workshop, you will learn how to:
 * Use OML Monitoring
     * Create a data monitor to monitor your data
     * Create a model monitor to monitor your machine learning models
+* Use Conda environment in OML Notebooks
+    * Create a Conda environment for Python with tensorflow and seaborn packages (ADMIN role)
+    * Create a Conda environment for R with ggplot2 and forecast packages (ADMIN role)
+    * Upload the Conda environments to an Object Storage bucket associated with the ADB (ADMIN role)
+    * Download, activate, and use the Conda environment for Python (OML_DEVELOPER role)
+    * Download, Activate, and use the Conda environment for R (OML_DEVELOPER role)
+* Use Data Science Agent
+    * Access Data Science Agent
+    * Review the recommended modeols for use with Data Science Agent
+* Use Workflows
+    * Access OML Workflows
+    * Create a Workflow
+    * Add and run nodes in the workfow
 
 ### Prerequisites
 
@@ -55,4 +68,4 @@ This workshop assumes you have:
 
 * **Authors** - Moitreyee Hazarika, Principal User Assistance Developer; Sarika Surampudi, Principal User Assistance Developer; Dhanish Kumar, Member Technical Staff; Suresh Rajan, Senior Manager, Oracle Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, Dhanish Kumar, October 2025
+* **Last Updated By/Date** - Moitreyee Hazarika, November 2026

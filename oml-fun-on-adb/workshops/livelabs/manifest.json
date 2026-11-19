@@ -10,6 +10,12 @@
         "oml-oml-monitoring.md":"/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md",
         "oml-automl.md":"/common/building-blocks/blocks/oml/oml-automl/oml-automl.md",
         "oml-sign-into-oml-livelabs.md":"/common/building-blocks/tasks/oml/sign-into-oml-livelabs.md",
+        "oml-dsa-access.md": "/common/building-blocks/tasks/oml/dsa-access.md",
+        "oml-dsa-recommended-models.md": "/common/building-blocks/tasks/oml/dsa-recommended-models.md",
+        "oml-dsa-create-conversation.md": "/common/building-blocks/tasks/oml/dsa-create-conversation.md",
+        "oml-dsa-add-objects.md": "/common/building-blocks/tasks/oml/dsa-add-objects.md",
+        "oml-dsa-manage-profile-settings.md": "/common/building-blocks/tasks/oml/dsa-manage-profile-settings.md",
+        "oml-dsa-start-chat.md": "/common/building-blocks/tasks/oml/dsa-start-chat.md",
         "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md"       
     },
     "tutorials": [
@@ -29,7 +35,7 @@
             "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md"
         },
         {
-            "title": "Lab 2: Work with GitHub Notebooks in Oracle Machine Learning UI",
+            "title": "Lab 2: Introduction to GitHub Notebooks in Oracle Machine Learning UI",
             "type": "livelabs",
             "filename": "../../oml-github-nb/oml-github-nb.md"
         },
@@ -67,6 +73,11 @@
             "title": "Lab 9: Introduction to the Conda Environments in Oracle Machine Learning Notebook",
             "type": "livelabs",
             "filename": "/common/building-blocks/blocks/oml/oml-conda/oml-conda.md"
+        },
+            {
+            "title": "Lab 10: Introduction to Oracle Machine Learning Workflow",
+            "type": "livelabs",
+            "filename": "../../oml-workflow/oml-workflow.md"
         },
         {
             "title": "Need Help?",

@@ -295,4 +295,4 @@ This completes the prediction step. The model has successfully forecast sales fo
 
 * **Author** - Sarika Surampudi, Principal User Assistance Developer, Oracle AI Database User Assistance Development
 * **Contributors** -  Mark Hornick, Sr. Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Machine Learning;  Marcos Arancibia, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Sarika Surampudi, October 2025
+* **Last Updated By/Date** - Sarika Surampudi, November 2026

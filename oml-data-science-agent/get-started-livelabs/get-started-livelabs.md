@@ -9,9 +9,12 @@ Estimated Time: X
 
 In this lab, you will learn how to:
 
+* Create an OCI compartment (optional task)
+* Create policy to enable access to OCI Generative AI
 * Provision an Oracle Autonomous AI Database
 * Create an OML User
 * Sign into OML User
+
 
 
 ### Prerequisites
@@ -19,16 +22,23 @@ In this lab, you will learn how to:
 
 > **Note:** You may see differences in account details (eg: Compartment Name is different in different places) as you work through the labs. This is because the workshop was developed using different accounts over time.
 
+## Task 1: Create an OCI Compartment (Optional)
 
-## Task 1: Provision an Oracle Autonomous AI Database
+[](include:oml-create-oci-compartment.md)
+
+## Task 2: Create Policy to Enable Access to OCI Generative AI
+
+[](include:oml-create-policy.md)
+
+## Task 3: Provision an Oracle Autonomous AI Database
 
 [](include:oml-prov-an-adb.md)
 
-## Task 2: Create an OML User
+## Task 4: Create an Oracle Machine Learning User
 
 [](include:oml-create-oml-user.md)
 
-## Task 3: Sign into Oracle Machine Learning UI
+## Task 5: Sign into Oracle Machine Learning UI
 
 [](include:oml-sign-into-oml.md)
 
@@ -46,4 +56,4 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Author** : Moitreyee Hazarika, Consulting User Assistance Developer, Database User Assistance Development
 * **Contributors**: Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date**: Moitreyee Hazarika, July 2026
+* **Last Updated By/Date**: Moitreyee Hazarika, November 2026

@@ -40,21 +40,21 @@ In this step, the `iris` data set is used for illustrative purposes to create a 
 
 1. To use OML4R, you must first import the `ORE` package. To use the overloaded `dplyr` functions (`OREdplyr`) they also must be explicitly loaded. Run the following scripts to import the `ORE`, `OREdplyr` packages, and set the display options:
 
-    	```r
-    	<copy>
-    	%r
+	```
+	<copy>
+	%r
 
-    	library(ORE)
-    	library(OREdplyr)
-    	options(ore.warn.order=FALSE)
-    	options(width = 200)
+	library(ORE)
+	library(OREdplyr)
+	options(ore.warn.order=FALSE)
+	options(width = 200)
 
-    	</copy>
-    	```
+	</copy>
+	```
 
 2. Use the `ore.push()` function to load an R data.frame object to the database, which creates a temporary table  and returns a proxy object, assigned to the variable `IRIS_TMP`.
 
-	```r
+	```
 	<copy>
 	%r
 
@@ -73,7 +73,7 @@ You can also create a persistent table using the `ore.create` function and speci
 
 1. To create the persistent table IRIS, run the following script.
 
-	```r
+	```
 	<copy>
 	%r
 
@@ -95,7 +95,7 @@ Use the `ore.sync()` function to create an `ore.frame` object named `DEMO` as a 
 
 1. The argument query uses an optional named character vector specifying queries to use for `ore.frame` object creation.
 
-	```r
+	```
 	<copy>
 	%r
 
@@ -116,34 +116,34 @@ In this example, use `dim()`, `summary()` and `crosstab()` functions to explore 
 
 1. Use the `dim()` function to view the rows and columns of an `ore.frame`.
 
-    	```
-    	<copy>
-    	%r
+    ```
+    <copy>
+    %r
 
-    	cat("\nShape: ", dim(DEMO))
-    	</copy>
-    	```
+    cat("\nShape: ", dim(DEMO))
+    </copy>
+    ```
     The output:
 
-    	![The figure shows the rows and columns of an ore.frame.](images/shape-ore-frame.png)
+    ![The figure shows the rows and columns of an ore.frame.](images/shape-ore-frame.png)
 
-    	
+    
 
 2. Use the `summary()` function to calculate descriptive statistics that summarize the central tendency, and dispersion of the DEMO table in each numeric column and the length, class, and mode for the character column.
 
-    	```r
-    	<copy>
-    	%r
+    ```
+    <copy>
+    %r
 
-    	summary(DEMO)
-    	</copy>
-    	```
+    summary(DEMO)
+    </copy>
+    ```
 
-    	The output is:
+    The output is:
 
-    	```r
+    ```
 
-    		CUST_ID        EDUCATION              OCCUPATION          
+   		CUST_ID        EDUCATION              OCCUPATION          
     	Min.   :100001   Length:4500            Length:4500          
     	1st Qu.:101126   Class :ore.character   Class :ore.character
     	Median :102250   Mode  :character       Mode  :character     
@@ -154,9 +154,9 @@ In this example, use `dim()`, `summary()` and `crosstab()` functions to explore 
     	Length:4500            Min.   : 0.000   Min.   :0.0000   Min.   :0.0000    
     	Class :ore.character   1st Qu.: 3.000   1st Qu.:0.0000   1st Qu.:0.0000    
     	Mode  :character       Median : 4.000   Median :0.0000   Median :1.0000    
-    												Mean   : 4.022   Mean   :0.2382   Mean   :0.6373    
-    												3rd Qu.: 5.000   3rd Qu.:0.0000   3rd Qu.:1.0000    
-    												Max.   :14.000   Max.   :1.0000   Max.   :1.0000    
+   		Mean   : 4.022   Mean   :0.2382   Mean   :0.6373    
+   		3rd Qu.: 5.000   3rd Qu.:0.0000   3rd Qu.:1.0000    
+   		Max.   :14.000   Max.   :1.0000   Max.   :1.0000    
     	FLAT_PANEL_MONITOR HOME_THEATER_PACKAGE BOOKKEEPING_APPLICATION
     	Min.   :0.0000     Min.   :0.0000       Min.   :0.0000        
     	1st Qu.:0.0000     1st Qu.:0.0000       1st Qu.:1.0000        
@@ -173,33 +173,35 @@ In this example, use `dim()`, `summary()` and `crosstab()` functions to explore 
     	Max.   :1        Max.   :1.0000   Max.   :1.000000
 
     	```
-    	![The figure shows the output of the summary function.](images/summary-demo.png)
+    
+
+![The figure shows the output of the summary function.](images/summary-demo.png)
 
 
 3. Use the `crosstab()` function to perform a cross-column analysis of an `ore.frame` object in the database. The `crosstab()` function computes a cross-tabulation of two or more columns. By default, it computes a frequency table for the columns unless a column and an aggregation function have been passed to it.
 
-    	In this example, the `crosstab()` function displays the distribution of `AFFINITY_CARD` responders. 
+    In this example, the `crosstab()` function displays the distribution of `AFFINITY_CARD` responders. 
 
 
-    	```r
-    	<copy>
-    	%r
+    ```
+    <copy>
+    %r
 
-    	z.show(ore.crosstab(~AFFINITY_CARD,DEMO))
-    	</copy>
-    	```
+    z.show(ore.crosstab(~AFFINITY_CARD,DEMO))
+    </copy>
+    ```
 
-    	Click on the Bar chart. Then click on the settings icon ![settings](images/settings-icon.png). In the **Series to Show** field, click to select `ORE.FREQ`. In the Group By field, click to select  `AFFINITY_CARDS`.
+    Click on the Bar chart. Then click on the settings icon ![settings](images/settings-icon.png). In the **Series to Show** field, click to select `ORE.FREQ`. In the Group By field, click to select  `AFFINITY_CARDS`.
 
-    	![The figure shows the crosstab output settings.](images/crosstab-settings.png)
+    ![The figure shows the crosstab output settings.](images/crosstab-settings.png)
 
-    	The output is similar to the following using the bar chart visualization in the Zeppelin notebook:
+    The output is similar to the following using the bar chart visualization in the Zeppelin notebook:
 
-    	![The figure shows the crosstab function displays the distribution of AFFINITY_CARD responders.](images/crosstab-affinity-card.png)
+    ![The figure shows the crosstab function displays the distribution of AFFINITY_CARD responders.](images/crosstab-affinity-card.png)
 
 4. Run the following script to view the distribution of `HOUSEHOLD_SIZE` according to `AFFINITY_CARD` responders. Click on the Bar chart, then click on settings. Drag the fields to titles as `HOUSEHOLD_SIZE` to keys, `AFFINITY_CARDS`  to groups, and `ORE.FREQ` to values. The fields will automatically change to `ORE.FREQ` SUM. Click on Stacked to get the required view.
 
-	```r
+	```
 	<copy>
 	%r
 
@@ -217,31 +219,31 @@ In this step, you will create a proxy object DEMO2 by selecting columns from the
 
 1. Use the DEMO proxy object to create a new proxy object DEMO2 by selecting the necessary columns. Run the following script:
 
-    	```r
-    	<copy>
-    	%r
+    ```r
+    <copy>
+    %r
 
-    	DEMO2 <- DEMO[,c("CUST_ID", 'AFFINITY_CARD',
-    					 "BOOKKEEPING_APPLICATION", "BULK_PACK_DISKETTES",
-    					 "EDUCATION","FLAT_PANEL_MONITOR", "HOME_THEATER_PACKAGE",
-    					 "HOUSEHOLD_SIZE", "OCCUPATION", "OS_DOC_SET_KANJI",
-    					 "PRINTER_SUPPLIES", "YRS_RESIDENCE", "Y_BOX_GAMES")]
-    	</copy>
-    	```
+    DEMO2 <- DEMO[,c("CUST_ID", 'AFFINITY_CARD',
+    				 "BOOKKEEPING_APPLICATION", "BULK_PACK_DISKETTES",
+    				 "EDUCATION","FLAT_PANEL_MONITOR", "HOME_THEATER_PACKAGE",
+    				 "HOUSEHOLD_SIZE", "OCCUPATION", "OS_DOC_SET_KANJI",
+    				 "PRINTER_SUPPLIES", "YRS_RESIDENCE", "Y_BOX_GAMES")]
+    </copy>
+    ```
 
 2. Run the following script to display the first few records of DEMO2:
 
-    	```r
-    	<copy>
-    	%r
+    ```
+    <copy>
+    %r
 
-    	z.show(DEMO2)
-    	</copy>
-    	```
+    z.show(DEMO2)
+    </copy>
+    ```
 
-    	The output is:
+    The output is:
 
-    	![First few rows of DEMO2 are displayed.](images/rows-demo2.png)
+    ![First few rows of DEMO2 are displayed.](images/rows-demo2.png)
 
 3. In this example, you are splitting the DEMO2 data with 60 percent of the records for the TRAIN data set and 40 percent for the TEST data set. The `sample()` function gives a simple random sample of elements. Here, the `sample()` function produces the sampled set of indices to identify the records for the training data set within the variable index.  Use the `setdiff` function to create the test data set as the complement of the training data set.
 
@@ -296,35 +298,35 @@ Use the `ore.odmDT` function to build a Decision Tree model. You can build a mod
 
 1. Run the following script to build a Decision Tree model with the default settings and the `TRAIN` dataset as input data, with `AFFINITY_CARD` as target, and a persistent model name of `"DT_CLASS_MODEL"`..
 
-    	```r
-    	<copy>
-    	%r
+    ```r
+    <copy>
+    %r
 
-    	dt_mod <- ore.odmDT(AFFINITY_CARD~.,
-    	                    TRAIN,
-    						odm.settings= list(model_name="DT_CLAS_MODEL"))
-    	</copy>
-    	```
+    dt_mod <- ore.odmDT(AFFINITY_CARD~.,
+                        TRAIN,
+    					odm.settings= list(model_name="DT_CLAS_MODEL"))
+    </copy>
+    ```
 
-    	The `ore.odmDT()` function uses the in-database Decision Tree algorithm for classification and the model proxy object `dt_mod` is created. The first parameter of the `ore.odmDT()` function is an object of class formula with a symbolic description of the model to be fitted. The tilde operator (~) is used to specify the relationship between dependent variables present on the left side of the operator and independent variables present on the right side of the operator.
+    The `ore.odmDT()` function uses the in-database Decision Tree algorithm for classification and the model proxy object `dt_mod` is created. The first parameter of the `ore.odmDT()` function is an object of class formula with a symbolic description of the model to be fitted. The tilde operator (~) is used to specify the relationship between dependent variables present on the left side of the operator and independent variables present on the right side of the operator.
 
 2. Run the following script for model details available through the decision tree model object, like the number of nodes, row count, split, settings, etc.
 
-    	```r
-    	<copy>
-    	%r
+    ```r
+    <copy>
+    %r
 
-    	dt_mod
-    	</copy>
-    	```
+    dt_mod
+    </copy>
+    ```
 
-    	The output is:
+    The output is:
 
-    	![The figure shows the model details of dt_mod proxy object.](images/model-details.png)
+    ![The figure shows the model details of dt_mod proxy object.](images/model-details.png)
 
 3. Run the following script to specify model settings and build a Decision Tree model:
 
-	```r
+	```
 	<copy>
 	%r
 
@@ -359,7 +361,7 @@ Use the `ore.odmDT` function to build a Decision Tree model. You can build a mod
 To get a complete list of information on the parameters available for the R interface to the in-database Decision Tree algorithm run the script below. Refer to [shared settings](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/oml4r-classes-that-provide-access-database-ml-algorithm1.html#GUID-42BDAC50-3951-48A0-A26D-693D5407DD44) for a full list of settings available to the other in-database algorithms.
 
 
-```r
+```
 <copy>
 %r
 
@@ -373,56 +375,57 @@ Evaluate the in-database model proxy object using various approaches. Make predi
 
 1. Run the following script to make predictions on the test data set using the `dt_mod` model. If the parameter type is "class", the result includes the most likely target class and its probability. If the parameter type is "raw", the result includes one column for each target class and the column values reflect the probability for that class. Both can be specified together, for example, type=c("class","raw").
 
-    	```r
-    	<copy>
-    	%r
+    ```
+    <copy>
+    %r
 
-    	# Gather the Predictions
-    	RES_DF <- predict(dt_mod, TEST, type=c("class"))
-    	RES_PROB <- predict(dt_mod, TEST, type=c("raw"))
+    # Gather the Predictions
+    RES_DF <- predict(dt_mod, TEST, type=c("class"))
+    RES_PROB <- predict(dt_mod, TEST, type=c("raw"))
 
-    	#Column bind the ore.frame objects
-    	RES_DF <- cbind(RES_DF,RES_PROB,TEST)
-    	z.show(RES_DF)
-    	</copy>
-    	```
+    #Column bind the ore.frame objects
+    RES_DF <- cbind(RES_DF,RES_PROB,TEST)
+    z.show(RES_DF)
+    </copy>
+    ```
 
-    	The output is:
-    	![First few rows of RES_DF are displayed.](images/rows-raw-resdf.png)
+    The output is:
+    ![First few rows of RES_DF are displayed.](images/rows-raw-resdf.png)
 
-    	The column "X.0." and "X.1." represent the probability of the case lying in the respective classes of AFFINITY\_CARD. Run the following script to change the column name of "X.0" to Prob\_0 and "X.1" to Prob\_1.
+    The column "X.0." and "X.1." represent the probability of the case lying in the respective classes of AFFINITY\_CARD. Run the following script to change the column name of "X.0" to Prob\_0 and "X.1" to Prob\_1.
 
-    	```r
-    	<copy>
-    	%r
+    ```r
+    <copy>
+    %r
 
-    	names(RES_DF)[names(RES_DF) == "'0'"] <- "PROB_0"
-    	names(RES_DF)[names(RES_DF) == "'1'"] <- "PROB_1"
+    names(RES_DF)[names(RES_DF) == "'0'"] <- "PROB_0"
+    names(RES_DF)[names(RES_DF) == "'1'"] <- "PROB_1"
 
-    	z.show(head(RES_DF))
-    	</copy>
-    	```
+    z.show(head(RES_DF))
+    </copy>
+    ```
 
-    	The output is:
-    	![First few rows of RES\_DF are displayed with X.0 as PROB\_0 and X.1 as PROB\_1.](images/rows-resdf.png)
+    The output is:
+    ![First few rows of RES\_DF are displayed with X.0 as PROB\_0 and X.1 as PROB\_1.](images/rows-resdf.png)
 
 2. The Confusion Matrix displays the number and type of correct and incorrect predictions made with respect to the actual classification in the test data. It is an n-by-n matrix where n is the number of classes. Run the following script to compute the confusion matrix in the database using the proxy object:
 
-    	```r
-    	<copy>
-    	%r
+    ```r
+    <copy>
+    %r
 
-    	C_MATRIX <- with(RES_DF, table(AFFINITY_CARD, PREDICTION))
-    	C_MATRIX
-    	</copy>
-    	```
+    C_MATRIX <- with(RES_DF, table(AFFINITY_CARD, PREDICTION))
+    C_MATRIX
+    </copy>
+    ```
 
-    	The output is:
-    	![The figure shows the confusion matrix between Affinity Card and Prediction column.](images/confusion-matrix.png)
+    The output is:
+
+    ![The figure shows the confusion matrix between Affinity Card and Prediction column.](images/confusion-matrix.png)
 
 3. Evaluate your model using the ROC curve chart, Lift chart, and Distribution chart. The ROC curve also applies to binary classification and requires the designation of the positive class. These are metrics for comparing predicted and actual target values in a classification model. A lift chart also applies to binary classifications requiring the designation of the positive class. It measures the degree to which the predictions of a classification model are better than randomly generated predictions. The distribution chart here is a density plot of the predicted responders vs. the predicted non-responders. A density plot is a distribution of a numeric variable and gives an idea of the shape, number of peaks, skewness, etc. Here is a custom script to generate the metrics and charts as described above. Run the script below:
 
-	```r
+	```
 	<copy>
 	%r
 
@@ -479,16 +482,16 @@ Having built and evaluated the model, you will now filter the `ore.frame` using 
 
 1. Run the following script to display the results of customers responding to the affinity card campaign with a probability greater than 0.5.
 
-    	```r
-    	<copy>
-    	%r
+    ```
+    <copy>
+    %r
 
-    	z.show(RES_DF[RES_DF$PROB_1 > 0.5, ])
-    	</copy>
-    	```
+    z.show(RES_DF[RES_DF$PROB_1 > 0.5, ])
+    </copy>
+    ```
 
-    	The output is:
-    	![The figure displays few rows of customers responding to the affinity card campaign with a probability greater than 0.5.](images/rows-responders.png)
+    The output is:
+    ![The figure displays few rows of customers responding to the affinity card campaign with a probability greater than 0.5.](images/rows-responders.png)
 
 2. Use the confusion matrix to get the model accuracy computed on the TEST data provided.
 
@@ -510,15 +513,15 @@ You can score data and make similar predictions using the SQL interface. The tes
 
 1. Run the following command to create a table `DT_TEST_TABLE` for use in SQL query:
 
-    	```r
-    	<copy>
-    	%r
+    ```r
+    <copy>
+    %r
 
-    	tryCatch({ore.drop(table="DT_TEST_TABLE")})
-    	ore.create(DEMO2, table ="DT_TEST_TABLE")
+    tryCatch({ore.drop(table="DT_TEST_TABLE")})
+    ore.create(DEMO2, table ="DT_TEST_TABLE")
 
-    	</copy>
-    	```
+    </copy>
+    ```
 
 2. Run the following SQL command to score and display the prediction details. The `prediction` and `prediction_details` functions apply the decision tree classification model that we created above named `DT_CLAS_MODEL` to the data from the table `DT_TEST_TABLE`.
 
@@ -568,18 +571,18 @@ OML4R provides functions for managing the objects in the datastore, such as `ore
 
     You can give it some descriptive text using the description argumentto the function `ore.save()`, which will appear when you get information on the datastore.
 
-    	```r
-    	<copy>
-    	%r
+    ```r
+    <copy>
+    %r
 
-    	IRIS_TMP <- ore.sync(table='IRIS')
+    IRIS_TMP <- ore.sync(table='IRIS')
 
-    	ore.save(IRIS_TMP, RES_DF,
-    	         name="ds_rdata",
-    	         overwrite=TRUE,
-    			 description="r datasets")
-    	</copy>
-    	```
+   	ore.save(IRIS_TMP, RES_DF,
+   	         name="ds_rdata",
+   	         overwrite=TRUE,
+   			 description="r datasets")
+   	</copy>
+   	```
 
     - Run the script below to save the `dt_mod` model proxy object created above to the `ds_rmodel` datastore. When the grantable boolean argument is set to TRUE (grantable=TRUE), other users can be granted the read privilege on the object. Argument grantable is ignored when used with argument overwrite or append.
 
@@ -638,35 +641,37 @@ OML4R provides functions for managing the objects in the datastore, such as `ore
 	```
 
 	The output is:
+
 	![The figure shows all the R objects of the datastore.](images/load-datastore.png)
 
-  - Run the following script to load a specific named R object, `IRIS_TMP` from the datastore to the current workspace. Also, confirm if the R object IRIS_TMP is loaded or not in the current workspace.
+  	- Run the following script to load a specific named R object, `IRIS_TMP` from the datastore to the current workspace. Also, confirm if the R object IRIS_TMP is loaded or not in the current workspace.
 
-	```r
-	<copy>
-	%r
+		```r
+		<copy>
+		%r
 
-	ore.load(name="ds_rdata", list=c("IRIS_TMP"))
-	'IRIS_TMP' %in% ls()
-	</copy>
-	```
+		ore.load(name="ds_rdata", list=c("IRIS_TMP"))
+		'IRIS_TMP' %in% ls()
+		</copy>
+		```
 
-	The output is:
+		The output is:
 
-	![The figure loads a specific R object IRIS\_TMP.](images/load-specific-datastore.png)
+		![The figure loads a specific R object IRIS\_TMP.](images/load-specific-datastore.png)
 
-  - Run the following script to load the named R object from the datastore to the current workspace.
+	- Run the following script to load the named R object from the datastore to the current workspace.
 
-	```r
-	<copy>
-	%r
+		```r
+		<copy>
+		%r
 
-	ore.load(name="ds_rmodel")
-	</copy>
-	```
+		ore.load(name="ds_rmodel")
+		</copy>
+		```
 
-	The output is:
-	![The figure loads the model from the datastore.](images/load-datamodel.png)
+		The output is:
+		
+		![The figure loads the model from the datastore.](images/load-datamodel.png)
 
 To learn more about how to use datastores to store R objects click this [link](https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/2.0.0/oreug/get-started-oracle-machine-learning-r1.html#GUID-A3773AC1-2C23-445C-91C1-6FBC745CCE94).
 
@@ -776,4 +781,4 @@ OREdplyr package functions implement the `dplyr` interface for use with `ore.fra
 ## Acknowledgements
 * **Author** - Sadhana Ashokkumar, Member of Technical Staff, Oracle AI Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Suresh Rajan, Senior Manager, Oracle Database User Assistance Development; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning.
-* **Last Updated By/Date** - Sadhana Ashokkumar, November 2025
+* **Last Updated By/Date** - Dhanish Kumar, November 2026

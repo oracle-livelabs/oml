@@ -6,6 +6,14 @@
         "oml-create-oml-user.md":"/common/building-blocks/tasks/oml/create-oml-user.md",
         "oml-oml-notebooks-ea.md":"/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md",
         "oml-nb-visualizations.md":"/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md",
+        "oml-create-oci-compartment.md": "/common/building-blocks/tasks/oml/create-oci-compartment.md",
+        "oml-create-policy.md": "/common/building-blocks/tasks/oml/create-policy.md",
+        "oml-dsa-access.md": "/common/building-blocks/tasks/oml/dsa-access.md",
+        "oml-dsa-recommended-models.md": "/common/building-blocks/tasks/oml/dsa-recommended-models.md",
+        "oml-dsa-create-conversation.md": "/common/building-blocks/tasks/oml/dsa-create-conversation.md",
+        "oml-dsa-add-objects.md": "/common/building-blocks/tasks/oml/dsa-add-objects.md",
+        "oml-dsa-manage-profile-settings.md": "/common/building-blocks/tasks/oml/dsa-manage-profile-settings.md",
+        "oml-dsa-start-chat.md": "/common/building-blocks/tasks/oml/dsa-start-chat.md",
         "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md"
     },
     "tutorials": [
@@ -30,7 +38,7 @@
             "filename": "../../intro-to-dsa/intro-to-dsa.md"
         },
         {
-            "title": "Lab 3: Create AI Credential and AI Profile for use with Data Science Agent",
+            "title": "Lab 3: Configure Data Science Agent with OCI Generative AI",
             "type": "freetier",
             "filename": "../../define-ai-profile/define-ai-profile.md"
         },

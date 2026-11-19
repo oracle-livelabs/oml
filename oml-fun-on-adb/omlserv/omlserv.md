@@ -61,7 +61,7 @@ This lab assumes you have:
 
 1. This lab uses OCI Cloud Shell. To access the OCI Cloud Shell, select your compartment and click on the Cloud Shell icon.
 
-    	 ![Autonomous AI Database instance](images/oci-cloud-shell-1-new1.png)
+    ![Autonomous AI Database instance](images/oci-cloud-shell-1-new1.png)
 
     On clicking the Cloud Shell icon, the OCI Cloud Shell command prompt is displayed in the lower half of the console as illustrated in the image below.
 
@@ -652,4 +652,4 @@ For each summary, an associated weight is also returned.
 
 * **Author** - Suresh Rajan, Senior Manager, Oracle AI Database User Assistance Development; Moitreyee Hazarika, Principal UAD, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Oracle Machine Learning Product Management; Sherry LaMonica, Consulting Member of Technical Staff, Oracle Machine Learning; Marcos Arancibia Coddou, Senior Principal Product Manager, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, November 2025
+* **Last Updated By/Date** - Moitreyee Hazarika, November 2026
